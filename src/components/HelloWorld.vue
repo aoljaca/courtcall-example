@@ -131,6 +131,7 @@
         >
       </li>
     </ul>
+    <v-btn @click="showToast()"><i class="mdi mdi-toaster"></i>Show Toast</v-btn> 
   </div>
 </template>
 
@@ -140,6 +141,18 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+
+  showToast(): void {
+    this.$swal.fire({
+      title: 'Example Alert',
+      timer: 3000,
+      text: 'This message will be dismissed in 3 seconds',
+      position: 'top-end',
+      toast: true,
+      timerProgressBar: true,
+      showConfirmButton: false
+    })
+  }
 }
 </script>
 
