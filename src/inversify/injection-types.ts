@@ -1,0 +1,3 @@
+export enum INJECTION_TYPES  {
+    TOAST = 'INJECTION_TYPESS_TOAST'
+}

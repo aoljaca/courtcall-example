@@ -136,22 +136,19 @@
 </template>
 
 <script lang="ts">
+import { ToastService } from "@/services/toast";
+import { Inject } from "inversify-props";
 import { Component, Prop, Vue } from "vue-property-decorator";
-
+import 'reflect-metadata';
+import { INJECTION_TYPES } from "@/inversify/injection-types";
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
 
+  @Inject(INJECTION_TYPES.TOAST)
+  private toastSerivce!: ToastService;
   showToast(): void {
-    this.$swal.fire({
-      title: 'Example Alert',
-      timer: 3000,
-      text: 'This message will be dismissed in 3 seconds',
-      position: 'top-end',
-      toast: true,
-      timerProgressBar: true,
-      showConfirmButton: false
-    })
+    this.toastSerivce.standardToast();
   }
 }
 </script>
