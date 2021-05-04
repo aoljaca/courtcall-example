@@ -8,7 +8,14 @@ const messages = {
         username: "Username",
         password: "Password",
         description: "Login",
+        rememberUsernameLabel: "Remember My Username",
+        rememberUsernameWarning: `DO NOT SELECT IF YOU'RE USING A PUBLIC OR SHARED COMPUTER`,
+        forgotPassword: 'Forgot Password ?'
       },
+      phoneNumber: '1-888-555-1212',
+      liveChat: 'Live Chat',
+      website: 'CourtCall Website',
+      moreHelp: 'More Help'
     },
   },
 };
