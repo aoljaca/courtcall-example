@@ -30,12 +30,11 @@ module.exports = {
     config.output.filename = "[name].[hash].js";
   },
   chainWebpack: (config) => {
-    config
-      .plugin('html')
-      .tap(args => {
-        args[0].title = process.env.NODE_ENV === 'production' ? 'CourtCall' : 'CourtCall Dev';
-        return args;
-      })
+    config.plugin("html").tap((args) => {
+      args[0].title =
+        process.env.NODE_ENV === "production" ? "CourtCall" : "CourtCall Dev";
+      return args;
+    });
   },
 
   css: {

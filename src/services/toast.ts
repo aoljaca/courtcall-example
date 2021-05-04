@@ -7,9 +7,9 @@ export interface ToastService {
 
 @injectable()
 export class ToastServiceImpl {
-  public standardToast() {
-    Vue.$toast('Example Toast',{
-      timeout: 3000
-    })
+  public standardToast(): void {
+    Vue.$toast("Example Toast", {
+      timeout: 3000,
+    });
   }
 }

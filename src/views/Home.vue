@@ -1,9 +1,18 @@
 <template>
   <div class="home">
+    <a href="http://google.com" target="_blank">Test</a>
     <v-app-bar color="blue accent-3">
-      <v-app-bar-nav-icon color="white" @click.stop="toggleDrawer()"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        color="white"
+        @click.stop="toggleDrawer()"
+      ></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary></v-navigation-drawer>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      bottom
+      temporary
+    ></v-navigation-drawer>
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
@@ -19,16 +28,15 @@ import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
   },
 })
 export default class Home extends Vue {
-
-  public drawer = false;
+  public drawer: any = null;
   public group = null;
   toggleDrawer() {
     this.drawer = !this.drawer;
   }
 
-  @Watch('group')
+  @Watch("group")
   onPropertyChanged(oldVal: string, newVal: string) {
-    this.drawer = false
+    this.drawer = false;
   }
 }
 </script>
