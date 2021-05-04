@@ -7,4 +7,5 @@
 <style lang="scss">
 @import './styles/utilities.scss';
 @import './styles/variables.scss';
+@import './styles/mixins.scss';
 </style>
