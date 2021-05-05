@@ -4,7 +4,8 @@ Vue.use(VueI18n);
 const messages = {
   "en-us": {
     general: {
-      submit: 'Submit'
+      submit: 'Submit',
+      loading: 'Loading'
     },
     login: {
       manual: {
@@ -35,7 +36,8 @@ const messages = {
         header: 'Please Enter Your Name',
         headerConfirm: 'Please Confirm Your Name',
         nameDescription: 'This is what other participants will see',
-        inputDescription: 'Enter Full Name'
+        inputDescription: 'Enter Full Name',
+        confirmNameDescription: 'Confirm Name'
 
       }
     }

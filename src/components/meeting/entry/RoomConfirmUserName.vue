@@ -10,12 +10,12 @@
             </v-row>
             <v-row>
                 <v-col>
-                    <v-text-field label="TODO: Wire up to Vuex"></v-text-field>
+                    <v-text-field :title="$t('entry.username.confirmName')" label="TODO: Wire up to Vuex"></v-text-field>
                 </v-col>
             </v-row>
             <v-row>
                 <v-col class="d-flex justify-center">
-                    <v-btn @click="confirmUserName()" color="primary">{{$t('general.submit')}}</v-btn>
+                    <v-btn :title="$t('general.submit')" @click="confirmUserName()" color="primary">{{$t('general.submit')}}</v-btn>
                 </v-col>
             </v-row>
         </v-container>

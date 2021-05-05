@@ -8,12 +8,12 @@
             </v-row>
             <v-row>
                 <v-col>
-                    <v-text-field :label="$t('entry.passcode.inputDescription')"></v-text-field>
+                    <v-text-field :title="$t('entry.passcode.inputDescription')" :label="$t('entry.passcode.inputDescription')"></v-text-field>
                 </v-col>
             </v-row>
             <v-row>
                 <v-col class="d-flex justify-center">
-                    <v-btn @click="submitPasscode()" color="primary">{{$t('general.submit')}}</v-btn>    
+                    <v-btn :title="$t('general.submit')" @click="submitPasscode()" color="primary">{{$t('general.submit')}}</v-btn>    
                 </v-col
             >
             </v-row>

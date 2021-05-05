@@ -17,7 +17,7 @@
                                     :size="100"
                                     :color="primary"
                                     indeterminate
-                                    
+                                    :title="$t('general.loading')"
                                     ></v-progress-circular>
                                     <room-passcode v-if="phase === 'passcode'"></room-passcode>
                                     <room-user-name v-if="phase === 'name'"></room-user-name>
