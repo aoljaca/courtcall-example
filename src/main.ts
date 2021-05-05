@@ -11,6 +11,7 @@ import buildDependencyContainer from "./inversify/container";
 import "reflect-metadata";
 Vue.config.productionTip = false;
 buildDependencyContainer();
+Vue.use(Toast, {});
 new Vue({
   router,
   store,
@@ -18,4 +19,4 @@ new Vue({
   i18n,
   render: (h) => h(App),
 }).$mount("#app");
-Vue.use(Toast, {});
+

@@ -1,22 +1,16 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import logout_en from './i18n/en-us/logout';
+import general_en from './i18n/en-us/general';
+import login_en from './i18n/en-us/login';
+import entry_en from './i18n/en-us/entry';
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
-    login: {
-      manual: {
-        username: "Username",
-        password: "Password",
-        description: "Login",
-        rememberUsernameLabel: "Remember My Username",
-        rememberUsernameWarning: `DO NOT SELECT IF YOU'RE USING A PUBLIC OR SHARED COMPUTER`,
-        forgotPassword: 'Forgot Password ?'
-      },
-      phoneNumber: '1-888-555-1212',
-      liveChat: 'Live Chat',
-      website: 'CourtCall Website',
-      moreHelp: 'More Help'
-    },
+    general: general_en,
+    login: login_en,
+    entry: entry_en,
+    logout: logout_en
   },
 };
 const languages = Object.keys(messages);
