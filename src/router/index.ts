@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
+import RoomEntry from '../components/meeting/entry/RoomEntry.vue';
 import Login from "../components/login/Login.vue";
 import EndMeeting from '../components/meeting/end-meeting/EndMeeting.vue';
 Vue.use(VueRouter);
@@ -12,9 +13,19 @@ const routes: Array<RouteConfig> = [
     component: Login,
   },
   {
-    path: "/",
+    path: '/',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: "/login/",
     name: "Login",
     component: Login,
+  },
+  {
+    path: '/entry',
+    name: 'Room Entry',
+    component: RoomEntry
   },
   {
     path: '/logout',
