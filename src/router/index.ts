@@ -15,6 +15,11 @@ const routes: Array<RouteConfig> = [
     name: "Login",
     component: Login,
   },
+  {
+    path: 'waiting-room',
+    name: 'Waiting Room',
+    component: 
+  }
 ];
 
 const router = new VueRouter({
