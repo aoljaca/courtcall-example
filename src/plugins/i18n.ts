@@ -4,13 +4,15 @@ import logout_en from './i18n/en-us/logout';
 import general_en from './i18n/en-us/general';
 import login_en from './i18n/en-us/login';
 import entry_en from './i18n/en-us/entry';
+import waiting_room_en from './i18n/en-us/waiting-room';
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
     general: general_en,
     login: login_en,
     entry: entry_en,
-    logout: logout_en
+    logout: logout_en,
+    waitingRoom: waiting_room_en
   },
 };
 const languages = Object.keys(messages);

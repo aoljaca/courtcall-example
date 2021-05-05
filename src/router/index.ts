@@ -24,7 +24,7 @@ const routes: Array<RouteConfig> = [
     component: Login,
   },
   {
-    path: 'waiting-room',
+    path: '/waiting-room',
     name: 'Waiting Room',
     component: WaitingRoom
   },
