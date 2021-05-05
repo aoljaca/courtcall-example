@@ -1,11 +1,13 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import logout_en from './i18n/en-us/logout';
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
     general: {
       submit: 'Submit',
-      loading: 'Loading'
+      loading: 'Loading',
+      clickHere: 'Click Here'
     },
     login: {
       manual: {
@@ -40,7 +42,8 @@ const messages = {
         confirmNameDescription: 'Confirm Name'
 
       }
-    }
+    },
+    logout: logout_en
   },
 };
 const languages = Object.keys(messages);
