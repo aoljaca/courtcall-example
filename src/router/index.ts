@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../components/login/Login.vue";
+import WaitingRoom from '../components/meeting/waiting-room/WaitingRoom.vue';
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -18,7 +19,7 @@ const routes: Array<RouteConfig> = [
   {
     path: 'waiting-room',
     name: 'Waiting Room',
-    component: 
+    component: WaitingRoom
   }
 ];
 
