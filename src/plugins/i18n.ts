@@ -1,48 +1,15 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 import logout_en from './i18n/en-us/logout';
+import general_en from './i18n/en-us/general';
+import login_en from './i18n/en-us/login';
+import entry_en from './i18n/en-us/entry';
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
-    general: {
-      submit: 'Submit',
-      loading: 'Loading',
-      clickHere: 'Click Here'
-    },
-    login: {
-      manual: {
-        username: "Username",
-        password: "Password",
-        description: "Login",
-        rememberUsernameLabel: "Remember My Username",
-        rememberUsernameWarning: `DO NOT SELECT IF YOU'RE USING A PUBLIC OR SHARED COMPUTER`,
-        forgotPassword: 'Forgot Password ?'
-      },
-      phoneNumber: '1-888-555-1212',
-      liveChat: 'Live Chat',
-      website: 'CourtCall Website',
-      moreHelp: 'More Help'
-    },
-    entry: {
-      support: {
-        begin: 'If you need assistance from CourtCall call',
-        phone: '1-888-555-1212',
-        middle: 'or email',
-        email: 'customercare@courtcall.com'
-      },
-      passcode: {
-        generalDescription: 'A passcode is required for this conference',
-        inputDescription: 'Enter Access Code'
-      },
-      username: {
-        header: 'Please Enter Your Name',
-        headerConfirm: 'Please Confirm Your Name',
-        nameDescription: 'This is what other participants will see',
-        inputDescription: 'Enter Full Name',
-        confirmNameDescription: 'Confirm Name'
-
-      }
-    },
+    general: general_en,
+    login: login_en,
+    entry: entry_en,
     logout: logout_en
   },
 };
