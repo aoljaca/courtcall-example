@@ -1,6 +1,9 @@
 .d-flex {
   display: flex;
 }
+.d-inline-flex {
+  display: inline-flex;
+}
 .d-block {
   display: block;
 }
@@ -15,4 +18,7 @@
 }
 .w-50 {
   width: 50%;
+}
+.text-align-center {
+  text-align: center;
 }

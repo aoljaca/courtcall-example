@@ -3,6 +3,9 @@ import VueI18n from "vue-i18n";
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
+    general: {
+      submit: 'Submit'
+    },
     login: {
       manual: {
         username: "Username",
@@ -17,6 +20,25 @@ const messages = {
       website: 'CourtCall Website',
       moreHelp: 'More Help'
     },
+    entry: {
+      support: {
+        begin: 'If you need assistance from CourtCall call',
+        phone: '1-888-555-1212',
+        middle: 'or email',
+        email: 'customercare@courtcall.com'
+      },
+      passcode: {
+        generalDescription: 'A passcode is required for this conference',
+        inputDescription: 'Enter Access Code'
+      },
+      username: {
+        header: 'Please Enter Your Name',
+        headerConfirm: 'Please Confirm Your Name',
+        nameDescription: 'This is what other participants will see',
+        inputDescription: 'Enter Full Name'
+
+      }
+    }
   },
 };
 const languages = Object.keys(messages);
