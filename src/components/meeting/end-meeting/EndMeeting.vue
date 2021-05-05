@@ -3,7 +3,41 @@
         <v-container class="fill d-flex align-content-center">
             <v-row class="justify-center">
                 <v-col align-self="center" cols="6">
-                    <v-card class="background-gray"></v-card>
+                    <v-card class="background-gray">
+                        <v-container fluid>
+                            <v-row>
+                                <v-col>
+                                    <h2 class="align-text-center">CourtCall</h2>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col>
+                                    <h3 class="align-text-center">{{$t('logout.heading')}}</h3>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col class="d-flex justify-center">
+                                    <span>{{$t('logout.subHeader')}}</span>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col class="d-flex justify-center">
+                                    <span>
+                                        <span class="font-weight-bold">{{$t('general.clickHere')}}</span>
+                                        {{$t('logout.rejoin')}}
+                                    </span>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col class="d-flex justify-center">
+                                    <span>
+                                        {{$t('logout.support')}}
+                                        <span class="font-weight-bold">{{$t('general.clickHere')}}</span>
+                                    </span>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-card>
                 </v-col>
             </v-row>
         </v-container>
@@ -22,6 +56,6 @@ export default class EndMeeting extends Vue {
     height: 100vh;
 }
 .background-gray {
-    background-color: lightgray;
+    background-color: lightgray !important;
 }
 </style>
