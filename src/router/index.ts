@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/:code",
+    path: "/login/:code",
     name: "Login",
     component: Login,
   },
