@@ -1,8 +1,12 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import logout_en from './i18n/en-us/logout';
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
+    general: {
+      clickHere: 'Click Here'
+    },
     login: {
       manual: {
         username: "Username",
@@ -17,6 +21,7 @@ const messages = {
       website: 'CourtCall Website',
       moreHelp: 'More Help'
     },
+    logout: logout_en
   },
 };
 const languages = Object.keys(messages);
