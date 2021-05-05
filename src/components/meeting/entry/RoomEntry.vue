@@ -49,6 +49,9 @@ import {mapState} from 'vuex';
 import RoomPasscode from './RoomPasscode.vue';
 import RoomUserName from './RoomUserName.vue';
 import RoomConfirmUserName from './RoomConfirmUserName.vue';
+import { inject } from 'inversify-props';
+import { ToastService } from '@/services/toast';
+import { INJECTION_TYPES } from '@/inversify/injection-types';
 type EntryMode = 'loading' | 'passcode' | 'name'
 @Component({
     computed: {
@@ -62,7 +65,12 @@ type EntryMode = 'loading' | 'passcode' | 'name'
 })
 export default class RoomEntry extends Vue {
     
+    @inject(INJECTION_TYPES.TOAST)
+    toastService: ToastService|undefined;
     
+    mounted() {
+        this.toastService?.standardToast();
+    }
     
 }
 
