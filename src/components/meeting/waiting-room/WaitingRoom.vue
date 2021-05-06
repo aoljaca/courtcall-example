@@ -48,6 +48,11 @@
                     <h1>{{$t('waitingRoom.notices')}}</h1>
                 </v-col>
             </v-row>
+            <v-row v-for="notification in waitingRoomNotifications" :key="notification.description" class="justify-content-center">
+                <v-col cols="6">
+                    <waiting-room-notification :details="notification"></waiting-room-notification>
+                </v-col>
+            </v-row>
         </v-container>
     </div>
 </template>
@@ -66,6 +71,27 @@ export default class WaitingRoom extends Vue {
 
     hostMessage = ''
     contactState: ContactState ='uncontacted';
+    waitingRoomNotifications: IWaitingRoomNotification[] = [
+        {
+            iconClass: 'mdi-book',
+            linkDescription: 'Read',
+            link: 'http://wikipedia.org',
+            description: 'This is an example of a read link',
+            color: 'lightblue'
+        },
+        {
+            iconClass: 'mdi-youtube',
+            linkDescription: 'Watch',
+            link: 'http://youtube.com',
+            description: 'This is an example of a watch link',
+            color: '#fc979e'
+        },
+        {
+            iconClass: 'mdi-information',
+            description: 'This is an example of a general link',
+            color: '#ffd359'
+        }
+    ]
 
     get validMessage() {
         return this.hostMessage.length <= 300 && this.hostMessage.length > 0;

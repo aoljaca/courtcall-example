@@ -5,11 +5,12 @@
                 <v-list-item-title v-if="details.linkDescription">
                     <a :href="details.link" target="_blank">{{details.linkDescription}}</a>
                 </v-list-item-title>
-                <v-list-item-subtitle>{{details.description}}</v-list-item-subtitle>
-                <v-list-item-avatar size="40">
-                    <v-icon>{{details.iconClass}}</v-icon>
-                </v-list-item-avatar>
+                <v-list-item-subtitle class="notification-subtitle">{{details.description}}</v-list-item-subtitle>
+
             </v-list-item-content>
+            <v-list-item-avatar size="40">
+                   <v-icon>{{details.iconClass}}</v-icon>
+            </v-list-item-avatar>
         </v-list-item>
     </v-card>
 </template>
@@ -28,3 +29,8 @@ export default class WaitingRoomNotification extends Vue {
     }
 }
 </script>
+<style lang="scss" scoped>
+.notification-subtitle {
+    white-space: break-spaces !important;
+}
+</style>
