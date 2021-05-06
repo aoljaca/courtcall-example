@@ -24,7 +24,7 @@
               <span class="d-block font-weight-bold">
                   {{$t('avOptions.audioSetup.callInSetup.pin')}}
               </span>
-              <span class="d-block font-weight-bold">
+              <span class="d-block">
                   12345
               </span>
           </v-col>

@@ -1,6 +1,6 @@
 <template>
     <div id="audioSetup">
-       <v-container fluid>
+       <v-container fluid class="main-container">
            <v-row>
                <v-col>
                    <h3>{{$t('avOptions.audioSetup.title')}}</h3>
@@ -57,7 +57,4 @@ export default class AudioSetup extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-.setup-height {
-    height: 35vh;
-}
 </style>

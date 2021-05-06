@@ -4,5 +4,5 @@ export default {
     title: 'Audio Setup',
     callMeSetup: 'Call Me',
     callInSetup,
-    computerSetup
+    computerSetup,
 }

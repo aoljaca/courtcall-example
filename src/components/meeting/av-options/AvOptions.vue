@@ -51,9 +51,9 @@
           </v-col>
       </v-row>
       <hr/>
-      <v-row>
-          <v-col md="6">Video Setup</v-col>
-          <v-col md="6"><audio-setup></audio-setup></v-col>
+      <v-row class="setup-height">
+          <v-col md="6"><video-preview></video-preview></v-col>
+          <v-col md="6" ><audio-setup></audio-setup></v-col>
       </v-row>
       <v-row class="justify-center">
           <v-col cols="2" class="d-flex justify-end">
@@ -80,9 +80,11 @@
 import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
 import AudioSetup from './AudioSetup.vue';
+import VideoPreview from './VideoPreview.vue'
 @Component({
     components: {
-        AudioSetup
+        AudioSetup,
+        VideoPreview
     }
 })
 export default class AvOptions extends Vue {
@@ -102,5 +104,9 @@ export default class AvOptions extends Vue {
 <style lang="scss" scoped>
 .main-modal {
     color: black !important;
+}
+.setup-height {
+    height: 55vh;
+    min-height: 400px;
 }
 </style>

@@ -1,4 +1,5 @@
 import audioSetup from './audio-setup';
+import videoPreview from './video-preview';
 export default {
     internetConnection: 'Internet Connection',
     courtcallSystem: 'CourtCall System',
@@ -6,6 +7,7 @@ export default {
     allowUseDescription: 'CourtCall needs access to your camera and microphone in this application so that other participants can see and hear you',
     savePreferences: 'Save Preferences',
     joinMeeting: 'Join Now',
-    audioSetup
+    audioSetup,
+    videoPreview
 
 }
