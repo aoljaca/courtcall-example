@@ -53,7 +53,7 @@
       <hr/>
       <v-row>
           <v-col md="6">Video Setup</v-col>
-          <v-col md="6">Audio Setup</v-col>
+          <v-col md="6"><audio-setup></audio-setup></v-col>
       </v-row>
       <v-row class="justify-center">
           <v-col cols="2" class="d-flex justify-end">
@@ -79,7 +79,12 @@
 <script lang="ts">
 import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
-@Component
+import AudioSetup from './AudioSetup.vue';
+@Component({
+    components: {
+        AudioSetup
+    }
+})
 export default class AvOptions extends Vue {
     dialog = false;
 
