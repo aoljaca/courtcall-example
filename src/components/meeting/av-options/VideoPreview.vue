@@ -20,7 +20,7 @@
             :title="$t('general.loading')"
           ></v-progress-circular>
           <v-hover :class="{'d-none':shouldHideVideo}" id="hoverElement">
-            <template v-slot:default="">
+            <template v-slot:default="{hover}">
               <v-card elevation="0">
                 <v-card-text class="p-0"
                   ><video
@@ -31,7 +31,7 @@
                 ></v-card-text>
 
                 <v-fade-transition>
-                  <v-overlay v-if="true" absolute class="video-overlay">
+                  <v-overlay v-if="hover" absolute class="video-overlay">
                     <v-container fluid class="h-100 align-end d-flex">
                       <v-row>
                         <v-col class="py-0" v-if="openBackground" cols="12">
@@ -134,7 +134,7 @@ export default class VideoPreview extends Vue {
   }
 
   get shouldHideVideo() {
-    return !this.videoVisible || sessionStorage.getItem('canvasState') === 'loading';
+    return !this.videoVisible || this.$store.state.BackgroundBlurModule.mode === 'loading';
   }
 
   get origin() {
