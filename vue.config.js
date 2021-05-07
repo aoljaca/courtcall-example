@@ -35,6 +35,11 @@ module.exports = {
         process.env.NODE_ENV === "production" ? "CourtCall" : "CourtCall Dev";
       return args;
     });
+    config.module
+    .rule('images')
+      .use('url-loader')
+        .loader('url-loader')
+        .tap(options => Object.assign(options, { limit: 1048576 }))
   },
 
   css: {
