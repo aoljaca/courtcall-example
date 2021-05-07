@@ -10,8 +10,8 @@ const backgroundBlurModule: Module<any,any> = {
         changeMode(state: any, payload) {
             state.mode = payload;
         },
-        updateTimestamp(state) {
-            state.timestamp = DateTime.now().toISO()
+        updateTimestamp(state,payload) {
+            state.timestamp = payload;
         }
     },
     actions: {
@@ -19,7 +19,7 @@ const backgroundBlurModule: Module<any,any> = {
             commit('changeMode',payload.mode)
         },
         updateTimeStampAction({commit},payload) {
-            commit('updateTimestamp')
+            commit('updateTimestamp',payload.timestamp)
         }
     }
 }
