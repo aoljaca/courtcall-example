@@ -108,7 +108,7 @@ export default class VideoPreview extends Vue {
     display: "none",
   };
   videoVisible = false;
-  openBackground = true;
+  openBackground = false;
   readonly noBackgroundOption: BackgroundOption = {
       type: 'none'
   }
