@@ -2,7 +2,9 @@
   <div class="rooms-table">
     <v-container>
       <v-row>
-        <v-col> Rooms table and data </v-col>
+        <v-col>
+          <h2>{{ $t("admin.dashboard.rooms") }}</h2>
+        </v-col>
       </v-row>
     </v-container>
   </div>
