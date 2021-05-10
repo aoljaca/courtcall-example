@@ -21,7 +21,7 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class Search extends Vue {
-  items = ["System Users", "Participants", "Rooms", "Cases", "Organizations"];  
+  items = ["System Users", "Participants", "Rooms", "Cases", "Organizations"];
 }
 </script>
 
