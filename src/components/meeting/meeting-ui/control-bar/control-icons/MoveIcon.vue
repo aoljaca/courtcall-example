@@ -16,12 +16,28 @@
     </v-container>
       </template>
       <v-card height="280" width="600">
-        <v-card-text class="move-box">Move Participants</v-card-text>
+        <v-card-text class="move-box">
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-select 
+                v-model="selectedSubconference"
+                :items="possibleSubconferences"
+                item-text="displayName"
+                :label="$t('meetingUI.controlBar.moveParticipants.description')"></v-select>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
         <v-card-actions>
           <v-container fluid>
             <v-row class="justify-space-between">
-              <v-col class="px-0 py-0">Cancel</v-col>
-              <v-col class="px-0 py-0 d-flex justify-end">Submit</v-col>
+              <v-col class="py-0">
+                <v-btn elevation="0" :title="$t('general.cancel')">{{$t('general.cancel')}}</v-btn>
+              </v-col>
+              <v-col class="py-0 d-flex justify-end">
+                <v-btn elevation="0" :title="$t('general.submit')">{{$t('general.submit')}}</v-btn>
+              </v-col>
             </v-row>
           </v-container>
         </v-card-actions>
@@ -38,7 +54,23 @@ export default class MoveIcon extends Vue{
 
   selectedSubconference: SubConference|undefined;
 
-  possibleSubconferences: SubConference[] = [];
+  possibleSubconferences: SubConference[] = [
+    {
+      displayName: 'Subconference A',
+      systemName: 'A',
+      sessionId: ''
+    },
+    {
+      displayName: 'Subconference B',
+      systemName: 'B',
+      sessionId: ''
+    },
+    {
+      displayName: 'Subconference C',
+      systemName: 'C',
+      sessionId: ''
+    }
+  ];
 }
 </script>
 <style lang="scss" scoped>
