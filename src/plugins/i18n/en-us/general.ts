@@ -6,5 +6,5 @@ export default {
   getHelp: 'Get Help',
   dismiss: 'Dismiss',
   video: 'Video',
-  audio: 'Audio'
+  audio: 'Audio',
 };

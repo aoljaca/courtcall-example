@@ -1,10 +1,8 @@
 <template>
-  <div class="rooms-table">
+  <div class="admin-nav">
     <v-container>
-      <v-row>
-        <v-col>
-          <h2>{{ $t("admin.dashboard.rooms") }}</h2>
-        </v-col>
+      <v-row class="justify-content-center">
+        <v-col> Nav Tabs for Admin </v-col>
       </v-row>
     </v-container>
   </div>
@@ -14,7 +12,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
-export default class Rooms extends Vue {}
+export default class Navigation extends Vue {}
 </script>
 
 <style lang="scss" scoped></style>

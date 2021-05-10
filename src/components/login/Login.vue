@@ -17,22 +17,26 @@
             <v-container class="boxed">
               <v-row>
                 <v-col class="justify-center d-flex"
-                  ><i class="mdi mdi-phone pr-2"></i>{{$t('login.phoneNumber')}}</v-col
+                  ><i class="mdi mdi-phone pr-2"></i
+                  >{{ $t("login.phoneNumber") }}</v-col
                 >
               </v-row>
               <v-row>
                 <v-col class="justify-center d-flex"
-                  ><i class="mdi mdi-chat pr-2"></i>{{$t('login.liveChat')}}</v-col
+                  ><i class="mdi mdi-chat pr-2"></i
+                  >{{ $t("login.liveChat") }}</v-col
                 >
               </v-row>
               <v-row>
                 <v-col class="justify-center d-flex">
-                  <i class="mdi mdi-web pr-2"></i>{{$t('login.website')}}</v-col
+                  <i class="mdi mdi-web pr-2"></i
+                  >{{ $t("login.website") }}</v-col
                 >
               </v-row>
               <v-row>
                 <v-col class="justify-center d-flex"
-                  ><i class="mdi mdi-help-circle pr-2"></i>{{$t('login.moreHelp')}}</v-col
+                  ><i class="mdi mdi-help-circle pr-2"></i
+                  >{{ $t("login.moreHelp") }}</v-col
                 >
               </v-row>
             </v-container>
