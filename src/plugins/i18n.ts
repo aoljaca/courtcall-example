@@ -17,7 +17,7 @@ const messages = {
     logout: logout_en,
     waitingRoom: waiting_room_en,
     avOptions: av_options_en,
-    meetingUI: meeting_ui_en
+    meetingUI: meeting_ui_en,
     admin: admin_en,
   },
 };
