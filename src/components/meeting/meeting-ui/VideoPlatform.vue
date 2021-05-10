@@ -24,7 +24,7 @@
                           <v-btn
                             fab
                             color="primary"
-                            :title="$t('meetingUI.fullscreen')"
+                            :title="$t('meetingUI.videoPlatform.fullscreen')"
                           >
                             <v-icon>mdi-fullscreen</v-icon>
                           </v-btn>
@@ -35,7 +35,7 @@
                           <v-btn
                             fab
                             color="primary"
-                            :title="$t('meetingUI.gridView')"
+                            :title="$t('meetingUI.videoPlatform.gridView')"
                           >
                             <v-icon>mdi-grid</v-icon>
                           </v-btn>
@@ -46,7 +46,7 @@
                           <v-btn
                             fab
                             color="primary"
-                            :title="$t('meetingUI.speakerView')"
+                            :title="$t('meetingUI.videoPlatform.speakerView')"
                           >
                             <v-icon>mdi-account</v-icon>
                           </v-btn>
@@ -57,7 +57,7 @@
                           <v-btn
                             fab
                             color="primary"
-                            :title="$t('meetingUI.pinnedView')"
+                            :title="$t('meetingUI.videoPlatform.pinnedView')"
                           >
                             <v-icon>mdi-map-marker</v-icon>
                           </v-btn>
@@ -81,7 +81,7 @@ export default class VideoPlatform extends Vue {}
 </script>
 <style lang="scss">
 .video-platform-overlay {
-   height: 90vh;
+   height: 86vh;
    width: 10%;
    min-height: 500px;
    max-width: 100%;
@@ -94,7 +94,7 @@ export default class VideoPlatform extends Vue {}
 </style>
 <style lang="scss" scoped>
 .video-platform-col {
-  height: 90vh;
+  height: 86vh;
   min-height: 500px;
 }
 </style>

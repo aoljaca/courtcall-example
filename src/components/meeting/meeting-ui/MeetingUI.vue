@@ -2,6 +2,9 @@
   <div id="meetingUI">
     <v-container fluid>
       <v-row>
+          <v-col class="py-0 header-col">header</v-col>
+      </v-row>
+      <v-row>
         <v-col class="px-0 py-0">
           <v-container fluid>
             <v-row>
@@ -16,7 +19,7 @@
             </v-row>
           </v-container>
         </v-col>
-        <v-col cols="2" v-if="true">
+        <v-col cols="2" class="navigation-element" v-if="true">
             Navigation
         </v-col>
       </v-row>
@@ -38,5 +41,13 @@ export default class MeetingUI extends Vue {
   drawer = true;
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.header-col {
+    height: 4vh;
+    background: lightgray;
+}
+.navigation-element {
+    border-left: 1px solid black;
+}
+</style>
 <style lang="scss"></style>
