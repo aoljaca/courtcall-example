@@ -5,6 +5,7 @@ import general_en from "./i18n/en-us/general";
 import login_en from "./i18n/en-us/login";
 import entry_en from "./i18n/en-us/entry";
 import waiting_room_en from "./i18n/en-us/waiting-room";
+import admin_en from "./i18n/en-us/admin";
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
@@ -13,6 +14,7 @@ const messages = {
     entry: entry_en,
     logout: logout_en,
     waitingRoom: waiting_room_en,
+    admin: admin_en,
   },
 };
 const languages = Object.keys(messages);

@@ -7,7 +7,7 @@
         </v-col>
         <v-col cols="5">
           <v-text-field
-            label="Enter Search Term"
+            :label="$t('admin.dashboard.searchTerm')"
             append-icon="mdi-magnify"
           ></v-text-field>
         </v-col>
@@ -21,7 +21,7 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class Search extends Vue {
-  items = ["System Users", "Participants", "Rooms", "Cases", "Organizations"];
+  items = ["System Users", "Participants", "Rooms", "Cases", "Organizations"];  
 }
 </script>
 

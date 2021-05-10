@@ -2,7 +2,9 @@
   <div class="my-account">
     <v-container>
       <v-row>
-        <v-col> Welcome Back Frank </v-col>
+        <v-col>
+          <span>{{ $t("admin.dashboard.welcomeBack") }} Frank </span>
+        </v-col>
       </v-row>
     </v-container>
   </div>
