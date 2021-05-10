@@ -6,6 +6,7 @@ import Login from "../components/login/Login.vue";
 import WaitingRoom from '../components/meeting/waiting-room/WaitingRoom.vue';
 import EndMeeting from '../components/meeting/end-meeting/EndMeeting.vue';
 import AvOptions from '../components/meeting/av-options/AvOptions.vue';
+import MeetingUI from '../components/meeting/meeting-ui/MeetingUI.vue';
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -43,6 +44,11 @@ const routes: Array<RouteConfig> = [
     path: '/av-options',
     name: 'A/V Options',
     component: AvOptions
+  },
+  {
+    path: '/meeting-ui',
+    name: 'Meeting UI',
+    component: MeetingUI
   }
 ];
 
