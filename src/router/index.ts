@@ -40,7 +40,7 @@ const routes: Array<RouteConfig> = [
     component: EndMeeting,
   },
   {
-    path: "/dashboard",
+    path: "/admin/dashboard",
     name: "Dashboard",
     component: Dashboard,
   },
