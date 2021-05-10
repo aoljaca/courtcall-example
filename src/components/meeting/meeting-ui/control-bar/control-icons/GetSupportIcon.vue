@@ -1,6 +1,6 @@
 <template>
   <span id="getSupportIcon">
-    <v-menu :close-on-content-click="false" offset-y>
+    <v-menu :close-on-content-click="false" offset-y :nudge-top="400">
       <template v-slot:activator="{ on, attrs }">
         <v-container fluid>
           <v-row class="px-0 py-0">
@@ -24,7 +24,7 @@
           </v-row>
         </v-container>
       </template>
-      <v-card height="280" width="600">
+      <v-card>
           <v-card-text>
               <v-textarea 
               counter="300" 
@@ -34,10 +34,10 @@
               <v-container fluid>
                   <v-row class="justify-space-between">
                       <v-col class="px-0 py-0">
-                          <v-btn elevation="0">{{$t('meetingUI.controlBar.getSupport.cancelRequest')}}</v-btn>
+                          <v-btn :title="$t('general.cancel')" elevation="0">{{$t('general.cancel')}}</v-btn>
                       </v-col>
                       <v-col class="px-0 py-0 d-flex justify-end">
-                           <v-btn color="primary" elevation="0">{{$t('meetingUI.controlBar.getSupport.sendRequest')}}</v-btn>
+                           <v-btn :title="$t('meetingUI.controlBar.getSupport.cancelRequest')" color="primary" elevation="0">{{$t('meetingUI.controlBar.getSupport.sendRequest')}}</v-btn>
                       </v-col>
                   </v-row>
               </v-container>
