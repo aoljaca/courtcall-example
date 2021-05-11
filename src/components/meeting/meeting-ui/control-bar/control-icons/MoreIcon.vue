@@ -63,7 +63,7 @@
           </template>
           <record></record>
         </v-dialog>
-        <v-dialog v-model="dialog.changeBackground">
+        <v-dialog v-model="dialog.changeBackground" max-width="750px">
           <template
             v-slot:activator="{ on, attrs }"
             :title="$t('meetingUI.controlBar.more.changeBackground.title')"
@@ -73,6 +73,7 @@
               {{ $t("meetingUI.controlBar.more.changeBackground.title") }}
             </v-list-item>
           </template>
+          <change-background></change-background>
         </v-dialog>
         <v-dialog v-model="dialog.avSetup">
           <template
@@ -133,19 +134,21 @@ import { Vue, Component } from "vue-property-decorator";
 import SendNotification from "./more-icons/SendNotification.vue";
 import InviteParticipants from "./more-icons/InviteParticipants.vue";
 import Record from './more-icons/Record.vue';
+import ChangeBackground from './more-icons/ChangeBackground.vue';
 @Component({
   components: {
     SendNotification,
     InviteParticipants,
-    Record
+    Record,
+    ChangeBackground
   },
 })
 export default class MoreIcon extends Vue {
   dialog = {
     sendNotification: false,
     inviteParticipants: false,
-    record: true,
-    changeBackground: false,
+    record: false,
+    changeBackground: true,
     avSetup: false,
     notificationPreferences: false,
     transcription: false,
