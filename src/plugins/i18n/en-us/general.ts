@@ -9,5 +9,6 @@ export default {
   audio: 'Audio',
   cancel: 'Cancel',
   send: 'Send',
-  copy: 'Copy'
+  copy: 'Copy',
+  apply: 'Apply'
 };

@@ -7,6 +7,7 @@ import * as tfjs from '@tensorflow/tfjs';
 import * as BodyPix from '@tensorflow-models/body-pix';
 export interface IBackgroundBlurService {
     alterVideo: (videoElementId: string, canvasElementId: string, backgroundOptions: BackgroundOption, store: Store<any>) => void 
+    bootstrap: () => void;
 }
 interface BindPageParams {
     videoElement: HTMLVideoElement,
@@ -17,6 +18,27 @@ interface BindPageParams {
 }
 @injectable()
 export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
+    net: BodyPix.BodyPix|null = null;
+
+    async getNet() {
+        if (this.net) {
+            return this.net;
+        }
+        else {
+            const net = await BodyPix.load({
+                multiplier: .75,
+                outputStride: 16,
+                quantBytes: 4,
+                architecture: 'MobileNetV1'
+            });
+            this.net = net;
+            return net;
+        }
+    }
+    bootstrap() {
+        tfjs.getBackend();
+        this.getNet();
+    }
     alterVideo(videoElementId: string, canvasElementId: string, backgroundOptions: BackgroundOption, store: Store<any>) {
         const videoElement = document.getElementById(videoElementId) as HTMLVideoElement;
         const canvasElement = document.getElementById(canvasElementId) as HTMLCanvasElement;
@@ -62,24 +84,14 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
 
     private async startBlur(options: BindPageParams) {
         tfjs.getBackend();
-        const net = await BodyPix.load({
-            multiplier: .75,
-            outputStride: 16,
-            quantBytes: 4,
-            architecture: 'MobileNetV1'
-        });
+        const net = await this.getNet();
         this.segmentBlurInRealTime(net,options);
         options.store.dispatch('BackgroundBlurModule/changeModeAction',{mode: 'on'});
     }
 
     private async startBackground(options: BindPageParams) {
         tfjs.getBackend();
-        const net = await BodyPix.load({
-            multiplier: .75,
-            outputStride: 16,
-            quantBytes: 4,
-            architecture: 'MobileNetV1'
-        });
+        const net = await this.getNet();
         options.canvasElement.style.backgroundSize = `cover`;
         options.canvasElement.style.background = options.backgroundUrl!;
         this.segmentBackgroundInRealTime(net,options);

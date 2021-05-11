@@ -50,7 +50,7 @@
                                 :value="background"
                                 >
                                 <template v-slot:label>
-                                    <v-img v-if="shouldShowRadioImages" max-height="50" max-width="50" :alt="background.backgroundUrl" :src="background.backgroundUrl"></v-img>
+                                    <v-img v-if="shouldShowRadioImages" max-height="50" max-width="50" :alt="background.backgroundUrl" :src="calculateBackgroundUrl(background)"></v-img>
                                 </template>
                                 </v-radio>
                             </v-radio-group>
@@ -91,11 +91,12 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
-import {BackgroundOption} from '@/model/meeting/av-options/background-option';
+import {BackgroundOption,NO_BACKGROUND_BLUR_OPTION,BACKGROUND_OPTIONS,BLUR_OPTION} from '@/model/meeting/av-options/background-option';
 import { inject } from "inversify-props";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { IBackgroundBlurService } from "@/services/background-blur";
-@Component({})
+@Component({
+})
 export default class VideoPreview extends Vue {
 
   @inject(INJECTION_TYPES.BACKGROUND_BLUR)
@@ -109,47 +110,24 @@ export default class VideoPreview extends Vue {
   };
   videoVisible = false;
   openBackground = false;
-  readonly noBackgroundOption: BackgroundOption = {
-      type: 'none'
-  }
-  readonly blurBackgroundOption: BackgroundOption = {
-      type: 'blur'
-  }
-  readonly backgroundOptions: BackgroundOption[] = [
-    {
-      type: 'background',
-      backgroundUrl: `${this.origin}/assets/backgrounds/beach-chairs-seaside.jpg`
-    },
-    {
-      type: 'background',
-      backgroundUrl: `${this.origin}/assets/backgrounds/boise.jpg`
-    },
-    {
-      type: 'background',
-      backgroundUrl: `${this.origin}/assets/backgrounds/city-skyscrapers.jpg`
-    },
-    {
-      type: 'background',
-      backgroundUrl: `${this.origin}/assets/backgrounds/home-office.jpg`
-    },
-    {
-      type: 'background',
-      backgroundUrl: `${this.origin}/assets/backgrounds/law-gavel.jpg`
-    },
-        {
-      type: 'background',
-      backgroundUrl: `${this.origin}/assets/backgrounds/courtroom.jpg`
-    }
-  ]
+  readonly noBackgroundOption: BackgroundOption = NO_BACKGROUND_BLUR_OPTION
+  readonly blurBackgroundOption: BackgroundOption = BLUR_OPTION;
+  readonly backgroundOptions: BackgroundOption[] = BACKGROUND_OPTIONS;
   selectedBackgroundOption: BackgroundOption = this.noBackgroundOption;
+
+  calculateBackgroundUrl(option: BackgroundOption) {
+    return `${this.origin}/${option.backgroundUrl}`;
+  }
 
   setUpBackgroundBlur() {
     this.openBackground = false;
+    this.videoVisible = false;
     const setupFunc = () => {
         this.backgroundBlurService?.alterVideo('video-preview','canvas-preview',this.selectedBackgroundOption,this.$store);
         this.openBackground = true;
+        this.videoVisible = true;
     } 
-    setTimeout(setupFunc)
+    setTimeout(setupFunc,250)
   }
 
 
@@ -197,6 +175,7 @@ export default class VideoPreview extends Vue {
     this.selectFocused = false;
   }
 
+
   async mounted() {
     const devices = await navigator.mediaDevices.enumerateDevices();
     devices.forEach((device) => {
@@ -219,6 +198,7 @@ export default class VideoPreview extends Vue {
       videoElement.srcObject = stream;
 
       setTimeout(() => {
+        this.backgroundBlurService?.bootstrap();
         this.videoVisible = true;
         this.styleObject.display = "block";
       }, 500);
