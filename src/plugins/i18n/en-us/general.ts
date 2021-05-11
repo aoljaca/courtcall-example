@@ -7,5 +7,7 @@ export default {
   dismiss: 'Dismiss',
   video: 'Video',
   audio: 'Audio',
-  cancel: 'Cancel'
+  cancel: 'Cancel',
+  send: 'Send',
+  copy: 'Copy'
 };
