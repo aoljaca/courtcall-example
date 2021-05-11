@@ -2,7 +2,18 @@
   <div class="admin-nav">
     <v-container>
       <v-row class="justify-content-center">
-        <v-col> Nav Tabs for Admin </v-col>
+        <v-col cols="3">
+          <router-link to="/admin/dashboard">Dashboard</router-link>
+        </v-col>
+        <v-col cols="3">
+          <router-link to="">Organizations</router-link>
+        </v-col>
+        <v-col cols="3">
+          <router-link to="">System Users</router-link>
+        </v-col>
+        <v-col cols="3">
+          <router-link to="">Support</router-link>
+        </v-col>
       </v-row>
     </v-container>
   </div>
