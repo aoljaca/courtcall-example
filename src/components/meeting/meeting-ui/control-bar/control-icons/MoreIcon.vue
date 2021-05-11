@@ -25,49 +25,97 @@
         </v-container>
       </template>
       <v-list>
-        <v-list-item>
-          <v-icon>mdi-bell-plus</v-icon>
-          {{$t('meetingUI.controlBar.more.sendNotification.title')}}
-        </v-list-item>
-        <v-list-item>
+        <v-dialog v-model="dialog.sendNotification" max-width="500px">
+          <template v-slot:activator="{on,attrs}">
+            <v-list-item v-bind="attrs" v-on="on" :title="$t('meetingUI.controlBar.more.sendNotification.title')">
+              <v-icon>mdi-bell-plus</v-icon>
+              {{$t('meetingUI.controlBar.more.sendNotification.title')}}
+            </v-list-item>
+          </template>
+          <send-notification></send-notification>
+          
+        </v-dialog>
+        <v-dialog v-model="dialog.inviteParticipants">
+          <template v-slot:activator="{on,attrs}">
+        <v-list-item v-bind="attrs" v-on="on" :title="$t('meetingUI.controlBar.more.inviteParticipants.title')">
           <v-icon>mdi-account-supervisor</v-icon>
           {{$t('meetingUI.controlBar.more.inviteParticipants.title')}}
         </v-list-item>
-        <v-list-item>
-          <v-icon>mdi-record</v-icon>
-          <span class="pl-1"> {{$t('meetingUI.controlBar.more.record.title')}}</span>
-         
-        </v-list-item>
-        <v-list-item>
-          <v-icon>mdi-image-multiple</v-icon>
-          {{$t('meetingUI.controlBar.more.changeBackground.title')}}
-        </v-list-item>
-        <v-list-item>
-          <v-icon>mdi-video</v-icon>
-          {{$t('meetingUI.controlBar.more.avSetup.title')}}
-        </v-list-item>
-        <v-list-item>
-          <v-icon>mdi-bell</v-icon>
-          {{$t('meetingUI.controlBar.more.notificationPreferences.title')}}
-        </v-list-item>
-        <v-list-item>
-          <v-icon>
-            mdi-closed-caption
-          </v-icon>
-          {{$t('meetingUI.controlBar.more.transcription.title')}}
-        </v-list-item>
-        <v-list-item>
+          </template>
+        </v-dialog>
+        <v-dialog v-model="dialog.record">
+          <template v-slot:activator="{on,attrs}" :title="$t('meetingUI.controlBar.more.record.title')">
+            <v-list-item v-bind="attrs" v-on="on">
+              <v-icon>mdi-record</v-icon>
+              {{$t('meetingUI.controlBar.more.record.title')}}
+            </v-list-item>
+          </template>
+        </v-dialog>
+        <v-dialog v-model="dialog.changeBackground">
+          <template v-slot:activator="{on,attrs}" :title="$t('meetingUI.controlBar.more.changeBackground.title')">
+            <v-list-item v-bind="attrs" v-on="on">
+              <v-icon>mdi-image-multiple</v-icon>
+              {{$t('meetingUI.controlBar.more.changeBackground.title')}}
+            </v-list-item>
+          </template>
+        </v-dialog>
+        <v-dialog v-model="dialog.avSetup">
+          <template v-slot:activator="{on,attrs}" :title="$t('meetingUI.controlBar.more.avSetup.title')">
+            <v-list-item v-bind="attrs" v-on="on">
+              <v-icon>mdi-video</v-icon>
+              {{$t('meetingUI.controlBar.more.avSetup.title')}}
+            </v-list-item>
+          </template>
+        </v-dialog>
+        <v-dialog v-model="dialog.notificationPreferences">
+          <template v-slot:activator="{on,attrs}" :title="$t('meetingUI.controlBar.more.notificationPreferences.title')">
+            <v-list-item v-bind="attrs" v-on="on">
+              <v-icon>mdi-bell</v-icon>
+              {{$t('meetingUI.controlBar.more.notificationPreferences.title')}}
+            </v-list-item>
+          </template>
+        </v-dialog>
+        <v-dialog v-model="dialog.transcription">
+          <template v-slot:activator="{on,attrs}">
+            <v-list-item v-on="on" v-bind="attrs" :title="$t('meetingUI.controlBar.more.transcription.title')">
+              <v-icon>mdi-closed-caption</v-icon>
+              {{$t('meetingUI.controlBar.more.transcription.title')}}
+            </v-list-item>
+          </template>
+        </v-dialog>
+        <v-dialog v-model="dialog.publicStreaming">
+          <template v-slot:activator="{on,attrs}">
+        <v-list-item v-on="on" v-bind="attrs" :title="$t('meetingUI.controlBar.more.publicStreaming.title')">
           <v-icon>
             mdi-wifi
           </v-icon>
           {{$t('meetingUI.controlBar.more.publicStreaming.title')}}
         </v-list-item>
+          </template>
+        </v-dialog>
+
       </v-list>
     </v-menu>
   </span>
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-@Component({})
-export default class MoreIcon extends Vue {}
+import SendNotification from './more-icons/SendNotification.vue';
+@Component({
+  components: {
+    SendNotification
+  }
+})
+export default class MoreIcon extends Vue {
+
+  dialog = {
+    sendNotification: true,
+    inviteParticipants: false,
+    changeBackground: false,
+    avSetup: false,
+    notificationPreferences: false,
+    transcription: false,
+    publicStreaming: false
+  }
+}
 </script>
