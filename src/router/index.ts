@@ -6,6 +6,7 @@ import Login from "../components/login/Login.vue";
 import WaitingRoom from "../components/meeting/waiting-room/WaitingRoom.vue";
 import EndMeeting from "../components/meeting/end-meeting/EndMeeting.vue";
 import Dashboard from "../components/admin/dashboard/Dashboard.vue";
+import Admin from '@/components/admin/Admin.vue';
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -40,9 +41,16 @@ const routes: Array<RouteConfig> = [
     component: EndMeeting,
   },
   {
-    path: "/admin/dashboard",
-    name: "Dashboard",
-    component: Dashboard,
+    path: "/admin",
+    name: "Admin",
+    component: Admin,
+    children: [
+      {
+        path: 'dashboard',
+        component: Dashboard,
+        name: 'Dashboard'
+      }
+    ]
   },
 ];
 
