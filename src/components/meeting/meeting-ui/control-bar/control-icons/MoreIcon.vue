@@ -74,8 +74,9 @@
             </v-list-item>
           </template>
           <change-background></change-background>
+
         </v-dialog>
-        <v-dialog v-model="dialog.avSetup">
+        <v-dialog v-model="dialog.avSetup" max-width="750px">
           <template
             v-slot:activator="{ on, attrs }"
             :title="$t('meetingUI.controlBar.more.avSetup.title')"
@@ -85,6 +86,7 @@
               {{ $t("meetingUI.controlBar.more.avSetup.title") }}
             </v-list-item>
           </template>
+          <av-setup></av-setup>
         </v-dialog>
         <v-dialog v-model="dialog.notificationPreferences">
           <template
@@ -135,12 +137,14 @@ import SendNotification from "./more-icons/SendNotification.vue";
 import InviteParticipants from "./more-icons/InviteParticipants.vue";
 import Record from './more-icons/Record.vue';
 import ChangeBackground from './more-icons/ChangeBackground.vue';
+import AvSetup from './more-icons/AVSetup.vue';
 @Component({
   components: {
     SendNotification,
     InviteParticipants,
     Record,
-    ChangeBackground
+    ChangeBackground,
+    AvSetup
   },
 })
 export default class MoreIcon extends Vue {
@@ -148,9 +152,9 @@ export default class MoreIcon extends Vue {
     sendNotification: false,
     inviteParticipants: false,
     record: false,
-    changeBackground: true,
+    changeBackground: false,
     avSetup: false,
-    notificationPreferences: false,
+    notificationPreferences: true,
     transcription: false,
     publicStreaming: false,
   };
