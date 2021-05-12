@@ -165,7 +165,7 @@ export default class MoreIcon extends Vue {
     avSetup: false,
     notificationPreferences: false,
     transcription: false,
-    publicStreaming: true,
+    publicStreaming: false,
   };
 }
 </script>
