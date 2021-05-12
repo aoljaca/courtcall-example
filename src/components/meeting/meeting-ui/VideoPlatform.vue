@@ -94,7 +94,7 @@ export default class VideoPlatform extends Vue {}
 </style>
 <style lang="scss" scoped>
 .video-platform-col {
-  height: 86vh;
+  height: 85vh;
   min-height: 500px;
 }
 </style>

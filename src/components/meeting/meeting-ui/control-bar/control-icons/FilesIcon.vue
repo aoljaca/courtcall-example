@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row class="px-0 py-0">
         <v-col class="px-0 py-0">
-          <v-btn fab elevation="0" :title="$t('meetingUI.controlBar.files')">
+          <v-btn fab elevation="0" @click="toggleFilesSidebar()" :title="$t('meetingUI.controlBar.files')">
             <v-icon>mdi-file-multiple</v-icon>
           </v-btn></v-col
         >
@@ -17,5 +17,10 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 @Component({})
-export default class FilesIcon extends Vue {}
+export default class FilesIcon extends Vue {
+
+  toggleFilesSidebar() {
+    this.$store.dispatch('SidebarModule/alterSidebarMode',{sidebarMode: 'files'})
+  }
+}
 </script>

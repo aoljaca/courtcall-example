@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row class="px-0 py-0">
         <v-col class="px-0 py-0">
-          <v-btn fab elevation="0" :title="$t('meetingUI.controlBar.chat')">
+          <v-btn fab elevation="0" @click="toggleChatSidebar()" :title="$t('meetingUI.controlBar.chat')">
             <v-icon>mdi-message</v-icon>
           </v-btn></v-col
         >
@@ -17,5 +17,10 @@
 <script lang="ts">
 import {Component,Vue} from 'vue-property-decorator';
 @Component({})
-export default class ChatIcon extends Vue {}
+export default class ChatIcon extends Vue {
+
+  toggleChatSidebar() {
+    this.$store.dispatch('SidebarModule/alterSidebarMode',{sidebarMode: 'chat'})
+  }
+}
 </script>

@@ -19,8 +19,10 @@
             </v-row>
           </v-container>
         </v-col>
-        <v-col cols="2" class="navigation-element" v-if="true">
-            Navigation
+        <v-col class="px-0 py-0 navigation-element" cols="2" v-if="sidebarMode">
+            <chat v-if="sidebarMode === 'chat'"></chat>
+            <files v-if="sidebarMode === 'files'"></files>
+            <participants v-if="sidebarMode === 'participants'"></participants>
         </v-col>
       </v-row>
     </v-container>
@@ -30,15 +32,25 @@
 import { Component, Vue } from "vue-property-decorator";
 import ControlBar from "./control-bar/ControlBar.vue";
 import VideoPlatform from "./VideoPlatform.vue";
+import Chat from './sidebar/chat/Chat.vue';
+import Files from './sidebar/files/Files.vue';
+import Participants from './sidebar/participants/Participants.vue';
 import "reflect-metadata";
 @Component({
   components: {
     ControlBar,
     VideoPlatform,
+    Chat,
+    Files,
+    Participants,
   },
 })
 export default class MeetingUI extends Vue {
   drawer = true;
+
+  get sidebarMode() {
+    return this.$store.state.SidebarModule.sidebar;
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -48,6 +60,7 @@ export default class MeetingUI extends Vue {
 }
 .navigation-element {
     border-left: 1px solid black;
+    overflow-y: auto;
 }
 </style>
 <style lang="scss"></style>
