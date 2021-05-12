@@ -88,7 +88,7 @@
           </template>
           <av-setup></av-setup>
         </v-dialog>
-        <v-dialog v-model="dialog.notificationPreferences">
+        <v-dialog v-model="dialog.notificationPreferences" max-width="500px">
           <template
             v-slot:activator="{ on, attrs }"
             :title="
@@ -102,6 +102,7 @@
               }}
             </v-list-item>
           </template>
+          <notification-preferences></notification-preferences>
         </v-dialog>
         <v-dialog v-model="dialog.transcription">
           <template v-slot:activator="{ on, attrs }">
@@ -138,13 +139,15 @@ import InviteParticipants from "./more-icons/InviteParticipants.vue";
 import Record from './more-icons/Record.vue';
 import ChangeBackground from './more-icons/ChangeBackground.vue';
 import AvSetup from './more-icons/AVSetup.vue';
+import NotificationPreferences from './more-icons/NotificationPreferences.vue';
 @Component({
   components: {
     SendNotification,
     InviteParticipants,
     Record,
     ChangeBackground,
-    AvSetup
+    AvSetup,
+    NotificationPreferences
   },
 })
 export default class MoreIcon extends Vue {
