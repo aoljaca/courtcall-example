@@ -10,5 +10,7 @@ export default {
   cancel: 'Cancel',
   send: 'Send',
   copy: 'Copy',
-  apply: 'Apply'
+  apply: 'Apply',
+  start: 'Start',
+  stop: 'Stop'
 };

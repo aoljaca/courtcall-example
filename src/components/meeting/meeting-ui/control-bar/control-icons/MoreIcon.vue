@@ -104,7 +104,7 @@
           </template>
           <notification-preferences></notification-preferences>
         </v-dialog>
-        <v-dialog v-model="dialog.transcription">
+        <v-dialog v-model="dialog.transcription" max-width="250px">
           <template v-slot:activator="{ on, attrs }">
             <v-list-item
               v-on="on"
@@ -115,6 +115,7 @@
               {{ $t("meetingUI.controlBar.more.transcription.title") }}
             </v-list-item>
           </template>
+          <transcription-menu></transcription-menu>
         </v-dialog>
         <v-dialog v-model="dialog.publicStreaming">
           <template v-slot:activator="{ on, attrs }">
@@ -140,6 +141,7 @@ import Record from './more-icons/Record.vue';
 import ChangeBackground from './more-icons/ChangeBackground.vue';
 import AvSetup from './more-icons/AVSetup.vue';
 import NotificationPreferences from './more-icons/NotificationPreferences.vue';
+import TranscriptionMenu from './more-icons/TranscriptionMenu.vue'
 @Component({
   components: {
     SendNotification,
@@ -147,7 +149,8 @@ import NotificationPreferences from './more-icons/NotificationPreferences.vue';
     Record,
     ChangeBackground,
     AvSetup,
-    NotificationPreferences
+    NotificationPreferences,
+    TranscriptionMenu
   },
 })
 export default class MoreIcon extends Vue {
@@ -157,8 +160,8 @@ export default class MoreIcon extends Vue {
     record: false,
     changeBackground: false,
     avSetup: false,
-    notificationPreferences: true,
-    transcription: false,
+    notificationPreferences: false,
+    transcription: true,
     publicStreaming: false,
   };
 }
