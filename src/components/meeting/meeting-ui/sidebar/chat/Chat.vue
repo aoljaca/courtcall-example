@@ -3,7 +3,7 @@
         <v-container fluid>
             <v-row>
                 <v-col>
-                    Chat
+                   <h2>{{$t('sidebar.chat.header')}}</h2>
                 </v-col>
             </v-row>
         </v-container>
