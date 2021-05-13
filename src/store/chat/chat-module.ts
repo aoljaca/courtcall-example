@@ -21,7 +21,7 @@ const chats: {
         message_type: null,
       },
     ],
-    type: 'room'
+    type: "room",
   },
   b: {
     uuid: "b",
@@ -46,7 +46,7 @@ const chats: {
         message_type: null,
       },
     ],
-    type: 'regular'
+    type: "regular",
   },
   c: {
     uuid: "c",
@@ -63,9 +63,9 @@ const chats: {
         timetoken: "",
         uuid: "c3",
         message_type: null,
-      }
+      },
     ],
-    type: 'moderators'
+    type: "moderators",
   },
   d: {
     uuid: "d",
@@ -78,7 +78,7 @@ const chats: {
         message_type: null,
       },
     ],
-    type: 'regular'
+    type: "regular",
   },
 };
 const chatModule: Module<any, any> = {
@@ -100,6 +100,7 @@ const chatModule: Module<any, any> = {
   },
   getters: {
     selectedChat: (state) => state.chats[state.selectedChatId],
+    chatsAsList: (state) => Object.values(state.chats),
   },
 };
 

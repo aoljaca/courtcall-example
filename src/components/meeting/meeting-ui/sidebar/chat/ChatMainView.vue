@@ -33,13 +33,25 @@
           </v-col>
         </v-row>
       </div>
+      <div v-if="!creatingChat">
+        <v-row v-for="chat in chats" :key="chat.uuid">
+          <v-col>
+            <chat-card :chat="chat"></chat-card>
+          </v-col>
+        </v-row>
+      </div>
     </v-container>
   </div>
 </template>
 <script lang="ts">
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Component, Vue } from "vue-property-decorator";
-@Component({})
+import ChatCard from "./ChatCard.vue";
+@Component({
+  components: {
+    ChatCard,
+  },
+})
 export default class ChatMainView extends Vue {
   creatingChat = false;
 
@@ -50,6 +62,10 @@ export default class ChatMainView extends Vue {
 
   get participants(): Participant[] {
     return this.$store.getters["ParticipantsModule/getAsListNoSelf"];
+  }
+
+  get chats() {
+    return this.$store.getters["ChatModule/chatsAsList"];
   }
 }
 </script>
