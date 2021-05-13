@@ -65,7 +65,7 @@ const participantsModule: Module<any, any> = {
   state: {
     participants: participants,
     pubNubIdtoParticipantId: {},
-    me: participants[0]
+    me: participants[0],
   },
   mutations: {
     addParticipant(state, payload: Participant) {
@@ -82,6 +82,10 @@ const participantsModule: Module<any, any> = {
       return state.participants[id];
     },
     getAsList: (state) => Object.values(state.participants),
+    getAsListNoSelf: (state) =>
+      (Object.values(state.participants) as Participant[]).filter(
+        (p) => p.id !== state.me?.id
+      ),
   },
 };
 

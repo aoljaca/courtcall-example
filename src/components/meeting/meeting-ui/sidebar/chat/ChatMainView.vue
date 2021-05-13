@@ -3,16 +3,53 @@
     <v-container fluid>
       <v-row>
         <v-col class="d-flex justify-end">
-          <v-btn fab>
+          <v-btn
+            fab
+            @click="openAddScreen"
+            :title="$t('sidebar.chat.chatOverview.newChat')"
+          >
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </v-col>
       </v-row>
+      <div v-if="creatingChat">
+        <v-row>
+          <v-col>
+            <v-select
+              :label="$t('sidebar.chat.chatOverview.selectParticipants')"
+              :items="participants"
+              item-text="name"
+              multiple
+              chips
+              return-object
+              dense
+            ></v-select>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="d-flex justify-space-between">
+            <v-btn>{{ $t("general.cancel") }}</v-btn>
+            <v-btn>{{ $t("sidebar.chat.chatOverview.newChat") }}</v-btn>
+          </v-col>
+        </v-row>
+      </div>
     </v-container>
   </div>
 </template>
 <script lang="ts">
+import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Component, Vue } from "vue-property-decorator";
 @Component({})
-export default class ChatMainView extends Vue {}
+export default class ChatMainView extends Vue {
+  creatingChat = false;
+
+  selectedParticipants: Participant[] = [];
+  openAddScreen(): void {
+    this.creatingChat = true;
+  }
+
+  get participants(): Participant[] {
+    return this.$store.getters["ParticipantsModule/getAsListNoSelf"];
+  }
+}
 </script>

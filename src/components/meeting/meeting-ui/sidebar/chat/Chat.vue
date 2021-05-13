@@ -6,7 +6,9 @@
           <h2>{{ $t("sidebar.chat.header") }}</h2>
         </v-col>
       </v-row>
-      <div v-if="!selectedChat">Main View</div>
+      <div v-if="!selectedChat">
+        <chat-main-view></chat-main-view>
+      </div>
       <v-row v-if="selectedChat">
         <v-col class="py-0 px-0"></v-col>
       </v-row>
