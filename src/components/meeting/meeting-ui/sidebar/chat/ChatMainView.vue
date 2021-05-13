@@ -28,7 +28,7 @@
         </v-row>
         <v-row>
           <v-col class="d-flex justify-space-between">
-            <v-btn>{{ $t("general.cancel") }}</v-btn>
+            <v-btn @click="cancelCreation()">{{ $t("general.cancel") }}</v-btn>
             <v-btn>{{ $t("sidebar.chat.chatOverview.newChat") }}</v-btn>
           </v-col>
         </v-row>
@@ -58,6 +58,11 @@ export default class ChatMainView extends Vue {
   selectedParticipants: Participant[] = [];
   openAddScreen(): void {
     this.creatingChat = true;
+  }
+
+  cancelCreation() {
+    this.creatingChat = false;
+    this.selectedParticipants = [];
   }
 
   get participants(): Participant[] {

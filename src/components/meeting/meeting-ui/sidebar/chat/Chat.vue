@@ -10,7 +10,7 @@
         <chat-main-view></chat-main-view>
       </div>
       <v-row v-if="selectedChat">
-        <v-col class="py-0 px-0"></v-col>
+        <v-col class="py-0 px-0">Conversation View</v-col>
       </v-row>
     </v-container>
   </div>

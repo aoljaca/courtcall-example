@@ -22,6 +22,7 @@ const chats: {
       },
     ],
     type: "room",
+    newMessages: true,
   },
   b: {
     uuid: "b",
@@ -47,6 +48,7 @@ const chats: {
       },
     ],
     type: "regular",
+    newMessages: true,
   },
   c: {
     uuid: "c",
@@ -66,6 +68,7 @@ const chats: {
       },
     ],
     type: "moderators",
+    newMessages: false,
   },
   d: {
     uuid: "d",
@@ -79,6 +82,14 @@ const chats: {
       },
     ],
     type: "regular",
+    newMessages: false,
+  },
+  e: {
+    uuid: "e",
+    participants: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    messages: [],
+    type: "regular",
+    newMessages: true,
   },
 };
 const chatModule: Module<any, any> = {
@@ -96,6 +107,11 @@ const chatModule: Module<any, any> = {
     },
     removeChat(state: any, payload) {
       state.chats[payload] = undefined;
+    },
+  },
+  actions: {
+    alterSelectedChatId({ commit }, payload) {
+      commit("changeSelectedChatId", payload.id);
     },
   },
   getters: {

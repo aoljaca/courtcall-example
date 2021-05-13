@@ -65,7 +65,7 @@ const participantsModule: Module<any, any> = {
   state: {
     participants: participants,
     pubNubIdtoParticipantId: {},
-    me: participants[0],
+    me: participants[1],
   },
   mutations: {
     addParticipant(state, payload: Participant) {
