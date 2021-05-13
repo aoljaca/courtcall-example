@@ -12,7 +12,8 @@ export default new Vuex.Store({
     EntryModule,
     BackgroundBlurModule,
     SidebarModule,
-    ChatModule
+    ChatModule,
+    ParticipantsModule
     
   },
 });
