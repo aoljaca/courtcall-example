@@ -18,13 +18,24 @@
         <v-col
           v-for="message in chat.messages"
           cols="12"
+          class=""
           :key="message.timetoken"
         >
-          {{ message.text }}
+          <chat-message-card :message="message"></chat-message-card>
         </v-col>
       </v-row>
       <v-row>
-        <v-col>test</v-col>
+        <v-col cols="10"
+          ><v-textarea
+            auto-grow
+            :label="$t('general.sendMessage')"
+          ></v-textarea>
+        </v-col>
+        <v-col cols="2" class="d-flex align-center">
+          <v-btn icon :title="$t('general.sendMessage')">
+            <v-icon>mdi-send</v-icon>
+          </v-btn>
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -35,7 +46,12 @@ import { Chat } from "@/model/meeting/meeting-ui/side-bar/chat/chat";
 import { ChatFormatService } from "@/services/chat-format";
 import { inject } from "inversify-props";
 import { Component, Prop, Vue } from "vue-property-decorator";
-@Component({})
+import ChatMessageCard from "./ChatMessageCard.vue";
+@Component({
+  components: {
+    ChatMessageCard,
+  },
+})
 export default class ChatRoom extends Vue {
   @Prop()
   chat: Chat | undefined;
@@ -60,7 +76,7 @@ export default class ChatRoom extends Vue {
 </script>
 <style lang="scss" scoped>
 .message-row {
-  height: 75vh;
+  height: 50vh;
   overflow-y: auto;
 }
 </style>

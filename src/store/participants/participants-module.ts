@@ -64,7 +64,7 @@ const participantsModule: Module<any, any> = {
   namespaced: true,
   state: {
     participants: participants,
-    pubNubIdtoParticipantId: {},
+    pubNubIdtoParticipantId: pubNubIdtoParticipantId,
     me: participants[1],
   },
   mutations: {
@@ -86,6 +86,9 @@ const participantsModule: Module<any, any> = {
       (Object.values(state.participants) as Participant[]).filter(
         (p) => p.id !== state.me?.id
       ),
+    getByPubNubId: (state) => (pubnubId: number) => {
+      return state.participants[state.pubNubIdtoParticipantId[pubnubId]];
+    },
   },
 };
 

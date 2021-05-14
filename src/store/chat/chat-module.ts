@@ -1,6 +1,7 @@
 import { Chat } from "@/model/meeting/meeting-ui/side-bar/chat/chat";
 import { Module } from "vuex";
-
+import { DateTime } from "luxon";
+const MS_NANOSEC_CONVERSION = 10000;
 const chats: {
   [key: string]: Chat;
 } = {
@@ -10,13 +11,13 @@ const chats: {
     messages: [
       {
         message: "This is test message 1a",
-        timetoken: "",
+        timetoken: `${DateTime.now().minus({ weeks: 1 }).toMillis() * 10000}`,
         uuid: "c1",
         message_type: null,
       },
       {
         message: "This is test message 2a",
-        timetoken: "",
+        timetoken: `${DateTime.now().minus({ days: 4 }).toMillis() * 10000}`,
         uuid: "c2",
         message_type: null,
       },
@@ -30,32 +31,70 @@ const chats: {
     messages: [
       {
         message: "This is test message 1b",
-        timetoken: "",
+        timetoken: `${
+          DateTime.now().minus({ weeks: 1 }).toMillis() * MS_NANOSEC_CONVERSION
+        }`,
         uuid: "c5",
         message_type: null,
       },
       {
         message: "This is test message 2b",
-        timetoken: "",
+        timetoken: `${
+          DateTime.now().minus({ days: 2 }).toMillis() * MS_NANOSEC_CONVERSION
+        }`,
         uuid: "c3",
         message_type: null,
       },
       {
         message: "This is message 2c",
-        timetoken: "",
+        timetoken: `${
+          DateTime.now().minus({ days: 1 }).toMillis() * MS_NANOSEC_CONVERSION
+        }`,
         uuid: "c3",
         message_type: null,
       },
       {
         message: "This is message 2d",
-        timetoken: "",
+        timetoken: `${
+          DateTime.now().minus({ hours: 6 }).toMillis() * MS_NANOSEC_CONVERSION
+        }`,
         uuid: "c4",
         message_type: null,
       },
       {
         message: "This is message 2e",
-        timetoken: "",
-        message: "c1",
+        timetoken: `${
+          DateTime.now().minus({ hours: 3 }).toMillis() * MS_NANOSEC_CONVERSION
+        }`,
+        uuid: "c1",
+        message_type: null,
+      },
+      {
+        message: "This is message 2f",
+        timetoken: `${
+          DateTime.now().minus({ minutes: 90 }).toMillis() *
+          MS_NANOSEC_CONVERSION
+        }`,
+        uuid: "c5",
+        message_type: null,
+      },
+      {
+        message: "This is message 2g",
+        timetoken: `${
+          DateTime.now().minus({ minutes: 45 }).toMillis() *
+          MS_NANOSEC_CONVERSION
+        }`,
+        uuid: "c3",
+        message_type: null,
+      },
+      {
+        message: "This is message 2h",
+        timetoken: `${
+          DateTime.now().minus({ minutes: 20 }).toMillis() *
+          MS_NANOSEC_CONVERSION
+        }`,
+        uuid: "c4",
+        message_type: null,
       },
     ],
     type: "regular",
@@ -107,7 +146,7 @@ const chatModule: Module<any, any> = {
   namespaced: true,
   state: {
     chats: chats,
-    selectedChatId: "e",
+    selectedChatId: "b",
   },
   mutations: {
     changeSelectedChatId(state: any, payload) {
