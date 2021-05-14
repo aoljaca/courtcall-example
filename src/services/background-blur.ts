@@ -25,7 +25,7 @@ interface BindPageParams {
 export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
   net: BodyPix.BodyPix | null = null;
 
-  async getNet(): BodyPix.BodyPix {
+  async getNet(): Promise<BodyPix.BodyPix> {
     if (this.net) {
       return this.net;
     } else {
@@ -39,7 +39,7 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
       return net;
     }
   }
-  bootstrap(): void {
+  bootstrap() {
     tfjs.getBackend();
     this.getNet();
   }

@@ -66,6 +66,8 @@ import { Component, Vue } from "vue-property-decorator";
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 @Component({})
 export default class MoveIcon extends Vue {
+  selectedSubconference: SubConference | undefined;
+
   possibleSubconferences: SubConference[] = [
     {
       displayName: "Subconference A",
@@ -83,8 +85,6 @@ export default class MoveIcon extends Vue {
       sessionId: "",
     },
   ];
-
-  selectedSubconference: SubConference | null = this.possibleSubconferences[0];
 }
 </script>
 <style lang="scss" scoped>
