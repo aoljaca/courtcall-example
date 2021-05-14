@@ -19,7 +19,7 @@
             </v-row>
           </v-container>
         </v-col>
-        <v-col class="px-0 py-0 navigation-element" cols="2" v-if="sidebarMode">
+        <v-col class="px-0 py-0 navigation-element" cols="3" v-if="sidebarMode">
           <chat v-if="sidebarMode === 'chat'"></chat>
           <files v-if="sidebarMode === 'files'"></files>
           <participants v-if="sidebarMode === 'participants'"></participants>

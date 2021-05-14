@@ -25,7 +25,7 @@ interface BindPageParams {
 export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
   net: BodyPix.BodyPix | null = null;
 
-  async getNet() {
+  async getNet(): Promise<BodyPix.BodyPix> {
     if (this.net) {
       return this.net;
     } else {
@@ -48,7 +48,7 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
     canvasElementId: string,
     backgroundOptions: BackgroundOption,
     store: Store<any>
-  ) {
+  ): void {
     const videoElement = document.getElementById(
       videoElementId
     ) as HTMLVideoElement;

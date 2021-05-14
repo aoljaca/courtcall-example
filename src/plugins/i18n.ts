@@ -8,6 +8,7 @@ import waiting_room_en from "./i18n/en-us/waiting-room";
 import av_options_en from "./i18n/en-us/av-options/av-options";
 import meeting_ui_en from "./i18n/en-us/meeting-ui/meeting-ui";
 import admin_en from "./i18n/en-us/admin";
+import sidebar_en from "./i18n/en-us/sidebar/sidebar";
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
@@ -19,6 +20,7 @@ const messages = {
     avOptions: av_options_en,
     meetingUI: meeting_ui_en,
     admin: admin_en,
+    sidebar: sidebar_en,
   },
 };
 const languages = Object.keys(messages);
