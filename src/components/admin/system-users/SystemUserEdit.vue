@@ -68,7 +68,7 @@
           <label>{{ $t("admin.systemUser.password") }}</label>
         </v-col>
         <v-col cols="3">
-          <v-text-field dense>
+          <v-text-field type="password" dense>
           </v-text-field>
         </v-col>
       </v-row>
@@ -77,7 +77,7 @@
           <label>{{ $t("admin.systemUser.newPassword") }}</label>
         </v-col>
         <v-col cols="3">
-          <v-text-field dense>
+          <v-text-field type="password" dense>
           </v-text-field>
         </v-col>
       </v-row>
@@ -86,7 +86,7 @@
           <label>{{ $t("admin.systemUser.confirmPassword") }}</label>
         </v-col>
         <v-col cols="3">
-          <v-text-field dense>
+          <v-text-field type="password" dense>
           </v-text-field>
         </v-col>
       </v-row>
