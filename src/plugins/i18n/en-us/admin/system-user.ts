@@ -1,5 +1,6 @@
 export default {
-  header: "Dashboard > My Account",
+  dashboard: "DASHBOARD > ",
+  account: "My Account",
   save: "SAVE CHANGES",
   cancel: "CANCEL",
   email: "Contact Email",

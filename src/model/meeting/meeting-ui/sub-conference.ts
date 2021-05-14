@@ -1,5 +1,5 @@
 export interface SubConference {
-    displayName: string;
-    systemName: string;
-    sessionId: string;
+  displayName: string;
+  systemName: string;
+  sessionId: string;
 }

@@ -4,7 +4,7 @@
       <v-row>
         <v-col class="px-0 py-0">
           <v-hover id="hoverElement">
-            <template v-slot="{hover}">
+            <template v-slot="{ hover }">
               <div>
                 <v-container fluid>
                   <v-row>
@@ -81,10 +81,10 @@ export default class VideoPlatform extends Vue {}
 </script>
 <style lang="scss">
 .video-platform-overlay {
-   height: 86vh;
-   width: 10%;
-   min-height: 500px;
-   max-width: 100%;
+  height: 86vh;
+  width: 10%;
+  min-height: 500px;
+  max-width: 100%;
   .v-overlay__content {
     height: 100% !important;
     width: 100% !important;

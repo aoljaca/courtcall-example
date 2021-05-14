@@ -2,21 +2,38 @@
   <v-container fluid>
     <v-row class="end-row py-4">
       <v-col class="ml-16">
-        <h2>{{ $t("admin.systemUser.header") }}</h2>
+        <span 
+          class="grey--text text--lighten-2 font-weight-black text-subtitle-1"
+          >{{ $t("admin.systemUser.dashboard") }}</span
+        >
+        <span 
+          class="font-weight-bold"
+          >{{ $t("admin.systemUser.account") }}</span
+        >
       </v-col>
     </v-row>
-    <v-form class="ml-16 form">
-      <v-row class="mt-16 mb-4">
+    <v-form class="ml-16">
+      <v-row class="mt-14 mb-2">
         <v-col cols="6">
-          <h1>Frank Voci</h1>
+          <span class="font-weight-regular text-h5">Frank Voci</span>
         </v-col>
         <v-col cols="6">
           <v-row class="justify-end mr-16">
             <v-col cols="2">
-              <v-btn style="color: white" color="grey lighten-1" depressed>{{ $t("admin.systemUser.cancel") }}</v-btn>
+              <v-btn 
+              style="color: white; position: relative; left: 1.75rem;" 
+              color="grey lighten-1 rounded-0" 
+              depressed
+              >{{ $t("admin.systemUser.cancel") }}</v-btn
+            >
             </v-col>
             <v-col cols="2">
-              <v-btn style="color: white" color="grey darken-4" depressed>{{ $t("admin.systemUser.save") }}</v-btn>
+              <v-btn 
+              style="color: white" 
+              color="grey darken-4 rounded-0" 
+              depressed
+              >{{ $t("admin.systemUser.save") }}</v-btn
+              >
             </v-col>
           </v-row>
         </v-col>
@@ -26,7 +43,7 @@
           <label>{{ $t("admin.systemUser.email") }}</label>
         </v-col>
         <v-col cols="3">
-          <v-text-field dense>
+          <v-text-field v-model="email" readonly dense>
           </v-text-field>
         </v-col>
       </v-row>
@@ -35,13 +52,15 @@
           <label>{{ $t("admin.systemUser.phone") }}</label>
         </v-col>
         <v-col cols="3">
-          <v-text-field dense>
+          <v-text-field v-model="phone" dense>
           </v-text-field>
         </v-col>
       </v-row>
-      <v-row class="mt-8 mb-4" dense>
+      <v-row class="mt-4 mb-4">
         <v-col>
-          <h2>{{ $t("admin.systemUser.changePassword") }}</h2>
+          <span 
+          class="font-weight-medium"
+          >{{ $t("admin.systemUser.changePassword") }}</span>
         </v-col>
       </v-row>
       <v-row dense>
@@ -86,7 +105,10 @@ import "reflect-metadata";
     MyAccount,
   },
 })
-export default class SystemUserEdit extends Vue {}
+export default class SystemUserEdit extends Vue {
+  email = "frank@voci.com";
+  phone = "213-555-1212";
+}
 </script>
 
 <style lang="scss" scoped>

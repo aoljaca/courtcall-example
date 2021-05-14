@@ -25,25 +25,33 @@
         </v-container>
       </template>
       <v-card>
-          <v-card-text>
-              <v-textarea 
-              counter="300" 
-               :label="$t('meetingUI.controlBar.getSupport.description')"></v-textarea>
-          </v-card-text>
-          <v-card-actions>
-              <v-container fluid>
-                  <v-row class="justify-space-between">
-                      <v-col class="px-0 py-0">
-                          <v-btn :title="$t('general.cancel')" elevation="0">{{$t('general.cancel')}}</v-btn>
-                      </v-col>
-                      <v-col class="px-0 py-0 d-flex justify-end">
-                           <v-btn :title="$t('meetingUI.controlBar.getSupport.cancelRequest')" color="primary" elevation="0">{{$t('meetingUI.controlBar.getSupport.sendRequest')}}</v-btn>
-                      </v-col>
-                  </v-row>
-              </v-container>
-              
-             
-          </v-card-actions>
+        <v-card-text>
+          <v-textarea
+            counter="300"
+            :label="$t('meetingUI.controlBar.getSupport.description')"
+          ></v-textarea>
+        </v-card-text>
+        <v-card-actions>
+          <v-container fluid>
+            <v-row class="justify-space-between">
+              <v-col class="px-0 py-0">
+                <v-btn :title="$t('general.cancel')" elevation="0">{{
+                  $t("general.cancel")
+                }}</v-btn>
+              </v-col>
+              <v-col class="px-0 py-0 d-flex justify-end">
+                <v-btn
+                  :title="$t('meetingUI.controlBar.getSupport.cancelRequest')"
+                  color="primary"
+                  elevation="0"
+                  >{{
+                    $t("meetingUI.controlBar.getSupport.sendRequest")
+                  }}</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-actions>
       </v-card>
     </v-menu>
   </span>
