@@ -19,41 +19,66 @@
             indeterminate
             :title="$t('general.loading')"
           ></v-progress-circular>
-          <v-hover :class="{'d-none':!videoVisible}" id="hoverElement">
-            <template v-slot:default="{hover}" >
+          <v-hover :class="{ 'd-none': !videoVisible }" id="hoverElement">
+            <template v-slot:default="{ hover }">
               <v-card elevation="0">
-                <v-card-text class="p-0"
-                  >
-                  <canvas id="canvas-preview" :class="{'d-none':shouldHideCanvas,'video-dimensions':true}"></canvas>
+                <v-card-text class="p-0">
+                  <canvas
+                    id="canvas-preview"
+                    :class="{
+                      'd-none': shouldHideCanvas,
+                      'video-dimensions': true,
+                    }"
+                  ></canvas>
                   <video
                     autoplay
-                    :class="{'d-none':shouldHideVideo,'video-dimensions':true}"
+                    :class="{
+                      'd-none': shouldHideVideo,
+                      'video-dimensions': true,
+                    }"
                     id="video-preview"
                   ></video
                 ></v-card-text>
 
                 <v-fade-transition>
-                  <v-overlay v-if="hover || selectFocused" absolute class="video-overlay">
+                  <v-overlay
+                    v-if="hover || selectFocused"
+                    absolute
+                    class="video-overlay"
+                  >
                     <v-container fluid class="h-100 align-end d-flex">
                       <v-row>
                         <v-col class="py-0" v-if="openBackground" cols="12">
-                            <v-radio-group class="background-radio" row v-model="selectedBackgroundOption" @change="setUpBackgroundBlur()">
-                                <v-radio
-                                :label="$t('avOptions.videoPreview.none')"
-                                :value="noBackgroundOption"></v-radio>
-                                <v-radio
-                                :label="$t('avOptions.videoPreview.blur')"
-                                :value="blurBackgroundOption"></v-radio>
-                                <v-radio 
-                                v-for="background in backgroundOptions"
-                                :key="background.backgroundUrl"
-                                :value="background"
-                                >
-                                <template v-slot:label>
-                                    <v-img v-if="shouldShowRadioImages" max-height="50" max-width="50" :alt="background.backgroundUrl" :src="calculateBackgroundUrl(background)"></v-img>
-                                </template>
-                                </v-radio>
-                            </v-radio-group>
+                          <v-radio-group
+                            class="background-radio"
+                            row
+                            v-model="selectedBackgroundOption"
+                            @change="setUpBackgroundBlur()"
+                          >
+                            <v-radio
+                              :label="$t('avOptions.videoPreview.none')"
+                              :value="noBackgroundOption"
+                            ></v-radio>
+                            <v-radio
+                              :label="$t('avOptions.videoPreview.blur')"
+                              :value="blurBackgroundOption"
+                            ></v-radio>
+                            <v-radio
+                              v-for="background in backgroundOptions"
+                              :key="background.backgroundUrl"
+                              :value="background"
+                            >
+                              <template v-slot:label>
+                                <v-img
+                                  v-if="shouldShowRadioImages"
+                                  max-height="50"
+                                  max-width="50"
+                                  :alt="background.backgroundUrl"
+                                  :src="calculateBackgroundUrl(background)"
+                                ></v-img>
+                              </template>
+                            </v-radio>
+                          </v-radio-group>
                         </v-col>
                         <v-col cols="8" class="py-0">
                           <v-select
@@ -73,9 +98,14 @@
                           ></v-select>
                         </v-col>
                         <v-col cols="4" class="d-flex align-center py-0">
-                          <v-btn @click="toggleOpenBackground()" elevation="0" class="overlay-btn">{{
-                            $t("avOptions.videoPreview.background")
-                          }}</v-btn>
+                          <v-btn
+                            @click="toggleOpenBackground()"
+                            elevation="0"
+                            class="overlay-btn"
+                            >{{
+                              $t("avOptions.videoPreview.background")
+                            }}</v-btn
+                          >
                         </v-col>
                       </v-row>
                     </v-container>
@@ -91,16 +121,19 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
-import {BackgroundOption,NO_BACKGROUND_BLUR_OPTION,BACKGROUND_OPTIONS,BLUR_OPTION} from '@/model/meeting/av-options/background-option';
+import {
+  BackgroundOption,
+  NO_BACKGROUND_BLUR_OPTION,
+  BACKGROUND_OPTIONS,
+  BLUR_OPTION,
+} from "@/model/meeting/av-options/background-option";
 import { inject } from "inversify-props";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { IBackgroundBlurService } from "@/services/background-blur";
-@Component({
-})
+@Component({})
 export default class VideoPreview extends Vue {
-
   @inject(INJECTION_TYPES.BACKGROUND_BLUR)
-  backgroundBlurService: IBackgroundBlurService|undefined;
+  backgroundBlurService: IBackgroundBlurService | undefined;
 
   selectedVideoDevice: MediaDeviceInfo | null = null;
   selectFocused = false;
@@ -110,7 +143,7 @@ export default class VideoPreview extends Vue {
   };
   videoVisible = false;
   openBackground = false;
-  readonly noBackgroundOption: BackgroundOption = NO_BACKGROUND_BLUR_OPTION
+  readonly noBackgroundOption: BackgroundOption = NO_BACKGROUND_BLUR_OPTION;
   readonly blurBackgroundOption: BackgroundOption = BLUR_OPTION;
   readonly backgroundOptions: BackgroundOption[] = BACKGROUND_OPTIONS;
   selectedBackgroundOption: BackgroundOption = this.noBackgroundOption;
@@ -123,20 +156,27 @@ export default class VideoPreview extends Vue {
     this.openBackground = false;
     this.videoVisible = false;
     const setupFunc = () => {
-        this.backgroundBlurService?.alterVideo('video-preview','canvas-preview',this.selectedBackgroundOption,this.$store);
-        this.openBackground = true;
-        this.videoVisible = true;
-    } 
-    setTimeout(setupFunc,250)
+      this.backgroundBlurService?.alterVideo(
+        "video-preview",
+        "canvas-preview",
+        this.selectedBackgroundOption,
+        this.$store
+      );
+      this.openBackground = true;
+      this.videoVisible = true;
+    };
+    setTimeout(setupFunc, 250);
   }
-
-
 
   toggleOpenBackground() {
-      this.openBackground = !this.openBackground;
+    this.openBackground = !this.openBackground;
   }
   get shouldHideVideo() {
-    return !this.videoVisible || this.$store.state.BackgroundBlurModule.mode === 'loading' || this.$store.state.BackgroundBlurModule.mode === 'on';
+    return (
+      !this.videoVisible ||
+      this.$store.state.BackgroundBlurModule.mode === "loading" ||
+      this.$store.state.BackgroundBlurModule.mode === "on"
+    );
   }
 
   get origin() {
@@ -144,11 +184,18 @@ export default class VideoPreview extends Vue {
   }
 
   get shouldHideCanvas() {
-    return !this.videoVisible || this.$store.state.BackgroundBlurModule.mode === 'loading' || this.$store.state.BackgroundBlurModule.mode === 'off';
+    return (
+      !this.videoVisible ||
+      this.$store.state.BackgroundBlurModule.mode === "loading" ||
+      this.$store.state.BackgroundBlurModule.mode === "off"
+    );
   }
 
   get shouldShowLoading() {
-    return !this.videoVisible || this.$store.state.BackgroundBlurModule.mode === 'loading';
+    return (
+      !this.videoVisible ||
+      this.$store.state.BackgroundBlurModule.mode === "loading"
+    );
   }
 
   get shouldShowRadioImages() {
@@ -165,7 +212,16 @@ export default class VideoPreview extends Vue {
     (document.getElementById(
       "video-preview"
     ) as HTMLVideoElement).srcObject = stream;
-    setTimeout(() => this.backgroundBlurService?.alterVideo('video-preview','canvas-preview',this.selectedBackgroundOption,this.$store),500);
+    setTimeout(
+      () =>
+        this.backgroundBlurService?.alterVideo(
+          "video-preview",
+          "canvas-preview",
+          this.selectedBackgroundOption,
+          this.$store
+        ),
+      500
+    );
   }
 
   focusSelect() {
@@ -174,7 +230,6 @@ export default class VideoPreview extends Vue {
   blurSelect() {
     this.selectFocused = false;
   }
-
 
   async mounted() {
     const devices = await navigator.mediaDevices.enumerateDevices();

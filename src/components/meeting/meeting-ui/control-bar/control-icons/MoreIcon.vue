@@ -74,7 +74,6 @@
             </v-list-item>
           </template>
           <change-background></change-background>
-
         </v-dialog>
         <v-dialog v-model="dialog.avSetup" max-width="750px">
           <template
@@ -138,12 +137,12 @@
 import { Vue, Component } from "vue-property-decorator";
 import SendNotification from "./more-icons/SendNotification.vue";
 import InviteParticipants from "./more-icons/InviteParticipants.vue";
-import Record from './more-icons/Record.vue';
-import ChangeBackground from './more-icons/ChangeBackground.vue';
-import AvSetup from './more-icons/AVSetup.vue';
-import NotificationPreferences from './more-icons/NotificationPreferences.vue';
-import TranscriptionMenu from './more-icons/TranscriptionMenu.vue'
-import PublicStreaming from './more-icons/PublicStreaming.vue';
+import Record from "./more-icons/Record.vue";
+import ChangeBackground from "./more-icons/ChangeBackground.vue";
+import AvSetup from "./more-icons/AVSetup.vue";
+import NotificationPreferences from "./more-icons/NotificationPreferences.vue";
+import TranscriptionMenu from "./more-icons/TranscriptionMenu.vue";
+import PublicStreaming from "./more-icons/PublicStreaming.vue";
 @Component({
   components: {
     SendNotification,
@@ -153,7 +152,7 @@ import PublicStreaming from './more-icons/PublicStreaming.vue';
     AvSetup,
     NotificationPreferences,
     TranscriptionMenu,
-    PublicStreaming
+    PublicStreaming,
   },
 })
 export default class MoreIcon extends Vue {

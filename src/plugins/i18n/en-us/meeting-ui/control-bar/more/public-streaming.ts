@@ -1,5 +1,5 @@
 export default {
-    title: 'Public Streaming',
-    startStreaming: 'Start Streaming',
-    stopStreaming: 'Stop Streaming'
-}
+  title: "Public Streaming",
+  startStreaming: "Start Streaming",
+  stopStreaming: "Stop Streaming",
+};

@@ -2,7 +2,7 @@
   <div id="meetingUI">
     <v-container fluid>
       <v-row>
-          <v-col class="py-0 header-col">header</v-col>
+        <v-col class="py-0 header-col">header</v-col>
       </v-row>
       <v-row>
         <v-col class="px-0 py-0">
@@ -20,9 +20,9 @@
           </v-container>
         </v-col>
         <v-col class="px-0 py-0 navigation-element" cols="2" v-if="sidebarMode">
-            <chat v-if="sidebarMode === 'chat'"></chat>
-            <files v-if="sidebarMode === 'files'"></files>
-            <participants v-if="sidebarMode === 'participants'"></participants>
+          <chat v-if="sidebarMode === 'chat'"></chat>
+          <files v-if="sidebarMode === 'files'"></files>
+          <participants v-if="sidebarMode === 'participants'"></participants>
         </v-col>
       </v-row>
     </v-container>
@@ -32,9 +32,9 @@
 import { Component, Vue } from "vue-property-decorator";
 import ControlBar from "./control-bar/ControlBar.vue";
 import VideoPlatform from "./VideoPlatform.vue";
-import Chat from './sidebar/chat/Chat.vue';
-import Files from './sidebar/files/Files.vue';
-import Participants from './sidebar/participants/Participants.vue';
+import Chat from "./sidebar/chat/Chat.vue";
+import Files from "./sidebar/files/Files.vue";
+import Participants from "./sidebar/participants/Participants.vue";
 import "reflect-metadata";
 @Component({
   components: {
@@ -55,12 +55,12 @@ export default class MeetingUI extends Vue {
 </script>
 <style lang="scss" scoped>
 .header-col {
-    height: 4vh;
-    background: lightgray;
+  height: 4vh;
+  background: lightgray;
 }
 .navigation-element {
-    border-left: 1px solid black;
-    overflow-y: auto;
+  border-left: 1px solid black;
+  overflow-y: auto;
 }
 </style>
 <style lang="scss"></style>

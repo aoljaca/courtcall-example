@@ -10,24 +10,20 @@
         </v-col>
       </v-row>
       <v-row>
-          <v-col>
-              <span class="d-block font-weight-bold">
-                  {{$t('avOptions.audioSetup.callInSetup.accessCode')}}
-              </span>
-              <span class="d-block">
-                  12345
-              </span>
-          </v-col>
+        <v-col>
+          <span class="d-block font-weight-bold">
+            {{ $t("avOptions.audioSetup.callInSetup.accessCode") }}
+          </span>
+          <span class="d-block"> 12345 </span>
+        </v-col>
       </v-row>
       <v-row>
-          <v-col>
-              <span class="d-block font-weight-bold">
-                  {{$t('avOptions.audioSetup.callInSetup.pin')}}
-              </span>
-              <span class="d-block">
-                  12345
-              </span>
-          </v-col>
+        <v-col>
+          <span class="d-block font-weight-bold">
+            {{ $t("avOptions.audioSetup.callInSetup.pin") }}
+          </span>
+          <span class="d-block"> 12345 </span>
+        </v-col>
       </v-row>
     </v-container>
   </div>
