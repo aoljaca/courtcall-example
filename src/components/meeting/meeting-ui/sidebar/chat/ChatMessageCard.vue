@@ -4,8 +4,8 @@
       <v-card-subtitle>
         <v-container fluid>
           <v-row>
-            <v-col cols="6 small-text">{{ userName }}</v-col>
-            <v-col cols="6 small-text"> {{ formatTimestamp }}</v-col>
+            <v-col cols="6" class="small-text">{{ userName }}</v-col>
+            <v-col cols="6" class="small-text"> {{ formatTimestamp }}</v-col>
           </v-row>
         </v-container>
       </v-card-subtitle>
