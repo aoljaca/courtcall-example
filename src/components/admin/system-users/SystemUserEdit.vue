@@ -13,16 +13,16 @@
         <v-col cols="6">
           <v-row class="justify-end mr-16">
             <v-col cols="2">
-              <v-btn>{{ $t("admin.systemUser.cancel") }}</v-btn>
+              <v-btn style="color: white" color="grey lighten-1" depressed>{{ $t("admin.systemUser.cancel") }}</v-btn>
             </v-col>
             <v-col cols="2">
-              <v-btn>{{ $t("admin.systemUser.save") }}</v-btn>
+              <v-btn style="color: white" color="grey darken-4" depressed>{{ $t("admin.systemUser.save") }}</v-btn>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
       <v-row dense>
-        <v-col cols="2">
+        <v-col cols="1">
           <label>{{ $t("admin.systemUser.email") }}</label>
         </v-col>
         <v-col cols="3">
@@ -31,7 +31,7 @@
         </v-col>
       </v-row>
       <v-row dense>
-        <v-col cols="2">
+        <v-col cols="1">
           <label>{{ $t("admin.systemUser.phone") }}</label>
         </v-col>
         <v-col cols="3">
@@ -45,7 +45,7 @@
         </v-col>
       </v-row>
       <v-row dense>
-        <v-col cols="2">
+        <v-col cols="1">
           <label>{{ $t("admin.systemUser.password") }}</label>
         </v-col>
         <v-col cols="3">
@@ -54,8 +54,8 @@
         </v-col>
       </v-row>
       <v-row dense>
-        <v-col cols="2">
-          <label>{{ $t("admin.systemUser.changePassword") }}</label>
+        <v-col cols="1">
+          <label>{{ $t("admin.systemUser.newPassword") }}</label>
         </v-col>
         <v-col cols="3">
           <v-text-field dense>
@@ -63,8 +63,8 @@
         </v-col>
       </v-row>
       <v-row dense>
-        <v-col cols="2">
-          <label>{{ $t("admin.systemUser.newPassword") }}</label>
+        <v-col cols="1">
+          <label>{{ $t("admin.systemUser.confirmPassword") }}</label>
         </v-col>
         <v-col cols="3">
           <v-text-field dense>
@@ -92,5 +92,13 @@ export default class SystemUserEdit extends Vue {}
 <style lang="scss" scoped>
 .end-row {
   border-bottom: 1px solid gray;
+}
+label {
+  white-space: nowrap;
+}
+form {
+  .col-1 {
+    margin-right: 2rem;
+  }
 }
 </style>
