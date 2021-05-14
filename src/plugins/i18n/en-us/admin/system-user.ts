@@ -1,6 +1,6 @@
 export default {
   header: "Dashboard > My Account",
-  save: "SAVE",
+  save: "SAVE CHANGES",
   cancel: "CANCEL",
   email: "Contact Email",
   phone: "Contact Phone",
