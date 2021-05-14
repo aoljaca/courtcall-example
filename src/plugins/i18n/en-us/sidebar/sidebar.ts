@@ -1,4 +1,4 @@
-import chat from './chat/chat'
+import chat from "./chat/chat";
 export default {
-    chat
-}
+  chat,
+};

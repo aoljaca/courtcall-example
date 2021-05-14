@@ -1,6 +1,6 @@
 export interface ChatMessage {
-    message: string;
-    timetoken: string;
-    uuid: string;
-    message_type: string|null;
+  message: string;
+  timetoken: string;
+  uuid: string;
+  message_type: string | null;
 }

@@ -1,5 +1,5 @@
 <template>
-<div id="admin">
+  <div id="admin">
     <v-container fluid>
       <v-row class="header">
         <v-col cols="3" class="logo"> CourtCall Admin </v-col>
@@ -13,27 +13,25 @@
         </v-col>
       </v-row>
       <v-row>
-          <v-col class="px-0 py-0">
-              <router-view></router-view>
-          </v-col>
+        <v-col class="px-0 py-0">
+          <router-view></router-view>
+        </v-col>
       </v-row>
     </v-container>
-    
-</div>
-    
+  </div>
 </template>
 
 <script lang="ts">
-import {Component,Vue} from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import MyAccount from "@/components/admin/dashboard/MyAccount.vue";
 @Component({
-    components: {
-        Navigation,
-        MyAccount
-    }
+  components: {
+    Navigation,
+    MyAccount,
+  },
 })
-export default class Admin extends Vue{}
+export default class Admin extends Vue {}
 </script>
 
 <style lang="scss" scoped>

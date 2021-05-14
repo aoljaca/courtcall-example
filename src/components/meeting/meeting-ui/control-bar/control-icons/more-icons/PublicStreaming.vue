@@ -55,4 +55,4 @@ export default class PublicStreaming extends Vue {
     this.isStreaming = !this.isStreaming;
   }
 }
-</script> 
+</script>

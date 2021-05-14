@@ -66,7 +66,6 @@ import { Component, Vue } from "vue-property-decorator";
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 @Component({})
 export default class MoveIcon extends Vue {
-
   possibleSubconferences: SubConference[] = [
     {
       displayName: "Subconference A",
