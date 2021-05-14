@@ -7,13 +7,7 @@
             <v-icon v-if="chat.newMessages">mdi-alert-circle</v-icon>
           </v-col>
           <v-col class="d-flex align-center title-font">
-            <span v-if="chat.type === 'room'">{{
-              $t("sidebar.chat.chatCard.room")
-            }}</span>
-            <span v-if="chat.type === 'moderators'">
-              {{ $t("sidebar.chat.chatCard.hostsAndModerators") }}
-            </span>
-            <span v-if="chat.type === 'regular'">
+            <span>
               {{ this.chatTitle }}
             </span>
           </v-col>
@@ -49,7 +43,8 @@ export default class ChatCard extends Vue {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       participantIds: this.chat!.participants,
       participants: this.$store.state.ParticipantsModule.participants,
-      $t: this.$t,
+      this: this,
+      type: this.chat.type,
     }) as string;
   }
 

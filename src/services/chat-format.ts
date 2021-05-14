@@ -9,6 +9,12 @@ export interface ChatFormatService {
 @injectable()
 export class ChatFormatServiceImpl implements ChatFormatService {
   formatTitle(params: ChatFormatParams): string {
+    if (params.type === "moderators") {
+      return params.this.$t("sidebar.chat.chatCard.hostsAndModerators");
+    }
+    if (params.type === "room") {
+      return params.this.$t("sidebar.chat.chatCard.room");
+    }
     const actualParticipants = params.participantIds
       .filter((id) => id !== params.myId)
       .map((p) =>

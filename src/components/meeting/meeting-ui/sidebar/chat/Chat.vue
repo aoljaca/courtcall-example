@@ -10,7 +10,9 @@
         <chat-main-view></chat-main-view>
       </div>
       <v-row v-if="selectedChat">
-        <v-col class="py-0 px-0">Conversation View</v-col>
+        <v-col class="py-0 px-0">
+          <chat-room :chat="selectedChat"></chat-room>
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -19,9 +21,11 @@
 import { Chat } from "@/model/meeting/meeting-ui/side-bar/chat/chat";
 import { Component, Vue } from "vue-property-decorator";
 import ChatMainView from "./ChatMainView.vue";
+import ChatRoom from "./ChatRoom.vue";
 @Component({
   components: {
     ChatMainView,
+    ChatRoom,
   },
 })
 export default class ChatComponent extends Vue {

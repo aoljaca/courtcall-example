@@ -46,6 +46,17 @@ const chats: {
         uuid: "c3",
         message_type: null,
       },
+      {
+        message: "This is message 2d",
+        timetoken: "",
+        uuid: "c4",
+        message_type: null,
+      },
+      {
+        message: "This is message 2e",
+        timetoken: "",
+        message: "c1",
+      },
     ],
     type: "regular",
     newMessages: true,
@@ -96,7 +107,7 @@ const chatModule: Module<any, any> = {
   namespaced: true,
   state: {
     chats: chats,
-    selectedChatId: null,
+    selectedChatId: "e",
   },
   mutations: {
     changeSelectedChatId(state: any, payload) {
