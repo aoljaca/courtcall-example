@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row class="end-row">
       <v-col>
-        <h1>Dashboard > My Account</h1>
+        <h1>{{ $t("admin.systemUser.header") }}</h1>
       </v-col>
     </v-row>
     <v-container>
@@ -11,13 +11,13 @@
           <h1>Frank Voci</h1>
         </v-col>
         <v-col>
-          <v-btn>CANCEL</v-btn>
-          <v-btn>SAVE CHANGES</v-btn>
+          <v-btn>{{ $t("admin.systemUser.cancel") }}</v-btn>
+          <v-btn>{{ $t("admin.systemUser.save") }}</v-btn>
         </v-col>
       </v-row>
       <v-row>
         <v-col md="2">
-          <label>Contact Email</label>
+          <label>{{ $t("admin.systemUser.email") }}</label>
         </v-col>
         <v-col md="3">
           <v-text-field>
@@ -26,7 +26,7 @@
       </v-row>
       <v-row>
         <v-col md="2">
-          <label>Contact Phone</label>
+          <label>{{ $t("admin.systemUser.phone") }}</label>
         </v-col>
         <v-col md="3">
           <v-text-field>
@@ -36,12 +36,12 @@
       <v-form>
         <v-row>
           <v-col>
-            <h2>Change Password</h2>
+            <h2>{{ $t("admin.systemUser.changePassword") }}</h2>
           </v-col>
         </v-row>
         <v-row>
           <v-col md="2">
-            <label>Current Password</label>
+            <label>{{ $t("admin.systemUser.password") }}</label>
           </v-col>
           <v-col md="3">
             <v-text-field>
@@ -50,7 +50,7 @@
         </v-row>
         <v-row>
           <v-col md="2">
-            <label>New Password</label>
+            <label>{{ $t("admin.systemUser.changePassword") }}</label>
           </v-col>
           <v-col md="3">
             <v-text-field>
@@ -59,7 +59,7 @@
         </v-row>
         <v-row>
           <v-col md="2">
-            <label>Confirm New Password</label>
+            <label>{{ $t("admin.systemUser.newPassword") }}</label>
           </v-col>
           <v-col md="3">
             <v-text-field>
@@ -70,10 +70,12 @@
     </v-container>
   </v-container>
 </template>
+
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import MyAccount from "@/components/admin/dashboard/MyAccount.vue";
+import "reflect-metadata";
 @Component({
   components: {
     Navigation,
@@ -82,6 +84,7 @@ import MyAccount from "@/components/admin/dashboard/MyAccount.vue";
 })
 export default class SystemUserEdit extends Vue {}
 </script>
+
 <style lang="scss">
 .end-row {
   border-bottom: 1px solid gray;
