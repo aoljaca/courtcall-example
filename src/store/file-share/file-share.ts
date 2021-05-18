@@ -105,15 +105,22 @@ const fileShareModule: Module<any, any> = {
   namespaced: true,
   state: {
     shares: SHARES,
+    creating: true,
   },
   mutations: {
     markAsOpened(state, payload: string) {
       state.shares[payload] = true;
     },
+    alterCreating(state, payload: boolean) {
+      state.creating = payload;
+    },
   },
   actions: {
     markOpened({ commit }, payload) {
       commit("markAsOpened", payload.id);
+    },
+    setCreating({ commit }, payload) {
+      commit("alterCreating", payload.creating);
     },
   },
   getters: {

@@ -72,3 +72,5 @@ const casesModule: Module<any, any> = {
     getAsList: (state) => Object.values(state.cases),
   },
 };
+
+export default casesModule;

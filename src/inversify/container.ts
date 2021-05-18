@@ -3,6 +3,10 @@ import {
   IBackgroundBlurService,
 } from "@/services/background-blur";
 import {
+  CaseFormatService,
+  CaseFormatServiceImpl,
+} from "@/services/case-format";
+import {
   ChatFormatService,
   ChatFormatServiceImpl,
 } from "@/services/chat-format";
@@ -17,4 +21,7 @@ export default function buildDependencyContainer(): void {
   container
     .bind<ChatFormatService>(INJECTION_TYPES.CHAT_FORMAT)
     .to(ChatFormatServiceImpl);
+  container
+    .bind<CaseFormatService>(INJECTION_TYPES.CASE_FORMAT)
+    .to(CaseFormatServiceImpl);
 }

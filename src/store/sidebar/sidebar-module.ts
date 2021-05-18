@@ -3,7 +3,7 @@ import { Module } from "vuex";
 const sidebarModule: Module<any, any> = {
   namespaced: true,
   state: {
-    sidebar: "chat",
+    sidebar: "files",
   },
   mutations: {
     changeSidebarMode(state: any, payload) {
