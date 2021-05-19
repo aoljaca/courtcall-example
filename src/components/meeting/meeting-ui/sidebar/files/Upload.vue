@@ -1,13 +1,16 @@
 <template>
   <div id="fileUpload">
     <v-container fluid>
-      <v-row>
+      <v-row v-if="!editing">
         <v-col>
           <v-file-input
             :title="$t('sidebar.files.upload.chooseFile')"
             :label="$t('sidebar.files.upload.chooseFile')"
           ></v-file-input>
         </v-col>
+      </v-row>
+      <v-row v-if="editing">
+        <v-col>{{ fileName }}</v-col>
       </v-row>
       <v-row>
         <v-col
@@ -19,6 +22,7 @@
             :items="possibleFileShareTypes"
             return-object
             id="share-type-select"
+            :readonly="editing"
             :item-text="formatFileShareTypeLabel"
           ></v-select>
         </v-col>
@@ -91,24 +95,59 @@ import {
 import { inject } from "inversify-props";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { CaseFormatService } from "@/services/case-format";
+import { Share } from "@/model/meeting/meeting-ui/side-bar/files/file-share";
 @Component({})
 export default class FileUpload extends Vue {
   @inject(INJECTION_TYPES.CASE_FORMAT)
   caseFormatService: CaseFormatService | undefined;
 
-  selectedFileType: FileShareType | null = null;
+  selectedFileType: FileShareType | null = this.determineIntialFileType();
 
   possibleFileShareTypes = FILE_SHARE_TYPES;
 
   possibleSelectTypes: FileShareWithSelectType[] = SELECT_TYPES;
 
-  selectedSelectType: FileShareWithSelectType | null = null;
+  selectedSelectType: FileShareWithSelectType | null = SELECT_TYPES[2];
 
   formatFileShareTypeLabel(type: FileShareType): any {
     return this.$t(type.label);
   }
 
-  selectedParticipants: Participant[] = [];
+  get editing() {
+    return this.$store.state.FileShareModule.editing;
+  }
+
+  get selectedShare(): Share {
+    return this.$store.state.FileShareModule.selectedShare;
+  }
+
+  determineIntialFileType() {
+    const selectedShare: Share = this.$store.state.FileShareModule
+      .selectedShare;
+    if (selectedShare) {
+      const type = selectedShare.type;
+      return FILE_SHARE_TYPES.find((t) => t.type === type)!;
+    } else {
+      return null;
+    }
+  }
+  determineInitialParticipants(): Participant[] {
+    const selectedShare = this.$store.state.FileShareModule
+      .selectedShare as Share;
+    if (!selectedShare) {
+      return [];
+    } else {
+      const participants: { [key: string]: Participant } = this.$store.state
+        .ParticipantsModule.participants;
+      const self: Participant = this.$store.state.ParticipantsModule.me;
+      return selectedShare.participants
+        .filter((id) => id !== self.id)
+        .map((id) => participants[id])
+        .filter((p) => p != null);
+    }
+  }
+
+  selectedParticipants: Participant[] = this.determineInitialParticipants();
 
   selectedCases: Case[] = [];
 
@@ -127,6 +166,9 @@ export default class FileUpload extends Vue {
     }
   }
 
+  get fileName() {
+    return this.selectedShare?.fileName;
+  }
   get selectType() {
     return this.selectedSelectType?.type;
   }
@@ -141,6 +183,7 @@ export default class FileUpload extends Vue {
 
   cancelCreation() {
     this.$store.dispatch("FileShareModule/setCreating", { creating: false });
+    this.$store.dispatch("FileShareModule/setEditing", false);
   }
 
   formatCase(c: Case) {

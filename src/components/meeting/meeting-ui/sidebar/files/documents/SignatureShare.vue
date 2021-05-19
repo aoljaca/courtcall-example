@@ -35,6 +35,11 @@
             <v-col>{{ participantList }}</v-col>
           </v-row>
           <v-row>
+            <v-col v-if="isOwner">
+              <v-btn @click="edit()" elevation="0">{{
+                $t("general.edit")
+              }}</v-btn>
+            </v-col>
             <v-col class="d-flex justify-end">
               <v-btn elevation="0">{{
                 $t("sidebar.files.signatureShare.reviewAndSign")
@@ -84,6 +89,18 @@ export default class SignatureShareComponent extends Vue {
       ownerId: this.signatureShare!.ownerId,
       participants: this.participants!,
     }) as string;
+  }
+
+  edit(): void {
+    this.$store.dispatch(
+      "FileShareModule/setSelectedShare",
+      this.signatureShare
+    );
+    this.$store.dispatch("FileShareModule/setEditing", true);
+  }
+  get isOwner(): boolean {
+    const me: Participant = this.$store.state.ParticipantsModule.me;
+    return me.id === this.signatureShare?.ownerId;
   }
 }
 </script>

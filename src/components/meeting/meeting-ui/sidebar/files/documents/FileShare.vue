@@ -23,6 +23,11 @@
             </v-col>
           </v-row>
           <v-row>
+            <v-col v-if="isOwner">
+              <v-btn @click="edit()" elevation="0">{{
+                $t("general.edit")
+              }}</v-btn>
+            </v-col>
             <v-col class="d-flex justify-end">
               <v-btn elevation="0">{{
                 $t("sidebar.files.fileShare.download")
@@ -68,6 +73,16 @@ export default class FileShareComponent extends Vue {
       ownerId: this.fileShare!.ownerId,
       participants: this.participants!,
     }) as string;
+  }
+
+  get isOwner() {
+    const me: Participant = this.$store.state.ParticipantsModule.me;
+    return me.id === this.fileShare?.ownerId;
+  }
+
+  edit(): void {
+    this.$store.dispatch("FileShareModule/setSelectedShare", this.fileShare);
+    this.$store.dispatch("FileShareModule/setEditing", true);
   }
 }
 </script>

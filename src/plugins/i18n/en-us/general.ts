@@ -13,4 +13,5 @@ export default {
   apply: "Apply",
   start: "Start",
   stop: "Stop",
+  edit: "Edit",
 };

@@ -23,6 +23,11 @@
             <v-col>{{ participantList }}</v-col>
           </v-row>
           <v-row>
+            <v-col v-if="isOwner">
+              <v-btn @click="edit()" elevation="0">{{
+                $t("general.edit")
+              }}</v-btn>
+            </v-col>
             <v-col class="d-flex justify-end">
               <v-btn elevation="0">{{
                 $t("sidebar.files.collaborationShare.openCollaboration")
@@ -51,6 +56,19 @@ export default class CollaborationShareComponent extends Vue {
 
   get participants(): { [key: string]: Participant } {
     return this.$store.state.ParticipantsModule.participants;
+  }
+
+  get isOwner() {
+    const me: Participant = this.$store.state.ParticipantsModule.me;
+    return me.id === this.collaborationShare?.ownerId;
+  }
+
+  edit(): void {
+    this.$store.dispatch(
+      "FileShareModule/setSelectedShare",
+      this.collaborationShare
+    );
+    this.$store.dispatch("FileShareModule/setEditing", true);
   }
 
   get owner(): string {

@@ -107,6 +107,7 @@ const fileShareModule: Module<any, any> = {
     shares: SHARES,
     creating: false,
     editing: false,
+    selectedShare: null,
   },
   mutations: {
     markAsOpened(state, payload: string) {
@@ -118,6 +119,12 @@ const fileShareModule: Module<any, any> = {
     alterDocumentFilter(state, payload: string) {
       state.documentFilter = payload;
     },
+    alterSelectedShare(state, payload) {
+      state.selectedShare = payload;
+    },
+    alterEditing(state, payload) {
+      state.editing = payload;
+    },
   },
   actions: {
     markOpened({ commit }, payload) {
@@ -128,6 +135,12 @@ const fileShareModule: Module<any, any> = {
     },
     setDocumentFilter({ commit }, payload) {
       commit("alterDocumentFilter", payload);
+    },
+    setEditing({ commit }, payload) {
+      commit("alterEditing", payload);
+    },
+    setSelectedShare({ commit }, payload) {
+      commit("alterSelectedShare", payload);
     },
   },
   getters: {
