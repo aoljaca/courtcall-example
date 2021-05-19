@@ -5,4 +5,6 @@ export default {
   collaborations: "Collaborations",
   uploads: "Uploads",
   requests: "Requests",
+  myDocuments: "My Documents",
+  sharedWithMe: "Shared with Me",
 };

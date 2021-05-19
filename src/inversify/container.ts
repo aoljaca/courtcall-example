@@ -10,6 +10,10 @@ import {
   ChatFormatService,
   ChatFormatServiceImpl,
 } from "@/services/chat-format";
+import {
+  ShareFormatService,
+  ShareFormatServiceImpl,
+} from "@/services/share-format";
 import { container } from "inversify-props";
 import { ToastService, ToastServiceImpl } from "../services/toast";
 import { INJECTION_TYPES } from "./injection-types";
@@ -24,4 +28,7 @@ export default function buildDependencyContainer(): void {
   container
     .bind<CaseFormatService>(INJECTION_TYPES.CASE_FORMAT)
     .to(CaseFormatServiceImpl);
+  container
+    .bind<ShareFormatService>(INJECTION_TYPES.SHARE_FORMAT)
+    .to(ShareFormatServiceImpl);
 }

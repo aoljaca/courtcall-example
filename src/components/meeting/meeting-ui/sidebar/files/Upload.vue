@@ -15,7 +15,7 @@
             {{ $t("sidebar.files.upload.uploadAs") }}</label
           >
           <v-select
-            v-model="selectedFileShare"
+            v-model="selectedFileType"
             :items="possibleFileShareTypes"
             return-object
             id="share-type-select"

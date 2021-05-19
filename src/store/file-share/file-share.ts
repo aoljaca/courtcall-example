@@ -74,7 +74,7 @@ const SIGNATURE_SHARES: { [key: string]: SignatureShare } = {
     id: "ss1",
   },
   ss2: {
-    id: "ss1",
+    id: "ss2",
     type: "signature",
     signatureType: "adobesign",
     ownerId: "2",
@@ -90,7 +90,7 @@ const SIGNATURE_SHARES: { [key: string]: SignatureShare } = {
     ownerId: "3",
     participants: ["1", "3", "9"],
     fileName: "signature3.pdf",
-    signed: [],
+    signed: ["9"],
     opened: true,
   },
 };
@@ -105,7 +105,8 @@ const fileShareModule: Module<any, any> = {
   namespaced: true,
   state: {
     shares: SHARES,
-    creating: true,
+    creating: false,
+    editing: false,
   },
   mutations: {
     markAsOpened(state, payload: string) {
@@ -114,6 +115,9 @@ const fileShareModule: Module<any, any> = {
     alterCreating(state, payload: boolean) {
       state.creating = payload;
     },
+    alterDocumentFilter(state, payload: string) {
+      state.documentFilter = payload;
+    },
   },
   actions: {
     markOpened({ commit }, payload) {
@@ -121,6 +125,9 @@ const fileShareModule: Module<any, any> = {
     },
     setCreating({ commit }, payload) {
       commit("alterCreating", payload.creating);
+    },
+    setDocumentFilter({ commit }, payload) {
+      commit("alterDocumentFilter", payload);
     },
   },
   getters: {
@@ -135,6 +142,10 @@ const fileShareModule: Module<any, any> = {
     getOpenedSharesNotBelongingToOwner: (state) => (id: string) =>
       Object.values(state.shares).filter(
         (s: any) => s.opened === true && s.ownerId !== id
+      ),
+    getUnOpenedSharesNotBelongingToOwner: (state) => (id: string) =>
+      Object.values(state.shares).filter(
+        (s: any) => s.opened === false && s.ownerId !== id
       ),
   },
 };

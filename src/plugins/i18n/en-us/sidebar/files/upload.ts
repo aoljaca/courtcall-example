@@ -1,4 +1,5 @@
 export default {
+  title: "Upload File",
   chooseFile: "Choose File",
   uploadAs: "Upload As",
   shareWith: "Share With",
