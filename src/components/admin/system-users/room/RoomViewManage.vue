@@ -8,9 +8,9 @@
         </v-col>
         <v-col cols="11">
           <room-details></room-details>
-          <settings></settings>
-          <cases-table></cases-table>
-          <participants-table></participants-table>
+          <settings class="border"></settings>
+          <cases-table class="border"></cases-table>
+          <participants-table class="border"></participants-table>
         </v-col>
       </v-row>
     </v-container>
@@ -43,4 +43,7 @@ export default class RoomViewManage extends Vue {}
 </script>
 
 <style lang="scss" scoped>
+.border {
+  border: 1px solid grey;
+}
 </style>

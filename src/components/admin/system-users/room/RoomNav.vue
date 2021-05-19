@@ -1,19 +1,29 @@
 <template>
   <div>
     <v-row>
-      Details
+      <v-col>
+        Details
+      </v-col>
     </v-row>
     <v-row>
-      Settings
+      <v-col>
+        Settings
+      </v-col>
     </v-row>
     <v-row>
-      Cases
+      <v-col>
+        Cases
+      </v-col>
     </v-row>
     <v-row>
-      Participants
+      <v-col>
+        Participants
+      </v-col>
     </v-row>
     <v-row>
-      Activity
+      <v-col>
+        Activity
+      </v-col>
     </v-row>
   </div>     
 </template>
