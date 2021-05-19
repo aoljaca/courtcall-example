@@ -1,4 +1,4 @@
-type ShareType = "file" | "signature" | "collaboration";
+type ShareType = "file" | "signature" | "collaboration" | "all";
 type SignatureType = "docusign" | "adobesign";
 interface Share {
   type: ShareType;

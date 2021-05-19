@@ -85,7 +85,7 @@ import {
 import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import {
-  FileShareWithSelecType,
+  FileShareWithSelectType,
   SELECT_TYPES,
 } from "@/model/meeting/meeting-ui/side-bar/files/participant-select-type";
 import { inject } from "inversify-props";
@@ -100,9 +100,9 @@ export default class FileUpload extends Vue {
 
   possibleFileShareTypes = FILE_SHARE_TYPES;
 
-  possibleSelectTypes: FileShareWithSelecType[] = SELECT_TYPES;
+  possibleSelectTypes: FileShareWithSelectType[] = SELECT_TYPES;
 
-  selectedSelectType: FileShareWithSelecType | null = null;
+  selectedSelectType: FileShareWithSelectType | null = null;
 
   formatFileShareTypeLabel(type: FileShareType): any {
     return this.$t(type.label);
@@ -112,7 +112,7 @@ export default class FileUpload extends Vue {
 
   selectedCases: Case[] = [];
 
-  formatSelectTypeLabel(selectType: FileShareWithSelecType): any {
+  formatSelectTypeLabel(selectType: FileShareWithSelectType): any {
     const type = selectType.type;
     if (type === "subconference") {
       return this.$store.state.SubconferenceModule.current.displayName;

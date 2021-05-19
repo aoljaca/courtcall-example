@@ -2,7 +2,14 @@
   <div id="fileMainView">
     <v-container fluid>
       <v-row>
-        <v-col class="d-flex align-center" cols="10">File Select</v-col>
+        <v-col class="d-flex align-center" cols="10">
+          <v-select
+            v-model="selectedFileShareType"
+            :items="possibleFileShareTypes"
+            :item-text="formatFileShareLabel"
+            return-object
+          ></v-select>
+        </v-col>
         <v-col cols="2" class="d-flex justify end">
           <v-btn
             @click="uploadFile()"
@@ -101,6 +108,11 @@
 </template>
 <script lang="ts">
 import { Share } from "@/model/meeting/meeting-ui/side-bar/files/file-share";
+import {
+  ALL_FILE_SHARE_TYPE,
+  FileShareType,
+  FILE_SHARE_TYPES,
+} from "@/model/meeting/meeting-ui/side-bar/files/file-share-type";
 import { Component, Vue } from "vue-property-decorator";
 import CollaborationShare from "./documents/CollaborationShare.vue";
 import FileShare from "./documents/FileShare.vue";
@@ -113,26 +125,51 @@ import SignatureShare from "./documents/SignatureShare.vue";
   },
 })
 export default class FileMainView extends Vue {
+  selectedFileShareType: FileShareType = ALL_FILE_SHARE_TYPE;
+
+  possibleFileShareTypes: FileShareType[] = [
+    ALL_FILE_SHARE_TYPE,
+    ...FILE_SHARE_TYPES,
+  ];
+
+  formatFileShareLabel(type: FileShareType) {
+    return this.$t(type.label);
+  }
   uploadFile(): void {
     this.$store.dispatch("FileShareModule/setCreating", { creating: true });
   }
 
   get requests(): Share[] {
-    return this.$store.getters[
+    const requests = this.$store.getters[
       "FileShareModule/getUnOpenedSharesNotBelongingToOwner"
-    ](this.$store.state.ParticipantsModule.me.id);
+    ](this.$store.state.ParticipantsModule.me.id) as Share[];
+    return requests.filter(
+      (s) =>
+        this.selectedFileShareType.type === "all" ||
+        this.selectedFileShareType.type === s.type
+    );
   }
 
   get documents(): Share[] {
-    return this.$store.getters["FileShareModule/getSharesBelongingToOwner"](
-      this.$store.state.ParticipantsModule.me.id
+    const documents = this.$store.getters[
+      "FileShareModule/getSharesBelongingToOwner"
+    ](this.$store.state.ParticipantsModule.me.id) as Share[];
+    return documents.filter(
+      (s) =>
+        this.selectedFileShareType.type === "all" ||
+        this.selectedFileShareType.type === s.type
     );
   }
 
   get shared(): Share[] {
-    return this.$store.getters[
+    const shared = this.$store.getters[
       "FileShareModule/getOpenedSharesNotBelongingToOwner"
-    ](this.$store.state.ParticipantsModule.me.id);
+    ](this.$store.state.ParticipantsModule.me.id) as Share[];
+    return shared.filter(
+      (s) =>
+        this.selectedFileShareType.type === "all" ||
+        this.selectedFileShareType.type === s.type
+    );
   }
   get numRequests(): number {
     return this.requests.length;

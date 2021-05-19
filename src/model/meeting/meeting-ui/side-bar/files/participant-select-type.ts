@@ -4,11 +4,11 @@ type FileShareSelectType =
   | "selectedCases"
   | "selectedParticipants";
 
-interface FileShareWithSelecType {
+interface FileShareWithSelectType {
   type: FileShareSelectType;
 }
 
-const SELECT_TYPES: FileShareWithSelecType[] = [
+const SELECT_TYPES: FileShareWithSelectType[] = [
   {
     type: "hostsAndModerators",
   },
@@ -23,4 +23,4 @@ const SELECT_TYPES: FileShareWithSelecType[] = [
   },
 ];
 
-export { SELECT_TYPES, FileShareSelectType, FileShareWithSelecType };
+export { SELECT_TYPES, FileShareSelectType, FileShareWithSelectType };
