@@ -28,16 +28,6 @@
               <v-icon v-else color="gray">mdi-circle</v-icon>
             </template>
 
-            <template v-slot:item.streaming="{ item }">
-              <v-icon v-if="item.streaming" color="black"
-                >mdi-access-point</v-icon
-              >
-            </template>
-
-            <template v-slot:item.recording="{ item }">
-              <v-icon v-if="item.recording" color="red">mdi-circle</v-icon>
-            </template>
-
             <template v-slot:item.more="{ item }">
               <v-icon :color="item.more">mdi-dots-horizontal</v-icon>
             </template>
