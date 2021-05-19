@@ -14,7 +14,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col>
+      <v-col id="left-settings-col">
         <v-row>
           <v-col>
             Entrance Behavior
@@ -82,7 +82,6 @@
             Meeting Video and Audio Control
           </v-col>
         </v-row>
-
         <v-row>
           <v-col>
             Allow partcipants to turn their video off/on
@@ -105,7 +104,6 @@
             Video Set Up
           </v-col>
         </v-row>
-
         <v-row>
           <v-col>
             Default Canvas Layout
@@ -131,7 +129,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col>
+      <v-col id="right-settings-col" class="divide-cols">
         <v-row>
           <v-col>
             Meeting Operations
@@ -248,4 +246,7 @@ export default class Settings extends Vue {}
 </script>
 
 <style lang="scss" scoped>
+.divide-cols {
+  border-left: solid 1px grey;
+}
 </style>

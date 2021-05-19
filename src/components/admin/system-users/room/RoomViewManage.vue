@@ -7,10 +7,10 @@
           <room-nav></room-nav>
         </v-col>
         <v-col cols="11">
-          <room-details></room-details>
-          <settings class="border"></settings>
-          <cases-table class="border"></cases-table>
-          <participants-table class="border"></participants-table>
+          <room-details class="mb-4"></room-details>
+          <settings class="pad-component border mb-8 pb-8"></settings>
+          <cases-table class="pad-component border mb-8"></cases-table>
+          <participants-table class="pad-component border mb-8"></participants-table>
         </v-col>
       </v-row>
     </v-container>
@@ -45,5 +45,9 @@ export default class RoomViewManage extends Vue {}
 <style lang="scss" scoped>
 .border {
   border: 1px solid grey;
+}
+
+.pad-component {
+  padding: 1rem;
 }
 </style>

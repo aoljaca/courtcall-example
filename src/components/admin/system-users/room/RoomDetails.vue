@@ -3,7 +3,10 @@
     <v-container>
       <v-row>
         <v-col>
-          <span>Judge Frank</span>
+          <v-icon>
+            mdi-circle
+          </v-icon>
+          <span class="mx-4">Judge Frank</span>
           <span>Organization: CourtCall</span>
         </v-col>
         <v-col class="d-flex justify-end">
@@ -19,44 +22,64 @@
       <v-row>
         <v-col>
           <v-row>
-            <v-col>
+            <v-col cols="3">
               Streaming
+              <v-icon>
+                mdi-wifi
+              </v-icon>
             </v-col>
-            <v-col>
-              Enabled
+          </v-row>
+          <v-row>
+            <v-col cols="3">
+              <span>
+                Recording
+              </span>
+              <v-icon>
+                mdi-circle
+              </v-icon>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col>
+          <v-row>
+            <v-col cols="2">
+              Status
+            </v-col>
+            <v-col class="font-weight-light" cols="2">
+              Available
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-              Recording
-            </v-col>
-            <v-col>
+              <v-icon>
+                mdi-lock-open
+              </v-icon>
               Lock Now
             </v-col>
           </v-row>
         </v-col>
         <v-col>
           <v-row>
-            <v-col>
+            <v-col cols="3">
               Phone Number
             </v-col>
-            <v-col>
+            <v-col cols="2">
               555-555-5555
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col cols="3">
               Host Access Code
             </v-col>
-            <v-col>
+            <v-col cols="2">
               5555
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col cols="3">
               Participant Access Code
             </v-col>
-            <v-col>
+            <v-col cols="2">
               5555
             </v-col>
           </v-row>
