@@ -3,7 +3,7 @@
     <system-user-header></system-user-header>
     <v-container fluid>
       <v-row>
-        <v-col cols="2">
+        <v-col class="px-8 pt-4" cols="2">
           <room-nav class="pa-4"></room-nav>
         </v-col>
         <v-col cols="10">

@@ -1,8 +1,8 @@
 <template>
   <div class="su-header">
-    <v-container>
+    <v-container fluid>
       <v-row class="py-4">
-        <v-col>
+        <v-col class="ml-8">
           <span 
             class="grey--text text--lighten-1 font-weight-bold text-subtitle-1"
             >{{ $t("admin.systemUser.dashboard") }}</span
