@@ -2,9 +2,9 @@
   <span id="chatIcon">
     <v-container fluid>
       <v-row class="px-0 py-0">
-        <v-col class="px-0 py-0">
+        <v-col class="px-0 py-0 d-flex justify-center">
           <v-btn
-            fab
+            icon
             elevation="0"
             @click="toggleChatSidebar()"
             :title="$t('meetingUI.controlBar.chat')"

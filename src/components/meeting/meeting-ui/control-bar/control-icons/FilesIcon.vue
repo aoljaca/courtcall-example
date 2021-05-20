@@ -2,9 +2,9 @@
   <span id="filesIcon">
     <v-container fluid>
       <v-row class="px-0 py-0">
-        <v-col class="px-0 py-0">
+        <v-col class="px-0 py-0 d-flex justify-center">
           <v-btn
-            fab
+            icon
             elevation="0"
             @click="toggleFilesSidebar()"
             :title="$t('meetingUI.controlBar.files')"

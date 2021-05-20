@@ -4,9 +4,9 @@
       <template v-slot:activator="{ on, attrs }">
         <v-container fluid>
           <v-row class="px-0 py-0">
-            <v-col class="px-0 py-0">
+            <v-col class="px-0 py-0 d-flex justify-center">
               <v-btn
-                fab
+                icon
                 elevation="0"
                 :title="$t('meetingUI.controlBar.getSupport.title')"
                 v-bind="attrs"
