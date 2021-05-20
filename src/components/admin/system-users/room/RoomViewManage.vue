@@ -1,12 +1,12 @@
 <template>
   <div>
     <system-user-header></system-user-header>
-    <v-container>
+    <v-container fluid>
       <v-row>
-        <v-col cols="1">
-          <room-nav></room-nav>
+        <v-col cols="2">
+          <room-nav class="pa-4"></room-nav>
         </v-col>
-        <v-col cols="11">
+        <v-col cols="10">
           <room-details class="mb-4"></room-details>
           <settings class="pad-component border mb-8 pb-8"></settings>
           <cases-table class="pad-component border mb-8"></cases-table>

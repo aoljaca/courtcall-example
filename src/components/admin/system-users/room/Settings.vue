@@ -24,7 +24,7 @@
           <v-col>
             App/Web Passcode
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             YourHonor931
           </v-col>
         </v-row>
@@ -32,15 +32,15 @@
           <v-col>
             Video
           </v-col>
-          <v-col>
-            On
+          <v-col class="setting-state">
+            ON
           </v-col>
         </v-row>
         <v-row>
           <v-col>
             Audio
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ON
           </v-col>
         </v-row>
@@ -48,7 +48,7 @@
           <v-col>
             Allow participants to select before entering room
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             YES
           </v-col>
         </v-row>
@@ -56,7 +56,7 @@
           <v-col>
             Waiting Room
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ON
           </v-col>
         </v-row>
@@ -64,7 +64,7 @@
           <v-col>
             Audio Only Conferences
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             Ready-to-Meet
           </v-col>
         </v-row>
@@ -72,7 +72,7 @@
           <v-col>
             PSTN Provider
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ZIPDX
           </v-col>
         </v-row>
@@ -86,7 +86,7 @@
           <v-col>
             Allow partcipants to turn their video off/on
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             YES
           </v-col>
         </v-row>
@@ -94,7 +94,7 @@
           <v-col>
             Allow partcipants to toggle mute themselves
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             YES
           </v-col>
         </v-row>
@@ -108,7 +108,7 @@
           <v-col>
             Default Canvas Layout
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             Grid
           </v-col>
         </v-row>
@@ -116,7 +116,7 @@
           <v-col>
             Allow partcipants to change layout
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             YES
           </v-col>
         </v-row>
@@ -124,7 +124,7 @@
           <v-col>
             Video Quality
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             HIGH
           </v-col>
         </v-row>
@@ -139,7 +139,7 @@
           <v-col>
             Screen Sharing
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ON
           </v-col>
         </v-row>
@@ -147,7 +147,7 @@
           <v-col>
             Require Request for Screen Sharing
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ON
           </v-col>
         </v-row>
@@ -155,7 +155,7 @@
           <v-col>
             File Management
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ON
           </v-col>
         </v-row>
@@ -163,7 +163,7 @@
           <v-col>
             Hand Raising
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ON
           </v-col>
         </v-row>
@@ -171,7 +171,7 @@
           <v-col>
             Chat
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ON
           </v-col>
         </v-row>
@@ -184,7 +184,7 @@
           <v-col>
             Recording 
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             Enabled
           </v-col>
         </v-row>
@@ -192,7 +192,7 @@
           <v-col>
             Auto-email link to all participants
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ON
           </v-col>
         </v-row>
@@ -200,7 +200,7 @@
           <v-col>
             Transcription
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ENABLED
           </v-col>
         </v-row>
@@ -208,7 +208,7 @@
           <v-col>
             Remote Translation
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ENABLED
           </v-col>
         </v-row>
@@ -216,7 +216,7 @@
           <v-col>
             Streaming
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             ENABLED
           </v-col>
         </v-row>
@@ -229,7 +229,7 @@
           <v-col>
             Duplicate participant handling
           </v-col>
-          <v-col>
+          <v-col class="setting-state">
             SUPPORT
           </v-col>
         </v-row>
@@ -248,5 +248,9 @@ export default class Settings extends Vue {}
 <style lang="scss" scoped>
 .divide-cols {
   border-left: solid 1px grey;
+}
+.setting-state {
+  font-weight: bold;
+  text-align: right;
 }
 </style>

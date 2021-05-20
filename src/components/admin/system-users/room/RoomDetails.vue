@@ -68,18 +68,18 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="3">
+            <v-col cols="5">
               Host Access Code
             </v-col>
-            <v-col cols="2">
+            <v-col cols="4">
               5555
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="3">
+            <v-col cols="5">
               Participant Access Code
             </v-col>
-            <v-col cols="2">
+            <v-col cols="4">
               5555
             </v-col>
           </v-row>
