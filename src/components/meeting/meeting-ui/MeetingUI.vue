@@ -34,7 +34,7 @@ import ControlBar from "./control-bar/ControlBar.vue";
 import VideoPlatform from "./VideoPlatform.vue";
 import Chat from "./sidebar/chat/Chat.vue";
 import Files from "./sidebar/files/Files.vue";
-import Participants from "./sidebar/participants/Participants.vue";
+import Participants from "./sidebar/participants/ParticipantsMainView.vue";
 import "reflect-metadata";
 @Component({
   components: {
