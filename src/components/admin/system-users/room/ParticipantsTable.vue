@@ -2,8 +2,12 @@
   <div class="rooms-table">
     <v-container fluid>
       <v-row class="mb-4">
-        <v-col>
+        <v-col cols="2">
           <h2>Participants</h2>
+        </v-col>
+        <v-col cols="2">
+          <v-select label="Filter By Case">
+          </v-select>
         </v-col>
         <v-col class="text-right">
           <v-btn
