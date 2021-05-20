@@ -20,17 +20,19 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col>
+        <v-col cols="2">
           <v-row>
-            <v-col cols="3">
-              Streaming
+            <v-col>
+              <span>
+                Streaming
+              </span>
               <v-icon>
                 mdi-wifi
               </v-icon>
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="3">
+            <v-col>
               <span>
                 Recording
               </span>
@@ -40,13 +42,15 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col>
+        <v-col cols="2">
           <v-row>
-            <v-col cols="2">
-              Status
-            </v-col>
-            <v-col class="font-weight-light" cols="2">
-              Available
+            <v-col>
+              <span>
+                Status
+              </span>
+              <span class="ml-8 font-weight-light">
+                Available
+              </span>
             </v-col>
           </v-row>
           <v-row>
@@ -58,32 +62,41 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col>
-          <v-row>
-            <v-col cols="3">
+        <v-col cols="2">
+           <v-row>
+            <v-col>
               Phone Number
             </v-col>
-            <v-col cols="2">
+          </v-row>
+          <v-row>
+            <v-col>
+              Host Access Code
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              Participant Access Code
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col cols="2">
+          <v-row>
+            <v-col>
               555-555-5555
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="5">
-              Host Access Code
-            </v-col>
-            <v-col cols="4">
+            <v-col>
               5555
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="5">
-              Participant Access Code
-            </v-col>
-            <v-col cols="4">
+            <v-col>
               5555
             </v-col>
           </v-row>
         </v-col>
+        
       </v-row>
     </v-container>
   </div>     
