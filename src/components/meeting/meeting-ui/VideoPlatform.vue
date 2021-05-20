@@ -81,9 +81,8 @@ export default class VideoPlatform extends Vue {}
 </script>
 <style lang="scss">
 .video-platform-overlay {
-  height: 86vh;
   width: 10%;
-  min-height: 500px;
+  height: 50%;
   max-width: 100%;
   .v-overlay__content {
     height: 100% !important;
@@ -94,7 +93,6 @@ export default class VideoPlatform extends Vue {}
 </style>
 <style lang="scss" scoped>
 .video-platform-col {
-  height: 85vh;
-  min-height: 500px;
+  height: 86vh;
 }
 </style>

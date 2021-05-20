@@ -4,20 +4,10 @@
       <v-row>
         <v-col class="py-0 header-col">header</v-col>
       </v-row>
-      <v-row>
+      <v-row class="body-row">
         <v-col class="px-0 py-0">
-          <v-container fluid>
-            <v-row>
-              <v-col class="px-0 py-0">
-                <video-platform></video-platform>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col class="px-0 py-0">
-                <control-bar></control-bar>
-              </v-col>
-            </v-row>
-          </v-container>
+          <video-platform></video-platform>
+          <control-bar></control-bar>
         </v-col>
         <v-col class="px-0 py-0 navigation-element" cols="3" v-if="sidebarMode">
           <chat v-if="sidebarMode === 'chat'"></chat>
@@ -57,6 +47,9 @@ export default class MeetingUI extends Vue {
 .header-col {
   height: 4vh;
   background: lightgray;
+}
+.body-row {
+  height: 96vh;
 }
 .navigation-element {
   border-left: 1px solid black;
