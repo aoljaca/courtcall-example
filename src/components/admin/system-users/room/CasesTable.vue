@@ -46,11 +46,11 @@ export default class CasesTable extends Vue {
   data() {
     return {
       headers: [
-        { text: "Active", value: "active", align: "center" },
-        { text: "Case Number", value: "caseNumber", align: "center" },
-        { text: "Case Name", value: "caseName", align: "center" },
-        { text: "Scheduled Participants", value: "scheduledParticipants", align: "center" },
-        { text: " ", value: "more", align: "center" },
+        { text: "Active", value: "active" },
+        { text: "Case Number", value: "caseNumber" },
+        { text: "Case Name", value: "caseName" },
+        { text: "Scheduled Participants", value: "scheduledParticipants" },
+        { text: " ", value: "more" },
       ],
       tableData: [
         {

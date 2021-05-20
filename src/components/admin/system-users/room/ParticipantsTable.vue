@@ -50,12 +50,12 @@ export default class CasesTable extends Vue {
   data() {
     return {
       headers: [
-        { text: "Active", value: "active", align: "center" },
-        { text: "Name", value: "name", align: "center" },
-        { text: "Case Number", value: "caseNumber", align: "center" },
-        { text: "Case Name", value: "caseName", align: "center" },
-        { text: "Role", value: "role", align: "center" },
-        { text: " ", value: "more", align: "center" },
+        { text: "Active", value: "active" },
+        { text: "Name", value: "name" },
+        { text: "Case Number", value: "caseNumber" },
+        { text: "Case Name", value: "caseName" },
+        { text: "Role", value: "role" },
+        { text: " ", value: "more" },
       ],
       tableData: [
         {
