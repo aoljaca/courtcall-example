@@ -38,7 +38,7 @@ import "reflect-metadata";
 export default class MeetingUI extends Vue {
   drawer = true;
 
-  get sidebarMode() {
+  get sidebarMode(): string {
     return this.$store.state.SidebarModule.sidebar;
   }
 }

@@ -10,4 +10,5 @@ export default {
   joinMeeting: "Join Now",
   audioSetup,
   videoPreview,
+  default: "Default",
 };

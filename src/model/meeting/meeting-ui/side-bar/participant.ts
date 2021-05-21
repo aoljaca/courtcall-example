@@ -5,5 +5,15 @@ export type AVStatus = "unmuted" | "muted" | "hard_muted";
 export interface Participant {
   id: string;
   name: string;
-  pubnub_id: string;
+  pubnubId: string;
+  subconferenceId: null | string;
+  caseId: null | string;
+  videoStatus: AVStatus;
+  audioStatus: AVStatus;
+  screensharing: boolean;
+  isHost: boolean;
+  chatEnabled: boolean;
+  fileShareEnabled: boolean;
+  collaborationEnabled: boolean;
+  screenshareEnabled: boolean;
 }

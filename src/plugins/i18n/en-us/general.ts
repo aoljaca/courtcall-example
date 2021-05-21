@@ -14,4 +14,6 @@ export default {
   start: "Start",
   stop: "Stop",
   edit: "Edit",
+  more: "More",
+  done: "Done",
 };
