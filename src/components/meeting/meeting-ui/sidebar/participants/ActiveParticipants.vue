@@ -21,7 +21,7 @@
           ></v-col
         >
         <v-col cols="12" v-for="p in participantsForCase(c)" :key="p.id">
-          {{ p.name }}
+          <participant-control :participant="p"></participant-control>
         </v-col>
       </v-row>
     </v-container>

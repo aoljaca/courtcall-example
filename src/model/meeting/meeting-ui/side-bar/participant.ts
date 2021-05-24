@@ -15,5 +15,6 @@ export interface Participant {
   chatEnabled: boolean;
   fileShareEnabled: boolean;
   collaborationEnabled: boolean;
+  signatureEnabled: boolean;
   screenshareEnabled: boolean;
 }

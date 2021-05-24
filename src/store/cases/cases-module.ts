@@ -2,59 +2,59 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 import { Module } from "vuex";
 import { DateTime } from "luxon";
 const CASES: { [key: string]: Case } = {
-  1: {
+  "1c": {
     name: "Ca",
     number: "1",
     startTime: DateTime.now().minus({ hours: 12 }).toISODate(),
     participants: ["1", "2", "3"],
-    id: "1",
+    id: "1c",
   },
-  2: {
+  "2c": {
     name: "Cb",
     number: "2",
     startTime: DateTime.now().minus({ hours: 6 }).toISODate(),
-    id: "2",
+    id: "2c",
     participants: ["4", "5", "6"],
   },
-  3: {
+  "3c": {
     name: "Cc",
     number: "3",
     startTime: DateTime.now().minus({ hours: 30 }).toISODate(),
-    id: "3",
+    id: "3c",
     participants: ["7", "8", "9"],
   },
-  4: {
+  "4c": {
     name: "Cd",
     number: "4",
     startTime: DateTime.now().minus({ minutes: 90 }).toISODate(),
-    id: "4",
+    id: "4c",
     participants: ["2", "4", "6", "8"],
   },
-  5: {
+  "5c": {
     name: "Ce",
     number: "5",
     startTime: DateTime.now().minus({ minutes: 45 }).toISODate(),
-    id: "5",
+    id: "5c",
     participants: ["1", "3", "5", "7", "9"],
   },
-  6: {
+  "6c": {
     name: "Cf",
     number: "6",
     startTime: DateTime.now().minus({ minutes: 20 }).toISODate(),
-    id: "6",
+    id: "6c",
     participants: ["1", "2", "3"],
   },
-  7: {
+  "7c": {
     name: "Cg",
     number: "7",
-    id: "7",
+    id: "7c",
     startTime: DateTime.now().minus({ minutes: 10 }).toISODate(),
     participants: ["3", "2", "5"],
   },
-  8: {
+  "8c": {
     name: "Ch",
     number: "8",
-    id: "8",
+    id: "8c",
     startTime: DateTime.now().toISODate(),
     participants: ["5", "1", "7"],
   },
