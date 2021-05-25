@@ -4,8 +4,9 @@
       <v-row>
         <v-col>
           <v-text-field
-            :label="$t('sidebar.participants.activeParticipants.searchLabel')"
+            :label="$t('sidebar.participants.searchLabel')"
             append-icon="mdi-magnify"
+            v-model="searchTerm"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -32,6 +33,7 @@ import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { CaseFormatService } from "@/services/case-format";
+import { ParticipantSearchService } from "@/services/participant-search";
 import { inject } from "inversify-props";
 import { Component, Vue } from "vue-property-decorator";
 import ParticipantControl from "./ParticipantControl.vue";
@@ -43,11 +45,23 @@ import ParticipantControl from "./ParticipantControl.vue";
 export default class ActivePartcipantsView extends Vue {
   @inject(INJECTION_TYPES.CASE_FORMAT)
   caseFormatService: CaseFormatService | undefined;
+  @inject(INJECTION_TYPES.PARTICIPANT_SEARCH)
+  participantSearchService: ParticipantSearchService | undefined;
+
+  searchTerm = "";
   get participantsWithoutCase(): Participant[] {
     const participants: Participant[] = this.$store.getters[
       "ParticipantsModule/getAsList"
     ];
-    return participants.filter((p) => p.caseId == null);
+    return participants
+      .filter((p) => p.caseId == null)
+      .filter((p) =>
+        this.participantSearchService?.search({
+          term: this.searchTerm,
+          case: null,
+          participant: p,
+        })
+      );
   }
 
   get cases(): Case[] {
@@ -58,7 +72,15 @@ export default class ActivePartcipantsView extends Vue {
     const participants: Participant[] = this.$store.getters[
       "ParticipantsModule/getAsList"
     ];
-    return participants.filter((p) => p.caseId === c.id);
+    return participants
+      .filter((p) => p.caseId === c.id)
+      .filter((p) =>
+        this.participantSearchService?.search({
+          term: this.searchTerm,
+          participant: p,
+          case: c,
+        })
+      );
   }
   caseSize(c: Case): number {
     return this.participantsForCase(c).length;

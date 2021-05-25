@@ -6,4 +6,5 @@ export default {
   activeParticipants,
   cases: "Cases",
   participantControl,
+  searchLabel: "Case Name, Case Number, Participant",
 };
