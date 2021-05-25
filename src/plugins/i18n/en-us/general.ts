@@ -16,4 +16,10 @@ export default {
   edit: "Edit",
   more: "More",
   done: "Done",
+  muted: "Muted",
+  unmuted: "Unmuted",
+  videoOn: "Video On",
+  videoOff: "Video Off",
+  screensharing: "Sharing Screen",
+  notScreensharing: "Not Sharing Screen",
 };

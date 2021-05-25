@@ -17,4 +17,6 @@ export default {
   disableChat: "Disable Chat",
   enableScreenshare: "Enable Screenshare",
   disableScreenshare: "Disable Screenshare",
+  active: "Active",
+  inactive: "Inactive",
 };

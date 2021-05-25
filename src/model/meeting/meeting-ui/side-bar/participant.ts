@@ -17,4 +17,5 @@ export interface Participant {
   collaborationEnabled: boolean;
   signatureEnabled: boolean;
   screenshareEnabled: boolean;
+  active: boolean;
 }

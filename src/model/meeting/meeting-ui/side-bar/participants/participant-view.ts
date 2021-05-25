@@ -17,7 +17,7 @@ const ACTIVE_PARTICIPANTS_VIEW_TYPE: ParticipantView = {
 
 const CASES_VIEW_TYPE: ParticipantView = {
   type: "cases",
-  label: "sidebar.participants.cases",
+  label: "sidebar.participants.cases.title",
 };
 
 const PARTICIPANT_VIEW_TYPES = [

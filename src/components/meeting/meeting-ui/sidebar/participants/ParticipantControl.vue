@@ -6,22 +6,49 @@
         <v-container fluid>
           <v-row>
             <v-col cols="1">
-              <v-icon v-if="participant.videoStatus === 'unmuted'"
+              <v-icon
+                color="green"
+                v-if="participant.active"
+                :title="$t('sidebar.participants.participantControl.active')"
+              >
+                mdi-account-circle
+              </v-icon>
+              <v-icon
+                v-else
+                :title="$t('sidebar.participants.participantControl.inactive')"
+                >mdi-account-circle</v-icon
+              >
+            </v-col>
+            <v-col cols="1">
+              <v-icon
+                v-if="participant.videoStatus === 'unmuted'"
+                :title="$t('general.videoOn')"
                 >mdi-video</v-icon
               >
-              <v-icon v-else>mdi-video-off</v-icon>
+              <v-icon v-else :title="$t('general.videoOff')"
+                >mdi-video-off</v-icon
+              >
             </v-col>
             <v-col cols="1">
-              <v-icon v-if="participant.audioStatus === 'unmuted'"
+              <v-icon
+                v-if="participant.audioStatus === 'unmuted'"
+                :title="$t('general.unmuted')"
                 >mdi-microphone</v-icon
               >
-              <v-icon v-else>mdi-microphone-off</v-icon>
+              <v-icon v-else :title="$t('general.muted')"
+                >mdi-microphone-off</v-icon
+              >
             </v-col>
             <v-col cols="1">
-              <v-icon v-if="participant.screensharing" color="green"
+              <v-icon
+                :title="$t('general.screensharing')"
+                v-if="participant.screensharing"
+                color="green"
                 >mdi-laptop</v-icon
               >
-              <v-icon v-else>mdi-laptop</v-icon>
+              <v-icon :title="$t('general.notScreensharing')" v-else
+                >mdi-laptop</v-icon
+              >
             </v-col>
             <v-col class="d-flex justify-end">
               <v-btn

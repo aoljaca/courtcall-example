@@ -20,6 +20,7 @@ const participants: {
     screensharing: true,
     screenshareEnabled: true,
     signatureEnabled: true,
+    active: true,
   },
   "2": {
     id: "2",
@@ -36,6 +37,7 @@ const participants: {
     screensharing: false,
     screenshareEnabled: false,
     signatureEnabled: false,
+    active: true,
   },
   "3": {
     id: "3",
@@ -52,6 +54,7 @@ const participants: {
     collaborationEnabled: true,
     screenshareEnabled: true,
     signatureEnabled: true,
+    active: true,
   },
   "4": {
     id: "4",
@@ -68,6 +71,7 @@ const participants: {
     collaborationEnabled: false,
     screenshareEnabled: false,
     signatureEnabled: false,
+    active: true,
   },
   "5": {
     id: "5",
@@ -84,6 +88,7 @@ const participants: {
     collaborationEnabled: false,
     screenshareEnabled: true,
     signatureEnabled: true,
+    active: true,
   },
   "6": {
     id: "6",
@@ -100,6 +105,7 @@ const participants: {
     collaborationEnabled: false,
     screenshareEnabled: false,
     signatureEnabled: false,
+    active: true,
   },
   "7": {
     id: "7",
@@ -116,6 +122,7 @@ const participants: {
     collaborationEnabled: true,
     screenshareEnabled: true,
     signatureEnabled: true,
+    active: false,
   },
   "8": {
     id: "8",
@@ -132,6 +139,7 @@ const participants: {
     screensharing: false,
     screenshareEnabled: false,
     signatureEnabled: false,
+    active: true,
   },
   "9": {
     id: "9",
@@ -148,6 +156,7 @@ const participants: {
     collaborationEnabled: true,
     screenshareEnabled: true,
     signatureEnabled: true,
+    active: true,
   },
   "10": {
     id: "10",
@@ -164,6 +173,7 @@ const participants: {
     collaborationEnabled: true,
     screenshareEnabled: false,
     signatureEnabled: false,
+    active: false,
   },
 };
 const pubNubIdtoParticipantId: { [key: string]: string } = {};

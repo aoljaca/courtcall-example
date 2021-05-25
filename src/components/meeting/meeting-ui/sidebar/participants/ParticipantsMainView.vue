@@ -61,7 +61,7 @@ export default class ParticipantMainView extends Vue {
 
   possibleParticipantViews: ParticipantView[] = PARTICIPANT_VIEW_TYPES;
 
-  selectedParticipantView: ParticipantView = PARTICIPANT_VIEW_TYPES[1];
+  selectedParticipantView: ParticipantView = PARTICIPANT_VIEW_TYPES[2];
 
   get selectedParticipantViewType() {
     return this.selectedParticipantView?.type;
