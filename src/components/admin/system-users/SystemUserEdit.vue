@@ -1,6 +1,6 @@
 <template>
   <div>
-    <system-user-header></system-user-header>
+    <system-user-header message="My Account"></system-user-header>
     <v-container fluid>
       <v-form class="ml-16">
         <v-row class="mt-14 mb-2">

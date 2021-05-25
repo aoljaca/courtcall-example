@@ -7,7 +7,7 @@
             class="grey--text text--lighten-1 font-weight-bold text-subtitle-1"
             >{{ $t("admin.systemUser.dashboard") }}</span
           >
-          <span 
+          <span :message="message"
             class="font-weight-bold"
             >{{ $t(message) }}</span
           >
@@ -18,12 +18,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class SystemUserHeader extends Vue {
   // message = "admin.systemUser.account";
-  message = "Judge Frank's Room"
+  // message = "admin.systemUser.account";
+  @Prop()
+  message: string | undefined
 }
 </script>
 
