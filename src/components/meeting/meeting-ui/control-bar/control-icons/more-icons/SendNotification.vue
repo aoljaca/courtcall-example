@@ -115,16 +115,22 @@ export default class SendNotification extends Vue {
       name: "Ada County ",
       number: "#5",
       startTime: DateTime.now().toISO(),
+      participants: [],
+      id: '1'
     },
     {
       name: "Ada County",
       number: "#20",
       startTime: DateTime.now().toISO(),
+      participants: [],
+      id: '2'
     },
     {
       name: "Canyon County",
       number: "#1",
       startTime: DateTime.now().toISO(),
+      participants: [],
+      id: '3'
     },
   ];
 

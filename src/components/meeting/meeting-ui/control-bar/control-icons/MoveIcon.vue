@@ -4,11 +4,11 @@
       <template v-slot:activator="{ on, attrs }">
         <v-container fluid>
           <v-row class="px-0 py-0">
-            <v-col class="px-0 py-0">
+            <v-col class="px-0 py-0 d-flex justify-center">
               <v-btn
                 v-bind="attrs"
                 v-on="on"
-                fab
+                icon
                 elevation="0"
                 :title="$t('meetingUI.controlBar.moveParticipants.title')"
               >
@@ -66,25 +66,11 @@ import { Component, Vue } from "vue-property-decorator";
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 @Component({})
 export default class MoveIcon extends Vue {
-  selectedSubconference: SubConference | undefined;
+  selectedSubconference: SubConference | null = null;
 
-  possibleSubconferences: SubConference[] = [
-    {
-      displayName: "Subconference A",
-      systemName: "A",
-      sessionId: "",
-    },
-    {
-      displayName: "Subconference B",
-      systemName: "B",
-      sessionId: "",
-    },
-    {
-      displayName: "Subconference C",
-      systemName: "C",
-      sessionId: "",
-    },
-  ];
+  get possibleSubconferences(): SubConference[] {
+    return this.$store.getters["SubconferenceModule/getAsList"];
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -2,60 +2,60 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Module } from "vuex";
 
 const participants: {
-  [key: number]: Participant;
+  [key: string]: Participant;
 } = {
-  1: {
-    id: 1,
+  "1": {
+    id: "1",
     name: "P1",
     pubnub_id: "c1",
   },
-  2: {
-    id: 2,
+  "2": {
+    id: "2",
     name: "P2",
     pubnub_id: "c2",
   },
-  3: {
-    id: 3,
+  "3": {
+    id: "3",
     name: "P3",
     pubnub_id: "c3",
   },
-  4: {
-    id: 4,
+  "4": {
+    id: "4",
     name: "P4",
     pubnub_id: "c4",
   },
-  5: {
-    id: 5,
+  "5": {
+    id: "5",
     name: "P5",
     pubnub_id: "c5",
   },
-  6: {
-    id: 6,
+  "6": {
+    id: "6",
     name: "P6",
     pubnub_id: "c6",
   },
-  7: {
-    id: 7,
+  "7": {
+    id: "7",
     name: "P7",
     pubnub_id: "c7",
   },
-  8: {
-    id: 8,
+  "8": {
+    id: "8",
     name: "P8",
     pubnub_id: "c8",
   },
-  9: {
-    id: 9,
+  "9": {
+    id: "9",
     name: "P9",
     pubnub_id: "c9",
   },
-  10: {
-    id: 10,
+  "10": {
+    id: "10",
     name: "P10",
     pubnub_id: "c10",
   },
 };
-const pubNubIdtoParticipantId: { [key: string]: number } = {};
+const pubNubIdtoParticipantId: { [key: string]: string } = {};
 Object.values(participants).forEach(
   (p) => (pubNubIdtoParticipantId[p.pubnub_id] = p.id)
 );
@@ -78,7 +78,7 @@ const participantsModule: Module<any, any> = {
     },
   },
   getters: {
-    getById: (state) => (id: number) => {
+    getById: (state) => (id: string) => {
       return state.participants[id];
     },
     getAsList: (state) => Object.values(state.participants),
@@ -86,7 +86,7 @@ const participantsModule: Module<any, any> = {
       (Object.values(state.participants) as Participant[]).filter(
         (p) => p.id !== state.me?.id
       ),
-    getByPubNubId: (state) => (pubnubId: number) => {
+    getByPubNubId: (state) => (pubnubId: string) => {
       return state.participants[state.pubNubIdtoParticipantId[pubnubId]];
     },
   },

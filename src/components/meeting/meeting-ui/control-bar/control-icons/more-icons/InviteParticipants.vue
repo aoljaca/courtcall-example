@@ -82,16 +82,22 @@ export default class InviteParticipants extends Vue {
       name: "Ada County",
       number: "#4",
       startTime: "",
+      participants: [],
+      id: '1'
     },
     {
       name: "Ada County",
       number: "#5",
       startTime: "",
+      participants: [],
+      id: '2'
     },
     {
       name: "Canyon County",
       number: "#1",
       startTime: "",
+      participants: [],
+      id: '3'
     },
   ];
   invitationTypeLabel(type: InviteParticipantType) {

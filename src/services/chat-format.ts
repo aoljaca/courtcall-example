@@ -21,7 +21,7 @@ export class ChatFormatServiceImpl implements ChatFormatService {
         params.participants[p] ? params.participants[p].name : "Unknown"
       );
     if (actualParticipants.length === 0) {
-      return params.$t("sidebar.chat.chatCard.nobody");
+      return params.this.$t("sidebar.chat.chatCard.nobody");
     } else if (actualParticipants.length === 1) {
       return actualParticipants[0];
     } else if (actualParticipants.length == 2) {
