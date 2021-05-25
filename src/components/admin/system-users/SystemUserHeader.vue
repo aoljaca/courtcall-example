@@ -22,7 +22,8 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class SystemUserHeader extends Vue {
-  message = "admin.systemUser.account";
+  // message = "admin.systemUser.account";
+  message = "Judge Frank's Room"
 }
 </script>
 

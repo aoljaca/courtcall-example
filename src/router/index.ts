@@ -9,7 +9,8 @@ import MeetingUI from "../components/meeting/meeting-ui/MeetingUI.vue";
 import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
 import SystemUserEdit from "../components/admin/system-users/SystemUserEdit.vue";
-import RoomViewManage from "../components/admin/system-users/room/RoomViewManage.vue";
+import RoomViewManage from "../components/admin/system-users/room/view/RoomViewManage.vue";
+import RoomAddEdit from "../components/admin/system-users/room/edit/RoomAddEdit.vue";
 import { component } from "vue/types/umd";
 Vue.use(VueRouter);
 
@@ -75,9 +76,14 @@ const routes: Array<RouteConfig> = [
         name: "System User Edit",
       },
       {
-        path: "system-users/room",
+        path: "system-users/room/view",
         component: RoomViewManage,
         name: "Room View Manage"
+      },
+      {
+        path: "system-users/room/edit",
+        component: RoomAddEdit,
+        name: "Room Add Edit"
       },
     ],
   },

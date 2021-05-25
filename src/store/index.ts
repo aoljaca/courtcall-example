@@ -5,6 +5,7 @@ import BackgroundBlurModule from "./background-blur/background-blur-module";
 import SidebarModule from "./sidebar/sidebar-module";
 import ChatModule from "./chat/chat-module";
 import ParticipantsModule from "./participants/participants-module";
+import adminRoomModule from "./admin/admin-room-module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -14,5 +15,6 @@ export default new Vuex.Store({
     SidebarModule,
     ChatModule,
     ParticipantsModule,
+    adminRoomModule,
   },
 });

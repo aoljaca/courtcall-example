@@ -20,14 +20,14 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue";
-import RoomDetails from "@/components/admin/system-users/room/RoomDetails.vue";
-import RoomNav from "@/components/admin/system-users/room/RoomNav.vue";
-import Settings from "@/components/admin/system-users/room/Settings.vue";
-import CasesTable from "@/components/admin/system-users/room/CasesTable.vue";
-import ParticipantsTable from "@/components/admin/system-users/room/ParticipantsTable.vue";
+import RoomDetails from "@/components/admin/system-users/room/view/RoomDetails.vue";
+import RoomNav from "@/components/admin/system-users/room/view/RoomNav.vue";
+import Settings from "@/components/admin/system-users/room/view/Settings.vue";
+import CasesTable from "@/components/admin/system-users/room/view/CasesTable.vue";
+import ParticipantsTable from "@/components/admin/system-users/room/view/ParticipantsTable.vue";
 
 import "reflect-metadata";
-import Participants from "../../dashboard/participants/Participants.vue";
+import Participants from "../../../dashboard/participants/Participants.vue";
 @Component({
   components: {
     SystemUserHeader,

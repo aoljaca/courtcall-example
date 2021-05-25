@@ -3,11 +3,11 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-icon>
+          <v-icon class="">
             mdi-circle
           </v-icon>
-          <span class="mx-4">Judge Frank</span>
-          <span>Organization: CourtCall</span>
+          <h2 class="mx-4 d-inline-block">Judge Frank's Room</h2>
+          <span>{{ $t("admin.roomDetails.organization")}} {{ roomDetails.organization}}</span>
         </v-col>
         <v-col class="d-flex justify-end">
           <v-btn
@@ -15,16 +15,16 @@
           color="grey darken-4 rounded-0"
           depressed
           >
-           EDIT 
+           {{ $t("admin.roomDetails.editButton") }} 
           </v-btn>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="ml-8">
         <v-col cols="2">
           <v-row>
             <v-col>
               <span>
-                Streaming
+                {{ $t("admin.roomDetails.streaming") }}
               </span>
               <v-icon>
                 mdi-wifi
@@ -34,7 +34,7 @@
           <v-row>
             <v-col>
               <span>
-                Recording
+                {{ $t("admin.roomDetails.recording" )}}
               </span>
               <v-icon>
                 mdi-circle
@@ -46,10 +46,10 @@
           <v-row>
             <v-col>
               <span>
-                Status
+                {{ $t("admin.roomDetails.status") }}
               </span>
               <span class="ml-8 font-weight-light">
-                Available
+                {{ roomDetails.status }}
               </span>
             </v-col>
           </v-row>
@@ -58,41 +58,41 @@
               <v-icon>
                 mdi-lock-open
               </v-icon>
-              Lock Now
+              {{ $t("admin.roomDetails.lock") }}
             </v-col>
           </v-row>
         </v-col>
         <v-col cols="2">
            <v-row>
             <v-col>
-              Phone Number
+              {{ $t("admin.roomDetails.phone") }}
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-              Host Access Code
+              {{ $t("admin.roomDetails.hostAccessCode") }}
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-              Participant Access Code
+              {{ $t("admin.roomDetails.participantAccessCode")}}
             </v-col>
           </v-row>
         </v-col>
         <v-col cols="2">
           <v-row>
             <v-col>
-              555-555-5555
+              {{ roomDetails.phone }}
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-              5555
+              {{ roomDetails.hostAccessCode }}
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-              5555
+              {{ roomDetails.participantAccessCode }}
             </v-col>
           </v-row>
         </v-col>
@@ -106,7 +106,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
-export default class RoomDetails extends Vue {}
+export default class RoomDetails extends Vue {
+  get roomDetails() {
+    return this.$store.state.adminRoomModule.roomDetails;
+  }
+}
 </script>
 
 <style lang="scss" scoped>

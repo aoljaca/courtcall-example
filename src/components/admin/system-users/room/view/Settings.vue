@@ -3,234 +3,232 @@
     <v-row>
       <v-col>
         <h2>
-          Settings
+          {{ $t("admin.roomSettings.settings") }}
         </h2>
       </v-col>
     </v-row>
     <v-row>
       <v-col>
-        <span>Template</span>
-        <span>Template Name (Modified)</span>
+        <span>{{ $t("admin.roomSettings.template") }}</span>
+        <span>{{ roomSettings.template }}</span>
       </v-col>
     </v-row>
     <v-row>
       <v-col id="left-settings-col">
         <v-row>
           <v-col>
-            Entrance Behavior
+            {{ $t("admin.roomSettings.entranceBehavior")}}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            App/Web Passcode
+            {{ $t("admin.roomSettings.passcode")}}
           </v-col>
           <v-col class="setting-state">
-            YourHonor931
+            {{ roomSettings.passcode }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Video
+            {{ $t("admin.roomSettings.video")}}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.video }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Audio
+            {{ $t("admin.roomSettings.audio")}}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.audio }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Allow participants to select before entering room
+            {{ $t("admin.roomSettings.allowSelectBeforeEnter")}}
           </v-col>
           <v-col class="setting-state">
-            YES
+            {{ roomSettings.allowSelectBeforeEnter }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Waiting Room
+            {{ $t("admin.roomSettings.waitingRoom") }}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.waitingRoom }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Audio Only Conferences
+            {{ $t("admin.roomSettings.audioOnlyConference") }}
           </v-col>
           <v-col class="setting-state">
-            Ready-to-Meet
+            {{ roomSettings.audioOnlyConference}}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            PSTN Provider
+            {{ $t("admin.roomSettings.providerPSTN") }}
           </v-col>
           <v-col class="setting-state">
-            ZIPDX
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col>
-            Meeting Video and Audio Control
+            {{ roomSettings.providerPSTN }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Allow partcipants to turn their video off/on
+            {{ $t("admin.roomSettings.meetingVideoAndAudio")}}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            {{ $t("admin.roomSettings.allowParticipantsToggleVideo") }}
           </v-col>
           <v-col class="setting-state">
-            YES
+            {{ roomSettings.allowParticipantsToggleVideo }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Allow partcipants to toggle mute themselves
+            {{ $t("admin.roomSettings.allowParticipantsToggleAudio" )}}
           </v-col>
           <v-col class="setting-state">
-            YES
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col>
-            Video Set Up
+            {{ roomSettings.allowParticipantsToggleAudio }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Default Canvas Layout
+            {{ $t("admin.roomSettings.videoSetup") }}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            {{ $t("admin.roomSettings.defaultCanvasLayout") }}
           </v-col>
           <v-col class="setting-state">
-            Grid
+            {{ roomSettings.defaultCanvasLayout }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Allow partcipants to change layout
+            {{ $t("admin.roomSettings.allowParticipantsChangeLayout")}}
           </v-col>
           <v-col class="setting-state">
-            YES
+            {{ roomSettings.allowPartcipantsChangeLayout }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Video Quality
+            {{ $t("admin.roomSettings.videoQuality") }}
           </v-col>
           <v-col class="setting-state">
-            HIGH
+            {{ roomSettings.videoQuality }}
           </v-col>
         </v-row>
       </v-col>
       <v-col id="right-settings-col" class="divide-cols">
         <v-row>
           <v-col>
-            Meeting Operations
+            {{ $t("admin.roomSettings.meetingOperations") }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Screen Sharing
+            {{ $t("admin.roomSettings.screenSharing") }}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.screenSharing }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Require Request for Screen Sharing
+            {{ $t("admin.roomSettings.requireScreenSharingRequest") }}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.requireScreenSharingRequest }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            File Management
+            {{ $t("admin.roomSettings.fileManagement") }}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.fileManagement }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Hand Raising
+            {{ $t("admin.roomSettings.handRaising") }}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.handRaising }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Chat
+            {{ $t("admin.roomSettings.chat")}}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.chat }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Access Functions
+            {{ $t("admin.roomSettings.accessFunctions") }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Recording 
+            {{ $t("admin.roomSettings.recording")}} 
           </v-col>
           <v-col class="setting-state">
-            Enabled
+            {{ roomSettings.recording }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Auto-email link to all participants
+            {{ $t("admin.roomSettings.emailLinkToAll") }}
           </v-col>
           <v-col class="setting-state">
-            ON
+            {{ roomSettings.emailLinkToAll }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Transcription
+            {{ $t("admin.roomSettings.transcription") }}
           </v-col>
           <v-col class="setting-state">
-            ENABLED
+            {{ roomSettings.transcription }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Remote Translation
+            {{ $t("admin.roomSettings.remoteTranslation") }}
           </v-col>
           <v-col class="setting-state">
-            ENABLED
+            {{ roomSettings.remoteTranslation }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Streaming
+            {{ $t("admin.roomSettings.streaming") }}
           </v-col>
           <v-col class="setting-state">
-            ENABLED
+            {{ roomSettings.streaming }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Support
+            {{ $t("admin.roomSettings.support") }}
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            Duplicate participant handling
+            {{ $t("admin.roomSettings.duplicateParticipantHandling") }}
           </v-col>
           <v-col class="setting-state">
-            SUPPORT
+            {{ roomSettings.duplicateParticipantHandling }}
           </v-col>
         </v-row>
       </v-col>
@@ -242,7 +240,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
-export default class Settings extends Vue {}
+export default class Settings extends Vue {
+  get roomSettings() {
+    return this.$store.state.adminRoomModule.roomSettings;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
