@@ -1,10 +1,10 @@
 <template>
   <div>
     <system-user-header message="Judge Frank's Room"></system-user-header>
-    <v-container fluid>
+    <v-container fluid class="mt-6">
       <v-row>
-        <v-col class="px-8 pt-4" cols="2">
-          <room-nav class="pa-4"></room-nav>
+        <v-col class="pl-8 pt-4" cols="2">
+          <room-nav parentContext="view" class="py-4 pl-4 pr-2"></room-nav>
         </v-col>
         <v-col cols="10">
           <room-details class="mb-4"></room-details>

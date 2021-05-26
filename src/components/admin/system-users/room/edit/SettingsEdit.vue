@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container px-6>
+    <v-container fluid>
       <v-row id="settings-edit-header">
         <v-col>
           <h2>
@@ -13,7 +13,7 @@
           <label>{{ $t("admin.roomSettings.template") }}</label>
         </v-col>
         <v-col cols="3">
-          <v-text-field>{{ roomSettings.template }}</v-text-field>
+          <v-text-field label="Template Name (Modified)">{{ roomSettings.template }}</v-text-field>
         </v-col>
         <v-col>
           <v-btn  
@@ -341,5 +341,4 @@ export default class SettingsEdit extends Vue {
 .divide-cols {
   border-left: solid 1px grey;
 }
-
 </style>

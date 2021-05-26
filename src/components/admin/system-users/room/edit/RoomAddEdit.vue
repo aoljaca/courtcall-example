@@ -1,25 +1,21 @@
 <template>
   <div>
     <system-user-header message="Judge Frank's Room"></system-user-header>
-    <v-container fluid>
+    <v-container fluid class="mt-6 pa-8">
       <v-row>
-        <v-col id="add-edit-nav" class="px-8 pt-4" cols="1">
-          <v-row>
-            <v-col>
-              Details
-            </v-col>
-          </v-row>
+        <v-col class="" cols="2">
+          <room-nav parentContext="edit" class="pl-4 pr-2"></room-nav>
         </v-col>
-        <v-col id="add-edit-content" cols="11">
+        <v-col id="add-edit-content" cols="10">
           <v-row id="room-details-edit">
             <v-col>
-              <room-details-edit>
+              <room-details-edit class="pr-2">
               </room-details-edit>
             </v-col>
           </v-row>
           <v-row id="settings-edit">
             <v-col>
-              <settings-edit class="border">
+              <settings-edit class="border py-2">
               </settings-edit>
             </v-col>
           </v-row>
@@ -45,7 +41,8 @@
 import { Component, Vue } from "vue-property-decorator";
 import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue";
 import RoomDetailsEdit from "@/components/admin/system-users/room/edit/RoomDetailsEdit.vue";
-import SettingsEdit from "@/components/admin/system-users/room/edit/SettingsEdit.vue"
+import SettingsEdit from "@/components/admin/system-users/room/edit/SettingsEdit.vue";
+import RoomNav from "@/components/admin/system-users/room/view/RoomNav.vue"
 
 import "reflect-metadata";
 @Component({
@@ -53,6 +50,7 @@ import "reflect-metadata";
     SystemUserHeader,
     RoomDetailsEdit,
     SettingsEdit,
+    RoomNav
   },
 })
 export default class RoomAddEdit extends Vue {}
@@ -65,5 +63,9 @@ export default class RoomAddEdit extends Vue {}
 
 .border {
   border: 1px solid grey;
+}
+
+.nav-item-dark {
+  background: #D5D5D5;
 }
 </style>

@@ -3,11 +3,18 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-icon class="">
+          <v-icon class="mb-2">
             mdi-circle
           </v-icon>
-          <h2 class="mx-4 d-inline-block">Judge Frank's Room</h2>
-          <span>{{ $t("admin.roomDetails.organization")}} {{ roomDetails.organization}}</span>
+          <h2 class="mx-4 d-inline-block">
+            Judge Frank's Room
+          </h2>
+          <span class="mx-8">
+            {{ $t("admin.roomDetails.organization")}}
+          </span>
+          <span>
+            {{ roomDetails.organization}}
+          </span>
         </v-col>
         <v-col class="d-flex justify-end">
           <v-btn
@@ -15,7 +22,9 @@
           color="grey darken-4 rounded-0"
           depressed
           >
-           {{ $t("admin.roomDetails.editButton") }} 
+            <router-link class="remove-decoration" to="/admin/system-users/room/edit">
+              {{ $t("admin.roomDetails.editButton") }} 
+            </router-link>
           </v-btn>
         </v-col>
       </v-row>
@@ -79,7 +88,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col cols="2">
+        <v-col style="margin-left: -2rem" cols="2">
           <v-row>
             <v-col>
               {{ roomDetails.phone }}
@@ -114,4 +123,8 @@ export default class RoomDetails extends Vue {
 </script>
 
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+  color: white !important;
+}
 </style>

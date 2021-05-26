@@ -28,7 +28,7 @@ const roomSettings = {
 }
 
 const roomDetails = {
-  organization: "CourtCall",
+  organization: "LA County Superior Court - 12345",
   status: "Available",
   phone: "555-555-5555",
   hostAccessCode: "5555",

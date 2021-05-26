@@ -5,22 +5,22 @@
         Details
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item">
         Settings
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item">
         Cases
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item">
         Participants
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item">
         Activity
       </v-col>
@@ -29,10 +29,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
-export default class RoomNav extends Vue {}
+export default class RoomNav extends Vue {
+  @Prop()
+  parentContext: string | undefined;
+}
 </script>
 
 <style lang="scss" scoped>
