@@ -3,6 +3,7 @@ export default {
   template: "Template",
   entranceBehavior: "Entrance Behavior",
   passcode: "App/Web Passcode",
+  createPasscode: "Create Passcode",
   video: "Video",
   audio: "Audio",
   allowSelectBeforeEnter: "Allow participants to select before entering room",

@@ -44,6 +44,17 @@
             </v-col>
           </v-row>
           <v-row>
+            <v-col class="d-flex justify-start">
+              <label>{{ $t("admin.roomSettings.createPasscode") }}</label>
+            </v-col>
+            <v-col cols="1">
+            </v-col>
+            <v-col cols="4">
+              <v-text-field label="YourHonor931">
+              </v-text-field>
+            </v-col>
+          </v-row>
+          <v-row>
             <v-col>
               {{ $t("admin.roomSettings.video")}}
             </v-col>
@@ -88,11 +99,14 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
-              {{ $t("admin.roomSettings.providerPSTN") }}
+            <v-col class="d-flex justify-start">
+              <label>{{ $t("admin.roomSettings.providerPSTN") }}</label>
             </v-col>
-            <v-col class="d-flex justify-end">
-              {{ roomSettings.providerPSTN }}
+            <v-col cols="1">
+            </v-col>
+            <v-col cols="4">
+              <v-select label="ZipDX">
+              </v-select>
             </v-col>
           </v-row>
           <v-row>
@@ -105,7 +119,10 @@
               {{ $t("admin.roomSettings.allowParticipantsToggleVideo") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.allowParticipantsToggleVideo }}
+              <span>NO</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>YES</span>
             </v-col>
           </v-row>
           <v-row>
@@ -113,7 +130,10 @@
               {{ $t("admin.roomSettings.allowParticipantsToggleAudio" )}}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.allowParticipantsToggleAudio }}
+              <span>NO</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>YES</span>
             </v-col>
           </v-row>
           <v-row>
@@ -122,19 +142,25 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
-              {{ $t("admin.roomSettings.defaultCanvasLayout") }}
+            <v-col class="d-flex justify-start">
+              <label>{{ $t("admin.roomSettings.defaultCanvasLayout") }}</label>
             </v-col>
-            <v-col class="d-flex justify-end">
-              {{ roomSettings.defaultCanvasLayout }}
+            <v-col cols="1">
+            </v-col>
+            <v-col cols="4">
+              <v-select label="Grid">
+              </v-select>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-              {{ $t("admin.roomSettings.allowParticipantsChangeLayout")}}
+              {{ $t("admin.roomSettings.allowPartcipantsChangeLayout")}}
             </v-col>
-            <v-col class="d-flex justify-end">
-              {{ roomSettings.allowPartcipantsChangeLayout }}
+             <v-col class="d-flex justify-end">
+              <span>NO</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>YES</span>
             </v-col>
           </v-row>
           <v-row>
@@ -142,7 +168,17 @@
               {{ $t("admin.roomSettings.videoQuality") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.videoQuality }}
+              <v-radio-group
+                v-model="row"
+                row
+              >
+                <v-radio label="HIGH">
+                </v-radio>
+                <v-radio label="MED">
+                </v-radio>
+                <v-radio label="LOW">
+                </v-radio>
+              </v-radio-group>
             </v-col>
           </v-row>
         </v-col>
@@ -157,7 +193,10 @@
               {{ $t("admin.roomSettings.screenSharing") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.screenSharing }}
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
@@ -165,7 +204,10 @@
               {{ $t("admin.roomSettings.requireScreenSharingRequest") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.requireScreenSharingRequest }}
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
@@ -173,7 +215,10 @@
               {{ $t("admin.roomSettings.fileManagement") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.fileManagement }}
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
@@ -181,7 +226,10 @@
               {{ $t("admin.roomSettings.handRaising") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.handRaising }}
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
@@ -189,7 +237,10 @@
               {{ $t("admin.roomSettings.chat")}}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.chat }}
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
@@ -202,7 +253,10 @@
               {{ $t("admin.roomSettings.recording")}} 
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.recording }}
+            <span>DISABLE</span>
+            <v-switch class="my-0 py-0 mx-4">
+            </v-switch>
+            <span>ENABLE</span>
             </v-col>
           </v-row>
           <v-row>
@@ -210,7 +264,10 @@
               {{ $t("admin.roomSettings.emailLinkToAll") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.emailLinkToAll }}
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
@@ -218,7 +275,10 @@
               {{ $t("admin.roomSettings.transcription") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.transcription }}
+            <span>DISABLE</span>
+            <v-switch class="my-0 py-0 mx-4">
+            </v-switch>
+            <span>ENABLE</span>
             </v-col>
           </v-row>
           <v-row>
@@ -226,7 +286,10 @@
               {{ $t("admin.roomSettings.remoteTranslation") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.remoteTranslation }}
+            <span>DISABLE</span>
+            <v-switch class="my-0 py-0 mx-4">
+            </v-switch>
+            <span>ENABLE</span>
             </v-col>
           </v-row>
           <v-row>
@@ -234,7 +297,10 @@
               {{ $t("admin.roomSettings.streaming") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.streaming }}
+            <span>DISABLE</span>
+            <v-switch class="my-0 py-0 mx-4">
+            </v-switch>
+            <span>ENABLE</span>
             </v-col>
           </v-row>
           <v-row>
@@ -247,7 +313,10 @@
               {{ $t("admin.roomSettings.duplicateParticipantHandling") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              {{ roomSettings.duplicateParticipantHandling }}
+            <span>HOST</span>
+            <v-switch class="my-0 py-0 mx-4">
+            </v-switch>
+            <span>SUPPORT</span>
             </v-col>
           </v-row>
         </v-col>
