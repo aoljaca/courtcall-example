@@ -27,7 +27,6 @@ import CasesTable from "@/components/admin/system-users/room/view/CasesTable.vue
 import ParticipantsTable from "@/components/admin/system-users/room/view/ParticipantsTable.vue";
 
 import "reflect-metadata";
-import Participants from "../../../dashboard/participants/Participants.vue";
 @Component({
   components: {
     SystemUserHeader,
@@ -36,7 +35,6 @@ import Participants from "../../../dashboard/participants/Participants.vue";
     Settings,
     CasesTable,
     ParticipantsTable,
-    Participants
   },
 })
 export default class RoomViewManage extends Vue {}
