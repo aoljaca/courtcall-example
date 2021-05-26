@@ -62,14 +62,6 @@
         </v-row>
         <v-row>
           <v-col>
-            {{ $t("admin.roomSettings.audioOnlyConference") }}
-          </v-col>
-          <v-col class="setting-state">
-            {{ roomSettings.audioOnlyConference}}
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
             {{ $t("admin.roomSettings.providerPSTN") }}
           </v-col>
           <v-col class="setting-state">

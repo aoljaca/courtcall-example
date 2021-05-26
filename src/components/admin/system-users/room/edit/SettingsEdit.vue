@@ -36,60 +36,62 @@
             <v-col>
               {{ $t("admin.roomSettings.passcode")}}
             </v-col>
-            <v-col class="setting-state">
-                <v-col class="d-flex">
-                  <span>OFF</span>
-                  <v-switch>
-                  </v-switch>
-                  <span>ON</span>
-                </v-col>
+            <v-col class="d-flex justify-end">
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
               {{ $t("admin.roomSettings.video")}}
             </v-col>
-            <v-col class="setting-state">
-              {{ roomSettings.video }}
+            <v-col class="d-flex justify-end">
+            <span>OFF</span>
+            <v-switch class="my-0 py-0 mx-4">
+            </v-switch>
+            <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
               {{ $t("admin.roomSettings.audio")}}
             </v-col>
-            <v-col class="setting-state">
-              {{ roomSettings.audio }}
+            <v-col class="d-flex justify-end">
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
               {{ $t("admin.roomSettings.allowSelectBeforeEnter")}}
             </v-col>
-            <v-col class="setting-state">
-              {{ roomSettings.allowSelectBeforeEnter }}
+            <v-col class="d-flex justify-end">
+              <span>NO</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>YES</span>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
               {{ $t("admin.roomSettings.waitingRoom") }}
             </v-col>
-            <v-col class="setting-state">
-              {{ roomSettings.waitingRoom }}
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              {{ $t("admin.roomSettings.audioOnlyConference") }}
-            </v-col>
-            <v-col class="setting-state">
-              {{ roomSettings.audioOnlyConference}}
+            <v-col class="d-flex justify-end">
+              <span>OFF</span>
+              <v-switch class="my-0 py-0 mx-4">
+              </v-switch>
+              <span>ON</span>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
               {{ $t("admin.roomSettings.providerPSTN") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.providerPSTN }}
             </v-col>
           </v-row>
@@ -102,7 +104,7 @@
             <v-col>
               {{ $t("admin.roomSettings.allowParticipantsToggleVideo") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.allowParticipantsToggleVideo }}
             </v-col>
           </v-row>
@@ -110,7 +112,7 @@
             <v-col>
               {{ $t("admin.roomSettings.allowParticipantsToggleAudio" )}}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.allowParticipantsToggleAudio }}
             </v-col>
           </v-row>
@@ -123,7 +125,7 @@
             <v-col>
               {{ $t("admin.roomSettings.defaultCanvasLayout") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.defaultCanvasLayout }}
             </v-col>
           </v-row>
@@ -131,7 +133,7 @@
             <v-col>
               {{ $t("admin.roomSettings.allowParticipantsChangeLayout")}}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.allowPartcipantsChangeLayout }}
             </v-col>
           </v-row>
@@ -139,7 +141,7 @@
             <v-col>
               {{ $t("admin.roomSettings.videoQuality") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.videoQuality }}
             </v-col>
           </v-row>
@@ -154,7 +156,7 @@
             <v-col>
               {{ $t("admin.roomSettings.screenSharing") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.screenSharing }}
             </v-col>
           </v-row>
@@ -162,7 +164,7 @@
             <v-col>
               {{ $t("admin.roomSettings.requireScreenSharingRequest") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.requireScreenSharingRequest }}
             </v-col>
           </v-row>
@@ -170,7 +172,7 @@
             <v-col>
               {{ $t("admin.roomSettings.fileManagement") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.fileManagement }}
             </v-col>
           </v-row>
@@ -178,7 +180,7 @@
             <v-col>
               {{ $t("admin.roomSettings.handRaising") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.handRaising }}
             </v-col>
           </v-row>
@@ -186,7 +188,7 @@
             <v-col>
               {{ $t("admin.roomSettings.chat")}}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.chat }}
             </v-col>
           </v-row>
@@ -199,7 +201,7 @@
             <v-col>
               {{ $t("admin.roomSettings.recording")}} 
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.recording }}
             </v-col>
           </v-row>
@@ -207,7 +209,7 @@
             <v-col>
               {{ $t("admin.roomSettings.emailLinkToAll") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.emailLinkToAll }}
             </v-col>
           </v-row>
@@ -215,7 +217,7 @@
             <v-col>
               {{ $t("admin.roomSettings.transcription") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.transcription }}
             </v-col>
           </v-row>
@@ -223,7 +225,7 @@
             <v-col>
               {{ $t("admin.roomSettings.remoteTranslation") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.remoteTranslation }}
             </v-col>
           </v-row>
@@ -231,7 +233,7 @@
             <v-col>
               {{ $t("admin.roomSettings.streaming") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.streaming }}
             </v-col>
           </v-row>
@@ -244,7 +246,7 @@
             <v-col>
               {{ $t("admin.roomSettings.duplicateParticipantHandling") }}
             </v-col>
-            <v-col class="setting-state">
+            <v-col class="d-flex justify-end">
               {{ roomSettings.duplicateParticipantHandling }}
             </v-col>
           </v-row>
@@ -270,8 +272,5 @@ export default class SettingsEdit extends Vue {
 .divide-cols {
   border-left: solid 1px grey;
 }
-.setting-state {
-  font-weight: bold;
-  text-align: right;
-}
+
 </style>
