@@ -169,7 +169,7 @@
             </v-col>
             <v-col class="d-flex justify-end">
               <v-radio-group
-                v-model="row"
+                mandatory
                 row
               >
                 <v-radio label="HIGH">
