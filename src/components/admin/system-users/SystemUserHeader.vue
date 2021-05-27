@@ -7,9 +7,9 @@
             class="grey--text text--lighten-1 font-weight-bold text-subtitle-1"
             >{{ $t("admin.systemUser.dashboard") }}</span
           >
-          <span :message="message"
+          <span
             class="font-weight-bold"
-            >{{ $t(message) }}</span
+            >{{ message }}</span
           >
         </v-col>
       </v-row>
