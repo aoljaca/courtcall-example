@@ -28,7 +28,7 @@
                     :class="{
                       'd-none': shouldHideCanvas,
                       'video-dimensions': true,
-                      'canvas-element':true,
+                      'canvas-element': true,
                     }"
                   ></canvas>
                   <video
@@ -98,7 +98,11 @@
                             single-line
                           ></v-select>
                         </v-col>
-                        <v-col cols="12" md="4" class="d-flex align-center py-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex align-center py-0"
+                        >
                           <v-btn
                             @click="toggleOpenBackground()"
                             elevation="0"
@@ -263,10 +267,17 @@ export default class VideoPreview extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-@media (min-width: 1280px) {}
-.video-dimensions {
-  width: 100%;
+@media (min-width: 1280px) {
+  .video-dimensions {
+    max-height: 45vh;
+  }
 }
+@media (max-width: 1279px) {
+  .video-dimensions {
+    width: 100%;
+  }
+}
+
 .overlay-btn {
   background: #0000 !important;
 }
