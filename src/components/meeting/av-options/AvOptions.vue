@@ -57,7 +57,6 @@
           >
         </v-col>
       </v-row>
-      <hr />
       <v-row class="setup-height">
         <v-col cols="12" md="6"><video-preview></video-preview></v-col>
         <v-col cols="12" md="6"><audio-setup></audio-setup></v-col>
