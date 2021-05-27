@@ -3,7 +3,7 @@
     <v-card>
       <v-container>
         <v-row>
-          <v-col cols="3" class="py-0"
+          <v-col cols="12" class="py-0"
             ><h4>{{ $t("avOptions.internetConnection") }}</h4></v-col
           >
           <v-col class="py-0">Good</v-col>

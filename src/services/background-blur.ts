@@ -102,7 +102,6 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
   private async startBackground(options: BindPageParams) {
     tfjs.getBackend();
     const net = await this.getNet();
-    options.canvasElement.style.backgroundSize = `cover`;
     options.canvasElement.style.background = options.backgroundUrl!;
     this.segmentBackgroundInRealTime(net, options);
     options.store.dispatch("BackgroundBlurModule/changeModeAction", {

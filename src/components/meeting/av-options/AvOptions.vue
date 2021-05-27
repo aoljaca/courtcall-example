@@ -10,7 +10,7 @@
               </v-col>
             </v-row>
             <v-row>
-              <v-col class="d-flex justify-center">
+              <v-col class="d-flex">
                 <h2>{{ $t("avOptions.allowUseHeader") }}</h2>
               </v-col>
             </v-row>
@@ -40,7 +40,7 @@
         </v-col>
       </v-row>
       <v-row class="justify-md-space-between">
-        <v-col cols="4">
+        <v-col cols="12" md="4">
           <span class="d-block">
             <h2 class="d-inline">{{ $t("avOptions.internetConnection") }}</h2>
             <h3 class="d-inline pl-2">Good</h3>
@@ -50,7 +50,7 @@
             <h3 class="d-inline pl-2">Connected</h3>
           </span>
         </v-col>
-        <v-col cols="4" class="d-flex justify-end align-center">
+        <v-col cols="12" md="4" class="d-flex justify-md-end align-center">
           <v-btn
             ><v-icon>mdi-help-circle</v-icon
             ><span class="pl-1">{{ $t("general.getHelp") }}</span></v-btn
@@ -59,14 +59,14 @@
       </v-row>
       <hr />
       <v-row class="setup-height">
-        <v-col md="6"><video-preview></video-preview></v-col>
-        <v-col md="6"><audio-setup></audio-setup></v-col>
+        <v-col cols="12" md="6"><video-preview></video-preview></v-col>
+        <v-col cols="12" md="6"><audio-setup></audio-setup></v-col>
       </v-row>
       <v-row class="justify-center">
-        <v-col cols="2" class="d-flex justify-end">
+        <v-col cols="6" md="2" class="d-flex justify-end">
           <v-switch :label="$t('general.video')"></v-switch>
         </v-col>
-        <v-col cols="2" class="d-flex justify-start">
+        <v-col cols="6" md="2" class="d-flex justify-start">
           <v-switch :label="$t('general.audio')"></v-switch>
         </v-col>
       </v-row>
@@ -97,14 +97,16 @@ import VideoPreview from "./VideoPreview.vue";
 export default class AvOptions extends Vue {
   dialog = false;
 
-  mounted() {
+  mounted(): void {
     console.log("mounted");
+    this.dialog = true;
     navigator.mediaDevices
       .getUserMedia({
         video: true,
         audio: true,
       })
       .then((stream) => {
+        this.dialog = false;
         stream.getTracks().forEach((t) => t.stop());
       });
   }
@@ -114,8 +116,10 @@ export default class AvOptions extends Vue {
 .main-modal {
   color: black !important;
 }
-.setup-height {
-  height: 55vh;
-  min-height: 400px;
+@media (min-width: 1280px) {
+  .setup-height {
+    height: 55vh;
+    min-height: 400px;
+  }
 }
 </style>
