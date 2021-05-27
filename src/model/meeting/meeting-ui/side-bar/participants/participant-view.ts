@@ -7,7 +7,7 @@ interface ParticipantView {
 
 const ROOM_OVERVIEW_VIEW_TYPE: ParticipantView = {
   type: "roomOverview",
-  label: "sidebar.participants.roomOverview",
+  label: "sidebar.participants.roomOverview.title",
 };
 
 const ACTIVE_PARTICIPANTS_VIEW_TYPE: ParticipantView = {

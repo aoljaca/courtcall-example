@@ -22,4 +22,5 @@ export default {
   videoOff: "Video Off",
   screensharing: "Sharing Screen",
   notScreensharing: "Not Sharing Screen",
+  selectAll: "Select All",
 };

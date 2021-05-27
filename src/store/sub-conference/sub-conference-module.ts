@@ -1,29 +1,29 @@
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 import { Module } from "vuex";
 const SUBCONFERENCES: { [key: string]: SubConference } = {
-  "1": {
+  "1sc": {
     sessionId: "1",
     systemName: "A",
     displayName: "Main Room",
-    id: "1",
+    id: "1sc",
   },
-  "2": {
+  "2sc": {
     sessionId: "2",
     systemName: "B",
     displayName: "Subconference B",
-    id: "2",
+    id: "2sc",
   },
-  "3": {
+  "3sc": {
     sessionId: "3",
     systemName: "C",
     displayName: "Subconference C",
-    id: "3",
+    id: "3sc",
   },
-  "4": {
+  "4sc": {
     sessionId: "4",
     systemName: "D",
     displayName: "Subcoference D",
-    id: "4",
+    id: "4sc",
   },
 };
 

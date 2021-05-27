@@ -44,6 +44,7 @@ import {
 import ActivePartcipantsView from "./ActiveParticipants.vue";
 import CasesView from "./Cases.vue";
 import RoomOverview from "./RoomOverview.vue";
+import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 @Component({
   components: {
     ActivePartcipantsView,
@@ -61,7 +62,7 @@ export default class ParticipantMainView extends Vue {
 
   possibleParticipantViews: ParticipantView[] = PARTICIPANT_VIEW_TYPES;
 
-  selectedParticipantView: ParticipantView = PARTICIPANT_VIEW_TYPES[2];
+  selectedParticipantView: ParticipantView = PARTICIPANT_VIEW_TYPES[0];
 
   get selectedParticipantViewType() {
     return this.selectedParticipantView?.type;

@@ -5,7 +5,5 @@ export default {
   stopVideo: "Stop All Video",
   mute: "Mute All",
   unmute: "Unmute All",
-  stopCase: "Stop",
-  startCase: "Start",
-  liveCase: "Live Cases",
+  liveCase: "Live Case",
 };

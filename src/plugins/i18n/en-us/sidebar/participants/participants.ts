@@ -1,9 +1,10 @@
 import activeParticipants from "./active-users";
 import participantControl from "./participant-control";
+import roomOverview from "./room-overview";
 import cases from "./cases";
 export default {
   title: "Participants",
-  roomOverview: "Room Overview",
+  roomOverview,
   activeParticipants,
   cases,
   participantControl,
