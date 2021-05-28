@@ -15,7 +15,7 @@
           </v-row>
           <v-row id="settings-edit">
             <v-col>
-              <settings-edit class="border py-2">
+              <settings-edit class="border py-2 px-2">
               </settings-edit>
             </v-col>
           </v-row>

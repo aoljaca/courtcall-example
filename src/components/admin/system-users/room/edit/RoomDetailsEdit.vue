@@ -2,10 +2,10 @@
   <div>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4">
+        <div class="pr-4 settings-sub-header">
           Room Name
         </div>
-        <v-text-field label="Judge Frank's Room" dense>
+        <v-text-field :rules="rules" counter maxlength="25" clearable dense v-model="franksRoom">
         </v-text-field>
       </v-col>
       <v-col class="d-flex justify-end">
@@ -15,7 +15,9 @@
         depressed
         class="mr-6"
         >
+        <router-link class="remove-decoration" to="/admin/system-users/room/view">
         CANCEL
+        </router-link>
         </v-btn>
         <v-btn
         style="color: white" 
@@ -28,17 +30,17 @@
     </v-row>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4">
+        <div class="pr-4 settings-sub-header">
           Organization
         </div>
-        <v-text-field label="LA County Superior Court - 12345" dense>
+        <v-text-field :rules="rules" counter maxlength="25" clearable dense v-model="org">
         </v-text-field>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
-        <div class="pr-4">
+        <div class="pr-4 settings-sub-header">
           Status
         </div>
-        <v-select dense>
+        <v-select :items="items" dense>
         </v-select>
       </v-col>
     </v-row>
@@ -61,7 +63,7 @@
       >
         <v-row class="justify-center">
           <v-col cols="12">
-            <v-text-field label="Enter Template Name">
+            <v-text-field :rules="rules" counter maxlength="25" clearable dense v-model="temp" label="Enter Template Name">
             </v-text-field>
           </v-col>
         </v-row>
@@ -93,8 +95,32 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
-export default class RoomDetailsEdit extends Vue {}
+export default class RoomDetailsEdit extends Vue {
+
+  get roomSettings() {
+    return this.$store.state.adminRoomModule.roomSettings;
+  }
+  franksRoom = "Judge Frank's Room";
+  org = "LA County Superior Court - 12345";
+  temp = "Enter template name"
+  description = this.roomSettings.passcode;
+  rules = [v => v.length <= 25 || 'Max 25 characters'];
+  items = ["Draft", "Available"];
+}
 </script>
 
 <style lang="scss" scoped>
+.settings-sub-header {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.settings-edit-header {
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+a {
+  text-decoration: none;
+  color: white !important;
+}
 </style>

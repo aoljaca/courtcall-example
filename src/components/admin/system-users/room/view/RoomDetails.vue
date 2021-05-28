@@ -6,9 +6,9 @@
           <v-icon class="mb-2">
             mdi-circle
           </v-icon>
-          <h2 class="mx-4 d-inline-block">
+          <div class="mx-4 d-inline-block settings-edit-header">
             Judge Frank's Room
-          </h2>
+          </div>
           <span class="mx-8">
             {{ $t("admin.roomDetails.organization")}}
           </span>
@@ -67,7 +67,9 @@
               <v-icon>
                 mdi-lock-open
               </v-icon>
+              <span>
               {{ $t("admin.roomDetails.lock") }}
+              </span>
             </v-col>
           </v-row>
         </v-col>
@@ -126,5 +128,15 @@ export default class RoomDetails extends Vue {
 a {
   text-decoration: none;
   color: white !important;
+}
+.settings-sub-header {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.settings-edit-header {
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2rem;
 }
 </style>

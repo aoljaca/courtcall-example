@@ -21,8 +21,13 @@
       </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item">
-        Activity
+      <v-col class="my-1 nav-item d-flex justify-space-between">
+        <div>
+          Activity
+        </div>
+        <v-icon>
+          mdi-export-variant
+        </v-icon>
       </v-col>
     </v-row>
   </div>     
