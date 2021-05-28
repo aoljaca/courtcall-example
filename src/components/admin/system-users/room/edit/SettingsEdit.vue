@@ -109,7 +109,7 @@
               {{ $t("admin.roomSettings.meetingVideoAndAudio")}}
             </v-col>
           </v-row>
-          <v-row dense>text-fie
+          <v-row dense>
             <v-col>
               {{ $t("admin.roomSettings.allowParticipantsToggleVideo") }}
             </v-col>
@@ -327,16 +327,24 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import RoomTemplates from "@/components/admin/system-users/room/edit/room-templates/RoomTemplates.vue"
+import SettingsEditSwitch from '@/components/admin/system-users/room/edit/SettingsEditSwitch.vue'
 import "reflect-metadata";
 import roomSettings from "@/plugins/i18n/en-us/admin/room/roomSettings";
 @Component({
   components: {
     RoomTemplates,
+    SettingsEditSwitch,
   },
 })
 export default class SettingsEdit extends Vue {
-    description = roomSettings.passcode;
-    rules = [v => v.length <= 25 || 'Max 25 characters'];
+  description = roomSettings.passcode;
+  rules = [v => v.length <= 25 || 'Max 25 characters'];
+
+  onOffSwitch = {
+    left: 'ON',
+    right: 'OFF',
+  }
+
   get roomSettings() {
     return this.$store.state.adminRoomModule.roomSettings;
   }

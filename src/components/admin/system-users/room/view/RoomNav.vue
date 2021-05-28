@@ -26,7 +26,7 @@
           Activity
         </div>
         <v-icon>
-          mdi-export-variant
+          mdi-open-in-new
         </v-icon>
       </v-col>
     </v-row>
