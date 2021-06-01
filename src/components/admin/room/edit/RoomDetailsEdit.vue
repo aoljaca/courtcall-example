@@ -104,7 +104,7 @@ export default class RoomDetailsEdit extends Vue {
   org = "LA County Superior Court - 12345";
   temp = "Enter template name"
   description = this.roomSettings.passcode;
-  rules = [v => v.length <= 25 || 'Max 25 characters'];
+  rules = [(v: string|any[]) => v.length <= 25 || 'Max 25 characters'];
   items = ["Draft", "Available"];
 }
 </script>
