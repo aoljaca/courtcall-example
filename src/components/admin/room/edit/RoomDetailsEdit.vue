@@ -103,7 +103,7 @@ export default class RoomDetailsEdit extends Vue {
   franksRoom = "Judge Frank's Room";
   org = "LA County Superior Court - 12345";
   temp = "Enter template name"
-  description = this.roomSettings.passcode;
+  description = this.roomDetails.passcode;
   rules = [(v: string|any[]) => v.length <= 25 || 'Max 25 characters'];
   items = ["Draft", "Available"];
 }
