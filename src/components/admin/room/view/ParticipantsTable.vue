@@ -47,44 +47,37 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class CasesTable extends Vue {
-  data() {
-    return {
-      headers: [
-        { text: "Active", value: "active" },
-        { text: "Name", value: "name" },
-        { text: "Case Number", value: "caseNumber" },
-        { text: "Case Name", value: "caseName" },
-        { text: "Role", value: "role" },
-        { text: " ", value: "more" },
-      ],
-      tableData: [
-        {
-          active: true,
-          name: "Danny Trejo",
-          caseNumber: "1234567890",
-          caseName: "Boris v. Natasha",
-          role: "Scheduled Participant (Dedicated)",
-          more: "",
-        },
-        {
-          active: true,
-          name: "Olivia Coleman",
-          caseNumber: "N/A",
-          caseName: "N/A",
-          role: "Participant (Shared)",
-          more: "",
-        },
-        {
-          active: false,
-          name: "Tom Hanks",
-          caseNumber: "3456789012",
-          caseName: "Up v. Down",
-          role: "Participant (Dedicated)",
-          more: "",
-        },
-      ],
-    };
-  }
+  headers = [
+    { text: "Active", value: "active" },
+    { text: "Name", value: "name" },
+    { text: "Case Number", value: "caseNumber" },
+    { text: "Case Name", value: "caseName" },
+    { text: "Role", value: "role" },
+    { text: "More", value: "more" },
+  ];
+  tableData = [
+    {
+      active: true,
+      name: "Danny Trejo",
+      caseNumber: "1234567890",
+      caseName: "Boris v. Natasha",
+      role: "Scheduled Participant (Dedicated)",
+    },
+    {
+      active: true,
+      name: "Olivia Coleman",
+      caseNumber: "N/A",
+      caseName: "N/A",
+      role: "Participant (Shared)",
+    },
+    {
+      active: false,
+      name: "Tom Hanks",
+      caseNumber: "3456789012",
+      caseName: "Up v. Down",
+      role: "Participant (Dedicated)",
+    },
+  ];
 }
 </script>
 

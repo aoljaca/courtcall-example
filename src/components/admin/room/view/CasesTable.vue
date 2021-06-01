@@ -43,40 +43,34 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class CasesTable extends Vue {
-  data() {
-    return {
-      headers: [
-        { text: "Active", value: "active" },
-        { text: "Case Number", value: "caseNumber" },
-        { text: "Case Name", value: "caseName" },
-        { text: "Scheduled Participants", value: "scheduledParticipants" },
-        { text: " ", value: "more" },
-      ],
-      tableData: [
-        {
-          active: true,
-          caseNumber: "1234567890",
-          caseName: "Boris v. Natasha",
-          scheduledParticipants: "Olivia Coleman, Viola Davis, Tom Hanks + 5 More",
-          more: "",
-        },
-        {
-          active: false,
-          caseNumber: "2345678901",
-          caseName: "Carrell Arbitration",
-          scheduledParticipants: "Danny Trejo, Steve Carrell, Viola Davis + 3 More",
-          more: "",
-        },
-        {
-          active: false,
-          caseNumber: "3456789012",
-          caseName: "Boris v. Natasha",
-          scheduledParticipants: "Boris Smith, Natasha Smith",
-          more: "",
-        },
-      ],
-    };
-  }
+  headers = [
+    { text: "Active", value: "active" },
+    { text: "Case Number", value: "caseNumber" },
+    { text: "Case Name", value: "caseName" },
+    { text: "Scheduled Participants", value: "scheduledParticipants" },
+    { text: "More", value: "more" },
+  ];
+
+  tableData = [
+    {
+      active: true,
+      caseNumber: "1234567890",
+      caseName: "Boris v. Natasha",
+      scheduledParticipants: "Olivia Coleman, Viola Davis, Tom Hanks + 5 More",
+    },
+    {
+      active: false,
+      caseNumber: "2345678901",
+      caseName: "Carrell Arbitration",
+      scheduledParticipants: "Danny Trejo, Steve Carrell, Viola Davis + 3 More",
+    },
+    {
+      active: false,
+      caseNumber: "3456789012",
+      caseName: "Boris v. Natasha",
+      scheduledParticipants: "Boris Smith, Natasha Smith",
+    },
+  ];
 }
 </script>
 
