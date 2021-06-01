@@ -15,7 +15,7 @@
         depressed
         class="mr-6"
         >
-        <router-link class="remove-decoration" to="/admin/system-users/room/view">
+        <router-link class="remove-decoration" to="/admin/room/view">
         CANCEL
         </router-link>
         </v-btn>

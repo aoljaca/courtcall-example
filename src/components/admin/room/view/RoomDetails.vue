@@ -22,7 +22,7 @@
           color="grey darken-4 rounded-0"
           depressed
           >
-            <router-link class="remove-decoration" to="/admin/system-users/room/edit">
+            <router-link class="remove-decoration" to="/admin/room/edit">
               {{ $t("admin.roomDetails.editButton") }} 
             </router-link>
           </v-btn>
