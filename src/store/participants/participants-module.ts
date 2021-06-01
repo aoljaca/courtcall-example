@@ -1,5 +1,4 @@
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { truncatedNormal } from "@tensorflow/tfjs-core";
 import { Module } from "vuex";
 
 const participants: {
