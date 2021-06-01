@@ -8,6 +8,7 @@ import ParticipantsModule from "./participants/participants-module";
 import FileShareModule from "./file-share/file-share";
 import CasesModule from "./cases/cases-module";
 import SubconferenceModule from "./sub-conference/sub-conference-module";
+import OrganizationsModule from "./organizations/organizations-module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -20,5 +21,6 @@ export default new Vuex.Store({
     FileShareModule,
     CasesModule,
     SubconferenceModule,
+    OrganizationsModule,
   },
 });

@@ -4,7 +4,7 @@ import { Module } from "vuex";
 const ORGANIZATIONS: { [key: string]: Organization } = {
   o1: {
     name: "Walmart Inc",
-    managerIds: ["2", "1"],
+    managerIds: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
     location: "Bentonville, AR",
     id: "o1",
     roomIds: ["1", "2", "3"],
@@ -105,5 +105,11 @@ const organizationsModule: Module<any, any> = {
       return state.organizations[id];
     },
     getAsList: (state) => Object.values(state.organizations),
+    getActiveAsList: (state) =>
+      (Object.values(state.organizations) as Organization[]).filter(
+        (o) => !o.archived
+      ),
   },
 };
+
+export default organizationsModule;

@@ -9,6 +9,7 @@ import MeetingUI from "../components/meeting/meeting-ui/MeetingUI.vue";
 import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
 import SystemUserEdit from "../components/admin/system-users/SystemUserEdit.vue";
+import Organizations from "@/components/admin/organizations/Organizations.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -68,9 +69,14 @@ const routes: Array<RouteConfig> = [
         name: "Dashboard",
       },
       {
-        path: "system-users",
+        path: "system-users-edit",
         component: SystemUserEdit,
         name: "System User Edit",
+      },
+      {
+        path: "organizations",
+        component: Organizations,
+        name: "Organizations List",
       },
     ],
   },
