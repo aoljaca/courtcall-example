@@ -338,7 +338,7 @@ import "reflect-metadata";
 @Component
 export default class Settings extends Vue {
   get roomSettings() {
-    return this.$store.state.adminRoomModule.roomSettings;
+    return this.$store.getters["AdminRoomModule/selectedRoomSettings"];
   }
 }
 </script>

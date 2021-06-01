@@ -118,8 +118,11 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
+  get roomSettings() {
+    return this.$store.getters["AdminRoomModule/selectedRoomSettings"];
+  }
   get roomDetails() {
-    return this.$store.state.adminRoomModule.roomDetails;
+    return this.$store.getters["AdminRoomModule/selectedRoomDetails"];
   }
 }
 </script>

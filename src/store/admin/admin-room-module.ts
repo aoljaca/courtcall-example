@@ -81,6 +81,7 @@ const adminRoomModule: Module<any, any> = {
   namespaced: true,
   state: {
     rooms: rooms,
+    selectedRoomId: "a",
     roomSettings: roomSettings,
     roomDetails: roomDetails,
   },
@@ -89,6 +90,8 @@ const adminRoomModule: Module<any, any> = {
   actions: {
   },
   getters: {
+    selectedRoomSettings: (state) => state.rooms[state.selectedRoomId].roomSettings,
+    selectedRoomDetails: (state) => state.rooms[state.selectedRoomId].roomDetails,
   },
 };
 

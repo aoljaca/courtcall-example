@@ -96,10 +96,10 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class RoomDetailsEdit extends Vue {
-
-  get roomSettings() {
-    return this.$store.state.adminRoomModule.roomSettings;
+  get roomDetails() {
+    return this.$store.getters["AdminRoomModule/selectedRoomDetails"];
   }
+
   franksRoom = "Judge Frank's Room";
   org = "LA County Superior Court - 12345";
   temp = "Enter template name"

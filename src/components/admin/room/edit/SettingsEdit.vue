@@ -346,7 +346,7 @@ export default class SettingsEdit extends Vue {
   }
 
   get roomSettings() {
-    return this.$store.state.adminRoomModule.roomSettings;
+    return this.$store.getters["AdminRoomModule/selectedRoomSettings"];
   }
 }
 </script>
