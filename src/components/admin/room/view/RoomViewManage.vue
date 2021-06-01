@@ -20,11 +20,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue";
-import RoomDetails from "@/components/admin/system-users/room/view/RoomDetails.vue";
-import RoomNav from "@/components/admin/system-users/room/view/RoomNav.vue";
-import Settings from "@/components/admin/system-users/room/view/Settings.vue";
-import CasesTable from "@/components/admin/system-users/room/view/CasesTable.vue";
-import ParticipantsTable from "@/components/admin/system-users/room/view/ParticipantsTable.vue";
+import RoomDetails from "@/components/admin/room/view/RoomDetails.vue";
+import RoomNav from "@/components/admin/room/view/RoomNav.vue";
+import Settings from "@/components/admin/room/view/Settings.vue";
+import CasesTable from "@/components/admin/room/view/CasesTable.vue";
+import ParticipantsTable from "@/components/admin/room/view/ParticipantsTable.vue";
 
 import "reflect-metadata";
 @Component({

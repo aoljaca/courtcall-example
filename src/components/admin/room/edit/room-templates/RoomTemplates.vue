@@ -81,7 +81,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import SavedTemplate from "@/components/admin/system-users/room/edit/room-templates/SavedTemplate.vue"
+import SavedTemplate from "@/components/admin/room/edit/room-templates/SavedTemplate.vue"
 import "reflect-metadata";
 @Component({
   components: {

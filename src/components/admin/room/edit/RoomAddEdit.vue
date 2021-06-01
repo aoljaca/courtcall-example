@@ -3,7 +3,7 @@
     <system-user-header message="Judge Frank's Room"></system-user-header>
     <v-container fluid class="mt-6 pa-8">
       <v-row>
-        <v-col class="" cols="2">
+        <v-col cols="2">
           <room-nav parentContext="edit" class="pl-4 pr-2"></room-nav>
         </v-col>
         <v-col id="add-edit-content" cols="10">
@@ -40,9 +40,9 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue";
-import RoomDetailsEdit from "@/components/admin/system-users/room/edit/RoomDetailsEdit.vue";
-import SettingsEdit from "@/components/admin/system-users/room/edit/SettingsEdit.vue";
-import RoomNav from "@/components/admin/system-users/room/view/RoomNav.vue"
+import RoomDetailsEdit from "@/components/admin/room/edit/RoomDetailsEdit.vue";
+import SettingsEdit from "@/components/admin/room/edit/SettingsEdit.vue";
+import RoomNav from "@/components/admin/room/view/RoomNav.vue"
 
 import "reflect-metadata";
 @Component({

@@ -326,8 +326,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import RoomTemplates from "@/components/admin/system-users/room/edit/room-templates/RoomTemplates.vue"
-import SettingsEditSwitch from '@/components/admin/system-users/room/edit/SettingsEditSwitch.vue'
+import RoomTemplates from "@/components/admin/room/edit/room-templates/RoomTemplates.vue"
+import SettingsEditSwitch from '@/components/admin/room/edit/SettingsEditSwitch.vue'
 import "reflect-metadata";
 import roomSettings from "@/plugins/i18n/en-us/admin/room/roomSettings";
 @Component({
@@ -338,7 +338,7 @@ import roomSettings from "@/plugins/i18n/en-us/admin/room/roomSettings";
 })
 export default class SettingsEdit extends Vue {
   description = roomSettings.passcode;
-  rules = [v => v.length <= 25 || 'Max 25 characters'];
+  rules = [(v: string|any[]) => v.length <= 35 || 'Max 35 characters'];
 
   onOffSwitch = {
     left: 'ON',
