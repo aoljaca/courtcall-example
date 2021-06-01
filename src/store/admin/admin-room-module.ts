@@ -1,4 +1,5 @@
 import { Module } from "vuex";
+import { Room } from "@/model/admin/room/room"
 
 const roomSettings = {
   template: "Template Name (Modified)",
