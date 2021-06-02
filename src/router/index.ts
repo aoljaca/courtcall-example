@@ -76,12 +76,12 @@ const routes: Array<RouteConfig> = [
         component: SystemUserEdit,
       },
       {
-        path: "room/view",
+        path: "room/view/:roomId",
         name: "Room View Manage",
         component: RoomViewManage,
       },
       {
-        path: "room/edit",
+        path: "room/edit/:roomId",
         name: "Room Add Edit",
         component: RoomAddEdit,
       },

@@ -1,7 +1,7 @@
 export interface ParticipantsTable {
   active: boolean,
   name: string,
-  caseNumber: number,
+  caseNumber: string,
   caseName: string,
   role: string,
 }

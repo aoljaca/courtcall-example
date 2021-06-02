@@ -1,6 +1,6 @@
 export interface CasesTable {
   status: boolean,
-  caseNumber: number,
+  caseNumber: string,
   caseName: string,
   scheduledParticipants: string[],
 }
