@@ -96,15 +96,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Navigation from "@/components/admin/dashboard/Navigation.vue";
-import MyAccount from "@/components/admin/dashboard/MyAccount.vue";
 import "reflect-metadata";
-@Component({
-  components: {
-    Navigation,
-    MyAccount,
-  },
-})
+@Component
 export default class SystemUserEdit extends Vue {
   email = "frank@voci.com";
   phone = "213-555-1212";

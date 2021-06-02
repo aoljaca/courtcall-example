@@ -8,7 +8,7 @@ import AvOptions from "../components/meeting/av-options/AvOptions.vue";
 import MeetingUI from "../components/meeting/meeting-ui/MeetingUI.vue";
 import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
-import SystemUserEdit from "../components/admin/system-users/SystemUserEdit.vue";
+import MyAccount from "../components/admin/my-account/MyAccount.vue";
 import Organizations from "@/components/admin/organizations/Organizations.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 Vue.use(VueRouter);
@@ -70,9 +70,9 @@ const routes: Array<RouteConfig> = [
         name: "Dashboard",
       },
       {
-        path: "system-users-edit",
-        component: SystemUserEdit,
-        name: "System User Edit",
+        path: "my-account",
+        component: MyAccount,
+        name: "My Account",
       },
       {
         path: "system-users",
