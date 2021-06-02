@@ -20,6 +20,10 @@ const participants: {
     screenshareEnabled: true,
     signatureEnabled: true,
     active: true,
+    roles: ["r1", "r2", "r3"],
+    systemUser: true,
+    organizations: ["o1", "o2", "o3"],
+    email: "fake@gmail.com",
   },
   "2": {
     id: "2",
@@ -37,6 +41,10 @@ const participants: {
     screenshareEnabled: false,
     signatureEnabled: false,
     active: true,
+    roles: ["r1"],
+    systemUser: true,
+    organizations: ["o1", "o2"],
+    email: "fake@outlook.com",
   },
   "3": {
     id: "3",
@@ -54,6 +62,10 @@ const participants: {
     screenshareEnabled: true,
     signatureEnabled: true,
     active: true,
+    roles: ["r2"],
+    systemUser: true,
+    organizations: ["o4"],
+    email: "fake@fake.com",
   },
   "4": {
     id: "4",
@@ -71,6 +83,10 @@ const participants: {
     screenshareEnabled: false,
     signatureEnabled: false,
     active: true,
+    roles: ["r3"],
+    systemUser: false,
+    organizations: ["o5"],
+    email: null,
   },
   "5": {
     id: "5",
@@ -88,6 +104,10 @@ const participants: {
     screenshareEnabled: true,
     signatureEnabled: true,
     active: true,
+    roles: ["r4"],
+    systemUser: true,
+    organizations: [],
+    email: "fake@courtcall.com",
   },
   "6": {
     id: "6",
@@ -105,6 +125,10 @@ const participants: {
     screenshareEnabled: false,
     signatureEnabled: false,
     active: true,
+    roles: ["r5"],
+    systemUser: true,
+    organizations: ["o7"],
+    email: "email@gmail.com",
   },
   "7": {
     id: "7",
@@ -122,6 +146,10 @@ const participants: {
     screenshareEnabled: true,
     signatureEnabled: true,
     active: false,
+    roles: ["r3", "r4"],
+    systemUser: true,
+    organizations: ["o8", "o9", "o10"],
+    email: "email@outlook.com",
   },
   "8": {
     id: "8",
@@ -139,6 +167,10 @@ const participants: {
     screenshareEnabled: false,
     signatureEnabled: false,
     active: true,
+    roles: ["r3"],
+    systemUser: false,
+    organizations: [],
+    email: null,
   },
   "9": {
     id: "9",
@@ -156,6 +188,10 @@ const participants: {
     screenshareEnabled: true,
     signatureEnabled: true,
     active: true,
+    roles: ["r3"],
+    systemUser: false,
+    organizations: [],
+    email: null,
   },
   "10": {
     id: "10",
@@ -173,6 +209,10 @@ const participants: {
     screenshareEnabled: false,
     signatureEnabled: false,
     active: false,
+    roles: ["r3"],
+    systemUser: false,
+    organizations: [],
+    email: null,
   },
 };
 const pubNubIdtoParticipantId: { [key: string]: string } = {};
@@ -202,6 +242,10 @@ const participantsModule: Module<any, any> = {
       return state.participants[id];
     },
     getAsList: (state) => Object.values(state.participants),
+    getSystemUsersAsList: (state) => {
+      const participants = Object.values(state.participants) as Participant[];
+      return participants.filter((p) => p.systemUser);
+    },
     getAsListNoSelf: (state) =>
       (Object.values(state.participants) as Participant[]).filter(
         (p) => p.id !== state.me?.id

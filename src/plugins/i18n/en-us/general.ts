@@ -23,4 +23,6 @@ export default {
   screensharing: "Sharing Screen",
   notScreensharing: "Not Sharing Screen",
   selectAll: "Select All",
+  view: "View",
+  archive: "Remove (Archive)",
 };

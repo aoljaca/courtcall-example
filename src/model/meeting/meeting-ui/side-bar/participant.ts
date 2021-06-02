@@ -18,4 +18,8 @@ export interface Participant {
   signatureEnabled: boolean;
   screenshareEnabled: boolean;
   active: boolean;
+  roles: string[];
+  systemUser: boolean;
+  organizations: string[];
+  email: string | null;
 }

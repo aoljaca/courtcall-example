@@ -10,6 +10,7 @@ import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
 import SystemUserEdit from "../components/admin/system-users/SystemUserEdit.vue";
 import Organizations from "@/components/admin/organizations/Organizations.vue";
+import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -72,6 +73,11 @@ const routes: Array<RouteConfig> = [
         path: "system-users-edit",
         component: SystemUserEdit,
         name: "System User Edit",
+      },
+      {
+        path: "system-users",
+        component: SystemUsersList,
+        name: "System Users View",
       },
       {
         path: "organizations",
