@@ -337,20 +337,16 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class Settings extends Vue {
-  get roomSettings() {
-    return this.$store.getters["AdminRoomModule/selectedRoomSettings"];
-  }
-
-  roomId: string | null = null;
+  roomId = 'a';
 
   mounted(): void {
     this.roomId = this.$route.params.roomId;
   }
 
-  // get roomSettings() {
-  //   return this.$store.state.AdminRoomModule.rooms.roomId.roomSettings;
-  // }
-
+ get roomSettings() {
+    console.log(this.roomId);
+    return this.$store.state.AdminRoomModule.rooms[this.roomId].roomSettings;
+  }
 }
 </script>
 
