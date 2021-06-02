@@ -11,6 +11,10 @@ import {
   ChatFormatServiceImpl,
 } from "@/services/chat-format";
 import {
+  ParticipantSearchService,
+  ParticipantSearchServiceImpl,
+} from "@/services/participant-search";
+import {
   ShareFormatService,
   ShareFormatServiceImpl,
 } from "@/services/share-format";
@@ -31,4 +35,8 @@ export default function buildDependencyContainer(): void {
   container
     .bind<ShareFormatService>(INJECTION_TYPES.SHARE_FORMAT)
     .to(ShareFormatServiceImpl);
+
+  container
+    .bind<ParticipantSearchService>(INJECTION_TYPES.PARTICIPANT_SEARCH)
+    .to(ParticipantSearchServiceImpl);
 }

@@ -62,13 +62,16 @@ export default class Login extends Vue {
 }
 </script>
 <style lang="scss">
-.big-empty {
-  height: 20vh;
+@media (min-width: 1280px) {
+  .big-empty {
+    height: 20vh;
+  }
+  .not-wide {
+    padding-left: 25rem;
+    padding-right: 25rem;
+  }
 }
-.not-wide {
-  padding-left: 25rem;
-  padding-right: 25rem;
-}
+
 .boxed {
   outline-style: solid;
   outline-color: black;

@@ -9,7 +9,12 @@
           <video-platform></video-platform>
           <control-bar></control-bar>
         </v-col>
-        <v-col class="px-0 py-0 navigation-element" cols="3" v-if="sidebarMode">
+        <v-col
+          class="px-0 py-0 navigation-element"
+          md="3"
+          cols="12"
+          v-if="sidebarMode"
+        >
           <chat v-if="sidebarMode === 'chat'"></chat>
           <files v-if="sidebarMode === 'files'"></files>
           <participants v-if="sidebarMode === 'participants'"></participants>
@@ -24,7 +29,7 @@ import ControlBar from "./control-bar/ControlBar.vue";
 import VideoPlatform from "./VideoPlatform.vue";
 import Chat from "./sidebar/chat/Chat.vue";
 import Files from "./sidebar/files/Files.vue";
-import Participants from "./sidebar/participants/Participants.vue";
+import Participants from "./sidebar/participants/ParticipantsMainView.vue";
 import "reflect-metadata";
 @Component({
   components: {
@@ -38,7 +43,7 @@ import "reflect-metadata";
 export default class MeetingUI extends Vue {
   drawer = true;
 
-  get sidebarMode() {
+  get sidebarMode(): string {
     return this.$store.state.SidebarModule.sidebar;
   }
 }

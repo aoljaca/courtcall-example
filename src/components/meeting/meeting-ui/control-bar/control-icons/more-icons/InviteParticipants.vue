@@ -77,29 +77,6 @@ export default class InviteParticipants extends Vue {
   selectedInvitationType: InviteParticipantType | null = null;
   selectedCase: Case | null = null;
   possibleInvitationTypes = INVITE_PARTICIPANT_TYPES;
-  possibleCases: Case[] = [
-    {
-      name: "Ada County",
-      number: "#4",
-      startTime: "",
-      participants: [],
-      id: '1'
-    },
-    {
-      name: "Ada County",
-      number: "#5",
-      startTime: "",
-      participants: [],
-      id: '2'
-    },
-    {
-      name: "Canyon County",
-      number: "#1",
-      startTime: "",
-      participants: [],
-      id: '3'
-    },
-  ];
   invitationTypeLabel(type: InviteParticipantType) {
     return this.$t(type.translationText);
   }
@@ -110,6 +87,10 @@ export default class InviteParticipants extends Vue {
 
   get linkType() {
     return this.selectedInvitationType?.type;
+  }
+
+  get possibleCases() {
+    return this.$store.getters["CasesModule/getAsList"];
   }
 
   generateLink() {

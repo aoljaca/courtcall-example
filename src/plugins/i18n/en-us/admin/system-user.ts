@@ -1,3 +1,4 @@
+import newUser from "./system-user/new-system-user";
 export default {
   dashboard: "DASHBOARD > ",
   account: "My Account",
@@ -8,5 +9,7 @@ export default {
   changePassword: "Change Password",
   password: "Current Password",
   newPassword: "New Password",
+  title: "System Users",
   confirmPassword: "Confirm New Password",
+  new: newUser,
 };

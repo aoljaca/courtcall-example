@@ -4,4 +4,5 @@ export interface Case {
   startTime: string;
   participants: string[];
   id: string;
+  live: boolean;
 }

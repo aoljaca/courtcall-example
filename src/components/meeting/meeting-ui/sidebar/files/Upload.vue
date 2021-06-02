@@ -184,6 +184,7 @@ export default class FileUpload extends Vue {
   cancelCreation() {
     this.$store.dispatch("FileShareModule/setCreating", { creating: false });
     this.$store.dispatch("FileShareModule/setEditing", false);
+    this.$store.dispatch("FileShareModule/setSelectedShare", null);
   }
 
   formatCase(c: Case) {

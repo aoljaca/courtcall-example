@@ -2,7 +2,7 @@
   <div id="controlBar" class="control-bar-background">
     <v-container fluid class="px-0 py-0">
       <v-row>
-        <v-col class="d-flex align-center" cols="2">
+        <v-col class="d-flex align-center" cols="4" md="2">
           <span class="pr-1">
             <v-btn icon elevation="0">
               <v-icon>mdi-microphone</v-icon>
@@ -14,17 +14,32 @@
             </v-btn>
           </span>
         </v-col>
-        <v-col cols="9" class="d-flex justify-center align-center">
-          <get-support-icon class="px-2"></get-support-icon>
-          <raise-hand-icon class="px-2"></raise-hand-icon>
-          <chat-icon class="px-2"></chat-icon>
-          <participants-icon class="px-2"></participants-icon>
-          <files-icon class="px-2"></files-icon>
-          <move-icon class="px-2"></move-icon>
-          <share-screen-icon class="px-2"></share-screen-icon>
-          <more-icon class="px-2"></more-icon>
+        <v-col cols="4" md="1">
+          <get-support-icon></get-support-icon>
         </v-col>
-        <v-col cols="1" class="d-flex align-center">
+        <v-col cols="4" md="1">
+          <raise-hand-icon></raise-hand-icon>
+        </v-col>
+        <v-col cols="4" md="1">
+          <chat-icon></chat-icon>
+        </v-col>
+        <v-col cols="4" md="1">
+          <participants-icon></participants-icon>
+        </v-col>
+        <v-col cols="4" md="1">
+          <files-icon></files-icon>
+        </v-col>
+        <v-col cols="4" md="1">
+          <move-icon></move-icon>
+        </v-col>
+        <v-col cols="4" md="1">
+          <share-screen-icon></share-screen-icon>
+        </v-col>
+        <v-col cols="4" md="1">
+          <more-icon></more-icon>
+        </v-col>
+
+        <v-col cols="4" md="1" class="d-flex align-center">
           <v-btn icon elevation="0">
             <v-icon>mdi-close</v-icon>
           </v-btn>
@@ -60,8 +75,7 @@ export default class ControlBar extends Vue {}
 <style lang="scss" scoped>
 .control-bar-background {
   background-color: lightgray;
-  height: calc(10vh + 12px);
-  min-height: 75px;
+  min-height: max(75px, calc(10vh + 12px));
 }
 </style>
 <style lang="scss">

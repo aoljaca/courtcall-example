@@ -6,10 +6,12 @@
           <router-link to="/admin/dashboard">Dashboard</router-link>
         </v-col>
         <v-col cols="3">
-          <router-link to="">Organizations</router-link>
+          <router-link to="/admin/organizations">{{
+            $t("admin.organizations.title")
+          }}</router-link>
         </v-col>
         <v-col cols="3">
-          <router-link to="">System Users</router-link>
+          <router-link to="/admin/system-users">System Users</router-link>
         </v-col>
         <v-col cols="3">
           <router-link to="">Support</router-link>

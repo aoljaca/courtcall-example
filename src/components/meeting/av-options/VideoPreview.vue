@@ -28,6 +28,7 @@
                     :class="{
                       'd-none': shouldHideCanvas,
                       'video-dimensions': true,
+                      'canvas-element': true,
                     }"
                   ></canvas>
                   <video
@@ -80,7 +81,7 @@
                             </v-radio>
                           </v-radio-group>
                         </v-col>
-                        <v-col cols="8" class="py-0">
+                        <v-col cols="12" md="8" class="py-0">
                           <v-select
                             @focus="focusSelect()"
                             @blur="blurSelect()"
@@ -97,7 +98,11 @@
                             single-line
                           ></v-select>
                         </v-col>
-                        <v-col cols="4" class="d-flex align-center py-0">
+                        <v-col
+                          cols="12"
+                          md="4"
+                          class="d-flex align-center py-0"
+                        >
                           <v-btn
                             @click="toggleOpenBackground()"
                             elevation="0"
@@ -262,11 +267,22 @@ export default class VideoPreview extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-.video-dimensions {
-  height: 45vh;
+@media (min-width: 1280px) {
+  .video-dimensions {
+    max-height: 45vh;
+  }
 }
+@media (max-width: 1279px) {
+  .video-dimensions {
+    width: 100%;
+  }
+}
+
 .overlay-btn {
   background: #0000 !important;
+}
+.canvas-element {
+  background-size: cover !important;
 }
 </style>
 <style lang="scss">

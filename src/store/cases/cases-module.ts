@@ -2,61 +2,69 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 import { Module } from "vuex";
 import { DateTime } from "luxon";
 const CASES: { [key: string]: Case } = {
-  1: {
-    name: "Ca",
+  "1c": {
+    name: "Ada County (1c)",
     number: "1",
     startTime: DateTime.now().minus({ hours: 12 }).toISODate(),
     participants: ["1", "2", "3"],
-    id: "1",
+    id: "1c",
+    live: false,
   },
-  2: {
-    name: "Cb",
+  "2c": {
+    name: "Ada County (2c)",
     number: "2",
     startTime: DateTime.now().minus({ hours: 6 }).toISODate(),
-    id: "2",
+    id: "2c",
     participants: ["4", "5", "6"],
+    live: true,
   },
-  3: {
-    name: "Cc",
+  "3c": {
+    name: "Ada County (3c)",
     number: "3",
     startTime: DateTime.now().minus({ hours: 30 }).toISODate(),
-    id: "3",
+    id: "3c",
     participants: ["7", "8", "9"],
+    live: false,
   },
-  4: {
-    name: "Cd",
+  "4c": {
+    name: "Story County (4c)",
     number: "4",
     startTime: DateTime.now().minus({ minutes: 90 }).toISODate(),
-    id: "4",
+    id: "4c",
     participants: ["2", "4", "6", "8"],
+    live: false,
   },
-  5: {
-    name: "Ce",
+  "5c": {
+    name: "Story County (5c)",
     number: "5",
     startTime: DateTime.now().minus({ minutes: 45 }).toISODate(),
-    id: "5",
+    id: "5c",
     participants: ["1", "3", "5", "7", "9"],
+    live: false,
   },
-  6: {
-    name: "Cf",
+  "6c": {
+    name: "Story County (6c)",
     number: "6",
     startTime: DateTime.now().minus({ minutes: 20 }).toISODate(),
-    id: "6",
+    id: "6c",
     participants: ["1", "2", "3"],
+    live: false,
   },
-  7: {
-    name: "Cg",
+  "7c": {
+    name: "Fairfield County (7c)",
     number: "7",
-    id: "7",
+    id: "7c",
     startTime: DateTime.now().minus({ minutes: 10 }).toISODate(),
     participants: ["3", "2", "5"],
+    live: false,
   },
-  8: {
-    name: "Ch",
+  "8c": {
+    name: "Fairfield County (8c)",
     number: "8",
-    id: "8",
+    id: "8c",
     startTime: DateTime.now().toISODate(),
     participants: ["5", "1", "7"],
+    live: false,
   },
 };
 

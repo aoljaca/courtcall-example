@@ -2,7 +2,7 @@
   <div class="room-entry">
     <v-container fluid class="fill d-flex align-content-center">
       <v-row class="justify-center">
-        <v-col align-self="center" cols="6">
+        <v-col align-self="center" cols="12" md="6">
           <v-card elevation="3">
             <v-container>
               <v-row class="justify-center">
