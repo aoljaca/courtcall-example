@@ -100,7 +100,10 @@ import "reflect-metadata";
 @Component
 export default class SystemUserEdit extends Vue {
   email = "frank@voci.com";
-  phone = "213-555-1212";
+  
+  get phone() {
+    return this.$store.state.ParticipantsModule.me.phone;
+  }
 }
 </script>
 
