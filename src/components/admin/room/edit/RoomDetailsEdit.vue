@@ -96,16 +96,25 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class RoomDetailsEdit extends Vue {
-  get roomDetails() {
-    return this.$store.getters["AdminRoomModule/selectedRoomDetails"];
-  }
-
   franksRoom = "Judge Frank's Room";
   org = "LA County Superior Court - 12345";
   temp = "Enter template name"
   description = this.roomDetails.passcode;
   rules = [(v: string|any[]) => v.length <= 25 || 'Max 25 characters'];
   items = ["Draft", "Available"];
+  
+  roomId = 'a';
+  settingsViewPath = '';
+
+  mounted(): void {
+    this.roomId = this.$route.params.roomId;
+    this.settingsViewPath = '/admin/room/view/' + this.roomId;
+  }
+
+  get roomDetails() {
+    return this.$store.state.AdminRoomModule.rooms[this.roomId].roomDetails;
+  }
+
 }
 </script>
 

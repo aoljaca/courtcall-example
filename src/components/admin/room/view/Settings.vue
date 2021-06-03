@@ -343,8 +343,7 @@ export default class Settings extends Vue {
     this.roomId = this.$route.params.roomId;
   }
 
- get roomSettings() {
-    console.log(this.roomId);
+  get roomSettings() {
     return this.$store.state.AdminRoomModule.rooms[this.roomId].roomSettings;
   }
 }

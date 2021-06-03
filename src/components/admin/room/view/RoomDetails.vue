@@ -22,7 +22,7 @@
           color="grey darken-4 rounded-0"
           depressed
           >
-            <router-link class="remove-decoration" to="/admin/room/edit">
+            <router-link class="remove-decoration" :to="settingsEditPath">
               {{ $t("admin.roomDetails.editButton") }} 
             </router-link>
           </v-btn>
@@ -118,11 +118,16 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
-  get roomSettings() {
-    return this.$store.getters["AdminRoomModule/selectedRoomSettings"];
+  roomId = 'a';
+  settingsEditPath = '';
+
+  mounted(): void {
+    this.roomId = this.$route.params.roomId;
+    this.settingsEditPath = '/admin/room/edit/' + this.roomId;
   }
+
   get roomDetails() {
-    return this.$store.getters["AdminRoomModule/selectedRoomDetails"];
+    return this.$store.state.AdminRoomModule.rooms[this.roomId].roomDetails;
   }
 }
 </script>

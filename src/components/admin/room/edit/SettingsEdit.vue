@@ -345,8 +345,14 @@ export default class SettingsEdit extends Vue {
     right: 'OFF',
   }
 
+  roomId = 'a';
+
+  mounted(): void {
+    this.roomId = this.$route.params.roomId;
+  }
+
   get roomSettings() {
-    return this.$store.getters["AdminRoomModule/selectedRoomSettings"];
+    return this.$store.state.AdminRoomModule.rooms[this.roomId].roomSettings;
   }
 }
 </script>
