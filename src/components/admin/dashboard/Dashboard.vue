@@ -17,7 +17,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Search from "@/components/admin/dashboard/Search.vue";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
-import MyAccount from "@/components/admin/dashboard/MyAccount.vue";
+import MyAccount from "@/components/admin/dashboard/UserActions.vue";
 import Rooms from "@/components/admin/dashboard/Rooms.vue";
 @Component({
   components: {
