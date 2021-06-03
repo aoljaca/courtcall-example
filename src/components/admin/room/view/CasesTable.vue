@@ -18,18 +18,24 @@
       <v-row>
         <v-col>
           <v-data-table
-            :headers="headers"
+            :headers="HEADERS"
             :items="tableData"
             :items-per-page="20"
             class="elevation-1"
           >
-            <template v-slot:item.active="{ item }">
-              <v-icon v-if="item.active" color="green">mdi-circle</v-icon>
-              <v-icon v-else color="gray">mdi-circle</v-icon>
+            <template v-slot:[`item.active`]="{ item }">
+              <v-icon v-if="item.active" color="green">
+                mdi-circle
+              </v-icon>
+              <v-icon v-else color="gray">
+                mdi-circle
+              </v-icon>
             </template>
 
-            <template v-slot:item.more="{ item }">
-              <v-icon :color="item.more">mdi-dots-horizontal</v-icon>
+            <template v-slot:[`item.more`]="{ item }">
+              <v-icon :color="item.more">
+                mdi-dots-horizontal
+              </v-icon>
             </template>
           </v-data-table>
         </v-col>
@@ -43,12 +49,27 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class CasesTable extends Vue {
-  headers = [
-    { text: "Active", value: "active" },
-    { text: "Case Number", value: "caseNumber" },
-    { text: "Case Name", value: "caseName" },
-    { text: "Scheduled Participants", value: "scheduledParticipants" },
-    { text: "More", value: "more" },
+  readonly HEADERS = [
+    { 
+      text: "Active", 
+      value: "active" 
+    },
+    { 
+      text: "Case Number", 
+      value: "caseNumber" 
+    },
+    { 
+      text: "Case Name", 
+      value: "caseName" 
+    },
+    { 
+      text: "Scheduled Participants", 
+      value: "scheduledParticipants" 
+    },
+    { 
+      text: "More", 
+      value: "more" 
+    },
   ];
 
   tableData = [
