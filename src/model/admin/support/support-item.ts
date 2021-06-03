@@ -1,6 +1,6 @@
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 
-export type SupportType = "user" | "duplicateJoin" | "inProgress";
+export type SupportType = "user" | "duplicateJoin" | "inProgress" | "complete";
 
 export interface SupportItem {
   type: SupportType;
@@ -9,4 +9,5 @@ export interface SupportItem {
   archived: boolean;
   room: string;
   requestDetails: string | null;
+  timestamp: string;
 }
