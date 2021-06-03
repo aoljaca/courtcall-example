@@ -14,7 +14,9 @@
           <router-link to="/admin/system-users">System Users</router-link>
         </v-col>
         <v-col cols="3">
-          <router-link to="">Support</router-link>
+          <router-link to="/admin/support/active">{{
+            $t("admin.support.description")
+          }}</router-link>
         </v-col>
       </v-row>
     </v-container>

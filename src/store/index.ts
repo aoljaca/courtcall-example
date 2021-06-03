@@ -10,6 +10,7 @@ import CasesModule from "./cases/cases-module";
 import SubconferenceModule from "./sub-conference/sub-conference-module";
 import OrganizationsModule from "./organizations/organizations-module";
 import PermissionsModule from "./permission/permissions-module";
+import SupportModule from "./support/support-module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -24,5 +25,6 @@ export default new Vuex.Store({
     SubconferenceModule,
     OrganizationsModule,
     PermissionsModule,
+    SupportModule,
   },
 });
