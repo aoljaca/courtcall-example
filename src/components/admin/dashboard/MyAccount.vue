@@ -1,15 +1,35 @@
 <template>
-  <div class="my-account">
-    <v-container>
-      <v-row>
-        <v-col>
-          <span>{{ $t("admin.dashboard.welcomeBack") }} Frank </span>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+  <v-row>
+    <v-col>
+      <v-menu>
+        <template v-slot:activator="{ on, attrs }">
+          <div
+            v-bind="attrs"
+            v-on="on"
+          >
+            Welcome Back Frank
+          </div>
+        </template>
+        <v-list>
+          <router-link to="/admin/my-account">
+            <v-list-item>
+              <v-list-item-title>
+                My Account
+              </v-list-item-title>
+            </v-list-item>
+          </router-link>
+          <router-link to="/logout">
+            <v-list-item>
+              <v-list-item-title>
+                Logout
+              </v-list-item-title>
+            </v-list-item>
+          </router-link>
+        </v-list>
+      </v-menu>
+    </v-col>
+  </v-row>
 </template>
-
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
@@ -17,4 +37,9 @@ import "reflect-metadata";
 export default class MyAccount extends Vue {}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a {
+  color: black;
+  text-decoration: none;
+}
+</style>
