@@ -36,10 +36,31 @@
               </v-icon>
             </template>
 
-            <template v-slot:[`item.more`]="{ item }">
-              <v-icon :color="item.more">
-                mdi-dots-horizontal
-              </v-icon>
+            <template v-slot:[`item.more`]="">
+              <v-menu offset-y>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-container fluid>
+                    <v-row>
+                      <v-col class="pa-0">
+                        <v-btn
+                          icon
+                          v-bind="attrs"
+                          v-on="on"
+                          elevation="0"
+                          :title="$t('general.more')"
+                        >
+                          <v-icon>mdi-dots-horizontal</v-icon>
+                        </v-btn></v-col
+                      >
+                    </v-row>
+                  </v-container>
+                </template>
+                <v-list>
+                  <v-list-item>{{ $t("general.view") }}</v-list-item>
+                  <v-list-item>{{ $t("general.edit") }}</v-list-item>
+                  <v-list-item>{{ $t("general.archive") }}</v-list-item>
+                </v-list>
+              </v-menu>
             </template>
           </v-data-table>
         </v-col>
