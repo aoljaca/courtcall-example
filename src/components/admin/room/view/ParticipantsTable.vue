@@ -23,7 +23,7 @@
         <v-col>
           <v-data-table
             :headers="HEADERS"
-            :items="tableData"
+            :items="participantsData"
             :items-per-page="20"
             class="elevation-1"
           >
@@ -100,29 +100,8 @@ export default class CasesTable extends Vue {
       value: "more" 
     },
   ];
-  tableData = [
-    {
-      active: true,
-      name: "Danny Trejo",
-      caseNumber: "1234567890",
-      caseName: "Boris v. Natasha",
-      role: "Scheduled Participant (Dedicated)",
-    },
-    {
-      active: true,
-      name: "Olivia Coleman",
-      caseNumber: "N/A",
-      caseName: "N/A",
-      role: "Participant (Shared)",
-    },
-    {
-      active: false,
-      name: "Tom Hanks",
-      caseNumber: "3456789012",
-      caseName: "Up v. Down",
-      role: "Participant (Dedicated)",
-    },
-  ];
+
+  participantsData = this.$store.getters["ParticipantsModule/getAsList"];
 }
 </script>
 

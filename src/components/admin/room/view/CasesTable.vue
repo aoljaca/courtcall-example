@@ -19,12 +19,12 @@
         <v-col>
           <v-data-table
             :headers="HEADERS"
-            :items="tableData"
+            :items="casesData"
             :items-per-page="20"
             class="elevation-1"
           >
-            <template v-slot:[`item.active`]="{ item }">
-              <v-icon v-if="item.active" color="green">
+            <template v-slot:[`item.live`]="{ item }">
+              <v-icon v-if="item.live" color="green">
                 mdi-circle
               </v-icon>
               <v-icon v-else color="gray">
@@ -72,16 +72,16 @@ import "reflect-metadata";
 export default class CasesTable extends Vue {
   readonly HEADERS = [
     { 
-      text: "Active", 
-      value: "active" 
+      text: "live", 
+      value: "live" 
     },
     { 
       text: "Case Number", 
-      value: "caseNumber" 
+      value: "number" 
     },
     { 
       text: "Case Name", 
-      value: "caseName" 
+      value: "name" 
     },
     { 
       text: "Scheduled Participants", 
@@ -93,26 +93,8 @@ export default class CasesTable extends Vue {
     },
   ];
 
-  tableData = [
-    {
-      active: true,
-      caseNumber: "1234567890",
-      caseName: "Boris v. Natasha",
-      scheduledParticipants: "Olivia Coleman, Viola Davis, Tom Hanks + 5 More",
-    },
-    {
-      active: false,
-      caseNumber: "2345678901",
-      caseName: "Carrell Arbitration",
-      scheduledParticipants: "Danny Trejo, Steve Carrell, Viola Davis + 3 More",
-    },
-    {
-      active: false,
-      caseNumber: "3456789012",
-      caseName: "Boris v. Natasha",
-      scheduledParticipants: "Boris Smith, Natasha Smith",
-    },
-  ];
+  casesData = this.$store.getters["CasesModule/getAsList"];
+
 }
 </script>
 
