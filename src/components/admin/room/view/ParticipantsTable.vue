@@ -74,6 +74,12 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class CasesTable extends Vue {
+  roomId = 'a';
+
+  mounted(): void {
+    this.roomId = this.$route.params.roomId;
+  }
+
   readonly HEADERS = [
     { 
       text: "Active", 
