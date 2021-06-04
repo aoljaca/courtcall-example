@@ -104,7 +104,7 @@ export default class RoomDetailsEdit extends Vue {
   settingsViewPath = "/admin/room/edit/" + this.$route.params.roomId;
 
   get roomDetails() {
-    return this.$store.state.AdminRoomModule.rooms[this.$route.params.roomId].roomDetails;
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomDetails;
   }
 }
 </script>

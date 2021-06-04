@@ -73,7 +73,7 @@ export default class RoomTemplates extends Vue {
   dialogm1 = "";
   dialog = false;
   templatesSum = 25;
-  templates = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+  templates = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 }
 </script>
 

@@ -410,7 +410,7 @@ export default class SettingsEdit extends Vue {
   rules = [(v: string | any[]) => v.length <= 35 || "Max 35 characters"];
 
   get roomSettings() {
-    return this.$store.state.AdminRoomModule.rooms[this.$route.params.roomId].roomSettings;
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings;
   }
 }
 </script>

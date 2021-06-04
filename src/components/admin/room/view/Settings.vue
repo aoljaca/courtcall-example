@@ -286,7 +286,7 @@ export default class Settings extends Vue {
   }
 
   get roomSettings() {
-    return this.$store.state.AdminRoomModule.rooms[this.roomId].roomSettings;
+    return this.$store.state.RoomModule.rooms[this.roomId].roomSettings;
   }
 }
 </script>
