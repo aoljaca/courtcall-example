@@ -70,12 +70,6 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class CasesTable extends Vue {
-  roomId = 'a';
-
-  mounted(): void {
-    this.roomId = this.$route.params.roomId;
-  }
-
   readonly HEADERS = [
     { 
       text: "live", 
@@ -99,10 +93,8 @@ export default class CasesTable extends Vue {
     },
   ];
 
-  // casesData = this.$store.getters["CasesModule/getAsListByRoomId"](this.roomId);
   casesData = this.$store.getters["CasesModule/getAsList"];
-  filteredCases = this.casesData.filter((c: { roomId: string; }) => c.roomId === this.roomId)
-  
+  filteredCases = this.casesData.filter((c: { roomId: string; }) => c.roomId === this.$route.params.roomId)
 
 }
 </script>

@@ -74,12 +74,6 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class CasesTable extends Vue {
-  roomId = 'a';
-
-  mounted(): void {
-    this.roomId = this.$route.params.roomId;
-  }
-
   readonly HEADERS = [
     { 
       text: "Active", 
@@ -108,7 +102,7 @@ export default class CasesTable extends Vue {
   ];
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
-  filteredParticipants = this.participantsData.filter((p: { roomId: string; }) => p.roomId === this.roomId)
+  filteredParticipants = this.participantsData.filter((p: { roomId: string; }) => p.roomId === this.$route.params.roomId)
 }
 </script>
 
