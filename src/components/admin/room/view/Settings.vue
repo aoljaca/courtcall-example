@@ -279,14 +279,8 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class Settings extends Vue {
-  roomId = "a";
-
-  mounted(): void {
-    this.roomId = this.$route.params.roomId;
-  }
-
   get roomSettings() {
-    return this.$store.state.RoomModule.rooms[this.roomId].roomSettings;
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings;
   }
 }
 </script>

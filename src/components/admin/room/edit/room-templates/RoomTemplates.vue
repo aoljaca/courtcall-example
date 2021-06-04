@@ -46,8 +46,8 @@
               <v-divider>
               </v-divider>
               <div 
-                v-for="item in templates"
-                :key="item"
+                v-for="n in 25"
+                :key="n"
               >
                 <saved-template> </saved-template>
               </div>
@@ -73,7 +73,6 @@ export default class RoomTemplates extends Vue {
   dialogm1 = "";
   dialog = false;
   templatesSum = 25;
-  templates = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 }
 </script>
 

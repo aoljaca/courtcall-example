@@ -209,9 +209,9 @@
             </v-col>
             <v-col class="d-flex justify-end">
               <v-radio-group mandatory row>
-                <v-radio :value="isHigh" label="HIGH"> </v-radio>
-                <v-radio :value="isMedium" label="MED"> </v-radio>
-                <v-radio :value="isLow" label="LOW"> </v-radio>
+                <v-radio label="HIGH"> </v-radio>
+                <v-radio label="MED"> </v-radio>
+                <v-radio label="LOW"> </v-radio>
               </v-radio-group>
             </v-col>
           </v-row>
