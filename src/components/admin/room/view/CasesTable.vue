@@ -19,7 +19,7 @@
         <v-col>
           <v-data-table
             :headers="HEADERS"
-            :items="casesData"
+            :items="filteredCases"
             :items-per-page="20"
             class="elevation-1"
           >
@@ -99,9 +99,10 @@ export default class CasesTable extends Vue {
     },
   ];
 
+  // casesData = this.$store.getters["CasesModule/getAsListByRoomId"](this.roomId);
   casesData = this.$store.getters["CasesModule/getAsList"];
-
-
+  filteredCases = this.casesData.filter((c: { roomId: string; }) => c.roomId === this.roomId)
+  
 
 }
 </script>

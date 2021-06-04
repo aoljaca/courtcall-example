@@ -23,7 +23,7 @@
         <v-col>
           <v-data-table
             :headers="HEADERS"
-            :items="participantsData"
+            :items="filteredParticipants"
             :items-per-page="20"
             class="elevation-1"
           >
@@ -108,6 +108,7 @@ export default class CasesTable extends Vue {
   ];
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
+  filteredParticipants = this.participantsData.filter((p: { roomId: string; }) => p.roomId === this.roomId)
 }
 </script>
 

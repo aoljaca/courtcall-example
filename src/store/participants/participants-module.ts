@@ -24,6 +24,7 @@ const participants: {
     systemUser: true,
     organizations: ["o1", "o2", "o3"],
     email: "fake@gmail.com",
+    roomId: "a",
   },
   "2": {
     id: "2",
@@ -45,6 +46,7 @@ const participants: {
     systemUser: true,
     organizations: ["o1", "o2"],
     email: "fake@outlook.com",
+    roomId: "a",
   },
   "3": {
     id: "3",
@@ -66,6 +68,7 @@ const participants: {
     systemUser: true,
     organizations: ["o4"],
     email: "fake@fake.com",
+    roomId: "a",
   },
   "4": {
     id: "4",
@@ -87,6 +90,7 @@ const participants: {
     systemUser: false,
     organizations: ["o5"],
     email: null,
+    roomId: "a",
   },
   "5": {
     id: "5",
@@ -108,6 +112,7 @@ const participants: {
     systemUser: true,
     organizations: [],
     email: "fake@courtcall.com",
+    roomId: "a",
   },
   "6": {
     id: "6",
@@ -129,6 +134,7 @@ const participants: {
     systemUser: true,
     organizations: ["o7"],
     email: "email@gmail.com",
+    roomId: "b",
   },
   "7": {
     id: "7",
@@ -150,6 +156,7 @@ const participants: {
     systemUser: true,
     organizations: ["o8", "o9", "o10"],
     email: "email@outlook.com",
+    roomId: "b",
   },
   "8": {
     id: "8",
@@ -171,6 +178,7 @@ const participants: {
     systemUser: false,
     organizations: [],
     email: null,
+    roomId: "b",
   },
   "9": {
     id: "9",
@@ -192,6 +200,7 @@ const participants: {
     systemUser: false,
     organizations: [],
     email: null,
+    roomId: "b",
   },
   "10": {
     id: "10",
@@ -213,6 +222,7 @@ const participants: {
     systemUser: false,
     organizations: [],
     email: null,
+    roomId: "b",
   },
 };
 const pubNubIdtoParticipantId: { [key: string]: string } = {};
