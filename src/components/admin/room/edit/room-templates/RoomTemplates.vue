@@ -12,24 +12,39 @@
           SELECT TEMPLATE (OPTIONAL)
         </v-btn>
       </template>
-      <v-card>
+      <v-card class="pa-4">
         <v-row class="mx-3">
           <v-col class="templates-header">Room Templates</v-col>
           <v-col class="d-flex justify-end">
-            <v-icon @click="dialog = false"> mdi-close </v-icon>
+            <v-icon x-large @click="dialog = false"> mdi-close </v-icon>
           </v-col>
         </v-row>
         <v-row class="my-1 mx-3">
-          <v-col>
-            Available Templates
+          <v-col cols="4">
+            <span>
+              Available Templates
+            </span>
+            <span>
+              ({{ templatesSum }})
+            </span>
           </v-col>
           <v-col>
-            Sort By:
+            <span>
+              Sort By:
+            </span>
+            <span>
+              Recently Created
+            </span>
+            <span>
+              Alphabetical
+            </span>
           </v-col>
         </v-row>
         <v-card-text style="height: 50vh">
           <v-row style="flex-direction: column" dense v-model="dialogm1" column>
             <v-col class="templates">
+              <v-divider>
+              </v-divider>
               <saved-template> </saved-template>
               <saved-template> </saved-template>
               <saved-template> </saved-template>
@@ -69,6 +84,7 @@ import "reflect-metadata";
 export default class RoomTemplates extends Vue {
   dialogm1 = "";
   dialog = false;
+  templatesSum = 25;
 }
 </script>
 
@@ -77,5 +93,8 @@ export default class RoomTemplates extends Vue {
   font-weight: 400;
   font-size: 2rem;
   line-height: 2rem;
+}
+.close-large button {
+  font-size: 2rem;
 }
 </style>

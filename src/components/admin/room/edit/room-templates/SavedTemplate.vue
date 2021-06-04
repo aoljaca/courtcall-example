@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-row>
+  <v-row class="px-1 py-4">
     <v-col>
       <div>My Fair Template</div>
     </v-col>
