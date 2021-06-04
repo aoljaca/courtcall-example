@@ -41,6 +41,8 @@ const rooms: {
       hostAccessCode: 5555,
       participantAccessCode: 5555,
     },
+    templateId: "0",
+    modified: false,
   },
   b: {
     uuid: "b",
@@ -79,6 +81,8 @@ const rooms: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
+    templateId: "0",
+    modified: false,
   },
 };
 

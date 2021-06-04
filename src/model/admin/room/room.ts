@@ -1,8 +1,6 @@
-import { RoomSettings } from "./room-settings";
-import { RoomDetails } from "./room-details";
+import { RoomBase } from "./room-base";
 
-export interface Room {
-  uuid: string;
-  roomDetails: RoomDetails;
-  roomSettings: RoomSettings;
+export interface Room extends RoomBase{
+  templateId: string | null;
+  modified: boolean | null;
 }
