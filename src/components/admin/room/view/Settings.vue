@@ -9,7 +9,7 @@
     </v-row>
     <v-row>
       <v-col class="d-flex">
-        <div class="mr-4 settings-sub-header">
+        <div class="mr-4 settings-label-text">
           {{ $t("admin.roomSettings.template") }}
         </div>
         <div>{{ roomSettings.template }}</div>
@@ -18,7 +18,7 @@
     <v-row>
       <v-col id="left-settings-col">
         <v-row>
-          <v-col class="settings-sub-header">
+          <v-col class="settings-label-text">
             {{ $t("admin.roomSettings.entranceBehavior") }}
           </v-col>
         </v-row>
@@ -90,7 +90,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <span class="settings-sub-header">
+            <span class="settings-label-text">
               {{ $t("admin.roomSettings.meetingVideoAndAudio") }}
             </span>
           </v-col>
@@ -115,7 +115,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <span class="settings-sub-header">
+            <span class="settings-label-text">
               {{ $t("admin.roomSettings.videoSetup") }}
             </span>
           </v-col>
@@ -149,7 +149,7 @@
       <v-col id="right-settings-col" class="divide-cols">
         <v-row>
           <v-col>
-            <span class="settings-sub-header">
+            <span class="settings-label-text">
               {{ $t("admin.roomSettings.meetingOperations") }}
             </span>
           </v-col>
@@ -201,7 +201,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <span class="settings-sub-header">
+            <span class="settings-label-text">
               {{ $t("admin.roomSettings.accessFunctions") }}
             </span>
           </v-col>
@@ -253,7 +253,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <span class="settings-sub-header">
+            <span class="settings-label-text">
               {{ $t("admin.roomSettings.support") }}
             </span>
           </v-col>
@@ -297,9 +297,10 @@ export default class Settings extends Vue {
 }
 .setting-state {
   font-weight: bold;
-  text-align: right;
+  display: flex;
+  justify-content: right;
 }
-.settings-sub-header {
+.settings-label-text {
   font-weight: 700;
   font-size: 1rem;
 }

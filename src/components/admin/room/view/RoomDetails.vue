@@ -4,7 +4,7 @@
       <v-row>
         <v-col>
           <v-icon class="mb-2"> mdi-circle </v-icon>
-          <div class="mx-4 d-inline-block settings-edit-header">
+          <div class="mx-4 d-inline-block details-header">
             Judge Frank's Room
           </div>
           <span class="mx-8">
@@ -118,12 +118,7 @@ a {
   text-decoration: none;
   color: white !important;
 }
-.settings-sub-header {
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.settings-edit-header {
+.details-header {
   font-weight: 400;
   font-size: 2rem;
   line-height: 2rem;

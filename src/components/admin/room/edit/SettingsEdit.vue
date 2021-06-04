@@ -10,7 +10,7 @@
       </v-row>
       <v-row>
         <v-col cols="1">
-          <label class="settings-sub-header">{{
+          <label class="settings-label-text">{{
             $t("admin.roomSettings.template")
           }}</label>
         </v-col>
@@ -31,7 +31,7 @@
       <v-row>
         <v-col id="left-settings-col">
           <v-row>
-            <v-col class="pb-6 settings-sub-header">
+            <v-col class="pb-6 settings-label-text">
               {{ $t("admin.roomSettings.entranceBehavior") }}
             </v-col>
           </v-row>
@@ -143,7 +143,7 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="pb-6 settings-sub-header">
+            <v-col class="pb-6 settings-label-text">
               {{ $t("admin.roomSettings.meetingVideoAndAudio") }}
             </v-col>
           </v-row>
@@ -175,7 +175,7 @@
               <span>{{ $t("admin.roomSettings.yes") }}</span>
             </v-col>
           </v-row>
-          <v-row class="pb-6 settings-sub-header" dense>
+          <v-row class="pb-6 settings-label-text" dense>
             <v-col>
               {{ $t("admin.roomSettings.videoSetup") }}
             </v-col>
@@ -218,7 +218,7 @@
         </v-col>
         <v-col id="right-settings-col" class="divide-cols">
           <v-row>
-            <v-col class="pb-6 settings-sub-header">
+            <v-col class="pb-6 settings-label-text">
               {{ $t("admin.roomSettings.meetingOperations") }}
             </v-col>
           </v-row>
@@ -291,7 +291,7 @@
               <span>{{ $t("admin.roomSettings.on") }}</span>
             </v-col>
           </v-row>
-          <v-row class="pb-6 settings-sub-header">
+          <v-row class="pb-6 settings-label-text">
             <v-col>
               {{ $t("admin.roomSettings.accessFunctions") }}
             </v-col>
@@ -369,7 +369,7 @@
             </v-col>
           </v-row>
           <v-row dense>
-            <v-col class="pb-6 settings-sub-header">
+            <v-col class="pb-6 settings-label-text">
               {{ $t("admin.roomSettings.support") }}
             </v-col>
           </v-row>
@@ -419,7 +419,7 @@ export default class SettingsEdit extends Vue {
 .divide-cols {
   border-left: solid 1px grey;
 }
-.settings-sub-header {
+.settings-label-text {
   font-weight: 700;
   font-size: 1rem;
 }

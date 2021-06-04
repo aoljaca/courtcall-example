@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 settings-sub-header">Room Name</div>
+        <div class="pr-4 details-label-text">Room Name</div>
         <v-text-field
           :rules="rules"
           counter
@@ -31,7 +31,7 @@
     </v-row>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 settings-sub-header">Organization</div>
+        <div class="pr-4 details-label-text">Organization</div>
         <v-text-field
           :rules="rules"
           counter
@@ -43,7 +43,7 @@
         </v-text-field>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
-        <div class="pr-4 settings-sub-header">Status</div>
+        <div class="pr-4 details-label-text">Status</div>
         <v-select :items="items" dense> </v-select>
       </v-col>
     </v-row>
@@ -110,11 +110,11 @@ export default class RoomDetailsEdit extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.settings-sub-header {
+.details-label-text {
   font-weight: 700;
   font-size: 1rem;
 }
-.settings-edit-header {
+.details-header {
   font-weight: 400;
   font-size: 2rem;
   line-height: 2rem;
