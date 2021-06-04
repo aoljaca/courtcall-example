@@ -34,6 +34,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      name: "Judge Frank's Room",
       organization: "LA County Superior Court - 12345",
       status: "Available",
       phone: "555-555-5555",
@@ -45,7 +46,7 @@ const rooms: {
     uuid: "b",
     roomSettings: {
       template: "Template Name (Modified)",
-      passcode: "YourHonor931",
+      passcode: "HonorYour999",
       allowPasscode: true,
       video: false,
       audio: false,
@@ -71,7 +72,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      organization: "LA County Superior Court - 12345",
+      name: "Judge Paul's Room",
+      organization: "Pierce County District Court - 59492",
       status: "Available",
       phone: "000-000-0000",
       hostAccessCode: 5656,
@@ -84,16 +86,10 @@ const adminRoomModule: Module<any, any> = {
   namespaced: true,
   state: {
     rooms: rooms,
-    selectedRoomId: "a",
   },
   mutations: {},
   actions: {},
   getters: {
-    selectedRoomSettings: (state) =>
-      state.rooms[state.selectedRoomId].roomSettings,
-    selectedRoomDetails: (state) =>
-      state.rooms[state.selectedRoomId].roomDetails,
-    getRoomsList: (state) => state.rooms,
   },
 };
 

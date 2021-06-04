@@ -105,16 +105,10 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
-  roomId = "a";
-  settingsEditPath = "";
-
-  mounted(): void {
-    this.roomId = this.$route.params.roomId;
-    this.settingsEditPath = "/admin/room/edit/" + this.roomId;
-  }
+  settingsEditPath = "/admin/room/edit/" + this.$route.params.roomId;
 
   get roomDetails() {
-    return this.$store.state.AdminRoomModule.rooms[this.roomId].roomDetails;
+    return this.$store.state.AdminRoomModule.rooms[this.$route.params.roomId].roomDetails;
   }
 }
 </script>

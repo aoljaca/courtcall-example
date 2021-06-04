@@ -9,7 +9,7 @@
           maxlength="25"
           clearable
           dense
-          v-model="franksRoom"
+          :placeholder="roomDetails.name"
         >
         </v-text-field>
       </v-col>
@@ -38,7 +38,7 @@
           maxlength="25"
           clearable
           dense
-          v-model="org"
+          :placeholder="roomDetails.organization"
         >
         </v-text-field>
       </v-col>
@@ -64,7 +64,6 @@
               maxlength="25"
               clearable
               dense
-              v-model="temp"
               label="Enter Template Name"
             >
             </v-text-field>
@@ -99,23 +98,13 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class RoomDetailsEdit extends Vue {
-  franksRoom = "Judge Frank's Room";
-  org = "LA County Superior Court - 12345";
-  temp = "Enter template name";
-  description = this.roomDetails.passcode;
   rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
   items = ["Draft", "Available"];
 
-  roomId = "a";
-  settingsViewPath = "";
-
-  mounted(): void {
-    this.roomId = this.$route.params.roomId;
-    this.settingsViewPath = "/admin/room/view/" + this.roomId;
-  }
+  settingsViewPath = "/admin/room/edit/" + this.$route.params.roomId;
 
   get roomDetails() {
-    return this.$store.state.AdminRoomModule.rooms[this.roomId].roomDetails;
+    return this.$store.state.AdminRoomModule.rooms[this.$route.params.roomId].roomDetails;
   }
 }
 </script>
