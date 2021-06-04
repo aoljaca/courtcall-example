@@ -1,13 +1,9 @@
 <template>
   <v-row justify="center">
-    <v-dialog
-      v-model="dialog"
-      persistent
-      max-width="600px"
-    >
+    <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          style="color: white" 
+          style="color: white"
           color="grey darken-4 rounded-0"
           depressed
           v-bind="attrs"
@@ -18,9 +14,7 @@
       </template>
       <v-card>
         <v-card-title>
-          <div>
-            User Profile
-          </div>
+          <div>User Profile</div>
           <div>
             <v-icon @click="dialog = false">mdi-close</v-icon>
           </div>
@@ -28,31 +22,16 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
-                <v-text-field
-                  label="Legal first name*"
-                  required
-                ></v-text-field>
+              <v-col cols="12" sm="6" md="4">
+                <v-text-field label="Legal first name*" required></v-text-field>
               </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
+              <v-col cols="12" sm="6" md="4">
                 <v-text-field
                   label="Legal middle name"
                   hint="example of helper text only on focus"
                 ></v-text-field>
               </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
+              <v-col cols="12" sm="6" md="4">
                 <v-text-field
                   label="Legal last name*"
                   hint="example of persistent helper text"
@@ -61,10 +40,7 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field
-                  label="Email*"
-                  required
-                ></v-text-field>
+                <v-text-field label="Email*" required></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field
@@ -73,22 +49,26 @@
                   required
                 ></v-text-field>
               </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-              >
+              <v-col cols="12" sm="6">
                 <v-select
                   :items="['0-17', '18-29', '30-54', '54+']"
                   label="Age*"
                   required
                 ></v-select>
               </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-              >
+              <v-col cols="12" sm="6">
                 <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
+                  :items="[
+                    'Skiing',
+                    'Ice hockey',
+                    'Soccer',
+                    'Basketball',
+                    'Hockey',
+                    'Reading',
+                    'Writing',
+                    'Coding',
+                    'Basejump',
+                  ]"
                   label="Interests"
                   multiple
                 ></v-autocomplete>
@@ -114,5 +94,4 @@ export default class RoomTemplates extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

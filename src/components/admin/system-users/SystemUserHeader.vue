@@ -3,14 +3,11 @@
     <v-container fluid>
       <v-row class="py-4">
         <v-col class="ml-8">
-          <span 
+          <span
             class="grey--text text--lighten-1 font-weight-bold text-subtitle-1"
             >{{ $t("admin.systemUser.dashboard") }}</span
           >
-          <span
-            class="font-weight-bold"
-            >{{ message }}</span
-          >
+          <span class="font-weight-bold">{{ message }}</span>
         </v-col>
       </v-row>
     </v-container>

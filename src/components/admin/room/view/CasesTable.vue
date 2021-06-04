@@ -6,10 +6,7 @@
           <h2>Cases</h2>
         </v-col>
         <v-col class="text-right">
-          <v-btn
-          color="grey darken-4 rounded-0 white--text"
-          depressed
-          >
+          <v-btn color="grey darken-4 rounded-0 white--text" depressed>
             ADD
           </v-btn>
         </v-col>
@@ -24,12 +21,8 @@
             class="elevation-1"
           >
             <template v-slot:[`item.live`]="{ item }">
-              <v-icon v-if="item.live" color="green">
-                mdi-circle
-              </v-icon>
-              <v-icon v-else color="gray">
-                mdi-circle
-              </v-icon>
+              <v-icon v-if="item.live" color="green"> mdi-circle </v-icon>
+              <v-icon v-else color="gray"> mdi-circle </v-icon>
             </template>
 
             <template v-slot:[`item.scheduledParticipants`]="{ item }">
@@ -82,39 +75,37 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component
 export default class CasesTable extends Vue {
   readonly HEADERS = [
-    { 
-      text: "live", 
-      value: "live" 
+    {
+      text: "live",
+      value: "live",
     },
-    { 
-      text: "Case Number", 
-      value: "number" 
+    {
+      text: "Case Number",
+      value: "number",
     },
-    { 
-      text: "Case Name", 
-      value: "name" 
+    {
+      text: "Case Name",
+      value: "name",
     },
-    { 
-      text: "Scheduled Participants", 
-      value: "scheduledParticipants" 
+    {
+      text: "Scheduled Participants",
+      value: "scheduledParticipants",
     },
-    { 
-      text: "More", 
-      value: "more" 
+    {
+      text: "More",
+      value: "more",
     },
   ];
 
   casesData = this.$store.getters["CasesModule/getAsList"];
-  filteredCases = this.casesData.filter((c: { roomId: string; }) => c.roomId === this.$route.params.roomId);
+  filteredCases = this.casesData.filter(
+    (c: { roomId: string }) => c.roomId === this.$route.params.roomId
+  );
 
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
   }
-
 }
 </script>
 
 <style lang="scss" scoped></style>
-
-
-

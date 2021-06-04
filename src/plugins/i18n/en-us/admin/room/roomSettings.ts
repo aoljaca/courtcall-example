@@ -10,7 +10,8 @@ export default {
   waitingRoom: "Wating Room",
   providerPSTN: "PSTN Provider",
   meetingVideoAndAudio: "Meeting Video and Audio Control",
-  allowParticipantsToggleVideo: "Allow participants to toggle turn their video off/on",
+  allowParticipantsToggleVideo:
+    "Allow participants to toggle turn their video off/on",
   allowParticipantsToggleAudio: "Allow participants to toggle mute themselves",
   videoSetup: "Video Set Up",
   defaultCanvasLayout: "Default Canvas Layout",
@@ -29,5 +30,5 @@ export default {
   remoteTranslation: "Remote Translation",
   streaming: "Streaming",
   support: "Support",
-  duplicateParticipantHandling: "Duplicate Participant handling"
+  duplicateParticipantHandling: "Duplicate Participant handling",
 };

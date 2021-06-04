@@ -2,93 +2,96 @@
   <div>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 settings-sub-header">
-          Room Name
-        </div>
-        <v-text-field :rules="rules" counter maxlength="25" clearable dense v-model="franksRoom">
+        <div class="pr-4 settings-sub-header">Room Name</div>
+        <v-text-field
+          :rules="rules"
+          counter
+          maxlength="25"
+          clearable
+          dense
+          v-model="franksRoom"
+        >
         </v-text-field>
       </v-col>
       <v-col class="d-flex justify-end">
         <v-btn
-        style="color: white" 
-        color="grey lighten-1 rounded-0"
-        depressed
-        class="mr-6"
+          style="color: white"
+          color="grey lighten-1 rounded-0"
+          depressed
+          class="mr-6"
         >
-        <router-link class="remove-decoration" to="/admin/room/view">
-        CANCEL
-        </router-link>
+          <router-link class="remove-decoration" to="/admin/room/view">
+            CANCEL
+          </router-link>
         </v-btn>
-        <v-btn
-        style="color: white" 
-        color="grey darken-4 rounded-0"
-        depressed
-        >
-        SAVE CHANGES
+        <v-btn style="color: white" color="grey darken-4 rounded-0" depressed>
+          SAVE CHANGES
         </v-btn>
       </v-col>
     </v-row>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 settings-sub-header">
-          Organization
-        </div>
-        <v-text-field :rules="rules" counter maxlength="25" clearable dense v-model="org">
+        <div class="pr-4 settings-sub-header">Organization</div>
+        <v-text-field
+          :rules="rules"
+          counter
+          maxlength="25"
+          clearable
+          dense
+          v-model="org"
+        >
         </v-text-field>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
-        <div class="pr-4 settings-sub-header">
-          Status
-        </div>
-        <v-select :items="items" dense>
-        </v-select>
+        <div class="pr-4 settings-sub-header">Status</div>
+        <v-select :items="items" dense> </v-select>
       </v-col>
     </v-row>
     <v-row dense>
       <v-col class="d-flex justify-end">
-        <v-btn  
-        style="color: white" 
-        color="grey darken-4 rounded-0"
-        depressed
-        >
-        SAVE AS NEW TEMPLATE
+        <v-btn style="color: white" color="grey darken-4 rounded-0" depressed>
+          SAVE AS NEW TEMPLATE
         </v-btn>
       </v-col>
     </v-row>
     <v-row class="justify-end">
-      <v-col 
-        cols="3" 
-        style="background: #F5F5F5;" 
-        class="pa-8"
-      >
+      <v-col cols="3" style="background: #f5f5f5" class="pa-8">
         <v-row class="justify-center">
           <v-col cols="12">
-            <v-text-field :rules="rules" counter maxlength="25" clearable dense v-model="temp" label="Enter Template Name">
+            <v-text-field
+              :rules="rules"
+              counter
+              maxlength="25"
+              clearable
+              dense
+              v-model="temp"
+              label="Enter Template Name"
+            >
             </v-text-field>
           </v-col>
         </v-row>
         <v-row>
           <v-col class="d-flex justify-end">
-              <v-btn  
-              style="color: white" 
+            <v-btn
+              style="color: white"
               color="grey lighten-1 rounded-0"
               depressed
               class="mr-6"
-              >
+            >
               CANCEL
-              </v-btn>
-              <v-btn  
-              style="color: white" 
+            </v-btn>
+            <v-btn
+              style="color: white"
               color="grey darken-4 rounded-0"
               depressed
-              >
+            >
               SAVE
-              </v-btn>
+            </v-btn>
           </v-col>
         </v-row>
       </v-col>
     </v-row>
-  </div>     
+  </div>
 </template>
 
 <script lang="ts">
@@ -98,23 +101,22 @@ import "reflect-metadata";
 export default class RoomDetailsEdit extends Vue {
   franksRoom = "Judge Frank's Room";
   org = "LA County Superior Court - 12345";
-  temp = "Enter template name"
+  temp = "Enter template name";
   description = this.roomDetails.passcode;
-  rules = [(v: string|any[]) => v.length <= 25 || 'Max 25 characters'];
+  rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
   items = ["Draft", "Available"];
-  
-  roomId = 'a';
-  settingsViewPath = '';
+
+  roomId = "a";
+  settingsViewPath = "";
 
   mounted(): void {
     this.roomId = this.$route.params.roomId;
-    this.settingsViewPath = '/admin/room/view/' + this.roomId;
+    this.settingsViewPath = "/admin/room/view/" + this.roomId;
   }
 
   get roomDetails() {
     return this.$store.state.AdminRoomModule.rooms[this.roomId].roomDetails;
   }
-
 }
 </script>
 

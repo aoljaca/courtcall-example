@@ -1,36 +1,24 @@
 <template>
   <div>
     <v-row>
-      <v-col class="my-1 nav-item-dark">
-        Details
-      </v-col>
+      <v-col class="my-1 nav-item-dark"> Details </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item">
-        Settings
-      </v-col>
+      <v-col class="my-1 nav-item"> Settings </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item">
-        Cases
-      </v-col>
+      <v-col class="my-1 nav-item"> Cases </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item">
-        Participants
-      </v-col>
+      <v-col class="my-1 nav-item"> Participants </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item d-flex justify-space-between">
-        <div>
-          Activity
-        </div>
-        <v-icon>
-          mdi-open-in-new
-        </v-icon>
+        <div>Activity</div>
+        <v-icon> mdi-open-in-new </v-icon>
       </v-col>
     </v-row>
-  </div>     
+  </div>
 </template>
 
 <script lang="ts">
@@ -45,10 +33,10 @@ export default class RoomNav extends Vue {
 
 <style lang="scss" scoped>
 .nav-item-dark {
-  background: #D5D5D5;
+  background: #d5d5d5;
 }
 
 .nav-item {
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 </style>

@@ -10,19 +10,19 @@
           <v-col cols="6">
             <v-row class="justify-end mr-16">
               <v-col cols="2">
-                <v-btn 
-                style="color: white; position: relative; left: 1.75rem;" 
-                color="grey lighten-1 rounded-0" 
-                depressed
-                >{{ $t("admin.systemUser.cancel") }}</v-btn
-              >
+                <v-btn
+                  style="color: white; position: relative; left: 1.75rem"
+                  color="grey lighten-1 rounded-0"
+                  depressed
+                  >{{ $t("admin.systemUser.cancel") }}</v-btn
+                >
               </v-col>
               <v-col cols="2">
-                <v-btn 
-                style="color: white" 
-                color="grey darken-4 rounded-0" 
-                depressed
-                >{{ $t("admin.systemUser.save") }}</v-btn
+                <v-btn
+                  style="color: white"
+                  color="grey darken-4 rounded-0"
+                  depressed
+                  >{{ $t("admin.systemUser.save") }}</v-btn
                 >
               </v-col>
             </v-row>
@@ -33,8 +33,7 @@
             <label>{{ $t("admin.systemUser.email") }}</label>
           </v-col>
           <v-col cols="3">
-            <v-text-field v-model="email" readonly dense>
-            </v-text-field>
+            <v-text-field v-model="email" readonly dense> </v-text-field>
           </v-col>
         </v-row>
         <v-row dense>
@@ -42,15 +41,14 @@
             <label>{{ $t("admin.systemUser.phone") }}</label>
           </v-col>
           <v-col cols="3">
-            <v-text-field v-model="phone" dense>
-            </v-text-field>
+            <v-text-field v-model="phone" dense> </v-text-field>
           </v-col>
         </v-row>
         <v-row class="mt-4 mb-4">
           <v-col>
-            <span 
-            class="font-weight-medium"
-            >{{ $t("admin.systemUser.changePassword") }}</span>
+            <span class="font-weight-medium">{{
+              $t("admin.systemUser.changePassword")
+            }}</span>
           </v-col>
         </v-row>
         <v-row dense>
@@ -58,8 +56,7 @@
             <label>{{ $t("admin.systemUser.password") }}</label>
           </v-col>
           <v-col cols="3">
-            <v-text-field type="password" dense>
-            </v-text-field>
+            <v-text-field type="password" dense> </v-text-field>
           </v-col>
         </v-row>
         <v-row dense>
@@ -67,8 +64,7 @@
             <label>{{ $t("admin.systemUser.newPassword") }}</label>
           </v-col>
           <v-col cols="3">
-            <v-text-field type="password" dense>
-            </v-text-field>
+            <v-text-field type="password" dense> </v-text-field>
           </v-col>
         </v-row>
         <v-row dense>
@@ -76,8 +72,7 @@
             <label>{{ $t("admin.systemUser.confirmPassword") }}</label>
           </v-col>
           <v-col cols="3">
-            <v-text-field type="password" dense>
-            </v-text-field>
+            <v-text-field type="password" dense> </v-text-field>
           </v-col>
         </v-row>
       </v-form>

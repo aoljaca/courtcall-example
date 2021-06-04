@@ -10,11 +10,13 @@
           <room-details class="mb-4"></room-details>
           <settings class="pad-component border mb-8 pb-8"></settings>
           <cases-table class="pad-component border mb-8"></cases-table>
-          <participants-table class="pad-component border mb-8"></participants-table>
+          <participants-table
+            class="pad-component border mb-8"
+          ></participants-table>
         </v-col>
       </v-row>
     </v-container>
-  </div>     
+  </div>
 </template>
 
 <script lang="ts">

@@ -6,14 +6,10 @@
           <h2>Participants</h2>
         </v-col>
         <v-col cols="2">
-          <v-select label="Filter By Case">
-          </v-select>
+          <v-select label="Filter By Case"> </v-select>
         </v-col>
         <v-col class="text-right">
-          <v-btn
-          color="grey darken-4 rounded-0 white--text"
-          depressed
-          >
+          <v-btn color="grey darken-4 rounded-0 white--text" depressed>
             ADD
           </v-btn>
         </v-col>
@@ -28,42 +24,22 @@
             class="elevation-1"
           >
             <template v-slot:[`item.active`]="{ item }">
-              <v-icon v-if="item.active" color="green">
-                mdi-circle
-              </v-icon>
-              <v-icon v-else color="gray">
-                mdi-circle
-              </v-icon>
+              <v-icon v-if="item.active" color="green"> mdi-circle </v-icon>
+              <v-icon v-else color="gray"> mdi-circle </v-icon>
             </template>
 
             <template v-slot:[`item.caseNumber`]="{ item }">
-              <div
-                class="py-1 px-1 d-inline-block"
-                v-if="item.caseId"
-              >
+              <div class="py-1 px-1 d-inline-block" v-if="item.caseId">
                 {{ getCaseById(item.caseId).number }}
               </div>
-              <div
-                class="py-1 px-1 d-inline-block"
-                v-else
-              >
-                N/A
-              </div>
+              <div class="py-1 px-1 d-inline-block" v-else>N/A</div>
             </template>
 
             <template v-slot:[`item.caseName`]="{ item }">
-              <div
-                class="py-1 px-1 d-inline-block"
-                v-if="item.caseId"
-              >
+              <div class="py-1 px-1 d-inline-block" v-if="item.caseId">
                 {{ getCaseById(item.caseId).name }}
               </div>
-              <div
-                class="py-1 px-1 d-inline-block"
-                v-else
-              >
-                N/A
-              </div>
+              <div class="py-1 px-1 d-inline-block" v-else>N/A</div>
             </template>
 
             <template v-slot:[`item.role`]="{ item }">
@@ -116,34 +92,36 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 @Component
 export default class CasesTable extends Vue {
   readonly HEADERS = [
-    { 
-      text: "Active", 
-      value: "active" 
+    {
+      text: "Active",
+      value: "active",
     },
-    { 
-      text: "Name", 
-      value: "name" 
+    {
+      text: "Name",
+      value: "name",
     },
-    { 
-      text: "Case Number", 
-      value: "caseNumber" 
+    {
+      text: "Case Number",
+      value: "caseNumber",
     },
-    { 
-      text: "Case Name", 
-      value: "caseName" 
+    {
+      text: "Case Name",
+      value: "caseName",
     },
-    { 
-      text: "Role", 
-      value: "role" 
+    {
+      text: "Role",
+      value: "role",
     },
-    { 
-      text: "More", 
-      value: "more" 
+    {
+      text: "More",
+      value: "more",
     },
   ];
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
-  filteredParticipants = this.participantsData.filter((p: { roomId: string; }) => p.roomId === this.$route.params.roomId)
+  filteredParticipants = this.participantsData.filter(
+    (p: { roomId: string }) => p.roomId === this.$route.params.roomId
+  );
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
   }

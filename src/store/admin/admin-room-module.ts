@@ -38,7 +38,7 @@ const rooms: {
       phone: "555-555-5555",
       hostAccessCode: 5555,
       participantAccessCode: 5555,
-    }
+    },
   },
   b: {
     uuid: "b",
@@ -74,9 +74,9 @@ const rooms: {
       phone: "000-000-0000",
       hostAccessCode: 5656,
       participantAccessCode: 5656,
-    }
-  }
-}
+    },
+  },
+};
 
 const adminRoomModule: Module<any, any> = {
   namespaced: true,
@@ -84,13 +84,13 @@ const adminRoomModule: Module<any, any> = {
     rooms: rooms,
     selectedRoomId: "a",
   },
-  mutations: {
-  },
-  actions: {
-  },
+  mutations: {},
+  actions: {},
   getters: {
-    selectedRoomSettings: (state) => state.rooms[state.selectedRoomId].roomSettings,
-    selectedRoomDetails: (state) => state.rooms[state.selectedRoomId].roomDetails,
+    selectedRoomSettings: (state) =>
+      state.rooms[state.selectedRoomId].roomSettings,
+    selectedRoomDetails: (state) =>
+      state.rooms[state.selectedRoomId].roomDetails,
     getRoomsList: (state) => state.rooms,
   },
 };

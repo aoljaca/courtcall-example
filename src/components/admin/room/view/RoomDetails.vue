@@ -3,27 +3,21 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-icon class="mb-2">
-            mdi-circle
-          </v-icon>
+          <v-icon class="mb-2"> mdi-circle </v-icon>
           <div class="mx-4 d-inline-block settings-edit-header">
             Judge Frank's Room
           </div>
           <span class="mx-8">
-            {{ $t("admin.roomDetails.organization")}}
+            {{ $t("admin.roomDetails.organization") }}
           </span>
           <span>
-            {{ roomDetails.organization}}
+            {{ roomDetails.organization }}
           </span>
         </v-col>
         <v-col class="d-flex justify-end">
-          <v-btn
-          style="color: white" 
-          color="grey darken-4 rounded-0"
-          depressed
-          >
+          <v-btn style="color: white" color="grey darken-4 rounded-0" depressed>
             <router-link class="remove-decoration" :to="settingsEditPath">
-              {{ $t("admin.roomDetails.editButton") }} 
+              {{ $t("admin.roomDetails.editButton") }}
             </router-link>
           </v-btn>
         </v-col>
@@ -35,19 +29,15 @@
               <span>
                 {{ $t("admin.roomDetails.streaming") }}
               </span>
-              <v-icon>
-                mdi-wifi
-              </v-icon>
+              <v-icon> mdi-wifi </v-icon>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
               <span>
-                {{ $t("admin.roomDetails.recording" )}}
+                {{ $t("admin.roomDetails.recording") }}
               </span>
-              <v-icon>
-                mdi-circle
-              </v-icon>
+              <v-icon> mdi-circle </v-icon>
             </v-col>
           </v-row>
         </v-col>
@@ -64,17 +54,15 @@
           </v-row>
           <v-row>
             <v-col>
-              <v-icon>
-                mdi-lock-open
-              </v-icon>
+              <v-icon> mdi-lock-open </v-icon>
               <span>
-              {{ $t("admin.roomDetails.lock") }}
+                {{ $t("admin.roomDetails.lock") }}
               </span>
             </v-col>
           </v-row>
         </v-col>
         <v-col cols="2">
-           <v-row>
+          <v-row>
             <v-col>
               {{ $t("admin.roomDetails.phone") }}
             </v-col>
@@ -86,7 +74,7 @@
           </v-row>
           <v-row>
             <v-col>
-              {{ $t("admin.roomDetails.participantAccessCode")}}
+              {{ $t("admin.roomDetails.participantAccessCode") }}
             </v-col>
           </v-row>
         </v-col>
@@ -107,10 +95,9 @@
             </v-col>
           </v-row>
         </v-col>
-        
       </v-row>
     </v-container>
-  </div>     
+  </div>
 </template>
 
 <script lang="ts">
@@ -118,12 +105,12 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
-  roomId = 'a';
-  settingsEditPath = '';
+  roomId = "a";
+  settingsEditPath = "";
 
   mounted(): void {
     this.roomId = this.$route.params.roomId;
-    this.settingsEditPath = '/admin/room/edit/' + this.roomId;
+    this.settingsEditPath = "/admin/room/edit/" + this.roomId;
   }
 
   get roomDetails() {
