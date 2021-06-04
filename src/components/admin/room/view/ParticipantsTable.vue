@@ -36,6 +36,36 @@
               </v-icon>
             </template>
 
+            <template v-slot:[`item.caseNumber`]="{ item }">
+              <div
+                class="py-1 px-1 d-inline-block"
+                v-if="item.caseId"
+              >
+                {{ getCaseById(item.caseId).number }}
+              </div>
+              <div
+                class="py-1 px-1 d-inline-block"
+                v-else
+              >
+                N/A
+              </div>
+            </template>
+
+            <template v-slot:[`item.caseName`]="{ item }">
+              <div
+                class="py-1 px-1 d-inline-block"
+                v-if="item.caseId"
+              >
+                {{ getCaseById(item.caseId).name }}
+              </div>
+              <div
+                class="py-1 px-1 d-inline-block"
+                v-else
+              >
+                N/A
+              </div>
+            </template>
+
             <template v-slot:[`item.more`]="">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
@@ -72,6 +102,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
+import { Case } from "@/model/meeting/meeting-ui/case";
 @Component
 export default class CasesTable extends Vue {
   readonly HEADERS = [
@@ -103,6 +134,9 @@ export default class CasesTable extends Vue {
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
   filteredParticipants = this.participantsData.filter((p: { roomId: string; }) => p.roomId === this.$route.params.roomId)
+  getCaseById(id: string): Case {
+    return this.$store.getters["CasesModule/getById"](id);
+  }
 }
 </script>
 

@@ -86,10 +86,6 @@ const casesModule: Module<any, any> = {
   getters: {
     getById: (state) => (id: string) => state.cases[id],
     getAsList: (state) => Object.values(state.cases),
-    getAsListByRoomId: (state, roomId) => {
-      const caseList = Object.values(state.cases) as Case[];
-      return caseList.filter((c) => c.roomId === roomId);
-    },
   },
 };
 
