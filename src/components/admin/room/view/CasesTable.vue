@@ -32,6 +32,16 @@
               </v-icon>
             </template>
 
+            <template v-slot:[`item.scheduledParticipants`]="{ item }">
+              <div
+                class="py-1 px-1 d-inline-block"
+                v-for="id in item.participants"
+                :key="id"
+              >
+                {{ getParticipantById(id).name }}
+              </div>
+            </template>
+
             <template v-slot:[`item.more`]="">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
@@ -68,6 +78,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
+import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component
 export default class CasesTable extends Vue {
   readonly HEADERS = [
@@ -94,7 +105,11 @@ export default class CasesTable extends Vue {
   ];
 
   casesData = this.$store.getters["CasesModule/getAsList"];
-  filteredCases = this.casesData.filter((c: { roomId: string; }) => c.roomId === this.$route.params.roomId)
+  filteredCases = this.casesData.filter((c: { roomId: string; }) => c.roomId === this.$route.params.roomId);
+
+  getParticipantById(id: string): Participant {
+    return this.$store.getters["ParticipantsModule/getById"](id);
+  }
 
 }
 </script>
