@@ -6,7 +6,7 @@
           <h2>{{ $t("admin.support.active.title") }}</h2>
         </v-col>
         <v-col cols="6" class="d-flex justify-end">
-          <v-btn depressed color="black">
+          <v-btn @click="goToArchive()" depressed color="black">
             <span class="white--text">
               {{ $t("admin.support.archive.title") }}
             </span>
@@ -144,6 +144,10 @@ export default class SupportQueue extends Vue {
     } else {
       return "Unknown";
     }
+  }
+
+  goToArchive(): void {
+    this.$router.push({ path: "/admin/support/archived" });
   }
 }
 </script>

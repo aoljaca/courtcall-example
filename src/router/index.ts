@@ -12,6 +12,7 @@ import SystemUserEdit from "../components/admin/system-users/SystemUserEdit.vue"
 import Organizations from "@/components/admin/organizations/Organizations.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
+import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -89,6 +90,11 @@ const routes: Array<RouteConfig> = [
         path: "support/active",
         component: SupportQueue,
         name: "Support Queue",
+      },
+      {
+        path: "support/archived",
+        component: SupportArchive,
+        name: "Support Archive",
       },
     ],
   },

@@ -54,7 +54,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     type: "duplicateJoin",
     participant: "5",
     note: null,
-    archived: true,
+    archived: false,
     requestDetails: null,
     openedAt: DateTime.now().minus({ hours: 3 }).toISO(),
     room: "",
