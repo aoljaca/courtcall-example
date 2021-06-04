@@ -24,5 +24,6 @@ export default {
   notScreensharing: "Not Sharing Screen",
   selectAll: "Select All",
   view: "View",
+  close: "Close",
   archive: "Remove (Archive)",
 };
