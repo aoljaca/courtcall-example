@@ -21,7 +21,7 @@
             maxlength="25"
             clearable
             dense
-            v-model="description"
+            v-model="roomSettings.passcode"
           ></v-text-field>
         </v-col>
         <v-col cols="2" class="d-flex justify-start">
@@ -209,9 +209,9 @@
             </v-col>
             <v-col class="d-flex justify-end">
               <v-radio-group mandatory row>
-                <v-radio label="HIGH"> </v-radio>
-                <v-radio label="MED"> </v-radio>
-                <v-radio label="LOW"> </v-radio>
+                <v-radio :value="isHigh" label="HIGH"> </v-radio>
+                <v-radio :value="isMedium" label="MED"> </v-radio>
+                <v-radio :value="isLow" label="LOW"> </v-radio>
               </v-radio-group>
             </v-col>
           </v-row>
@@ -396,22 +396,19 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import RoomTemplates from "@/components/admin/room/edit/room-templates/RoomTemplates.vue";
-import SettingsEditSwitch from "@/components/admin/room/edit/SettingsEditSwitch.vue";
 import "reflect-metadata";
-import roomSettings from "@/plugins/i18n/en-us/admin/room/roomSettings";
 @Component({
   components: {
     RoomTemplates,
-    SettingsEditSwitch,
   },
 })
 export default class SettingsEdit extends Vue {
-  description = roomSettings.passcode;
   rules = [(v: string | any[]) => v.length <= 35 || "Max 35 characters"];
 
   get roomSettings() {
     return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings;
   }
+
 }
 </script>
 
