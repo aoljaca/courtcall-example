@@ -66,6 +66,16 @@
               </div>
             </template>
 
+            <template v-slot:[`item.role`]="{ item }">
+              <div
+                class="py-1 px-1 d-inline-block"
+                v-for="id in item.roles"
+                :key="id"
+              >
+                {{ roleName(id) }}
+              </div>
+            </template>
+
             <template v-slot:[`item.more`]="">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
@@ -136,6 +146,9 @@ export default class CasesTable extends Vue {
   filteredParticipants = this.participantsData.filter((p: { roomId: string; }) => p.roomId === this.$route.params.roomId)
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
+  }
+  roleName(id: string): string {
+    return this.$store.getters["PermissionsModule/getRoleById"](id)?.name;
   }
 }
 </script>
