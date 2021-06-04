@@ -45,24 +45,12 @@
             <v-col class="templates">
               <v-divider>
               </v-divider>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
-              <saved-template> </saved-template>
+              <div 
+                v-for="item in templates"
+                :key="item"
+              >
+                <saved-template> </saved-template>
+              </div>
             </v-col>
           </v-row>
         </v-card-text>
@@ -85,6 +73,7 @@ export default class RoomTemplates extends Vue {
   dialogm1 = "";
   dialog = false;
   templatesSum = 25;
+  templates = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 }
 </script>
 
