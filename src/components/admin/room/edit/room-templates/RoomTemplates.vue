@@ -14,9 +14,17 @@
       </template>
       <v-card>
         <v-row class="mx-3">
-          <v-col>Room Templates</v-col>
+          <v-col class="templates-header">Room Templates</v-col>
           <v-col class="d-flex justify-end">
             <v-icon @click="dialog = false"> mdi-close </v-icon>
+          </v-col>
+        </v-row>
+        <v-row class="my-1 mx-3">
+          <v-col>
+            Available Templates
+          </v-col>
+          <v-col>
+            Sort By:
           </v-col>
         </v-row>
         <v-card-text style="height: 50vh">
@@ -64,4 +72,10 @@ export default class RoomTemplates extends Vue {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.templates-header {
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+</style>

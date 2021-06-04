@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-row>
     <v-col>
       <div>My Fair Template</div>
@@ -7,6 +8,9 @@
       <v-icon> mdi-delete </v-icon>
     </v-col>
   </v-row>
+  <v-divider>
+  </v-divider>
+</div>
 </template>
 
 <script lang="ts">
