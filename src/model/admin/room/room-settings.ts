@@ -6,6 +6,7 @@ export interface RoomSettings {
   audio: boolean;
   allowSelectBeforeEnter: boolean;
   waitingRoom: boolean;
+  audioOnlyType: string;
   providerPSTN: string;
   allowParticipantsToggleVideo: boolean;
   allowParticipantsToggleAudio: boolean;
