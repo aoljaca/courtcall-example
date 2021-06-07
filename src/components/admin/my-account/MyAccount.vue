@@ -101,7 +101,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
-export default class SystemUserEdit extends Vue {
+export default class MyAccount extends Vue {
   email = "frank@voci.com";
   phone = this.$store.state.ParticipantsModule.me.phone;
 }
