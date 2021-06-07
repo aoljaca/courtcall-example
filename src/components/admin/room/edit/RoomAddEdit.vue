@@ -20,8 +20,7 @@
           <v-row id="add-edit-archive">
             <v-col class="d-flex justify-end">
               <v-btn
-                style="color: white"
-                color="grey darken-4 rounded-0"
+                color="grey darken-4 rounded-0 white--text"
                 depressed
               >
                 ARCHIVE ROOM

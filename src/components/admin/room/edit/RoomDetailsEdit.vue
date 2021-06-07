@@ -15,8 +15,7 @@
       </v-col>
       <v-col class="d-flex justify-end">
         <v-btn
-          style="color: white"
-          color="grey lighten-1 rounded-0"
+          color="grey lighten-1 rounded-0 white--text"
           depressed
           class="mr-6"
         >
@@ -24,7 +23,7 @@
             CANCEL
           </router-link>
         </v-btn>
-        <v-btn style="color: white" color="grey darken-4 rounded-0" depressed>
+        <v-btn color="grey darken-4 rounded-0 white--text" depressed>
           SAVE CHANGES
         </v-btn>
       </v-col>
@@ -49,13 +48,13 @@
     </v-row>
     <v-row dense>
       <v-col class="d-flex justify-end">
-        <v-btn style="color: white" color="grey darken-4 rounded-0" depressed>
+        <v-btn color="text--white grey darken-4 rounded-0" depressed>
           SAVE AS NEW TEMPLATE
         </v-btn>
       </v-col>
     </v-row>
     <v-row class="justify-end">
-      <v-col cols="3" style="background: #f5f5f5" class="pa-8">
+      <v-col cols="3" class="pa-8 template-entry-bg">
         <v-row class="justify-center">
           <v-col cols="12">
             <v-text-field
@@ -72,16 +71,14 @@
         <v-row>
           <v-col class="d-flex justify-end">
             <v-btn
-              style="color: white"
-              color="grey lighten-1 rounded-0"
+              color="grey lighten-1 rounded-0 white--text"
               depressed
               class="mr-6"
             >
               CANCEL
             </v-btn>
             <v-btn
-              style="color: white"
-              color="grey darken-4 rounded-0"
+              color="grey darken-4 rounded-0 text--white"
               depressed
             >
               SAVE
@@ -122,5 +119,8 @@ export default class RoomDetailsEdit extends Vue {
 a {
   text-decoration: none;
   color: white !important;
+}
+.template-entry-bg {
+  background: #f5f5f5;
 }
 </style>

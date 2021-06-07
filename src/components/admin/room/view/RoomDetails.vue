@@ -15,7 +15,7 @@
           </span>
         </v-col>
         <v-col class="d-flex justify-end">
-          <v-btn style="color: white" color="grey darken-4 rounded-0" depressed>
+          <v-btn color="text--white grey darken-4 rounded-0" depressed>
             <router-link class="remove-decoration" :to="settingsEditPath">
               {{ $t("admin.roomDetails.editButton") }}
             </router-link>
@@ -78,7 +78,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col style="margin-left: -2rem" cols="2">
+        <v-col class="ml-8" cols="2">
           <v-row>
             <v-col>
               {{ roomDetails.phone }}

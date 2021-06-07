@@ -3,8 +3,7 @@
     <v-dialog v-model="dialog" scrollable max-width="750px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          style="color: white"
-          color="grey darken-4 rounded-0"
+          color="grey darken-4 rounded-0 text--white"
           depressed
           v-bind="attrs"
           v-on="on"
@@ -40,8 +39,8 @@
             </span>
           </v-col>
         </v-row>
-        <v-card-text style="height: 50vh">
-          <v-row style="flex-direction: column" dense v-model="dialogm1" column>
+        <v-card-text class="v-card-height">
+          <v-row dense v-model="dialogm1" column>
             <v-col class="templates">
               <v-divider>
               </v-divider>
@@ -84,5 +83,8 @@ export default class RoomTemplates extends Vue {
 }
 .close-large button {
   font-size: 2rem;
+}
+.v-card-height {
+  height: 50vh;
 }
 </style>
