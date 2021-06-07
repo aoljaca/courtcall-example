@@ -8,12 +8,13 @@ import AvOptions from "../components/meeting/av-options/AvOptions.vue";
 import MeetingUI from "../components/meeting/meeting-ui/MeetingUI.vue";
 import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
-import SystemUserEdit from "../components/admin/system-users/SystemUserEdit.vue";
 import RoomViewManage from "../components/admin/room/view/RoomViewManage.vue";
 import RoomAddEdit from "../components/admin/room/edit/RoomAddEdit.vue";
-import { component } from "vue/types/umd";
+import MyAccount from "../components/admin/my-account/MyAccount.vue";
 import Organizations from "@/components/admin/organizations/Organizations.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
+import SupportQueue from "@/components/admin/support/SupportQueue.vue";
+import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -74,8 +75,8 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: "my-account",
-        name: "System User Edit",
-        component: SystemUserEdit,
+        name: "My Account",
+        component: MyAccount,
       },
       {
         path: "room/view/:roomId",
@@ -96,6 +97,16 @@ const routes: Array<RouteConfig> = [
         path: "organizations",
         component: Organizations,
         name: "Organizations List",
+      },
+      {
+        path: "support/active",
+        component: SupportQueue,
+        name: "Support Queue",
+      },
+      {
+        path: "support/archived",
+        component: SupportArchive,
+        name: "Support Archive",
       },
     ],
   },

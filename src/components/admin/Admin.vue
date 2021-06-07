@@ -9,7 +9,7 @@
         </v-col>
 
         <v-col cols="3" class="userinfo text-right" id="userinfo">
-          <my-account></my-account>
+          <user-actions></user-actions>
         </v-col>
       </v-row>
       <v-row>
@@ -24,11 +24,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
-import MyAccount from "@/components/admin/dashboard/MyAccount.vue";
+import UserActions from "@/components/admin/dashboard/UserActions.vue";
 @Component({
   components: {
     Navigation,
-    MyAccount,
+    UserActions,
   },
 })
 export default class Admin extends Vue {}

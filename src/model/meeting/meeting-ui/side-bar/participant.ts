@@ -23,4 +23,5 @@ export interface Participant {
   organizations: string[];
   email: string | null;
   roomId: string;
+  phone: string | null;
 }
