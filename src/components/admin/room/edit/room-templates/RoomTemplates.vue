@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" scrollable max-width="750px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          color="grey darken-4 rounded-0 text--white"
+          color="grey darken-4 rounded-0 white--text"
           depressed
           v-bind="attrs"
           v-on="on"

@@ -19,7 +19,7 @@
           depressed
           class="mr-6"
         >
-          <router-link class="remove-decoration" to="/admin/room/view">
+          <router-link class="remove-decoration" :to="settingsViewPath">
             CANCEL
           </router-link>
         </v-btn>
@@ -48,7 +48,7 @@
     </v-row>
     <v-row dense>
       <v-col class="d-flex justify-end">
-        <v-btn color="text--white grey darken-4 rounded-0" depressed>
+        <v-btn color="white--text grey darken-4 rounded-0" depressed>
           SAVE AS NEW TEMPLATE
         </v-btn>
       </v-col>
@@ -78,7 +78,7 @@
               CANCEL
             </v-btn>
             <v-btn
-              color="grey darken-4 rounded-0 text--white"
+              color="grey darken-4 rounded-0 white--text"
               depressed
             >
               SAVE
@@ -98,7 +98,7 @@ export default class RoomDetailsEdit extends Vue {
   rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
   items = ["Draft", "Available"];
 
-  settingsViewPath = "/admin/room/edit/" + this.$route.params.roomId;
+  settingsViewPath = "/admin/room/view/" + this.$route.params.roomId;
 
   get roomDetails() {
     return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomDetails;
