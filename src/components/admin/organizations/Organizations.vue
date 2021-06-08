@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row>
         <v-col cols="6">
-          <h2>{{ $t("admin.organizations.title") }}</h2>
+          <h2 class="c-primary">{{ $t("admin.organizations.title") }}</h2>
         </v-col>
         <v-col cols="6" class="d-flex justify-end">
           <v-btn :title="$t('admin.organizations.new.title')" elevation="0" fab

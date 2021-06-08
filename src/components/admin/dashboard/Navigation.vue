@@ -1,7 +1,7 @@
 <template>
   <div class="admin-nav">
     <v-container>
-      <v-row class="justify-content-center">
+      <v-row class="justify-center">
         <v-col cols="3">
           <router-link to="/admin/dashboard">Dashboard</router-link>
         </v-col>

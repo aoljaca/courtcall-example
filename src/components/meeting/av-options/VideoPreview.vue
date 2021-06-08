@@ -22,7 +22,7 @@
           <v-hover :class="{ 'd-none': !videoVisible }" id="hoverElement">
             <template v-slot:default="{ hover }">
               <v-card elevation="0">
-                <v-card-text class="p-0">
+                <v-card-text>
                   <canvas
                     id="canvas-preview"
                     :class="{
@@ -214,9 +214,8 @@ export default class VideoPreview extends Vue {
         deviceId: this.selectedVideoDevice?.deviceId,
       },
     });
-    (document.getElementById(
-      "video-preview"
-    ) as HTMLVideoElement).srcObject = stream;
+    (document.getElementById("video-preview") as HTMLVideoElement).srcObject =
+      stream;
     setTimeout(
       () =>
         this.backgroundBlurService?.alterVideo(
@@ -267,6 +266,8 @@ export default class VideoPreview extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+$card-text-font-weight: 900;
+
 @media (min-width: 1280px) {
   .video-dimensions {
     max-height: 45vh;

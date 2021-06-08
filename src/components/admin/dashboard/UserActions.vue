@@ -3,26 +3,17 @@
     <v-col>
       <v-menu>
         <template v-slot:activator="{ on, attrs }">
-          <div
-            v-bind="attrs"
-            v-on="on"
-          >
-            Welcome Back Frank
-          </div>
+          <div v-bind="attrs" v-on="on">Welcome Back Frank</div>
         </template>
         <v-list>
           <router-link to="/admin/my-account">
             <v-list-item>
-              <v-list-item-title>
-                My Account
-              </v-list-item-title>
+              <v-list-item-title> My Account </v-list-item-title>
             </v-list-item>
           </router-link>
           <router-link to="/logout">
             <v-list-item>
-              <v-list-item-title>
-                Logout
-              </v-list-item-title>
+              <v-list-item-title> Logout </v-list-item-title>
             </v-list-item>
           </router-link>
         </v-list>
