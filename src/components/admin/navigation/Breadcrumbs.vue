@@ -35,7 +35,7 @@ export default class Breadcrumbs extends Vue {
       (breadcrumbArray: Breadcrumb[], path: string, idx) => {
         const matchedRoute = this.$route.matched[idx];
         const prevBreadcrumb = breadcrumbArray[idx - 1];
-        const prevPathAppended = `${prevBreadcrumb.to}/${path}`;
+        const prevPathAppended = `${prevBreadcrumb?.to}/${path}`;
         if (matchedRoute) {
           breadcrumbArray.push({
             path: path,
