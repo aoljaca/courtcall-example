@@ -86,6 +86,10 @@ const casesModule: Module<any, any> = {
   getters: {
     getById: (state) => (id: string) => state.cases[id],
     getAsList: (state) => Object.values(state.cases),
+    getCaseNamesAsList: (state) => {
+      const caseNames = Object.values(state.cases) as Case[];
+      return caseNames.map((c) => c.name);
+    },
   },
 };
 

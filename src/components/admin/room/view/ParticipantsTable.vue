@@ -6,7 +6,7 @@
           <h2>Participants</h2>
         </v-col>
         <v-col cols="2">
-          <v-select label="Filter By Case"> </v-select>
+          <v-select :items="caseNames" label="Filter By Case"> </v-select>
         </v-col>
         <v-col class="text-right">
           <v-btn color="grey darken-4 rounded-0 white--text" depressed>
@@ -90,7 +90,7 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
 @Component
-export default class CasesTable extends Vue {
+export default class ParticpantsTable extends Vue {
   readonly HEADERS = [
     {
       text: "Active",
@@ -118,7 +118,10 @@ export default class CasesTable extends Vue {
     },
   ];
 
+  caseNames = this.$store.getters["CasesModule/getCaseNamesAsList"];
+
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
+
   filteredParticipants = this.participantsData.filter(
     (p: { roomId: string }) => p.roomId === this.$route.params.roomId
   );
@@ -128,6 +131,8 @@ export default class CasesTable extends Vue {
   roleName(id: string): string {
     return this.$store.getters["PermissionsModule/getRoleById"](id)?.name;
   }
+
+  
 }
 </script>
 
