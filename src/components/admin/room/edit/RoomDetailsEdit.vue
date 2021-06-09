@@ -15,6 +15,7 @@
       </v-col>
       <v-col class="d-flex justify-end">
         <v-btn
+          :title="$t('admin.roomDetails.cancel')"
           color="grey lighten-1 rounded-0 white--text"
           depressed
           class="mr-6"
@@ -23,7 +24,11 @@
             {{ $t("admin.roomDetails.cancel") }}
           </router-link>
         </v-btn>
-        <v-btn color="grey darken-4 rounded-0 white--text" depressed>
+        <v-btn 
+          :title="$t('admin.roomDetails.saveChanges')" 
+          color="grey darken-4 rounded-0 white--text" 
+          depressed
+        >
           {{ $t("admin.roomDetails.saveChanges") }}
         </v-btn>
       </v-col>
@@ -48,7 +53,11 @@
     </v-row>
     <v-row dense>
       <v-col class="d-flex justify-end">
-        <v-btn color="white--text grey darken-4 rounded-0" depressed>
+        <v-btn 
+          :title="$t('admin.roomDetails.saveTemplate')"
+          color="white--text grey darken-4 rounded-0" 
+          depressed
+        >
           {{ $t("admin.roomDetails.saveTemplate") }}
         </v-btn>
       </v-col>
@@ -71,6 +80,7 @@
         <v-row>
           <v-col class="d-flex justify-end">
             <v-btn
+              :title="$t('admin.roomDetails.cancel')"
               color="grey lighten-1 rounded-0 white--text"
               depressed
               class="mr-6"
@@ -78,6 +88,7 @@
               {{ $t("admin.roomDetails.cancel") }}
             </v-btn>
             <v-btn
+              :title="$t('admin.roomDetails.save')"
               color="grey darken-4 rounded-0 white--text"
               depressed
             >

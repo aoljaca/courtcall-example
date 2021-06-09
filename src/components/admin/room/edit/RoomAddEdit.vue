@@ -20,6 +20,7 @@
           <v-row id="add-edit-archive">
             <v-col class="d-flex justify-end">
               <v-btn
+                :title="$t('admin.roomSettings.archive')"
                 color="grey darken-4 rounded-0 white--text"
                 depressed
               >

@@ -9,7 +9,7 @@
           <v-select v-model="search" :items="caseNames" label="Filter By Case"> </v-select>
         </v-col>
         <v-col class="text-right">
-          <v-btn color="grey darken-4 rounded-0 white--text" depressed>
+          <v-btn :title="$t('admin.roomParticipants.add')" color="grey darken-4 rounded-0 white--text" depressed>
             {{ $t("admin.roomParticipants.add") }}
           </v-btn>
         </v-col>
