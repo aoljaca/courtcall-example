@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sticky-nav">
     <v-row>
       <v-col class="my-1 nav-item-dark"> Details </v-col>
     </v-row>
@@ -10,7 +10,9 @@
       <v-col class="my-1 nav-item"> Cases </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item"> Participants </v-col>
+      <v-col class="my-1 nav-item"> 
+        Participants 
+      </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item d-flex justify-space-between">
@@ -38,5 +40,10 @@ export default class RoomNav extends Vue {
 
 .nav-item {
   background: #f5f5f5;
+}
+
+.sticky-nav {
+  position: sticky;
+  top: 0;
 }
 </style>
