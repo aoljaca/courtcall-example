@@ -53,10 +53,6 @@ export default class RoomAddEdit extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-.pad-component {
-  padding: 1rem;
-}
-
 .border {
   border: 1px solid grey;
 }
