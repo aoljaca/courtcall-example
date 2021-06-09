@@ -13,7 +13,7 @@ const ORGANIZATIONS: { [key: string]: Organization } = {
   o2: {
     name: "China Petroleum & Chemical Corp.",
     managerIds: ["3", "4"],
-    id: "02",
+    id: "o2",
     roomIds: ["4", "5"],
     location: "Beijing, China",
     archived: false,
@@ -21,7 +21,7 @@ const ORGANIZATIONS: { [key: string]: Organization } = {
   o3: {
     name: "Amazon.com Inc",
     managerIds: ["5"],
-    location: "Seattle,WA",
+    location: "Seattle, WA",
     roomIds: ["6"],
     archived: false,
     id: "o3",

@@ -3,10 +3,15 @@
     <v-container fluid>
       <v-row>
         <v-col cols="6">
-          <h2 class="c-primary">{{ $t("admin.organizations.title") }}</h2>
+          <h2 class="c-primary">
+            {{ $t("admin.organizations.organizationList.title") }}
+          </h2>
         </v-col>
         <v-col cols="6" class="d-flex justify-end">
-          <v-btn :title="$t('admin.organizations.new.title')" elevation="0" fab
+          <v-btn
+            :title="$t('admin.organizations.organizationList.new.title')"
+            elevation="0"
+            fab
             ><v-icon>mdi-plus</v-icon></v-btn
           >
         </v-col>
@@ -26,7 +31,7 @@
             <template v-slot:[`item.roomIds`]="{ item }">
               {{ item.roomIds.length }}
             </template>
-            <template v-slot:[`item.more`]="">
+            <template v-slot:[`item.more`]="{ item }">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-container fluid>
@@ -46,21 +51,24 @@
                   </v-container>
                 </template>
                 <v-list>
-                  <v-list-item>{{
-                    $t("admin.organizations.viewOrg")
-                  }}</v-list-item>
-                  <v-list-item>{{
-                    $t("admin.organizations.editOrg")
-                  }}</v-list-item>
-                  <v-list-item>{{
-                    $t("admin.organizations.removeOrg")
-                  }}</v-list-item>
+                  <v-list-item
+                    link
+                    :to="{
+                      name: 'Organization',
+                      params: { organizationId: item.id },
+                    }"
+                  >
+                    {{ $t("admin.organizations.organizationList.viewOrg") }}
+                  </v-list-item>
+                  <v-list-item>
+                    {{ $t("admin.organizations.organizationList.editOrg") }}
+                  </v-list-item>
+                  <v-list-item>
+                    {{ $t("admin.organizations.organizationList.removeOrg") }}
+                  </v-list-item>
                 </v-list>
               </v-menu>
             </template>
-            <v-list>
-              <v-list-item>1</v-list-item>
-            </v-list>
           </v-data-table>
         </v-col>
       </v-row>
