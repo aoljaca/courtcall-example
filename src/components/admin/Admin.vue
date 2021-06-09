@@ -17,8 +17,10 @@
       </v-row>
     </v-container>
 
-    <v-divider />
-    <breadcrumbs />
+    <template v-if="showBreadcrumbs">
+      <v-divider />
+      <breadcrumbs />
+    </template>
     <v-divider />
 
     <v-container fluid class="px-10">
@@ -43,7 +45,11 @@ import Breadcrumbs from "@/components/admin/navigation/Breadcrumbs.vue";
     Breadcrumbs,
   },
 })
-export default class Admin extends Vue {}
+export default class Admin extends Vue {
+  get showBreadcrumbs(): boolean {
+    return this.$route.name !== "Dashboard";
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

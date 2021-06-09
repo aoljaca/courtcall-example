@@ -62,7 +62,6 @@ export default class Breadcrumbs extends Vue {
       };
     }
 
-    console.log('b: ', breadcrumbs)
     return breadcrumbs;
   }
 }
