@@ -42,7 +42,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off") }}</span>
               <v-switch
-                :input-value="roomSettings.allowPasscode"
+                v-model="roomSettings.allowPasscode"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -75,7 +75,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
               <v-switch
-                :input-value="roomSettings.video"
+                v-model="roomSettings.video"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -89,7 +89,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
               <v-switch
-                :input-value="roomSettings.audio"
+                v-model="roomSettings.audio"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -103,7 +103,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.no") }}</span>
               <v-switch
-                :input-value="roomSettings.allowSelectBeforeEnter"
+                v-model="roomSettings.allowSelectBeforeEnter"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -117,7 +117,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
               <v-switch
-                :input-value="roomSettings.waitingRoom"
+                v-model="roomSettings.waitingRoom"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -154,7 +154,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.no") }}</span>
               <v-switch
-                :input-value="roomSettings.allowParticipantsToggleVideo"
+                v-model="roomSettings.allowParticipantsToggleVideo"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -168,7 +168,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.no") }}</span>
               <v-switch
-                :input-value="roomSettings.allowParticipantsToggleAudio"
+                v-model="roomSettings.allowParticipantsToggleAudio"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -196,7 +196,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.no") }}</span>
               <v-switch
-                :input-value="roomSettings.allowParticipantsChangeLayout"
+                v-model="roomSettings.allowParticipantsChangeLayout"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -229,7 +229,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
               <v-switch
-                :input-value="roomSettings.screenSharing"
+                v-model="roomSettings.screenSharing"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -245,7 +245,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
               <v-switch
-                :input-value="roomSettings.requireScreenSharingRequest"
+                v-model="roomSettings.requireScreenSharingRequest"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -259,7 +259,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
               <v-switch
-                :input-value="roomSettings.fileManagement"
+                v-model="roomSettings.fileManagement"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -273,7 +273,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
               <v-switch
-                :input-value="roomSettings.handRaising"
+                v-model="roomSettings.handRaising"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -286,7 +286,7 @@
             </v-col>
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
-              <v-switch :input-value="roomSettings.chat" class="my-0 py-0 mx-4">
+              <v-switch v-model="roomSettings.chat" class="my-0 py-0 mx-4">
               </v-switch>
               <span>{{ $t("admin.roomSettings.on") }}</span>
             </v-col>
@@ -303,7 +303,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.disable") }}</span>
               <v-switch
-                :input-value="roomSettings.recording"
+                v-model="roomSettings.recording"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -319,7 +319,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.off")}}</span>
               <v-switch
-                :input-value="roomSettings.emailLinkToAll"
+                v-model="roomSettings.emailLinkToAll"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -333,7 +333,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.disable") }}</span>
               <v-switch
-                :input-value="roomSettings.transcription"
+                v-model="roomSettings.transcription"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -347,7 +347,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.disable") }}</span>
               <v-switch
-                :input-value="roomSettings.remoteTranslation"
+                v-model="roomSettings.remoteTranslation"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -361,7 +361,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.disable") }}</span>
               <v-switch
-                :input-value="roomSettings.streaming"
+                v-model="roomSettings.streaming"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
@@ -380,7 +380,7 @@
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.host") }}</span>
               <v-switch
-                :input-value="roomSettings.duplicateParticipantHandling"
+                v-model="roomSettings.duplicateParticipantHandling"
                 class="my-0 py-0 mx-4"
               >
               </v-switch>
