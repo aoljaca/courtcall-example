@@ -119,7 +119,7 @@ a {
   color: white !important;
 }
 .details-header {
-  font-weight: 400;
+  font-weight: bold;
   font-size: 2rem;
   line-height: 2rem;
 }

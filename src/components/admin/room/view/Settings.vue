@@ -295,11 +295,11 @@ export default class Settings extends Vue {
   justify-content: right;
 }
 .settings-label-text {
-  font-weight: 700;
+  font-weight: black;
   font-size: 1rem;
 }
 .settings-edit-header {
-  font-weight: 400;
+  font-weight: bold;
   font-size: 2rem;
   line-height: 2rem;
 }

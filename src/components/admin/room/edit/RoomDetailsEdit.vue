@@ -108,11 +108,11 @@ export default class RoomDetailsEdit extends Vue {
 
 <style lang="scss" scoped>
 .details-label-text {
-  font-weight: 700;
+  font-weight: bold;
   font-size: 1rem;
 }
 .details-header {
-  font-weight: 400;
+  font-weight: black;
   font-size: 2rem;
   line-height: 2rem;
 }
