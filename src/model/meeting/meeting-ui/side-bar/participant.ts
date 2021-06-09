@@ -22,6 +22,6 @@ export interface Participant {
   systemUser: boolean;
   organizations: string[];
   email: string | null;
-  roomId: string;
+  roomId: string | null;
   phone: string | null;
 }
