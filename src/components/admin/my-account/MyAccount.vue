@@ -1,16 +1,5 @@
 <template>
   <v-container fluid>
-    <v-row class="end-row py-4">
-      <v-col class="ml-16">
-        <span
-          class="grey--text text--lighten-2 font-weight-black text-subtitle-1"
-          >{{ $t("admin.systemUser.dashboard") }}</span
-        >
-        <span class="font-weight-bold">{{
-          $t("admin.systemUser.account")
-        }}</span>
-      </v-col>
-    </v-row>
     <v-row class="mt-8">
       <v-col>
         <v-form class="ml-8">
@@ -102,9 +91,6 @@ export default class SystemUserEdit extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.end-row {
-  border-bottom: 1px solid gray;
-}
 label {
   white-space: nowrap;
 }

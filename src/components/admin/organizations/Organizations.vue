@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row>
         <v-col cols="6">
-          <h2 class="c-primary">
+          <h2 class="c-primary font-weight-medium">
             {{ $t("admin.organizations.organizationList.title") }}
           </h2>
         </v-col>
