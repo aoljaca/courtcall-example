@@ -10,9 +10,12 @@ import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
 import MyAccount from "../components/admin/my-account/MyAccount.vue";
 import Organizations from "@/components/admin/organizations/Organizations.vue";
+import OrganizationComp from "../components/admin/organizations/Organization.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
+import i18n from "@/plugins/i18n";
+import store from "../store/index";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -23,11 +26,10 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: "/",
-    name: "Login",
     component: Login,
   },
   {
-    path: "/login/",
+    path: "/login",
     name: "Login",
     component: Login,
   },
@@ -70,31 +72,89 @@ const routes: Array<RouteConfig> = [
         path: "dashboard",
         component: Dashboard,
         name: "Dashboard",
+        meta: { 
+          breadcrumb: i18n.t("admin.navigation.dashboard")
+        }
       },
       {
         path: "my-account",
         component: MyAccount,
         name: "My Account",
+        meta: { 
+          breadcrumb: i18n.t("admin.navigation.myAccount")
+        }
       },
       {
         path: "system-users",
         component: SystemUsersList,
-        name: "System Users View",
+        name: "System Users",
+        meta: { 
+          breadcrumb: i18n.t("admin.navigation.systemUsers")
+        }
       },
       {
         path: "organizations",
-        component: Organizations,
-        name: "Organizations List",
+        meta: { 
+          breadcrumb: i18n.t("admin.navigation.organizations")
+        },
+        component: {
+          render(c) {
+             return c("router-view");
+          }
+        },
+        children: [
+          {
+            path: "/",
+            component: Organizations,
+            name: "Organizations",
+            meta: { 
+              breadcrumb: i18n.t("admin.organizations.organization.all")
+            },
+          },
+          {
+            path: ":organizationId",
+            component: OrganizationComp,
+            name: "Organization",
+            meta: { 
+              breadcrumbFunc: (route: any) => `${store.getters["OrganizationsModule/getById"](route.params.organizationId).name}`
+            },
+          },
+        ]
       },
       {
-        path: "support/active",
-        component: SupportQueue,
-        name: "Support Queue",
-      },
-      {
-        path: "support/archived",
-        component: SupportArchive,
-        name: "Support Archive",
+        path: "support",
+        component: {
+          render(c) {
+             return c("router-view");
+          }
+        },
+        meta: { 
+          breadcrumb: i18n.t("admin.navigation.support")
+        },
+        children: [
+          {
+            path: "",
+            name: "Support",
+            redirect: to => "active",
+            component: SupportQueue,
+          },
+          {
+            path: "active",
+            component: SupportQueue,
+            name: "Support Queue",
+            meta: { 
+              breadcrumb: i18n.t("admin.support.active.activeSupport")
+            },
+          },
+          {
+            path: "archived",
+            component: SupportArchive,
+            name: "Support Archive",
+            meta: { 
+              breadcrumb: i18n.t("admin.support.archive.archivedSupport")
+            },
+          },
+        ]
       },
     ],
   },
@@ -102,6 +162,15 @@ const routes: Array<RouteConfig> = [
 
 const router = new VueRouter({
   routes,
+});
+router.beforeEach((to, from, next) => {
+  const breadcrumbFunc = to.meta.breadcrumbFunc;
+
+  if (breadcrumbFunc && typeof breadcrumbFunc === 'function') {
+    to.meta.breadcrumb = breadcrumbFunc(to);
+  }
+  
+  next();
 });
 
 export default router;
