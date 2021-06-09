@@ -1,7 +1,7 @@
 import { Module } from "vuex";
 import { RoomTemplate } from "@/model/admin/room/room-template";
 
-const rooms: {
+const templates: {
   [key: string]: RoomTemplate;
 } = {
   a: {
@@ -204,6 +204,7 @@ const rooms: {
 const roomTemplateModule: Module<any, any> = {
   namespaced: true,
   state: {
+    templates: templates;
   },
   mutations: {},
   actions: {},
