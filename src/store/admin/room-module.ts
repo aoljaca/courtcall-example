@@ -5,7 +5,7 @@ const rooms: {
   [key: string]: Room;
 } = {
   a: {
-    uuid: "a",
+    uuid: "R1",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "YourHonor931",
@@ -45,7 +45,7 @@ const rooms: {
     modified: false,
   },
   b: {
-    uuid: "b",
+    uuid: "R2",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "HonorYour999",
@@ -85,7 +85,7 @@ const rooms: {
     modified: false,
   },
   c: {
-    uuid: "c",
+    uuid: "R3",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "YourHonYour",
@@ -125,7 +125,7 @@ const rooms: {
     modified: false,
   },
   d: {
-    uuid: "d",
+    uuid: "R4",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "passwordcodeisbad",
@@ -165,7 +165,7 @@ const rooms: {
     modified: false,
   },
   e: {
-    uuid: "e",
+    uuid: "R5",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "time49313",
@@ -205,7 +205,7 @@ const rooms: {
     modified: false,
   },
   f: {
-    uuid: "f",
+    uuid: "R6",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "verygoodpasscod3",
@@ -245,7 +245,7 @@ const rooms: {
     modified: false,
   },
   g: {
-    uuid: "g",
+    uuid: "R7",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "codejustice2384",
@@ -285,7 +285,7 @@ const rooms: {
     modified: false,
   },
   h: {
-    uuid: "h",
+    uuid: "R8",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "BigCheese3434",
@@ -325,7 +325,7 @@ const rooms: {
     modified: false,
   },
   i: {
-    uuid: "i",
+    uuid: "R9",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "HonorJustice4553",
@@ -365,7 +365,7 @@ const rooms: {
     modified: false,
   },
   j: {
-    uuid: "j",
+    uuid: "R10",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "MaxHonor3434",
@@ -405,7 +405,7 @@ const rooms: {
     modified: false,
   },
   k: {
-    uuid: "k",
+    uuid: "R11",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "Justice4All12",
@@ -445,7 +445,7 @@ const rooms: {
     modified: false,
   },
   l: {
-    uuid: "l",
+    uuid: "R12",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "JusticeFr3312",
@@ -485,7 +485,7 @@ const rooms: {
     modified: false,
   },
   m: {
-    uuid: "m",
+    uuid: "R13",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "FreedomFree334",
@@ -525,7 +525,7 @@ const rooms: {
     modified: false,
   },
   n: {
-    uuid: "n",
+    uuid: "R14",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "HonorYour999",
@@ -565,7 +565,7 @@ const rooms: {
     modified: false,
   },
   o: {
-    uuid: "o",
+    uuid: "R15",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "JudgeSup3r",
@@ -605,7 +605,7 @@ const rooms: {
     modified: false,
   },
   p: {
-    uuid: "p",
+    uuid: "R16",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "4th3p3opl3",
@@ -645,7 +645,7 @@ const rooms: {
     modified: false,
   },
   q: {
-    uuid: "q",
+    uuid: "R17",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "freeentry2345",
@@ -685,7 +685,7 @@ const rooms: {
     modified: false,
   },
   r: {
-    uuid: "r",
+    uuid: "R18",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "HonorYour999",
@@ -725,7 +725,7 @@ const rooms: {
     modified: false,
   },
   s: {
-    uuid: "s",
+    uuid: "R19",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "Logstamp3424",
@@ -765,7 +765,7 @@ const rooms: {
     modified: false,
   },
   t: {
-    uuid: "t",
+    uuid: "R20",
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "Timewarp2408",
