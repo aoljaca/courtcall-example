@@ -23,7 +23,7 @@
                 color="grey darken-4 rounded-0 white--text"
                 depressed
               >
-                ARCHIVE ROOM
+                {{ $t("admin.roomSettings.archive") }}
               </v-btn>
             </v-col>
           </v-row>

@@ -8,12 +8,12 @@
           v-bind="attrs"
           v-on="on"
         >
-          SELECT TEMPLATE (OPTIONAL)
+          {{ $t("admin.roomTemplate.selectTemplate") }}
         </v-btn>
       </template>
       <v-card class="pa-4">
         <v-row class="mx-3">
-          <v-col class="templates-header">Room Templates</v-col>
+          <v-col class="templates-header">{{ $t("admin.roomTemplate.roomTemplate") }}</v-col>
           <v-col class="d-flex justify-end">
             <v-icon x-large @click="dialog = false"> mdi-close </v-icon>
           </v-col>
@@ -21,7 +21,7 @@
         <v-row class="my-1 mx-3">
           <v-col cols="4">
             <span>
-              Available Templates
+              {{ $t("admin.roomTemplate.available") }}
             </span>
             <span>
               ({{ templatesSum }})
@@ -29,13 +29,13 @@
           </v-col>
           <v-col>
             <span>
-              Sort By:
+              {{ $t("admin.roomTemplate.sort") }}
             </span>
             <span>
-              Recently Created
+              {{ $t("admin.roomTemplate.created") }}
             </span>
             <span>
-              Alphabetical
+              {{ $t("admin.roomTemplate.alphabetical") }}
             </span>
           </v-col>
         </v-row>

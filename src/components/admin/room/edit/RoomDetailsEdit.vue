@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 details-label-text">Room Name</div>
+        <div class="pr-4 details-label-text">{{ $t("admin.roomDetails.roomName") }}</div>
         <v-text-field
           :rules="rules"
           counter
@@ -20,17 +20,17 @@
           class="mr-6"
         >
           <router-link class="remove-decoration" :to="settingsViewPath">
-            CANCEL
+            {{ $t("admin.roomDetails.cancel") }}
           </router-link>
         </v-btn>
         <v-btn color="grey darken-4 rounded-0 white--text" depressed>
-          SAVE CHANGES
+          {{ $t("admin.roomDetails.saveChanges") }}
         </v-btn>
       </v-col>
     </v-row>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 details-label-text">Organization</div>
+        <div class="pr-4 details-label-text">{{ $t("admin.roomDetails.organizationAlternate") }}</div>
         <v-text-field
           :rules="rules"
           counter
@@ -42,14 +42,14 @@
         </v-text-field>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
-        <div class="pr-4 details-label-text">Status</div>
+        <div class="pr-4 details-label-text">{{ $t("admin.roomDetails.status") }}</div>
         <v-select :items="items" dense> </v-select>
       </v-col>
     </v-row>
     <v-row dense>
       <v-col class="d-flex justify-end">
         <v-btn color="white--text grey darken-4 rounded-0" depressed>
-          SAVE AS NEW TEMPLATE
+          {{ $t("admin.roomDetails.saveTemplate") }}
         </v-btn>
       </v-col>
     </v-row>
@@ -75,13 +75,13 @@
               depressed
               class="mr-6"
             >
-              CANCEL
+              {{ $t("admin.roomDetails.cancel") }}
             </v-btn>
             <v-btn
               color="grey darken-4 rounded-0 white--text"
               depressed
             >
-              SAVE
+              {{ $t("admin.roomDetails.save") }}
             </v-btn>
           </v-col>
         </v-row>

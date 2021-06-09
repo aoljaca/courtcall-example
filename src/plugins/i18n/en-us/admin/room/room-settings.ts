@@ -43,4 +43,5 @@ export default {
   disabled: "DISABLED",
   yes: "YES",
   no: "NO",
+  archive: "ARCHIVE ROOM",
 };

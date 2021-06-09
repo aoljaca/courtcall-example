@@ -8,5 +8,11 @@ export default {
   phone: "Phone Number",
   hostAccessCode: "Host Access Code",
   participantAccessCode: "Participant Access Code",
-  room: "'s Room"
+  room: "'s Room",
+  roomName: "Room Name",
+  cancel: "CANCEL",
+  save: "SAVE",
+  saveChanges: "SAVE CHANGES",
+  organizationAlternate: "Organization",
+  saveTemplate: "SAVE AS NEW TEMPLATE",
 };
