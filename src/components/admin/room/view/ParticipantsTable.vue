@@ -21,7 +21,7 @@
             :headers="HEADERS"
             :items="filteredParticipants"
             :items-per-page="20"
-            :custom-filter="filterByCaseName"
+            :search="search"
             class="elevation-1"
           >
             <template v-slot:[`item.active`]="{ item }">
@@ -30,7 +30,7 @@
             </template>
 
             <template v-slot:[`item.caseNumber`]="{ item }">
-              <div class="py-1 px-1 d-inline-block" v-if="item.caseId">
+              <div class="py-1 px-1 d-inline-block" v-if="item.caseNumber">
                 {{ getCaseById(item.caseId).number }}
               </div>
               <div class="py-1 px-1 d-inline-block" v-else>{{ $t("admin.roomParticipants.notApply") }}</div>
@@ -118,6 +118,9 @@ export default class ParticpantsTable extends Vue {
       value: "more",
     },
   ];
+  search = "";
+
+  items = ["Ada County (1c)"];
 
   // get list of case objects
   casesData = this.$store.getters["CasesModule/getAsList"];
@@ -128,7 +131,6 @@ export default class ParticpantsTable extends Vue {
   // get a mapping of case names from case objects
   caseNames = this.filteredCases.map((c: { name: string }) => c.name);
 
-  search = "";
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
 
@@ -143,12 +145,6 @@ export default class ParticpantsTable extends Vue {
   roleName(id: string): string {
     return this.$store.getters["PermissionsModule/getRoleById"](id)?.name;
   }
-
-  filterByCaseName(): void {
-    return this.caseNames;
-  }
-
-  
 }
 </script>
 
