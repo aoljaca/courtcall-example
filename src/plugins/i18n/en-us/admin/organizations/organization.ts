@@ -4,7 +4,6 @@ export default {
     location: "Location",
     rooms: "Rooms",
     edit: "Edit",
-    view: "Viewing Organization",
     all: "All"
   };
   

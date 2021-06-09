@@ -112,7 +112,7 @@ const routes: Array<RouteConfig> = [
             },
           },
           {
-            path: ":organizationId",
+            path: "view/:organizationId",
             component: OrganizationComp,
             name: "Organization",
             meta: { 
@@ -169,7 +169,7 @@ router.beforeEach((to, from, next) => {
   if (breadcrumbFunc && typeof breadcrumbFunc === 'function') {
     to.meta.breadcrumb = breadcrumbFunc(to);
   }
-  
+
   next();
 });
 

@@ -34,13 +34,16 @@ export default class Breadcrumbs extends Vue {
     let breadcrumbs = pathArray.reduce(
       (breadcrumbArray: Breadcrumb[], path: string, idx) => {
         const matchedRoute = this.$route.matched[idx];
+        const prevBreadcrumb = breadcrumbArray[idx - 1];
+        const prevPathAppended = `${prevBreadcrumb.to}/${path}`;
         if (matchedRoute) {
-          const prevBreadcrumb = breadcrumbArray[idx - 1];
           breadcrumbArray.push({
             path: path,
-            to: prevBreadcrumb ? `${prevBreadcrumb.to}/${path}` : `/${path}`,
+            to: prevBreadcrumb ? prevPathAppended : `/${path}`,
             text: matchedRoute.meta.breadcrumb || path,
           });
+        } else {
+          prevBreadcrumb.to = prevPathAppended;
         }
         return breadcrumbArray;
       },
@@ -59,6 +62,7 @@ export default class Breadcrumbs extends Vue {
       };
     }
 
+    console.log('b: ', breadcrumbs)
     return breadcrumbs;
   }
 }
