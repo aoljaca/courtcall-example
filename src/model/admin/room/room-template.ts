@@ -1,5 +1,5 @@
 import { RoomBase } from "./room-base";
 
-export interface Room extends RoomBase {
+export interface RoomTemplate extends RoomBase {
   organizationId: string | null;
 }
