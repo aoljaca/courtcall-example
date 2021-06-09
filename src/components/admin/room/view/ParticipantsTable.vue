@@ -119,9 +119,16 @@ export default class ParticpantsTable extends Vue {
     },
   ];
 
-  search = "";
+  // get list of case objects
+  casesData = this.$store.getters["CasesModule/getAsList"];
+  // get cases objects for this particular room
+  filteredCases = this.casesData.filter(
+    (c: { roomId: string }) => c.roomId === this.$route.params.roomId
+  );
+  // get a mapping of case names from case objects
+  caseNames = this.filteredCases.map((c: { name: string }) => c.name);
 
-  caseNames = this.$store.getters["CasesModule/getCaseNamesAsList"];
+  search = "";
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
 
