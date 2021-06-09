@@ -1,22 +1,22 @@
 <template>
   <div class="sticky-nav">
     <v-row>
-      <v-col class="my-1 nav-item-dark"> Details </v-col>
+      <v-col class="my-1 nav-item-dark"> {{ $t("admin.roomNav.details") }} </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item"> Settings </v-col>
+      <v-col class="my-1 nav-item"> {{ $t("admin.roomNav.settings") }} </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item"> Cases </v-col>
+      <v-col class="my-1 nav-item"> {{ $t("admin.roomNav.cases") }} </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item"> 
-        Participants 
+        {{ $t("admin.roomNav.participants") }} 
       </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item d-flex justify-space-between">
-        <div>Activity</div>
+        <div>{{ $t("admin.roomNav.activity") }}</div>
         <v-icon> mdi-open-in-new </v-icon>
       </v-col>
     </v-row>

@@ -3,11 +3,11 @@
     <v-container>
       <v-row class="mb-4">
         <v-col>
-          <h2>Cases</h2>
+          <h2>{{ $t("admin.roomCases.cases") }}</h2>
         </v-col>
         <v-col class="text-right">
           <v-btn color="grey darken-4 rounded-0 white--text" depressed>
-            ADD
+            {{ $t("admin.roomCases.add") }}
           </v-btn>
         </v-col>
       </v-row>

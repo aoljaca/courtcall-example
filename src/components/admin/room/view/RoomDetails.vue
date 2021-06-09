@@ -5,7 +5,7 @@
         <v-col>
           <v-icon class="mb-2"> mdi-circle </v-icon>
           <div class="mx-4 d-inline-block details-header">
-            Judge Frank's Room
+            Judge Frank{{ $t("admin.roomDetails.room") }}
           </div>
           <span class="mx-8">
             {{ $t("admin.roomDetails.organization") }}

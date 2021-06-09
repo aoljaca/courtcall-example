@@ -8,4 +8,5 @@ export default {
   phone: "Phone Number",
   hostAccessCode: "Host Access Code",
   participantAccessCode: "Participant Access Code",
+  room: "'s Room"
 };

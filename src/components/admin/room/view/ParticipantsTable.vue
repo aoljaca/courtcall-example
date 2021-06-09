@@ -3,14 +3,14 @@
     <v-container fluid>
       <v-row class="mb-4">
         <v-col cols="2">
-          <h2>Participants</h2>
+          <h2>{{ $t("admin.roomParticipants.participants") }}</h2>
         </v-col>
         <v-col cols="2">
-          <v-select :items="caseNames" label="Filter By Case"> </v-select>
+          <v-select v-model="search" :items="caseNames" label="Filter By Case"> </v-select>
         </v-col>
         <v-col class="text-right">
           <v-btn color="grey darken-4 rounded-0 white--text" depressed>
-            ADD
+            {{ $t("admin.roomParticipants.add") }}
           </v-btn>
         </v-col>
       </v-row>
@@ -21,6 +21,7 @@
             :headers="HEADERS"
             :items="filteredParticipants"
             :items-per-page="20"
+            :custom-filter="filterByCaseName"
             class="elevation-1"
           >
             <template v-slot:[`item.active`]="{ item }">
@@ -32,14 +33,14 @@
               <div class="py-1 px-1 d-inline-block" v-if="item.caseId">
                 {{ getCaseById(item.caseId).number }}
               </div>
-              <div class="py-1 px-1 d-inline-block" v-else>N/A</div>
+              <div class="py-1 px-1 d-inline-block" v-else>{{ $t("admin.roomParticipants.notApply") }}</div>
             </template>
 
             <template v-slot:[`item.caseName`]="{ item }">
               <div class="py-1 px-1 d-inline-block" v-if="item.caseId">
                 {{ getCaseById(item.caseId).name }}
               </div>
-              <div class="py-1 px-1 d-inline-block" v-else>N/A</div>
+              <div class="py-1 px-1 d-inline-block" v-else>{{ $t("admin.roomParticipants.notApply") }}</div>
             </template>
 
             <template v-slot:[`item.role`]="{ item }">
@@ -118,6 +119,8 @@ export default class ParticpantsTable extends Vue {
     },
   ];
 
+  search = "";
+
   caseNames = this.$store.getters["CasesModule/getCaseNamesAsList"];
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
@@ -125,11 +128,17 @@ export default class ParticpantsTable extends Vue {
   filteredParticipants = this.participantsData.filter(
     (p: { roomId: string }) => p.roomId === this.$route.params.roomId
   );
+
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
   }
+
   roleName(id: string): string {
     return this.$store.getters["PermissionsModule/getRoleById"](id)?.name;
+  }
+
+  filterByCaseName(): void {
+    return this.caseNames;
   }
 
   
