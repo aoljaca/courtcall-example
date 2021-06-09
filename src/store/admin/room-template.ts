@@ -204,7 +204,7 @@ const templates: {
 const roomTemplateModule: Module<any, any> = {
   namespaced: true,
   state: {
-    templates: templates;
+    templates: templates,
   },
   mutations: {},
   actions: {},
