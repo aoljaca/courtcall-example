@@ -4,7 +4,7 @@ import { RoomTemplate } from "@/model/admin/room/room-template";
 const templates: {
   [key: string]: RoomTemplate;
 } = {
-  a: {
+  T1: {
     uuid: "T1",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -43,7 +43,7 @@ const templates: {
     },
     organizationId: "O1",
   },
-  b: {
+  T2: {
     uuid: "T2",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -82,7 +82,7 @@ const templates: {
     },
     organizationId: "O2",
   },
-  c: {
+  T3: {
     uuid: "T3",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -121,7 +121,7 @@ const templates: {
     },
     organizationId: "O3",
   },
-  d: {
+  T4: {
     uuid: "T4",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -160,7 +160,7 @@ const templates: {
     },
     organizationId: "O4",
   },
-  e: {
+  T5: {
     uuid: "T5",
     roomSettings: {
       template: "Template Name (Modified)",

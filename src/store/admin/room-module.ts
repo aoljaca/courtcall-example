@@ -4,7 +4,7 @@ import { Room } from "@/model/admin/room/room";
 const rooms: {
   [key: string]: Room;
 } = {
-  a: {
+  R1: {
     uuid: "R1",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -44,7 +44,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  b: {
+  R2: {
     uuid: "R2",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -84,7 +84,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  c: {
+  R3: {
     uuid: "R3",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -124,7 +124,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  d: {
+  R4: {
     uuid: "R4",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -164,7 +164,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  e: {
+  R5: {
     uuid: "R5",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -204,7 +204,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  f: {
+  R6: {
     uuid: "R6",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -244,7 +244,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  g: {
+  R7: {
     uuid: "R7",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -284,7 +284,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  h: {
+  R8: {
     uuid: "R8",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -324,7 +324,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  i: {
+  R9: {
     uuid: "R9",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -364,7 +364,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  j: {
+  R10: {
     uuid: "R10",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -404,7 +404,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  k: {
+  R11: {
     uuid: "R11",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -444,7 +444,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  l: {
+  R12: {
     uuid: "R12",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -484,7 +484,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  m: {
+  R13: {
     uuid: "R13",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -524,7 +524,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  n: {
+  R14: {
     uuid: "R14",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -564,7 +564,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  o: {
+  R15: {
     uuid: "R15",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -604,7 +604,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  p: {
+  R16: {
     uuid: "R16",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -644,7 +644,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  q: {
+  R17: {
     uuid: "R17",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -684,7 +684,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  r: {
+  R18: {
     uuid: "R18",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -724,7 +724,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  s: {
+  R19: {
     uuid: "R19",
     roomSettings: {
       template: "Template Name (Modified)",
@@ -764,7 +764,7 @@ const rooms: {
     templateId: "0",
     modified: false,
   },
-  t: {
+  R20: {
     uuid: "R20",
     roomSettings: {
       template: "Template Name (Modified)",

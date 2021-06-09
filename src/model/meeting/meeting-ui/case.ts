@@ -5,5 +5,5 @@ export interface Case {
   participants: string[];
   id: string;
   live: boolean;
-  roomId: string;
+  roomId: string | null;
 }
