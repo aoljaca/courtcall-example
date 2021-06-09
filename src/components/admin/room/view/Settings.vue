@@ -280,7 +280,12 @@ import "reflect-metadata";
 @Component
 export default class Settings extends Vue {
   get roomSettings() {
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings;
+    if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+      //return empty roomSettings object with empty fields
+      return {};
+    }
+
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings
   }
 }
 </script>

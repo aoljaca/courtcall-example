@@ -108,6 +108,11 @@ export default class RoomDetails extends Vue {
   settingsEditPath = "/admin/room/edit/" + this.$route.params.roomId;
 
   get roomDetails() {
+    if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+      //return empty roomDetails object with empty fields
+      return {};
+    }
+
     return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomDetails;
   }
 }
