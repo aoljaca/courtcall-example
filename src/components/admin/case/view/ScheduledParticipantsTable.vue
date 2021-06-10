@@ -24,7 +24,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-container fluid>
                   <v-row>
-                    <v-col class="pa-0">
+                    <v-col class="pa-0 d-flex justify-end">
                       <v-btn
                         icon
                         v-bind="attrs"
@@ -65,7 +65,7 @@ export default class CasesTable extends Vue {
       sortable: true,
     },
     {
-      text: "More",
+      text: "",
       value: "more",
       sortable: false,
     },
