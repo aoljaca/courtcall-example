@@ -1,13 +1,17 @@
 <template>
   <div class="sticky-nav">
-    <v-row>
+    <v-row @click="scrollTo()">
       <v-col class="my-1 nav-item-dark"> {{ $t("admin.roomNav.details") }} </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item"> {{ $t("admin.roomNav.settings") }} </v-col>
+      <v-col class="my-1 nav-item"> 
+        {{ $t("admin.roomNav.settings") }} 
+      </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
-      <v-col class="my-1 nav-item"> {{ $t("admin.roomNav.cases") }} </v-col>
+      <v-col class="my-1 nav-item"> 
+        {{ $t("admin.roomNav.cases") }}
+      </v-col>
     </v-row>
     <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item"> 
@@ -30,6 +34,11 @@ import "reflect-metadata";
 export default class RoomNav extends Vue {
   @Prop()
   parentContext: string | undefined;
+
+  scrollTo() {
+    console.log("test");
+    console.log(this.$refs.roomSettings);
+  }
 }
 </script>
 

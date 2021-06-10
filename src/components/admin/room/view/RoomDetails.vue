@@ -78,7 +78,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col class="ml-8" cols="2">
+        <v-col cols="2">
           <v-row>
             <v-col>
               {{ roomDetails.phone }}
@@ -102,6 +102,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
@@ -109,8 +110,7 @@ export default class RoomDetails extends Vue {
 
   get roomDetails() {
     if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
-      //return empty roomDetails object with empty fields
-      return {};
+      return NULL_ROOM_DETAILS;
     }
 
     return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomDetails;

@@ -7,10 +7,23 @@
           <room-nav parentContext="view" class="py-4 pl-4 pr-2"></room-nav>
         </v-col>
         <v-col cols="10">
-          <room-details id="room-details" class="mb-4"></room-details>
-          <settings id="settings" class="pa-4 border mb-8 pb-8"></settings>
-          <cases-table id="cases-table" class="pa-4 border mb-8"></cases-table>
+          <room-details 
+            ref="roomDetails"
+            id="room-details" 
+            class="mb-4"
+          ></room-details>
+          <settings 
+            ref="roomSettings"
+            id="settings" 
+            class="pa-4 border mb-8 pb-8"
+          ></settings>
+          <cases-table 
+            ref="casesTable"
+            id="cases-table" 
+            class="pa-4 border mb-8"
+          ></cases-table>
           <participants-table
+            ref="participantsTable"
             id="participants-table" 
             class="pa-4 border mb-8"
           ></participants-table>

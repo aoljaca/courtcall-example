@@ -396,6 +396,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import RoomTemplates from "@/components/admin/room/edit/room-templates/RoomTemplates.vue";
+import { NULL_ROOM_SETTINGS } from "@/model/admin/room/room-settings";
 import "reflect-metadata";
 @Component({
   components: {
@@ -407,11 +408,10 @@ export default class SettingsEdit extends Vue {
 
   get roomSettings() {
     if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
-      //return empty roomSettings object with empty fields
-      return {};
+      return NULL_ROOM_SETTINGS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings;
   }
 
 }
