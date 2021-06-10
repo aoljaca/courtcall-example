@@ -6,7 +6,15 @@
           <h2>{{ $t("admin.roomParticipants.participants") }}</h2>
         </v-col>
         <v-col cols="2">
-          <v-select v-model="search" :items="caseNames" label="Filter By Case"> </v-select>
+          <v-select
+            v-model="filterByCaseIds"
+            multiple
+            clearable
+            item-text="name"
+            item-value="id"
+            label="Filter By Case"
+            :items="uniqueParticipantCases"
+          />
         </v-col>
         <v-col class="text-right">
           <v-btn :title="$t('admin.roomParticipants.add')" color="grey darken-4 rounded-0 white--text" depressed>
@@ -21,7 +29,6 @@
             :headers="HEADERS"
             :items="filteredParticipants"
             :items-per-page="20"
-            :search="search"
             class="elevation-1"
           >
             <template v-slot:[`item.active`]="{ item }">
@@ -90,6 +97,8 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
+import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { uniq } from "lodash";
 @Component
 export default class ParticpantsTable extends Vue {
   readonly HEADERS = [
@@ -118,30 +127,38 @@ export default class ParticpantsTable extends Vue {
       value: "more",
     },
   ];
-  search = "";
-
-  items = ["Ada County (1c)"];
-
-  // get list of case objects
-  casesData = this.$store.getters["CasesModule/getAsList"];
-  // get cases objects for this particular room
-  filteredCases = this.casesData.filter(
-    (c: { roomId: string }) => c.roomId === this.$route.params.roomId
-  );
-  // get a mapping of case names from case objects
-  caseNames = this.filteredCases.map((c: { name: string }) => c.name);
-
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
-
-  filteredParticipants = this.participantsData.filter(
+  participantsByRoom: Participant[] = this.participantsData.filter(
     (p: { roomId: string }) => p.roomId === this.$route.params.roomId
   );
+  filterByCaseIds: string[] = [];
+
+  get uniqueParticipantCases(): Case[] {
+    const allCaseIds: string[] = this.participantsByRoom.map(
+      (p) => p.caseId || ""
+    );
+    const uniqueCaseIds: string[] = uniq(allCaseIds);
+    const uniqueCases: Case[] = this.getCasesAsList().filter((c) =>
+      uniqueCaseIds.includes(c.id)
+    );
+    return uniqueCases;
+  }
+
+  get filteredParticipants(): Participant[] {
+    return this.filterByCaseIds.length
+      ? this.participantsByRoom.filter((p) =>
+          this.filterByCaseIds.includes(p.caseId || "")
+        )
+      : this.participantsByRoom;
+  }
 
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
   }
-
+  getCasesAsList(): Case[] {
+    return this.$store.getters["CasesModule/getAsList"];
+  }
   roleName(id: string): string {
     return this.$store.getters["PermissionsModule/getRoleById"](id)?.name;
   }
