@@ -4,27 +4,23 @@
       <v-col>
         <v-form class="ml-8">
           <v-row class="mb-2">
-            <v-col cols="6">
+            <v-col cols="auto">
               <span class="font-weight-regular text-h5">Frank Voci</span>
             </v-col>
-            <v-col cols="6">
-              <v-row class="justify-end mr-16">
-                <v-col cols="2">
-                  <v-btn
-                    class="mx-8"
-                    color="grey lighten-1 rounded-0 white--text"
-                    depressed
-                    >{{ $t("admin.systemUser.cancel") }}</v-btn
-                  >
-                </v-col>
-                <v-col cols="2">
-                  <v-btn
-                    color="grey darken-4 rounded-0 white--text"
-                    depressed
-                    >{{ $t("admin.systemUser.save") }}</v-btn
-                  >
-                </v-col>
-              </v-row>
+            <v-spacer />
+            <v-col cols="auto">
+              <v-btn dark tile depressed class="mr-4" color="grey lighten-1">
+                {{ $t("admin.systemUser.cancel") }}
+              </v-btn>
+              <v-btn
+                tile
+                depressed
+                color="grey darken-3"
+                class="white--text"
+                :disabled="!hasUnsavedChanges"
+              >
+                {{ $t("admin.systemUser.save") }}
+              </v-btn>
             </v-col>
           </v-row>
           <v-row dense>
@@ -87,6 +83,11 @@ import "reflect-metadata";
 export default class SystemUserEdit extends Vue {
   email = "frank@voci.com";
   phone = this.$store.state.ParticipantsModule.me.phone;
+
+  get hasUnsavedChanges(): boolean {
+    // TODO: implement save functionality and leverage here
+    return false;
+  }
 }
 </script>
 
