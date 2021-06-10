@@ -130,7 +130,7 @@
             </v-col>
             <v-col cols="1"> </v-col>
             <v-col cols="4">
-              <v-select dense label="Ready-To-Meet"> </v-select>
+              <v-select dense :label="$t('admin.roomSettings.readyToMeet')"> </v-select>
             </v-col>
           </v-row>
           <v-row dense>
@@ -139,7 +139,7 @@
             </v-col>
             <v-col cols="1"> </v-col>
             <v-col cols="4">
-              <v-select dense label="ZipDX"> </v-select>
+              <v-select dense :label="$t('admin.roomSettings.zipDX')"> </v-select>
             </v-col>
           </v-row>
           <v-row>
@@ -186,7 +186,7 @@
             </v-col>
             <v-col cols="1"> </v-col>
             <v-col cols="4">
-              <v-select dense label="Grid"> </v-select>
+              <v-select dense :label="$t('admin.roomSettings.grid')"> </v-select>
             </v-col>
           </v-row>
           <v-row dense>
@@ -209,9 +209,9 @@
             </v-col>
             <v-col class="d-flex justify-end">
               <v-radio-group mandatory row>
-                <v-radio label="HIGH"> </v-radio>
-                <v-radio label="MED"> </v-radio>
-                <v-radio label="LOW"> </v-radio>
+                <v-radio :label="$t('admin.roomSettings.videoHigh')"> </v-radio>
+                <v-radio :label="$t('admin.roomSettings.videoMedium')"> </v-radio>
+                <v-radio :label="$t('admin.roomSettings.videoLow')"> </v-radio>
               </v-radio-group>
             </v-col>
           </v-row>

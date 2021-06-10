@@ -15,4 +15,5 @@ export default {
   saveChanges: "SAVE CHANGES",
   organizationAlternate: "Organization",
   saveTemplate: "SAVE AS NEW TEMPLATE",
+  templateName: "Enter Template Name",
 };

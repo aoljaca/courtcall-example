@@ -44,4 +44,10 @@ export default {
   yes: "YES",
   no: "NO",
   archive: "ARCHIVE ROOM",
+  readyToMeet: "Ready-To-Meet",
+  zipDX: "ZipDX",
+  grid: "Grid",
+  videoLow: "LOW",
+  videoMedium: "MEDIUM",
+  videoHigh: "HIGH",
 };

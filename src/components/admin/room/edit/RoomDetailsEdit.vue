@@ -72,7 +72,7 @@
               maxlength="25"
               clearable
               dense
-              label="Enter Template Name"
+              :label="$t('admin.roomDetails.templateName')"
             >
             </v-text-field>
           </v-col>
