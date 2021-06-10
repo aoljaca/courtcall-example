@@ -67,7 +67,6 @@
         <v-row class="justify-center">
           <v-col cols="12">
             <v-autocomplete
-              @click="logObj()"
               :rules="rules"
               v-model="value"
               :items="templateNames"
