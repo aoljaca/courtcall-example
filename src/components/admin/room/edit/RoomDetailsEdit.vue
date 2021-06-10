@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 details-label-text">{{ $t("admin.roomDetails.roomName") }}</div>
+        <div class="pr-4 details-label-text font-weight-bold">{{ $t("admin.roomDetails.roomName") }}</div>
         <v-text-field
           :rules="rules"
           counter
@@ -35,7 +35,7 @@
     </v-row>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 details-label-text">{{ $t("admin.roomDetails.organizationAlternate") }}</div>
+        <div class="pr-4 details-label-text font-weight-bold">{{ $t("admin.roomDetails.organizationAlternate") }}</div>
         <v-text-field
           :rules="rules"
           counter
@@ -47,7 +47,7 @@
         </v-text-field>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
-        <div class="pr-4 details-label-text">{{ $t("admin.roomDetails.status") }}</div>
+        <div class="pr-4 details-label-text font-weight-bold">{{ $t("admin.roomDetails.status") }}</div>
         <v-select :items="items" dense> </v-select>
       </v-col>
     </v-row>
@@ -124,13 +124,7 @@ export default class RoomDetailsEdit extends Vue {
 
 <style lang="scss" scoped>
 .details-label-text {
-  font-weight: bold;
   font-size: 1rem;
-}
-.details-header {
-  font-weight: black;
-  font-size: 2rem;
-  line-height: 2rem;
 }
 a {
   text-decoration: none;

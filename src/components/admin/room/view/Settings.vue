@@ -2,14 +2,14 @@
   <div>
     <v-row>
       <v-col>
-        <div class="settings-edit-header">
+        <div class="settings-edit-header font-weight-bold">
           {{ $t("admin.roomSettings.settings") }}
         </div>
       </v-col>
     </v-row>
     <v-row>
       <v-col class="d-flex">
-        <div class="mr-4 settings-label-text">
+        <div class="mr-4 settings-label-text font-weight-black">
           {{ $t("admin.roomSettings.template") }}
         </div>
         <div>{{ roomSettings.template }}</div>
@@ -18,7 +18,7 @@
     <v-row>
       <v-col id="left-settings-col">
         <v-row>
-          <v-col class="settings-label-text">
+          <v-col class="settings-label-text font-weight-black">
             {{ $t("admin.roomSettings.entranceBehavior") }}
           </v-col>
         </v-row>
@@ -90,7 +90,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <span class="settings-label-text">
+            <span class="settings-label-text font-weight-black">
               {{ $t("admin.roomSettings.meetingVideoAndAudio") }}
             </span>
           </v-col>
@@ -115,7 +115,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <span class="settings-label-text">
+            <span class="settings-label-text font-weight-black">
               {{ $t("admin.roomSettings.videoSetup") }}
             </span>
           </v-col>
@@ -149,7 +149,7 @@
       <v-col id="right-settings-col" class="divide-cols">
         <v-row>
           <v-col>
-            <span class="settings-label-text">
+            <span class="settings-label-text font-weight-black">
               {{ $t("admin.roomSettings.meetingOperations") }}
             </span>
           </v-col>
@@ -201,7 +201,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <span class="settings-label-text">
+            <span class="settings-label-text font-weight-black">
               {{ $t("admin.roomSettings.accessFunctions") }}
             </span>
           </v-col>
@@ -253,7 +253,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <span class="settings-label-text">
+            <span class="settings-label-text font-weight-black">
               {{ $t("admin.roomSettings.support") }}
             </span>
           </v-col>
@@ -300,11 +300,9 @@ export default class Settings extends Vue {
   justify-content: right;
 }
 .settings-label-text {
-  font-weight: black;
   font-size: 1rem;
 }
 .settings-edit-header {
-  font-weight: bold;
   font-size: 2rem;
   line-height: 2rem;
 }

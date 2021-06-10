@@ -4,7 +4,7 @@
       <v-row>
         <v-col>
           <v-icon class="mb-2"> mdi-circle </v-icon>
-          <div class="mx-4 d-inline-block details-header">
+          <div class="mx-4 d-inline-block details-header font-weight-bold">
             Judge Frank{{ $t("admin.roomDetails.room") }}
           </div>
           <span class="mx-8">
@@ -124,7 +124,6 @@ a {
   color: white !important;
 }
 .details-header {
-  font-weight: bold;
   font-size: 2rem;
   line-height: 2rem;
 }
