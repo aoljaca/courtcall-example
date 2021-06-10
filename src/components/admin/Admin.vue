@@ -1,20 +1,32 @@
 <template>
-  <div id="admin">
-    <v-container fluid>
-      <v-row class="header">
-        <v-col cols="3" class="logo"> CourtCall Admin </v-col>
-
-        <v-col cols="6" class="navtabs text-center" id="navtabs">
-          <navigation></navigation>
+  <div>
+    <v-container fluid class="px-10">
+      <v-row no-gutters>
+        <v-col cols="auto">
+          <h1>CourtCall <span class="c-primary">Admin</span></h1>
         </v-col>
 
-        <v-col cols="3" class="userinfo text-right" id="userinfo">
-          <user-actions></user-actions>
+        <v-col cols="6" align-self="center" class="text-center">
+          <navigation />
+        </v-col>
+
+        <v-spacer />
+        <v-col cols="auto" align-self="center" class="text-right">
+          <user-actions />
         </v-col>
       </v-row>
+    </v-container>
+
+    <template v-if="showBreadcrumbs">
+      <v-divider />
+      <breadcrumbs />
+    </template>
+    <v-divider />
+
+    <v-container fluid class="px-10">
       <v-row>
         <v-col class="px-0 py-0">
-          <router-view></router-view>
+          <router-view />
         </v-col>
       </v-row>
     </v-container>
@@ -25,18 +37,19 @@
 import { Component, Vue } from "vue-property-decorator";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import UserActions from "@/components/admin/dashboard/UserActions.vue";
+import Breadcrumbs from "@/components/admin/navigation/Breadcrumbs.vue";
 @Component({
   components: {
     Navigation,
     UserActions,
+    Breadcrumbs,
   },
 })
-export default class Admin extends Vue {}
+export default class Admin extends Vue {
+  get showBreadcrumbs(): boolean {
+    return this.$route.name !== "Dashboard";
+  }
+}
 </script>
 
-<style lang="scss" scoped>
-.header,
-.searchrow {
-  border-bottom: 1px solid gray;
-}
-</style>
+<style lang="scss" scoped></style>

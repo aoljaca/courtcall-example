@@ -1,42 +1,26 @@
 <template>
   <v-container fluid>
-    <v-row class="end-row py-4">
-      <v-col class="ml-16">
-        <span 
-          class="grey--text text--lighten-2 font-weight-black text-subtitle-1"
-          >{{ $t("admin.systemUser.dashboard") }}</span
-        >
-        <span 
-          class="font-weight-bold"
-          >{{ $t("admin.systemUser.account") }}</span
-        >
-      </v-col>
-    </v-row>
     <v-row class="mt-8">
       <v-col>
         <v-form class="ml-8">
           <v-row class="mb-2">
-            <v-col cols="6">
+            <v-col cols="auto">
               <span class="font-weight-regular text-h5">Frank Voci</span>
             </v-col>
-            <v-col cols="6">
-              <v-row class="justify-end mr-16">
-                <v-col cols="2">
-                  <v-btn 
-                  class="mx-8"
-                  color="grey lighten-1 rounded-0 white--text" 
-                  depressed
-                  >{{ $t("admin.systemUser.cancel") }}</v-btn
-                >
-                </v-col>
-                <v-col cols="2">
-                  <v-btn 
-                  color="grey darken-4 rounded-0 white--text" 
-                  depressed
-                  >{{ $t("admin.systemUser.save") }}</v-btn
-                  >
-                </v-col>
-              </v-row>
+            <v-spacer />
+            <v-col cols="auto">
+              <v-btn dark tile depressed class="mr-4" color="grey lighten-1">
+                {{ $t("admin.systemUser.cancel") }}
+              </v-btn>
+              <v-btn
+                tile
+                depressed
+                color="grey darken-3"
+                class="white--text"
+                :disabled="!hasUnsavedChanges"
+              >
+                {{ $t("admin.systemUser.save") }}
+              </v-btn>
             </v-col>
           </v-row>
           <v-row dense>
@@ -44,8 +28,7 @@
               <label>{{ $t("admin.systemUser.email") }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="email" readonly dense>
-              </v-text-field>
+              <v-text-field v-model="email" readonly dense> </v-text-field>
             </v-col>
           </v-row>
           <v-row dense>
@@ -53,15 +36,14 @@
               <label>{{ $t("admin.systemUser.phone") }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="phone" dense>
-              </v-text-field>
+              <v-text-field v-model="phone" dense> </v-text-field>
             </v-col>
           </v-row>
           <v-row class="mt-4 mb-4">
             <v-col>
-              <span 
-              class="font-weight-medium"
-              >{{ $t("admin.systemUser.changePassword") }}</span>
+              <span class="font-weight-medium">{{
+                $t("admin.systemUser.changePassword")
+              }}</span>
             </v-col>
           </v-row>
           <v-row dense>
@@ -69,8 +51,7 @@
               <label>{{ $t("admin.systemUser.password") }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field type="password" dense>
-              </v-text-field>
+              <v-text-field type="password" dense> </v-text-field>
             </v-col>
           </v-row>
           <v-row dense>
@@ -78,8 +59,7 @@
               <label>{{ $t("admin.systemUser.newPassword") }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field type="password" dense>
-              </v-text-field>
+              <v-text-field type="password" dense> </v-text-field>
             </v-col>
           </v-row>
           <v-row dense>
@@ -87,8 +67,7 @@
               <label>{{ $t("admin.systemUser.confirmPassword") }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field type="password" dense>
-              </v-text-field>
+              <v-text-field type="password" dense> </v-text-field>
             </v-col>
           </v-row>
         </v-form>
@@ -104,13 +83,15 @@ import "reflect-metadata";
 export default class SystemUserEdit extends Vue {
   email = "frank@voci.com";
   phone = this.$store.state.ParticipantsModule.me.phone;
+
+  get hasUnsavedChanges(): boolean {
+    // TODO: implement save functionality and leverage here
+    return false;
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.end-row {
-  border-bottom: 1px solid gray;
-}
 label {
   white-space: nowrap;
 }

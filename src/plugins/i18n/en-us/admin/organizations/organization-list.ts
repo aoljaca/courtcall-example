@@ -1,4 +1,4 @@
-import newOrg from "./organizations/new-organization";
+import newOrg from "./new-organization";
 export default {
   title: "Organizations",
   new: newOrg,

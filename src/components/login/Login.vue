@@ -4,7 +4,7 @@
       <v-row class="big-empty"> </v-row>
       <v-row>
         <v-col align-self="center"
-          ><h2 class="justify-content-center d-flex">CourtCall</h2></v-col
+          ><h2 class="justify-center d-flex">CourtCall</h2></v-col
         >
       </v-row>
       <v-row class="not-wide">

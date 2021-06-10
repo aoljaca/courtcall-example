@@ -138,9 +138,8 @@ export default class RoomOverview extends Vue {
 
   subConferencesToMove: SubConference[] = [];
 
-  possibleSubconferences: SubConference[] = this.$store.getters[
-    "SubconferenceModule/getAsList"
-  ];
+  possibleSubconferences: SubConference[] =
+    this.$store.getters["SubconferenceModule/getAsList"];
   subconferenceDestination: SubConference | null = null;
 
   get subconferences(): SubConference[] {
@@ -148,9 +147,8 @@ export default class RoomOverview extends Vue {
   }
 
   participantsInSubconference(s: SubConference): Participant[] {
-    const participants: Participant[] = this.$store.getters[
-      "ParticipantsModule/getAsList"
-    ];
+    const participants: Participant[] =
+      this.$store.getters["ParticipantsModule/getAsList"];
     return participants
       .filter((p) => p.subconferenceId === s.id)
       .filter((p) =>
@@ -207,9 +205,8 @@ export default class RoomOverview extends Vue {
   }
 
   get participantsToMove() {
-    const participants: Participant[] = this.$store.getters[
-      "ParticipantsModule/getAsList"
-    ];
+    const participants: Participant[] =
+      this.$store.getters["ParticipantsModule/getAsList"];
     const subconferenceIds = this.subConferencesToMove.map((s) => s.id);
     const subconferenceIdSet = new Set(subconferenceIds);
     return participants.filter(

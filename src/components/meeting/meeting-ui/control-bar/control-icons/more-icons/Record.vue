@@ -33,8 +33,7 @@ import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 @Component
 export default class Record extends Vue {
   selectedSubconference: SubConference | null = null;
-  possibleSubconferences: SubConference[] = this.$store.getters[
-    "SubconferenceModule/getAsList"
-  ];
+  possibleSubconferences: SubConference[] =
+    this.$store.getters["SubconferenceModule/getAsList"];
 }
 </script>
