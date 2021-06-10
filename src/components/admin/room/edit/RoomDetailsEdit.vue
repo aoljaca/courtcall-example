@@ -67,6 +67,7 @@
         <v-row class="justify-center">
           <v-col cols="12">
             <v-autocomplete
+              @click="logObj()"
               :rules="rules"
               v-model="value"
               :items="templateNames"
@@ -113,8 +114,11 @@ export default class RoomDetailsEdit extends Vue {
 
   settingsViewPath = "/admin/room/view/" + this.$route.params.roomId;
 
-  // templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
-
+  templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
+  
+  logObj() {
+    console.log(this.templateNames);
+  }
 
   get roomDetails() {
     if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
