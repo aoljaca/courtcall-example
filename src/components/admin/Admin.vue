@@ -14,7 +14,7 @@
       </v-row>
       <v-row>
         <v-col class="px-0 py-0">
-          <router-view></router-view>
+          <router-view :key="$route.fullPath"></router-view>
         </v-col>
       </v-row>
     </v-container>
