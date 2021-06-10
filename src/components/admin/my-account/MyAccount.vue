@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <system-user-header message="My Account">
+    <system-user-header :label="$t('admin.systemUser.myAccount')">
     </system-user-header>
     <v-row class="mt-8">
       <v-col>
