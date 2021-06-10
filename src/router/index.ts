@@ -13,6 +13,7 @@ import Organizations from "@/components/admin/organizations/Organizations.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
+import CaseView from "@/components/admin/case/view/CaseView.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -95,6 +96,11 @@ const routes: Array<RouteConfig> = [
         path: "support/archived",
         component: SupportArchive,
         name: "Support Archive",
+      },
+      {
+        path: "case/view/:caseId",
+        component: CaseView,
+        name: "Case View"
       },
     ],
   },

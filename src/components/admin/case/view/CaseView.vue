@@ -1,30 +1,31 @@
 <template>
   <v-container fluid>
-    <v-row class="end-row py-4">
-      <v-col class="ml-16">
-        <span 
-          class="grey--text text--lighten-2 font-weight-black text-subtitle-1"
-          >{{ $t("admin.systemUser.dashboard") }}</span
-        >
-        <span 
-          class="font-weight-bold"
-          >{{ $t("admin.systemUser.account") }}</span
-        >
+    <v-row>
+      <v-col>
+        Dashboard > Judge Frank's Room > Case Name
       </v-col>
     </v-row>
-    <v-row id="case-control">
+    <v-row id="case-view">
     </v-row>
-    <v-row id="case-list">
+    <v-row id="scheduled-participants-table">
+      <v-col>
+        <scheduled-participants-table>
+        </scheduled-participants-table>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import ScheduledParticipantsTable from "@/components/admin/case/view/ScheduledParticipantsTable.vue";
 import "reflect-metadata";
-@Component
-export default class MyAccount extends Vue {
-}
+@Component({
+  components: {
+    ScheduledParticipantsTable
+  },
+})
+export default class CaseView extends Vue {}
 </script>
 
 <style lang="scss" scoped>
