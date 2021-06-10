@@ -110,15 +110,10 @@ export default class RoomDetailsEdit extends Vue {
   value = "null";
   rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
   items = ["Draft", "Available"];
-  // templateNames = ["Template1","Template2","Template3","Template4","Template5"];
 
   settingsViewPath = "/admin/room/view/" + this.$route.params.roomId;
 
   templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
-  
-  logObj() {
-    console.log(this.templateNames);
-  }
 
   get roomDetails() {
     if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
