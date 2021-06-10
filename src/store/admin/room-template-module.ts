@@ -7,7 +7,7 @@ const templates: {
   T1: {
     uuid: "T1",
     roomSettings: {
-      template: "Template Name (Modified)",
+      template: "Template 1",
       passcode: "YourHonor931",
       allowPasscode: true,
       video: true,
@@ -46,7 +46,7 @@ const templates: {
   T2: {
     uuid: "T2",
     roomSettings: {
-      template: "Template Name (Modified)",
+      template: "Template 2",
       passcode: "HonorYour999",
       allowPasscode: true,
       video: false,
@@ -85,7 +85,7 @@ const templates: {
   T3: {
     uuid: "T3",
     roomSettings: {
-      template: "Template Name (Modified)",
+      template: "Template 3",
       passcode: "YourHonYour",
       allowPasscode: true,
       video: true,
@@ -124,7 +124,7 @@ const templates: {
   T4: {
     uuid: "T4",
     roomSettings: {
-      template: "Template Name (Modified)",
+      template: "Template 4",
       passcode: "passwordcodeisbad",
       allowPasscode: true,
       video: false,
@@ -163,7 +163,7 @@ const templates: {
   T5: {
     uuid: "T5",
     roomSettings: {
-      template: "Template Name (Modified)",
+      template: "Template 5",
       passcode: "time49313",
       allowPasscode: true,
       video: true,
@@ -209,6 +209,11 @@ const roomTemplateModule: Module<any, any> = {
   mutations: {},
   actions: {},
   getters: {
+    getAsList: (state) => Object.values(state.templates),
+    getTemplateNamesList: (state) => {
+      const templates = (Object.values(state.templates) as RoomTemplate[]);
+      return templates.map((t: RoomTemplate) => t.roomSettings.template);
+    }
   },
 };
 

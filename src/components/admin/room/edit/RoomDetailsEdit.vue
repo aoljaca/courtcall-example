@@ -66,15 +66,14 @@
       <v-col cols="3" class="pa-8 template-entry-bg">
         <v-row class="justify-center">
           <v-col cols="12">
-            <v-text-field
+            <v-autocomplete
               :rules="rules"
-              counter
-              maxlength="25"
-              clearable
+              v-model="value"
+              :items="templateNames"
               dense
+              clearable
               :label="$t('admin.roomDetails.templateName')"
-            >
-            </v-text-field>
+            ></v-autocomplete>
           </v-col>
         </v-row>
         <v-row>
@@ -107,10 +106,15 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 @Component
 export default class RoomDetailsEdit extends Vue {
+  value = "null";
   rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
   items = ["Draft", "Available"];
+  // templateNames = ["Template1","Template2","Template3","Template4","Template5"];
 
   settingsViewPath = "/admin/room/view/" + this.$route.params.roomId;
+
+  // templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
+
 
   get roomDetails() {
     if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
