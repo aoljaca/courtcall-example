@@ -17,13 +17,15 @@
             </v-btn>
           </v-col>
         </v-row>
-        <v-row>
+        <v-row class="py-4">
           <v-col>
             Back to a judge's room
           </v-col>
         </v-row>
       </v-col>
     </v-row>
+    <v-divider class="py-4">
+    </v-divider>
     <v-row id="scheduled-participants-table">
       <v-col>
         <scheduled-participants-table>
