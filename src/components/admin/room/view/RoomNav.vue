@@ -1,19 +1,19 @@
 <template>
   <div class="sticky-nav">
-    <v-row @click="scrollTo()">
+    <v-row @click="scrollTo('roomDetails')">
       <v-col class="my-1 nav-item-dark"> {{ $t("admin.roomNav.details") }} </v-col>
     </v-row>
-    <v-row v-if="parentContext === 'view'">
+    <v-row v-if="parentContext === 'view'" @click="scrollTo('roomSettings')">
       <v-col class="my-1 nav-item"> 
         {{ $t("admin.roomNav.settings") }} 
       </v-col>
     </v-row>
-    <v-row v-if="parentContext === 'view'">
+    <v-row v-if="parentContext === 'view'" @click="scrollTo('casesTable')">
       <v-col class="my-1 nav-item"> 
         {{ $t("admin.roomNav.cases") }}
       </v-col>
     </v-row>
-    <v-row v-if="parentContext === 'view'">
+    <v-row v-if="parentContext === 'view'" @click="scrollTo('participantsTable')">
       <v-col class="my-1 nav-item"> 
         {{ $t("admin.roomNav.participants") }} 
       </v-col>
@@ -35,9 +35,8 @@ export default class RoomNav extends Vue {
   @Prop()
   parentContext: string | undefined;
 
-  scrollTo() {
-    console.log("test");
-    console.log(this.$refs.roomSettings);
+  scrollTo(ref: string) {
+    this.$emit('navClicked', ref);
   }
 }
 </script>

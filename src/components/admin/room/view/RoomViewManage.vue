@@ -4,7 +4,11 @@
     <v-container fluid class="mt-6">
       <v-row>
         <v-col class="pl-8 pt-4" cols="2">
-          <room-nav parentContext="view" class="py-4 pl-4 pr-2"></room-nav>
+          <room-nav 
+            parentContext="view" 
+            class="py-4 pl-4 pr-2" 
+            @navClicked="onNavClicked"
+          ></room-nav>
         </v-col>
         <v-col cols="10">
           <room-details 
@@ -53,7 +57,16 @@ import "reflect-metadata";
     ParticipantsTable,
   },
 })
-export default class RoomViewManage extends Vue {}
+export default class RoomViewManage extends Vue {
+  onNavClicked(ref: string) {
+    // get the refs from this component
+    const refs: any = this.$refs;
+    // find the ref emmitted from RoomNav and store it as an element
+    const element: any = refs[ref].$el;
+    // call scrollIntoView() on our stored element
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 </script>
 
 <style lang="scss" scoped>
