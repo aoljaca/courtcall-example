@@ -65,7 +65,7 @@
       <v-row
         v-for="notification in waitingRoomNotifications"
         :key="notification.description"
-        class="justify-content-center"
+        class="justify-center"
       >
         <v-col cols="6">
           <waiting-room-notification

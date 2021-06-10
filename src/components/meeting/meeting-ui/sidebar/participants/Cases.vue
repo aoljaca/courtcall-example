@@ -138,9 +138,8 @@ export default class CasesView extends Vue {
   }
 
   participantsForCase(c: Case): Participant[] {
-    const participants: Participant[] = this.$store.getters[
-      "ParticipantsModule/getAsList"
-    ];
+    const participants: Participant[] =
+      this.$store.getters["ParticipantsModule/getAsList"];
     return participants
       .filter((p) => p.caseId === c.id)
       .filter((p) =>

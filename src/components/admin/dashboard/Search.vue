@@ -1,7 +1,7 @@
 <template>
   <div class="search-row">
     <v-container>
-      <v-row class="justify-content-center">
+      <v-row class="justify-center">
         <v-col cols="3">
           <v-select :items="items" label="Search Type"></v-select>
         </v-col>
