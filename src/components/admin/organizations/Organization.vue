@@ -78,7 +78,7 @@
       <v-col cols="auto">
         <div
           v-for="(roomId, index) in organization.roomIds"
-          :key="`room-${roomId}`"
+          :key="roomId"
           class="font-weight-medium"
         >
           {{ `Room ${++index} (id: ${roomId})` }}
