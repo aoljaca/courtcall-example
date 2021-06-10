@@ -14,7 +14,7 @@
       </template>
       <v-card class="pa-4">
         <v-row class="mx-3">
-          <v-col class="templates-header">{{ $t("admin.roomTemplate.roomTemplate") }}</v-col>
+          <v-col class="templates-header font-weight-bold">{{ $t("admin.roomTemplate.roomTemplate") }}</v-col>
           <v-col class="d-flex justify-end">
             <v-icon x-large @click="dialog = false"> mdi-close </v-icon>
           </v-col>
@@ -46,10 +46,10 @@
               <v-divider>
               </v-divider>
               <div 
-                v-for="n in 25"
-                :key="n"
+                v-for="template in templateNames"
+                :key="template"
               >
-                <saved-template> </saved-template>
+                <saved-template :name="template"> </saved-template>
               </div>
             </v-col>
           </v-row>
@@ -72,13 +72,15 @@ import "reflect-metadata";
 export default class RoomTemplates extends Vue {
   dialogm1 = "";
   dialog = false;
-  templatesSum = 25;
+  templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
+  templatesSum = this.templateNames.length;
+
+
 }
 </script>
 
 <style lang="scss" scoped>
 .templates-header {
-  font-weight: bold;
   font-size: 2rem;
   line-height: 2rem;
 }
