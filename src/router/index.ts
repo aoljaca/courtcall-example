@@ -171,7 +171,7 @@ const routes: Array<RouteConfig> = [
           {
             path: "view/:caseId",
             component: CaseView,
-            name: "Organization",
+            name: "Case View",
             meta: { 
               breadcrumbFunc: (route: any) => `${store.getters["CasesModule/getById"](route.params.caseId).name}`
             },
