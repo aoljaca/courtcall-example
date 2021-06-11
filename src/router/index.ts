@@ -96,9 +96,6 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: "room",
-        meta: {
-          breadcrumb: "rooms"
-        },
         component: {
           render(c) {
             return c("router-view");
