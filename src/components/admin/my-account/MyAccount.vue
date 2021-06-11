@@ -78,10 +78,15 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue"
 import "reflect-metadata";
-@Component
+@Component({
+  components: {
+    SystemUserHeader,
+  },
+})
 export default class MyAccount extends Vue {
-  email = "frank@voci.com";
+  email = this.$store.state.ParticipantsModule.me.email;
   phone = this.$store.state.ParticipantsModule.me.phone;
 
   get hasUnsavedChanges(): boolean {
