@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center">
+  <v-row>
     <v-dialog v-model="dialog" scrollable max-width="750px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn
