@@ -15,14 +15,15 @@
           }}</label>
         </v-col>
         <v-col cols="3">
-          <v-text-field
+          <v-autocomplete
             :rules="rules"
             counter
-            maxlength="25"
-            clearable
+            v-model="value"
+            :items="templateNames"
             dense
-            v-model="roomSettings.passcode"
-          ></v-text-field>
+            clearable
+            :label="$t('admin.roomDetails.templateName')"
+          ></v-autocomplete>
         </v-col>
         <v-col cols="2" class="d-flex justify-start">
           <room-templates> </room-templates>
@@ -413,6 +414,9 @@ export default class SettingsEdit extends Vue {
 
     return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings;
   }
+
+  templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
+
 
 }
 </script>
