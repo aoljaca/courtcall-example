@@ -7,7 +7,7 @@
           <div class="mx-4 d-inline-block details-header font-weight-bold">
             Judge Frank{{ $t("admin.roomDetails.room") }}
           </div>
-          <span class="mx-8">
+          <span class="mx-6">
             {{ $t("admin.roomDetails.organization") }}
           </span>
           <span>

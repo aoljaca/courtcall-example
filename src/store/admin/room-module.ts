@@ -814,6 +814,12 @@ const adminRoomModule: Module<any, any> = {
   mutations: {},
   actions: {},
   getters: {
+    getById: (state) => (id: string) => {
+      return state.rooms[id];
+    },
+    getRoomNameById: (state) => (id: string) => {
+      return state.rooms[id].roomDetails.name;
+    }
   },
 };
 

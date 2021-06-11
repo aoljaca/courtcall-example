@@ -7,12 +7,12 @@
             <v-container fluid>
               <v-row>
                 <v-col>
-                  <h2 class="align-text-center">CourtCall</h2>
+                  <h2 class="text-center">CourtCall</h2>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col>
-                  <h3 class="align-text-center">{{ $t("logout.heading") }}</h3>
+                  <h3 class="text-center">{{ $t("logout.heading") }}</h3>
                 </v-col>
               </v-row>
               <v-row>

@@ -8,6 +8,10 @@ import roomCases from "./admin/room/room-cases";
 import roomParticipants from "./admin/room/room-participants";
 import organizations from "./admin/organizations";
 import support from "./admin/support";
+import organizationList from "./admin/organizations/organization-list";
+import newOrganization from "./admin/organizations/new-organization";
+import organization from "./admin/organizations/organization";
+import navigation from "./admin/navigation";
 
   export default {
     dashboard,
@@ -18,6 +22,11 @@ import support from "./admin/support";
     roomParticipants,
     roomTemplate,
     systemUser,
-    organizations,
     support,
+    organizations: {
+      organizationList: organizationList,
+      newOrganization: newOrganization,
+      organization: organization
+    },
+    navigation: navigation
 };

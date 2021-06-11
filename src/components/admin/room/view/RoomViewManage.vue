@@ -1,6 +1,5 @@
 <template>
   <div>
-    <system-user-header message="Judge Frank's Room"></system-user-header>
     <v-container fluid class="mt-6">
       <v-row>
         <v-col class="pl-8 pt-4" cols="2">

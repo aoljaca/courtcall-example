@@ -8,6 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
+    "lint:fix": "vue-cli-service lint --fix",
     "lint:dev": "eslint 'src/**/*.{ts,vue}' --fix --max-warnings 0",
     "lint:cicd": "eslint 'src/**/*.{ts,vue}' --max-warnings 0",
     "build:dev": "vue-cli-service build --mode development",

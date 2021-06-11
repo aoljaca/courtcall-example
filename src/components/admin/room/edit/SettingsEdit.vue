@@ -405,6 +405,7 @@ import "reflect-metadata";
   },
 })
 export default class SettingsEdit extends Vue {
+  value = "null";
   rules = [(v: string | any[]) => v.length <= 35 || "Max 35 characters"];
 
   get roomSettings() {
