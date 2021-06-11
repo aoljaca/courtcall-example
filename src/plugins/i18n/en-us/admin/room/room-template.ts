@@ -8,5 +8,5 @@ export default {
   cancel: "CANCEL",
   delete: "DELETE",
   deleteConfirmation: "Are you sure you want to delete this template?",
-  deleteDescription: "This cannot be undone. Rooms currently using this template will be unchanged, but will be noted as \“NO TEMPLATE\"",
-}
+  deleteDescription: `This cannot be undone. Rooms currently using this template will be unchanged, but will be noted as “NO TEMPLATE"`,
+};
