@@ -1,22 +1,5 @@
 <template>
-
   <v-container fluid>
-        <div class="su-header">
-        <v-row class="py-4">
-          <v-col class="ml-8">
-            <span
-              class="grey--text text--lighten-1 font-weight-bold text-subtitle-1"
-              >{{ $t("admin.systemUser.dashboard") }}</span
-            >
-            <span class="font-weight-bold">
-              Judge Frank's Room >
-            </span>
-            <span class="font-weight-bold">
-              {{ thisCaseName }}
-            </span>
-          </v-col>
-        </v-row>
-      </div>
     <v-row id="case-view">
       <v-col>
         <v-row class="mb-4">

@@ -158,9 +158,25 @@ const routes: Array<RouteConfig> = [
         ]
       },
       {
-        path: "case/view/:caseId",
-        component: CaseView,
-        name: "Case View"
+        path: "case",
+        meta: { 
+          breadcrumb: "Judge Frank's Room"
+        },
+        component: {
+          render(c) {
+             return c("router-view");
+          }
+        },
+        children: [
+          {
+            path: "view/:caseId",
+            component: CaseView,
+            name: "Organization",
+            meta: { 
+              breadcrumbFunc: (route: any) => `${store.getters["CasesModule/getById"](route.params.caseId).name}`
+            },
+          },
+        ]
       },
     ],
   },
