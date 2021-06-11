@@ -14,7 +14,7 @@
       <v-col>
         <v-data-table
           :headers="HEADERS"
-          :items="filteredParticipants"
+          :items="caseParticipants"
           :items-per-page="20"
           class="elevation-1"
         >
@@ -56,6 +56,8 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { Case } from "@/model/meeting/meeting-ui/case";
+import participantControl from "@/plugins/i18n/en-us/sidebar/participants/participant-control";
 @Component
 export default class CasesTable extends Vue {
   readonly HEADERS = [
@@ -71,20 +73,22 @@ export default class CasesTable extends Vue {
     },
   ];
 
-  // get participants data
-  participantsData = this.$store.getters["ParticipantsModule/getAsList"];
+  thisCase = this.getCaseById(this.$route.params.caseId);
 
-  // filter participants by caseId
-  filteredParticipants = this.participantsData.filter(
-    (p: { caseId: string }) => p.caseId === this.$route.params.caseId
-  );
+  thisCaseName = this.thisCase.name;
 
-  getParticipantById(id: string): Participant {
-    return this.$store.getters["ParticipantsModule/getById"](id);
+  participantIdsByCase = this.thisCase.participants;
+
+  caseParticipants = this.participantIdsByCase.map((id) => this.getParticipantsById(id));
+
+
+  getCaseById(id: string): Case {
+    return this.$store.getters["CasesModule/getById"](id);
   }
 
-  // get cases by case id
-  // iterate over list of participants in that case
+  getParticipantsById(id: string): Participant {
+    return this.$store.getters["ParticipantsModule/getById"](id);
+  }
 
 }
 </script>
