@@ -35,7 +35,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue";
 import RoomDetailsEdit from "@/components/admin/room/edit/RoomDetailsEdit.vue";
 import SettingsEdit from "@/components/admin/room/edit/SettingsEdit.vue";
 import RoomNav from "@/components/admin/room/view/RoomNav.vue";
@@ -43,7 +42,6 @@ import RoomNav from "@/components/admin/room/view/RoomNav.vue";
 import "reflect-metadata";
 @Component({
   components: {
-    SystemUserHeader,
     RoomDetailsEdit,
     SettingsEdit,
     RoomNav,

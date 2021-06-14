@@ -35,7 +35,7 @@
               </div>
             </template>
 
-            <template v-slot:[`item.more`]="">
+            <template v-slot:[`item.more`]="{ item }">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-container fluid>
@@ -49,15 +49,27 @@
                           :title="$t('general.more')"
                         >
                           <v-icon>mdi-dots-horizontal</v-icon>
-                        </v-btn></v-col
-                      >
+                        </v-btn>
+                      </v-col>
                     </v-row>
                   </v-container>
                 </template>
                 <v-list>
-                  <v-list-item>{{ $t("general.view") }}</v-list-item>
-                  <v-list-item>{{ $t("general.edit") }}</v-list-item>
-                  <v-list-item>{{ $t("general.archive") }}</v-list-item>
+                  <v-list-item
+                    link
+                    :to="{
+                      name: 'Case View', 
+                      params: { caseId: item.id },
+                    }"
+                  >
+                      {{ $t("general.view") }}
+                  </v-list-item>
+                  <v-list-item>
+                    {{ $t("general.edit") }}
+                  </v-list-item>
+                  <v-list-item>
+                    {{ $t("general.archive") }}
+                  </v-list-item>
                 </v-list>
               </v-menu>
             </template>
@@ -105,6 +117,11 @@ export default class CasesTable extends Vue {
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
   }
+
+  printItem( id: string ) {
+    console.log(id);
+  }
+
 }
 </script>
 
