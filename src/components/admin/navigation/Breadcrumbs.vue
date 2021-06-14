@@ -14,41 +14,37 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { RouteConfig } from "vue-router";
 
 interface Breadcrumb {
-  path: string;
   to: string;
   text: string;
 }
 
 @Component
 export default class Breadcrumbs extends Vue {
-  get breadcrumbs(): RouteConfig[] {
-    // Split whole path into individual route paths
-    let pathArray: string[] = this.$route.path.split("/");
-    pathArray.shift();
+  get breadcrumbs(): Breadcrumb[] {
+    const breadcrumbs: Breadcrumb[] = [];
 
-    /* Match each path to the corresponding route and
-     ** pull the breadcrumb from the route's metadata */
-    let breadcrumbs = pathArray.reduce(
-      (breadcrumbArray: Breadcrumb[], path: string, idx) => {
-        const matchedRoute = this.$route.matched[idx];
-        const prevBreadcrumb = breadcrumbArray[idx - 1];
-        const prevPathAppended = `${prevBreadcrumb?.to}/${path}`;
-        if (matchedRoute) {
-          breadcrumbArray.push({
-            path: path,
-            to: prevBreadcrumb ? prevPathAppended : `/${path}`,
-            text: matchedRoute.meta.breadcrumb || path,
-          });
-        } else {
-          prevBreadcrumb.to = prevPathAppended;
+    this.$route.matched.forEach((matchedRoute) => {
+      if (!matchedRoute.meta.hideBreadcrumb) {
+        let dynamicBreadcrumb = "";
+        let breadcrumbFunc = matchedRoute.meta.breadcrumbFunc;
+
+        if (breadcrumbFunc) {
+          dynamicBreadcrumb = breadcrumbFunc(this.$route);
         }
-        return breadcrumbArray;
-      },
-      []
-    );
+
+        if (matchedRoute.)
+
+        breadcrumbs.push({
+          to: matchedRoute.path,
+          text:
+            matchedRoute.meta.breadcrumb ||
+            dynamicBreadcrumb ||
+            matchedRoute.path,
+        });
+      }
+    })
 
     // Replace top-level admin route with Dashboard
     const dashboardRoute = this.$router
@@ -56,11 +52,13 @@ export default class Breadcrumbs extends Vue {
       .find((r) => r.name === "Dashboard");
     if (dashboardRoute) {
       breadcrumbs[0] = {
-        path: dashboardRoute.path,
         to: dashboardRoute.path,
         text: dashboardRoute.meta.breadcrumb,
       };
     }
+
+    console.log('r', this.$route)
+    console.log('b', breadcrumbs)
 
     return breadcrumbs;
   }
