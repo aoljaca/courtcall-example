@@ -14,6 +14,7 @@ import OrganizationComp from "../components/admin/organizations/Organization.vue
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
+import ViewParticipant from "@/components/admin/participants/ViewParticipant.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
 Vue.use(VueRouter);
@@ -67,6 +68,7 @@ const routes: Array<RouteConfig> = [
     path: "/admin",
     name: "Admin",
     component: Admin,
+    redirect: to => "/admin/dashboard",
     children: [
       {
         path: "dashboard",
@@ -83,6 +85,55 @@ const routes: Array<RouteConfig> = [
         meta: { 
           breadcrumb: i18n.t("admin.navigation.myAccount")
         }
+      },
+      {
+        path: "rooms/:roomId",
+        name: "Rooms",
+        meta: { 
+          breadcrumbFunc: (route: any) => `${route.params.roomId}`
+        },
+        component: {
+          render(c) {
+             return c("router-view");
+          }
+        },
+        children: [
+          {
+            path: "view",
+            name: "Room View Manage",
+            component: ViewParticipant,
+            meta: {
+              hideBreadcrumb: true
+            }
+          },
+          {
+            path: "edit",
+            name: "Room Add Edit",
+            component: ViewParticipant,
+          },
+          {
+            path: "participants/:participantId",
+            name: "Participants",
+            component: {
+              render(c) {
+                 return c("router-view");
+              }
+            },
+            meta: { 
+              breadcrumbFunc: (route: any) => `${route.params.participantId}`
+            },
+            children: [
+              {
+                path: "view",
+                component: ViewParticipant,
+                name: "Participant",
+                meta: {
+                  hideBreadcrumb: true
+                }
+              },
+            ]
+          },
+        ]
       },
       {
         path: "system-users",
@@ -115,6 +166,7 @@ const routes: Array<RouteConfig> = [
             path: "view/:organizationId",
             component: OrganizationComp,
             name: "Organization",
+            props: true,
             meta: { 
               breadcrumbFunc: (route: any) => `${store.getters["OrganizationsModule/getById"](route.params.organizationId).name}`
             },
