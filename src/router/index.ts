@@ -17,6 +17,7 @@ import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 import CaseView from "@/components/admin/case/view/CaseView.vue";
+import ViewParticipant from "@/components/admin/participants/ViewParticipant.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
 import { component } from "vue/types/umd";
@@ -71,6 +72,7 @@ const routes: Array<RouteConfig> = [
     path: "/admin",
     name: "Admin",
     component: Admin,
+    redirect: to => "/admin/dashboard",
     children: [
       {
         path: "dashboard",
@@ -88,38 +90,61 @@ const routes: Array<RouteConfig> = [
         }
       },
       {
+        path: "rooms/:roomId",
+        name: "Rooms",
+        meta: { 
+          breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
+        },
+        component: {
+          render(c) {
+             return c("router-view");
+          }
+        },
+        children: [
+          {
+            path: "",
+            name: "Room View Manage",
+            component: RoomViewManage,
+            meta: {
+              hideBreadcrumb: true
+            }
+          },
+          {
+            path: "edit",
+            name: "Room Add Edit",
+            component: RoomAddEdit,
+          },
+          {
+            path: "participants/:participantId",
+            name: "Participants",
+            component: {
+              render(c) {
+                 return c("router-view");
+              }
+            },
+            meta: { 
+              breadcrumbFunc: (route: any) => `${route.params.participantId}`
+            },
+            children: [
+              {
+                path: "",
+                component: ViewParticipant,
+                name: "Participant",
+                meta: {
+                  hideBreadcrumb: true
+                }
+              },
+            ]
+          },
+        ]
+      },
+      {
         path: "system-users",
         component: SystemUsersList,
         name: "System Users",
         meta: { 
           breadcrumb: i18n.t("admin.navigation.systemUsers")
         }
-      },
-      {
-        path: "room",
-        component: {
-          render(c) {
-            return c("router-view");
-          }
-        },
-        children: [
-          {
-            path: "view/:roomId",
-            component: RoomViewManage,
-            name: "Room View Manage",
-            meta: { 
-              breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
-            },
-          },
-          {
-            path: "edit/:roomId",
-            component: RoomAddEdit,
-            name: "Room Add Edit",
-            meta: { 
-              breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
-            },
-          }
-        ]
       },
       {
         path: "organizations",
@@ -144,6 +169,7 @@ const routes: Array<RouteConfig> = [
             path: "view/:organizationId",
             component: OrganizationComp,
             name: "Organization",
+            props: true,
             meta: { 
               breadcrumbFunc: (route: any) => `${store.getters["OrganizationsModule/getById"](route.params.organizationId).name}`
             },
