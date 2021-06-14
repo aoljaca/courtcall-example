@@ -5,7 +5,7 @@
         <v-row class="mb-4">
           <v-col>
             <h2>
-              {{ thisCaseName }}
+              {{ caseName }}
             </h2>
           </v-col>
           <v-col class="text-right">
@@ -16,7 +16,7 @@
         </v-row>
         <v-row class="py-4">
           <v-col>
-            > Back to Judge Frank's Room
+            Back to Judge Frank's Room
           </v-col>
         </v-row>
       </v-col>
@@ -43,13 +43,20 @@ import { Case } from "@/model/meeting/meeting-ui/case";
   },
 })
 export default class CaseView extends Vue {
-  thisCase = this.getCaseById(this.$route.params.caseId);
+  caseName : string = this.getCaseById(this.$route.params.caseId)?.name;
 
-  thisCaseName = this.thisCase.name;
+  // caseRoomId : string = this.getCaseById(this.$route.params.caseId)?.roomId;
+
+  // roomName: string | null = this.getRoomNameById(this.caseRoomId);
 
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
   }
+
+  getRoomNameById(id: string): string {
+    return this.$store.getters["RoomsModule/getById"](id);
+  }
+
 }
 </script>
 

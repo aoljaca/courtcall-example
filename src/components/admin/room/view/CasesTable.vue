@@ -118,10 +118,6 @@ export default class CasesTable extends Vue {
     return this.$store.getters["ParticipantsModule/getById"](id);
   }
 
-  printItem( id: string ) {
-    console.log(id);
-  }
-
 }
 </script>
 
