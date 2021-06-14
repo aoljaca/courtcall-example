@@ -2,11 +2,11 @@
   <div class="rooms-table">
     <v-row class="mb-4">
       <v-col>
-        <h2>Scheduled Participants</h2>
+        <h2>{{ $t("admin.cases.scheduledParticipants") }}</h2>
       </v-col>
       <v-col class="text-right">
-        <v-btn :title="$t('admin.roomCases.add')" color="grey darken-4 rounded-0 white--text" depressed>
-          ADD
+        <v-btn :title="$t('admin.cases.add')" color="grey darken-4 rounded-0 white--text" depressed>
+          {{ $t("admin.cases.add") }}
         </v-btn>
       </v-col>
     </v-row>
@@ -41,8 +41,8 @@
               <v-list>
                 <v-list-item>{{ $t("general.view") }}</v-list-item>
                 <v-list-item>{{ $t("general.edit") }}</v-list-item>
-                <v-list-item>Remove From Cases</v-list-item>
-                <v-list-item>Remove From Room (Archive)</v-list-item>
+                <v-list-item>{{ $t("admin.cases.removeFromCases") }}</v-list-item>
+                <v-list-item>{{ $t("admin.cases.removeFromRoom") }}</v-list-item>
               </v-list>
             </v-menu>
           </template>
@@ -57,7 +57,6 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Case } from "@/model/meeting/meeting-ui/case";
-import participantControl from "@/plugins/i18n/en-us/sidebar/participants/participant-control";
 @Component
 export default class CasesTable extends Vue {
   readonly HEADERS = [

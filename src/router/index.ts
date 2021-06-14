@@ -102,7 +102,7 @@ const routes: Array<RouteConfig> = [
         },
         children: [
           {
-            path: "",
+            path: "view",
             name: "Room View Manage",
             component: RoomViewManage,
             meta: {
@@ -113,6 +113,31 @@ const routes: Array<RouteConfig> = [
             path: "edit",
             name: "Room Add Edit",
             component: RoomAddEdit,
+            meta: {
+              hideBreadcrumb: true
+            }
+          },
+          {
+            path: "case/:caseId",
+            name: "Case",
+            meta: { 
+              breadcrumbFunc: (route: any) => `${store.getters["CasesModule/getById"](route.params.caseId)?.name}`
+            },
+            component: {
+              render(c) {
+                 return c("router-view");
+              }
+            },
+            children: [
+              {
+                path: "",
+                component: CaseView,
+                name: "Case View",
+                meta: { 
+                  hideBreadcrumb: true
+                },
+              },
+            ]
           },
           {
             path: "participants/:participantId",
@@ -207,27 +232,6 @@ const routes: Array<RouteConfig> = [
             name: "Support Archive",
             meta: { 
               breadcrumb: i18n.t("admin.support.archive.archivedSupport")
-            },
-          },
-        ]
-      },
-      {
-        path: "case",
-        meta: { 
-          breadcrumb: "Judge Frank's Room"
-        },
-        component: {
-          render(c) {
-             return c("router-view");
-          }
-        },
-        children: [
-          {
-            path: "view/:caseId",
-            component: CaseView,
-            name: "Case View",
-            meta: { 
-              breadcrumbFunc: (route: any) => `${store.getters["CasesModule/getById"](route.params.caseId).name}`
             },
           },
         ]

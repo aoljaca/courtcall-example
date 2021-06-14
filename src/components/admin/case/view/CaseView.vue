@@ -10,13 +10,13 @@
           </v-col>
           <v-col class="text-right">
             <v-btn :title="$t('admin.cases.edit')" color="grey darken-4 rounded-0 white--text" depressed>
-              EDIT
+              {{ $t("admin.cases.edit") }}
             </v-btn>
           </v-col>
         </v-row>
         <v-row class="py-4">
           <v-col>
-            Back to Judge Frank's Room
+            {{ $t("admin.cases.back") }} {{ roomName }}
           </v-col>
         </v-row>
       </v-col>
@@ -45,16 +45,14 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 export default class CaseView extends Vue {
   caseName : string = this.getCaseById(this.$route.params.caseId)?.name;
 
-  // caseRoomId : string = this.getCaseById(this.$route.params.caseId)?.roomId;
-
-  // roomName: string | null = this.getRoomNameById(this.caseRoomId);
+  roomName: string = this.getRoomNameById(this.$route.params.roomId);
 
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
   }
 
   getRoomNameById(id: string): string {
-    return this.$store.getters["RoomsModule/getById"](id);
+    return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
 }
