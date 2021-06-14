@@ -2,7 +2,7 @@
   <div class="rooms-table">
     <v-row class="mb-4">
       <v-col>
-        <h2>{{ $t("admin.cases.scheduledParticipants") }}</h2>
+        <h2>{{ $t("admin.cases.participants") }}</h2>
       </v-col>
       <v-col class="text-right">
         <v-btn :title="$t('admin.cases.add')" color="grey darken-4 rounded-0 white--text" depressed>
