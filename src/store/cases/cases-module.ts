@@ -9,6 +9,7 @@ const CASES: { [key: string]: Case } = {
     participants: ["1", "2", "3"],
     id: "1c",
     live: false,
+    roomId: "R1",
   },
   "2c": {
     name: "Ada County (2c)",
@@ -17,6 +18,7 @@ const CASES: { [key: string]: Case } = {
     id: "2c",
     participants: ["4", "5", "6"],
     live: true,
+    roomId: "R1",
   },
   "3c": {
     name: "Ada County (3c)",
@@ -25,6 +27,7 @@ const CASES: { [key: string]: Case } = {
     id: "3c",
     participants: ["7", "8", "9"],
     live: false,
+    roomId: "R1",
   },
   "4c": {
     name: "Story County (4c)",
@@ -33,6 +36,7 @@ const CASES: { [key: string]: Case } = {
     id: "4c",
     participants: ["2", "4", "6", "8"],
     live: false,
+    roomId: "R1",
   },
   "5c": {
     name: "Story County (5c)",
@@ -41,6 +45,7 @@ const CASES: { [key: string]: Case } = {
     id: "5c",
     participants: ["1", "3", "5", "7", "9"],
     live: false,
+    roomId: "R2",
   },
   "6c": {
     name: "Story County (6c)",
@@ -49,6 +54,7 @@ const CASES: { [key: string]: Case } = {
     id: "6c",
     participants: ["1", "2", "3"],
     live: false,
+    roomId: "R2",
   },
   "7c": {
     name: "Fairfield County (7c)",
@@ -57,6 +63,7 @@ const CASES: { [key: string]: Case } = {
     startTime: DateTime.now().minus({ minutes: 10 }).toISODate(),
     participants: ["3", "2", "5"],
     live: false,
+    roomId: "R2",
   },
   "8c": {
     name: "Fairfield County (8c)",
@@ -65,6 +72,7 @@ const CASES: { [key: string]: Case } = {
     startTime: DateTime.now().toISODate(),
     participants: ["5", "1", "7"],
     live: false,
+    roomId: "R2",
   },
 };
 

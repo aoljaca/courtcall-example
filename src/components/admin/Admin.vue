@@ -26,7 +26,7 @@
     <v-container fluid class="px-10">
       <v-row>
         <v-col class="px-0 py-0">
-          <router-view />
+          <router-view :key="$route.fullPath"></router-view>
         </v-col>
       </v-row>
     </v-container>

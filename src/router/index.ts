@@ -8,6 +8,8 @@ import AvOptions from "../components/meeting/av-options/AvOptions.vue";
 import MeetingUI from "../components/meeting/meeting-ui/MeetingUI.vue";
 import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
+import RoomViewManage from "../components/admin/room/view/RoomViewManage.vue";
+import RoomAddEdit from "../components/admin/room/edit/RoomAddEdit.vue";
 import MyAccount from "../components/admin/my-account/MyAccount.vue";
 import Organizations from "@/components/admin/organizations/Organizations.vue";
 import OrganizationComp from "../components/admin/organizations/Organization.vue";
@@ -17,6 +19,7 @@ import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 import ViewParticipant from "@/components/admin/participants/ViewParticipant.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
+import { component } from "vue/types/umd";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -80,7 +83,6 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: "my-account",
-        component: MyAccount,
         name: "My Account",
         meta: { 
           breadcrumb: i18n.t("admin.navigation.myAccount")
@@ -142,6 +144,32 @@ const routes: Array<RouteConfig> = [
         meta: { 
           breadcrumb: i18n.t("admin.navigation.systemUsers")
         }
+      },
+      {
+        path: "room",
+        component: {
+          render(c) {
+            return c("router-view");
+          }
+        },
+        children: [
+          {
+            path: "view/:roomId",
+            component: RoomViewManage,
+            name: "Room View Manage",
+            meta: { 
+              breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
+            },
+          },
+          {
+            path: "edit/:roomId",
+            component: RoomAddEdit,
+            name: "Room Add Edit",
+            meta: { 
+              breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
+            },
+          }
+        ]
       },
       {
         path: "organizations",
