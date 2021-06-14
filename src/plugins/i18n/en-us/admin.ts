@@ -6,11 +6,8 @@ import roomTemplate from "./admin/room/room-template";
 import roomNav from "./admin/room/room-nav"
 import roomCases from "./admin/room/room-cases";
 import roomParticipants from "./admin/room/room-participants";
-import organizations from "./admin/organizations";
+import organizations from "./admin/organizations/organizations";
 import support from "./admin/support";
-import organizationList from "./admin/organizations/organization-list";
-import newOrganization from "./admin/organizations/new-organization";
-import organization from "./admin/organizations/organization";
 import navigation from "./admin/navigation";
 
   export default {
@@ -23,10 +20,6 @@ import navigation from "./admin/navigation";
     roomTemplate,
     systemUser,
     support,
-    organizations: {
-      organizationList: organizationList,
-      newOrganization: newOrganization,
-      organization: organization
-    },
-    navigation: navigation
+    organizations,
+    navigation
 };

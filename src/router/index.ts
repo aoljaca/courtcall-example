@@ -92,7 +92,7 @@ const routes: Array<RouteConfig> = [
         path: "rooms/:roomId",
         name: "Rooms",
         meta: { 
-          breadcrumbFunc: (route: any) => `${route.params.roomId}`
+          breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
         },
         component: {
           render(c) {
@@ -101,9 +101,9 @@ const routes: Array<RouteConfig> = [
         },
         children: [
           {
-            path: "view",
+            path: "",
             name: "Room View Manage",
-            component: ViewParticipant,
+            component: RoomViewManage,
             meta: {
               hideBreadcrumb: true
             }
@@ -111,7 +111,7 @@ const routes: Array<RouteConfig> = [
           {
             path: "edit",
             name: "Room Add Edit",
-            component: ViewParticipant,
+            component: RoomAddEdit,
           },
           {
             path: "participants/:participantId",
@@ -126,7 +126,7 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "view",
+                path: "",
                 component: ViewParticipant,
                 name: "Participant",
                 meta: {
@@ -144,32 +144,6 @@ const routes: Array<RouteConfig> = [
         meta: { 
           breadcrumb: i18n.t("admin.navigation.systemUsers")
         }
-      },
-      {
-        path: "room",
-        component: {
-          render(c) {
-            return c("router-view");
-          }
-        },
-        children: [
-          {
-            path: "view/:roomId",
-            component: RoomViewManage,
-            name: "Room View Manage",
-            meta: { 
-              breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
-            },
-          },
-          {
-            path: "edit/:roomId",
-            component: RoomAddEdit,
-            name: "Room Add Edit",
-            meta: { 
-              breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
-            },
-          }
-        ]
       },
       {
         path: "organizations",
