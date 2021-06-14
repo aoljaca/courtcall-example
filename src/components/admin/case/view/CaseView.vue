@@ -16,7 +16,11 @@
         </v-row>
         <v-row class="py-4">
           <v-col>
-            {{ $t("admin.cases.back") }} {{ roomName }}
+            <v-list>
+              <v-list-item link :to="roomPath">
+                {{ $t("admin.cases.back") }} {{ roomName }}
+              </v-list-item>
+            </v-list>
           </v-col>
         </v-row>
       </v-col>
@@ -43,6 +47,8 @@ import { Case } from "@/model/meeting/meeting-ui/case";
   },
 })
 export default class CaseView extends Vue {
+  roomPath = "/admin/rooms/" + this.$route.params.roomId + "/view/";
+
   caseName : string = this.getCaseById(this.$route.params.caseId)?.name;
 
   roomName: string = this.getRoomNameById(this.$route.params.roomId);
