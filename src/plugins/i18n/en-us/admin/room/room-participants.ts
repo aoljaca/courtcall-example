@@ -2,4 +2,16 @@ export default {
   participants: "Participants",
   add: "ADD",
   notApply: "N/A",
-}
+  activeHeader: "Active",
+  activeValue: "active",
+  nameHeader: "Name",
+  nameValue: "name",
+  caseNumberHeader: "Case Number",
+  caseNumberValue: "caseNumber",
+  caseNameHeader: "Case Name",
+  caseNameValue: "caseName",
+  roleHeader: "Role",
+  roleValue: "role",
+  moreHeader: "More",
+  moreValue: "more",
+};

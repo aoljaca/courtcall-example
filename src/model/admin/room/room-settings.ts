@@ -54,7 +54,4 @@ const NULL_ROOM_SETTINGS: RoomSettings = {
   duplicateParticipantHandling: null,
 };
 
-export {
-  RoomSettings,
-  NULL_ROOM_SETTINGS,
-};
+export { RoomSettings, NULL_ROOM_SETTINGS };

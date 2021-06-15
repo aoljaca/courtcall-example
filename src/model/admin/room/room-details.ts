@@ -16,7 +16,4 @@ const NULL_ROOM_DETAILS: RoomDetails = {
   participantAccessCode: null,
 };
 
-export {
-  RoomDetails,
-  NULL_ROOM_DETAILS,
-}
+export { RoomDetails, NULL_ROOM_DETAILS };

@@ -17,7 +17,11 @@
           />
         </v-col>
         <v-col class="text-right">
-          <v-btn :title="$t('admin.roomParticipants.add')" color="grey darken-4 rounded-0 white--text" depressed>
+          <v-btn
+            :title="$t('admin.roomParticipants.add')"
+            color="grey darken-4 rounded-0 white--text"
+            depressed
+          >
             {{ $t("admin.roomParticipants.add") }}
           </v-btn>
         </v-col>
@@ -39,14 +43,18 @@
               <div class="py-1 px-1 d-inline-block" v-if="item.caseNumber">
                 {{ getCaseById(item.caseId).number }}
               </div>
-              <div class="py-1 px-1 d-inline-block" v-else>{{ $t("admin.roomParticipants.notApply") }}</div>
+              <div class="py-1 px-1 d-inline-block" v-else>
+                {{ $t("admin.roomParticipants.notApply") }}
+              </div>
             </template>
 
             <template v-slot:[`item.caseName`]="{ item }">
               <div class="py-1 px-1 d-inline-block" v-if="item.caseId">
                 {{ getCaseById(item.caseId).name }}
               </div>
-              <div class="py-1 px-1 d-inline-block" v-else>{{ $t("admin.roomParticipants.notApply") }}</div>
+              <div class="py-1 px-1 d-inline-block" v-else>
+                {{ $t("admin.roomParticipants.notApply") }}
+              </div>
             </template>
 
             <template v-slot:[`item.role`]="{ item }">
@@ -102,28 +110,28 @@ import { uniq } from "lodash";
 export default class ParticpantsTable extends Vue {
   readonly HEADERS = [
     {
-      text: "Active",
-      value: "active",
+      text: this.$t("admin.roomParticipants.activeHeader"),
+      value: this.$t("admin.roomParticipants.activeValue"),
     },
     {
-      text: "Name",
-      value: "name",
+      text: this.$t("admin.roomParticipants.nameHeader"),
+      value: this.$t("admin.roomParticipants.nameValue"),
     },
     {
-      text: "Case Number",
-      value: "caseNumber",
+      text: this.$t("admin.roomParticipants.caseNumberHeader"),
+      value: this.$t("admin.roomParticipants.caseNumberValue"),
     },
     {
-      text: "Case Name",
-      value: "caseName",
+      text: this.$t("admin.roomParticipants.caseNameHeader"),
+      value: this.$t("admin.roomParticipants.caseNameValue"),
     },
     {
-      text: "Role",
-      value: "role",
+      text: this.$t("admin.roomParticipants.roleHeader"),
+      value: this.$t("admin.roomParticipants.roleValue"),
     },
     {
-      text: "More",
-      value: "more",
+      text: this.$t("admin.roomParticipants.moreHeader"),
+      value: this.$t("admin.roomParticipants.moreValue"),
     },
   ];
 

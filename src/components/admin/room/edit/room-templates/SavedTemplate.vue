@@ -8,14 +8,13 @@
         <delete-template></delete-template>
       </v-col>
     </v-row>
-    <v-divider>
-    </v-divider>
+    <v-divider> </v-divider>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import DeleteTemplate from "@/components/admin/room/edit/room-templates/DeleteTemplate.vue"
+import DeleteTemplate from "@/components/admin/room/edit/room-templates/DeleteTemplate.vue";
 import "reflect-metadata";
 @Component({
   components: {
