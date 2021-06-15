@@ -72,8 +72,9 @@ export default class CollaborationShareComponent extends Vue {
   }
 
   get owner(): string {
-    const owner: Participant =
-      this.participants[this.collaborationShare!.ownerId];
+    const owner: Participant = this.participants[
+      this.collaborationShare!.ownerId
+    ];
     if (owner) {
       return owner.name;
     } else {

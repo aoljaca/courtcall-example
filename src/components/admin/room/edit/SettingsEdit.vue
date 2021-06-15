@@ -74,11 +74,8 @@
               {{ $t("admin.roomSettings.video") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
-              <v-switch
-                v-model="roomSettings.video"
-                class="my-0 py-0 mx-4"
-              >
+              <span>{{ $t("admin.roomSettings.off") }}</span>
+              <v-switch v-model="roomSettings.video" class="my-0 py-0 mx-4">
               </v-switch>
               <span>{{ $t("admin.roomSettings.on") }}</span>
             </v-col>
@@ -88,11 +85,8 @@
               {{ $t("admin.roomSettings.audio") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
-              <v-switch
-                v-model="roomSettings.audio"
-                class="my-0 py-0 mx-4"
-              >
+              <span>{{ $t("admin.roomSettings.off") }}</span>
+              <v-switch v-model="roomSettings.audio" class="my-0 py-0 mx-4">
               </v-switch>
               <span>{{ $t("admin.roomSettings.on") }}</span>
             </v-col>
@@ -116,7 +110,7 @@
               {{ $t("admin.roomSettings.waitingRoom") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
+              <span>{{ $t("admin.roomSettings.off") }}</span>
               <v-switch
                 v-model="roomSettings.waitingRoom"
                 class="my-0 py-0 mx-4"
@@ -131,7 +125,8 @@
             </v-col>
             <v-col cols="1"> </v-col>
             <v-col cols="4">
-              <v-select dense :label="$t('admin.roomSettings.readyToMeet')"> </v-select>
+              <v-select dense :label="$t('admin.roomSettings.readyToMeet')">
+              </v-select>
             </v-col>
           </v-row>
           <v-row dense>
@@ -140,7 +135,8 @@
             </v-col>
             <v-col cols="1"> </v-col>
             <v-col cols="4">
-              <v-select dense :label="$t('admin.roomSettings.zipDX')"> </v-select>
+              <v-select dense :label="$t('admin.roomSettings.zipDX')">
+              </v-select>
             </v-col>
           </v-row>
           <v-row>
@@ -187,7 +183,8 @@
             </v-col>
             <v-col cols="1"> </v-col>
             <v-col cols="4">
-              <v-select dense :label="$t('admin.roomSettings.grid')"> </v-select>
+              <v-select dense :label="$t('admin.roomSettings.grid')">
+              </v-select>
             </v-col>
           </v-row>
           <v-row dense>
@@ -211,7 +208,8 @@
             <v-col class="d-flex justify-end">
               <v-radio-group mandatory row>
                 <v-radio :label="$t('admin.roomSettings.videoHigh')"> </v-radio>
-                <v-radio :label="$t('admin.roomSettings.videoMedium')"> </v-radio>
+                <v-radio :label="$t('admin.roomSettings.videoMedium')">
+                </v-radio>
                 <v-radio :label="$t('admin.roomSettings.videoLow')"> </v-radio>
               </v-radio-group>
             </v-col>
@@ -228,7 +226,7 @@
               {{ $t("admin.roomSettings.screenSharing") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
+              <span>{{ $t("admin.roomSettings.off") }}</span>
               <v-switch
                 v-model="roomSettings.screenSharing"
                 class="my-0 py-0 mx-4"
@@ -244,7 +242,7 @@
               </span>
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
+              <span>{{ $t("admin.roomSettings.off") }}</span>
               <v-switch
                 v-model="roomSettings.requireScreenSharingRequest"
                 class="my-0 py-0 mx-4"
@@ -258,7 +256,7 @@
               {{ $t("admin.roomSettings.fileManagement") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
+              <span>{{ $t("admin.roomSettings.off") }}</span>
               <v-switch
                 v-model="roomSettings.fileManagement"
                 class="my-0 py-0 mx-4"
@@ -272,7 +270,7 @@
               {{ $t("admin.roomSettings.handRaising") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
+              <span>{{ $t("admin.roomSettings.off") }}</span>
               <v-switch
                 v-model="roomSettings.handRaising"
                 class="my-0 py-0 mx-4"
@@ -286,7 +284,7 @@
               {{ $t("admin.roomSettings.chat") }}
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
+              <span>{{ $t("admin.roomSettings.off") }}</span>
               <v-switch v-model="roomSettings.chat" class="my-0 py-0 mx-4">
               </v-switch>
               <span>{{ $t("admin.roomSettings.on") }}</span>
@@ -303,10 +301,7 @@
             </v-col>
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.disable") }}</span>
-              <v-switch
-                v-model="roomSettings.recording"
-                class="my-0 py-0 mx-4"
-              >
+              <v-switch v-model="roomSettings.recording" class="my-0 py-0 mx-4">
               </v-switch>
               <span>{{ $t("admin.roomSettings.enable") }}</span>
             </v-col>
@@ -318,7 +313,7 @@
               </label>
             </v-col>
             <v-col class="d-flex justify-end">
-              <span>{{ $t("admin.roomSettings.off")}}</span>
+              <span>{{ $t("admin.roomSettings.off") }}</span>
               <v-switch
                 v-model="roomSettings.emailLinkToAll"
                 class="my-0 py-0 mx-4"
@@ -361,10 +356,7 @@
             </v-col>
             <v-col class="d-flex justify-end">
               <span>{{ $t("admin.roomSettings.disable") }}</span>
-              <v-switch
-                v-model="roomSettings.streaming"
-                class="my-0 py-0 mx-4"
-              >
+              <v-switch v-model="roomSettings.streaming" class="my-0 py-0 mx-4">
               </v-switch>
               <span>{{ $t("admin.roomSettings.enable") }}</span>
             </v-col>
@@ -409,16 +401,17 @@ export default class SettingsEdit extends Vue {
   rules = [(v: string | any[]) => v.length <= 35 || "Max 35 characters"];
 
   get roomSettings() {
-    if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+    if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
       return NULL_ROOM_SETTINGS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings;
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
+      .roomSettings;
   }
 
-  templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
-
-
+  templateNames = this.$store.getters[
+    "RoomTemplateModule/getTemplateNamesList"
+  ];
 }
 </script>
 

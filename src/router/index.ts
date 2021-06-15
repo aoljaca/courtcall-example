@@ -71,33 +71,36 @@ const routes: Array<RouteConfig> = [
     path: "/admin",
     name: "Admin",
     component: Admin,
-    redirect: to => "/admin/dashboard",
+    redirect: (to) => "/admin/dashboard",
     children: [
       {
         path: "dashboard",
         component: Dashboard,
         name: "Dashboard",
-        meta: { 
-          breadcrumb: i18n.t("admin.navigation.dashboard")
-        }
+        meta: {
+          breadcrumb: i18n.t("admin.navigation.dashboard"),
+        },
       },
       {
         path: "my-account",
         name: "My Account",
-        meta: { 
-          breadcrumb: i18n.t("admin.navigation.myAccount")
-        }
+        meta: {
+          breadcrumb: i18n.t("admin.navigation.myAccount"),
+        },
       },
       {
         path: "rooms/:roomId",
         name: "Rooms",
-        meta: { 
-          breadcrumbFunc: (route: any) => `${store.getters["RoomModule/getRoomNameById"](route.params.roomId)}`
+        meta: {
+          breadcrumbFunc: (route: any) =>
+            `${store.getters["RoomModule/getRoomNameById"](
+              route.params.roomId
+            )}`,
         },
         component: {
           render(c) {
-             return c("router-view");
-          }
+            return c("router-view");
+          },
         },
         children: [
           {
@@ -105,8 +108,8 @@ const routes: Array<RouteConfig> = [
             name: "Room View Manage",
             component: RoomViewManage,
             meta: {
-              hideBreadcrumb: true
-            }
+              hideBreadcrumb: true,
+            },
           },
           {
             path: "edit",
@@ -118,11 +121,11 @@ const routes: Array<RouteConfig> = [
             name: "Participants",
             component: {
               render(c) {
-                 return c("router-view");
-              }
+                return c("router-view");
+              },
             },
-            meta: { 
-              breadcrumbFunc: (route: any) => `${route.params.participantId}`
+            meta: {
+              breadcrumbFunc: (route: any) => `${route.params.participantId}`,
             },
             children: [
               {
@@ -130,38 +133,38 @@ const routes: Array<RouteConfig> = [
                 component: ViewParticipant,
                 name: "Participant",
                 meta: {
-                  hideBreadcrumb: true
-                }
+                  hideBreadcrumb: true,
+                },
               },
-            ]
+            ],
           },
-        ]
+        ],
       },
       {
         path: "system-users",
         component: SystemUsersList,
         name: "System Users",
-        meta: { 
-          breadcrumb: i18n.t("admin.navigation.systemUsers")
-        }
+        meta: {
+          breadcrumb: i18n.t("admin.navigation.systemUsers"),
+        },
       },
       {
         path: "organizations",
-        meta: { 
-          breadcrumb: i18n.t("admin.navigation.organizations")
+        meta: {
+          breadcrumb: i18n.t("admin.navigation.organizations"),
         },
         component: {
           render(c) {
-             return c("router-view");
-          }
+            return c("router-view");
+          },
         },
         children: [
           {
             path: "/",
             component: Organizations,
             name: "Organizations",
-            meta: { 
-              breadcrumb: i18n.t("admin.organizations.organization.all")
+            meta: {
+              breadcrumb: i18n.t("admin.organizations.organization.all"),
             },
           },
           {
@@ -169,46 +172,51 @@ const routes: Array<RouteConfig> = [
             component: OrganizationComp,
             name: "Organization",
             props: true,
-            meta: { 
-              breadcrumbFunc: (route: any) => `${store.getters["OrganizationsModule/getById"](route.params.organizationId).name}`
+            meta: {
+              breadcrumbFunc: (route: any) =>
+                `${
+                  store.getters["OrganizationsModule/getById"](
+                    route.params.organizationId
+                  ).name
+                }`,
             },
           },
-        ]
+        ],
       },
       {
         path: "support",
         component: {
           render(c) {
-             return c("router-view");
-          }
+            return c("router-view");
+          },
         },
-        meta: { 
-          breadcrumb: i18n.t("admin.navigation.support")
+        meta: {
+          breadcrumb: i18n.t("admin.navigation.support"),
         },
         children: [
           {
             path: "",
             name: "Support",
-            redirect: to => "active",
+            redirect: (to) => "active",
             component: SupportQueue,
           },
           {
             path: "active",
             component: SupportQueue,
             name: "Support Queue",
-            meta: { 
-              breadcrumb: i18n.t("admin.support.active.activeSupport")
+            meta: {
+              breadcrumb: i18n.t("admin.support.active.activeSupport"),
             },
           },
           {
             path: "archived",
             component: SupportArchive,
             name: "Support Archive",
-            meta: { 
-              breadcrumb: i18n.t("admin.support.archive.archivedSupport")
+            meta: {
+              breadcrumb: i18n.t("admin.support.archive.archivedSupport"),
             },
           },
-        ]
+        ],
       },
     ],
   },
@@ -220,7 +228,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const breadcrumbFunc = to.meta.breadcrumbFunc;
 
-  if (breadcrumbFunc && typeof breadcrumbFunc === 'function') {
+  if (breadcrumbFunc && typeof breadcrumbFunc === "function") {
     to.meta.breadcrumb = breadcrumbFunc(to);
   }
 

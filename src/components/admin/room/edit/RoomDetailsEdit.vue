@@ -2,7 +2,9 @@
   <div>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 details-label-text font-weight-bold">{{ $t("admin.roomDetails.roomName") }}</div>
+        <div class="pr-4 details-label-text font-weight-bold">
+          {{ $t("admin.roomDetails.roomName") }}
+        </div>
         <v-text-field
           :rules="rules"
           counter
@@ -24,9 +26,9 @@
             {{ $t("admin.roomDetails.cancel") }}
           </router-link>
         </v-btn>
-        <v-btn 
-          :title="$t('admin.roomDetails.saveChanges')" 
-          color="grey darken-4 rounded-0 white--text" 
+        <v-btn
+          :title="$t('admin.roomDetails.saveChanges')"
+          color="grey darken-4 rounded-0 white--text"
           depressed
         >
           {{ $t("admin.roomDetails.saveChanges") }}
@@ -35,7 +37,9 @@
     </v-row>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 details-label-text font-weight-bold">{{ $t("admin.roomDetails.organizationAlternate") }}</div>
+        <div class="pr-4 details-label-text font-weight-bold">
+          {{ $t("admin.roomDetails.organizationAlternate") }}
+        </div>
         <v-text-field
           :rules="rules"
           counter
@@ -47,15 +51,17 @@
         </v-text-field>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
-        <div class="pr-4 details-label-text font-weight-bold">{{ $t("admin.roomDetails.status") }}</div>
+        <div class="pr-4 details-label-text font-weight-bold">
+          {{ $t("admin.roomDetails.status") }}
+        </div>
         <v-select :items="items" dense> </v-select>
       </v-col>
     </v-row>
     <v-row dense>
       <v-col class="d-flex justify-end">
-        <v-btn 
+        <v-btn
           :title="$t('admin.roomDetails.saveTemplate')"
-          color="white--text grey darken-4 rounded-0" 
+          color="white--text grey darken-4 rounded-0"
           depressed
         >
           {{ $t("admin.roomDetails.saveTemplate") }}
@@ -112,14 +118,17 @@ export default class RoomDetailsEdit extends Vue {
 
   settingsViewPath = "/admin/room/view/" + this.$route.params.roomId;
 
-  templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
+  templateNames = this.$store.getters[
+    "RoomTemplateModule/getTemplateNamesList"
+  ];
 
   get roomDetails() {
-    if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+    if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
       return NULL_ROOM_DETAILS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomDetails;
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
+      .roomDetails;
   }
 }
 </script>

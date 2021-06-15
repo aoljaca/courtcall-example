@@ -214,8 +214,9 @@ export default class VideoPreview extends Vue {
         deviceId: this.selectedVideoDevice?.deviceId,
       },
     });
-    (document.getElementById("video-preview") as HTMLVideoElement).srcObject =
-      stream;
+    (document.getElementById(
+      "video-preview"
+    ) as HTMLVideoElement).srcObject = stream;
     setTimeout(
       () =>
         this.backgroundBlurService?.alterVideo(

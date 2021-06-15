@@ -3,12 +3,17 @@
     <v-container fluid class="mt-6 pa-8">
       <v-row>
         <v-col cols="2">
-          <room-nav @navClicked="onNavClicked" parentContext="edit" class="pl-4 pr-2"></room-nav>
+          <room-nav
+            @navClicked="onNavClicked"
+            parentContext="edit"
+            class="pl-4 pr-2"
+          ></room-nav>
         </v-col>
         <v-col id="add-edit-content" cols="10">
           <v-row id="room-details-edit">
             <v-col>
-              <room-details-edit ref="roomDetails" class="pr-2"> </room-details-edit>
+              <room-details-edit ref="roomDetails" class="pr-2">
+              </room-details-edit>
             </v-col>
           </v-row>
           <v-row id="settings-edit">
@@ -56,7 +61,7 @@ export default class RoomAddEdit extends Vue {
     // find the ref emmitted from RoomNav and store it as an element
     const element: any = refs[ref].$el;
     // call scrollIntoView() on our stored element
-    element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({ behavior: "smooth" });
   }
 }
 </script>

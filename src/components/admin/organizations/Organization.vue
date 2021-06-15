@@ -100,8 +100,9 @@ export default class OrganizationComp extends Vue {
 
   mounted(): void {
     let orgId = this.$route.params.organizationId;
-    this.organization =
-      this.$store.getters["OrganizationsModule/getById"](orgId);
+    this.organization = this.$store.getters["OrganizationsModule/getById"](
+      orgId
+    );
   }
 
   getParticipantById(id: string): Participant {

@@ -78,7 +78,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue"
+import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue";
 import "reflect-metadata";
 @Component({
   components: {
