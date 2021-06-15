@@ -6,9 +6,8 @@
           <search></search>
         </v-col>
       </v-row>
-
-      <v-row class="rooms">
-        <rooms></rooms>
+      <v-row>
+        <rooms-table class="max-width"></rooms-table>
       </v-row>
     </v-container>
   </div>
@@ -18,13 +17,13 @@ import { Component, Vue } from "vue-property-decorator";
 import Search from "@/components/admin/dashboard/Search.vue";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import MyAccount from "@/components/admin/dashboard/UserActions.vue";
-import Rooms from "@/components/admin/dashboard/Rooms.vue";
+import RoomsTable from "@/components/admin/dashboard/RoomsTable.vue";
 @Component({
   components: {
     Search,
     Navigation,
     MyAccount,
-    Rooms,
+    RoomsTable,
   },
 })
 export default class Dashboard extends Vue {}
@@ -33,5 +32,8 @@ export default class Dashboard extends Vue {}
 .header,
 .searchrow {
   border-bottom: 1px solid gray;
+}
+.max-width {
+  width: 100%;
 }
 </style>
