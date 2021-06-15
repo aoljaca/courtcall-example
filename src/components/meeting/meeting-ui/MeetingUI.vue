@@ -31,6 +31,9 @@ import Chat from "./sidebar/chat/Chat.vue";
 import Files from "./sidebar/files/Files.vue";
 import Participants from "./sidebar/participants/ParticipantsMainView.vue";
 import "reflect-metadata";
+import { inject } from "inversify-props";
+import { WebsocketConnectionService } from "@/services/websocket-connection";
+import { INJECTION_TYPES } from "@/inversify/injection-types";
 @Component({
   components: {
     ControlBar,
@@ -41,10 +44,16 @@ import "reflect-metadata";
   },
 })
 export default class MeetingUI extends Vue {
+  @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
+  websocketConnectionService: WebsocketConnectionService | undefined;
   drawer = true;
 
   get sidebarMode(): string {
     return this.$store.state.SidebarModule.sidebar;
+  }
+
+  mounted(): void {
+    this.websocketConnectionService?.connectMeeting();
   }
 }
 </script>

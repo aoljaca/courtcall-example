@@ -18,6 +18,10 @@ import {
   ShareFormatService,
   ShareFormatServiceImpl,
 } from "@/services/share-format";
+import {
+  WebsocketConnectionService,
+  WebsocketConnectionServiceImpl,
+} from "@/services/websocket-connection";
 import { container } from "inversify-props";
 import { ToastService, ToastServiceImpl } from "../services/toast";
 import { INJECTION_TYPES } from "./injection-types";
@@ -39,4 +43,7 @@ export default function buildDependencyContainer(): void {
   container
     .bind<ParticipantSearchService>(INJECTION_TYPES.PARTICIPANT_SEARCH)
     .to(ParticipantSearchServiceImpl);
+  container
+    .bind<WebsocketConnectionService>(INJECTION_TYPES.WEBSOCKET_CONNECTION)
+    .to(WebsocketConnectionServiceImpl);
 }

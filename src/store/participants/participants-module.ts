@@ -248,6 +248,17 @@ const participantsModule: Module<any, any> = {
     me: participants[1],
   },
   mutations: {
+    setParticipants(state, payload: Participant[]) {
+      state.participants = {};
+      state.pubNubIdtoParticipantId = {};
+
+      payload.forEach((p) => {
+        state.participants[p.id] = p;
+        if (p.pubnubId) {
+          state.pubNubIdtoParticipantId[p.pubnubId] = p.id;
+        }
+      });
+    },
     addParticipant(state, payload: Participant) {
       state.participants[payload.id] = payload;
       state.pubNubIdtoParticipantId[payload.pubnubId] = payload.id;
@@ -272,6 +283,11 @@ const participantsModule: Module<any, any> = {
       ),
     getByPubNubId: (state) => (pubnubId: string) => {
       return state.participants[state.pubNubIdtoParticipantId[pubnubId]];
+    },
+  },
+  actions: {
+    alterParticipants({ commit }, payload) {
+      commit("setParticipants", payload);
     },
   },
 };
