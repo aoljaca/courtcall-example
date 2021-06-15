@@ -5,9 +5,9 @@
         <v-col>
           <v-icon class="mb-2"> mdi-circle </v-icon>
           <div class="mx-4 d-inline-block details-header font-weight-bold">
-            Judge Frank{{ $t("admin.roomDetails.room") }}
+            {{ roomDetails.name }}
           </div>
-          <span class="mx-6">
+          <span class="px-6">
             {{ $t("admin.roomDetails.organization") }}
           </span>
           <span>
@@ -110,7 +110,7 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
-  settingsEditPath = "/admin/room/edit/" + this.$route.params.roomId;
+  settingsEditPath = "/admin/rooms/" + this.$route.params.roomId + "/edit";
 
   get roomDetails() {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {

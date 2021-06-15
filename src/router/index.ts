@@ -16,6 +16,7 @@ import OrganizationComp from "../components/admin/organizations/Organization.vue
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
+import CaseView from "@/components/admin/case/view/CaseView.vue";
 import ViewParticipant from "@/components/admin/participants/ViewParticipant.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
@@ -84,6 +85,7 @@ const routes: Array<RouteConfig> = [
       {
         path: "my-account",
         name: "My Account",
+        component: MyAccount,
         meta: {
           breadcrumb: i18n.t("admin.navigation.myAccount"),
         },
@@ -102,9 +104,10 @@ const routes: Array<RouteConfig> = [
             return c("router-view");
           },
         },
+        redirect: (to) => "/admin/rooms/:roomId/view",
         children: [
           {
-            path: "",
+            path: "view",
             name: "Room View Manage",
             component: RoomViewManage,
             meta: {
@@ -115,6 +118,35 @@ const routes: Array<RouteConfig> = [
             path: "edit",
             name: "Room Add Edit",
             component: RoomAddEdit,
+            meta: {
+              hideBreadcrumb: true,
+            },
+          },
+          {
+            path: "case/:caseId",
+            name: "Case",
+            meta: {
+              breadcrumbFunc: (route: any) =>
+                `${
+                  store.getters["CasesModule/getById"](route.params.caseId)
+                    ?.name
+                }`,
+            },
+            component: {
+              render(c) {
+                return c("router-view");
+              },
+            },
+            children: [
+              {
+                path: "",
+                component: CaseView,
+                name: "Case View",
+                meta: {
+                  hideBreadcrumb: true,
+                },
+              },
+            ],
           },
           {
             path: "participants/:participantId",

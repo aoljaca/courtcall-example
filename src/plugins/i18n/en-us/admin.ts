@@ -9,8 +9,10 @@ import roomParticipants from "./admin/room/room-participants";
 import organizations from "./admin/organizations/organizations";
 import support from "./admin/support";
 import navigation from "./admin/navigation";
+import cases from "./admin/cases/case";
 
 export default {
+  cases,
   dashboard,
   roomSettings,
   roomDetails,

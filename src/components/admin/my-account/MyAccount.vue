@@ -78,13 +78,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import SystemUserHeader from "@/components/admin/system-users/SystemUserHeader.vue";
 import "reflect-metadata";
-@Component({
-  components: {
-    SystemUserHeader,
-  },
-})
+@Component
 export default class MyAccount extends Vue {
   email = this.$store.state.ParticipantsModule.me.email;
   phone = this.$store.state.ParticipantsModule.me.phone;
