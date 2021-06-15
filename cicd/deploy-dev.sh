@@ -1,6 +1,5 @@
 set -e 
 
-cd .. 
 
 echo 'NPM Install'
 npm install

@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const webpack = require("webpack");
 module.exports = {
   configureWebpack: (config) => {
     if (process.env.NODE_ENV === "development") {
@@ -28,6 +30,22 @@ module.exports = {
       };
     }
     config.output.filename = "[name].[hash].js";
+    console.log("Webpack Config");
+    const getEnvName = () => {
+      if (process.env.NODE_ENV === "production") {
+        return "environment.prod.ts";
+      } else if (process.env.NODE_ENV === "development") {
+        return "environment.dev.ts";
+      } else {
+        return "environment.ts";
+      }
+    };
+
+    const normalModuleReplacementPlugin = new webpack.NormalModuleReplacementPlugin(
+      /environments\/environment\.ts/gi,
+      `./${getEnvName()}`
+    );
+    config.plugins.unshift(normalModuleReplacementPlugin);
   },
   chainWebpack: (config) => {
     config.plugin("html").tap((args) => {
