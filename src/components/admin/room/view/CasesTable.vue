@@ -92,24 +92,24 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 export default class CasesTable extends Vue {
   readonly HEADERS = [
     {
-      text: "live",
-      value: "live",
+      text: this.$t("admin.roomCases.liveHeader"),
+      value: this.$t("admin.roomCases.liveHeader"),
     },
     {
-      text: "Case Number",
-      value: "number",
+      text: this.$t("admin.roomCases.caseNumberHeader"),
+      value: this.$t("admin.roomCases.caseNumberValue"),
     },
     {
-      text: "Case Name",
-      value: "name",
+      text: this.$t("admin.roomCases.caseNameHeader"),
+      value: this.$t("admin.roomCases.caseNameValue"),
     },
     {
-      text: "Scheduled Participants",
-      value: "scheduledParticipants",
+      text: this.$t("admin.roomCases.scheduledParticipatnsHeader"),
+      value: this.$t("admin.roomCases.scheduledParticipantsValue"),
     },
     {
-      text: "More",
-      value: "more",
+      text: this.$t("admin.roomCases.moreHeader"),
+      value: this.$t("admin.roomCases.moreValue"),
     },
   ];
 

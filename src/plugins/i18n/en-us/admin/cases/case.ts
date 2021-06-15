@@ -5,4 +5,7 @@ export default {
   add: "ADD",
   removeFromCases: "Remove From Cases",
   removeFromRoom: "Remove From Room (Archive)",
+  nameHeader: "Name",
+  nameValue: "name",
+  moreValue: "more",
 };

@@ -74,8 +74,8 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 export default class CasesTable extends Vue {
   readonly HEADERS = [
     {
-      text: "Name",
-      value: "name",
+      text: this.$t("admin.cases.nameHeader"),
+      value: this.$t("admin.cases.nameValue"),
       sortable: true,
     },
     {
