@@ -106,7 +106,7 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
-  settingsEditPath = "/admin/room/edit/" + this.$route.params.roomId;
+  settingsEditPath = "/admin/rooms/" + this.$route.params.roomId + "/edit";
 
   get roomDetails() {
     if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
