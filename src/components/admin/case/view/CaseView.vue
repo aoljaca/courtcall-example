@@ -9,7 +9,12 @@
             </h2>
           </v-col>
           <v-col class="text-right">
-            <v-btn :title="$t('admin.cases.edit')" color="grey darken-4 rounded-0 white--text" depressed>
+            <v-btn 
+              data-test-id="cases-edit-button"
+              :title="$t('admin.cases.edit')" 
+              color="grey darken-4 rounded-0 white--text" 
+              depressed
+            >
               {{ $t("admin.cases.edit") }}
             </v-btn>
           </v-col>

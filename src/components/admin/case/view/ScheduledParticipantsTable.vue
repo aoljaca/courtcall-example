@@ -5,7 +5,12 @@
         <h2>{{ $t("admin.cases.participants") }}</h2>
       </v-col>
       <v-col class="text-right">
-        <v-btn :title="$t('admin.cases.add')" color="grey darken-4 rounded-0 white--text" depressed>
+        <v-btn 
+          :title="$t('admin.cases.add')" 
+          color="grey darken-4 rounded-0 white--text" 
+          depressed
+          data-test-id="add-participants-button"
+        >
           {{ $t("admin.cases.add") }}
         </v-btn>
       </v-col>
@@ -26,6 +31,7 @@
                   <v-row>
                     <v-col class="pa-0 d-flex justify-end">
                       <v-btn
+                        data-test-id="participants-options-button"
                         icon
                         v-bind="attrs"
                         v-on="on"
@@ -39,10 +45,22 @@
                 </v-container>
               </template>
               <v-list>
-                <v-list-item>{{ $t("general.view") }}</v-list-item>
-                <v-list-item>{{ $t("general.edit") }}</v-list-item>
-                <v-list-item>{{ $t("admin.cases.removeFromCases") }}</v-list-item>
-                <v-list-item>{{ $t("admin.cases.removeFromRoom") }}</v-list-item>
+                <v-list-item
+                  data-test-id="view-participant"
+                >
+                  {{ $t("general.view") }}</v-list-item>
+                <v-list-item
+                  data-test-id="edit-participant"
+                >
+                  {{ $t("general.edit") }}</v-list-item>
+                <v-list-item
+                  data-test-id="remove-participant-from-case"
+                >
+                  {{ $t("admin.cases.removeFromCases") }}</v-list-item>
+                <v-list-item
+                  data-test-id="remove-participant-from-room"
+                >
+                  {{ $t("admin.cases.removeFromRoom") }}</v-list-item>
               </v-list>
             </v-menu>
           </template>
