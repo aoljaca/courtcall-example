@@ -85,6 +85,7 @@ const routes: Array<RouteConfig> = [
       {
         path: "my-account",
         name: "My Account",
+        component: MyAccount,
         meta: { 
           breadcrumb: i18n.t("admin.navigation.myAccount")
         }
@@ -100,6 +101,7 @@ const routes: Array<RouteConfig> = [
              return c("router-view");
           }
         },
+        redirect: to => "/admin/rooms/:roomId/view",
         children: [
           {
             path: "view",
