@@ -23,7 +23,6 @@
           :items-per-page="20"
           class="elevation-1"
         >
-          
           <template class="text-right" v-slot:[`item.more`]="">
             <v-menu offset-y>
               <template v-slot:activator="{ on, attrs }">
@@ -39,8 +38,8 @@
                         :title="$t('general.more')"
                       >
                         <v-icon>mdi-dots-horizontal</v-icon>
-                      </v-btn></v-col
-                    >
+                      </v-btn>
+                    </v-col>
                   </v-row>
                 </v-container>
               </template>
@@ -97,7 +96,6 @@ export default class CasesTable extends Vue {
   participantIdsByCase = this.thisCase.participants;
 
   caseParticipants = this.participantIdsByCase.map((id) => this.getParticipantsById(id));
-
 
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
