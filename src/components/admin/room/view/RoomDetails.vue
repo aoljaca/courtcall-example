@@ -5,7 +5,7 @@
         <v-col>
           <v-icon class="mb-2"> mdi-circle </v-icon>
           <div class="mx-4 d-inline-block details-header font-weight-bold">
-            {{roomDetails.name}}
+            {{ roomDetails.name }}
           </div>
           <span class="px-6">
             {{ $t("admin.roomDetails.organization") }}
@@ -15,7 +15,11 @@
           </span>
         </v-col>
         <v-col class="d-flex justify-end">
-          <v-btn :title="$t('admin.roomDetails.editButton')" color="white--text grey darken-4 rounded-0" depressed>
+          <v-btn
+            :title="$t('admin.roomDetails.editButton')"
+            color="white--text grey darken-4 rounded-0"
+            depressed
+          >
             <router-link class="remove-decoration" :to="settingsEditPath">
               {{ $t("admin.roomDetails.editButton") }}
             </router-link>
@@ -109,11 +113,12 @@ export default class RoomDetails extends Vue {
   settingsEditPath = "/admin/rooms/" + this.$route.params.roomId + "/edit";
 
   get roomDetails() {
-    if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+    if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
       return NULL_ROOM_DETAILS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomDetails;
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
+      .roomDetails;
   }
 }
 </script>

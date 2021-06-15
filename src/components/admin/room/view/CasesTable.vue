@@ -6,7 +6,11 @@
           <h2>{{ $t("admin.roomCases.cases") }}</h2>
         </v-col>
         <v-col class="text-right">
-          <v-btn :title="$t('admin.roomCases.add')" color="grey darken-4 rounded-0 white--text" depressed>
+          <v-btn
+            :title="$t('admin.roomCases.add')"
+            color="grey darken-4 rounded-0 white--text"
+            depressed
+          >
             {{ $t("admin.roomCases.add") }}
           </v-btn>
         </v-col>
@@ -58,11 +62,11 @@
                   <v-list-item
                     link
                     :to="{
-                      name: 'Case View', 
+                      name: 'Case View',
                       params: { caseId: item.id },
                     }"
                   >
-                      {{ $t("general.view") }}
+                    {{ $t("general.view") }}
                   </v-list-item>
                   <v-list-item>
                     {{ $t("general.edit") }}
@@ -117,7 +121,6 @@ export default class CasesTable extends Vue {
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
   }
-
 }
 </script>
 

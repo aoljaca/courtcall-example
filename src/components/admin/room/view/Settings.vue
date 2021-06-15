@@ -37,7 +37,9 @@
             {{ $t("admin.roomSettings.video") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.video"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.video">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -46,7 +48,9 @@
             {{ $t("admin.roomSettings.audio") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.audio"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.audio">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -55,7 +59,9 @@
             {{ $t("admin.roomSettings.allowSelectBeforeEnter") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.allowSelectBeforeEnter"> {{ $t("admin.roomSettings.yes") }} </span>
+            <span v-if="roomSettings.allowSelectBeforeEnter">
+              {{ $t("admin.roomSettings.yes") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.no") }} </span>
           </v-col>
         </v-row>
@@ -64,7 +70,9 @@
             {{ $t("admin.roomSettings.waitingRoom") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.waitingRoom"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.waitingRoom">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -100,7 +108,9 @@
             {{ $t("admin.roomSettings.allowParticipantsToggleVideo") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.allowParticipantsToggleVideo"> {{ $t("admin.roomSettings.yes") }} </span>
+            <span v-if="roomSettings.allowParticipantsToggleVideo">
+              {{ $t("admin.roomSettings.yes") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -109,7 +119,9 @@
             {{ $t("admin.roomSettings.allowParticipantsToggleAudio") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.allowParticipantsToggleAudio"> {{ $t("admin.roomSettings.yes") }} </span>
+            <span v-if="roomSettings.allowParticipantsToggleAudio">
+              {{ $t("admin.roomSettings.yes") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -133,7 +145,9 @@
             {{ $t("admin.roomSettings.allowParticipantsChangeLayout") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.allowParticipantsChangeLayout"> {{ $t("admin.roomSettings.yes") }} </span>
+            <span v-if="roomSettings.allowParticipantsChangeLayout">
+              {{ $t("admin.roomSettings.yes") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -159,7 +173,9 @@
             {{ $t("admin.roomSettings.screenSharing") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.screenSharing"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.screenSharing">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -168,7 +184,9 @@
             {{ $t("admin.roomSettings.requireScreenSharingRequest") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.requireScreenSharingRequest"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.requireScreenSharingRequest">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -177,7 +195,9 @@
             {{ $t("admin.roomSettings.fileManagement") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.fileManagement"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.fileManagement">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -186,7 +206,9 @@
             {{ $t("admin.roomSettings.handRaising") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.handRaising"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.handRaising">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -195,7 +217,9 @@
             {{ $t("admin.roomSettings.chat") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.chat"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.chat">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -211,7 +235,9 @@
             {{ $t("admin.roomSettings.recording") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.recording"> {{ $t("admin.roomSettings.enabled") }} </span>
+            <span v-if="roomSettings.recording">
+              {{ $t("admin.roomSettings.enabled") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -220,7 +246,9 @@
             {{ $t("admin.roomSettings.emailLinkToAll") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.emailLinkToAll"> {{ $t("admin.roomSettings.on") }} </span>
+            <span v-if="roomSettings.emailLinkToAll">
+              {{ $t("admin.roomSettings.on") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -229,7 +257,9 @@
             {{ $t("admin.roomSettings.transcription") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.transcription"> {{ $t("admin.roomSettings.off") }} </span>
+            <span v-if="roomSettings.transcription">
+              {{ $t("admin.roomSettings.off") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -238,7 +268,9 @@
             {{ $t("admin.roomSettings.remoteTranslation") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.remoteTranslation"> {{ $t("admin.roomSettings.off") }} </span>
+            <span v-if="roomSettings.remoteTranslation">
+              {{ $t("admin.roomSettings.off") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -247,7 +279,9 @@
             {{ $t("admin.roomSettings.streaming") }}
           </v-col>
           <v-col class="setting-state">
-            <span v-if="roomSettings.streaming"> {{ $t("admin.roomSettings.off") }} </span>
+            <span v-if="roomSettings.streaming">
+              {{ $t("admin.roomSettings.off") }}
+            </span>
             <span v-else> {{ $t("admin.roomSettings.off") }} </span>
           </v-col>
         </v-row>
@@ -281,11 +315,12 @@ import "reflect-metadata";
 @Component
 export default class Settings extends Vue {
   get roomSettings() {
-    if(!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+    if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
       return NULL_ROOM_SETTINGS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId].roomSettings;
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
+      .roomSettings;
   }
 }
 </script>

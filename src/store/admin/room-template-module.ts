@@ -796,9 +796,9 @@ const roomTemplateModule: Module<any, any> = {
   getters: {
     getAsList: (state) => Object.values(state.templates),
     getTemplateNamesList: (state) => {
-      const templates = (Object.values(state.templates) as RoomTemplate[]);
+      const templates = Object.values(state.templates) as RoomTemplate[];
       return templates.map((t: RoomTemplate) => t.roomSettings.template);
-    }
+    },
   },
 };
 

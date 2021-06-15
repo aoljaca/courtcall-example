@@ -4,5 +4,5 @@ export default {
   participants: "Scheduled Participants",
   add: "ADD",
   removeFromCases: "Remove From Cases",
-  removeFromRoom: "Remove From Room (Archive)"
-}
+  removeFromRoom: "Remove From Room (Archive)",
+};

@@ -4,4 +4,4 @@ export default {
   cases: "Cases",
   participants: "Participants",
   activity: "Activity",
-}
+};

@@ -88,8 +88,9 @@ export default class SendNotification extends Vue {
   selectedNotificationGroupType: NotificationGroupType | null = null;
   selectedSubConferences: SubConference[] = [];
   selectedCases: Case[] = [];
-  possibleSubconferences: SubConference[] =
-    this.$store.getters["SubconferenceModule/getAsList"];
+  possibleSubconferences: SubConference[] = this.$store.getters[
+    "SubconferenceModule/getAsList"
+  ];
   possibleCases: Case[] = this.$store.getters["CasesModule/getAsList"];
 
   createNotificationGroupTypeLabel(type: NotificationGroupType) {

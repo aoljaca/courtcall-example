@@ -5,9 +5,9 @@
         <h2>{{ $t("admin.cases.participants") }}</h2>
       </v-col>
       <v-col class="text-right">
-        <v-btn 
-          :title="$t('admin.cases.add')" 
-          color="grey darken-4 rounded-0 white--text" 
+        <v-btn
+          :title="$t('admin.cases.add')"
+          color="grey darken-4 rounded-0 white--text"
           depressed
           data-test-id="add-participants-button"
         >
@@ -44,22 +44,18 @@
                 </v-container>
               </template>
               <v-list>
-                <v-list-item
-                  data-test-id="view-participant"
+                <v-list-item data-test-id="view-participant">
+                  {{ $t("general.view") }}</v-list-item
                 >
-                  {{ $t("general.view") }}</v-list-item>
-                <v-list-item
-                  data-test-id="edit-participant"
+                <v-list-item data-test-id="edit-participant">
+                  {{ $t("general.edit") }}</v-list-item
                 >
-                  {{ $t("general.edit") }}</v-list-item>
-                <v-list-item
-                  data-test-id="remove-participant-from-case"
+                <v-list-item data-test-id="remove-participant-from-case">
+                  {{ $t("admin.cases.removeFromCases") }}</v-list-item
                 >
-                  {{ $t("admin.cases.removeFromCases") }}</v-list-item>
-                <v-list-item
-                  data-test-id="remove-participant-from-room"
+                <v-list-item data-test-id="remove-participant-from-room">
+                  {{ $t("admin.cases.removeFromRoom") }}</v-list-item
                 >
-                  {{ $t("admin.cases.removeFromRoom") }}</v-list-item>
               </v-list>
             </v-menu>
           </template>
@@ -95,7 +91,9 @@ export default class CasesTable extends Vue {
 
   participantIdsByCase = this.thisCase.participants;
 
-  caseParticipants = this.participantIdsByCase.map((id) => this.getParticipantsById(id));
+  caseParticipants = this.participantIdsByCase.map((id) =>
+    this.getParticipantsById(id)
+  );
 
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
@@ -104,7 +102,6 @@ export default class CasesTable extends Vue {
   getParticipantsById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
   }
-
 }
 </script>
 

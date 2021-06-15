@@ -9,10 +9,10 @@
             </h2>
           </v-col>
           <v-col class="text-right">
-            <v-btn 
+            <v-btn
               data-test-id="cases-edit-button"
-              :title="$t('admin.cases.edit')" 
-              color="grey darken-4 rounded-0 white--text" 
+              :title="$t('admin.cases.edit')"
+              color="grey darken-4 rounded-0 white--text"
               depressed
             >
               {{ $t("admin.cases.edit") }}
@@ -30,12 +30,10 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-divider class="py-4">
-    </v-divider>
+    <v-divider class="py-4"> </v-divider>
     <v-row id="scheduled-participants-table">
       <v-col>
-        <scheduled-participants-table>
-        </scheduled-participants-table>
+        <scheduled-participants-table> </scheduled-participants-table>
       </v-col>
     </v-row>
   </v-container>
@@ -48,13 +46,13 @@ import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
 @Component({
   components: {
-    ScheduledParticipantsTable
+    ScheduledParticipantsTable,
   },
 })
 export default class CaseView extends Vue {
   roomPath = "/admin/rooms/" + this.$route.params.roomId + "/view/";
 
-  caseName : string = this.getCaseById(this.$route.params.caseId)?.name;
+  caseName: string = this.getCaseById(this.$route.params.caseId)?.name;
 
   roomName: string = this.getRoomNameById(this.$route.params.roomId);
 
@@ -65,7 +63,6 @@ export default class CaseView extends Vue {
   getRoomNameById(id: string): string {
     return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
-
 }
 </script>
 
