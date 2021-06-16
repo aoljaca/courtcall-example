@@ -14,7 +14,9 @@
       </template>
       <v-card class="pa-4">
         <v-row class="mx-3">
-          <v-col class="templates-header font-weight-bold">{{ $t("admin.roomTemplate.roomTemplate") }}</v-col>
+          <v-col class="templates-header font-weight-bold">{{
+            $t("admin.roomTemplate.roomTemplate")
+          }}</v-col>
           <v-col class="d-flex justify-end">
             <v-icon x-large @click="dialog = false"> mdi-close </v-icon>
           </v-col>
@@ -24,9 +26,7 @@
             <span>
               {{ $t("admin.roomTemplate.available") }}
             </span>
-            <span>
-              ({{ templatesSum }})
-            </span>
+            <span> ({{ templatesSum }}) </span>
           </v-col>
           <v-col>
             <span>
@@ -43,12 +43,8 @@
         <v-card-text class="v-card-height">
           <v-row dense v-model="dialogm1" column>
             <v-col class="templates">
-              <v-divider>
-              </v-divider>
-              <div 
-                v-for="template in templateNames"
-                :key="template"
-              >
+              <v-divider> </v-divider>
+              <div v-for="template in templateNames" :key="template">
                 <saved-template :name="template"> </saved-template>
               </div>
             </v-col>
@@ -72,10 +68,10 @@ import "reflect-metadata";
 export default class RoomTemplates extends Vue {
   dialogm1 = "";
   dialog = false;
-  templateNames = this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
+  templateNames = this.$store.getters[
+    "RoomTemplateModule/getTemplateNamesList"
+  ];
   templatesSum = this.templateNames.length;
-
-
 }
 </script>
 

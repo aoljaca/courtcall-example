@@ -8,5 +8,5 @@ export default {
   connect: "Connect",
   duplicateJoin: "Duplicate Join Attempt",
   joinRoom: "Join Room",
-  activeSupport: "Support (Active)"
+  activeSupport: "Support (Active)",
 };

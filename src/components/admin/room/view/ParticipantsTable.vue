@@ -121,28 +121,28 @@ import { uniq } from "lodash";
 export default class ParticpantsTable extends Vue {
   readonly HEADERS = [
     {
-      text: "Active",
-      value: "active",
+      text: this.$t("admin.roomParticipants.activeHeader"),
+      value: this.$t("admin.roomParticipants.activeValue"),
     },
     {
-      text: "Name",
-      value: "name",
+      text: this.$t("admin.roomParticipants.nameHeader"),
+      value: this.$t("admin.roomParticipants.nameValue"),
     },
     {
-      text: "Case Number",
-      value: "caseNumber",
+      text: this.$t("admin.roomParticipants.caseNumberHeader"),
+      value: this.$t("admin.roomParticipants.caseNumberValue"),
     },
     {
-      text: "Case Name",
-      value: "caseName",
+      text: this.$t("admin.roomParticipants.caseNameHeader"),
+      value: this.$t("admin.roomParticipants.caseNameValue"),
     },
     {
-      text: "Role",
-      value: "role",
+      text: this.$t("admin.roomParticipants.roleHeader"),
+      value: this.$t("admin.roomParticipants.roleValue"),
     },
     {
-      text: "More",
-      value: "more",
+      text: this.$t("admin.roomParticipants.moreHeader"),
+      value: this.$t("admin.roomParticipants.moreValue"),
     },
   ];
 
