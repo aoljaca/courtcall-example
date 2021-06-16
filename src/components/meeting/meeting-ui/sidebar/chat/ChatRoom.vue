@@ -16,7 +16,7 @@
       </v-row>
       <v-row class="message-row">
         <v-col
-          v-for="message in chat.messages"
+          v-for="message in messages"
           cols="12"
           class=""
           :key="message.timetoken"
@@ -61,6 +61,10 @@ export default class ChatRoom extends Vue {
 
   clearChat() {
     this.$store.dispatch("ChatModule/alterSelectedChatId", { id: null });
+  }
+
+  get messages() {
+    return this.$store.getters["ChatModule/messagesForChat"](this.chat?.uuid);
   }
 
   get title() {

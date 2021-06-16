@@ -243,21 +243,23 @@ Object.values(participants).forEach(
 const participantsModule: Module<any, any> = {
   namespaced: true,
   state: {
-    participants: participants,
-    pubNubIdtoParticipantId: pubNubIdtoParticipantId,
-    me: participants[1],
+    participants: {},
+    pubNubIdtoParticipantId: {},
+    me: null,
   },
   mutations: {
-    setParticipants(state, payload: Participant[]) {
-      state.participants = {};
+    setParticipants(state, payload: { [key: string]: Participant }) {
+      state.participants = payload;
       state.pubNubIdtoParticipantId = {};
 
-      payload.forEach((p) => {
-        state.participants[p.id] = p;
+      Object.values(payload).forEach((p) => {
         if (p.pubnubId) {
           state.pubNubIdtoParticipantId[p.pubnubId] = p.id;
         }
       });
+    },
+    setMyParticipant(state, payload: Participant) {
+      state.me = payload;
     },
     addParticipant(state, payload: Participant) {
       state.participants[payload.id] = payload;
@@ -288,6 +290,9 @@ const participantsModule: Module<any, any> = {
   actions: {
     alterParticipants({ commit }, payload) {
       commit("setParticipants", payload);
+    },
+    alterMyParticipant({ commit }, payload) {
+      commit("setMyParticipant", payload);
     },
   },
 };
