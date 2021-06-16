@@ -56,7 +56,17 @@
               <v-icon v-if="item.active"> mdi-circle </v-icon>
             </template>
             <template v-slot:[`item.name`]="{ item }">
-              {{ item.roomDetails.name }}
+              <v-list>
+                <v-list-item
+                  link
+                  :to="{
+                    name: 'Room View Manage',
+                    params: { roomId: item.uuid },
+                  }"
+                >
+                  {{ item.roomDetails.name }}
+                </v-list-item>
+              </v-list>
             </template>
             <template v-slot:[`item.streaming`]="{ item }">
               <v-icon v-if="item.roomSettings.streaming"> mdi-wifi </v-icon>
