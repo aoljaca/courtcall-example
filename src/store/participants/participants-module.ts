@@ -273,6 +273,12 @@ const participantsModule: Module<any, any> = {
     getByPubNubId: (state) => (pubnubId: string) => {
       return state.participants[state.pubNubIdtoParticipantId[pubnubId]];
     },
+    getParticipantsByRoomId: (state) => (roomId: string) => {
+      const participants = Object.values(state.participants) as Participant[];
+      return participants.filter((p: Participant) => {
+        p.roomId === roomId;
+      });
+    }
   },
 };
 

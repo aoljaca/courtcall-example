@@ -2,7 +2,7 @@
   <div class="rooms-table">
     <v-container>
       <v-row>
-        <v-col class="text-h4" cols="1">
+        <v-col @click="pleasePrint('R1')" class="text-h4" cols="1">
           ROOMS
         </v-col>
         <v-col cols="2">
@@ -58,6 +58,7 @@
             <template v-slot:[`item.name`]="{ item }">
               <v-list>
                 <v-list-item
+                  data-test-id="room-link"
                   link
                   :to="{
                     name: 'Room View Manage',
@@ -67,6 +68,9 @@
                   {{ item.roomDetails.name }}
                 </v-list-item>
               </v-list>
+            </template>
+             <template v-slot:[`item.participants`]="{ item }">
+              {{ getParticipants(item.uuid).length }}
             </template>
             <template v-slot:[`item.streaming`]="{ item }">
               <v-icon v-if="item.roomSettings.streaming"> mdi-wifi </v-icon>
@@ -115,6 +119,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
+import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component
 export default class RoomsTable extends Vue {
   readonly HEADERS = [
@@ -157,6 +162,17 @@ export default class RoomsTable extends Vue {
   ];
 
   roomsData = this.$store.getters["RoomModule/getAsList"];
+
+  getParticipants(roomId: string): Participant[] {
+    return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);
+  }
+
+  pleasePrint(roomId : string) {
+    const parts = this.getParticipants(roomId);
+    console.log(parts);
+    console.log(" and ");
+    console.log(parts.length);
+  }
 
   selectItems = ["Active", "Supports Requests", "Date Range", "Archived"];
 }
