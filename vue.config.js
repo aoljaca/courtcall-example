@@ -2,7 +2,8 @@
 const webpack = require("webpack");
 module.exports = {
   configureWebpack: (config) => {
-    if (process.env.NODE_ENV === "development") {
+    console.log(`Environment : ${process.env.NODE_ENV}`);
+    if (process.env.NODE_ENV !== "production") {
       config.devtool = "eval-source-map";
       config.output.devtoolFallbackModuleFilenameTemplate =
         "webpack:///[resource-path]?[hash]";
@@ -34,7 +35,7 @@ module.exports = {
     const getEnvName = () => {
       if (process.env.NODE_ENV === "production") {
         return "environment.prod.ts";
-      } else if (process.env.NODE_ENV === "development") {
+      } else if (process.env.NODE_ENV === "remote-dev") {
         return "environment.dev.ts";
       } else {
         return "environment.ts";
