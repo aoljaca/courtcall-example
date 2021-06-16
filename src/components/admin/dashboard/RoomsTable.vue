@@ -52,6 +52,9 @@
             :items-per-page="20"
             class="elevation-1"
           >
+             <template v-slot:[`item.name`]="{ item }">
+              {{ item.roomDetails.name }}
+            </template>
             <template v-slot:[`item.streaming`]="{ item }">
               <v-icon v-if="item.roomSettings.streaming"> mdi-wifi </v-icon>
             </template>
@@ -99,7 +102,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
-import { Room } from "@/model/admin/room/room";
 @Component
 export default class RoomsTable extends Vue {
   readonly HEADERS = [
