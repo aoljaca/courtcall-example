@@ -52,7 +52,10 @@
             :items-per-page="20"
             class="elevation-1"
           >
-             <template v-slot:[`item.name`]="{ item }">
+            <template v-slot:[`item.active`]="{ item }">
+              <v-icon v-if="item.active"> mdi-circle </v-icon>
+            </template>
+            <template v-slot:[`item.name`]="{ item }">
               {{ item.roomDetails.name }}
             </template>
             <template v-slot:[`item.streaming`]="{ item }">
@@ -107,7 +110,7 @@ export default class RoomsTable extends Vue {
   readonly HEADERS = [
     {
       text: "Active",
-      value: "live",
+      value: "active",
     },
     {
       text: "Support",
