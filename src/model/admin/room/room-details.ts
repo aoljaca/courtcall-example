@@ -1,4 +1,5 @@
 interface RoomDetails {
+  details: string | null;
   name: string | null;
   organization: string | null;
   status: string | null;
@@ -8,6 +9,7 @@ interface RoomDetails {
 }
 
 const NULL_ROOM_DETAILS: RoomDetails = {
+  details: null,
   name: null,
   organization: null,
   status: null,

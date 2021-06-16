@@ -34,6 +34,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Frank's Room",
       organization: "LA County Superior Court - 12345",
       status: "Available",
@@ -74,6 +75,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -114,6 +116,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mikes's Room",
       organization: "Pierce County Superior Court - 59492",
       status: "Available",
@@ -154,6 +157,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "King County Municipal Court - 59492",
       status: "Available",
@@ -194,6 +198,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Matt's Room",
       organization: "King County District Court - 59492",
       status: "Available",
@@ -234,6 +239,7 @@ const rooms: {
       duplicateParticipantHandling: false,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mikes's Room",
       organization: "Puyallup District Court - 59492",
       status: "Available",
@@ -274,6 +280,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Jason's Room",
       organization: "Tacoma Federal Court - 59492",
       status: "Available",
@@ -314,6 +321,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Daves's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -354,6 +362,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -394,6 +403,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Lori's Room",
       organization: "Dartmouth County Municipal Court - 59492",
       status: "Available",
@@ -434,6 +444,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Amanda's Room",
       organization: "LA County Municipal Court - 59492",
       status: "Available",
@@ -474,6 +485,7 @@ const rooms: {
       duplicateParticipantHandling: false,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mark's Room",
       organization: "LA County District Court - 59492",
       status: "Available",
@@ -514,6 +526,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Keith's Room",
       organization: "Reno County District Court - 59492",
       status: "Available",
@@ -554,6 +567,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Nate's Room",
       organization: "Reno County District Court - 59492",
       status: "Available",
@@ -594,6 +608,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Bob's Room",
       organization: "LA County District Court - 59492",
       status: "Available",
@@ -634,6 +649,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Michelle's Room",
       organization: "Tarkov County Criminal Court - 59492",
       status: "Available",
@@ -674,6 +690,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Tate's Room",
       organization: "King County District Court - 59492",
       status: "Available",
@@ -714,6 +731,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Spock's Room",
       organization: "Federation District Court - 59492",
       status: "Available",
@@ -754,6 +772,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Jean's Room",
       organization: "Darth County District Court - 59492",
       status: "Available",
@@ -794,6 +813,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Joanna's Room",
       organization: "Hoquiam County District Court - 59492",
       status: "Available",

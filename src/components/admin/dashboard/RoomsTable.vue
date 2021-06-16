@@ -52,6 +52,15 @@
             :items-per-page="20"
             class="elevation-1"
           >
+            <template v-slot:[`item.streaming`]="{ item }">
+              <v-icon v-if="item.roomSettings.streaming"> mdi-wifi </v-icon>
+            </template>
+            <template v-slot:[`item.recording`]="{ item }">
+              <v-icon v-if="item.roomSettings.recording" color="grey"> mdi-circle </v-icon>
+            </template>
+            <template v-slot:[`item.details`]="{ item }">
+              {{ item.roomDetails.details }}
+            </template>
             <template v-slot:[`item.more`]="">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
