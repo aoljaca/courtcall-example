@@ -6,7 +6,9 @@
           ROOMS
         </v-col>
         <v-col cols="2">
-          <v-select data-test-id="rooms-table-select">
+          <v-select 
+            :items="selectItems"
+            data-test-id="rooms-table-select">
           </v-select>
         </v-col>
         <v-col class="d-flex justify-end" cols="9">
@@ -50,10 +52,6 @@
             :items-per-page="20"
             class="elevation-1"
           >
-            <template v-slot:[`item.live`]="{ item }">
-              <v-icon v-if="item.live" color="green"> mdi-circle </v-icon>
-              <v-icon v-else color="gray"> mdi-circle </v-icon>
-            </template>
             <template v-slot:[`item.more`]="">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
@@ -92,7 +90,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
-import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { Room } from "@/model/admin/room/room";
 @Component
 export default class RoomsTable extends Vue {
   readonly HEADERS = [
@@ -110,7 +108,7 @@ export default class RoomsTable extends Vue {
     },
     {
       text: "System Users",
-      value: "",
+      value: "systemUsers",
     },
     {
       text: "Participants",
@@ -135,7 +133,8 @@ export default class RoomsTable extends Vue {
   ];
 
   roomsData = this.$store.getters["RoomModule/getAsList"];
-  
+
+  selectItems = ["Active", "Supports Requests", "Date Range", "Archived"];
 }
 </script>
 

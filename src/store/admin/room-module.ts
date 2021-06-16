@@ -820,10 +820,7 @@ const adminRoomModule: Module<any, any> = {
     getRoomNameById: (state) => (id: string) => {
       return state.rooms[id].roomDetails.name;
     },
-<<<<<<< HEAD
-    getAsList: (state) => Object.values(state.cases),
-=======
->>>>>>> f6cd1c4eda6b85474852c57660b94b78ae1eab6b
+    getAsList: (state) => Object.values(state.rooms),
   },
 };
 
