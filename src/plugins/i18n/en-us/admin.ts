@@ -9,6 +9,7 @@ import roomParticipants from "./admin/room/room-participants";
 import organizations from "./admin/organizations/organizations";
 import support from "./admin/support";
 import navigation from "./admin/navigation";
+import participants from "./admin/participants/participants";
 
   export default {
     dashboard,
@@ -21,5 +22,6 @@ import navigation from "./admin/navigation";
     systemUser,
     support,
     organizations,
+    participants,
     navigation
 };

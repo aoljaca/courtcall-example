@@ -10,16 +10,16 @@ import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
 import RoomViewManage from "../components/admin/room/view/RoomViewManage.vue";
 import RoomAddEdit from "../components/admin/room/edit/RoomAddEdit.vue";
-import MyAccount from "../components/admin/my-account/MyAccount.vue";
 import Organizations from "@/components/admin/organizations/Organizations.vue";
 import OrganizationComp from "../components/admin/organizations/Organization.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
-import ViewParticipant from "@/components/admin/participants/ViewParticipant.vue";
+import ViewParticipant from "@/components/admin/participants/view/ViewParticipant.vue";
+import CreateParticipant from "@/components/admin/participants/CreateParticipant.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
-import { component } from "vue/types/umd";
+
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -114,23 +114,31 @@ const routes: Array<RouteConfig> = [
             component: RoomAddEdit,
           },
           {
-            path: "participants/:participantId",
+            path: "participants",
             name: "Participants",
             component: {
               render(c) {
                  return c("router-view");
               }
             },
-            meta: { 
-              breadcrumbFunc: (route: any) => `${route.params.participantId}`
+            meta: {
+              hideBreadcrumb: true
             },
             children: [
               {
-                path: "",
+                path: "view/:participantId",
                 component: ViewParticipant,
                 name: "Participant",
+                meta: { 
+                  breadcrumbFunc: (route: any) => `${store.getters["ParticipantsModule/getById"](route.params.participantId)?.name}`
+                },
+              },
+              {
+                path: "create",
+                component: CreateParticipant,
+                name: "Create Participant",
                 meta: {
-                  hideBreadcrumb: true
+                  breadcrumb: i18n.t("admin.participants.create")
                 }
               },
             ]

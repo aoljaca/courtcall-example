@@ -17,7 +17,14 @@
           />
         </v-col>
         <v-col class="text-right">
-          <v-btn :title="$t('admin.roomParticipants.add')" color="grey darken-4 rounded-0 white--text" depressed>
+          <v-btn
+            :title="$t('admin.roomParticipants.add')"
+            color="grey darken-4 rounded-0 white--text"
+            depressed
+            :to="{
+              name: 'Create Participant',
+            }"
+          >
             {{ $t("admin.roomParticipants.add") }}
           </v-btn>
         </v-col>
@@ -39,27 +46,29 @@
               <div class="py-1 px-1 d-inline-block" v-if="item.caseNumber">
                 {{ getCaseById(item.caseId).number }}
               </div>
-              <div class="py-1 px-1 d-inline-block" v-else>{{ $t("admin.roomParticipants.notApply") }}</div>
+              <div class="py-1 px-1 d-inline-block" v-else>
+                {{ $t("admin.roomParticipants.notApply") }}
+              </div>
             </template>
 
             <template v-slot:[`item.caseName`]="{ item }">
               <div class="py-1 px-1 d-inline-block" v-if="item.caseId">
                 {{ getCaseById(item.caseId).name }}
               </div>
-              <div class="py-1 px-1 d-inline-block" v-else>{{ $t("admin.roomParticipants.notApply") }}</div>
+              <div class="py-1 px-1 d-inline-block" v-else>
+                {{ $t("admin.roomParticipants.notApply") }}
+              </div>
             </template>
 
             <template v-slot:[`item.role`]="{ item }">
               <div
                 class="py-1 px-1 d-inline-block"
-                v-for="id in item.roles"
-                :key="id"
               >
-                {{ roleName(id) }}
+                {{ item.role }}
               </div>
             </template>
 
-            <template v-slot:[`item.more`]="">
+            <template v-slot:[`item.more`]="{ item }">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-container fluid>
@@ -79,7 +88,17 @@
                   </v-container>
                 </template>
                 <v-list>
-                  <v-list-item>{{ $t("general.view") }}</v-list-item>
+                  <v-list-item
+                    link
+                    :to="{
+                      name: 'Participant',
+                      params: {
+                        participantId: item.id,
+                        roomId: roomId,
+                      },
+                    }"
+                    >{{ $t("general.view") }}</v-list-item
+                  >
                   <v-list-item>{{ $t("general.edit") }}</v-list-item>
                   <v-list-item>{{ $t("general.archive") }}</v-list-item>
                 </v-list>
@@ -127,11 +146,19 @@ export default class ParticpantsTable extends Vue {
     },
   ];
 
+  roomId = "";
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
-  participantsByRoom: Participant[] = this.participantsData.filter(
-    (p: { roomId: string }) => p.roomId === this.$route.params.roomId
-  );
   filterByCaseIds: string[] = [];
+
+  mounted(): void {
+    this.roomId = this.$route.params.roomId;
+  }
+
+  get participantsByRoom(): Participant[] {
+    return this.participantsData.filter(
+      (p: { roomId: string }) => p.roomId === this.roomId
+    );
+  }
 
   get uniqueParticipantCases(): Case[] {
     const allCaseIds: string[] = this.participantsByRoom.map(
