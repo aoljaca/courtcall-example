@@ -115,6 +115,19 @@
         />
       </v-col>
     </v-row>
+    <v-row v-if="isEditing">
+      <v-col class="text-right">
+        <v-btn
+          @click="onArchiveParticipant"
+          color="secondary"
+          dark
+          depressed
+          tile
+        >
+          {{ $t("admin.participants.buttons.archive.title") }}
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -154,13 +167,13 @@ export default class ViewParticipant extends Vue {
       : (this.$t("admin.participants.inactive") as string);
   }
 
-  async mounted(): Promise<void> {
-    await this.loadParticipant();
+  mounted(): void {
+    this.loadParticipant();
   }
 
-  async loadParticipant(): Promise<void> {
+  loadParticipant(): void {
     const participantId = this.$route.params.participantId;
-    this.participant = await this.$store.getters["ParticipantsModule/getById"](
+    this.participant = this.$store.getters["ParticipantsModule/getById"](
       participantId
     );
   }
@@ -169,6 +182,11 @@ export default class ViewParticipant extends Vue {
     this.participantEdits = cloneDeep(this.participant);
     this.participantEdits.active = !this.participantEdits.active;
     this.onSubmitEdits();
+  }
+
+  
+  onArchiveParticipant(): void {
+    // Archive participant
   }
 
   onStartEditing(): void {

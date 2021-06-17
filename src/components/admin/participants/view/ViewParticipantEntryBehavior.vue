@@ -10,7 +10,7 @@
         <v-col cols="1" class="font-weight-medium">
           {{ detail.title }}
         </v-col>
-        <v-col>
+        <v-col cols="3">
           <template v-if="isEditing">
             <v-select
               v-model="participantEdits[detail.key]"
