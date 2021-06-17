@@ -2,7 +2,7 @@
   <div class="rooms-table">
     <v-container>
       <v-row>
-        <v-col @click="pleasePrint('R1')" class="text-h4" cols="1">
+        <v-col class="text-h4" cols="1">
           ROOMS
         </v-col>
         <v-col cols="2">
