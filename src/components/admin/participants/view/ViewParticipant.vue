@@ -167,13 +167,13 @@ export default class ViewParticipant extends Vue {
       : (this.$t("admin.participants.inactive") as string);
   }
 
-  async mounted(): Promise<void> {
-    await this.loadParticipant();
+  mounted(): void {
+    this.loadParticipant();
   }
 
-  async loadParticipant(): Promise<void> {
+  loadParticipant(): void {
     const participantId = this.$route.params.participantId;
-    this.participant = await this.$store.getters["ParticipantsModule/getById"](
+    this.participant = this.$store.getters["ParticipantsModule/getById"](
       participantId
     );
   }
