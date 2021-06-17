@@ -55,6 +55,12 @@
             <template v-slot:[`item.active`]="{ item }">
               <v-icon v-if="item.active"> mdi-circle </v-icon>
             </template>
+             <template v-slot:[`item.support`]="{ item }">
+              <v-icon v-if="item.active"> mdi-circle </v-icon>
+              <span>
+                lksdjfl;kasdjf
+              </span>
+            </template>
             <template v-slot:[`item.name`]="{ item }">
               <v-list>
                 <v-list-item
@@ -69,8 +75,11 @@
                 </v-list-item>
               </v-list>
             </template>
-             <template v-slot:[`item.participants`]="{ item }">
-              {{ getParticipants(item.uuid).length }}
+            <template v-slot:[`item.systemUsers`]="{ item }">
+              {{ getSystemUsers(item.uuid).name }}
+            </template>
+            <template v-slot:[`item.participants`]="{ item }">
+              {{ getParticipantsByRoomId(item.uuid).length }}
             </template>
             <template v-slot:[`item.streaming`]="{ item }">
               <v-icon v-if="item.roomSettings.streaming"> mdi-wifi </v-icon>
@@ -129,7 +138,7 @@ export default class RoomsTable extends Vue {
     },
     {
       text: "Support",
-      value: "number",
+      value: "support",
     },
     {
       text: "Room Name",
@@ -152,7 +161,7 @@ export default class RoomsTable extends Vue {
       value: "recording",
     },
     {
-      details: "Details",
+      text: "Details",
       value: "details"
     },
     {
@@ -163,12 +172,21 @@ export default class RoomsTable extends Vue {
 
   roomsData = this.$store.getters["RoomModule/getAsList"];
 
-  getParticipants(roomId: string): Participant[] {
+  // getSystemUsersAsList()
+
+  getParticipantsByRoomId(roomId: string): Participant[] {
     return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);
   }
 
+  getSystemUsers(roomId: string) {
+    const filteredParticipants = this.getParticipantsByRoomId(roomId);
+    return filteredParticipants.filter((p: Participant) => {
+      p.systemUser
+    });
+  }
+
   pleasePrint(roomId : string) {
-    const parts = this.getParticipants(roomId);
+    const parts = this.getParticipantsByRoomId(roomId);
     console.log(parts);
     console.log(" and ");
     console.log(parts.length);
