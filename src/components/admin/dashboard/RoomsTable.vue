@@ -3,12 +3,12 @@
     <v-container>
       <v-row>
         <v-col class="text-h4" cols="1">
-          ROOMS
+          {{ $t("admin.dashboard.rooms") }}
         </v-col>
         <v-col cols="2">
           <v-select 
             :items="selectItems"
-            label="Filter By"
+            :label="$t('admin.dashboard.filter')"
             data-test-id="rooms-table-select">
           </v-select>
         </v-col>
@@ -18,6 +18,7 @@
             color="grey darken-2"
             elevation="2"
             fab
+            :title="$t('admin.dashboard.add')"
           >
             <v-icon
               color="white"
@@ -31,13 +32,13 @@
       <v-row>
         <v-col>
           <v-btn 
-            :title="$t('admin.roomCases.add')" 
+            :title="$t('admin.dashboard.refresh')" 
             color="grey darken-4 rounded-0 white--text" 
             depressed
             data-test-id="refresh-list-button"
           >
             <span>
-              REFRESH LIST
+              {{ $t("admin.dashboard.refresh") }}
             </span>
             <v-icon>
               mdi-refresh
@@ -65,14 +66,14 @@
                   {{ getActiveIssues(item.uuid).length }}
                 </v-chip>
                 <span>
-                  Requests
+                  {{ $t("admin.dashboard.requests") }}
                 </span>
               </v-chip>
             </template>
             <template v-slot:[`item.name`]="{ item }">
               <v-list>
                 <v-list-item
-                  class="px-0 mx-0"
+                  class="px-0 mx-0 font-weight-black"
                   data-test-id="room-link"
                   link
                   :to="{
@@ -131,11 +132,21 @@
                   </v-container>
                 </template>
                 <v-list>
-                  <v-list-item data-test-id="join-room">Join</v-list-item>
-                  <v-list-item data-test-id="room-details">Details</v-list-item>
-                  <v-list-item data-test-id="room-participants">Participants</v-list-item>
-                  <v-list-item data-test-id="room-cases">Cases</v-list-item>
-                  <v-list-item data-test-id="room-activity">Activitiy</v-list-item>
+                  <v-list-item data-test-id="join-room">
+                    {{ $t("admin.dashboard.join")}}
+                  </v-list-item>
+                  <v-list-item data-test-id="room-details">
+                    {{ $t("admin.dashboard.detailsHeader")}}
+                  </v-list-item>
+                  <v-list-item data-test-id="room-participants">
+                    {{ $t("admin.dashboard.participantsHeader")}}
+                  </v-list-item>
+                  <v-list-item data-test-id="room-cases">
+                    {{ $t("admin.dashboard.cases")}}
+                  </v-list-item>
+                  <v-list-item data-test-id="room-activity">
+                    {{ $t("admin.dashboard.activity")}}
+                  </v-list-item>
                 </v-list>
               </v-menu>
             </template>
@@ -154,40 +165,40 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 export default class RoomsTable extends Vue {
   readonly HEADERS = [
     {
-      text: "Active",
-      value: "active",
+      text: this.$t("admin.dashboard.activeHeader"),
+      value: this.$t("admin.dashboard.activeValue"),
     },
     {
-      text: "Support",
-      value: "support",
+      text: this.$t("admin.dashboard.supportHeader"),
+      value: this.$t("admin.dashboard.supportValue"),
     },
     {
-      text: "Room Name",
-      value: "name",
+      text: this.$t("admin.dashboard.nameHeader"),
+      value: this.$t("admin.dashboard.nameValue"),
     },
     {
-      text: "System Users",
-      value: "systemUsers",
+      text: this.$t("admin.dashboard.systemUserHeader"),
+      value: this.$t("admin.dashboard.systemUserValue"),
     },
     {
-      text: "Participants",
-      value: "participants",
+      text: this.$t("admin.dashboard.participantsHeader"),
+      value: this.$t("admin.dashboard.participantsValue"),
     },
     {
-      text: "Streaming",
-      value: "streaming",
+      text: this.$t("admin.dashboard.streamHeader"),
+      value: this.$t("admin.dashboard.streamValue"),
     },
     {
-      text: "Recording",
-      value: "recording",
+      text: this.$t("admin.dashboard.recordHeader"),
+      value: this.$t("admin.dashboard.recordValue"),
     },
     {
-      text: "Details",
-      value: "details"
+      text: this.$t("admin.dashboard.detailsHeader"),
+      value: this.$t("admin.dashboard.detailsValue"),
     },
     {
-      text: "More",
-      value: "more",
+      text: this.$t("admin.dashboard.moreHeader"),
+      value: this.$t("admin.dashboard.moreValue"),
     },
   ];
 
