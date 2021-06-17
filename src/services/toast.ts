@@ -1,3 +1,4 @@
+import { environment } from "@/environments/environment";
 import { injectable } from "inversify-props";
 import Vue from "vue";
 
@@ -8,7 +9,7 @@ export interface ToastService {
 @injectable()
 export class ToastServiceImpl {
   public standardToast(): void {
-    Vue.$toast("Example Toast", {
+    Vue.$toast(environment.name, {
       timeout: 3000,
     });
   }
