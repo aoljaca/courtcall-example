@@ -85,7 +85,7 @@
               </v-row>
             </template>
             <template v-slot:[`item.participants`]="{ item }">
-              {{ test(item.uuid).length }}
+              {{ getParticipantsByRoomId(item.uuid).length }}
             </template>
             <template v-slot:[`item.streaming`]="{ item }">
               <v-icon v-if="item.roomSettings.streaming"> mdi-wifi </v-icon>
@@ -178,6 +178,12 @@ export default class RoomsTable extends Vue {
 
   roomsData = this.$store.getters["RoomModule/getAsList"];
 
+  getParticipantsByRoomId(roomId: string) {
+    const parts = Object.values(this.$store.state.ParticipantsModule.participants) as Participant[];
+    const roomParticipants = parts.filter((p) => p.roomId === roomId)
+    return roomParticipants;
+  }
+
   // returns empty for some reason
   getActiveIssuesX(roomId: string) {
     return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId)
@@ -189,28 +195,23 @@ export default class RoomsTable extends Vue {
   }
   // leads to too much recursion error
   getParticipantIdsByRoomId(roomId: string) {
-    const parts: any = this.getParticipantIdsByRoomId(roomId)
-    return parts.map((p: { id: any; }) => p.id)
+    const parts = this.getParticipantsByRoomId(roomId)
+    return parts.map((p) => p.id)
   }
 
   // returns empty for some reason
-  getParticipantsByRoomId(roomId: string): Participant[] {
-    return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);
-  }
+  // getParticipantsByRoomId(roomId: string): Participant[] {
+  //   return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);
+  // }
 
   // returns empty for some reason
   getSystemUsers(roomId: string) {
-    const filteredParticipants = this.test(roomId);
+    const filteredParticipants = this.getParticipantsByRoomId(roomId);
     return filteredParticipants.filter((p) => {
       p.systemUser === true;
     });
   }
 
-  test(roomId: string) {
-    const test = Object.values(this.$store.state.ParticipantsModule.participants) as Participant[];
-    const test2 = test.filter((p) => p.roomId === roomId)
-    return test2;
-  }
 
   selectItems = ["Active", "Supports Requests", "Date Range", "Archived"];
 }
