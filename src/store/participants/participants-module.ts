@@ -276,9 +276,7 @@ const participantsModule: Module<any, any> = {
     },
     getParticipantsByRoomId: (state) => (roomId: string) => {
       const participants = Object.values(state.participants) as Participant[];
-      const roomParticipants = participants.filter((p: Participant) => {
-        p.roomId === roomId;
-      });
+      const roomParticipants = participants.filter((p: Participant) => p.roomId === roomId);
       return roomParticipants;
     }
   },

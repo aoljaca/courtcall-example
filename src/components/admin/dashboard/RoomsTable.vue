@@ -57,7 +57,17 @@
               <v-icon v-if="item.active"> mdi-circle </v-icon>
             </template>
             <template v-slot:[`item.support`]="{ item }">
-              {{ getActiveIssuesX(item.uuid) }}
+              <v-chip>
+                <v-chip 
+                  color="grey darken-1"
+                  class="mx-0"
+                >
+                  {{ getActiveIssues(item.uuid).length }}
+                </v-chip>
+                <span>
+                  Requests
+                </span>
+              </v-chip>
             </template>
             <template v-slot:[`item.name`]="{ item }">
               <v-list>
@@ -79,8 +89,13 @@
                 <v-col>
                   {{ getSystemUsers(item.uuid).length }}
                 </v-col>
-                <v-col>
-                  {{ getSystemUsers(item.uuid) }}
+                <v-col
+                  v-for="name in getSystemUserNames(item)"
+                  :key="`room-${item.uuid}-system-user-${name}`"
+                >
+                  <div>
+                    {{ name }}
+                  </div>
                 </v-col>
               </v-row>
             </template>
@@ -178,40 +193,22 @@ export default class RoomsTable extends Vue {
 
   roomsData = this.$store.getters["RoomModule/getAsList"];
 
-  getParticipantsByRoomId(roomId: string) {
-    const parts = Object.values(this.$store.state.ParticipantsModule.participants) as Participant[];
-    const roomParticipants = parts.filter((p) => p.roomId === roomId)
-    return roomParticipants;
+  getParticipantsByRoomId(roomId: string): Participant[] {
+    return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);
   }
 
-  // returns empty for some reason
-  getActiveIssuesX(roomId: string) {
-    return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId)
-  }
-
-  // leads to too much recursion error
-  getActiveIssues(participantIds: string[]) {
-    return this.$store.getters["SupportModule/getActiveIssuesForRoom"](participantIds)
-  }
-  // leads to too much recursion error
-  getParticipantIdsByRoomId(roomId: string) {
-    const parts = this.getParticipantsByRoomId(roomId)
-    return parts.map((p) => p.id)
-  }
-
-  // returns empty for some reason
-  // getParticipantsByRoomId(roomId: string): Participant[] {
-  //   return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);
-  // }
-
-  // returns empty for some reason
   getSystemUsers(roomId: string) {
     const filteredParticipants = this.getParticipantsByRoomId(roomId);
-    return filteredParticipants.filter((p) => {
-      p.systemUser === true;
-    });
+    return filteredParticipants.filter((p) => p.systemUser === true);
   }
 
+  getSystemUserNames(item: any) {
+    return this.getSystemUsers(item.uuid).map((su) => su.name);
+  }
+
+  getActiveIssues(roomId: string) {
+    return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId)
+  }
 
   selectItems = ["Active", "Supports Requests", "Date Range", "Archived"];
 }

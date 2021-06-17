@@ -143,9 +143,7 @@ const supportModule: Module<any, any> = {
     },
     getActiveIssuesByRoomId: (state) => (roomId: string) => {
       const items = state.queue as SupportItem[];
-      return items.filter((i) => {
-        !i.archived && (i.room === roomId);
-      });
+      return items.filter((i) => !i.archived && (i.room === roomId));
     }
   },
 };
