@@ -3,7 +3,7 @@
     <template v-slot:item="{ item }">
       <router-link
         :to="item.to"
-        class="breadcrumb"
+        class="text-decoration-none"
         exact-active-class="active-breadcrumb"
       >
         {{ item.text.toUpperCase() }}
@@ -84,9 +84,6 @@ export default class Breadcrumbs extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.breadcrumb {
-  text-decoration: none;
-}
 .active-breadcrumb {
   color: var(--v-secondary-base);
   font-weight: bold;

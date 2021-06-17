@@ -9,6 +9,7 @@ import roomParticipants from "./admin/room/room-participants";
 import organizations from "./admin/organizations/organizations";
 import support from "./admin/support";
 import navigation from "./admin/navigation";
+import participants from "./admin/participants/participants";
 import cases from "./admin/cases/case";
 
 export default {
@@ -24,4 +25,5 @@ export default {
   support,
   organizations,
   navigation,
+  participants,
 };
