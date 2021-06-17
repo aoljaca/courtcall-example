@@ -55,15 +55,13 @@
             <template v-slot:[`item.active`]="{ item }">
               <v-icon v-if="item.active"> mdi-circle </v-icon>
             </template>
-             <template v-slot:[`item.support`]="{ item }">
-              <v-icon v-if="item.active"> mdi-circle </v-icon>
-              <span>
-                lksdjfl;kasdjf
-              </span>
+            <template v-slot:[`item.support`]="{ item }">
+              {{ item.uuid }}
             </template>
             <template v-slot:[`item.name`]="{ item }">
               <v-list>
                 <v-list-item
+                  class="px-0 mx-0"
                   data-test-id="room-link"
                   link
                   :to="{
@@ -76,7 +74,14 @@
               </v-list>
             </template>
             <template v-slot:[`item.systemUsers`]="{ item }">
-              {{ getSystemUsers(item.uuid).name }}
+              <v-row>
+                <v-col>
+                  {{ getSystemUsers(item.uuid).length }}
+                </v-col>
+                <v-col>
+                  {{ getSystemUsers(item.uuid) }}
+                </v-col>
+              </v-row>
             </template>
             <template v-slot:[`item.participants`]="{ item }">
               {{ getParticipantsByRoomId(item.uuid).length }}
