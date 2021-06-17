@@ -17,6 +17,7 @@ import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 import CaseView from "@/components/admin/case/view/CaseView.vue";
+import CaseEdit from "@/components/admin/case/edit/CaseEdit.vue";
 import ViewParticipant from "@/components/admin/participants/ViewParticipant.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
@@ -139,11 +140,19 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "",
+                path: "view",
                 component: CaseView,
                 name: "Case View",
                 meta: {
                   hideBreadcrumb: true,
+                },
+              },
+              {
+                path: "edit",
+                component: CaseEdit,
+                name: "Case Edit",
+                meta: {
+                  breadcrumb: "New Case",
                 },
               },
             ],
