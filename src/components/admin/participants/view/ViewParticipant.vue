@@ -115,6 +115,19 @@
         />
       </v-col>
     </v-row>
+    <v-row v-if="isEditing">
+      <v-col class="text-right">
+        <v-btn
+          @click="onArchiveParticipant"
+          color="secondary"
+          dark
+          depressed
+          tile
+        >
+          {{ $t("admin.participants.buttons.archive.title") }}
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -169,6 +182,11 @@ export default class ViewParticipant extends Vue {
     this.participantEdits = cloneDeep(this.participant);
     this.participantEdits.active = !this.participantEdits.active;
     this.onSubmitEdits();
+  }
+
+  
+  onArchiveParticipant(): void {
+    // Archive participant
   }
 
   onStartEditing(): void {

@@ -74,19 +74,6 @@
         </v-col>
       </v-row>
     </template>
-    <v-row v-if="isEditing">
-      <v-col class="text-right">
-        <v-btn
-          @click="onArchiveParticipant"
-          color="secondary"
-          dark
-          depressed
-          tile
-        >
-          {{ $t("admin.participants.buttons.archive.title") }}
-        </v-btn>
-      </v-col>
-    </v-row>
   </div>
 </template>
 
@@ -212,10 +199,6 @@ export default class ViewParticipantAccessDetails extends Vue {
 
   onRefreshLink(): void {
     // Refresh link
-  }
-
-  onArchiveParticipant(): void {
-    // Archive participant
   }
 }
 </script>
