@@ -1,4 +1,4 @@
 export const environment = {
   name: "Local",
-  baseURL: "https://api.dev.ccv3dev.com",
+  baseURL: "http://localhost:3000",
 };

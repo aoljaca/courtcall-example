@@ -108,44 +108,10 @@ const messages: { [key: string]: ChatMessage[] } = {
   ],
   e: [],
 };
-const chats: {
-  [key: string]: Chat;
-} = {
-  a: {
-    uuid: "a",
-    participants: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    type: "room",
-    newMessages: true,
-  },
-  b: {
-    uuid: "b",
-    participants: [1, 2, 3, 4, 5],
-    type: "regular",
-    newMessages: true,
-  },
-  c: {
-    uuid: "c",
-    participants: [1, 3, 4],
-    type: "moderators",
-    newMessages: false,
-  },
-  d: {
-    uuid: "d",
-    participants: [1, 5, 6, 7],
-    type: "regular",
-    newMessages: false,
-  },
-  e: {
-    uuid: "e",
-    participants: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    type: "regular",
-    newMessages: true,
-  },
-};
 const chatModule: Module<any, any> = {
   namespaced: true,
   state: {
-    chats: chats,
+    chats: {},
     selectedChatId: "b",
     messages: messages,
   },
@@ -159,10 +125,16 @@ const chatModule: Module<any, any> = {
     removeChat(state: any, payload) {
       state.chats[payload] = undefined;
     },
+    updateChat(state: any, payload) {
+      state.chats = payload;
+    },
   },
   actions: {
     alterSelectedChatId({ commit }, payload) {
       commit("changeSelectedChatId", payload.id);
+    },
+    alterChats({ commit }, payload) {
+      commit("updateChat", payload);
     },
   },
   getters: {

@@ -20,7 +20,6 @@ import CaseView from "@/components/admin/case/view/CaseView.vue";
 import ViewParticipant from "@/components/admin/participants/ViewParticipant.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
-import { component } from "vue/types/umd";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [

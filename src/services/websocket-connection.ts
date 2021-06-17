@@ -54,5 +54,13 @@ export class WebsocketConnectionServiceImpl
       console.log(WS_TYPES.MY_PARTICIPANT_UPDATED);
       store.dispatch("ParticipantsModule/alterMyParticipant", participant);
     });
+    socket.on(WS_TYPES.CHATS_UPDATED, (chats) => {
+      console.log(WS_TYPES.CHATS_UPDATED);
+      store.dispatch("ChatModule/alterChats", chats);
+    });
+    socket.on(WS_TYPES.CASES_UPDATED, (cases) => {
+      console.log(WS_TYPES.CASES_UPDATED);
+      store.dispatch("CasesModule/alterCases", cases);
+    });
   }
 }
