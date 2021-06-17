@@ -85,7 +85,7 @@
               </v-row>
             </template>
             <template v-slot:[`item.participants`]="{ item }">
-              {{ getParticipantsByRoomId(item.uuid).length }}
+              {{ test(item.uuid).length }}
             </template>
             <template v-slot:[`item.streaming`]="{ item }">
               <v-icon v-if="item.roomSettings.streaming"> mdi-wifi </v-icon>
@@ -187,6 +187,7 @@ export default class RoomsTable extends Vue {
   getActiveIssues(participantIds: string[]) {
     return this.$store.getters["SupportModule/getActiveIssuesForRoom"](participantIds)
   }
+  // leads to too much recursion error
   getParticipantIdsByRoomId(roomId: string) {
     const parts: any = this.getParticipantIdsByRoomId(roomId)
     return parts.map((p: { id: any; }) => p.id)
@@ -199,17 +200,16 @@ export default class RoomsTable extends Vue {
 
   // returns empty for some reason
   getSystemUsers(roomId: string) {
-    const filteredParticipants = this.getParticipantsByRoomId(roomId);
-    return filteredParticipants.filter((p: Participant) => {
-      p.systemUser
+    const filteredParticipants = this.test(roomId);
+    return filteredParticipants.filter((p) => {
+      p.systemUser === true;
     });
   }
 
-  pleasePrint(roomId : string) {
-    const parts = this.getParticipantsByRoomId(roomId);
-    console.log(parts);
-    console.log(" and ");
-    console.log(parts.length);
+  test(roomId: string) {
+    const test = Object.values(this.$store.state.ParticipantsModule.participants) as Participant[];
+    const test2 = test.filter((p) => p.roomId === roomId)
+    return test2;
   }
 
   selectItems = ["Active", "Supports Requests", "Date Range", "Archived"];
