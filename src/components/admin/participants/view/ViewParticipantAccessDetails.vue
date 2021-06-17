@@ -18,9 +18,15 @@
               v-model="participantEdits[detail.key]"
               :placeholder="detail.placeholder"
               hide-details
-              clearable
               dense
-            />
+            >
+              <template v-slot:append>
+                <copy-to-clipboard-button
+                  v-if="detail.isLink"
+                  :dataToCopy="participant[detail.key]"
+                />
+              </template>
+            </v-text-field>
             <v-select
               v-model="participantEdits[detail.key]"
               v-else-if="detail.inputType === 'select'"
@@ -53,14 +59,10 @@
               >
                 {{ participant[detail.key] }}
               </a>
-              <v-btn
+              <copy-to-clipboard-button
                 v-if="participant[detail.key]"
-                icon
-                v-clipboard:copy="participant[detail.key]"
-                v-clipboard:success="onCopy"
-              >
-                <v-icon>mdi-content-copy</v-icon>
-              </v-btn>
+                :dataToCopy="participant[detail.key]"
+              />
             </template>
 
             <template v-else>
@@ -85,8 +87,13 @@ import {
   ParticipantRole,
 } from "@/model/admin/participants/enums";
 import { Room } from "@/model/admin/room/room";
+import CopyToClipboardButton from "../../../shared/CopyToClipboardButton.vue";
 
-@Component
+@Component({
+  components: {
+    CopyToClipboardButton,
+  },
+})
 export default class ViewParticipantAccessDetails extends Vue {
   @Prop()
   participant!: Participant;
@@ -191,10 +198,6 @@ export default class ViewParticipantAccessDetails extends Vue {
     } else {
       return items;
     }
-  }
-
-  onCopy(): void {
-    this.$toast.info(this.$t("admin.participants.copySuccess"));
   }
 
   onRefreshLink(): void {

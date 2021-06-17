@@ -21,14 +21,10 @@
                     dense
                 >
                 <template v-slot:append>
-                    <v-btn
-                        v-if="detail.isLink"
-                        icon
-                        v-clipboard:copy="participant[detail.key]"
-                        v-clipboard:success="onCopy"
-                    >
-                        <v-icon>mdi-content-copy</v-icon>
-                    </v-btn>
+                  <copy-to-clipboard-button
+                    v-if="detail.isLink"
+                    :dataToCopy="participant[detail.key]"
+                  />
                 </template>
                 </v-text-field>
                 <v-select
@@ -66,8 +62,13 @@ import {
   AccessLinkOptions,
   ParticipantRole,
 } from "@/model/admin/participants/enums";
+import CopyToClipboardButton from "../../../shared/CopyToClipboardButton.vue";
 
-@Component
+@Component({
+  components: {
+    CopyToClipboardButton
+  }
+})
 export default class CreateParticipantAccessDetails extends Vue {
   @Prop()
   participant!: Participant;
