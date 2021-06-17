@@ -56,7 +56,7 @@
               <v-icon v-if="item.active"> mdi-circle </v-icon>
             </template>
             <template v-slot:[`item.support`]="{ item }">
-              {{ item.uuid }}
+              {{ getActiveIssuesX(item.uuid) }}
             </template>
             <template v-slot:[`item.name`]="{ item }">
               <v-list>
@@ -177,19 +177,26 @@ export default class RoomsTable extends Vue {
 
   roomsData = this.$store.getters["RoomModule/getAsList"];
 
+  // returns empty for some reason
+  getActiveIssuesX(roomId: string) {
+    return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId)
+  }
+
+  // leads to too much recursion error
   getActiveIssues(participantIds: string[]) {
     return this.$store.getters["SupportModule/getActiveIssuesForRoom"](participantIds)
   }
-
   getParticipantIdsByRoomId(roomId: string) {
     const parts: any = this.getParticipantIdsByRoomId(roomId)
     return parts.map((p: { id: any; }) => p.id)
   }
 
+  // returns empty for some reason
   getParticipantsByRoomId(roomId: string): Participant[] {
     return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);
   }
 
+  // returns empty for some reason
   getSystemUsers(roomId: string) {
     const filteredParticipants = this.getParticipantsByRoomId(roomId);
     return filteredParticipants.filter((p: Participant) => {
