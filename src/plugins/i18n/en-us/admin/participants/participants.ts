@@ -82,7 +82,7 @@ export default {
             title: "Cancel",
         },
         save: {
-            title: "Save",
+            title: "Save Changes",
         },
         archive: {
             title: "Archive Participant"
