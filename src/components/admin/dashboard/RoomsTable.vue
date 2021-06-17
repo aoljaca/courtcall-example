@@ -89,11 +89,11 @@
                 <v-col>
                   {{ getSystemUsers(item.uuid).length }}
                 </v-col>
-                <v-col
+                <v-col>
+                  <div
                   v-for="name in getSystemUserNames(item)"
                   :key="`room-${item.uuid}-system-user-${name}`"
-                >
-                  <div>
+                  >
                     {{ name }}
                   </div>
                 </v-col>
