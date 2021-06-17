@@ -95,7 +95,9 @@
                   v-for="name in getSystemUserNames(item)"
                   :key="`room-${item.uuid}-system-user-${name}`"
                   >
-                    {{ name }}
+                    <v-chip outlined>
+                      {{ name }}
+                    </v-chip>
                   </div>
                 </v-col>
               </v-row>
@@ -171,18 +173,22 @@ export default class RoomsTable extends Vue {
     {
       text: this.$t("admin.dashboard.supportHeader"),
       value: this.$t("admin.dashboard.supportValue"),
+      filterable: false,
     },
     {
       text: this.$t("admin.dashboard.nameHeader"),
       value: this.$t("admin.dashboard.nameValue"),
+      filterable: false,
     },
     {
       text: this.$t("admin.dashboard.systemUserHeader"),
       value: this.$t("admin.dashboard.systemUserValue"),
+      filterable: false,
     },
     {
       text: this.$t("admin.dashboard.participantsHeader"),
       value: this.$t("admin.dashboard.participantsValue"),
+      filterable: false,
     },
     {
       text: this.$t("admin.dashboard.streamHeader"),
@@ -195,10 +201,12 @@ export default class RoomsTable extends Vue {
     {
       text: this.$t("admin.dashboard.detailsHeader"),
       value: this.$t("admin.dashboard.detailsValue"),
+      filterable: false,
     },
     {
       text: this.$t("admin.dashboard.moreHeader"),
       value: this.$t("admin.dashboard.moreValue"),
+      filterable: false,
     },
   ];
 
