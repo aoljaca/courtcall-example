@@ -8,6 +8,7 @@
         <v-col cols="2">
           <v-select 
             :items="selectItems"
+            label="Filter By"
             data-test-id="rooms-table-select">
           </v-select>
         </v-col>
