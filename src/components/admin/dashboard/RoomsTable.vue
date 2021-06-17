@@ -57,10 +57,10 @@
               <v-icon v-if="item.active"> mdi-circle </v-icon>
             </template>
             <template v-slot:[`item.support`]="{ item }">
-              <v-chip>
+              <v-chip class="pl-0">
                 <v-chip 
                   color="grey darken-1"
-                  class="mx-0"
+                  class="mr-2"
                 >
                   {{ getActiveIssues(item.uuid).length }}
                 </v-chip>
