@@ -177,7 +177,14 @@ export default class RoomsTable extends Vue {
 
   roomsData = this.$store.getters["RoomModule/getAsList"];
 
-  // getSystemUsersAsList()
+  getActiveIssues(participantIds: string[]) {
+    return this.$store.getters["SupportModule/getActiveIssuesForRoom"](participantIds)
+  }
+
+  getParticipantIdsByRoomId(roomId: string) {
+    const parts: any = this.getParticipantIdsByRoomId(roomId)
+    return parts.map((p: { id: any; }) => p.id)
+  }
 
   getParticipantsByRoomId(roomId: string): Participant[] {
     return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);

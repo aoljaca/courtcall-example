@@ -1,4 +1,5 @@
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import roomParticipants from "@/plugins/i18n/en-us/admin/room/room-participants";
 import { Module } from "vuex";
 
 const participants: {
@@ -275,9 +276,10 @@ const participantsModule: Module<any, any> = {
     },
     getParticipantsByRoomId: (state) => (roomId: string) => {
       const participants = Object.values(state.participants) as Participant[];
-      return participants.filter((p: Participant) => {
+      const roomParticipants = participants.filter((p: Participant) => {
         p.roomId === roomId;
       });
+      return roomParticipants;
     }
   },
 };

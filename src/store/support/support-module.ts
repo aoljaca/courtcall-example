@@ -138,6 +138,9 @@ const supportModule: Module<any, any> = {
       const items = state.queue as SupportItem[];
       return items.filter((i) => !i.archived);
     },
+    getActiveIssuesForRoom: (state) => (participantIds: string[]) => {
+      return state.queue.filter((item: { participant: any; archived: any; }) => participantIds.includes(item.participant && !item.archived))
+    }
   },
 };
 export default supportModule;
