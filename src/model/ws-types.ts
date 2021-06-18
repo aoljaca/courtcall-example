@@ -7,4 +7,5 @@ export enum WS_TYPES {
   SHARES_UPDATED = "sharesUpdated",
   ROLES_UPDATED = "rolesUpdated",
   SUBCONFERENCES_UPDATED = "subconferencesUpdated",
+  CURRENT_SUBCONFERENCE_UPDATED = "currentSubconferenceUpdated",
 }

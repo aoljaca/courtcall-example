@@ -66,5 +66,20 @@ export class WebsocketConnectionServiceImpl
       console.log(WS_TYPES.SHARES_UPDATED);
       store.dispatch("FileShareModule/alterShares", shares);
     });
+    socket.on(WS_TYPES.ROLES_UPDATED, (roles) => {
+      console.log(WS_TYPES.ROLES_UPDATED);
+      store.dispatch("PermissionsModule/alterRoles", roles);
+    });
+    socket.on(WS_TYPES.SUBCONFERENCES_UPDATED, (subconferences) => {
+      console.log(WS_TYPES.SUBCONFERENCES_UPDATED);
+      store.dispatch("SubconferenceModule/alterSubconferences", subconferences);
+    });
+    socket.on(WS_TYPES.CURRENT_SUBCONFERENCE_UPDATED, (subconference) => {
+      console.log(WS_TYPES.CURRENT_SUBCONFERENCE_UPDATED);
+      store.dispatch(
+        "SubconferenceModule/alterCurrentSubconference",
+        subconference
+      );
+    });
   }
 }
