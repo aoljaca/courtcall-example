@@ -12,6 +12,7 @@
             :title="$t('admin.organizations.organizationList.new.title')"
             elevation="0"
             fab
+            :to="{ name: 'Create Organization'}"
             ><v-icon>mdi-plus</v-icon></v-btn
           >
         </v-col>
@@ -19,6 +20,16 @@
       <v-row>
         <v-col>
           <v-data-table :headers="HEADERS" :items="organizations">
+            <template v-slot:[`item.name`]="{ item }">
+              <router-link
+                :to="{
+                  name: 'Organization',
+                  params: { organizationId: item.id },
+                }"
+                class="font-weight-bold"
+                >{{ item.name }}
+              </router-link>
+            </template>
             <template v-slot:[`item.managerIds`]="{ item }">
               <div
                 class="py-1 px-1 d-inline-block"
@@ -31,7 +42,7 @@
             <template v-slot:[`item.roomIds`]="{ item }">
               {{ item.roomIds.length }}
             </template>
-            <template v-slot:[`item.more`]="{ item }">
+            <template v-slot:[`item.more`]="{ }">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-container fluid>
@@ -51,18 +62,6 @@
                   </v-container>
                 </template>
                 <v-list>
-                  <v-list-item
-                    link
-                    :to="{
-                      name: 'Organization',
-                      params: { organizationId: item.id },
-                    }"
-                  >
-                    {{ $t("admin.organizations.organizationList.viewOrg") }}
-                  </v-list-item>
-                  <v-list-item>
-                    {{ $t("admin.organizations.organizationList.editOrg") }}
-                  </v-list-item>
                   <v-list-item>
                     {{ $t("admin.organizations.organizationList.removeOrg") }}
                   </v-list-item>
@@ -102,12 +101,14 @@ export default class Organizations extends Vue {
       value: "roomIds",
       sortable: false,
       filterable: false,
+      align: "center"
     },
     {
       text: "More",
       value: "more",
       sortable: false,
       filterable: false,
+      align: "center"
     },
   ];
 
@@ -120,3 +121,9 @@ export default class Organizations extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+a {
+  color: var(--v-secondary-base) !important;
+}
+</style>
