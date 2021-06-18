@@ -92,7 +92,7 @@
     <v-divider />
     <br />
 
-    <v-row v-if="organizationId">
+    <v-row v-if="organizationId && !organization.archived">
       <v-col class="text-right">
         <v-btn
           @click="onArchiveOrganization"
