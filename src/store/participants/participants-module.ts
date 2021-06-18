@@ -1,4 +1,8 @@
-import { EntryAudioBehavor, EntryConference, EntryVideoBehavor } from "@/model/admin/participants/enums";
+import {
+  EntryAudioBehavor,
+  EntryConference,
+  EntryVideoBehavor,
+} from "@/model/admin/participants/enums";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import roomParticipants from "@/plugins/i18n/en-us/admin/room/room-participants";
 import { Module } from "vuex";
@@ -24,12 +28,12 @@ const participants: {
     signatureEnabled: true,
     active: true,
     permissionRoles: ["r1", "r2", "r3"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: true,
     organizations: ["o1", "o2", "o3"],
     email: "fake@gmail.com",
     roomId: "R1",
-    phone: '203-575-1020',
+    phone: "203-575-1020",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -56,12 +60,12 @@ const participants: {
     signatureEnabled: false,
     active: true,
     permissionRoles: ["r1"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: true,
     organizations: ["o1", "o2"],
     email: "fake@outlook.com",
     roomId: "R1",
-    phone: '555-535-1220',
+    phone: "555-535-1220",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -88,12 +92,12 @@ const participants: {
     signatureEnabled: true,
     active: true,
     permissionRoles: ["r2"],
-    role: '',
+    role: "",
     systemUser: true,
     organizations: ["o4"],
     email: "fake@fake.com",
     roomId: "R1",
-    phone: '363-935-1020',
+    phone: "363-935-1020",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -120,12 +124,12 @@ const participants: {
     signatureEnabled: false,
     active: true,
     permissionRoles: ["r3"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: false,
     organizations: ["o5"],
     email: null,
     roomId: "R1",
-    phone: '773-545-0010',
+    phone: "773-545-0010",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -152,12 +156,12 @@ const participants: {
     signatureEnabled: true,
     active: true,
     permissionRoles: ["r4"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: true,
     organizations: [],
     email: "fake@courtcall.com",
     roomId: "R1",
-    phone: '253-535-0020',
+    phone: "253-535-0020",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -184,12 +188,12 @@ const participants: {
     signatureEnabled: false,
     active: true,
     permissionRoles: ["r5"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: true,
     organizations: ["o7"],
     email: "email@gmail.com",
     roomId: "R2",
-    phone: '893-115-0330',
+    phone: "893-115-0330",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -216,12 +220,12 @@ const participants: {
     signatureEnabled: true,
     active: false,
     permissionRoles: ["r3", "r4"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: true,
     organizations: ["o8", "o9", "o10"],
     email: "email@outlook.com",
     roomId: "R2",
-    phone: '633-212-0020',
+    phone: "633-212-0020",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -248,12 +252,12 @@ const participants: {
     signatureEnabled: false,
     active: true,
     permissionRoles: ["r3"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: false,
     organizations: [],
     email: null,
     roomId: "R2",
-    phone: '616-414-4444',
+    phone: "616-414-4444",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -280,12 +284,12 @@ const participants: {
     signatureEnabled: true,
     active: true,
     permissionRoles: ["r3"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: false,
     organizations: [],
     email: null,
     roomId: "R2",
-    phone: '103-104-1005',
+    phone: "103-104-1005",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -312,12 +316,12 @@ const participants: {
     signatureEnabled: false,
     active: false,
     permissionRoles: ["r3"],
-    role: 'Scheduled Participant (Dedicated)',
+    role: "Scheduled Participant (Dedicated)",
     systemUser: false,
     organizations: [],
     email: null,
     roomId: "R2",
-    phone: '353-253-5131',
+    phone: "353-253-5131",
     expiration: null,
     entryAudioBehavior: EntryAudioBehavor.USER_OPTION_ON,
     entryVideoBehavior: EntryVideoBehavor.USER_OPTION_ON,
@@ -370,13 +374,19 @@ const participantsModule: Module<any, any> = {
       // TODO: Make call to API passing in payload
 
       // Save response to state
-      mutations.commit('addParticipant', payload);
+      mutations.commit("addParticipant", payload);
     },
     updateParticipant(mutations, payload: Participant) {
       // TODO: Make call to API passing in payload
 
       // Save response to state
-      mutations.commit('updateParticipant', payload);
+      mutations.commit("updateParticipant", payload);
+    },
+    alterParticipants({ commit }, payload) {
+      commit("setParticipants", payload);
+    },
+    alterMyParticipant({ commit }, payload) {
+      commit("setMyParticipant", payload);
     },
   },
   getters: {
@@ -397,16 +407,10 @@ const participantsModule: Module<any, any> = {
     },
     getParticipantsByRoomId: (state) => (roomId: string) => {
       const participants = Object.values(state.participants) as Participant[];
-      const roomParticipants = participants.filter((p: Participant) => p.roomId === roomId);
+      const roomParticipants = participants.filter(
+        (p: Participant) => p.roomId === roomId
+      );
       return roomParticipants;
-    }
-  },
-  actions: {
-    alterParticipants({ commit }, payload) {
-      commit("setParticipants", payload);
-    },
-    alterMyParticipant({ commit }, payload) {
-      commit("setMyParticipant", payload);
     },
   },
 };
