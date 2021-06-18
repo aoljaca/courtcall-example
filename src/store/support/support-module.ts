@@ -7,7 +7,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     participant: "1",
     note: null,
     archived: false,
-    room: "",
+    room: "R1",
     requestDetails: null,
     openedAt: DateTime.now().toISO(),
     inProgress: false,
@@ -19,7 +19,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     participant: "2",
     note: null,
     archived: false,
-    room: "",
+    room: "R1",
     requestDetails: null,
     openedAt: DateTime.now().minus({ minutes: 30 }).toISO(),
     inProgress: true,
@@ -31,7 +31,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     participant: "3",
     note: null,
     archived: false,
-    room: "",
+    room: "R1",
     requestDetails: "Can't screenshare",
     openedAt: DateTime.now().minus({ hours: 1 }).toISO(),
     inProgress: false,
@@ -43,7 +43,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     participant: "4",
     note: null,
     archived: false,
-    room: "",
+    room: "R1",
     requestDetails: null,
     openedAt: DateTime.now().minus({ hours: 2 }).toISO(),
     inProgress: false,
@@ -57,7 +57,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     archived: false,
     requestDetails: null,
     openedAt: DateTime.now().minus({ hours: 3 }).toISO(),
-    room: "",
+    room: "R1",
     inProgress: true,
     closedAt: null,
     supportedBy: null,
@@ -68,7 +68,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     note: null,
     requestDetails: `Can't see video`,
     openedAt: DateTime.now().minus({ hours: 3 }).minus({ minutes: 30 }).toISO(),
-    room: "",
+    room: "R1",
     archived: false,
     inProgress: false,
     closedAt: null,
@@ -80,7 +80,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     note: "User was let in",
     requestDetails: null,
     openedAt: DateTime.now().minus({ minutes: 30 }).toISO(),
-    room: "",
+    room: "R1",
     archived: true,
     inProgress: false,
     closedAt: DateTime.now().minus({ minutes: 15 }).toISO(),
@@ -91,7 +91,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     participant: "8",
     note: null,
     openedAt: DateTime.now().minus({ hours: 1 }).toISO(),
-    room: "",
+    room: "R1",
     archived: true,
     inProgress: false,
     requestDetails: `Can't hear anyone`,
@@ -103,7 +103,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     participant: "9",
     note: null,
     openedAt: DateTime.now().minus({ hours: 2 }).toISO(),
-    room: "",
+    room: "R1",
     archived: true,
     inProgress: false,
     requestDetails: null,
@@ -118,7 +118,7 @@ const SUPPORT_QUEUE: SupportItem[] = [
     inProgress: false,
     requestDetails: `Can't move subconferences`,
     note: `Couldn't fix, need to contact dev team`,
-    room: "",
+    room: "R1",
     closedAt: DateTime.now().minus({ minutes: 45 }).toISO(),
     supportedBy: "1",
   },
@@ -138,6 +138,13 @@ const supportModule: Module<any, any> = {
       const items = state.queue as SupportItem[];
       return items.filter((i) => !i.archived);
     },
+    getActiveIssuesForRoom: (state) => (participantIds: string[]) => {
+      return state.queue.filter((item: { participant: any; archived: any; }) => participantIds.includes(item.participant && !item.archived))
+    },
+    getActiveIssuesByRoomId: (state) => (roomId: string) => {
+      const items = state.queue as SupportItem[];
+      return items.filter((i) => !i.archived && (i.room === roomId));
+    }
   },
 };
 export default supportModule;

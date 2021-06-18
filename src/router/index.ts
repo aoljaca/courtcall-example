@@ -10,14 +10,15 @@ import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
 import RoomViewManage from "../components/admin/room/view/RoomViewManage.vue";
 import RoomAddEdit from "../components/admin/room/edit/RoomAddEdit.vue";
-import MyAccount from "../components/admin/my-account/MyAccount.vue";
 import Organizations from "@/components/admin/organizations/Organizations.vue";
 import OrganizationComp from "../components/admin/organizations/Organization.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
+import ViewParticipant from "@/components/admin/participants/view/ViewParticipant.vue";
+import CreateParticipant from "@/components/admin/participants/create/CreateParticipant.vue";
 import CaseView from "@/components/admin/case/view/CaseView.vue";
-import ViewParticipant from "@/components/admin/participants/ViewParticipant.vue";
+import MyAccount from "@/components/admin/my-account/MyAccount.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
 Vue.use(VueRouter);
@@ -148,7 +149,7 @@ const routes: Array<RouteConfig> = [
             ],
           },
           {
-            path: "participants/:participantId",
+            path: "participants",
             name: "Participants",
             component: {
               render(c) {
@@ -156,15 +157,28 @@ const routes: Array<RouteConfig> = [
               },
             },
             meta: {
-              breadcrumbFunc: (route: any) => `${route.params.participantId}`,
+              hideBreadcrumb: true,
             },
             children: [
               {
-                path: "",
+                path: "view/:participantId",
                 component: ViewParticipant,
                 name: "Participant",
                 meta: {
-                  hideBreadcrumb: true,
+                  breadcrumbFunc: (route: any) =>
+                    `${
+                      store.getters["ParticipantsModule/getById"](
+                        route.params.participantId
+                      )?.name
+                    }`,
+                },
+              },
+              {
+                path: "create",
+                component: CreateParticipant,
+                name: "Create Participant",
+                meta: {
+                  breadcrumb: i18n.t("admin.participants.create"),
                 },
               },
             ],
