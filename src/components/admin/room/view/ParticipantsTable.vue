@@ -99,7 +99,6 @@
                     }"
                     >{{ $t("general.view") }}</v-list-item
                   >
-                  <v-list-item>{{ $t("general.edit") }}</v-list-item>
                   <v-list-item>{{ $t("general.archive") }}</v-list-item>
                 </v-list>
               </v-menu>

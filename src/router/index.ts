@@ -16,6 +16,7 @@ import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 import ViewParticipant from "@/components/admin/participants/view/ViewParticipant.vue";
+import CreateParticipant from "@/components/admin/participants/create/CreateParticipant.vue";
 import CaseView from "@/components/admin/case/view/CaseView.vue";
 import MyAccount from "@/components/admin/my-account/MyAccount.vue";
 import i18n from "@/plugins/i18n";
@@ -170,7 +171,7 @@ const routes: Array<RouteConfig> = [
               },
               {
                 path: "create",
-                // component: CreateParticipant,
+                component: CreateParticipant,
                 name: "Create Participant",
                 meta: {
                   breadcrumb: i18n.t("admin.participants.create")
