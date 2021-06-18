@@ -62,5 +62,9 @@ export class WebsocketConnectionServiceImpl
       console.log(WS_TYPES.CASES_UPDATED);
       store.dispatch("CasesModule/alterCases", cases);
     });
+    socket.on(WS_TYPES.SHARES_UPDATED, (shares) => {
+      console.log(WS_TYPES.SHARES_UPDATED);
+      store.dispatch("FileShareModule/alterShares", shares);
+    });
   }
 }
