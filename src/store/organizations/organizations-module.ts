@@ -91,11 +91,8 @@ const organizationsModule: Module<any, any> = {
     selectedOrganization: null,
   },
   mutations: {
-    setOrganizations(state, organizations: Organization[]) {
-      state.organizations = {};
-      Object.values(organizations).forEach(
-        (o) => (state.organizations[o.id] = o)
-      );
+    setOrganizations(state, organizations: { [key: string]: Organization }) {
+      state.organizations = organizations
     },
     setOrganization(state, organization: Organization) {
       state.organizations[organization.id] = organization;
