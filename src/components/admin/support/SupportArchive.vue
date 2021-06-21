@@ -18,6 +18,21 @@
             <template v-slot:[`item.participant`]="{ item }">
               {{ getParticipantName(item.participant) }}
             </template>
+            <template v-slot:[`item.room`]="{ item }">
+              <v-list>
+                <v-list-item
+                  class="px-0 mx-0 font-weight-black"
+                  data-test-id="room-link"
+                  link
+                  :to="{
+                    name: 'Room View Manage',
+                    params: { roomId: item.room },
+                  }"
+                >
+                  {{ getRoomName(item.room) }}
+                </v-list-item>
+              </v-list>
+            </template>
             <template v-slot:[`item.type`]="{ item }">
               <div>
                 <span v-if="item.type === 'duplicateJoin'">
@@ -90,14 +105,17 @@ export default class SupportArchive extends Vue {
   }
 
   getParticipantName(id: string) {
-    const participant: Participant = this.$store.getters[
-      "ParticipantsModule/getById"
-    ](id);
+    const participant: Participant =
+      this.$store.getters["ParticipantsModule/getById"](id);
     if (participant) {
       return participant.name;
     } else {
       return "Unknown";
     }
+  }
+
+  getRoomName(id: string) {
+    return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
   formatDate(iso: string): string {

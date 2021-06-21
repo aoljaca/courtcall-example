@@ -19,6 +19,21 @@
             <template v-slot:[`item.openedAt`]="{ item }">
               {{ formatDate(item.openedAt) }}
             </template>
+            <template v-slot:[`item.room`]="{ item }">
+              <v-list>
+                <v-list-item
+                  class="px-0 mx-0 font-weight-black"
+                  data-test-id="room-link"
+                  link
+                  :to="{
+                    name: 'Room View Manage',
+                    params: { roomId: item.room },
+                  }"
+                >
+                  {{ getRoomName(item.room) }}
+                </v-list-item>
+              </v-list>
+            </template>
             <template v-slot:[`item.participant`]="{ item }">
               {{ getParticipantName(item.participant) }}
             </template>
@@ -144,6 +159,10 @@ export default class SupportQueue extends Vue {
     } else {
       return "Unknown";
     }
+  }
+
+  getRoomName(id: string) {
+    return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
   goToArchive(): void {
