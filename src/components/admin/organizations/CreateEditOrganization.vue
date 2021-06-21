@@ -101,7 +101,13 @@
           depressed
           tile
         >
-          {{ $t(`admin.organizations.organization.buttons.${organization.archived ? 'unarchive' : 'archive'}.title`) }}
+          {{
+            $t(
+              `admin.organizations.organization.buttons.${
+                organization.archived ? "unarchive" : "archive"
+              }.title`
+            )
+          }}
         </v-btn>
       </v-col>
     </v-row>
