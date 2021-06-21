@@ -272,6 +272,10 @@ const routes: Array<RouteConfig> = [
     name: "Not Found",
     component: NotFound,
   },
+  {
+    path: "*",
+    redirect: (to) => "/not-found",
+  },
 ];
 
 const router = new VueRouter({
