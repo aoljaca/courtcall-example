@@ -12,7 +12,7 @@
             :title="$t('admin.organizations.organizationList.new.title')"
             elevation="0"
             fab
-            :to="{ name: 'Create Organization'}"
+            :to="{ name: 'Create Organization' }"
             ><v-icon>mdi-plus</v-icon></v-btn
           >
         </v-col>
@@ -42,7 +42,7 @@
             <template v-slot:[`item.roomIds`]="{ item }">
               {{ item.roomIds.length }}
             </template>
-            <template v-slot:[`item.more`]="{ }">
+            <template v-slot:[`item.more`]="{ item }">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-container fluid>
@@ -62,7 +62,15 @@
                   </v-container>
                 </template>
                 <v-list>
-                  <v-list-item>
+                  <v-list-item
+                    :to="{
+                      name: 'Edit Organization',
+                      params: { organizationId: item.id },
+                    }"
+                  >
+                    {{ $t("admin.organizations.organizationList.editOrg") }}
+                  </v-list-item>
+                  <v-list-item @click="onArchiveOrganization(item)">
                     {{ $t("admin.organizations.organizationList.removeOrg") }}
                   </v-list-item>
                 </v-list>
@@ -101,14 +109,14 @@ export default class Organizations extends Vue {
       value: "roomIds",
       sortable: false,
       filterable: false,
-      align: "center"
+      align: "center",
     },
     {
       text: "More",
       value: "more",
       sortable: false,
       filterable: false,
-      align: "center"
+      align: "center",
     },
   ];
 
@@ -118,6 +126,14 @@ export default class Organizations extends Vue {
 
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
+  }
+
+  onArchiveOrganization(organization: Organization): void {
+    organization.archived = true;
+    this.$store.dispatch(
+      "OrganizationsModule/onUpdateOrganization",
+      organization
+    );
   }
 }
 </script>
