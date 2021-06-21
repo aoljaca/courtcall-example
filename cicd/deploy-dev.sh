@@ -1,5 +1,6 @@
 set -e 
 
+echo "$USER"
 
 echo 'NPM Install'
 npm install
