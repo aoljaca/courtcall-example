@@ -29,6 +29,9 @@ export default {
     },
     archive: {
       title: "Archive Organization"
+    },
+    unarchive: {
+      title: "Unarchive Organization"
     }
   }
 };

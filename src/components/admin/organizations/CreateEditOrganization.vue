@@ -92,16 +92,16 @@
     <v-divider />
     <br />
 
-    <v-row v-if="organizationId && !organization.archived">
+    <v-row v-if="organizationId">
       <v-col class="text-right">
         <v-btn
-          @click="onArchiveOrganization"
+          @click="onToggleArchiveOrganization"
           color="secondary"
           dark
           depressed
           tile
         >
-          {{ $t("admin.organizations.organization.buttons.archive.title") }}
+          {{ $t(`admin.organizations.organization.buttons.${organization.archived ? 'unarchive' : 'archive'}.title`) }}
         </v-btn>
       </v-col>
     </v-row>
@@ -163,8 +163,8 @@ export default class CreateEditOrganization extends Vue {
     }
   }
 
-  onArchiveOrganization(): void {
-    this.organizationEdits.archived = true;
+  onToggleArchiveOrganization(): void {
+    this.organizationEdits.archived = !this.organizationEdits.archived;
     this.onSaveChanges();
   }
 }
