@@ -7,7 +7,6 @@ deploy_dev:
   stage: deploy
   script:
     - echo "Deploying to DEV"
-    - exec bash
     - bash ./cicd/deploy-dev.sh
   tags:
     - v3

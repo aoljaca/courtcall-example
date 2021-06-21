@@ -1,5 +1,5 @@
 set -e 
-
+source ~/.bashrc
 
 echo 'NPM Install'
 npm install
