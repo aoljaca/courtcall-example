@@ -12,6 +12,7 @@ import RoomViewManage from "../components/admin/room/view/RoomViewManage.vue";
 import RoomAddEdit from "../components/admin/room/edit/RoomAddEdit.vue";
 import Organizations from "@/components/admin/organizations/Organizations.vue";
 import OrganizationComp from "../components/admin/organizations/Organization.vue";
+import CreateEditOrganization from "../components/admin/organizations/CreateEditOrganization.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
@@ -104,10 +105,9 @@ const routes: Array<RouteConfig> = [
             return c("router-view");
           },
         },
-        redirect: (to) => "/admin/rooms/:roomId/view",
         children: [
           {
-            path: "view",
+            path: "",
             name: "Room View Manage",
             component: RoomViewManage,
             meta: {
@@ -216,7 +216,6 @@ const routes: Array<RouteConfig> = [
             path: "view/:organizationId",
             component: OrganizationComp,
             name: "Organization",
-            props: true,
             meta: {
               breadcrumbFunc: (route: any) =>
                 `${
@@ -224,6 +223,27 @@ const routes: Array<RouteConfig> = [
                     route.params.organizationId
                   ).name
                 }`,
+            },
+          },
+          {
+            path: "edit/:organizationId",
+            component: CreateEditOrganization,
+            name: "Edit Organization",
+            meta: {
+              breadcrumbFunc: (route: any) =>
+                `${
+                  store.getters["OrganizationsModule/getById"](
+                    route.params.organizationId
+                  ).name
+                }`,
+            },
+          },
+          {
+            path: "create",
+            component: CreateEditOrganization,
+            name: "Create Organization",
+            meta: {
+              breadcrumb: i18n.t("admin.organizations.organization.newOrganization")
             },
           },
         ],
