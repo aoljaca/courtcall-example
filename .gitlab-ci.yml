@@ -1,0 +1,14 @@
+# image: courtcalldev/aws-docker
+
+stages:
+  - deploy
+
+deploy_dev:
+  stage: deploy
+  script:
+    - echo "Deploying to DEV"
+    - bash ./cicd/deploy-dev.sh
+  tags:
+    - v3
+  only:
+    - master
