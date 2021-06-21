@@ -20,6 +20,7 @@ import ViewParticipant from "@/components/admin/participants/view/ViewParticipan
 import CreateParticipant from "@/components/admin/participants/create/CreateParticipant.vue";
 import CaseView from "@/components/admin/case/view/CaseView.vue";
 import MyAccount from "@/components/admin/my-account/MyAccount.vue";
+import NotFound from "@/components/shared/NotFound.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
 Vue.use(VueRouter);
@@ -284,6 +285,15 @@ const routes: Array<RouteConfig> = [
         ],
       },
     ],
+  },
+  {
+    path: "/not-found",
+    name: "Not Found",
+    component: NotFound,
+  },
+  {
+    path: "*",
+    redirect: (to) => "/not-found",
   },
 ];
 
