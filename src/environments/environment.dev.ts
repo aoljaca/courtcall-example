@@ -1,4 +1,4 @@
 export const environment = {
   name: "Development",
-  baseURL: "api.dev.ccv3dev.com",
+  baseURL: "https://api.dev.ccv3dev.com",
 };
