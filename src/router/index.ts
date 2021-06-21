@@ -19,6 +19,7 @@ import ViewParticipant from "@/components/admin/participants/view/ViewParticipan
 import CreateParticipant from "@/components/admin/participants/create/CreateParticipant.vue";
 import CaseView from "@/components/admin/case/view/CaseView.vue";
 import MyAccount from "@/components/admin/my-account/MyAccount.vue";
+import NotFound from "@/components/shared/NotFound.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
 
@@ -158,15 +159,20 @@ const routes: Array<RouteConfig> = [
               },
             },
             meta: {
-              hideBreadcrumb: true
+              hideBreadcrumb: true,
             },
             children: [
               {
                 path: "view/:participantId",
                 component: ViewParticipant,
                 name: "Participant",
-                meta: { 
-                  breadcrumbFunc: (route: any) => `${store.getters["ParticipantsModule/getById"](route.params.participantId)?.name}`
+                meta: {
+                  breadcrumbFunc: (route: any) =>
+                    `${
+                      store.getters["ParticipantsModule/getById"](
+                        route.params.participantId
+                      )?.name
+                    }`,
                 },
               },
               {
@@ -174,8 +180,8 @@ const routes: Array<RouteConfig> = [
                 component: CreateParticipant,
                 name: "Create Participant",
                 meta: {
-                  breadcrumb: i18n.t("admin.participants.create")
-                }
+                  breadcrumb: i18n.t("admin.participants.create"),
+                },
               },
             ],
           },
@@ -260,6 +266,11 @@ const routes: Array<RouteConfig> = [
         ],
       },
     ],
+  },
+  {
+    path: "/not-found",
+    name: "Not Found",
+    component: NotFound,
   },
 ];
 
