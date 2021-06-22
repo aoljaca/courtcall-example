@@ -2,7 +2,7 @@ set -e
 source ~/.bashrc
 
 echo 'NPM Install'
-npm install
+npm ci
 
 echo 'Build'
 npm run build:dev
