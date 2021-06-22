@@ -1,40 +1,169 @@
 <template>
-  <v-container fluid>
-    <v-row id="case-view">
-      <v-col>
-        <v-row class="mb-4">
-          <v-col>
-            <h2>
-              {{ caseName }}
-            </h2>
+  <v-container class="mt-4">
+    <v-form>
+      <v-row class="row-to-column my-4" id="case-edit-fields">
+        <v-row dense id="field-and-buttons">
+          <v-col 
+            cols="3"
+            id="form-name"
+            class="d-flex"
+          >
+            <label>Case Name</label>
+            <v-text-field label="Enter case name" dense />
           </v-col>
-          <v-col class="text-right">
+          <v-col class="d-flex justify-end" id="cancel-save-btns">
             <v-btn
-              data-test-id="cases-edit-button"
-              :title="$t('admin.cases.edit')"
+            class="mx-4"
+            :title="$t('admin.cases.add')"
+            color="grey lighten-2 rounded-0 white--text"
+            depressed
+            data-test-id="case-cancel-button"
+            >
+              CANCEL
+            </v-btn>
+            <v-btn
+              :title="$t('admin.cases.add')"
               color="grey darken-4 rounded-0 white--text"
               depressed
+              data-test-id="case-save-changes-button"
             >
-              {{ $t("admin.cases.edit") }}
+              SAVE CHANGES
             </v-btn>
           </v-col>
         </v-row>
-      </v-col>
-    </v-row>
-    <v-divider class="py-4"> </v-divider>
-    <v-row id="scheduled-participants-table">
-      <v-col>
-        <scheduled-participants-table> </scheduled-participants-table>
-      </v-col>
-    </v-row>
+        <v-row cols="3" dense id="form-number-field">
+          <v-col 
+            id="form-name"
+            class="d-flex"
+          >
+            <label>Case Number</label>
+            <v-text-field label="Enter case number" dense />
+          </v-col>
+        </v-row>
+        <v-row cols="3" dense id="form-room-field">
+          <v-col 
+            id="form-name"
+            class="d-flex"
+          >
+            <label>Room</label>
+            <v-text-field label="Start typing room name to search and select" dense />
+          </v-col>
+        </v-row>
+      </v-row>
+      <v-divider />
+      <v-row class="my-4">
+        <v-col>
+          <h2>{{ $t("admin.cases.participants") }}</h2>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <div>
+            Name
+          </div>
+        </v-col>
+      </v-row>
+      <v-row id="participants-list">
+        <v-col>
+          <v-divider />
+          <v-row class="my-2">
+            <v-col id="participant-name">
+              <div>
+                Olivia Coleman
+              </div>
+            </v-col>
+            <v-col>
+              <v-menu id="recycled-menu" offset-y>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-row>
+                      <v-col>
+                        <v-btn
+                          :title="$t('admin.cases.add')"
+                          data-test-id="remove-participant"
+                          v-bind="attrs"
+                          v-on="on"
+                          color="grey darken-4 rounded-0 white--text"
+                          depressed
+                          elevation="0"
+                        >
+                          REMOVE
+                        </v-btn>
+                      </v-col>
+                    </v-row>
+                </template>
+                <v-list>
+                  <v-list-item data-test-id="remove-from-case">
+                    Remove from Case
+                  </v-list-item>
+                  <v-list-item data-test-id="remove-from-room">
+                    Remove from Room (Archive)
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+            </v-col>
+          </v-row>
+          <v-divider />
+        </v-col>
+      </v-row>
+      <v-row id="participant-add-controls">
+        <v-col>
+          <v-row>
+            <v-col>
+              <v-select 
+                label="Select Room From Participants"
+                :items="partcipantNames"
+              >
+              </v-select>
+            </v-col>
+            <v-col>
+              <v-btn
+                :title="$t('admin.cases.add')"
+                data-test-id="add-to-case"
+                color="grey darken-4 rounded-0 white--text"
+                depressed
+                elevation="0"
+              >
+                ADD TO CASE
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-btn
+                :title="$t('admin.cases.add')"
+                data-test-id="add-participant"
+                color="grey darken-4 rounded-0 white--text"
+                depressed
+                elevation="0"
+              >
+                ADD NEW SCHEDULED PARTICIPANT
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="d-flex justify-end">
+          <v-btn
+            :title="$t('admin.cases.add')"
+            data-test-id="archive-case"
+            color="grey darken-4 rounded-0 white--text"
+            depressed
+            elevation="0"
+          >
+            ARCHIVE
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-form>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ScheduledParticipantsTable from "@/components/admin/case/view/ScheduledParticipantsTable.vue";
 import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
+import ScheduledParticipantsTable from "@/components/admin/case/view/ScheduledParticipantsTable.vue";
 @Component({
   components: {
     ScheduledParticipantsTable,
@@ -42,9 +171,18 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 })
 export default class CaseEdit extends Vue {
 
+  //TODO REFACTOR make it so form fiels is the left column and form buttons is the right column rather 
+  //than the first row contain the form buttons, at that point we can space labels to text fields properly
+
+  //Fix breadcrumb stuff (on the airplane)
+
   caseName: string = this.getCaseById(this.$route.params.caseId)?.name;
 
   roomName: string = this.getRoomNameById(this.$route.params.roomId);
+
+  participantsData = this.$store.getters["ParticipantsModule/getAsList"];
+
+  partcipantNames = this.participantsData.map((p: { name: any; }) => p.name);
 
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
@@ -57,7 +195,8 @@ export default class CaseEdit extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.su-header {
-  border-bottom: 1px solid gray;
+.row-to-column {
+  display: flex;
+  flex-direction: column;
 }
 </style>
