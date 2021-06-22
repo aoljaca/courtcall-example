@@ -1,5 +1,5 @@
 import dashboard from "./admin/dashboard";
-import systemUser from "./admin/system-user";
+import systemUsers from "./admin/system-user/system-users";
 import roomSettings from "./admin/room/room-settings";
 import roomDetails from "./admin/room/room-details";
 import roomTemplate from "./admin/room/room-template";
@@ -21,7 +21,7 @@ export default {
   roomCases,
   roomParticipants,
   roomTemplate,
-  systemUser,
+  systemUsers,
   support,
   organizations,
   navigation,
