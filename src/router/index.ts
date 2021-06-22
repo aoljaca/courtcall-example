@@ -21,6 +21,7 @@ import CreateParticipant from "@/components/admin/participants/create/CreatePart
 import CaseView from "@/components/admin/case/view/CaseView.vue";
 import MyAccount from "@/components/admin/my-account/MyAccount.vue";
 import NotFound from "@/components/shared/NotFound.vue";
+import RoomActivity from "@/components/admin/room/activity/RoomActivity.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
 Vue.use(VueRouter);
@@ -121,6 +122,14 @@ const routes: Array<RouteConfig> = [
             component: RoomAddEdit,
             meta: {
               hideBreadcrumb: true,
+            },
+          },
+          {
+            path: "activity",
+            name: "Room Activity",
+            component: RoomActivity,
+            meta: {
+              breadcrumb: i18n.t("admin.roomNav.activity"),
             },
           },
           {
@@ -244,7 +253,9 @@ const routes: Array<RouteConfig> = [
             component: CreateEditOrganization,
             name: "Create Organization",
             meta: {
-              breadcrumb: i18n.t("admin.organizations.organization.newOrganization")
+              breadcrumb: i18n.t(
+                "admin.organizations.organization.newOrganization"
+              ),
             },
           },
         ],
