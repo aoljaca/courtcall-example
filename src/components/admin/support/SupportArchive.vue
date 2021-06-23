@@ -66,8 +66,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { inject } from "inversify-props";
+import { INJECTION_TYPES } from "@/inversify/injection-types";
+import { DateFormatService } from "@/services/date-format";
 @Component({})
 export default class SupportArchive extends Vue {
+  @inject(INJECTION_TYPES.DATE_FORMAT)
+  dateFormatService?: DateFormatService;
   readonly HEADERS = [
     {
       text: "Date",
@@ -118,11 +123,9 @@ export default class SupportArchive extends Vue {
     return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
-  formatDate(iso: string): string {
+  formatDate(iso: string): string | undefined {
     if (iso) {
-      return DateTime.fromISO(iso)
-        .setZone("local")
-        .toLocaleString(DateTime.DATETIME_FULL);
+      return this.dateFormatService?.formatFullDateTime(iso);
     } else {
       return "unknown";
     }
