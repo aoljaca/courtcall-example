@@ -23,7 +23,34 @@
             :items="roomSessions"
             :items-per-page="10"
             :footer-props="footerOptions"
-          ></v-data-table>
+          >
+            <template v-slot:[`item.startTime`]="{ item }">
+              {{ formatDate(item.startTime) }}
+            </template>
+            <template v-slot:[`item.endTime`]="{ item }">
+              {{ formatDate(item.endTime) }}
+            </template>
+            <template v-slot:[`item.isRecorded`]="{ item }">
+              <div v-if="item.isRecorded">
+                <v-btn color="primary" depressed>{{
+                  $t("admin.roomActivity.downloadRecording")
+                }}</v-btn>
+              </div>
+              <div v-else>
+                <i>{{ $t("admin.roomActivity.noRecording") }}</i>
+              </div>
+            </template>
+            <template v-slot:[`item.isTranscribed`]="{ item }">
+              <div v-if="item.isTranscribed">
+                <v-btn color="primary" depressed>
+                  {{ $t("admin.roomActivity.downloadTranscript") }}
+                </v-btn>
+              </div>
+              <div v-else>
+                <i>{{ $t("admin.roomActivity.noTranscript") }}</i>
+              </div>
+            </template>
+          </v-data-table>
         </v-col>
       </v-row>
       <v-row>
@@ -34,17 +61,22 @@
             :items="roomActivityEvents"
             :items-per-page="20"
             :footer-props="footerOptions"
-          ></v-data-table>
+          >
+            <template v-slot:[`item.timeStamp`]="{ item }">
+              {{ formatDate(item.timeStamp) }}
+            </template>
+            <template v-slot:[`item.description`]="{ item }">
+              {{ getDescription(item) }}
+            </template>
+          </v-data-table>
         </v-col>
       </v-row>
     </v-container>
   </div>
 </template>
 <script lang="ts">
-import { Organization } from "@/model/admin/organization/organization";
 import { Room } from "@/model/admin/room/room";
 import { Component, Vue } from "vue-property-decorator";
-import { DateTime } from "luxon";
 import { inject } from "inversify-props";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import {
@@ -52,6 +84,13 @@ import {
   DataTableOptionsService,
 } from "@/services/data-table-options";
 import { DateFormatService } from "@/services/date-format";
+import {
+  ActivityLogType,
+  RoomActivityLog,
+  RoomSession,
+} from "@/model/admin/room/room-activity";
+import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 @Component({})
 export default class RoomActivity extends Vue {
   @inject(INJECTION_TYPES.DATA_TABLE)
@@ -88,11 +127,12 @@ export default class RoomActivity extends Vue {
   readonly LOG_HEADERS = [
     {
       text: this.$t("admin.roomActivity.eventTime"),
-      value: "eventTime",
+      value: "timeStamp",
     },
     {
       text: this.$t("admin.roomActivity.description"),
-      value: "",
+      value: "description",
+      width: "80%",
     },
   ];
 
@@ -108,12 +148,16 @@ export default class RoomActivity extends Vue {
     return this.selectedRoom.roomDetails.organization;
   }
 
-  get roomSessions(): any[] {
-    return [];
+  get roomSessions(): RoomSession[] {
+    return this.$store.getters["RoomSessionModule/getByRoomId"](
+      this.$route.params.roomId
+    );
   }
 
   get roomActivityEvents(): any[] {
-    return [];
+    return this.$store.getters["RoomLogModule/getByRoomId"](
+      this.$route.params.roomId
+    );
   }
 
   get footerOptions(): DataTableFooterOptions | undefined {
@@ -126,6 +170,57 @@ export default class RoomActivity extends Vue {
     } else {
       return "N/A";
     }
+  }
+
+  getDescription(log: RoomActivityLog): any {
+    const participant: Participant = this.$store.getters[
+      "ParticipantsModule/getById"
+    ](log.participant);
+    const subconference: SubConference = this.$store.getters[
+      "SubconferenceModule/getById"
+    ](log.subconference);
+    const userMode =
+      log.userMode === "host"
+        ? this.$t("admin.roomActivity.host")
+        : this.$t("admin.roomActivity.participant");
+    let translationString = "admin.roomActivity";
+    switch (log.type) {
+      case ActivityLogType.UserJoin:
+        translationString = `${translationString}.userJoin`;
+        break;
+      case ActivityLogType.UserLeave:
+        translationString = `${translationString}.userLeave`;
+        break;
+      case ActivityLogType.UserMoved:
+        translationString = `${translationString}.userMoved`;
+        break;
+      case ActivityLogType.RecordingStart:
+        translationString = `${translationString}.recordingStart`;
+        break;
+      case ActivityLogType.RecordingStop:
+        translationString = `${translationString}.recordingStop`;
+        break;
+      case ActivityLogType.StreamingStart:
+        translationString = `${translationString}.streamingStart`;
+        break;
+      case ActivityLogType.StreamingStop:
+        translationString = `${translationString}.streamingStop`;
+        break;
+      case ActivityLogType.UserSupportRequest:
+        translationString = `${translationString}.userSupportRequest`;
+        break;
+      case ActivityLogType.UserHandRaised:
+        translationString = `${translationString}.userHandRaised`;
+        break;
+      default:
+        translationString = `${translationString}.unknownLogActivity`;
+    }
+
+    return this.$t(translationString, {
+      type: userMode,
+      // participant: participant.name,
+      subconference: subconference?.displayName,
+    });
   }
 }
 </script>
