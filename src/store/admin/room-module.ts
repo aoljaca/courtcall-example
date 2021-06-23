@@ -37,7 +37,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Frank's Room",
-      organization: "LA County Superior Court - 12345",
+      organization: "o1",
       status: "Available",
       phone: "555-555-5555",
       hostAccessCode: 5555,
@@ -79,7 +79,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
-      organization: "Pierce County District Court - 59492",
+      organization: "o1",
       status: "Available",
       phone: "000-000-0000",
       hostAccessCode: 5656,
@@ -121,7 +121,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mikes's Room",
-      organization: "Pierce County Superior Court - 59492",
+      organization: "o1",
       status: "Available",
       phone: "253-800-2200",
       hostAccessCode: 5656,
@@ -163,7 +163,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
-      organization: "King County Municipal Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "210-444-0550",
       hostAccessCode: 5656,
@@ -205,7 +205,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Matt's Room",
-      organization: "King County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "502-122-4432",
       hostAccessCode: 5656,
@@ -247,7 +247,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mikes's Room",
-      organization: "Puyallup District Court - 59492",
+      organization: "o5",
       status: "Available",
       phone: "620-223-0012",
       hostAccessCode: 5656,
@@ -289,7 +289,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Jason's Room",
-      organization: "Tacoma Federal Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "101-321-1212",
       hostAccessCode: 5656,
@@ -331,7 +331,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Daves's Room",
-      organization: "Pierce County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "321-432-4343",
       hostAccessCode: 3123,
@@ -373,7 +373,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
-      organization: "Pierce County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "000-000-0000",
       hostAccessCode: 5656,
@@ -415,7 +415,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Lori's Room",
-      organization: "Dartmouth County Municipal Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "404-303-6565",
       hostAccessCode: 1202,
@@ -457,7 +457,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Amanda's Room",
-      organization: "LA County Municipal Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "206-420-5301",
       hostAccessCode: 4939,
@@ -499,7 +499,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mark's Room",
-      organization: "LA County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "909-444-1304",
       hostAccessCode: 3674,
@@ -541,7 +541,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Keith's Room",
-      organization: "Reno County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "202-444-6363",
       hostAccessCode: 7249,
@@ -583,7 +583,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Nate's Room",
-      organization: "Reno County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "435-253-2471",
       hostAccessCode: 5379,
@@ -625,7 +625,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Bob's Room",
-      organization: "LA County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "242-105-3575",
       hostAccessCode: 3579,
@@ -667,7 +667,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Michelle's Room",
-      organization: "Tarkov County Criminal Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "432-101-4432",
       hostAccessCode: 7359,
@@ -709,7 +709,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Tate's Room",
-      organization: "King County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "431-202-2212",
       hostAccessCode: 7240,
@@ -751,7 +751,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Spock's Room",
-      organization: "Federation District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "432-414-5545",
       hostAccessCode: 7435,
@@ -793,7 +793,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Jean's Room",
-      organization: "Darth County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "205-443-2347",
       hostAccessCode: 3759,
@@ -835,7 +835,7 @@ const rooms: {
     roomDetails: {
       details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Joanna's Room",
-      organization: "Hoquiam County District Court - 59492",
+      organization: "o2",
       status: "Available",
       phone: "234-777-2345",
       hostAccessCode: 4523,

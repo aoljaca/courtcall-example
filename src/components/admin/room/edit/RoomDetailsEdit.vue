@@ -40,15 +40,14 @@
         <div class="pr-4 details-label-text font-weight-bold">
           {{ $t("admin.roomDetails.organizationAlternate") }}
         </div>
-        <v-text-field
+        <v-autocomplete
           :rules="rules"
-          counter
-          maxlength="25"
-          clearable
+          v-model="value"
+          :items="orgNames"
           dense
-          :placeholder="roomDetails.organization"
-        >
-        </v-text-field>
+          clearable
+          :label="$t('admin.roomDetails.organizationAlternate')"
+        ></v-autocomplete>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
         <div class="pr-4 details-label-text font-weight-bold">
@@ -120,6 +119,10 @@ export default class RoomDetailsEdit extends Vue {
 
   templateNames = this.$store.getters[
     "RoomTemplateModule/getTemplateNamesList"
+  ];
+
+  orgNames = this.$store.getters[
+    "OrganizationsModule/getOrgNamesList"
   ];
 
   get roomDetails() {
