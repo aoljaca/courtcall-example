@@ -42,7 +42,7 @@
         </div>
         <v-autocomplete
           :rules="rules"
-          v-model="value"
+          v-model="orgValue"
           :items="orgNames"
           dense
           clearable
@@ -112,17 +112,20 @@ import "reflect-metadata";
 @Component
 export default class RoomDetailsEdit extends Vue {
   value = "null";
+
+  orgValue = "null"
+
   rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
   items = ["Draft", "Available"];
 
-  settingsViewPath = "/admin/rooms/" + this.$route.params.roomId + "/view";
+  settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
 
   templateNames = this.$store.getters[
     "RoomTemplateModule/getTemplateNamesList"
   ];
 
   orgNames = this.$store.getters[
-    "OrganizationsModule/getOrgNamesList"
+    "OrganizationsModule/getAsList"
   ];
 
   get roomDetails() {
