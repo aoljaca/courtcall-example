@@ -3,10 +3,10 @@
     <v-container fluid>
       <v-row>
         <v-col cols="6">
-          <h2>{{ $t("admin.systemUser.title") }}</h2>
+          <h2>{{ $t("admin.systemUsers.list.pageTitle") }}</h2>
         </v-col>
         <v-col cols="6" class="d-flex justify-end">
-          <v-btn :title="$t('admin.systemUser.new.title')" elevation="0" fab>
+          <v-btn :title="$t('admin.systemUsers.new.title')" elevation="0" fab>
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </v-col>
@@ -14,25 +14,28 @@
       <v-row>
         <v-col>
           <v-data-table :headers="HEADERS" :items="systemUsers">
-            <template v-slot:[`item.roles`]="{ item }">
-              <div
-                class="py-1 px-1 d-inline-block"
-                v-for="id in item.roles"
-                :key="id"
+            <template v-slot:[`item.name`]="{ item }">
+              <router-link
+                :to="{ name: 'System User', params: { systemUserId: item.id } }"
               >
-                <v-chip>{{ roleName(id) }}</v-chip>
-              </div>
+                {{ item.name }}
+              </router-link>
             </template>
             <template v-slot:[`item.organizations`]="{ item }">
-              <div
-                class="py-1 px-1 d-inline-block"
-                v-for="id in item.organizations"
-                :key="id"
-              >
-                <v-chip>{{ organizationName(id) }}</v-chip>
-              </div>
+              <template v-if="item.organizationIds.length">
+                <div
+                  class="py-1 px-1 d-inline-block"
+                  v-for="id in item.organizationIds"
+                  :key="id"
+                >
+                  <v-chip>{{ organizationName(id) }}</v-chip>
+                </div>
+              </template>
+              <span v-else>
+                {{ $t("admin.systemUsers.list.none") }}
+              </span>
             </template>
-            <template v-slot:[`item.more`]="">
+            <template v-slot:[`item.more`]="{ item }">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-container fluid>
@@ -52,8 +55,14 @@
                   </v-container>
                 </template>
                 <v-list>
-                  <v-list-item>{{ $t("general.view") }}</v-list-item>
-                  <v-list-item>{{ $t("general.edit") }}</v-list-item>
+                  <v-list-item
+                    :to="{
+                      name: 'System User',
+                      params: { systemUserId: item.id },
+                      query: { startEditing: true },
+                    }"
+                    >{{ $t("general.edit") }}</v-list-item
+                  >
                   <v-list-item>{{ $t("general.archive") }}</v-list-item>
                 </v-list>
               </v-menu>
@@ -65,47 +74,47 @@
   </div>
 </template>
 <script lang="ts">
-import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Component, Vue } from "vue-property-decorator";
+import { DataTableHeader } from "vuetify";
+import { SystemUser } from "../../../model/admin/system-users/system-user";
 @Component({})
 export default class SystemUsers extends Vue {
-  readonly HEADERS = [
+  readonly HEADERS: DataTableHeader[] = [
     {
-      text: "Name",
+      text: `${this.$t("admin.systemUsers.list.name")}`,
       value: "name",
+      cellClass: "font-weight-bold",
     },
     {
-      text: "Email Address",
+      text: `${this.$t("admin.systemUsers.list.email")}`,
       value: "email",
+      cellClass: "font-weight-bold",
     },
     {
-      text: "Role",
-      value: "roles",
+      text: `${this.$t("admin.systemUsers.list.role")}`,
+      value: "role.name",
       sortable: false,
       filterable: false,
       width: "20%",
     },
     {
-      text: "Organization",
+      text: `${this.$t("admin.systemUsers.list.organizations")}`,
       value: "organizations",
       sortable: false,
       filterable: false,
       width: `20%`,
     },
     {
-      text: "More",
+      text: "",
       value: "more",
       sortable: false,
       filterable: false,
+      align: "end",
     },
   ];
 
-  get systemUsers(): Participant[] {
-    return this.$store.getters["ParticipantsModule/getSystemUsersAsList"];
-  }
-
-  roleName(id: string): string {
-    return this.$store.getters["PermissionsModule/getRoleById"](id)?.name;
+  get systemUsers(): SystemUser[] {
+    return this.$store.getters["SystemUsersModule/getAsList"];
   }
 
   organizationName(id: string): string {
@@ -113,3 +122,9 @@ export default class SystemUsers extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+a {
+  color: var(--v-secondary-base) !important;
+}
+</style>

@@ -120,11 +120,11 @@ const organizationsModule: Module<any, any> = {
     getById: (state) => (id: string) => {
       return state.organizations[id];
     },
+    getNameById: (state) => (id: string) => {
+      return state.organizations[id].name;
+    },
     getAsList: (state) => Object.values(state.organizations),
-    getActiveAsList: (state) =>
-      (Object.values(state.organizations) as Organization[]).filter(
-        (o) => !o.archived
-      ),
+    getActiveAsList: (state) => Object.values(state.organizations as Organization[]).filter(o => !o.archived),
   },
 };
 
