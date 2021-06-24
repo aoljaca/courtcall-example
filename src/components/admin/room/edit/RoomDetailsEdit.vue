@@ -46,6 +46,7 @@
           :items="organizations"
           dense
           return-object
+          @change="setOrganization()"
         ></v-autocomplete>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
@@ -75,7 +76,6 @@
               :items="templateNames"
               dense
               clearable
-              @change="setOrganization()"
               :label="$t('admin.roomDetails.templateName')"
             ></v-autocomplete>
           </v-col>
