@@ -1,15 +1,32 @@
 <template>
   <v-container class="mt-4">
     <v-form>
-      <v-row class="row-to-column my-4" id="case-edit-fields">
+      <v-row class="my-4" id="case-edit-fields">
         <v-row dense id="field-and-buttons">
           <v-col 
-            cols="3"
-            id="form-name"
-            class="d-flex"
+            cols="1"
+            class="d-flex flex-column"
           >
-            <label>Case Name</label>
-            <v-text-field label="Enter case name" dense />
+            <v-row>
+              <label>Case Name</label>
+            </v-row>
+            <v-row>
+              <label>Case Number</label>
+            </v-row>
+            <v-row>
+              <label>Room</label>
+            </v-row>
+          </v-col>
+          <v-col cols="3">
+            <v-row>
+              <v-text-field label="Enter case name" dense />
+            </v-row>
+            <v-row>
+              <v-text-field label="Enter case number" dense />
+            </v-row>
+            <v-row>
+              <v-text-field label="Enter case number" dense />
+            </v-row>
           </v-col>
           <v-col class="d-flex justify-end" id="cancel-save-btns">
             <v-btn
@@ -29,24 +46,6 @@
             >
               SAVE CHANGES
             </v-btn>
-          </v-col>
-        </v-row>
-        <v-row cols="3" dense id="form-number-field">
-          <v-col 
-            id="form-name"
-            class="d-flex"
-          >
-            <label>Case Number</label>
-            <v-text-field label="Enter case number" dense />
-          </v-col>
-        </v-row>
-        <v-row cols="3" dense id="form-room-field">
-          <v-col 
-            id="form-name"
-            class="d-flex"
-          >
-            <label>Room</label>
-            <v-text-field label="Start typing room name to search and select" dense />
           </v-col>
         </v-row>
       </v-row>
@@ -195,8 +194,4 @@ export default class CaseEdit extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.row-to-column {
-  display: flex;
-  flex-direction: column;
-}
 </style>
