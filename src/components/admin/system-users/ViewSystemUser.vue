@@ -84,7 +84,7 @@
     <br />
 
     <!-- Access Details -->
-    <v-row>
+    <v-row class="mb-10">
       <v-col cols="5">
         <system-user-access-details
           :systemUser="systemUser"
@@ -93,9 +93,7 @@
         />
       </v-col>
     </v-row>
-    <br />
-    <br />
-    <br />
+
     <v-row>
       <v-col>
         <system-user-room-entry-permissions
