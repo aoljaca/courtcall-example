@@ -393,6 +393,9 @@ const participantsModule: Module<any, any> = {
     getById: (state) => (id: string) => {
       return state.participants[id];
     },
+    getNameById: (state) => (id: string) => {
+      return state.participants[id].name;
+    },
     getAsList: (state) => Object.values(state.participants),
     getSystemUsersAsList: (state) => {
       const participants = Object.values(state.participants) as Participant[];
