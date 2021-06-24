@@ -174,12 +174,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
-import ScheduledParticipantsTable from "@/components/admin/case/view/ScheduledParticipantsTable.vue";
-@Component({
-  components: {
-    ScheduledParticipantsTable,
-  },
-})
+@Component
 export default class CaseEdit extends Vue {
 
   //TODO REFACTOR make it so form fiels is the left column and form buttons is the right column rather 
