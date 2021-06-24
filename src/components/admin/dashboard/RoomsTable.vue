@@ -6,10 +6,11 @@
           {{ $t("admin.dashboard.rooms") }}
         </v-col>
         <v-col cols="2">
-          <v-select 
+          <v-select
             :items="selectItems"
             :label="$t('admin.dashboard.filter')"
-            data-test-id="rooms-table-select">
+            data-test-id="rooms-table-select"
+          >
           </v-select>
         </v-col>
         <v-col class="d-flex justify-end" cols="9">
@@ -20,29 +21,22 @@
             fab
             :title="$t('admin.dashboard.add')"
           >
-            <v-icon
-              color="white"
-              x-large
-            >
-              mdi-plus
-            </v-icon>
+            <v-icon color="white" x-large> mdi-plus </v-icon>
           </v-btn>
         </v-col>
       </v-row>
       <v-row>
         <v-col>
-          <v-btn 
-            :title="$t('admin.dashboard.refresh')" 
-            color="grey darken-4 rounded-0 white--text" 
+          <v-btn
+            :title="$t('admin.dashboard.refresh')"
+            color="grey darken-4 rounded-0 white--text"
             depressed
             data-test-id="refresh-list-button"
           >
             <span>
               {{ $t("admin.dashboard.refresh") }}
             </span>
-            <v-icon>
-              mdi-refresh
-            </v-icon>
+            <v-icon> mdi-refresh </v-icon>
           </v-btn>
         </v-col>
       </v-row>
@@ -59,10 +53,7 @@
             </template>
             <template v-slot:[`item.support`]="{ item }">
               <v-chip class="pl-0">
-                <v-chip 
-                  color="grey darken-1"
-                  class="mr-2"
-                >
+                <v-chip color="grey darken-1" class="mr-2">
                   {{ getActiveIssues(item.uuid).length }}
                 </v-chip>
                 <span>
@@ -92,8 +83,8 @@
                 </v-col>
                 <v-col>
                   <div
-                  v-for="name in getSystemUserNames(item)"
-                  :key="`room-${item.uuid}-system-user-${name}`"
+                    v-for="name in getSystemUserNames(item)"
+                    :key="`room-${item.uuid}-system-user-${name}`"
                   >
                     <v-chip outlined>
                       {{ name }}
@@ -109,12 +100,14 @@
               <v-icon v-if="item.roomSettings.streaming"> mdi-wifi </v-icon>
             </template>
             <template v-slot:[`item.recording`]="{ item }">
-              <v-icon v-if="item.roomSettings.recording" color="grey"> mdi-circle </v-icon>
+              <v-icon v-if="item.roomSettings.recording" color="grey">
+                mdi-circle
+              </v-icon>
             </template>
             <template v-slot:[`item.details`]="{ item }">
               {{ item.roomDetails.details }}
             </template>
-            <template v-slot:[`item.more`]="">
+            <template v-slot:[`item.more`]="{ item }">
               <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-container fluid>
@@ -135,19 +128,61 @@
                 </template>
                 <v-list>
                   <v-list-item data-test-id="join-room">
-                    {{ $t("admin.dashboard.join")}}
+                    {{ $t("admin.dashboard.join") }}
                   </v-list-item>
-                  <v-list-item data-test-id="room-details">
-                    {{ $t("admin.dashboard.detailsHeader")}}
+                  <v-list-item
+                    data-test-id="room-details"
+                    link
+                    :to="{
+                      name: 'Room View Manage',
+                      params: {
+                        roomId: item.uuid,
+                      },
+                    }"
+                  >
+                    {{ $t("admin.dashboard.detailsHeader") }}
                   </v-list-item>
-                  <v-list-item data-test-id="room-participants">
-                    {{ $t("admin.dashboard.participantsHeader")}}
+                  <v-list-item
+                    data-test-id="room-participants"
+                    link
+                    :to="{
+                      name: 'Room View Manage',
+                      params: {
+                        roomId: item.uuid,
+                      },
+                      query: {
+                        navTo: 'participantsTable',
+                      },
+                    }"
+                  >
+                    {{ $t("admin.dashboard.participantsHeader") }}
                   </v-list-item>
-                  <v-list-item data-test-id="room-cases">
-                    {{ $t("admin.dashboard.cases")}}
+                  <v-list-item
+                    data-test-id="room-cases"
+                    link
+                    :to="{
+                      name: 'Room View Manage',
+                      params: {
+                        roomId: item.uuid,
+                      },
+                      query: {
+                        navTo: 'casesTable',
+                      },
+                    }"
+                  >
+                    {{ $t("admin.dashboard.cases") }}
                   </v-list-item>
-                  <v-list-item data-test-id="room-activity">
-                    {{ $t("admin.dashboard.activity")}}
+                  <v-list-item
+                    data-test-id="room-activity"
+                    link
+                    :to="{
+                      name: 'Room Activity',
+                      params: {
+                        roomId: item.uuid,
+                      },
+                    }"
+                  >
+                    {{ $t("admin.dashboard.activity") }}
                   </v-list-item>
                 </v-list>
               </v-menu>
@@ -163,6 +198,8 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import SystemUsers from "../system-users/SystemUsers.vue";
+import { SupportItem } from "@/model/admin/support/support-item";
 @Component
 export default class RoomsTable extends Vue {
   readonly HEADERS = [
@@ -213,20 +250,22 @@ export default class RoomsTable extends Vue {
   roomsData = this.$store.getters["RoomModule/getAsList"];
 
   getParticipantsByRoomId(roomId: string): Participant[] {
-    return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](roomId);
+    return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](
+      roomId
+    );
   }
 
-  getSystemUsers(roomId: string) {
+  getSystemUsers(roomId: string): any[] {
     const filteredParticipants = this.getParticipantsByRoomId(roomId);
     return filteredParticipants.filter((p) => p.systemUser === true);
   }
 
-  getSystemUserNames(item: any) {
+  getSystemUserNames(item: any): string[] {
     return this.getSystemUsers(item.uuid).map((su) => su.name);
   }
 
-  getActiveIssues(roomId: string) {
-    return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId)
+  getActiveIssues(roomId: string): SupportItem[] {
+    return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId);
   }
 
   selectItems = ["Active", "Supports Requests", "Date Range", "Archived"];
