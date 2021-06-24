@@ -181,8 +181,6 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component
 export default class CaseEdit extends Vue {
-  caseName: string = this.getCaseById(this.$route.params.caseId)?.name;
-
   caseParticipantIds: string[] = this.getCaseById(this.$route.params.caseId)?.participants;
 
   roomName: string = this.getRoomNameById(this.$route.params.roomId);
