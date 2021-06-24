@@ -72,11 +72,12 @@
         <v-row class="justify-center">
           <v-col cols="12">
             <v-autocomplete
-              v-model="value"
-              :items="templateNames"
+              item-text="roomSettings.template"
+              v-model="template"
+              :items="templates"
               dense
-              clearable
-              :label="$t('admin.roomDetails.templateName')"
+              return-object
+              @change="setTemplate()"
             ></v-autocomplete>
           </v-col>
         </v-row>
@@ -108,24 +109,29 @@
 import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
-import roomDetails from "@/plugins/i18n/en-us/admin/room/room-details";
 import { Organization } from "@/model/admin/organization/organization";
+import { RoomTemplate } from "@/model/admin/room/room-template";
 @Component
 export default class RoomDetailsEdit extends Vue {
-  value = "null";
-
-  orgValue = "null";
-
   rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
 
   items = ["Draft", "Available"];
 
   settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
 
-  templateNames =
-    this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
+  templateIdFromRoomId: string = this.$store.state.RoomModule
+    .rooms[this.$route.params.roomId]
+    .templateId;
 
-  organizations = this.$store.getters["OrganizationsModule/getAsList"];
+  templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
+
+  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+
+  setTemplate() {
+    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+  }
+
+  organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
 
   organization: Organization = this.$store.getters[
     "OrganizationsModule/getById"

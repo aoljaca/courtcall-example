@@ -43,7 +43,7 @@ const rooms: {
       hostAccessCode: 5555,
       participantAccessCode: 5555,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R2: {
@@ -85,7 +85,7 @@ const rooms: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R3: {
@@ -127,7 +127,7 @@ const rooms: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R4: {
@@ -169,7 +169,7 @@ const rooms: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R5: {
@@ -211,7 +211,7 @@ const rooms: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R6: {
@@ -253,7 +253,7 @@ const rooms: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R7: {
@@ -295,7 +295,7 @@ const rooms: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R8: {
@@ -337,7 +337,7 @@ const rooms: {
       hostAccessCode: 3123,
       participantAccessCode: 3241,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R9: {
@@ -379,7 +379,7 @@ const rooms: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R10: {
@@ -421,7 +421,7 @@ const rooms: {
       hostAccessCode: 1202,
       participantAccessCode: 2939,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R11: {
@@ -463,7 +463,7 @@ const rooms: {
       hostAccessCode: 4939,
       participantAccessCode: 2341,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R12: {
@@ -505,7 +505,7 @@ const rooms: {
       hostAccessCode: 3674,
       participantAccessCode: 3674,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R13: {
@@ -547,7 +547,7 @@ const rooms: {
       hostAccessCode: 7249,
       participantAccessCode: 7249,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R14: {
@@ -589,7 +589,7 @@ const rooms: {
       hostAccessCode: 5379,
       participantAccessCode: 5379,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R15: {
@@ -631,7 +631,7 @@ const rooms: {
       hostAccessCode: 3579,
       participantAccessCode: 3579,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R16: {
@@ -673,7 +673,7 @@ const rooms: {
       hostAccessCode: 7359,
       participantAccessCode: 7359,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R17: {
@@ -715,7 +715,7 @@ const rooms: {
       hostAccessCode: 7240,
       participantAccessCode: 7240,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R18: {
@@ -757,7 +757,7 @@ const rooms: {
       hostAccessCode: 7435,
       participantAccessCode: 7435,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R19: {
@@ -799,7 +799,7 @@ const rooms: {
       hostAccessCode: 3759,
       participantAccessCode: 3759,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
   R20: {
@@ -841,7 +841,7 @@ const rooms: {
       hostAccessCode: 4523,
       participantAccessCode: 5356,
     },
-    templateId: "0",
+    templateId: "T1",
     modified: false,
   },
 };

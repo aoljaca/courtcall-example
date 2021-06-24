@@ -16,13 +16,12 @@
         </v-col>
         <v-col cols="3">
           <v-autocomplete
-            :rules="rules"
-            counter
-            v-model="value"
-            :items="templateNames"
+            item-text="roomSettings.template"
+            v-model="template"
+            :items="templates"
             dense
-            clearable
-            :label="$t('admin.roomDetails.templateName')"
+            return-object
+            @change="setTemplate()"
           ></v-autocomplete>
         </v-col>
         <v-col cols="2" class="d-flex justify-start">
@@ -391,6 +390,7 @@ import { Component, Vue } from "vue-property-decorator";
 import RoomTemplates from "@/components/admin/room/edit/room-templates/RoomTemplates.vue";
 import { NULL_ROOM_SETTINGS } from "@/model/admin/room/room-settings";
 import "reflect-metadata";
+import { RoomTemplate } from "@/model/admin/room/room-template";
 @Component({
   components: {
     RoomTemplates,
@@ -399,6 +399,15 @@ import "reflect-metadata";
 export default class SettingsEdit extends Vue {
   value = "null";
   rules = [(v: string | any[]) => v.length <= 35 || "Max 35 characters"];
+
+  templateIdFromRoomId: string = this.$store.state.RoomModule
+    .rooms[this.$route.params.roomId]
+    .templateId;
+
+  templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
+
+  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+
 
   get roomSettings() {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
