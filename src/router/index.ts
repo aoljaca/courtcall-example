@@ -135,14 +135,10 @@ const routes: Array<RouteConfig> = [
             },
           },
           {
-            path: "case/:caseId",
+            path: "cases",
             name: "Case",
             meta: {
-              breadcrumbFunc: (route: any) =>
-                `${
-                  store.getters["CasesModule/getById"](route.params.caseId)
-                    ?.name
-                }`,
+              hideBreadcrumb: true,
             },
             component: {
               render(c) {
@@ -151,17 +147,33 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "",
+                path: "view/:caseId",
                 component: CaseView,
                 name: "Case View",
                 meta: {
-                  hideBreadcrumb: true,
+                  breadcrumbFunc: (route: any) =>
+                  `${
+                    store.getters["CasesModule/getById"](route.params.caseId)
+                      ?.name
+                  }`,
                 },
               },
               {
-                path: "edit",
+                path: "edit/:caseId",
                 component: CaseEdit,
                 name: "Case Edit",
+                meta: {
+                  breadcrumbFunc: (route: any) =>
+                  `${
+                    store.getters["CasesModule/getById"](route.params.caseId)
+                      ?.name
+                  }`,
+                },
+              },
+              {
+                path: "create",
+                component: CaseEdit,
+                name: "Create Case",
                 meta: {
                   breadcrumb: "New Case",
                 },

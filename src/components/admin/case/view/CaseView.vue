@@ -54,7 +54,7 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 export default class CaseView extends Vue {
   roomPath = "/admin/rooms/" + this.$route.params.roomId;
 
-  caseEditPath = this.roomPath + "/case/" + this.$route.params.caseId + "/edit";
+  caseEditPath = this.roomPath + "/cases/edit/"+ this.$route.params.caseId ;
 
   caseName: string = this.getCaseById(this.$route.params.caseId)?.name;
 

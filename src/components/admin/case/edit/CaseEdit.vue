@@ -128,7 +128,9 @@
             <v-col>
               <v-select 
                 :label="$t('admin.cases.selectRoom')"
-                :items="partcipantNames"
+                :items="participants"
+                item-text="name"
+                item-value="id"
               >
               </v-select>
             </v-col>
@@ -185,15 +187,19 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 export default class CaseEdit extends Vue {
   roomPath = "/admin/rooms/" + this.$route.params.roomId;
 
-  caseViewPath = this.roomPath + "/case/" + this.$route.params.caseId;
+  caseViewPath = this.roomPath + "/cases/view/" + this.$route.params.caseId;
 
   caseParticipantIds: string[] = this.getCaseById(this.$route.params.caseId)?.participants;
 
   roomName: string = this.getRoomNameById(this.$route.params.roomId);
 
-  participantsData = this.$store.getters["ParticipantsModule/getAsList"];
+  // participantsData = this.$store.getters["ParticipantsModule/getAsList"];
 
-  partcipantNames = this.participantsData.map((p: { name: any; }) => p.name);
+  get participants() {
+    return this.$store.getters["ParticipantsModule/getAsList"];
+  }
+
+  // partcipantNames = this.participants.map((p: { name: any; }) => p.name);
 
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
