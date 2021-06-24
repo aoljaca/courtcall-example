@@ -1,7 +1,7 @@
 <template>
   <v-container class="mt-4">
     <v-form>
-      <v-row class="my-4" id="case-edit-fields">
+      <v-row class="my-4">
         <v-row dense id="field-and-buttons">
           <v-col 
             cols="1"
@@ -25,7 +25,7 @@
               <v-text-field label="Enter case number" dense />
             </v-row>
             <v-row>
-              <v-text-field label="Enter case number" dense />
+              <v-text-field label="Start typing room name to search and select" dense />
             </v-row>
           </v-col>
           <v-col class="d-flex justify-end" id="cancel-save-btns">
