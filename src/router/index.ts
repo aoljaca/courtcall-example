@@ -105,10 +105,9 @@ const routes: Array<RouteConfig> = [
             return c("router-view");
           },
         },
-        redirect: (to) => "/admin/rooms/:roomId/view",
         children: [
           {
-            path: "view",
+            path: "",
             name: "Room View Manage",
             component: RoomViewManage,
             meta: {
@@ -140,7 +139,7 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "view",
+                path: "",
                 component: CaseView,
                 name: "Case View",
                 meta: {
