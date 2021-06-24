@@ -120,7 +120,7 @@ const organizationsModule: Module<any, any> = {
     getById: (state) => (id: string) => {
       return state.organizations[id];
     },
-    getAsList: (state) => Object.values(state.organizations),
+    getAsList: (state) => Object.values(state.organizations) as Organization[],
     getOrgNamesList: (state) => {
       const organizations = Object.values(state.organizations) as Organization[];
       return organizations.map((o: Organization) => o.name);

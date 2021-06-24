@@ -46,7 +46,6 @@
           :items="organizations"
           dense
           clearable
-          :label="$t('admin.roomDetails.organizationAlternate')"
         ></v-autocomplete>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
@@ -109,11 +108,12 @@
 import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
+import roomDetails from "@/plugins/i18n/en-us/admin/room/room-details";
 @Component
 export default class RoomDetailsEdit extends Vue {
   value = "null";
 
-  orgValue = "null"
+  orgValue = "null";
 
   rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
   items = ["Draft", "Available"];
@@ -127,6 +127,10 @@ export default class RoomDetailsEdit extends Vue {
   organizations = this.$store.getters[
     "OrganizationsModule/getAsList"
   ];
+
+  organization = this.$store.getters[
+    "OrganizationsModule/getById"
+  ](roomDetails.organization);
 
   get roomDetails() {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
