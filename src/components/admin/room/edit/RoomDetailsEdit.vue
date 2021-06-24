@@ -41,11 +41,12 @@
           {{ $t("admin.roomDetails.organizationAlternate") }}
         </div>
         <v-autocomplete
-          :rules="rules"
-          v-model="orgValue"
+          :label="organization"
+          v-model="organizations"
           :items="organizations"
           dense
           clearable
+          :return-object="organizations.name"
         ></v-autocomplete>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
@@ -71,7 +72,6 @@
         <v-row class="justify-center">
           <v-col cols="12">
             <v-autocomplete
-              :rules="rules"
               v-model="value"
               :items="templateNames"
               dense
@@ -131,7 +131,7 @@ export default class RoomDetailsEdit extends Vue {
 
   organization = this.$store.getters[
     "OrganizationsModule/getById"
-  ](roomDetails.organization);
+  ](this.roomDetails.organization).name;
 
   get roomDetails() {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
