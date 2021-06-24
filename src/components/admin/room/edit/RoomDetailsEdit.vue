@@ -43,7 +43,7 @@
         <v-autocomplete
           :rules="rules"
           v-model="orgValue"
-          :items="orgNames"
+          :items="organizations"
           dense
           clearable
           :label="$t('admin.roomDetails.organizationAlternate')"
@@ -124,7 +124,7 @@ export default class RoomDetailsEdit extends Vue {
     "RoomTemplateModule/getTemplateNamesList"
   ];
 
-  orgNames = this.$store.getters[
+  organizations = this.$store.getters[
     "OrganizationsModule/getAsList"
   ];
 
