@@ -220,6 +220,7 @@ export default class RoomActivity extends Vue {
       type: userMode,
       // participant: participant.name,
       subconference: subconference?.displayName,
+      participant: participant?.name,
     });
   }
 }
