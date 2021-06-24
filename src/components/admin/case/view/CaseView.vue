@@ -71,7 +71,4 @@ export default class CaseView extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.su-header {
-  border-bottom: 1px solid gray;
-}
 </style>
