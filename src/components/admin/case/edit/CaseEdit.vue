@@ -77,10 +77,14 @@
       <v-row id="participants-list">
         <v-col>
           <v-divider />
-          <v-row class="my-2">
+          <v-row 
+            v-for="id in caseParticipantIds"
+            :key="`participant-${id}`"
+            class="my-2"
+          >
             <v-col id="participant-name">
               <div>
-                Olivia Coleman
+                {{ getParticipantById(id).name }}
               </div>
             </v-col>
             <v-col>
@@ -174,21 +178,22 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
+import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component
 export default class CaseEdit extends Vue {
-
-  //TODO REFACTOR make it so form fiels is the left column and form buttons is the right column rather 
-  //than the first row contain the form buttons, at that point we can space labels to text fields properly
-
-  //Fix breadcrumb stuff (on the airplane)
-
   caseName: string = this.getCaseById(this.$route.params.caseId)?.name;
+
+  caseParticipantIds: string[] = this.getCaseById(this.$route.params.caseId)?.participants;
 
   roomName: string = this.getRoomNameById(this.$route.params.roomId);
 
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
 
   partcipantNames = this.participantsData.map((p: { name: any; }) => p.name);
+
+  getParticipantById(id: string): Participant {
+    return this.$store.getters["ParticipantsModule/getById"](id);
+  }
 
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
