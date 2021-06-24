@@ -11,6 +11,14 @@ import {
   ChatFormatServiceImpl,
 } from "@/services/chat-format";
 import {
+  DataTableOptionsService,
+  DataTableOptionsServiceImpl,
+} from "@/services/data-table-options";
+import {
+  DateFormatService,
+  DateFormatServiceImpl,
+} from "@/services/date-format";
+import {
   ParticipantSearchService,
   ParticipantSearchServiceImpl,
 } from "@/services/participant-search";
@@ -46,4 +54,10 @@ export default function buildDependencyContainer(): void {
   container
     .bind<WebsocketConnectionService>(INJECTION_TYPES.WEBSOCKET_CONNECTION)
     .to(WebsocketConnectionServiceImpl);
+  container
+    .bind<DataTableOptionsService>(INJECTION_TYPES.DATA_TABLE)
+    .to(DataTableOptionsServiceImpl);
+  container
+    .bind<DateFormatService>(INJECTION_TYPES.DATE_FORMAT)
+    .to(DateFormatServiceImpl);
 }

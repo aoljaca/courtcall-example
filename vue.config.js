@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require("webpack");
+const { GenerateSW } = require("workbox-webpack-plugin");
 module.exports = {
   configureWebpack: (config) => {
     console.log(`Environment : ${process.env.NODE_ENV}`);
@@ -29,6 +30,16 @@ module.exports = {
         // If not generated, filter as webpack-vue
         return `webpack-vue:///${info.resourcePath}`;
       };
+    }
+    if (
+      process.env.NODE_ENV !== "production" &&
+      process.env.NODE_ENV !== "development"
+    ) {
+      const swPlugin = new GenerateSW({
+        cacheId: "courtcall-ui-v3",
+        cleanupOutdatedCaches: true,
+      });
+      config.plugins.unshift(swPlugin);
     }
     config.output.filename = "[name].[hash].js";
     console.log("Webpack Config");

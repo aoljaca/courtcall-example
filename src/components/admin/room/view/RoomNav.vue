@@ -25,8 +25,16 @@
     </v-row>
     <v-row v-if="parentContext === 'view'">
       <v-col class="my-1 nav-item d-flex justify-space-between">
-        <div>{{ $t("admin.roomNav.activity") }}</div>
-        <v-icon> mdi-open-in-new </v-icon>
+        <router-link
+          class="remove-decoration"
+          :to="{
+            name: 'Room Activity',
+            params: { roomId: roomId },
+          }"
+        >
+          {{ $t("admin.roomNav.activity") }}
+          <v-icon> mdi-open-in-new </v-icon>
+        </router-link>
       </v-col>
     </v-row>
   </div>
@@ -43,6 +51,10 @@ export default class RoomNav extends Vue {
   scrollTo(ref: string) {
     this.$emit("navClicked", ref);
   }
+
+  get roomId(): string {
+    return this.$route.params.roomId;
+  }
 }
 </script>
 
@@ -58,5 +70,9 @@ export default class RoomNav extends Vue {
 .sticky-nav {
   position: sticky;
   top: 0;
+}
+a {
+  text-decoration: none;
+  color: black !important;
 }
 </style>

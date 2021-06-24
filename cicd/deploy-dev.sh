@@ -1,11 +1,11 @@
 set -e 
-
+source ~/.bashrc
 
 echo 'NPM Install'
-npm install
+npm ci
 
 echo 'Build'
-npm run build:prod
+npm run build:dev
 
 echo 'Upload'
 aws s3 sync --delete dist/ s3://www.dev.ccv3dev.com/

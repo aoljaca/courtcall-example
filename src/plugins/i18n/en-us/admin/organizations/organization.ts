@@ -1,4 +1,5 @@
 export default {
+  title: "Organization",
   contactInfo: "Contact Info",
   rooms: "Rooms",
   all: "All",
@@ -14,24 +15,24 @@ export default {
     },
     location: {
       title: "Location",
-      placeholder: "Enter location"
-    }
+      placeholder: "Enter location",
+    },
   },
   buttons: {
     cancel: {
-      title: "Cancel"
+      title: "Cancel",
     },
     save: {
-      title: "Save Changes"
+      title: "Save Changes",
     },
     edit: {
-      title: "Edit"
+      title: "Edit",
     },
     archive: {
-      title: "Archive Organization"
+      title: "Archive Organization",
     },
     unarchive: {
-      title: "Unarchive Organization"
-    }
-  }
+      title: "Unarchive Organization",
+    },
+  },
 };

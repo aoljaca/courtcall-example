@@ -63,6 +63,13 @@ export default class RoomViewManage extends Vue {
     // call scrollIntoView() on our stored element
     element.scrollIntoView({ behavior: "smooth" });
   }
+
+  mounted(): void {
+    const navigationLocation = this.$route.query.navTo as string | null;
+    if (navigationLocation) {
+      this.onNavClicked(navigationLocation);
+    }
+  }
 }
 </script>
 
