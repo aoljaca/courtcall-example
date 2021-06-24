@@ -103,8 +103,7 @@ export default class SystemUserDetails extends Vue {
       itemValue: "id",
       multiple: true,
       items: this.getAllOrganizations,
-      computedValue: (organizationId: string) =>
-        this.getAllOrganizations().find((o) => o.id === organizationId)?.name,
+      computedValue: this.getNameOfOrganization,
     },
     {
       title: this.$t("admin.systemUsers.systemUser.formFields.email.title"),
@@ -130,6 +129,10 @@ export default class SystemUserDetails extends Vue {
     } else {
       return items;
     }
+  }
+
+  getNameOfOrganization(id: string): string {
+    return this.$store.getters["OrganizationsModule/getNameById"](id);
   }
 
   getAllOrganizations(): Organization[] {
