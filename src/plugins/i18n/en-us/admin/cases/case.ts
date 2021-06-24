@@ -21,5 +21,5 @@ export default {
   enterCaseNumber: "Enter case number",
   typeRoomName: "Start typing room name to search and select",
   name: "Name",
-  selectRoom: "Select Room From Participants",
+  selectRoom: "Select From Room Participants",
 };
