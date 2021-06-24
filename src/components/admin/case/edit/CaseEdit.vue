@@ -47,6 +47,8 @@
               color="grey lighten-2 rounded-0 white--text"
               depressed
               data-test-id="case-cancel-button"
+              link
+              :to="caseViewPath"
             >
               {{ $t("admin.cases.cancel") }}
             </v-btn>
@@ -181,6 +183,10 @@ import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component
 export default class CaseEdit extends Vue {
+  roomPath = "/admin/rooms/" + this.$route.params.roomId;
+
+  caseViewPath = this.roomPath + "/case/" + this.$route.params.caseId;
+
   caseParticipantIds: string[] = this.getCaseById(this.$route.params.caseId)?.participants;
 
   roomName: string = this.getRoomNameById(this.$route.params.roomId);
