@@ -7,14 +7,14 @@ const ORGANIZATIONS: { [key: string]: Organization } = {
     managerIds: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
     location: "Bentonville, AR",
     id: "o1",
-    roomIds: ["1", "2", "3"],
+    roomIds: ["R1", "R2", "R3"],
     archived: false,
   },
   o2: {
     name: "China Petroleum & Chemical Corp.",
     managerIds: ["3", "4"],
     id: "o2",
-    roomIds: ["4", "5"],
+    roomIds: ["R4", "R5"],
     location: "Beijing, China",
     archived: false,
   },
@@ -22,7 +22,7 @@ const ORGANIZATIONS: { [key: string]: Organization } = {
     name: "Amazon.com Inc",
     managerIds: ["5"],
     location: "Seattle, WA",
-    roomIds: ["6"],
+    roomIds: ["R6"],
     archived: false,
     id: "o3",
   },
@@ -31,7 +31,7 @@ const ORGANIZATIONS: { [key: string]: Organization } = {
     id: "o4",
     managerIds: ["6", "7"],
     location: "Beijing, China",
-    roomIds: ["7", "8", "9"],
+    roomIds: ["R7", "R8", "R9"],
     archived: false,
   },
   o5: {
@@ -91,14 +91,30 @@ const organizationsModule: Module<any, any> = {
     selectedOrganization: null,
   },
   mutations: {
-    alterOrganization(state, payload: string) {
-      state.selectedOrganization = state.organizations[payload];
+    setOrganizations(state, organizations: { [key: string]: Organization }) {
+      state.organizations = organizations
+    },
+    setOrganization(state, organization: Organization) {
+      state.organizations[organization.id] = organization;
+    },
+    setSelectedOrganization(state, organizationToSelect: string) {
+      state.selectedOrganization = state.organizations[organizationToSelect];
     },
   },
   actions: {
-    setOrganization({ commit }, payload) {
-      commit("alterOrganization", payload);
+    onSelectOrganization({ commit }, organizationToSelect) {
+      commit("setSelectedOrganization", organizationToSelect);
     },
+    onCreateOrganization({ commit }, organizationToCreate) {
+      // Send request to API to create
+      const response = organizationToCreate;
+      commit("setOrganization", response);
+    },
+    onUpdateOrganization({ commit }, organizationToUpdate) {
+      // Send request to API to update
+      const response = organizationToUpdate;
+      commit("setOrganization", response);
+    }
   },
   getters: {
     getById: (state) => (id: string) => {

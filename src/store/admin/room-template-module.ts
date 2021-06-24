@@ -34,6 +34,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Frank's Room",
       organization: "LA County Superior Court - 12345",
       status: "Available",
@@ -73,6 +74,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Paul's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -112,6 +114,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Mikes's Room",
       organization: "Pierce County Superior Court - 59492",
       status: "Available",
@@ -151,6 +154,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Paul's Room",
       organization: "King County Municipal Court - 59492",
       status: "Available",
@@ -190,6 +194,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Matt's Room",
       organization: "King County District Court - 59492",
       status: "Available",
@@ -229,6 +234,7 @@ const templates: {
       duplicateParticipantHandling: false,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Mikes's Room",
       organization: "Puyallup District Court - 59492",
       status: "Available",
@@ -268,6 +274,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Jason's Room",
       organization: "Tacoma Federal Court - 59492",
       status: "Available",
@@ -307,6 +314,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Daves's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -346,6 +354,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Paul's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -385,6 +394,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Lori's Room",
       organization: "Dartmouth County Municipal Court - 59492",
       status: "Available",
@@ -424,6 +434,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Amanda's Room",
       organization: "LA County Municipal Court - 59492",
       status: "Available",
@@ -463,6 +474,7 @@ const templates: {
       duplicateParticipantHandling: false,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Mark's Room",
       organization: "LA County District Court - 59492",
       status: "Available",
@@ -502,6 +514,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Keith's Room",
       organization: "Reno County District Court - 59492",
       status: "Available",
@@ -541,6 +554,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Nate's Room",
       organization: "Reno County District Court - 59492",
       status: "Available",
@@ -580,6 +594,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Bob's Room",
       organization: "LA County District Court - 59492",
       status: "Available",
@@ -619,6 +634,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Michelle's Room",
       organization: "Tarkov County Criminal Court - 59492",
       status: "Available",
@@ -658,6 +674,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Tate's Room",
       organization: "King County District Court - 59492",
       status: "Available",
@@ -697,6 +714,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Spock's Room",
       organization: "Federation District Court - 59492",
       status: "Available",
@@ -736,6 +754,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Jean's Room",
       organization: "Darth County District Court - 59492",
       status: "Available",
@@ -775,6 +794,7 @@ const templates: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolar amet tyannus fetarious colar tyemperus",
       name: "Judge Joanna's Room",
       organization: "Hoquiam County District Court - 59492",
       status: "Available",

@@ -6,6 +6,7 @@ const rooms: {
 } = {
   R1: {
     uuid: "R1",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "YourHonor931",
@@ -34,6 +35,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Frank's Room",
       organization: "LA County Superior Court - 12345",
       status: "Available",
@@ -46,6 +48,7 @@ const rooms: {
   },
   R2: {
     uuid: "R2",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "HonorYour999",
@@ -74,6 +77,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -86,6 +90,7 @@ const rooms: {
   },
   R3: {
     uuid: "R3",
+    active: false,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "YourHonYour",
@@ -114,6 +119,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mikes's Room",
       organization: "Pierce County Superior Court - 59492",
       status: "Available",
@@ -126,6 +132,7 @@ const rooms: {
   },
   R4: {
     uuid: "R4",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "passwordcodeisbad",
@@ -154,6 +161,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "King County Municipal Court - 59492",
       status: "Available",
@@ -166,6 +174,7 @@ const rooms: {
   },
   R5: {
     uuid: "R5",
+    active: false,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "time49313",
@@ -194,6 +203,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Matt's Room",
       organization: "King County District Court - 59492",
       status: "Available",
@@ -206,6 +216,7 @@ const rooms: {
   },
   R6: {
     uuid: "R6",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "verygoodpasscod3",
@@ -234,6 +245,7 @@ const rooms: {
       duplicateParticipantHandling: false,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mikes's Room",
       organization: "Puyallup District Court - 59492",
       status: "Available",
@@ -246,6 +258,7 @@ const rooms: {
   },
   R7: {
     uuid: "R7",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "codejustice2384",
@@ -274,6 +287,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Jason's Room",
       organization: "Tacoma Federal Court - 59492",
       status: "Available",
@@ -286,6 +300,7 @@ const rooms: {
   },
   R8: {
     uuid: "R8",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "BigCheese3434",
@@ -314,6 +329,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Daves's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -326,6 +342,7 @@ const rooms: {
   },
   R9: {
     uuid: "R9",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "HonorJustice4553",
@@ -354,6 +371,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "Pierce County District Court - 59492",
       status: "Available",
@@ -366,6 +384,7 @@ const rooms: {
   },
   R10: {
     uuid: "R10",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "MaxHonor3434",
@@ -394,6 +413,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Lori's Room",
       organization: "Dartmouth County Municipal Court - 59492",
       status: "Available",
@@ -406,6 +426,7 @@ const rooms: {
   },
   R11: {
     uuid: "R11",
+    active: false,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "Justice4All12",
@@ -434,6 +455,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Amanda's Room",
       organization: "LA County Municipal Court - 59492",
       status: "Available",
@@ -446,6 +468,7 @@ const rooms: {
   },
   R12: {
     uuid: "R12",
+    active: false,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "JusticeFr3312",
@@ -474,6 +497,7 @@ const rooms: {
       duplicateParticipantHandling: false,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mark's Room",
       organization: "LA County District Court - 59492",
       status: "Available",
@@ -486,6 +510,7 @@ const rooms: {
   },
   R13: {
     uuid: "R13",
+    active: false,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "FreedomFree334",
@@ -514,6 +539,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Keith's Room",
       organization: "Reno County District Court - 59492",
       status: "Available",
@@ -526,6 +552,7 @@ const rooms: {
   },
   R14: {
     uuid: "R14",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "HonorYour999",
@@ -554,6 +581,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Nate's Room",
       organization: "Reno County District Court - 59492",
       status: "Available",
@@ -566,6 +594,7 @@ const rooms: {
   },
   R15: {
     uuid: "R15",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "JudgeSup3r",
@@ -594,6 +623,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Bob's Room",
       organization: "LA County District Court - 59492",
       status: "Available",
@@ -606,6 +636,7 @@ const rooms: {
   },
   R16: {
     uuid: "R16",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "4th3p3opl3",
@@ -634,6 +665,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Michelle's Room",
       organization: "Tarkov County Criminal Court - 59492",
       status: "Available",
@@ -646,6 +678,7 @@ const rooms: {
   },
   R17: {
     uuid: "R17",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "freeentry2345",
@@ -674,6 +707,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Tate's Room",
       organization: "King County District Court - 59492",
       status: "Available",
@@ -686,6 +720,7 @@ const rooms: {
   },
   R18: {
     uuid: "R18",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "HonorYour999",
@@ -714,6 +749,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Spock's Room",
       organization: "Federation District Court - 59492",
       status: "Available",
@@ -726,6 +762,7 @@ const rooms: {
   },
   R19: {
     uuid: "R19",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "Logstamp3424",
@@ -754,6 +791,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Jean's Room",
       organization: "Darth County District Court - 59492",
       status: "Available",
@@ -766,6 +804,7 @@ const rooms: {
   },
   R20: {
     uuid: "R20",
+    active: true,
     roomSettings: {
       template: "Template Name (Modified)",
       passcode: "Timewarp2408",
@@ -794,6 +833,7 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
+      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Joanna's Room",
       organization: "Hoquiam County District Court - 59492",
       status: "Available",
@@ -820,6 +860,7 @@ const adminRoomModule: Module<any, any> = {
     getRoomNameById: (state) => (id: string) => {
       return state.rooms[id].roomDetails.name;
     },
+    getAsList: (state) => Object.values(state.rooms),
   },
 };
 

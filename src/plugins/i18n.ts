@@ -9,6 +9,7 @@ import av_options_en from "./i18n/en-us/av-options/av-options";
 import meeting_ui_en from "./i18n/en-us/meeting-ui/meeting-ui";
 import admin_en from "./i18n/en-us/admin";
 import sidebar_en from "./i18n/en-us/sidebar/sidebar";
+import notFound_en from "./i18n/en-us/not-found";
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
@@ -21,6 +22,7 @@ const messages = {
     meetingUI: meeting_ui_en,
     admin: admin_en,
     sidebar: sidebar_en,
+    notFound: notFound_en,
   },
 };
 const languages = Object.keys(messages);

@@ -19,6 +19,21 @@
             <template v-slot:[`item.openedAt`]="{ item }">
               {{ formatDate(item.openedAt) }}
             </template>
+            <template v-slot:[`item.room`]="{ item }">
+              <v-list>
+                <v-list-item
+                  class="px-0 mx-0 font-weight-black"
+                  data-test-id="room-link"
+                  link
+                  :to="{
+                    name: 'Room View Manage',
+                    params: { roomId: item.room },
+                  }"
+                >
+                  {{ getRoomName(item.room) }}
+                </v-list-item>
+              </v-list>
+            </template>
             <template v-slot:[`item.participant`]="{ item }">
               {{ getParticipantName(item.participant) }}
             </template>
@@ -92,8 +107,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { inject } from "inversify-props";
+import { DateFormatService } from "@/services/date-format";
+import { INJECTION_TYPES } from "@/inversify/injection-types";
 @Component({})
 export default class SupportQueue extends Vue {
+  @inject(INJECTION_TYPES.DATE_FORMAT)
+  dateFormatService?: DateFormatService;
   readonly HEADERS = [
     {
       text: "Time",
@@ -127,10 +147,8 @@ export default class SupportQueue extends Vue {
     return this.$store.getters["SupportModule/getActive"];
   }
 
-  formatDate(iso: string): string {
-    return DateTime.fromISO(iso)
-      .setZone("local")
-      .toLocaleString(DateTime.DATETIME_FULL);
+  formatDate(iso: string): string | undefined {
+    return this.dateFormatService?.formatFullDateTime(iso);
   }
 
   getParticipantById(id: string): Participant {
@@ -144,6 +162,10 @@ export default class SupportQueue extends Vue {
     } else {
       return "Unknown";
     }
+  }
+
+  getRoomName(id: string) {
+    return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
   goToArchive(): void {

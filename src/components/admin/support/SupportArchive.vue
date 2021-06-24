@@ -18,6 +18,21 @@
             <template v-slot:[`item.participant`]="{ item }">
               {{ getParticipantName(item.participant) }}
             </template>
+            <template v-slot:[`item.room`]="{ item }">
+              <v-list>
+                <v-list-item
+                  class="px-0 mx-0 font-weight-black"
+                  data-test-id="room-link"
+                  link
+                  :to="{
+                    name: 'Room View Manage',
+                    params: { roomId: item.room },
+                  }"
+                >
+                  {{ getRoomName(item.room) }}
+                </v-list-item>
+              </v-list>
+            </template>
             <template v-slot:[`item.type`]="{ item }">
               <div>
                 <span v-if="item.type === 'duplicateJoin'">
@@ -51,8 +66,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { inject } from "inversify-props";
+import { INJECTION_TYPES } from "@/inversify/injection-types";
+import { DateFormatService } from "@/services/date-format";
 @Component({})
 export default class SupportArchive extends Vue {
+  @inject(INJECTION_TYPES.DATE_FORMAT)
+  dateFormatService?: DateFormatService;
   readonly HEADERS = [
     {
       text: "Date",
@@ -90,9 +110,8 @@ export default class SupportArchive extends Vue {
   }
 
   getParticipantName(id: string) {
-    const participant: Participant = this.$store.getters[
-      "ParticipantsModule/getById"
-    ](id);
+    const participant: Participant =
+      this.$store.getters["ParticipantsModule/getById"](id);
     if (participant) {
       return participant.name;
     } else {
@@ -100,11 +119,13 @@ export default class SupportArchive extends Vue {
     }
   }
 
-  formatDate(iso: string): string {
+  getRoomName(id: string) {
+    return this.$store.getters["RoomModule/getRoomNameById"](id);
+  }
+
+  formatDate(iso: string): string | undefined {
     if (iso) {
-      return DateTime.fromISO(iso)
-        .setZone("local")
-        .toLocaleString(DateTime.DATETIME_FULL);
+      return this.dateFormatService?.formatFullDateTime(iso);
     } else {
       return "unknown";
     }

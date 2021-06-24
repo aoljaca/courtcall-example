@@ -38,6 +38,9 @@ import { Component, Vue } from "vue-property-decorator";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import UserActions from "@/components/admin/dashboard/UserActions.vue";
 import Breadcrumbs from "@/components/admin/navigation/Breadcrumbs.vue";
+import { inject } from "inversify-props";
+import { INJECTION_TYPES } from "@/inversify/injection-types";
+import { WebsocketConnectionService } from "@/services/websocket-connection";
 @Component({
   components: {
     Navigation,
@@ -46,8 +49,14 @@ import Breadcrumbs from "@/components/admin/navigation/Breadcrumbs.vue";
   },
 })
 export default class Admin extends Vue {
+  @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
+  websocketConnectionService: WebsocketConnectionService | undefined;
   get showBreadcrumbs(): boolean {
     return this.$route.name !== "Dashboard";
+  }
+
+  mounted() {
+    this.websocketConnectionService?.connectMeeting();
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <div id="endMeeting">
     <v-container class="fill d-flex align-content-center">
       <v-row class="justify-center">
-        <v-col align-self="center" cols="6">
+        <v-col align-self="center" cols="12" md="6">
           <v-card class="background-gray">
             <v-container fluid>
               <v-row>

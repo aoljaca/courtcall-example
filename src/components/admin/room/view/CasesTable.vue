@@ -110,7 +110,7 @@ export default class CasesTable extends Vue {
       value: this.$t("admin.roomCases.caseNameValue"),
     },
     {
-      text: this.$t("admin.roomCases.scheduledParticipatnsHeader"),
+      text: this.$t("admin.roomCases.scheduledParticipantsHeader"),
       value: this.$t("admin.roomCases.scheduledParticipantsValue"),
     },
     {

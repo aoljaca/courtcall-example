@@ -81,8 +81,16 @@ const casesModule: Module<any, any> = {
   state: {
     cases: CASES,
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    updateCases(state: any, payload) {
+      state.cases = payload;
+    },
+  },
+  actions: {
+    alterCases({ commit }, payload) {
+      commit("updateCases", payload);
+    },
+  },
   getters: {
     getById: (state) => (id: string) => state.cases[id],
     getAsList: (state) => Object.values(state.cases),
