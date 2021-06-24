@@ -2,49 +2,61 @@
   <v-container class="mt-4">
     <v-form>
       <v-row class="my-4">
-        <v-row dense id="field-and-buttons">
+        <v-row dense>
           <v-col 
             cols="1"
             class="d-flex flex-column"
           >
             <v-row>
-              <label>Case Name</label>
+              <v-col>
+                <label>{{ $t("admin.cases.caseName") }}</label>
+              </v-col>
             </v-row>
             <v-row>
-              <label>Case Number</label>
+              <v-col>
+                <label>{{ $t("admin.cases.caseNumber") }}</label>
+              </v-col>
             </v-row>
             <v-row>
-              <label>Room</label>
+              <v-col>
+                <label>{{ $t("admin.cases.room") }}</label>
+              </v-col>
             </v-row>
           </v-col>
           <v-col cols="3">
             <v-row>
-              <v-text-field label="Enter case name" dense />
+              <v-col>
+                <v-text-field :label="$t('admin.cases.enterCaseName')" dense />
+              </v-col>
             </v-row>
             <v-row>
-              <v-text-field label="Enter case number" dense />
+              <v-col>
+                <v-text-field :label="$t('admin.cases.enterCaseNumber')" dense />
+              </v-col>
             </v-row>
             <v-row>
-              <v-text-field label="Start typing room name to search and select" dense />
+              <v-col>
+                <v-text-field :label="$t('admin.cases.typeRoomName')" dense />
+              </v-col>
             </v-row>
           </v-col>
           <v-col class="d-flex justify-end" id="cancel-save-btns">
             <v-btn
-            class="mx-4"
-            :title="$t('admin.cases.add')"
-            color="grey lighten-2 rounded-0 white--text"
-            depressed
-            data-test-id="case-cancel-button"
+              class="mx-4"
+              :title="$t('admin.cases.cancel')"
+              color="grey lighten-2 rounded-0 white--text"
+              depressed
+              data-test-id="case-cancel-button"
             >
-              CANCEL
+              {{ $t("admin.cases.cancel") }}
             </v-btn>
             <v-btn
-              :title="$t('admin.cases.add')"
+              :title="$t('admin.cases.saveChanges')"
               color="grey darken-4 rounded-0 white--text"
               depressed
               data-test-id="case-save-changes-button"
             >
-              SAVE CHANGES
+              {{ $t("admin.cases.saveChanges") }}
             </v-btn>
           </v-col>
         </v-row>
@@ -58,7 +70,7 @@
       <v-row>
         <v-col>
           <div>
-            Name
+            {{ $t("admin.cases.name") }}
           </div>
         </v-col>
       </v-row>
@@ -77,7 +89,7 @@
                     <v-row>
                       <v-col>
                         <v-btn
-                          :title="$t('admin.cases.add')"
+                          :title="$t('admin.cases.remove')"
                           data-test-id="remove-participant"
                           v-bind="attrs"
                           v-on="on"
@@ -85,17 +97,17 @@
                           depressed
                           elevation="0"
                         >
-                          REMOVE
+                          {{ $t("admin.cases.remove") }}
                         </v-btn>
                       </v-col>
                     </v-row>
                 </template>
                 <v-list>
                   <v-list-item data-test-id="remove-from-case">
-                    Remove from Case
+                    {{ $t("admin.cases.removeFromCase") }}
                   </v-list-item>
                   <v-list-item data-test-id="remove-from-room">
-                    Remove from Room (Archive)
+                    {{ $t("admin.cases.removeFromRoom") }}
                   </v-list-item>
                 </v-list>
               </v-menu>
@@ -109,33 +121,33 @@
           <v-row>
             <v-col>
               <v-select 
-                label="Select Room From Participants"
+                :label="$t('admin.cases.selectRoom')"
                 :items="partcipantNames"
               >
               </v-select>
             </v-col>
             <v-col>
               <v-btn
-                :title="$t('admin.cases.add')"
+                :title="$t('admin.cases.addToCase')"
                 data-test-id="add-to-case"
                 color="grey darken-4 rounded-0 white--text"
                 depressed
                 elevation="0"
               >
-                ADD TO CASE
+                {{ $t("admin.cases.addToCase") }}
               </v-btn>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
               <v-btn
-                :title="$t('admin.cases.add')"
+                :title="$t('admin.cases.addParticipant')"
                 data-test-id="add-participant"
                 color="grey darken-4 rounded-0 white--text"
                 depressed
                 elevation="0"
               >
-                ADD NEW SCHEDULED PARTICIPANT
+                {{ $t("admin.cases.addParticipant") }}
               </v-btn>
             </v-col>
           </v-row>
@@ -150,7 +162,7 @@
             depressed
             elevation="0"
           >
-            ARCHIVE
+            {{ $t("admin.cases.archive") }}
           </v-btn>
         </v-col>
       </v-row>
