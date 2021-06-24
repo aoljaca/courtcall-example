@@ -115,7 +115,7 @@ import { RoomTemplate } from "@/model/admin/room/room-template";
 export default class RoomDetailsEdit extends Vue {
   rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
 
-  items = ["Draft", "Available"];
+  items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
 
   settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
 
