@@ -116,6 +116,7 @@ export default class RoomDetailsEdit extends Vue {
   orgValue = "null";
 
   rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
+  
   items = ["Draft", "Available"];
 
   settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
