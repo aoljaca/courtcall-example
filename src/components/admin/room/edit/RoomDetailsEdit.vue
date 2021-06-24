@@ -41,12 +41,11 @@
           {{ $t("admin.roomDetails.organizationAlternate") }}
         </div>
         <v-autocomplete
-          :label="organization"
-          v-model="organizations"
+          item-text="name"
+          v-model="organization"
           :items="organizations"
           dense
-          clearable
-          :return-object="organizations.name"
+          return-object
         ></v-autocomplete>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
@@ -76,6 +75,7 @@
               :items="templateNames"
               dense
               clearable
+              @change="setOrganization()"
               :label="$t('admin.roomDetails.templateName')"
             ></v-autocomplete>
           </v-col>
@@ -109,29 +109,31 @@ import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 import roomDetails from "@/plugins/i18n/en-us/admin/room/room-details";
+import { Organization } from "@/model/admin/organization/organization";
 @Component
 export default class RoomDetailsEdit extends Vue {
   value = "null";
 
   orgValue = "null";
 
-  rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
-  
+  rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
+
   items = ["Draft", "Available"];
 
   settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
 
-  templateNames = this.$store.getters[
-    "RoomTemplateModule/getTemplateNamesList"
-  ];
+  templateNames =
+    this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
 
-  organizations = this.$store.getters[
-    "OrganizationsModule/getAsList"
-  ];
+  organizations = this.$store.getters["OrganizationsModule/getAsList"];
 
-  organization = this.$store.getters[
+  organization: Organization = this.$store.getters[
     "OrganizationsModule/getById"
-  ](this.roomDetails.organization).name;
+  ](this.roomDetails.organization);
+
+  setOrganization() {
+    this.roomDetails.organization = this.organization.id;
+  }
 
   get roomDetails() {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
