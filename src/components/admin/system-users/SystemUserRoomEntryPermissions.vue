@@ -97,7 +97,7 @@
           </v-col>
         </v-row>
       </template>
-      <template v-else>
+      <template v-else-if="systemUser">
         <!-- List Selected Rooms -->
         <template v-for="roomId in systemUser.roomPermissions.roomIds">
           <v-row class="py-3" :key="`room-${roomId}`">
@@ -144,11 +144,15 @@ export default class SystemUserRoomEntryPermissions extends Vue {
 
   get shouldShowAlternateSelection(): boolean {
     const roomPermissions = this.systemUser.roomPermissions;
-    const result =
-      roomPermissions &&
-      (roomPermissions.allRooms ||
+    let result = false;
+
+    if (roomPermissions) {
+      result =
+        roomPermissions.allRooms ||
         (!roomPermissions.roomIds.length &&
-          !roomPermissions.organizationIds.length));
+          !roomPermissions.organizationIds.length);
+    }
+
     return result;
   }
 
@@ -199,14 +203,16 @@ export default class SystemUserRoomEntryPermissions extends Vue {
   onRemovedEntryItem(idToRemove: string): void {
     // Removing Room
     if (this.systemUserEdits.roomPermissions.roomIds.includes(idToRemove)) {
-      this.systemUserEdits.roomPermissions.roomIds = this.systemUserEdits.roomPermissions.roomIds.filter(
-        (id) => id !== idToRemove
-      );
+      this.systemUserEdits.roomPermissions.roomIds =
+        this.systemUserEdits.roomPermissions.roomIds.filter(
+          (id) => id !== idToRemove
+        );
     } else {
       // Removing Organization
-      this.systemUserEdits.roomPermissions.organizationIds = this.systemUserEdits.roomPermissions.organizationIds.filter(
-        (id) => id !== idToRemove
-      );
+      this.systemUserEdits.roomPermissions.organizationIds =
+        this.systemUserEdits.roomPermissions.organizationIds.filter(
+          (id) => id !== idToRemove
+        );
     }
   }
 }

@@ -1,5 +1,5 @@
 import { SystemUser } from "@/model/admin/system-users/system-user";
-import { SystemUserRoleName } from "@/model/admin/system-users/system-user-role";
+import { SystemUserRole, SystemUserRoleName } from "@/model/admin/system-users/system-user-role";
 import { Module } from "vuex";
 
 const systemUsers: {
@@ -75,11 +75,45 @@ const systemUsers: {
   },
 };
 
+const mockAdminUser =  {
+  id: "SU5",
+  name: "Mock Active User (Admin)",
+  role: {
+      id: 'SUR5',
+      name: SystemUserRoleName.ADMIN,
+  },
+  organizationIds: [],
+  email: "fake@gmail.com",
+  roomPermissions: {
+    allRooms: false,
+    roomIds: ["R1"],
+    organizationIds: []
+  },
+  phone: '203-575-1020',
+  pstnPIN: 1234,
+};
+
+export const NEW_SYSTEM_USER_BASE =  {
+  id: "-1",
+  name: "",
+  role: {} as SystemUserRole,
+  organizationIds: [],
+  email: "",
+  roomPermissions: {
+    allRooms: true,
+    roomIds: [],
+    organizationIds: []
+  },
+  phone: '',
+  pstnPIN: 1234,
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const systemUsersModule: Module<any, any> = {
   namespaced: true,
   state: {
     systemUsers: systemUsers,
+    actingUser: mockAdminUser,
   },
   mutations: {
     addSystemUser(state, payload: SystemUser) {
@@ -111,6 +145,7 @@ const systemUsersModule: Module<any, any> = {
       return state.systemUsers[id];
     },
     getAsList: (state) => Object.values(state.systemUsers),
+    isActingUserAdmin: (state) => state.actingUser.role.name === SystemUserRoleName.ADMIN,
   },
 };
 
