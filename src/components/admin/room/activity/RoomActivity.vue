@@ -50,12 +50,23 @@
                 <i>{{ $t("admin.roomActivity.noTranscript") }}</i>
               </div>
             </template>
+            <template v-slot:[`item.conferenceLog`]="{ item }">
+              <v-btn
+                @click="setSelectedSession(item)"
+                depressed
+                color="primary"
+                >{{ $t("admin.roomActivity.viewConferenceLog") }}</v-btn
+              >
+            </template>
           </v-data-table>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row v-if="selectedSession">
         <v-col>
-          <h2>{{ $t("admin.roomActivity.conferenceLog") }}</h2>
+          <h2>
+            {{ $t("admin.roomActivity.conferenceLog") }} -
+            {{ formatRoomDescription(selectedSession) }}
+          </h2>
           <v-data-table
             :headers="LOG_HEADERS"
             :items="roomActivityEvents"
@@ -91,12 +102,15 @@ import {
 } from "@/model/admin/room/room-activity";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
+import { DateTime } from "luxon";
 @Component({})
 export default class RoomActivity extends Vue {
   @inject(INJECTION_TYPES.DATA_TABLE)
   dataTableOptionsService?: DataTableOptionsService;
   @inject(INJECTION_TYPES.DATE_FORMAT)
   dateFormatService?: DateFormatService;
+
+  selectedSession: RoomSession | null = null;
   readonly SESSION_HEADERS = [
     {
       text: this.$t("admin.roomActivity.startTime"),
@@ -121,6 +135,12 @@ export default class RoomActivity extends Vue {
     {
       text: this.$t("admin.roomActivity.transcript"),
       value: "isTranscribed",
+    },
+    {
+      text: this.$t("admin.roomActivity.conferenceLog"),
+      value: "conferenceLog",
+      sortable: false,
+      filterable: false,
     },
   ];
 
@@ -154,10 +174,8 @@ export default class RoomActivity extends Vue {
     );
   }
 
-  get roomActivityEvents(): any[] {
-    return this.$store.getters["RoomLogModule/getByRoomId"](
-      this.$route.params.roomId
-    );
+  get roomActivityEvents(): RoomActivityLog[] {
+    return this.selectedSession ? this.selectedSession.activityLogs : [];
   }
 
   get footerOptions(): DataTableFooterOptions | undefined {
@@ -170,6 +188,27 @@ export default class RoomActivity extends Vue {
     } else {
       return "N/A";
     }
+  }
+
+  setSelectedSession(session: RoomSession) {
+    this.selectedSession = session;
+  }
+
+  formatRoomDescription(session: RoomSession) {
+    const room: Room = this.$store.getters["RoomModule/getById"](session.room);
+    const roomName = room ? room.roomDetails.name : "Unknown";
+    const date = DateTime.fromISO(session.startTime)
+      .setZone("local")
+      .toLocaleString(DateTime.DATE_FULL);
+    const tsStart = DateTime.fromISO(session.startTime)
+      .setZone("local")
+      .toLocaleString(DateTime.TIME_SIMPLE);
+    const tsEnd = session.endTime
+      ? DateTime.fromISO(session.endTime)
+          .setZone("local")
+          .toLocaleString(DateTime.TIME_SIMPLE)
+      : "Present";
+    return `${roomName} ${date} ${tsStart} - ${tsEnd}`;
   }
 
   getDescription(log: RoomActivityLog): any {

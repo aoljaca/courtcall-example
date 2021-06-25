@@ -6,6 +6,7 @@ export interface RoomSession {
   isRecorded: boolean;
   isTranscribed: boolean;
   room: string;
+  activityLogs: RoomActivityLog[];
 }
 
 export enum ActivityLogType {
@@ -24,7 +25,6 @@ export interface RoomActivityLog {
   type: ActivityLogType;
   participant: string;
   subconference: string;
-  roomId: string;
   userMode: "host" | "participant";
   timeStamp: string;
 }
