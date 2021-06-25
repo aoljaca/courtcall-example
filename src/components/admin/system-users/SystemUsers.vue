@@ -6,7 +6,13 @@
           <h2>{{ $t("admin.systemUsers.list.pageTitle") }}</h2>
         </v-col>
         <v-col cols="6" class="d-flex justify-end">
-          <v-btn :title="$t('admin.systemUsers.new.title')" elevation="0" fab>
+          <v-btn
+            :disabled="!canCreateUser"
+            :to="{ name: 'Create System User' }"
+            :title="$t('admin.systemUsers.list.create')"
+            elevation="0"
+            fab
+          >
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </v-col>
@@ -115,6 +121,10 @@ export default class SystemUsers extends Vue {
 
   get systemUsers(): SystemUser[] {
     return this.$store.getters["SystemUsersModule/getAsList"];
+  }
+
+  get canCreateUser(): boolean {
+    return this.$store.getters["SystemUsersModule/isActingUserAdmin"];
   }
 
   organizationName(id: string): string {
