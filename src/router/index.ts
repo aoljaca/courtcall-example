@@ -15,6 +15,7 @@ import OrganizationComp from "../components/admin/organizations/Organization.vue
 import CreateEditOrganization from "../components/admin/organizations/CreateEditOrganization.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
 import ViewSystemUser from "@/components/admin/system-users/ViewSystemUser.vue";
+import CreateSystemUser from "@/components/admin/system-users/CreateSystemUser.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 import ViewParticipant from "@/components/admin/participants/view/ViewParticipant.vue";
@@ -229,6 +230,15 @@ const routes: Array<RouteConfig> = [
                 }`,
             },
           },
+          {
+            path: "create",
+            component: CreateSystemUser,
+            name: "Create System User",
+            props: true,
+            meta: {
+              breadcrumb: i18n.t("admin.systemUsers.list.create")
+            },
+          },
         ]
       },
       {
@@ -340,7 +350,7 @@ const router = new VueRouter({
   routes,
 });
 router.beforeEach((to, from, next) => {
-  const breadcrumbFunc = to.meta.breadcrumbFunc;
+  const breadcrumbFunc = to.meta?.breadcrumbFunc;
 
   if (breadcrumbFunc && typeof breadcrumbFunc === "function") {
     to.meta.breadcrumb = breadcrumbFunc(to);

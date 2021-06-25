@@ -1,4 +1,3 @@
-import newUser from "./new-system-user";
 export default {
   all: "All",
   pageTitle: "System Users",
@@ -7,5 +6,5 @@ export default {
   role: "Role",
   organizations: "Organization(s)",
   none: "None",
-  new: newUser,
+  create: "Create",
 };
