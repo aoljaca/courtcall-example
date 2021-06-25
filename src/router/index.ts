@@ -236,10 +236,10 @@ const routes: Array<RouteConfig> = [
             name: "Create System User",
             props: true,
             meta: {
-              breadcrumb: i18n.t("admin.systemUsers.list.create")
+              breadcrumb: i18n.t("admin.systemUsers.list.create"),
             },
           },
-        ]
+        ],
       },
       {
         path: "organizations",
@@ -352,7 +352,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const breadcrumbFunc = to.meta?.breadcrumbFunc;
 
-  if (breadcrumbFunc && typeof breadcrumbFunc === "function") {
+  if (breadcrumbFunc && typeof breadcrumbFunc === "function" && to?.meta) {
     to.meta.breadcrumb = breadcrumbFunc(to);
   }
 
