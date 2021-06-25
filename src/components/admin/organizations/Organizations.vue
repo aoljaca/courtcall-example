@@ -36,7 +36,7 @@
                 v-for="id in item.managerIds"
                 :key="id"
               >
-                <v-chip>{{ getParticipantById(id).name }}</v-chip>
+                <v-chip>{{ getParticipantNameById(id) }}</v-chip>
               </div>
             </template>
             <template v-slot:[`item.roomIds`]="{ item }">
@@ -124,8 +124,8 @@ export default class Organizations extends Vue {
     return this.$store.getters["OrganizationsModule/getActiveAsList"];
   }
 
-  getParticipantById(id: string): Participant {
-    return this.$store.getters["ParticipantsModule/getById"](id);
+  getParticipantNameById(id: string): string {
+    return this.$store.getters["ParticipantsModule/getNameById"](id);
   }
 
   onArchiveOrganization(organization: Organization): void {

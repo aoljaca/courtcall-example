@@ -14,6 +14,8 @@ import Organizations from "@/components/admin/organizations/Organizations.vue";
 import OrganizationComp from "../components/admin/organizations/Organization.vue";
 import CreateEditOrganization from "../components/admin/organizations/CreateEditOrganization.vue";
 import SystemUsersList from "@/components/admin/system-users/SystemUsers.vue";
+import ViewSystemUser from "@/components/admin/system-users/ViewSystemUser.vue";
+import CreateSystemUser from "@/components/admin/system-users/CreateSystemUser.vue";
 import SupportQueue from "@/components/admin/support/SupportQueue.vue";
 import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 import ViewParticipant from "@/components/admin/participants/view/ViewParticipant.vue";
@@ -197,11 +199,47 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: "system-users",
-        component: SystemUsersList,
-        name: "System Users",
+        component: {
+          render(c) {
+            return c("router-view");
+          },
+        },
         meta: {
           breadcrumb: i18n.t("admin.navigation.systemUsers"),
         },
+        children: [
+          {
+            path: "/",
+            component: SystemUsersList,
+            name: "System Users",
+            meta: {
+              breadcrumb: i18n.t("admin.systemUsers.list.all"),
+            },
+          },
+          {
+            path: "view/:systemUserId",
+            component: ViewSystemUser,
+            name: "System User",
+            props: true,
+            meta: {
+              breadcrumbFunc: (route: any) =>
+                `${
+                  store.getters["SystemUsersModule/getById"](
+                    route.params.systemUserId
+                  ).name
+                }`,
+            },
+          },
+          {
+            path: "create",
+            component: CreateSystemUser,
+            name: "Create System User",
+            props: true,
+            meta: {
+              breadcrumb: i18n.t("admin.systemUsers.list.create")
+            },
+          },
+        ]
       },
       {
         path: "organizations",
@@ -312,7 +350,7 @@ const router = new VueRouter({
   routes,
 });
 router.beforeEach((to, from, next) => {
-  const breadcrumbFunc = to.meta.breadcrumbFunc;
+  const breadcrumbFunc = to.meta?.breadcrumbFunc;
 
   if (breadcrumbFunc && typeof breadcrumbFunc === "function") {
     to.meta.breadcrumb = breadcrumbFunc(to);
