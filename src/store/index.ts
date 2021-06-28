@@ -13,6 +13,9 @@ import SubconferenceModule from "./sub-conference/sub-conference-module";
 import OrganizationsModule from "./organizations/organizations-module";
 import PermissionsModule from "./permission/permissions-module";
 import SupportModule from "./support/support-module";
+import SystemUsersModule from "./system-users/system-users-module";
+import SystemUserRolesModule from "./system-users/system-user-roles-module";
+import RoomSessionModule from "./room-session/room-session-module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -30,5 +33,8 @@ export default new Vuex.Store({
     OrganizationsModule,
     PermissionsModule,
     SupportModule,
+    SystemUsersModule,
+    SystemUserRolesModule,
+    RoomSessionModule,
   },
 });

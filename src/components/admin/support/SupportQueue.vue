@@ -107,8 +107,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { inject } from "inversify-props";
+import { DateFormatService } from "@/services/date-format";
+import { INJECTION_TYPES } from "@/inversify/injection-types";
 @Component({})
 export default class SupportQueue extends Vue {
+  @inject(INJECTION_TYPES.DATE_FORMAT)
+  dateFormatService?: DateFormatService;
   readonly HEADERS = [
     {
       text: "Time",
@@ -142,10 +147,8 @@ export default class SupportQueue extends Vue {
     return this.$store.getters["SupportModule/getActive"];
   }
 
-  formatDate(iso: string): string {
-    return DateTime.fromISO(iso)
-      .setZone("local")
-      .toLocaleString(DateTime.DATETIME_FULL);
+  formatDate(iso: string): string | undefined {
+    return this.dateFormatService?.formatFullDateTime(iso);
   }
 
   getParticipantById(id: string): Participant {
