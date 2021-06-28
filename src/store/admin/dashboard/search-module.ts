@@ -40,23 +40,23 @@ const searchModule: Module<any, any> = {
             switch (query.type) {
                 case SearchType.SYSTEM_USER:
                     systemUsers = rootGetters["SystemUsersModule/getAsList"];
-                    response = systemUsers.filter(su => su.name.includes(query.searchTerm));
+                    response = systemUsers.filter(su => su.name.toLowerCase().includes(query.searchTerm));
                     break;
                 case SearchType.PARTICIPANT:
                     participants = rootGetters["ParticipantsModule/getAsList"];
-                    response = participants.filter(p => p.name.includes(query.searchTerm));
+                    response = participants.filter(p => p.name.toLowerCase().includes(query.searchTerm));
                     break;
                 case SearchType.ROOM:
                     rooms = rootGetters["RoomModule/getAsList"];
-                    response = rooms.filter(r => r.roomDetails.name?.includes(query.searchTerm));
+                    response = rooms.filter(r => r.roomDetails.name?.toLowerCase().includes(query.searchTerm));
                     break;
                 case SearchType.CASE:
                     cases = rootGetters["CasesModule/getAsList"];
-                    response = cases.filter(c => c.name.includes(query.searchTerm));
+                    response = cases.filter(c => c.name.toLowerCase().includes(query.searchTerm));
                     break;
                 case SearchType.ORGANIZATION:
                     organizations = rootGetters["OrganizationsModule/getAsList"];
-                    response = organizations.filter(o => o.name.includes(query.searchTerm));
+                    response = organizations.filter(o => o.name.toLowerCase().includes(query.searchTerm));
                     break;
                 default:
                     break;
