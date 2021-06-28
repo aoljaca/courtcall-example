@@ -1,11 +1,6 @@
 <template>
   <div class="dashboard">
     <v-container fluid>
-      <v-row class="searchrow">
-        <v-col class="text-center">
-          <search />
-        </v-col>
-      </v-row>
       <v-row>
         <rooms-table class="max-width" />
       </v-row>
@@ -14,13 +9,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Search from "@/components/admin/dashboard/search/Search.vue";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import MyAccount from "@/components/admin/dashboard/UserActions.vue";
 import RoomsTable from "@/components/admin/dashboard/RoomsTable.vue";
 @Component({
   components: {
-    Search,
     Navigation,
     MyAccount,
     RoomsTable,
@@ -29,10 +22,6 @@ import RoomsTable from "@/components/admin/dashboard/RoomsTable.vue";
 export default class Dashboard extends Vue {}
 </script>
 <style lang="scss">
-.header,
-.searchrow {
-  border-bottom: 1px solid gray;
-}
 .max-width {
   width: 100%;
 }

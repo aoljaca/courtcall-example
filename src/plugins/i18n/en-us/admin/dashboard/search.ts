@@ -1,7 +1,12 @@
 export default {
+    tableHeaders: {
+        name: "Name",
+        room: "Room"
+    },
+    searchResults: "Showing search results for ",
     fields: {
         searchType: {
-            placeholder: "Search Type"
+            placeholder: "Select Search Type"
         },
         searchTerm: {
             placeholder: "Enter Search Term"

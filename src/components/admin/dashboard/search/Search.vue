@@ -1,107 +1,150 @@
 <template>
-  <div class="search-row">
-    <v-container>
-      <v-row class="justify-center">
-        <v-col cols="3">
-          <v-select
-            v-model="searchType"
-            return-object
-            item-text="name"
-            :items="searchTypes"
-            :placeholder="
-              $t('admin.dashboard.search.fields.searchType.placeholder')
-            "
-          />
-        </v-col>
-        <v-col cols="5">
-          <v-autocomplete
-            :placeholder="
-              $t('admin.dashboard.search.fields.searchTerm.placeholder')
-            "
-            append-icon="mdi-magnify"
-            :items="itemsToSearch"
-            :item-text="itemText"
-          />
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+  <v-container>
+    <v-row class="justify-center">
+      <v-col cols="2">
+        <v-select
+          v-model="searchType"
+          class="mt-3"
+          dense
+          hide-details
+          return-object
+          item-text="name"
+          :items="searchTypes"
+          :placeholder="
+            $t('admin.dashboard.search.fields.searchType.placeholder')
+          "
+        />
+      </v-col>
+      <v-col cols="4">
+        <v-autocomplete
+          :placeholder="
+            this.searchTermQuery
+              ? `${$t('admin.dashboard.search.searchResults')}&quot;${
+                  this.searchTermQuery
+                }&quot;`
+              : $t('admin.dashboard.search.fields.searchTerm.placeholder')
+          "
+          :items="itemsToSearch"
+          :item-text="itemText"
+          :item-value="itemValue"
+          :disabled="isEmpty(searchType)"
+          :search-input.sync="searchInput"
+          v-model="idOfSearchSelection"
+          @keydown="onSearchKeyDown"
+          @change="onSearchItemSelected"
+          hide-details
+          dense
+        >
+          <template v-slot:append>
+            <v-btn icon @click="onSubmitSearch">
+              <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+          </template>
+        </v-autocomplete>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
-import { SearchType } from "../../../../model/admin/search/searchType";
-import { Organization } from "@/model/admin/organization/organization";
-import { Room } from "@/model/admin/room/room";
-import { Case } from "@/model/meeting/meeting-ui/case";
-import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import {
+  LocalizedSearchType,
+  SearchType,
+} from "../../../../model/admin/search/searchType";
+import { NavigateToEntity } from "../../../../services/navigation-helpers";
+import { isEmpty } from "lodash";
 
-interface LocalSearchType {
-  name: string;
-  type: SearchType;
-}
-
-@Component
+@Component({
+  methods: {
+    isEmpty,
+  },
+})
 export default class Search extends Vue {
-  searchType: LocalSearchType = {} as LocalSearchType;
+  searchType: LocalizedSearchType = {} as LocalizedSearchType;
+  searchInput = "";
   itemText = "";
+  itemValue = "";
+  idOfSearchSelection = "";
 
-  get searchTypes(): LocalSearchType[] {
-    const localizedSearchTypeNames = Object.values(
-      this.$t("admin.dashboard.search.searchTypes")
-    );
-    const lockedSearchTypes = Object.values(SearchType);
-    const searchTypes: LocalSearchType[] = [];
-
-    localizedSearchTypeNames.forEach((name, index) => {
-      searchTypes.push({
-        name,
-        type: lockedSearchTypes[index],
-      });
-    });
-
-    return searchTypes;
+  get searchTypes(): LocalizedSearchType[] {
+    return this.$store.getters["SearchModule/searchTypes"];
   }
 
   get itemsToSearch(): any[] {
+    this.itemText = "name";
+    this.itemValue = "id";
+
     switch (this.searchType.type) {
       case SearchType.SYSTEM_USER:
-        this.itemText = "name";
-        return this.systemUsers;
+        return this.$store.getters["SystemUsersModule/getAsList"];
       case SearchType.PARTICIPANT:
-        this.itemText = "name";
-        return this.participants;
+        return this.$store.getters["ParticipantsModule/getAsList"];
       case SearchType.ROOM:
         this.itemText = "roomDetails.name";
-        return this.rooms;
+        this.itemValue = "uuid";
+        return this.$store.getters["RoomModule/getAsList"];
       case SearchType.CASE:
-        this.itemText = "name";
-        return this.cases;
+        return this.$store.getters["CasesModule/getAsList"];
       case SearchType.ORGANIZATION:
-        this.itemText = "name";
-        return this.organizations;
+        return this.$store.getters["OrganizationsModule/getAsList"];
       default:
         return [];
     }
   }
 
-  get systemUsers(): Participant[] {
-    return this.$store.getters["ParticipantsModule/getSystemUsersAsList"];
+  get searchTermQuery(): string {
+    let searchTerm = "";
+
+    if (this.$route.query.searchTerm) {
+      searchTerm = this.$route.query.searchTerm as string;
+    }
+
+    return searchTerm;
   }
 
-  get participants(): Participant[] {
-    return this.$store.getters["ParticipantsModule/getAsList"];
+  get searchTypeQuery(): LocalizedSearchType {
+    let type = {} as LocalizedSearchType;
+    
+    if (this.$route.query.type) {
+      const name = this.$route.query.type;
+      type = this.$store.getters["SearchModule/searchTypeByName"](name);
+    }
+
+    return type;
   }
 
-  get rooms(): Room[] {
-    return this.$store.getters["RoomModule/getAsList"];
+  mounted(): void {
+    this.searchType = this.searchTypeQuery;
   }
-  get cases(): Case[] {
-    return this.$store.getters["CasesModule/getAsList"];
+
+  onSearchItemSelected(): void {
+    this.onNavigateToEntity();
   }
-  get organizations(): Organization[] {
-    return this.$store.getters["OrganizationsModule/getAsList"];
+
+  onSubmitSearch(): void {
+    this.onNavigateToSearchResults();
+  }
+
+  onSearchKeyDown(keyEvent: KeyboardEvent): void {
+    if (keyEvent.key === "Enter") {
+      this.onSubmitSearch();
+    }
+  }
+
+  onNavigateToEntity(): void {
+    NavigateToEntity(this.idOfSearchSelection, this.searchType.type);
+  }
+
+  onNavigateToSearchResults(): void {
+    this.$router.push({
+      name: "Search Results",
+      query: {
+        type: this.searchType.name,
+        searchTerm: this.searchInput,
+      },
+    });
   }
 }
 </script>
