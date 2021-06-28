@@ -142,7 +142,7 @@ export default class Search extends Vue {
       name: "Search Results",
       query: {
         type: this.searchType.name,
-        searchTerm: this.searchInput,
+        searchTerm: this.searchInput.toLowerCase(),
       },
     });
   }
