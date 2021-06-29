@@ -1,12 +1,6 @@
 <template>
   <div id="waitingRoom">
     <v-container fluid class="fill">
-      <v-row class="big-space">
-        <v-col>
-          <h1 class="d-inline">CourtCall</h1>
-          Room Name
-        </v-col>
-      </v-row>
       <v-row>
         <v-col class="d-flex justify-center">
           <h1>{{ $t("waitingRoom.mainHeading") }}</h1>
