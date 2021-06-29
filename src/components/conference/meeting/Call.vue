@@ -1,9 +1,6 @@
 <template>
   <div id="meetingUI">
     <v-container fluid>
-      <v-row>
-        <v-col class="py-0 header-col">header</v-col>
-      </v-row>
       <v-row class="body-row">
         <v-col class="px-0 py-0">
           <video-platform></video-platform>
@@ -43,7 +40,7 @@ import { INJECTION_TYPES } from "@/inversify/injection-types";
     Participants,
   },
 })
-export default class MeetingUI extends Vue {
+export default class Call extends Vue {
   @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
   websocketConnectionService: WebsocketConnectionService | undefined;
   drawer = true;
@@ -70,4 +67,3 @@ export default class MeetingUI extends Vue {
   overflow-y: auto;
 }
 </style>
-<style lang="scss"></style>

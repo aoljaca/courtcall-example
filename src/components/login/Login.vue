@@ -1,46 +1,23 @@
 <template>
   <div class="login">
+    <conference-header />
     <v-container fluid>
       <v-row class="big-empty"> </v-row>
-      <v-row>
-        <v-col align-self="center"
-          ><h2 class="justify-center d-flex">CourtCall</h2></v-col
-        >
-      </v-row>
       <v-row class="not-wide">
-        <v-col>
-          <div v-if="code">Code Login</div>
-          <div v-if="!code"><manual-login></manual-login></div>
+        <v-col cols="5">
+          <manual-login />
         </v-col>
-        <v-col>
-          <v-card>
-            <v-container class="boxed">
-              <v-row>
-                <v-col class="justify-center d-flex"
-                  ><i class="mdi mdi-phone pr-2"></i
-                  >{{ $t("login.phoneNumber") }}</v-col
-                >
-              </v-row>
-              <v-row>
-                <v-col class="justify-center d-flex"
-                  ><i class="mdi mdi-chat pr-2"></i
-                  >{{ $t("login.liveChat") }}</v-col
-                >
-              </v-row>
-              <v-row>
-                <v-col class="justify-center d-flex">
-                  <i class="mdi mdi-web pr-2"></i
-                  >{{ $t("login.website") }}</v-col
-                >
-              </v-row>
-              <v-row>
-                <v-col class="justify-center d-flex"
-                  ><i class="mdi mdi-help-circle pr-2"></i
-                  >{{ $t("login.moreHelp") }}</v-col
-                >
-              </v-row>
-            </v-container>
-          </v-card>
+        <v-col class="text-center">
+          <v-divider vertical />
+        </v-col>
+        <v-col cols="5">
+          <h3>Join Conference Call</h3>
+          <br />
+          <div class="text-center">
+            <v-text-field placeholder="Conference ID" />
+            <v-text-field placeholder="Passcode" />
+            <v-btn color="grey" dark> Join Call </v-btn>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -50,16 +27,14 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import ManualLogin from "@/components/login/ManualLogin.vue";
+import ConferenceHeader from "@/components/conference/navigation/ConferenceHeader.vue";
 @Component({
-  components: { ManualLogin },
+  components: {
+    ManualLogin,
+    ConferenceHeader,
+  },
 })
-export default class Login extends Vue {
-  code: string | null = null;
-
-  mounted(): void {
-    this.code = this.$route.params.code;
-  }
-}
+export default class Login extends Vue {}
 </script>
 <style lang="scss">
 @media (min-width: 1280px) {
@@ -70,11 +45,5 @@ export default class Login extends Vue {
     padding-left: 25rem;
     padding-right: 25rem;
   }
-}
-
-.boxed {
-  outline-style: solid;
-  outline-color: black;
-  outline-width: 1px;
 }
 </style>
