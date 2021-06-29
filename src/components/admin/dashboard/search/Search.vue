@@ -106,7 +106,7 @@ export default class Search extends Vue {
 
   get searchTypeQuery(): LocalizedSearchType {
     let type = {} as LocalizedSearchType;
-    
+
     if (this.$route.query.type) {
       const name = this.$route.query.type;
       type = this.$store.getters["SearchModule/searchTypeByName"](name);
@@ -116,7 +116,12 @@ export default class Search extends Vue {
   }
 
   mounted(): void {
-    this.searchType = this.searchTypeQuery;
+    const defaultSearchType = this.$store.getters[
+      "SearchModule/searchTypeByName"
+    ](SearchType.SYSTEM_USER);
+    this.searchType = isEmpty(this.searchTypeQuery)
+      ? defaultSearchType
+      : this.searchTypeQuery;
   }
 
   onSearchItemSelected(): void {
