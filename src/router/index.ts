@@ -155,11 +155,7 @@ const routes: Array<RouteConfig> = [
             },
           },
           {
-<<<<<<< HEAD
             path: "cases",
-=======
-            path: "cases/:caseId",
->>>>>>> a7c6fa1046bf4cc7959f2c49f372c33c87dbeed8
             name: "Case",
             meta: {
               hideBreadcrumb: true,
