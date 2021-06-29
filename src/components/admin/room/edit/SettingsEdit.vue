@@ -391,6 +391,7 @@ import RoomTemplates from "@/components/admin/room/edit/room-templates/RoomTempl
 import { NULL_ROOM_SETTINGS } from "@/model/admin/room/room-settings";
 import "reflect-metadata";
 import { RoomTemplate } from "@/model/admin/room/room-template";
+import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 @Component({
   components: {
     RoomTemplates,
@@ -408,6 +409,9 @@ export default class SettingsEdit extends Vue {
 
   template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
 
+  setTemplate() {
+    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+  }
 
   get roomSettings() {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
@@ -418,9 +422,14 @@ export default class SettingsEdit extends Vue {
       .roomSettings;
   }
 
-  templateNames = this.$store.getters[
-    "RoomTemplateModule/getTemplateNamesList"
-  ];
+  get roomDetails() {
+    if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+      return NULL_ROOM_DETAILS;
+    }
+
+    return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
+      .roomDetails;
+  }
 }
 </script>
 
