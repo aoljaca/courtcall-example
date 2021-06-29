@@ -40,15 +40,14 @@
         <div class="pr-4 details-label-text font-weight-bold">
           {{ $t("admin.roomDetails.organizationAlternate") }}
         </div>
-        <v-text-field
-          :rules="rules"
-          counter
-          maxlength="25"
-          clearable
+        <v-autocomplete
+          item-text="name"
+          v-model="organization"
+          :items="organizations"
           dense
-          :placeholder="roomDetails.organization"
-        >
-        </v-text-field>
+          return-object
+          @change="setOrganization()"
+        ></v-autocomplete>
       </v-col>
       <v-col cols="2" class="d-flex px-8">
         <div class="pr-4 details-label-text font-weight-bold">
@@ -73,12 +72,12 @@
         <v-row class="justify-center">
           <v-col cols="12">
             <v-autocomplete
-              :rules="rules"
-              v-model="value"
-              :items="templateNames"
+              item-text="roomSettings.template"
+              v-model="template"
+              :items="templates"
               dense
-              clearable
-              :label="$t('admin.roomDetails.templateName')"
+              return-object
+              @change="setTemplate()"
             ></v-autocomplete>
           </v-col>
         </v-row>
@@ -110,17 +109,37 @@
 import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
+import { Organization } from "@/model/admin/organization/organization";
+import { RoomTemplate } from "@/model/admin/room/room-template";
 @Component
 export default class RoomDetailsEdit extends Vue {
-  value = "null";
-  rules = [(v: string | any[]) => v.length <= 25 || "Max 25 characters"];
-  items = ["Draft", "Available"];
+  rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
 
-  settingsViewPath = "/admin/rooms/" + this.$route.params.roomId + "/view";
+  items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
 
-  templateNames = this.$store.getters[
-    "RoomTemplateModule/getTemplateNamesList"
-  ];
+  settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
+
+  templateIdFromRoomId: string = this.$store.state.RoomModule
+    .rooms[this.$route.params.roomId]
+    .templateId;
+
+  templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
+
+  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+
+  setTemplate() {
+    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+  }
+
+  organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
+
+  organization: Organization = this.$store.getters[
+    "OrganizationsModule/getById"
+  ](this.roomDetails.organization);
+
+  setOrganization() {
+    this.roomDetails.organization = this.organization.id;
+  }
 
   get roomDetails() {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
