@@ -27,7 +27,7 @@ export interface Participant {
   systemUser: boolean;
   organizations: string[];
   email: string | null;
-  roomId: string | null;
+  roomId: string;
   phone: string | null;
   entryAudioBehavior: EntryAudioBehavor;
   entryVideoBehavior: EntryVideoBehavor;

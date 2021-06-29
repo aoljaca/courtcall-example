@@ -1,6 +1,8 @@
+import search from "./search";
+
 export default {
+  search: search,
   welcomeBack: "Welcome Back ",
-  searchTerm: "Enter Search Term",
   rooms: "ROOMS",
   filter: "Filter By",
   add: "ADD",

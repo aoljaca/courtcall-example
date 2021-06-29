@@ -25,6 +25,7 @@ import CaseEdit from "@/components/admin/case/edit/CaseEdit.vue";
 import MyAccount from "@/components/admin/my-account/MyAccount.vue";
 import NotFound from "@/components/shared/NotFound.vue";
 import RoomActivity from "@/components/admin/room/activity/RoomActivity.vue";
+import SearchResults from "@/components/admin/dashboard/search/SearchResults.vue";
 import i18n from "@/plugins/i18n";
 import store from "../store/index";
 Vue.use(VueRouter);
@@ -82,11 +83,29 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: "dashboard",
-        component: Dashboard,
-        name: "Dashboard",
-        meta: {
-          breadcrumb: i18n.t("admin.navigation.dashboard"),
+        component: {
+          render(c) {
+            return c("router-view");
+          },
         },
+        children: [
+          {
+            path: "",
+            component: Dashboard,
+            name: "Dashboard",
+            meta: {
+              breadcrumb: i18n.t("admin.navigation.dashboard"),
+            },
+          },
+          {
+            path: "search",
+            name: "Search Results",
+            component: SearchResults,
+            meta: {
+              hideBreadcrumb: true,
+            },
+          },
+        ]
       },
       {
         path: "my-account",
@@ -136,7 +155,11 @@ const routes: Array<RouteConfig> = [
             },
           },
           {
+<<<<<<< HEAD
             path: "cases",
+=======
+            path: "cases/:caseId",
+>>>>>>> a7c6fa1046bf4cc7959f2c49f372c33c87dbeed8
             name: "Case",
             meta: {
               hideBreadcrumb: true,

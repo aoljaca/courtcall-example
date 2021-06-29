@@ -1,4 +1,4 @@
-import dashboard from "./admin/dashboard";
+import dashboard from "./admin/dashboard/dashboard";
 import systemUsers from "./admin/system-user/system-users";
 import roomSettings from "./admin/room/room-settings";
 import roomDetails from "./admin/room/room-details";
