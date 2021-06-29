@@ -16,8 +16,8 @@ import SupportModule from "./support/support-module";
 import SystemUsersModule from "./system-users/system-users-module";
 import SystemUserRolesModule from "./system-users/system-user-roles-module";
 import RoomSessionModule from "./room-session/room-session-module";
-import RoomLogModule from "./room-log/room-log-module";
 import SearchModule from "./admin/dashboard/search-module";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -38,7 +38,6 @@ export default new Vuex.Store({
     SystemUsersModule,
     SystemUserRolesModule,
     RoomSessionModule,
-    RoomLogModule,
     SearchModule
   },
 });

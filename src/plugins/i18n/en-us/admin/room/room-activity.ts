@@ -25,4 +25,6 @@ export default {
   unknownLogActivity:
     "Log Activity Unknown for {type} {participant} {subconference}",
   participant: "Participant",
+  viewConferenceLog: "View Conference Log",
+  roomConferenceLogDescription: "Room {room} at {timestamp}",
 };
