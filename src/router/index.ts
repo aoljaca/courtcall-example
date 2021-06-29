@@ -127,6 +127,14 @@ const routes: Array<RouteConfig> = [
         },
       },
       {
+        path: "rooms/create",
+        name: "Room View Manage",
+        component: RoomAddEdit,
+        meta: {
+          hideBreadcrumb: true,
+        },
+      },
+      {
         path: "rooms/:roomId",
         name: "Rooms",
         meta: {
