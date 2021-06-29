@@ -17,11 +17,10 @@
       </v-row>
     </v-container>
 
-    <template v-if="showBreadcrumbs">
-      <v-divider />
-      <breadcrumbs />
-    </template>
     <v-divider />
+    <breadcrumbs v-if="showBreadcrumbs"/>
+    <search v-if="showSearch"/>
+    <v-divider class="mt-3" v-if="showBreadcrumbs || showSearch" />
 
     <v-container fluid class="px-10">
       <v-row>
@@ -38,6 +37,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import UserActions from "@/components/admin/dashboard/UserActions.vue";
 import Breadcrumbs from "@/components/admin/navigation/Breadcrumbs.vue";
+import Search from "@/components/admin/dashboard/search/Search.vue";
 import { inject } from "inversify-props";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { WebsocketConnectionService } from "@/services/websocket-connection";
@@ -46,16 +46,27 @@ import { WebsocketConnectionService } from "@/services/websocket-connection";
     Navigation,
     UserActions,
     Breadcrumbs,
+    Search,
   },
 })
 export default class Admin extends Vue {
   @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
   websocketConnectionService: WebsocketConnectionService | undefined;
+
   get showBreadcrumbs(): boolean {
-    return this.$route.name !== "Dashboard";
+    return !this.isSearchOrDashboard;
   }
 
-  mounted() {
+  get showSearch(): boolean {
+    return this.isSearchOrDashboard;
+  }
+
+  get isSearchOrDashboard(): boolean {
+    const routeNames = ["Search Results", "Dashboard"];
+    return routeNames.includes(this.$route.name!);
+  }
+
+  mounted(): void {
     this.websocketConnectionService?.connectMeeting();
   }
 }
