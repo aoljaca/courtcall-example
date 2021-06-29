@@ -42,9 +42,9 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Watch } from "vue-property-decorator";
-import CallMeAudioSetup from "./setup-modes/CallMeAudioSetup.vue";
-import CallInAudioSetup from "./setup-modes/CallInAudioSetup.vue";
-import ComputerAudioSetup from "./setup-modes/ComputerAudioSetup.vue";
+import CallMeAudioSetup from "../av-options/setup-modes/CallMeAudioSetup.vue";
+import CallInAudioSetup from "../av-options/setup-modes/CallInAudioSetup.vue";
+import ComputerAudioSetup from "../av-options/setup-modes/ComputerAudioSetup.vue";
 @Component({
   components: {
     CallMeAudioSetup,
