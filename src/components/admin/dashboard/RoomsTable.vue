@@ -1,50 +1,52 @@
 <template>
   <div class="rooms-table">
     <v-container>
-      <v-row>
-        <v-col class="text-h4" cols="1">
-          {{ $t("admin.dashboard.rooms") }}
-        </v-col>
-        <v-col cols="2">
-          <v-select
-            :items="selectItems"
-            :label="$t('admin.dashboard.filter')"
-            data-test-id="rooms-table-select"
-          >
-          </v-select>
-        </v-col>
-        <v-col class="d-flex justify-end" cols="9">
-          <v-btn
-            data-test-id="rooms-table-refresh-button"
-            color="grey darken-2"
-            elevation="2"
-            fab
-            :title="$t('admin.dashboard.add')"
-          >
-            <v-icon color="white" x-large> mdi-plus </v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-btn
-            :title="$t('admin.dashboard.refresh')"
-            color="grey darken-4 rounded-0 white--text"
-            depressed
-            data-test-id="refresh-list-button"
-          >
-            <span>
-              {{ $t("admin.dashboard.refresh") }}
-            </span>
-            <v-icon> mdi-refresh </v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
+      <template v-if="!hideHeader">
+        <v-row>
+          <v-col class="text-h4" cols="1">
+            {{ $t("admin.dashboard.rooms") }}
+          </v-col>
+          <v-col cols="2">
+            <v-select
+              :items="selectItems"
+              :label="$t('admin.dashboard.filter')"
+              data-test-id="rooms-table-select"
+            >
+            </v-select>
+          </v-col>
+          <v-col class="d-flex justify-end" cols="9">
+            <v-btn
+              data-test-id="rooms-table-refresh-button"
+              color="grey darken-2"
+              elevation="2"
+              fab
+              :title="$t('admin.dashboard.add')"
+            >
+              <v-icon color="white" x-large> mdi-plus </v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-btn
+              :title="$t('admin.dashboard.refresh')"
+              color="grey darken-4 rounded-0 white--text"
+              depressed
+              data-test-id="refresh-list-button"
+            >
+              <span>
+                {{ $t("admin.dashboard.refresh") }}
+              </span>
+              <v-icon> mdi-refresh </v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </template>
       <v-row>
         <v-col>
           <v-data-table
             :headers="HEADERS"
-            :items="roomsData"
+            :items="rooms || roomsData"
             :items-per-page="20"
             class="elevation-1"
           >
@@ -195,13 +197,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import SystemUsers from "../system-users/SystemUsers.vue";
 import { SupportItem } from "@/model/admin/support/support-item";
+import { Room } from "@/model/admin/room/room";
 @Component
 export default class RoomsTable extends Vue {
+  @Prop()
+  rooms!: Room[];
+  @Prop()
+  hideHeader?: boolean;
+
   readonly HEADERS = [
     {
       text: this.$t("admin.dashboard.activeHeader"),
