@@ -5,11 +5,6 @@
         <v-card-text class="main-modal">
           <v-container>
             <v-row>
-              <v-col class="d-flex justify-center">
-                <h1>CourtCall</h1>
-              </v-col>
-            </v-row>
-            <v-row>
               <v-col class="d-flex">
                 <h2>{{ $t("avOptions.allowUseHeader") }}</h2>
               </v-col>
