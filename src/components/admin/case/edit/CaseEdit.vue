@@ -177,6 +177,7 @@
                 color="grey darken-4 rounded-0 white--text"
                 depressed
                 elevation="0"
+                @click="addScheduledParticipant()"
               >
                 {{ $t("admin.cases.addParticipant") }}
               </v-btn>
@@ -209,6 +210,7 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Room } from "@/model/admin/room/room";
 @Component
 export default class CaseEdit extends Vue {
+  //TODO move these to mounted hook
   roomId = this.$route.params.roomId;
   caseId = this.$route.params.caseId;
   room: Room = this.$store.getters["RoomModule/getById"](this.roomId);
@@ -216,6 +218,8 @@ export default class CaseEdit extends Vue {
   participantId = "";
   caseName = this.getCaseById(this.caseId).name;
   caseNumber = this.getCaseById(this.caseId).number;
+
+  createParticipantPath = "/admin/rooms/"+ this.roomId + "/participants/create";
 
   roomPath = "/admin/rooms/" + this.roomId;
 
@@ -256,6 +260,18 @@ export default class CaseEdit extends Vue {
 
   getRoomById(id: string): Room {
     return this.$store.getters["RoomModule/getById"](id);
+  }
+
+  addScheduledParticipant(): void {
+    this.$router.push({
+      name: "Create Participant",
+      params: {
+        roomId: this.roomId,
+      },
+      query: {
+        caseId: this.caseId,
+      }
+    })
   }
 }
 </script>

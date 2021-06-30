@@ -244,6 +244,14 @@ const routes: Array<RouteConfig> = [
                   breadcrumb: i18n.t("admin.participants.create"),
                 },
               },
+              {
+                path: "create?case=:caseId",
+                component: CreateParticipant,
+                name: "Create Participant",
+                meta: {
+                  breadcrumb: i18n.t("admin.participants.create"),
+                },
+              },
             ],
           },
         ],
