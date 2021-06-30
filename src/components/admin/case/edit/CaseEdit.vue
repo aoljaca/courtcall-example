@@ -36,7 +36,15 @@
             </v-row>
             <v-row>
               <v-col>
-                <v-text-field :label="$t('admin.cases.typeRoomName')" dense />
+                <v-autocomplete
+                  data-test-id="rooms-search"
+                  item-text="roomDetails.name"
+                  :label="$t('admin.cases.typeRoomName')"
+                  v-model="room"
+                  :items="rooms"
+                  dense
+                  return-object
+                ></v-autocomplete>
               </v-col>
             </v-row>
           </v-col>
@@ -128,11 +136,12 @@
             <v-col>
               <v-select 
                 :label="$t('admin.cases.selectRoom')"
-                :items="participants"
+                :items="participantsByRoom"
                 item-text="name"
                 item-value="id"
               >
               </v-select>
+              
             </v-col>
             <v-col>
               <v-btn
@@ -183,23 +192,28 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { Room } from "@/model/admin/room/room";
 @Component
 export default class CaseEdit extends Vue {
-  roomPath = "/admin/rooms/" + this.$route.params.roomId;
+  roomId = this.$route.params.roomId;
+  room: Room = this.$store.getters["RoomModule/getById"](this.roomId);
+  rooms: Room[] = this.$store.getters["RoomModule/getAsList"];
+
+  roomPath = "/admin/rooms/" + this.roomId;
 
   caseViewPath = this.roomPath + "/cases/view/" + this.$route.params.caseId;
 
   caseParticipantIds: string[] = this.getCaseById(this.$route.params.caseId)?.participants;
 
-  roomName: string = this.getRoomNameById(this.$route.params.roomId);
-
-  // participantsData = this.$store.getters["ParticipantsModule/getAsList"];
-
   get participants() {
     return this.$store.getters["ParticipantsModule/getAsList"];
   }
 
-  // partcipantNames = this.participants.map((p: { name: any; }) => p.name);
+  get participantsByRoom(): Participant[] {
+    return this.participants.filter(
+      (p: { roomId: string }) => p.roomId === this.roomId
+    );
+  }
 
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
@@ -209,8 +223,8 @@ export default class CaseEdit extends Vue {
     return this.$store.getters["CasesModule/getById"](id);
   }
 
-  getRoomNameById(id: string): string {
-    return this.$store.getters["RoomModule/getRoomNameById"](id);
+  getRoomById(id: string): Room {
+    return this.$store.getters["RoomModule/getById"](id);
   }
 }
 </script>
