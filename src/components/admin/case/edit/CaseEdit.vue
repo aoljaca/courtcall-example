@@ -215,6 +215,13 @@ export default class CaseEdit extends Vue {
     );
   }
 
+  addParticipantToCase(participantId: string) {
+    this.$store.dispatch("CasesModule/addParticipantToCase", {
+      id: this.$route.params.caseId,
+      participantId: participantId,
+    });
+  }
+  
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
   }
