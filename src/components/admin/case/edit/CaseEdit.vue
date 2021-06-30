@@ -26,18 +26,30 @@
           <v-col cols="3">
             <v-row>
               <v-col>
-                <v-text-field :label="$t('admin.cases.enterCaseName')" dense />
+                <v-text-field 
+                  data-test-id="case-name"
+                  :label="$t('admin.cases.enterCaseName')" 
+                  dense
+                  v-model="caseName" 
+                  clearable
+                />
               </v-col>
             </v-row>
             <v-row>
               <v-col>
-                <v-text-field :label="$t('admin.cases.enterCaseNumber')" dense />
+                <v-text-field 
+                  data-test-id="case-number"
+                  :label="$t('admin.cases.enterCaseNumber')" 
+                  dense 
+                  v-model="caseNumber"
+                  clearable
+                />
               </v-col>
             </v-row>
             <v-row>
               <v-col>
                 <v-autocomplete
-                  data-test-id="rooms-search"
+                  data-test-id="case-room"
                   item-text="roomDetails.name"
                   :label="$t('admin.cases.typeRoomName')"
                   v-model="room"
@@ -50,21 +62,21 @@
           </v-col>
           <v-col class="d-flex justify-end" id="cancel-save-btns">
             <v-btn
+              data-test-id="case-cancel-button"
               class="mx-4"
               :title="$t('admin.cases.cancel')"
               color="grey lighten-2 rounded-0 white--text"
               depressed
-              data-test-id="case-cancel-button"
               link
               :to="caseViewPath"
             >
               {{ $t("admin.cases.cancel") }}
             </v-btn>
             <v-btn
+              data-test-id="case-save-changes-button"
               :title="$t('admin.cases.saveChanges')"
               color="grey darken-4 rounded-0 white--text"
               depressed
-              data-test-id="case-save-changes-button"
             >
               {{ $t("admin.cases.saveChanges") }}
             </v-btn>
@@ -135,21 +147,23 @@
           <v-row>
             <v-col>
               <v-select 
+                data-test-id="select-participant"
                 :label="$t('admin.cases.selectRoom')"
                 :items="participantsByRoom"
                 item-text="name"
                 item-value="id"
+                @click="setSelectedParticipantId(item-value)"
               >
-              </v-select>
-              
+              </v-select>     
             </v-col>
             <v-col>
               <v-btn
-                :title="$t('admin.cases.addToCase')"
                 data-test-id="add-to-case"
+                :title="$t('admin.cases.addToCase')"
                 color="grey darken-4 rounded-0 white--text"
                 depressed
                 elevation="0"
+                @click="addParticipantToCase(this.participantId)"
               >
                 {{ $t("admin.cases.addToCase") }}
               </v-btn>
@@ -158,8 +172,8 @@
           <v-row>
             <v-col>
               <v-btn
+                data-test-id="add-scheduled-participant"
                 :title="$t('admin.cases.addParticipant')"
-                data-test-id="add-participant"
                 color="grey darken-4 rounded-0 white--text"
                 depressed
                 elevation="0"
@@ -173,7 +187,7 @@
       <v-row>
         <v-col class="d-flex justify-end">
           <v-btn
-            :title="$t('admin.cases.add')"
+            :title="$t('admin.cases.archive')"
             data-test-id="archive-case"
             color="grey darken-4 rounded-0 white--text"
             depressed
@@ -196,14 +210,18 @@ import { Room } from "@/model/admin/room/room";
 @Component
 export default class CaseEdit extends Vue {
   roomId = this.$route.params.roomId;
+  caseId = this.$route.params.caseId;
   room: Room = this.$store.getters["RoomModule/getById"](this.roomId);
   rooms: Room[] = this.$store.getters["RoomModule/getAsList"];
+  participantId = "";
+  caseName = this.getCaseById(this.caseId).name;
+  caseNumber = this.getCaseById(this.caseId).number;
 
   roomPath = "/admin/rooms/" + this.roomId;
 
-  caseViewPath = this.roomPath + "/cases/view/" + this.$route.params.caseId;
+  caseViewPath = this.roomPath + "/cases/view/" + this.caseId;
 
-  caseParticipantIds: string[] = this.getCaseById(this.$route.params.caseId)?.participants;
+  caseParticipantIds: string[] = this.getCaseById(this.caseId)?.participants;
 
   get participants() {
     return this.$store.getters["ParticipantsModule/getAsList"];
@@ -216,10 +234,16 @@ export default class CaseEdit extends Vue {
   }
 
   addParticipantToCase(participantId: string) {
-    this.$store.dispatch("CasesModule/addParticipantToCase", {
-      id: this.$route.params.caseId,
-      participantId: participantId,
-    });
+    if(this.participantId.length > 0) {
+      this.$store.dispatch("CasesModule/addParticipantToCase", {
+        id: this.caseId,
+        participantId: participantId,
+      });
+    }
+  }
+
+  setSelectedParticipantId(id: string) {
+    this.participantId = id;
   }
   
   getParticipantById(id: string): Participant {
