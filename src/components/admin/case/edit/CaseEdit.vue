@@ -118,7 +118,6 @@
                         v-on="on"
                         color="grey darken-4 rounded-0 white--text"
                         depressed
-                        elevation="0"
                       >
                         {{ $t("admin.cases.remove") }}
                       </v-btn>
@@ -173,7 +172,6 @@
                 :title="$t('admin.cases.addParticipant')"
                 color="grey darken-4 rounded-0 white--text"
                 depressed
-                elevation="0"
                 @click="addScheduledParticipant()"
               >
                 {{ $t("admin.cases.addParticipant") }}
@@ -189,7 +187,6 @@
             data-test-id="archive-case"
             color="grey darken-4 rounded-0 white--text"
             depressed
-            elevation="0"
           >
             {{ $t("admin.cases.archive") }}
           </v-btn>
@@ -223,7 +220,7 @@ export default class CaseEdit extends Vue {
 
   caseViewPath = this.roomPath + "/cases/view/" + this.caseId;
 
-  caseParticipantIds: string[] = this.getCaseById(this.caseId)?.participants;
+  caseParticipantIds: string[] = (this.getCaseById(this.caseId) ? this.getCaseById(this.caseId)?.participants : []);
 
   get participants() {
     return this.$store.getters["ParticipantsModule/getAsList"];
