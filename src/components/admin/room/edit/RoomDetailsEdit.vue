@@ -22,7 +22,10 @@
           depressed
           class="mr-6"
         >
-          <router-link class="remove-decoration" :to="settingsViewPath">
+          <router-link v-if="isCreate" class="remove-decoration" to="/admin/dashboard">
+            {{ $t("admin.roomDetails.cancel") }}
+          </router-link>
+          <router-link v-else class="remove-decoration" :to="settingsViewPath">
             {{ $t("admin.roomDetails.cancel") }}
           </router-link>
         </v-btn>
@@ -113,23 +116,23 @@ import { Organization } from "@/model/admin/organization/organization";
 import { RoomTemplate } from "@/model/admin/room/room-template";
 @Component
 export default class RoomDetailsEdit extends Vue {
+  roomId = "";
+
   rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
+
+  isCreate = false;
 
   items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
 
-  settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
+  settingsViewPath = "/admin/rooms/" + this.roomId;
 
   templateIdFromRoomId: string = this.$store.state.RoomModule
-    .rooms[this.$route.params.roomId]
+    .rooms[this.roomId]
     .templateId;
 
   templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
 
   template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
-
-  setTemplate() {
-    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
-  }
 
   organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
 
@@ -137,16 +140,27 @@ export default class RoomDetailsEdit extends Vue {
     "OrganizationsModule/getById"
   ](this.roomDetails.organization);
 
+  mounted(): void {
+    this.roomId = this.$route.params.roomId;
+    if(this.$route.fullPath === "/admin/rooms/create") {
+      this.isCreate = true;
+    }
+  }
+
+  setTemplate() {
+    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+  }
+
   setOrganization() {
     this.roomDetails.organization = this.organization.id;
   }
 
   get roomDetails() {
-    if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+    if (!this.$store.state.RoomModule.rooms[this.roomId]) {
       return NULL_ROOM_DETAILS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
+    return this.$store.state.RoomModule.rooms[this.roomId]
       .roomDetails;
   }
 }
