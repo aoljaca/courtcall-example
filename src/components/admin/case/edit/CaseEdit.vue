@@ -204,9 +204,14 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Room } from "@/model/admin/room/room";
 @Component
 export default class CaseEdit extends Vue {
-  //TODO move these to mounted hook
-  roomId = this.$route.params.roomId;
-  caseId = this.$route.params.caseId;
+  caseId = "";
+  roomId = "";
+
+  mounted() {
+    this.roomId = this.$route.params.roomId;
+    this.caseId = this.$route.params.caseId;
+  }
+
   room: Room = this.$store.getters["RoomModule/getById"](this.roomId);
   rooms: Room[] = this.$store.getters["RoomModule/getAsList"];
   participantId = "";
