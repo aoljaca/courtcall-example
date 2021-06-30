@@ -20,7 +20,12 @@
             color="white--text grey darken-4 rounded-0"
             depressed
           >
-            <router-link class="remove-decoration" :to="settingsEditPath">
+           <router-link class="remove-decoration" 
+              :to="{
+                name: 'Edit Room',
+                params: { roomId },
+              }"
+            >
               {{ $t("admin.roomDetails.editButton") }}
             </router-link>
           </v-btn>
@@ -110,8 +115,6 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
-  settingsEditPath = "/admin/rooms/" + this.$route.params.roomId + "/edit";
-
   get roomDetails() {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
       return NULL_ROOM_DETAILS;

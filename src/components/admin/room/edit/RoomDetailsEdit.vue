@@ -22,10 +22,21 @@
           depressed
           class="mr-6"
         >
-          <router-link v-if="isCreate" class="remove-decoration" to="/admin/dashboard">
+          <router-link 
+            v-if="isCreate" class="remove-decoration" 
+            :to="{
+                name: 'Dashboard',
+            }"
+          >
             {{ $t("admin.roomDetails.cancel") }}
           </router-link>
-          <router-link v-else class="remove-decoration" :to="settingsViewPath">
+          <router-link 
+            v-else class="remove-decoration" 
+            :to="{
+                name: 'View Room',
+                params: { roomId },
+            }"
+          >
             {{ $t("admin.roomDetails.cancel") }}
           </router-link>
         </v-btn>
@@ -123,8 +134,6 @@ export default class RoomDetailsEdit extends Vue {
   isCreate = false;
 
   items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
-
-  settingsViewPath = "/admin/rooms/" + this.roomId;
 
   templateIdFromRoomId: string = this.$store.state.RoomModule
     .rooms[this.roomId]

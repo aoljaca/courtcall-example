@@ -16,12 +16,14 @@
           </v-col>
           <v-col class="d-flex justify-end" cols="9">
             <v-btn
-              data-test-id="rooms-table-refresh-button"
+              data-test-id="creat-room-button"
               color="grey darken-2"
               elevation="2"
               fab
               :title="$t('admin.dashboard.add')"
-              to="/admin/rooms/create"
+              :to="{
+                name: 'Create Room',
+              }"
             >
               <v-icon color="white" x-large> mdi-plus </v-icon>
             </v-btn>
@@ -71,7 +73,7 @@
                   data-test-id="room-link"
                   link
                   :to="{
-                    name: 'Room View Manage',
+                    name: 'View Room',
                     params: { roomId: item.uuid },
                   }"
                 >
@@ -137,7 +139,7 @@
                     data-test-id="room-details"
                     link
                     :to="{
-                      name: 'Room View Manage',
+                      name: 'View Room',
                       params: {
                         roomId: item.uuid,
                       },
@@ -149,7 +151,7 @@
                     data-test-id="room-participants"
                     link
                     :to="{
-                      name: 'Room View Manage',
+                      name: 'View Room',
                       params: {
                         roomId: item.uuid,
                       },
@@ -164,7 +166,7 @@
                     data-test-id="room-cases"
                     link
                     :to="{
-                      name: 'Room View Manage',
+                      name: 'View Room',
                       params: {
                         roomId: item.uuid,
                       },
