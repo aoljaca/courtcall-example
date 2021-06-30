@@ -52,7 +52,7 @@ export default class CreateParticipantDetails extends Vue {
   @Prop()
   participant!: Participant;
 
-  mounted(): void {
+  created(): void {
     if(this.$route.query.scheduledParticipant) {
       this.participant.role = ParticipantRole.PARTICIPANT_SCHEDULED;
     }
@@ -158,9 +158,10 @@ export default class CreateParticipantDetails extends Vue {
   }
 
   getEligibleCases(): Case[] {
+    const roomId = this.$route.params.roomId;
     const allCases: Case[] = this.$store.getters["CasesModule/getAsList"] || [];
     const filteredCases = allCases.filter(
-      (c) => c.roomId === this.participant.roomId
+      (c) => c.roomId === roomId
     );
 
     return filteredCases;
