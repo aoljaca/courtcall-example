@@ -21,6 +21,7 @@
               elevation="2"
               fab
               :title="$t('admin.dashboard.add')"
+              to="/admin/rooms/create"
             >
               <v-icon color="white" x-large> mdi-plus </v-icon>
             </v-btn>

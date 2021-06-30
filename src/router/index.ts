@@ -128,10 +128,10 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: "rooms/create",
-        name: "Room View Manage",
+        name: "Room Create",
         component: RoomAddEdit,
         meta: {
-          hideBreadcrumb: true,
+          breadcrumb: "New Room",
         },
       },
       {
