@@ -166,8 +166,9 @@ export default class ViewSystemUser extends Vue {
 
   loadSystemUser(): void {
     const systemUserId = this.$route.params.systemUserId;
-    this.systemUser =
-      this.$store.getters["SystemUsersModule/getById"](systemUserId);
+    this.systemUser = this.$store.getters["SystemUsersModule/getById"](
+      systemUserId
+    );
     this.systemUserEdits = cloneDeep(this.systemUser);
   }
 

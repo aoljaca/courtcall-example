@@ -3,10 +3,7 @@
     <v-form>
       <v-row class="my-4">
         <v-row dense>
-          <v-col 
-            cols="1"
-            class="d-flex flex-column"
-          >
+          <v-col cols="1" class="d-flex flex-column">
             <v-row>
               <v-col>
                 <label>{{ $t("admin.cases.caseName") }}</label>
@@ -26,21 +23,21 @@
           <v-col cols="3">
             <v-row>
               <v-col>
-                <v-text-field 
+                <v-text-field
                   data-test-id="case-name"
-                  :label="$t('admin.cases.enterCaseName')" 
+                  :label="$t('admin.cases.enterCaseName')"
                   dense
-                  v-model="caseName" 
+                  v-model="caseName"
                   clearable
                 />
               </v-col>
             </v-row>
             <v-row>
               <v-col>
-                <v-text-field 
+                <v-text-field
                   data-test-id="case-number"
-                  :label="$t('admin.cases.enterCaseNumber')" 
-                  dense 
+                  :label="$t('admin.cases.enterCaseNumber')"
+                  dense
                   v-model="caseNumber"
                   clearable
                 />
@@ -99,7 +96,7 @@
       <v-row id="participants-list">
         <v-col>
           <v-divider />
-          <v-row 
+          <v-row
             v-for="id in caseParticipantIds"
             :key="`participant-${id}`"
             class="my-2"
@@ -112,21 +109,21 @@
             <v-col>
               <v-menu id="recycled-menu" offset-y>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-row>
-                      <v-col>
-                        <v-btn
-                          :title="$t('admin.cases.remove')"
-                          data-test-id="remove-participant"
-                          v-bind="attrs"
-                          v-on="on"
-                          color="grey darken-4 rounded-0 white--text"
-                          depressed
-                          elevation="0"
-                        >
-                          {{ $t("admin.cases.remove") }}
-                        </v-btn>
-                      </v-col>
-                    </v-row>
+                  <v-row>
+                    <v-col>
+                      <v-btn
+                        :title="$t('admin.cases.remove')"
+                        data-test-id="remove-participant"
+                        v-bind="attrs"
+                        v-on="on"
+                        color="grey darken-4 rounded-0 white--text"
+                        depressed
+                        elevation="0"
+                      >
+                        {{ $t("admin.cases.remove") }}
+                      </v-btn>
+                    </v-col>
+                  </v-row>
                 </template>
                 <v-list>
                   <v-list-item data-test-id="remove-from-case">
@@ -146,15 +143,15 @@
         <v-col>
           <v-row>
             <v-col>
-              <v-select 
+              <v-select
                 data-test-id="select-participant"
                 :label="$t('admin.cases.selectRoom')"
                 :items="participantsByRoom"
                 item-text="name"
                 item-value="id"
-                @click="setSelectedParticipantId(item-value)"
+                v-model="participantId"
               >
-              </v-select>     
+              </v-select>
             </v-col>
             <v-col>
               <v-btn
@@ -163,7 +160,7 @@
                 color="grey darken-4 rounded-0 white--text"
                 depressed
                 elevation="0"
-                @click="addParticipantToCase(this.participantId)"
+                @click="addParticipantToCase()"
               >
                 {{ $t("admin.cases.addToCase") }}
               </v-btn>
@@ -219,7 +216,8 @@ export default class CaseEdit extends Vue {
   caseName = this.getCaseById(this.caseId).name;
   caseNumber = this.getCaseById(this.caseId).number;
 
-  createParticipantPath = "/admin/rooms/"+ this.roomId + "/participants/create";
+  createParticipantPath =
+    "/admin/rooms/" + this.roomId + "/participants/create";
 
   roomPath = "/admin/rooms/" + this.roomId;
 
@@ -237,19 +235,16 @@ export default class CaseEdit extends Vue {
     );
   }
 
-  addParticipantToCase(participantId: string) {
-    if(this.participantId.length > 0) {
+  addParticipantToCase() {
+    if (this.participantId) {
       this.$store.dispatch("CasesModule/addParticipantToCase", {
         id: this.caseId,
-        participantId: participantId,
+        participantId: this.participantId,
       });
+      this.participantId = "";
     }
   }
 
-  setSelectedParticipantId(id: string) {
-    this.participantId = id;
-  }
-  
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
   }
@@ -270,11 +265,11 @@ export default class CaseEdit extends Vue {
       },
       query: {
         caseId: this.caseId,
-      }
-    })
+        scheduledParticipant: "true", 
+      },
+    });
   }
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

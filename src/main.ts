@@ -9,7 +9,7 @@ import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import buildDependencyContainer from "./inversify/container";
 import "reflect-metadata";
-import VueClipboard from 'vue-clipboard2';
+import VueClipboard from "vue-clipboard2";
 
 Vue.config.productionTip = false;
 buildDependencyContainer();

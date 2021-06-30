@@ -401,16 +401,22 @@ export default class SettingsEdit extends Vue {
   value = "null";
   rules = [(v: string | any[]) => v.length <= 35 || "Max 35 characters"];
 
-  templateIdFromRoomId: string = this.$store.state.RoomModule
-    .rooms[this.$route.params.roomId]
-    .templateId;
+  templateIdFromRoomId: string = this.$store.state.RoomModule.rooms[
+    this.$route.params.roomId
+  ].templateId;
 
-  templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
+  templates: RoomTemplate[] = this.$store.getters[
+    "RoomTemplateModule/getAsList"
+  ];
 
-  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](
+    this.templateIdFromRoomId
+  );
 
   setTemplate() {
-    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+    this.roomDetails.template = this.$store.getters[
+      "RoomTemplateModule/getById"
+    ](this.templateIdFromRoomId);
   }
 
   get roomSettings() {

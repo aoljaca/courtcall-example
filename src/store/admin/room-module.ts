@@ -35,7 +35,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Frank's Room",
       organization: "o1",
       status: "Available",
@@ -77,7 +78,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "o1",
       status: "Available",
@@ -119,7 +121,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mikes's Room",
       organization: "o1",
       status: "Available",
@@ -161,7 +164,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "o2",
       status: "Available",
@@ -203,7 +207,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Matt's Room",
       organization: "o2",
       status: "Available",
@@ -245,7 +250,8 @@ const rooms: {
       duplicateParticipantHandling: false,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mikes's Room",
       organization: "o5",
       status: "Available",
@@ -287,7 +293,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Jason's Room",
       organization: "o2",
       status: "Available",
@@ -329,7 +336,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Daves's Room",
       organization: "o2",
       status: "Available",
@@ -371,7 +379,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Paul's Room",
       organization: "o2",
       status: "Available",
@@ -413,7 +422,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Lori's Room",
       organization: "o2",
       status: "Available",
@@ -455,7 +465,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Amanda's Room",
       organization: "o2",
       status: "Available",
@@ -497,7 +508,8 @@ const rooms: {
       duplicateParticipantHandling: false,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Mark's Room",
       organization: "o2",
       status: "Available",
@@ -539,7 +551,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Keith's Room",
       organization: "o2",
       status: "Available",
@@ -581,7 +594,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Nate's Room",
       organization: "o2",
       status: "Available",
@@ -623,7 +637,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Bob's Room",
       organization: "o2",
       status: "Available",
@@ -665,7 +680,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Michelle's Room",
       organization: "o2",
       status: "Available",
@@ -707,7 +723,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Tate's Room",
       organization: "o2",
       status: "Available",
@@ -749,7 +766,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Spock's Room",
       organization: "o2",
       status: "Available",
@@ -791,7 +809,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Jean's Room",
       organization: "o2",
       status: "Available",
@@ -833,7 +852,8 @@ const rooms: {
       duplicateParticipantHandling: true,
     },
     roomDetails: {
-      details: "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
+      details:
+        "Lorem ipsum dolor sit amet. Consectetur adipiscing elit.Sed do eiusmod tempor.",
       name: "Judge Joanna's Room",
       organization: "o2",
       status: "Available",

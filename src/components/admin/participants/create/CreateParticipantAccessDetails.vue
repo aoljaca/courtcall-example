@@ -12,43 +12,43 @@
         </v-col>
 
         <v-col>
-                <v-text-field
-                v-if="detail.inputType === 'textField'"
-                    v-model="participant[detail.key]"
-                    :placeholder="detail.placeholder"
-                    :readonly="detail.readonly"
-                    hide-details
-                    dense
-                >
-                <template v-slot:append>
-                  <copy-to-clipboard-button
-                    v-if="detail.isLink"
-                    :dataToCopy="participant[detail.key]"
-                  />
-                </template>
-                </v-text-field>
-                <v-select
-                    v-model="participant[detail.key]"
-                    v-else-if="detail.inputType === 'select'"
-                    :item-text="detail.itemText"
-                    :item-value="detail.itemValue"
-                    :items="getItems(detail.items)"
-                    :placeholder="detail.placeholder"
-                    class="m-0"
-                    hide-details
-                    clearable
-                    dense
-                />
-                <v-btn
-                    v-else-if="detail.inputType === 'button'"
-                    @click="detail.onClick"
-                    color="secondary"
-                    dark
-                    depressed
-                    tile
-                >
-                    {{ detail.label }}
-                </v-btn>
+          <v-text-field
+            v-if="detail.inputType === 'textField'"
+            v-model="participant[detail.key]"
+            :placeholder="detail.placeholder"
+            :readonly="detail.readonly"
+            hide-details
+            dense
+          >
+            <template v-slot:append>
+              <copy-to-clipboard-button
+                v-if="detail.isLink"
+                :dataToCopy="participant[detail.key]"
+              />
+            </template>
+          </v-text-field>
+          <v-select
+            v-model="participant[detail.key]"
+            v-else-if="detail.inputType === 'select'"
+            :item-text="detail.itemText"
+            :item-value="detail.itemValue"
+            :items="getItems(detail.items)"
+            :placeholder="detail.placeholder"
+            class="m-0"
+            hide-details
+            clearable
+            dense
+          />
+          <v-btn
+            v-else-if="detail.inputType === 'button'"
+            @click="detail.onClick"
+            color="secondary"
+            dark
+            depressed
+            tile
+          >
+            {{ detail.label }}
+          </v-btn>
         </v-col>
       </v-row>
     </template>
@@ -66,8 +66,8 @@ import CopyToClipboardButton from "../../../shared/CopyToClipboardButton.vue";
 
 @Component({
   components: {
-    CopyToClipboardButton
-  }
+    CopyToClipboardButton,
+  },
 })
 export default class CreateParticipantAccessDetails extends Vue {
   @Prop()
@@ -76,9 +76,7 @@ export default class CreateParticipantAccessDetails extends Vue {
   details = [
     {
       title: this.$t("admin.participants.formFields.webLink.title"),
-      placeholder: this.$t(
-        "admin.participants.formFields.webLink.placeholder"
-      ),
+      placeholder: this.$t("admin.participants.formFields.webLink.placeholder"),
       key: "accessLink",
       inputType: "textField",
       readonly: true,

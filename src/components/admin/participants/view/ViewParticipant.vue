@@ -184,7 +184,6 @@ export default class ViewParticipant extends Vue {
     this.onSubmitEdits();
   }
 
-  
   onArchiveParticipant(): void {
     // Archive participant
   }

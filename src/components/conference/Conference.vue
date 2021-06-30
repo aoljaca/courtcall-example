@@ -21,7 +21,7 @@ import ConferenceHeader from "./navigation/ConferenceHeader.vue";
 
 @Component({
   components: {
-    ConferenceHeader
+    ConferenceHeader,
   },
 })
 export default class Conference extends Vue {

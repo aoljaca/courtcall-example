@@ -18,8 +18,8 @@
     </v-container>
 
     <v-divider />
-    <breadcrumbs v-if="showBreadcrumbs"/>
-    <search v-if="showSearch"/>
+    <breadcrumbs v-if="showBreadcrumbs" />
+    <search v-if="showSearch" />
     <v-divider class="mt-3" v-if="showBreadcrumbs || showSearch" />
 
     <v-container fluid class="px-10">

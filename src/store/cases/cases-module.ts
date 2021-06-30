@@ -87,7 +87,7 @@ const casesModule: Module<any, any> = {
     },
     updateParticipantList(state: any, payload) {
       state.cases[payload.id].participants.push(payload.participantId);
-    }
+    },
   },
   actions: {
     alterCases({ commit }, payload) {
@@ -98,7 +98,7 @@ const casesModule: Module<any, any> = {
       // Once API is implemented it will handle making that participant a scheduled type, then we can store the response to the state
       // But for now, just modify the state and add that participantId to the case's array of participantIds
       commit("updateParticipantList", payload);
-    }
+    },
   },
   getters: {
     getById: (state) => (id: string) => state.cases[id],

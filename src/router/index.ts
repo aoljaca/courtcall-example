@@ -82,10 +82,9 @@ const routes: Array<RouteConfig> = [
             name: "Leave Call",
             component: EndMeeting,
           },
-        ]
-
+        ],
       },
-    ]
+    ],
   },
   {
     path: "/admin",
@@ -117,7 +116,7 @@ const routes: Array<RouteConfig> = [
               hideBreadcrumb: true,
             },
           },
-        ]
+        ],
       },
       {
         path: "my-account",
@@ -184,10 +183,10 @@ const routes: Array<RouteConfig> = [
                 name: "Case View",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                  `${
-                    store.getters["CasesModule/getById"](route.params.caseId)
-                      ?.name
-                  }`,
+                    `${
+                      store.getters["CasesModule/getById"](route.params.caseId)
+                        ?.name
+                    }`,
                 },
               },
               {
@@ -196,10 +195,10 @@ const routes: Array<RouteConfig> = [
                 name: "Case Edit",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                  `${
-                    store.getters["CasesModule/getById"](route.params.caseId)
-                      ?.name
-                  }`,
+                    `${
+                      store.getters["CasesModule/getById"](route.params.caseId)
+                        ?.name
+                    }`,
                 },
               },
               {
@@ -230,22 +229,15 @@ const routes: Array<RouteConfig> = [
                 name: "Participant",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${store.getters["ParticipantsModule/getById"](
-                      route.params.participantId
-                    )?.name
+                    `${
+                      store.getters["ParticipantsModule/getById"](
+                        route.params.participantId
+                      )?.name
                     }`,
                 },
               },
               {
                 path: "create",
-                component: CreateParticipant,
-                name: "Create Participant",
-                meta: {
-                  breadcrumb: i18n.t("admin.participants.create"),
-                },
-              },
-              {
-                path: "create?case=:caseId",
                 component: CreateParticipant,
                 name: "Create Participant",
                 meta: {
@@ -282,9 +274,10 @@ const routes: Array<RouteConfig> = [
             props: true,
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["SystemUsersModule/getById"](
-                  route.params.systemUserId
-                ).name
+                `${
+                  store.getters["SystemUsersModule/getById"](
+                    route.params.systemUserId
+                  ).name
                 }`,
             },
           },
@@ -324,9 +317,10 @@ const routes: Array<RouteConfig> = [
             name: "Organization",
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["OrganizationsModule/getById"](
-                  route.params.organizationId
-                ).name
+                `${
+                  store.getters["OrganizationsModule/getById"](
+                    route.params.organizationId
+                  ).name
                 }`,
             },
           },
@@ -336,9 +330,10 @@ const routes: Array<RouteConfig> = [
             name: "Edit Organization",
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["OrganizationsModule/getById"](
-                  route.params.organizationId
-                ).name
+                `${
+                  store.getters["OrganizationsModule/getById"](
+                    route.params.organizationId
+                  ).name
                 }`,
             },
           },

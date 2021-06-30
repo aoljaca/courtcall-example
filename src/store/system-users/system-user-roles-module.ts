@@ -1,22 +1,25 @@
-import { SystemUserRole, SystemUserRoleName } from "@/model/admin/system-users/system-user-role";
+import {
+  SystemUserRole,
+  SystemUserRoleName,
+} from "@/model/admin/system-users/system-user-role";
 import { Module } from "vuex";
 
 const systemUserRoles: {
   [key: string]: SystemUserRole;
 } = {
-  "SUR1": {
+  SUR1: {
     id: "SUR1",
     name: SystemUserRoleName.ADMIN,
   },
-  "SUR2": {
+  SUR2: {
     id: "SUR2",
     name: SystemUserRoleName.MODERATOR,
   },
-  "SUR3": {
+  SUR3: {
     id: "SUR3",
     name: SystemUserRoleName.MANAGER,
   },
-  "SUR4": {
+  SUR4: {
     id: "SUR4",
     name: SystemUserRoleName.SUPPORT,
   },
@@ -29,9 +32,12 @@ const systemUserRolesModule: Module<any, any> = {
     systemUserRoles: systemUserRoles,
   },
   mutations: {
-    setSystemUserRoles(state, payload: {
+    setSystemUserRoles(
+      state,
+      payload: {
         [key: string]: SystemUserRole;
-      }) {
+      }
+    ) {
       state.systemUserRoles = payload;
     },
   },
@@ -41,7 +47,7 @@ const systemUserRolesModule: Module<any, any> = {
       const roles = {};
 
       // Save response to state
-      mutations.commit('setSystemUserRoles', roles);
+      mutations.commit("setSystemUserRoles", roles);
     },
   },
   getters: {

@@ -38,6 +38,6 @@ export default new Vuex.Store({
     SystemUsersModule,
     SystemUserRolesModule,
     RoomSessionModule,
-    SearchModule
+    SearchModule,
   },
 });

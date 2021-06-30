@@ -52,6 +52,15 @@ export default class CreateParticipantDetails extends Vue {
   @Prop()
   participant!: Participant;
 
+  mounted(): void {
+    if(this.$route.query.scheduledParticipant) {
+      this.participant.role = ParticipantRole.PARTICIPANT_SCHEDULED;
+    }
+    if(this.$route.query.caseId) {
+      this.participant.caseId = this.$route.query.caseId as string;
+    }
+  }
+
   details = [
     {
       title: this.$t("admin.participants.formFields.role.title"),

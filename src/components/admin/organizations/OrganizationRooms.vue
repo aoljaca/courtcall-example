@@ -1,27 +1,27 @@
 <template>
-    <div>
-        <!-- Rooms -->
-        <v-row>
-        <v-col cols="auto">
-            <h2 class="font-weight-regular">
-            {{ $t("admin.organizations.organization.rooms") }}
-            </h2>
-        </v-col>
-        </v-row>
+  <div>
+    <!-- Rooms -->
+    <v-row>
+      <v-col cols="auto">
+        <h2 class="font-weight-regular">
+          {{ $t("admin.organizations.organization.rooms") }}
+        </h2>
+      </v-col>
+    </v-row>
 
-        <v-row>
-        <v-col cols="auto">
-            <div
-            v-for="(roomId, index) in organization.roomIds"
-            :key="roomId"
-            class="font-weight-medium"
-            >
-            {{ `Room ${++index} (id: ${roomId})` }}
-            <v-btn icon><v-icon>mdi-open-in-new</v-icon></v-btn>
-            </div>
-        </v-col>
-        </v-row>
-    </div>
+    <v-row>
+      <v-col cols="auto">
+        <div
+          v-for="(roomId, index) in organization.roomIds"
+          :key="roomId"
+          class="font-weight-medium"
+        >
+          {{ `Room ${++index} (id: ${roomId})` }}
+          <v-btn icon><v-icon>mdi-open-in-new</v-icon></v-btn>
+        </div>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script lang="ts">

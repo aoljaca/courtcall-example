@@ -6,7 +6,8 @@ export default {
   createPasscode: "Create Passcode",
   video: "Video",
   audio: "Audio",
-  allowSelectBeforeEnter: "Allow participants to choose audio/video entry behavior before entering room",
+  allowSelectBeforeEnter:
+    "Allow participants to choose audio/video entry behavior before entering room",
   waitingRoom: "Default Entry to Waiting room (participants only)",
   audioOnlyConfig: "Audio Only Configuration",
   audioOnly: "Audio Only Conferences",
