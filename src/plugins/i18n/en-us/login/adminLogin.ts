@@ -1,5 +1,6 @@
 export default {
   title: "Admin Login",
+  invalidCredentials: "Incorrect username or password. Please try again.",
   username: "Username",
   password: "Password",
   rememberUsernameLabel: "Remember my username",
