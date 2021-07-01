@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div class="pr-4 details-label-text font-weight-bold">
+        <div @click="test()" class="pr-4 details-label-text font-weight-bold">
           {{ $t("admin.roomDetails.roomName") }}
         </div>
         <v-text-field
@@ -125,6 +125,7 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 import { Organization } from "@/model/admin/organization/organization";
 import { RoomTemplate } from "@/model/admin/room/room-template";
+import systemUser from "@/plugins/i18n/en-us/admin/system-user/system-user";
 @Component
 export default class RoomDetailsEdit extends Vue {
   roomId = this.$route.params.roomId;
@@ -141,13 +142,17 @@ export default class RoomDetailsEdit extends Vue {
 
   templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
 
-  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0]);
   
   organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
 
   organization: Organization = this.$store.getters[
     "OrganizationsModule/getById"
-  ](this.roomDetails.organization);
+  ](this.systemUserMe.organizationIds[0]);
+
+  test(): void {
+    console.log(this.systemUserMe.organizationIds[0]);
+  }
 
   mounted(): void {
     if(this.$route.fullPath === "/admin/rooms/create") {
@@ -156,11 +161,15 @@ export default class RoomDetailsEdit extends Vue {
   }
 
   setTemplate() {
-    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0]);
   }
 
   setOrganization() {
     this.roomDetails.organization = this.organization.id;
+  }
+
+  get systemUserMe() {
+    return this.$store.state.SystemUsersModule.me;
   }
 
   get roomDetails() {

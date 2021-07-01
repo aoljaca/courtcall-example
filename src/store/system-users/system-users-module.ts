@@ -114,6 +114,7 @@ const systemUsersModule: Module<any, any> = {
   state: {
     systemUsers: systemUsers,
     actingUser: mockAdminUser,
+    me: systemUsers["SU1"],
   },
   mutations: {
     addSystemUser(state, payload: SystemUser) {
