@@ -390,6 +390,7 @@ const routes: Array<RouteConfig> = [
 const router = new VueRouter({
   routes,
 });
+
 router.beforeEach((to, from, next) => {
   const breadcrumbFunc = to.meta?.breadcrumbFunc;
 
