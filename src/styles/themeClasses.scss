@@ -1,0 +1,27 @@
+// Learn more about Custom Theme Properties here:
+// https://vuetifyjs.com/en/features/theme/#custom-properties
+
+.c-primary {
+  color: var(--v-primary-base);
+}
+.c-secondary {
+  color: var(--v-secondary-base);
+}
+.c-accent {
+  color: var(--v-accent-base);
+}
+.c-tint {
+  color: var(--v-tint-base);
+}
+.c-success {
+  color: var(--v-success-base);
+}
+.c-warning {
+  color: var(--v-warning-base);
+}
+.c-error {
+  color: var(--v-error-base);
+}
+.c-info {
+  color: var(--v-info-base);
+}

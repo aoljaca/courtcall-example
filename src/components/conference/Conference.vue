@@ -18,6 +18,7 @@ import { inject } from "inversify-props";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { WebsocketConnectionService } from "@/services/websocket-connection";
 import ConferenceHeader from "./navigation/ConferenceHeader.vue";
+import { CustomTheme, ThemeService } from "@/services/theme-service";
 
 @Component({
   components: {
@@ -26,10 +27,13 @@ import ConferenceHeader from "./navigation/ConferenceHeader.vue";
 })
 export default class Conference extends Vue {
   @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
-  websocketConnectionService: WebsocketConnectionService | undefined;
-
+  websocketConnectionService!: WebsocketConnectionService;
+  @inject(INJECTION_TYPES.THEME_SERVICE)
+  themeService!: ThemeService;
+  
   mounted(): void {
-    this.websocketConnectionService?.connectMeeting();
+    this.websocketConnectionService.connectMeeting();
+    this.themeService.switchTheme(CustomTheme.CONFERENCE, this.$vuetify);
   }
 }
 </script>

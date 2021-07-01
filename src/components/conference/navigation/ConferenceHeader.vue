@@ -1,8 +1,8 @@
 <template>
   <!-- TODO: Pull all out all referenced colors into theme -->
-  <v-system-bar dark color="#253746" class="px-15 py-10 white--text">
+  <v-system-bar dark color="primary" class="px-15 py-10 white--text">
     <v-btn fab dark depressed readonly color="white">
-      <v-icon class="ml-1" color="#253746" size="26">mdi-gavel</v-icon>
+      <v-icon class="ml-1" color="primary" size="26">mdi-gavel</v-icon>
     </v-btn>
     <h1 class="ml-1">Court<span class="font-weight-regular">Call</span></h1>
 
@@ -21,45 +21,18 @@
       <!-- List of options -->
       <v-card class="mt-2">
         <v-list>
-          <v-list-item link :href="`tel:${$t('navigation.help.phone.number')}`">
-            <v-row>
-              <v-col cols="auto">
-                <v-icon color="#006298">mdi-phone</v-icon>
-              </v-col>
-              <v-col> {{ $t("navigation.help.phone.label") }} </v-col>
-            </v-row>
-          </v-list-item>
-
           <v-list-item
+            v-for="(option, index) in helpOptions"
             link
-            :href="$t('navigation.help.liveChat.url')"
-            target="_blank"
+            :href="option.href"
+            :target="option.newTab ? `_blank` : undefined"
+            :key="`option-${index}`"
           >
             <v-row>
               <v-col cols="auto">
-                <v-icon color="#006298">mdi-message-outline</v-icon>
+                <v-icon color="primary">{{ option.icon }}</v-icon>
               </v-col>
-              <v-col> {{ $t("navigation.help.liveChat.label") }} </v-col>
-            </v-row>
-          </v-list-item>
-          <v-list-item
-            link
-            :href="$t('navigation.help.site.url')"
-            target="_blank"
-          >
-            <v-row>
-              <v-col cols="auto">
-                <v-icon color="#006298">mdi-laptop</v-icon></v-col
-              >
-              <v-col> {{ $t("navigation.help.site.label") }} </v-col>
-            </v-row>
-          </v-list-item>
-          <v-list-item link>
-            <v-row>
-              <v-col cols="auto">
-                <v-icon color="#006298">mdi-dots-horizontal</v-icon></v-col
-              >
-              <v-col> {{ $t("navigation.help.more") }} </v-col>
+              <v-col> {{ option.label }} </v-col>
             </v-row>
           </v-list-item>
         </v-list>
@@ -72,5 +45,29 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class ConferenceHeader extends Vue {}
+export default class ConferenceHeader extends Vue {
+  helpOptions = [
+    {
+      icon: "mdi-phone",
+      label: this.$t("navigation.help.phone.label"),
+      href: `tel:${this.$t("navigation.help.phone.number")}`,
+    },
+    {
+      icon: "mdi-message-outline",
+      label: this.$t("navigation.help.liveChat.label"),
+      href: this.$t("navigation.help.liveChat.url"),
+      newTab: true,
+    },
+    {
+      icon: "mdi-laptop",
+      label: this.$t("navigation.help.site.label"),
+      href: this.$t("navigation.help.site.url"),
+      newTab: true,
+    },
+    {
+      icon: "mdi-dots-horizontal",
+      label: this.$t("navigation.help.more"),
+    },
+  ];
+}
 </script>
