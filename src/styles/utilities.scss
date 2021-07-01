@@ -1,3 +1,11 @@
+$conference-header-height: 80px;
+$conference-footer-height: 68px;
+
+.conference-body-height {
+  height: calc(
+    100% - #{$conference-header-height} - #{$conference-footer-height}
+  ) !important;
+}
 .d-block {
   display: block;
 }
