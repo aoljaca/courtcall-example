@@ -5,7 +5,7 @@ export default {
   },
   name: {
     title: "Please Enter Your Name",
-    description: "This is what other participants will see",
+    description: "This is what other participants will see.",
     placeholder: "Enter Full Name",
   },
 };
