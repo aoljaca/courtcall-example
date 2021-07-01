@@ -10,3 +10,4 @@ deploy_dev:
     - v3
   only:
     - master
+  when: always
