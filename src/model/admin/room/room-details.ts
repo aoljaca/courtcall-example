@@ -6,6 +6,7 @@ interface RoomDetails {
   phone: string | null;
   hostAccessCode: number | null;
   participantAccessCode: number | null;
+  lastUsed?: string;
 }
 
 const NULL_ROOM_DETAILS: RoomDetails = {
@@ -16,6 +17,7 @@ const NULL_ROOM_DETAILS: RoomDetails = {
   phone: null,
   hostAccessCode: null,
   participantAccessCode: null,
+  lastUsed: undefined,
 };
 
 export { RoomDetails, NULL_ROOM_DETAILS };

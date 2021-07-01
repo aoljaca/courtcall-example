@@ -26,4 +26,5 @@ export default {
   view: "View",
   close: "Close",
   archive: "Remove (Archive)",
+  ok: "OK",
 };
