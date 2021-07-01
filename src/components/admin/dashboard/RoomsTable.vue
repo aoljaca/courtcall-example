@@ -8,13 +8,64 @@
           </v-col>
           <v-col cols="2">
             <v-select
-              :items="selectItems"
+              :items="itemsInFilterSelect"
+              return-object
+              item-text="text"
+              v-model="selectedFilter"
               :label="$t('admin.dashboard.filter')"
               data-test-id="rooms-table-select"
             >
             </v-select>
           </v-col>
-          <v-col class="d-flex justify-end" cols="9">
+          <v-col
+            class="d-flex align-center"
+            v-if="selectedFilter.type === 'dateRange'"
+            cols="4"
+            md="1"
+          >
+            <v-menu
+              v-model="dateMenu"
+              :close-on-content-click="false"
+              :transition="scale - transition"
+              offset-y
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn color="primary" v-bind="attrs" v-on="on">
+                  {{ $t("admin.dashboard.selectDates") }}
+                </v-btn>
+              </template>
+              <v-date-picker
+                no-title
+                scrollable
+                range
+                v-model="dateRange"
+                :max="maxDate"
+              ></v-date-picker>
+              <!-- <v-spacer></v-spacer>
+              <v-footer color="white" :padless="true"
+                ><v-container fluid>
+                  <v-row>
+                    <v-col>
+                      <v-btn text color="primary" @click="dateMenu = false">
+                        {{ $t("general.cancel") }}
+                      </v-btn></v-col
+                    >
+                    <v-col class="d-flex justify-end">
+                      <v-btn
+                        text
+                        color="primary"
+                        @click="$refs.menu.save(date)"
+                      >
+                        {{ $t("general.ok") }}</v-btn
+                      ></v-col
+                    >
+                  </v-row>
+                </v-container></v-footer
+              > -->
+            </v-menu>
+          </v-col>
+          <v-col class="d-flex justify-end">
             <v-btn
               data-test-id="rooms-table-refresh-button"
               color="grey darken-2"
@@ -46,7 +97,7 @@
         <v-col>
           <v-data-table
             :headers="HEADERS"
-            :items="rooms || roomsData"
+            :items="filteredRooms"
             :items-per-page="20"
             class="elevation-1"
           >
@@ -201,7 +252,9 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { SupportItem } from "@/model/admin/support/support-item";
+import { DateTime } from "luxon";
 import { Room } from "@/model/admin/room/room";
+import { data } from "@tensorflow/tfjs";
 @Component
 export default class RoomsTable extends Vue {
   @Prop()
@@ -275,7 +328,54 @@ export default class RoomsTable extends Vue {
     return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId);
   }
 
-  selectItems = ["Active", "Supports Requests", "Date Range", "Archived"];
+  itemsInFilterSelect = [
+    {
+      type: "none",
+      text: this.$t("admin.dashboard.none"),
+    },
+    {
+      type: "supportRequests",
+      text: this.$t("admin.dashboard.supportRequests"),
+    },
+    {
+      type: "dateRange",
+      text: this.$t("admin.dashboard.dateRange"),
+    },
+  ];
+
+  dateRange = [
+    DateTime.now().minus({ days: 1 }).toISODate(),
+    DateTime.now().toISODate(),
+  ];
+  maxDate = DateTime.now().toISODate();
+  selectedFilter = this.itemsInFilterSelect[0];
+  dateMenu = false;
+
+  get filteredRooms(): Room[] {
+    const rooms: Room[] = this.$store.getters["RoomModule/getAsList"] || [];
+
+    const minDate = DateTime.fromISO(this.dateRange[0]);
+    const maxDate = DateTime.fromISO(this.dateRange[1]);
+    return rooms.filter((r) => {
+      if (!r.active) {
+        return false;
+      }
+      if (this.selectedFilter.type === "supportRequests") {
+        const activeIssues: SupportItem[] = this.$store.getters[
+          "SupportModule/getActiveIssuesByRoomId"
+        ](r.uuid);
+        return activeIssues.length;
+      } else if (this.selectedFilter.type === "dateRange") {
+        if (!r.roomDetails.lastUsed) {
+          return false;
+        }
+        const lastUsed = DateTime.fromISO(r.roomDetails.lastUsed);
+        return lastUsed >= minDate && lastUsed <= maxDate;
+      } else {
+        return true;
+      }
+    });
+  }
 }
 </script>
 
