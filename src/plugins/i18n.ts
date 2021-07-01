@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueI18n from "vue-i18n";
 import logout_en from "./i18n/en-us/logout";
 import general_en from "./i18n/en-us/general";
-import login_en from "./i18n/en-us/login";
+import login_en from "./i18n/en-us/login/login";
 import entry_en from "./i18n/en-us/entry";
 import waiting_room_en from "./i18n/en-us/waiting-room";
 import av_options_en from "./i18n/en-us/av-options/av-options";
@@ -10,11 +10,11 @@ import meeting_ui_en from "./i18n/en-us/meeting-ui/meeting-ui";
 import admin_en from "./i18n/en-us/admin";
 import sidebar_en from "./i18n/en-us/sidebar/sidebar";
 import notFound_en from "./i18n/en-us/not-found";
-import navigation from "./i18n/en-us/navigation";
+import navigation_en from "./i18n/en-us/navigation";
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
-    navigation,
+    navigation: navigation_en,
     general: general_en,
     login: login_en,
     entry: entry_en,
