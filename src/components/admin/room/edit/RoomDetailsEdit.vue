@@ -136,13 +136,9 @@ export default class RoomDetailsEdit extends Vue {
 
   items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
 
-  templateIdFromRoomId: string = this.$store.state.RoomModule
-    .rooms[this.roomId]
-    .templateId;
-
   templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
-
-  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0]);
+  
+  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0])[0];
   
   organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
 
@@ -151,7 +147,7 @@ export default class RoomDetailsEdit extends Vue {
   ](this.systemUserMe.organizationIds[0]);
 
   test(): void {
-    console.log(this.systemUserMe.organizationIds[0]);
+    console.log(this.template);
   }
 
   mounted(): void {
@@ -161,7 +157,7 @@ export default class RoomDetailsEdit extends Vue {
   }
 
   setTemplate() {
-    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0]);
+    this.roomDetails.template = this.template.uuid;
   }
 
   setOrganization() {
