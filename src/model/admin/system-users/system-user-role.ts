@@ -1,10 +1,10 @@
 import { UserPermission } from "./user-permission";
 
 export enum SystemUserRoleName {
-    ADMIN = "Admin",
-    MODERATOR = "Moderator",
-    MANAGER = "Manager",
-    SUPPORT = "Support"
+  ADMIN = "Admin",
+  MODERATOR = "Moderator",
+  MANAGER = "Manager",
+  SUPPORT = "Support",
 }
 
 export interface SystemUserRole {

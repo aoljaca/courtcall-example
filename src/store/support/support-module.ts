@@ -139,12 +139,14 @@ const supportModule: Module<any, any> = {
       return items.filter((i) => !i.archived);
     },
     getActiveIssuesForRoom: (state) => (participantIds: string[]) => {
-      return state.queue.filter((item: { participant: any; archived: any; }) => participantIds.includes(item.participant && !item.archived))
+      return state.queue.filter((item: { participant: any; archived: any }) =>
+        participantIds.includes(item.participant && !item.archived)
+      );
     },
     getActiveIssuesByRoomId: (state) => (roomId: string) => {
       const items = state.queue as SupportItem[];
-      return items.filter((i) => !i.archived && (i.room === roomId));
-    }
+      return items.filter((i) => !i.archived && i.room === roomId);
+    },
   },
 };
 export default supportModule;

@@ -10,7 +10,7 @@ import meeting_ui_en from "./i18n/en-us/meeting-ui/meeting-ui";
 import admin_en from "./i18n/en-us/admin";
 import sidebar_en from "./i18n/en-us/sidebar/sidebar";
 import notFound_en from "./i18n/en-us/not-found";
-import navigation from "./i18n/en-us/navigation"
+import navigation from "./i18n/en-us/navigation";
 Vue.use(VueI18n);
 const messages = {
   "en-us": {

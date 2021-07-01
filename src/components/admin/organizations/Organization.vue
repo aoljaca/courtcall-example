@@ -86,12 +86,14 @@
       <v-row>
         <v-col cols="auto">
           <div
-            v-for="(roomId) in organization.roomIds"
+            v-for="roomId in organization.roomIds"
             :key="roomId"
             class="font-weight-medium"
           >
             {{ getRoomById(roomId).roomDetails.name }}
-            <v-btn icon :to="{ name: 'Room View Manage', params: { roomId: roomId } }"
+            <v-btn
+              icon
+              :to="{ name: 'Room View Manage', params: { roomId: roomId } }"
               ><v-icon>mdi-open-in-new</v-icon></v-btn
             >
           </div>
