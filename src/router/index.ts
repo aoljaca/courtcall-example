@@ -51,7 +51,6 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: ":conferenceId",
-        name: "Conference Call",
         component: {
           render(c) {
             return c("router-view");
@@ -61,6 +60,7 @@ const routes: Array<RouteConfig> = [
           {
             path: "",
             component: Call,
+            name: "Conference Call",
           },
           {
             path: "entry",

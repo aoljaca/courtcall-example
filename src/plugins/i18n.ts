@@ -3,7 +3,7 @@ import VueI18n from "vue-i18n";
 import logout_en from "./i18n/en-us/logout";
 import general_en from "./i18n/en-us/general";
 import login_en from "./i18n/en-us/login/login";
-import entry_en from "./i18n/en-us/entry";
+import entry_en from "./i18n/en-us/entry/entry";
 import waiting_room_en from "./i18n/en-us/waiting-room";
 import av_options_en from "./i18n/en-us/av-options/av-options";
 import meeting_ui_en from "./i18n/en-us/meeting-ui/meeting-ui";

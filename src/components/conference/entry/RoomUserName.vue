@@ -1,44 +1,40 @@
 <template>
-  <div id="roomUserName">
-    <v-container>
-      <v-row>
-        <v-col>
-          <h3 class="text-align-center">{{ $t("entry.username.header") }}</h3>
-          <span class="text-align-center">{{
-            $t("entry.username.nameDescription")
-          }}</span>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-text-field
-            :title="$t('entry.username.inputDescription')"
-            :label="$t('entry.username.inputDescription')"
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <v-btn
-            :title="$t('general.submit')"
-            @click="submitUsername()"
-            color="primary"
-            >{{ $t("general.submit") }}</v-btn
-          >
-        </v-col>
-      </v-row>
-    </v-container>
+  <div class="text-center">
+    <h2 class="text-align-center c-primary">{{ $t("entry.name.title") }}</h2>
+    <span class="text-align-center c-primary">{{
+      $t("entry.name.description")
+    }}</span>
+    <v-text-field
+      v-model="name"
+      :title="$t('entry.name.placeholder')"
+      :placeholder="$t('entry.name.placeholder')"
+    />
+    <v-btn :title="$t('general.submit')" @click="onSubmit" color="accent"
+      >{{ $t("general.submit") }}
+    </v-btn>
+    <v-btn
+      :title="$t('general.exit')"
+      @click="onExit"
+      color="secondary"
+      class="ml-4 c-primary"
+      >{{ $t("general.exit") }}
+    </v-btn>
   </div>
 </template>
 <script lang="ts">
+import { EntryMode } from "@/store/entry/entry-module";
 import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class RoomUserName extends Vue {
-  username = "";
+  name = "";
 
-  submitUsername() {
-    this.$store.dispatch("EntryModule/alterEntryPhase", {
-      phase: "confirmName",
+  onSubmit() {
+    this.$store.dispatch("EntryModule/alterEntryPhase", EntryMode.LOADING);
+  }
+
+  onExit() {
+    this.$router.push({
+      name: "Login",
     });
   }
 }
