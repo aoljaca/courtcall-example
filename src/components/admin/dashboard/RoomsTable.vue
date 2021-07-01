@@ -24,10 +24,8 @@
             md="1"
           >
             <v-menu
-              ref="menu"
               v-model="dateMenu"
               :close-on-content-click="false"
-              :return-value.sync="dateRange"
               :transition="scale - transition"
               offset-y
               min-width="auto"
@@ -44,7 +42,7 @@
                 v-model="dateRange"
                 :max="maxDate"
               ></v-date-picker>
-              <v-spacer></v-spacer>
+              <!-- <v-spacer></v-spacer>
               <v-footer color="white" :padless="true"
                 ><v-container fluid>
                   <v-row>
@@ -64,7 +62,7 @@
                     >
                   </v-row>
                 </v-container></v-footer
-              >
+              > -->
             </v-menu>
           </v-col>
           <v-col class="d-flex justify-end">
@@ -99,7 +97,7 @@
         <v-col>
           <v-data-table
             :headers="HEADERS"
-            :items="rooms || roomsData"
+            :items="filteredRooms"
             :items-per-page="20"
             class="elevation-1"
           >
@@ -354,11 +352,11 @@ export default class RoomsTable extends Vue {
   dateMenu = false;
 
   get filteredRooms(): Room[] {
-    const rooms: Room[] = this.$store.getters["RoomModule/getAsList"];
+    const rooms: Room[] = this.$store.getters["RoomModule/getAsList"] || [];
 
     const minDate = DateTime.fromISO(this.dateRange[0]);
     const maxDate = DateTime.fromISO(this.dateRange[1]);
-    rooms.filter((r) => {
+    return rooms.filter((r) => {
       if (!r.active) {
         return false;
       }
@@ -377,7 +375,6 @@ export default class RoomsTable extends Vue {
         return true;
       }
     });
-    return rooms;
   }
 }
 </script>
