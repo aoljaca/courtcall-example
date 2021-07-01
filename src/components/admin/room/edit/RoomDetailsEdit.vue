@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col class="d-flex" cols="4">
-        <div @click="test()" class="pr-4 details-label-text font-weight-bold">
+        <div class="pr-4 details-label-text font-weight-bold">
           {{ $t("admin.roomDetails.roomName") }}
         </div>
         <v-text-field
@@ -145,10 +145,6 @@ export default class RoomDetailsEdit extends Vue {
   organization: Organization = this.$store.getters[
     "OrganizationsModule/getById"
   ](this.systemUserMe.organizationIds[0]);
-
-  test(): void {
-    console.log(this.template);
-  }
 
   mounted(): void {
     if(this.$route.fullPath === "/admin/rooms/create") {
