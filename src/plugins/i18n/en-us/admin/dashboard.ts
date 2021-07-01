@@ -27,4 +27,8 @@ export default {
   detailsValue: "details",
   moreHeader: "More",
   moreValue: "more",
+  supportRequests: "Support Requests",
+  dateRange: "Date Range",
+  none: "None",
+  selectDates: "Select Dates",
 };

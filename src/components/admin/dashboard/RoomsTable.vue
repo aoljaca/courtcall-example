@@ -7,13 +7,51 @@
         </v-col>
         <v-col cols="2">
           <v-select
-            :items="selectItems"
+            :items="itemsInFilterSelect"
+            return-object
+            item-text="text"
+            v-model="selectedFilter"
             :label="$t('admin.dashboard.filter')"
             data-test-id="rooms-table-select"
           >
           </v-select>
         </v-col>
-        <v-col class="d-flex justify-end" cols="9">
+        <v-col
+          class="d-flex align-center"
+          v-if="selectedFilter.type === 'dateRange'"
+          cols="4"
+          md="1"
+        >
+          <v-menu
+            ref="menu"
+            v-model="dateMenu"
+            :close-on-content-click="false"
+            :return-value.sync="dateRange"
+            :transition="scale - transition"
+            offset-y
+            min-width="auto"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="primary" v-bind="attrs" v-on="on">
+                {{ $t("admin.dashboard.selectDates") }}
+              </v-btn>
+            </template>
+            <v-date-picker
+              no-title
+              scrollable
+              range
+              v-model="dateRange"
+            ></v-date-picker>
+            <v-spacer></v-spacer>
+            <v-btn text color="primary" @click="dateMenu = false">
+              {{ $t("general.cancel") }}
+            </v-btn>
+            <v-btn text color="primary" @click="$refs.menu.save(date)">
+              {{ $t("general.ok") }}
+            </v-btn>
+          </v-menu>
+        </v-col>
+        <v-col class="d-flex justify-end">
           <v-btn
             data-test-id="rooms-table-refresh-button"
             color="grey darken-2"
@@ -200,6 +238,7 @@ import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import SystemUsers from "../system-users/SystemUsers.vue";
 import { SupportItem } from "@/model/admin/support/support-item";
+import { DateTime } from "luxon";
 @Component
 export default class RoomsTable extends Vue {
   readonly HEADERS = [
@@ -268,7 +307,31 @@ export default class RoomsTable extends Vue {
     return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId);
   }
 
-  selectItems = ["Active", "Supports Requests", "Date Range", "Archived"];
+  itemsInFilterSelect = [
+    {
+      type: "none",
+      text: this.$t("admin.dashboard.none"),
+    },
+    {
+      type: "supportRequests",
+      text: this.$t("admin.dashboard.supportRequests"),
+    },
+    {
+      type: "dateRange",
+      text: this.$t("admin.dashboard.dateRange"),
+    },
+  ];
+
+  dateRange = [
+    DateTime.now().minus({ days: 1 }).toISODate(),
+    DateTime.now().toISODate(),
+  ];
+  selectedFilter = this.itemsInFilterSelect[0];
+  dateMenu = false;
+
+  shouldShowDateRange() {
+    return false;
+  }
 }
 </script>
 
