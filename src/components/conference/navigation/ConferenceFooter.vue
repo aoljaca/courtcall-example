@@ -1,10 +1,13 @@
 <template>
-  <div dense class="bc-secondary flex-row d-flex justify-space-between px-15 pb-5">
+  <div
+    dense
+    class="bc-secondary flex-row d-flex justify-space-between px-15 pb-5"
+  >
     <span class="text-left">
-      {{ $t("navigation.footer.copyright1") }}
+      {{ $t("navigation.footer.copyright1", { years: copyrightYears }) }}
       <br />
       {{ $t("navigation.footer.copyright2") }}
-    </span> 
+    </span>
     <span class="text-right">
       {{ $t("navigation.footer.address") }}
       <br />
@@ -19,5 +22,12 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class ConferenceFooter extends Vue {}
+export default class ConferenceFooter extends Vue {
+  get copyrightYears(): string {
+    const currentYear = new Date().getFullYear();
+    const yearCreated = "2021";
+    const combined = `${yearCreated}-${currentYear}`;
+    return `${yearCreated !== currentYear.toString() ? combined : yearCreated}`;
+  }
+}
 </script>

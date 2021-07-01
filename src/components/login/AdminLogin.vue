@@ -9,7 +9,7 @@
       color="error"
       class="pa-2 mb-3"
     >
-      <v-icon dark class="mb-1">mdi-alert-circle-outline</v-icon>
+      <v-icon dark class="mb-1 mr-2">mdi-alert-circle-outline</v-icon>
       {{ $t("login.admin.invalidCredentials") }}
     </v-card>
     <v-row dense>

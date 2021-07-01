@@ -2,19 +2,19 @@
   <div class="d-flex flex-column space-between h-100 bc-secondary">
     <conference-header id="header" />
 
-      <v-row justify="center">
-        <v-col cols="auto" class="text-right" align-self="center">
-          <admin-login />
-        </v-col>
+    <v-row justify="center">
+      <v-col sm="6" md="5" lg="4" class="text-right" align-self="center">
+        <admin-login />
+      </v-col>
 
-        <!-- TODO: Present this as another option -->
-        <!-- <v-col cols="auto" class="text-center mx-5">
+      <!-- TODO: Present this as another option -->
+      <!-- <v-col cols="auto" class="text-center mx-5">
           <v-divider vertical />
         </v-col>
         <v-col cols="4" class="text-left" align-self="center">
           <join-conference />
         </v-col> -->
-      </v-row>
+    </v-row>
 
     <conference-footer />
   </div>
