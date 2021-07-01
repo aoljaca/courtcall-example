@@ -42,17 +42,32 @@
                 scrollable
                 range
                 v-model="dateRange"
+                :max="maxDate"
               ></v-date-picker>
               <v-spacer></v-spacer>
-              <v-btn text color="primary" @click="dateMenu = false">
-                {{ $t("general.cancel") }}
-              </v-btn>
-              <v-btn text color="primary" @click="$refs.menu.save(date)">
-                {{ $t("general.ok") }}
-              </v-btn>
+              <v-footer color="white" :padless="true"
+                ><v-container fluid>
+                  <v-row>
+                    <v-col>
+                      <v-btn text color="primary" @click="dateMenu = false">
+                        {{ $t("general.cancel") }}
+                      </v-btn></v-col
+                    >
+                    <v-col class="d-flex justify-end">
+                      <v-btn
+                        text
+                        color="primary"
+                        @click="$refs.menu.save(date)"
+                      >
+                        {{ $t("general.ok") }}</v-btn
+                      ></v-col
+                    >
+                  </v-row>
+                </v-container></v-footer
+              >
             </v-menu>
           </v-col>
-          <v-col class="d-flex justify-end" cols="9">
+          <v-col class="d-flex justify-end">
             <v-btn
               data-test-id="rooms-table-refresh-button"
               color="grey darken-2"
@@ -241,6 +256,7 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { SupportItem } from "@/model/admin/support/support-item";
 import { DateTime } from "luxon";
 import { Room } from "@/model/admin/room/room";
+import { data } from "@tensorflow/tfjs";
 @Component
 export default class RoomsTable extends Vue {
   @Prop()
@@ -333,11 +349,35 @@ export default class RoomsTable extends Vue {
     DateTime.now().minus({ days: 1 }).toISODate(),
     DateTime.now().toISODate(),
   ];
+  maxDate = DateTime.now().toISODate();
   selectedFilter = this.itemsInFilterSelect[0];
   dateMenu = false;
 
-  shouldShowDateRange() {
-    return false;
+  get filteredRooms(): Room[] {
+    const rooms: Room[] = this.$store.getters["RoomModule/getAsList"];
+
+    const minDate = DateTime.fromISO(this.dateRange[0]);
+    const maxDate = DateTime.fromISO(this.dateRange[1]);
+    rooms.filter((r) => {
+      if (!r.active) {
+        return false;
+      }
+      if (this.selectedFilter.type === "supportRequests") {
+        const activeIssues: SupportItem[] = this.$store.getters[
+          "SupportModule/getActiveIssuesByRoomId"
+        ](r.uuid);
+        return activeIssues.length;
+      } else if (this.selectedFilter.type === "dateRange") {
+        if (!r.roomDetails.lastUsed) {
+          return false;
+        }
+        const lastUsed = DateTime.fromISO(r.roomDetails.lastUsed);
+        return lastUsed >= minDate && lastUsed <= maxDate;
+      } else {
+        return true;
+      }
+    });
+    return rooms;
   }
 }
 </script>
