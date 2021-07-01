@@ -127,7 +127,7 @@ import { Organization } from "@/model/admin/organization/organization";
 import { RoomTemplate } from "@/model/admin/room/room-template";
 @Component
 export default class RoomDetailsEdit extends Vue {
-  roomId = "";
+  roomId = this.$route.params.roomId;
 
   rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
 
@@ -136,13 +136,12 @@ export default class RoomDetailsEdit extends Vue {
   items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
 
   templateIdFromRoomId: string = this.$store.state.RoomModule
-    .rooms[this.$route.params.roomId]
+    .rooms[this.roomId]
     .templateId;
 
   templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
 
   template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
-
   
   organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
 
@@ -165,11 +164,11 @@ export default class RoomDetailsEdit extends Vue {
   }
 
   get roomDetails() {
-    if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+    if (!this.$store.state.RoomModule.rooms[this.roomId]) {
       return NULL_ROOM_DETAILS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
+    return this.$store.state.RoomModule.rooms[this.roomId]
       .roomDetails;
   }
 }
