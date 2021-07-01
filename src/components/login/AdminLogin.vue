@@ -19,10 +19,10 @@
       </v-col>
     </v-row>
     <v-row dense>
-      <v-col md="6">
+      <v-col cols="auto">
         <v-checkbox color="primary" class="c-primary" :label="$t(`login.admin.rememberUsernameLabel`)" />
       </v-col>
-      <v-col md="6" align-self="center" class="text-end">
+      <v-col cols="auto" align-self="center" class="text-end">
         <router-link class="text-decoration-none c-accent" to="/">{{ $t("login.admin.forgotPassword") }}</router-link>
       </v-col>
     </v-row>

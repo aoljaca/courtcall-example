@@ -6,6 +6,7 @@
         <v-col cols="auto" class="text-right" align-self="center">
           <admin-login />
         </v-col>
+
         <!-- TODO: Present this as another option -->
         <!-- <v-col cols="auto" class="text-center mx-5">
           <v-divider vertical />
