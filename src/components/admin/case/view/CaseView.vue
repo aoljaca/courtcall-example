@@ -22,7 +22,13 @@
         <v-row class="py-4">
           <v-col>
             <v-list>
-              <v-list-item link :to="roomPath">
+              <v-list-item 
+                link 
+                :to="{
+                  name: 'View Room',
+                  params: { roomId },
+                }"
+              >
                 {{ $t("admin.cases.back") }} {{ roomName }}
               </v-list-item>
             </v-list>
@@ -50,6 +56,7 @@ import { Case } from "@/model/meeting/meeting-ui/case";
   },
 })
 export default class CaseView extends Vue {
+  // change to named
   roomPath = "/admin/rooms/" + this.$route.params.roomId + "/view/";
 
   caseName: string = this.getCaseById(this.$route.params.caseId)?.name;
