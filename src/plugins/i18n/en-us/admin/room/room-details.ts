@@ -17,5 +17,6 @@ export default {
   saveTemplate: "SAVE AS NEW TEMPLATE",
   templateName: "Enter Template Name",
   draft: "Daft",
-  available: "Available"
+  available: "Available",
+  create: "NEW ROOM"
 };

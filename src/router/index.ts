@@ -166,7 +166,7 @@ const routes: Array<RouteConfig> = [
             name: "Create Room",
             component: RoomAddEdit,
             meta: {
-              breadcrumb: "New Room",
+              breadcrumb: i18n.t("admin.roomDetails.create"),
             },
           },
           {
