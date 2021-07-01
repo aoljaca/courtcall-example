@@ -203,16 +203,14 @@ export default class SystemUserRoomEntryPermissions extends Vue {
   onRemovedEntryItem(idToRemove: string): void {
     // Removing Room
     if (this.systemUserEdits.roomPermissions.roomIds.includes(idToRemove)) {
-      this.systemUserEdits.roomPermissions.roomIds =
-        this.systemUserEdits.roomPermissions.roomIds.filter(
-          (id) => id !== idToRemove
-        );
+      this.systemUserEdits.roomPermissions.roomIds = this.systemUserEdits.roomPermissions.roomIds.filter(
+        (id) => id !== idToRemove
+      );
     } else {
       // Removing Organization
-      this.systemUserEdits.roomPermissions.organizationIds =
-        this.systemUserEdits.roomPermissions.organizationIds.filter(
-          (id) => id !== idToRemove
-        );
+      this.systemUserEdits.roomPermissions.organizationIds = this.systemUserEdits.roomPermissions.organizationIds.filter(
+        (id) => id !== idToRemove
+      );
     }
   }
 }

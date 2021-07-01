@@ -115,23 +115,34 @@ import { RoomTemplate } from "@/model/admin/room/room-template";
 export default class RoomDetailsEdit extends Vue {
   rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
 
-  items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
+  items = [
+    this.$t("admin.roomDetails.draft"),
+    this.$t("admin.roomDetails.available"),
+  ];
 
   settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
 
-  templateIdFromRoomId: string = this.$store.state.RoomModule
-    .rooms[this.$route.params.roomId]
-    .templateId;
+  templateIdFromRoomId: string = this.$store.state.RoomModule.rooms[
+    this.$route.params.roomId
+  ].templateId;
 
-  templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
+  templates: RoomTemplate[] = this.$store.getters[
+    "RoomTemplateModule/getAsList"
+  ];
 
-  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](
+    this.templateIdFromRoomId
+  );
 
   setTemplate() {
-    this.roomDetails.template = this.$store.getters["RoomTemplateModule/getById"](this.templateIdFromRoomId);
+    this.roomDetails.template = this.$store.getters[
+      "RoomTemplateModule/getById"
+    ](this.templateIdFromRoomId);
   }
 
-  organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
+  organizations: Organization[] = this.$store.getters[
+    "OrganizationsModule/getAsList"
+  ];
 
   organization: Organization = this.$store.getters[
     "OrganizationsModule/getById"

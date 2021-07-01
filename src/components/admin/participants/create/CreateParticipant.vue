@@ -67,7 +67,6 @@ import CreateParticipantAccessDetails from "./CreateParticipantAccessDetails.vue
 export default class ViewParticipant extends Vue {
   participant: Participant = {} as Participant;
 
-  
   get hasUnsavedChanges(): boolean {
     return !isEqual(this.participant, {});
   }
