@@ -16,4 +16,6 @@ export default {
   organizationAlternate: "Organization",
   saveTemplate: "SAVE AS NEW TEMPLATE",
   templateName: "Enter Template Name",
+  draft: "Daft",
+  available: "Available"
 };

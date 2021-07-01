@@ -92,7 +92,7 @@ const organizationsModule: Module<any, any> = {
   },
   mutations: {
     setOrganizations(state, organizations: { [key: string]: Organization }) {
-      state.organizations = organizations
+      state.organizations = organizations;
     },
     setOrganization(state, organization: Organization) {
       state.organizations[organization.id] = organization;
@@ -114,17 +114,26 @@ const organizationsModule: Module<any, any> = {
       // Send request to API to update
       const response = organizationToUpdate;
       commit("setOrganization", response);
-    }
+    },
   },
   getters: {
     getById: (state) => (id: string) => {
       return state.organizations[id];
     },
+    getAsList: (state) => Object.values(state.organizations) as Organization[],
+    getOrgNamesList: (state) => {
+      const organizations = Object.values(
+        state.organizations
+      ) as Organization[];
+      return organizations.map((o: Organization) => o.name);
+    },
+    getActiveAsList: (state) =>
+      (Object.values(state.organizations) as Organization[]).filter(
+        (o) => !o.archived
+      ),
     getNameById: (state) => (id: string) => {
       return state.organizations[id].name;
     },
-    getAsList: (state) => Object.values(state.organizations),
-    getActiveAsList: (state) => Object.values(state.organizations as Organization[]).filter(o => !o.archived),
   },
 };
 

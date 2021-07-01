@@ -1,88 +1,90 @@
 <template>
   <div class="rooms-table">
     <v-container>
-      <v-row>
-        <v-col class="text-h4" cols="1">
-          {{ $t("admin.dashboard.rooms") }}
-        </v-col>
-        <v-col cols="2">
-          <v-select
-            :items="itemsInFilterSelect"
-            return-object
-            item-text="text"
-            v-model="selectedFilter"
-            :label="$t('admin.dashboard.filter')"
-            data-test-id="rooms-table-select"
+      <template v-if="!hideHeader">
+        <v-row>
+          <v-col class="text-h4" cols="1">
+            {{ $t("admin.dashboard.rooms") }}
+          </v-col>
+          <v-col cols="2">
+            <v-select
+              :items="itemsInFilterSelect"
+              return-object
+              item-text="text"
+              v-model="selectedFilter"
+              :label="$t('admin.dashboard.filter')"
+              data-test-id="rooms-table-select"
+            >
+            </v-select>
+          </v-col>
+          <v-col
+            class="d-flex align-center"
+            v-if="selectedFilter.type === 'dateRange'"
+            cols="4"
+            md="1"
           >
-          </v-select>
-        </v-col>
-        <v-col
-          class="d-flex align-center"
-          v-if="selectedFilter.type === 'dateRange'"
-          cols="4"
-          md="1"
-        >
-          <v-menu
-            ref="menu"
-            v-model="dateMenu"
-            :close-on-content-click="false"
-            :return-value.sync="dateRange"
-            :transition="scale - transition"
-            offset-y
-            min-width="auto"
-          >
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" v-bind="attrs" v-on="on">
-                {{ $t("admin.dashboard.selectDates") }}
+            <v-menu
+              ref="menu"
+              v-model="dateMenu"
+              :close-on-content-click="false"
+              :return-value.sync="dateRange"
+              :transition="scale - transition"
+              offset-y
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn color="primary" v-bind="attrs" v-on="on">
+                  {{ $t("admin.dashboard.selectDates") }}
+                </v-btn>
+              </template>
+              <v-date-picker
+                no-title
+                scrollable
+                range
+                v-model="dateRange"
+              ></v-date-picker>
+              <v-spacer></v-spacer>
+              <v-btn text color="primary" @click="dateMenu = false">
+                {{ $t("general.cancel") }}
               </v-btn>
-            </template>
-            <v-date-picker
-              no-title
-              scrollable
-              range
-              v-model="dateRange"
-            ></v-date-picker>
-            <v-spacer></v-spacer>
-            <v-btn text color="primary" @click="dateMenu = false">
-              {{ $t("general.cancel") }}
+              <v-btn text color="primary" @click="$refs.menu.save(date)">
+                {{ $t("general.ok") }}
+              </v-btn>
+            </v-menu>
+          </v-col>
+          <v-col class="d-flex justify-end" cols="9">
+            <v-btn
+              data-test-id="rooms-table-refresh-button"
+              color="grey darken-2"
+              elevation="2"
+              fab
+              :title="$t('admin.dashboard.add')"
+            >
+              <v-icon color="white" x-large> mdi-plus </v-icon>
             </v-btn>
-            <v-btn text color="primary" @click="$refs.menu.save(date)">
-              {{ $t("general.ok") }}
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-btn
+              :title="$t('admin.dashboard.refresh')"
+              color="grey darken-4 rounded-0 white--text"
+              depressed
+              data-test-id="refresh-list-button"
+            >
+              <span>
+                {{ $t("admin.dashboard.refresh") }}
+              </span>
+              <v-icon> mdi-refresh </v-icon>
             </v-btn>
-          </v-menu>
-        </v-col>
-        <v-col class="d-flex justify-end">
-          <v-btn
-            data-test-id="rooms-table-refresh-button"
-            color="grey darken-2"
-            elevation="2"
-            fab
-            :title="$t('admin.dashboard.add')"
-          >
-            <v-icon color="white" x-large> mdi-plus </v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-btn
-            :title="$t('admin.dashboard.refresh')"
-            color="grey darken-4 rounded-0 white--text"
-            depressed
-            data-test-id="refresh-list-button"
-          >
-            <span>
-              {{ $t("admin.dashboard.refresh") }}
-            </span>
-            <v-icon> mdi-refresh </v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
+          </v-col>
+        </v-row>
+      </template>
       <v-row>
         <v-col>
           <v-data-table
             :headers="HEADERS"
-            :items="roomsData"
+            :items="rooms || roomsData"
             :items-per-page="20"
             class="elevation-1"
           >
@@ -233,14 +235,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import SystemUsers from "../system-users/SystemUsers.vue";
 import { SupportItem } from "@/model/admin/support/support-item";
 import { DateTime } from "luxon";
+import { Room } from "@/model/admin/room/room";
 @Component
 export default class RoomsTable extends Vue {
+  @Prop()
+  rooms!: Room[];
+  @Prop()
+  hideHeader?: boolean;
+
   readonly HEADERS = [
     {
       text: this.$t("admin.dashboard.activeHeader"),

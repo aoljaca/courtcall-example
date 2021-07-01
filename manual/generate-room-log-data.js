@@ -14,9 +14,6 @@ const activity_types = [
   "USER_SUPPORT_REQUEST",
   "USER_HAND_RAISED",
 ];
-for (let i = 1; i <= 20; i++) {
-  roomIds.push(`R${i}`);
-}
 
 const generateActvityLog = (roomId) => {
   const type =
@@ -52,4 +49,4 @@ roomIds.forEach((r) => {
   map[r] = logs;
 });
 
-console.log(map);
+console.log(JSON.stringify(map));
