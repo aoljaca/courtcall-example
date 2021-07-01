@@ -9,6 +9,8 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <conference-footer />
   </div>
 </template>
 
@@ -18,11 +20,13 @@ import { inject } from "inversify-props";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { WebsocketConnectionService } from "@/services/websocket-connection";
 import ConferenceHeader from "./navigation/ConferenceHeader.vue";
+import ConferenceFooter from "./navigation/ConferenceFooter.vue";
 import { CustomTheme, ThemeService } from "@/services/theme-service";
 
 @Component({
   components: {
     ConferenceHeader,
+    ConferenceFooter,
   },
 })
 export default class Conference extends Vue {

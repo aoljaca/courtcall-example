@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO: Pull all out all referenced colors into theme -->
   <v-system-bar dark color="primary" class="px-15 py-10 white--text">
     <v-btn fab dark depressed readonly color="white">
       <v-icon class="ml-1" color="primary" size="26">mdi-gavel</v-icon>

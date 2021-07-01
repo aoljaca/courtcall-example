@@ -7,8 +7,11 @@
 .c-secondary {
   color: var(--v-secondary-base);
 }
+.bc-secondary {
+  background-color: var(--v-secondary-base);
+}
 .c-accent {
-  color: var(--v-accent-base);
+  color: var(--v-accent-base) !important;
 }
 .c-tint {
   color: var(--v-tint-base);
