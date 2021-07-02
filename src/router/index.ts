@@ -4,7 +4,7 @@ import RoomEntry from "../components/conference/entry/RoomEntry.vue";
 import Login from "../components/login/Login.vue";
 import WaitingRoom from "../components/conference/waiting-room/WaitingRoom.vue";
 import EndMeeting from "../components/conference/end-meeting/EndMeeting.vue";
-import AvOptions from "../components/conference/av-options/AvOptions.vue";
+import AvOptions from "../components/conference/setup/AvOptions.vue";
 import Call from "../components/conference/meeting/Call.vue";
 import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";

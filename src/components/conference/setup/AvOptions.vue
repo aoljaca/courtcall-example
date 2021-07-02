@@ -28,12 +28,6 @@
       </v-card>
     </v-dialog>
     <v-container>
-      <v-row>
-        <v-col>
-          <h1 class="d-inline">CourtCall</h1>
-          <h2 class="d-inline pl-1">Room Name</h2>
-        </v-col>
-      </v-row>
       <v-row class="justify-md-space-between">
         <v-col cols="12" md="4">
           <span class="d-block">
@@ -92,17 +86,16 @@ export default class AvOptions extends Vue {
   dialog = false;
 
   mounted(): void {
-    console.log("mounted");
     this.dialog = true;
-    navigator.mediaDevices
-      .getUserMedia({
-        video: true,
-        audio: true,
-      })
-      .then((stream) => {
-        this.dialog = false;
-        stream.getTracks().forEach((t) => t.stop());
-      });
+    // navigator.mediaDevices
+    //   .getUserMedia({
+    //     video: true,
+    //     audio: true,
+    //   })
+    //   .then((stream) => {
+    //     this.dialog = false;
+    //     stream.getTracks().forEach((t) => t.stop());
+    //   });
   }
 }
 </script>
