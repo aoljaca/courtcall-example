@@ -1,73 +1,78 @@
 <template>
-  <div id="waitingRoom">
-    <v-container fluid class="fill">
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <h1>{{ $t("waitingRoom.mainHeading") }}</h1>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <hs>{{ $t("waitingRoom.subHeading") }}</hs>
-        </v-col>
-      </v-row>
-      <v-row class="d-flex justify-center">
-        <v-col
-          v-if="contactState === 'uncontacted'"
-          class="d-flex justify-center"
-        >
-          <v-btn @click="contactHost()" outlined
-            ><i class="mdi mdi-hand-left"></i
-            >{{ $t("waitingRoom.contactHost") }}</v-btn
-          >
-        </v-col>
-        <v-col v-if="contactState === 'contacting'" cols="8">
-          <v-container fluid>
-            <v-row>
-              <v-col cols="8">
-                <v-textarea
-                  v-model="hostMessage"
-                  counter="300"
-                  auto-grow
-                ></v-textarea>
-              </v-col>
-              <v-col cols="4" class="d-flex align-center">
-                <v-btn
-                  @click="sendMessage()"
-                  :disabled="!validMessage"
-                  outlined
-                  >{{ $t("general.sendMessage") }}</v-btn
-                >
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-col>
-        <v-col
-          v-if="contactState === 'contacted'"
-          class="d-flex justify-center"
-        >
-          <span class="contact-text">{{
-            $t("waitingRoom.hostContacted")
-          }}</span>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <h1>{{ $t("waitingRoom.notices") }}</h1>
-        </v-col>
-      </v-row>
-      <v-row
-        v-for="notification in waitingRoomNotifications"
-        :key="notification.description"
-        class="justify-center"
-      >
-        <v-col cols="6">
-          <waiting-room-notification
-            :details="notification"
-          ></waiting-room-notification>
-        </v-col>
-      </v-row>
-    </v-container>
+  <div id="waiting-room-container">
+    <v-row id="top-level-row">
+      <v-col id="message-and-notify">
+        <v-row id="notification">
+          <v-col>
+            <div>
+              Court is running 10 minutes late.....
+            </div>
+          </v-col>
+        </v-row>
+        <v-row id="please-wait">
+          <v-col>
+            <h1>
+              Please waite here.
+            </h1>
+          </v-col>
+        </v-row>
+        <v-row id="pressure-cooker">
+          <v-col class="d-flex">
+            <h4>
+              The pressure cooker
+            </h4>
+            <div>
+              Your host will let you into the room soon
+            </div>
+          </v-col>
+        </v-row>
+        <v-row id="message-or-exit">
+          <v-col cols="3">
+            <v-btn
+              data-test-id="message-host-button"
+            >
+              Message the host
+            </v-btn>
+          </v-col>
+          <v-col cols="2">
+            <v-btn
+              data-test-id="exit-button"
+            >
+              Exit
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col id="waiting-room-content">
+        <v-row id="watch">
+          <v-col>
+            <v-icon>
+              mdi-play-circle-outline
+            </v-icon>
+            <h4>
+              Watch
+            </h4>
+            <div id="brief-video">
+              Check out the brief video on the Los Angeles County Virtual Courthouse rules and procedures. 
+            </div>
+          </v-col>
+        </v-row>
+        <v-row id="read">
+          <v-col>
+            <h4>
+              Read
+            </h4>
+            <v-icon>
+              mdi-book
+            </v-icon>
+            <div id="click-here">
+              Click here to view this document relating to today’s case before entering the courtroom. 
+            </div>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+
   </div>
 </template>
 <script lang="ts">
