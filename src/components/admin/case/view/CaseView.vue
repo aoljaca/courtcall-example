@@ -14,6 +14,8 @@
               :title="$t('admin.cases.edit')"
               color="grey darken-4 rounded-0 white--text"
               depressed
+              link
+              :to="caseEditPath"
             >
               {{ $t("admin.cases.edit") }}
             </v-btn>
@@ -70,8 +72,4 @@ export default class CaseView extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-.su-header {
-  border-bottom: 1px solid gray;
-}
-</style>
+<style lang="scss" scoped></style>

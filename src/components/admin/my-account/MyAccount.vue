@@ -10,7 +10,7 @@
             <v-spacer />
             <v-col cols="auto">
               <v-btn dark tile depressed class="mr-4" color="grey lighten-1">
-                {{ $t("admin.systemUser.cancel") }}
+                {{ $t("admin.myAccount.cancel") }}
               </v-btn>
               <v-btn
                 tile
@@ -19,55 +19,84 @@
                 class="white--text"
                 :disabled="!hasUnsavedChanges"
               >
-                {{ $t("admin.systemUser.save") }}
+                {{ $t("admin.myAccount.save") }}
               </v-btn>
             </v-col>
           </v-row>
           <v-row dense>
             <v-col cols="1">
-              <label>{{ $t("admin.systemUser.email") }}</label>
+              <label>{{ $t("admin.myAccount.fields.email.title") }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="email" readonly dense> </v-text-field>
+              <v-text-field
+                v-model="email"
+                readonly
+                dense
+                :placeholder="$t('admin.myAccount.fields.email.placeholder')"
+              />
             </v-col>
           </v-row>
           <v-row dense>
             <v-col cols="1">
-              <label>{{ $t("admin.systemUser.phone") }}</label>
+              <label>{{ $t("admin.myAccount.fields.phone.title") }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="phone" dense> </v-text-field>
+              <v-text-field
+                v-model="phone"
+                dense
+                :placeholder="$t('admin.myAccount.fields.phone.placeholder')"
+              />
             </v-col>
           </v-row>
           <v-row class="mt-4 mb-4">
             <v-col>
-              <span class="font-weight-medium">{{
-                $t("admin.systemUser.changePassword")
+              <span class="font-weight-bold">{{
+                $t("admin.myAccount.changePassword")
               }}</span>
             </v-col>
           </v-row>
           <v-row dense>
             <v-col cols="1">
-              <label>{{ $t("admin.systemUser.password") }}</label>
+              <label>{{ $t("admin.myAccount.fields.password.title") }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field type="password" dense> </v-text-field>
+              <v-text-field
+                type="password"
+                dense
+                :placeholder="$t('admin.myAccount.fields.password.placeholder')"
+              />
             </v-col>
           </v-row>
           <v-row dense>
             <v-col cols="1">
-              <label>{{ $t("admin.systemUser.newPassword") }}</label>
+              <label>{{
+                $t("admin.myAccount.fields.newPassword.title")
+              }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field type="password" dense> </v-text-field>
+              <v-text-field
+                type="password"
+                dense
+                :placeholder="
+                  $t('admin.myAccount.fields.newPassword.placeholder')
+                "
+              />
             </v-col>
           </v-row>
           <v-row dense>
             <v-col cols="1">
-              <label>{{ $t("admin.systemUser.confirmPassword") }}</label>
+              <label>{{
+                $t("admin.myAccount.fields.confirmPassword.title")
+              }}</label>
             </v-col>
             <v-col cols="3">
-              <v-text-field type="password" dense> </v-text-field>
+              <v-text-field
+                type="password"
+                dense
+                :placeholder="
+                  $t('admin.myAccount.fields.confirmPassword.placeholder')
+                "
+              />
             </v-col>
           </v-row>
         </v-form>

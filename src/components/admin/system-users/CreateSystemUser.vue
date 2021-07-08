@@ -59,7 +59,7 @@ import { isEqual } from "lodash";
   },
 })
 export default class CreateSystemUser extends Vue {
-  systemUser: SystemUser = cloneDeep(NEW_SYSTEM_USER_BASE)
+  systemUser: SystemUser = cloneDeep(NEW_SYSTEM_USER_BASE);
 
   get hasUnsavedChanges(): boolean {
     return !isEqual(this.systemUser, NEW_SYSTEM_USER_BASE);

@@ -68,7 +68,13 @@
                   >
                     {{ $t("general.view") }}
                   </v-list-item>
-                  <v-list-item>
+                  <v-list-item
+                    link
+                    :to="{
+                      name: 'Case Edit',
+                      params: { caseId: item.id },
+                    }"
+                  >
                     {{ $t("general.edit") }}
                   </v-list-item>
                   <v-list-item>

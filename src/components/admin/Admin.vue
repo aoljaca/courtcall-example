@@ -18,8 +18,8 @@
     </v-container>
 
     <v-divider />
-    <breadcrumbs v-if="showBreadcrumbs"/>
-    <search v-if="showSearch"/>
+    <breadcrumbs v-if="showBreadcrumbs" />
+    <search v-if="showSearch" />
     <v-divider class="mt-3" v-if="showBreadcrumbs || showSearch" />
 
     <v-container fluid class="px-10">
@@ -41,6 +41,7 @@ import Search from "@/components/admin/dashboard/search/Search.vue";
 import { inject } from "inversify-props";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { WebsocketConnectionService } from "@/services/websocket-connection";
+import { CustomTheme, ThemeService } from "@/services/theme-service";
 @Component({
   components: {
     Navigation,
@@ -51,7 +52,9 @@ import { WebsocketConnectionService } from "@/services/websocket-connection";
 })
 export default class Admin extends Vue {
   @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
-  websocketConnectionService: WebsocketConnectionService | undefined;
+  websocketConnectionService!: WebsocketConnectionService;
+  @inject(INJECTION_TYPES.THEME_SERVICE)
+  themeService!: ThemeService;
 
   get showBreadcrumbs(): boolean {
     return !this.isSearchOrDashboard;
@@ -67,7 +70,8 @@ export default class Admin extends Vue {
   }
 
   mounted(): void {
-    this.websocketConnectionService?.connectMeeting();
+    this.websocketConnectionService.connectMeeting();
+    this.themeService.switchTheme(CustomTheme.ADMIN, this.$vuetify);
   }
 }
 </script>

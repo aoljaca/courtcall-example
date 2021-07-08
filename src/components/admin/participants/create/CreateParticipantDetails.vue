@@ -52,6 +52,15 @@ export default class CreateParticipantDetails extends Vue {
   @Prop()
   participant!: Participant;
 
+  created(): void {
+    if(this.$route.query.scheduledParticipant) {
+      this.participant.role = ParticipantRole.PARTICIPANT_SCHEDULED;
+    }
+    if(this.$route.query.caseId) {
+      this.participant.caseId = this.$route.query.caseId as string;
+    }
+  }
+
   details = [
     {
       title: this.$t("admin.participants.formFields.role.title"),
@@ -149,9 +158,10 @@ export default class CreateParticipantDetails extends Vue {
   }
 
   getEligibleCases(): Case[] {
+    const roomId = this.$route.params.roomId;
     const allCases: Case[] = this.$store.getters["CasesModule/getAsList"] || [];
     const filteredCases = allCases.filter(
-      (c) => c.roomId === this.participant.roomId
+      (c) => c.roomId === roomId
     );
 
     return filteredCases;

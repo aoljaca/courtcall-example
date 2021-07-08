@@ -61,9 +61,7 @@
             </template>
 
             <template v-slot:[`item.role`]="{ item }">
-              <div
-                class="py-1 px-1 d-inline-block"
-              >
+              <div class="py-1 px-1 d-inline-block">
                 {{ item.role }}
               </div>
             </template>

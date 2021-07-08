@@ -42,7 +42,9 @@
                 v-for="(item, index) in systemUser[field.key]"
                 :key="`${key}-${index}`"
                 class="mr-1"
-                >{{ field.computedValue ? field.computedValue(item) : item }}</v-chip
+                >{{
+                  field.computedValue ? field.computedValue(item) : item
+                }}</v-chip
               >
             </template>
             <span v-else>

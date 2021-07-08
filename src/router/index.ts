@@ -21,6 +21,7 @@ import SupportArchive from "@/components/admin/support/SupportArchive.vue";
 import ViewParticipant from "@/components/admin/participants/view/ViewParticipant.vue";
 import CreateParticipant from "@/components/admin/participants/create/CreateParticipant.vue";
 import CaseView from "@/components/admin/case/view/CaseView.vue";
+import CaseEdit from "@/components/admin/case/edit/CaseEdit.vue";
 import MyAccount from "@/components/admin/my-account/MyAccount.vue";
 import NotFound from "@/components/shared/NotFound.vue";
 import RoomActivity from "@/components/admin/room/activity/RoomActivity.vue";
@@ -50,7 +51,6 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: ":conferenceId",
-        name: "Conference Call",
         component: {
           render(c) {
             return c("router-view");
@@ -60,6 +60,7 @@ const routes: Array<RouteConfig> = [
           {
             path: "",
             component: Call,
+            name: "Conference Call",
           },
           {
             path: "entry",
@@ -81,10 +82,9 @@ const routes: Array<RouteConfig> = [
             name: "Leave Call",
             component: EndMeeting,
           },
-        ]
-
+        ],
       },
-    ]
+    ],
   },
   {
     path: "/admin",
@@ -116,7 +116,7 @@ const routes: Array<RouteConfig> = [
               hideBreadcrumb: true,
             },
           },
-        ]
+        ],
       },
       {
         path: "my-account",
@@ -178,13 +178,10 @@ const routes: Array<RouteConfig> = [
             },
           },
           {
-            path: "cases/:caseId",
+            path: "cases",
             name: "Case",
             meta: {
-              breadcrumbFunc: (route: any) =>
-                `${store.getters["CasesModule/getById"](route.params.caseId)
-                  ?.name
-                }`,
+              hideBreadcrumb: true,
             },
             component: {
               render(c) {
@@ -193,11 +190,33 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "",
+                path: "view/:caseId",
                 component: CaseView,
                 name: "Case View",
                 meta: {
-                  hideBreadcrumb: true,
+                  breadcrumbFunc: (route: any) =>
+                    `${store.getters["CasesModule/getById"](route.params.caseId)
+                      ?.name
+                    }`,
+                },
+              },
+              {
+                path: "edit/:caseId",
+                component: CaseEdit,
+                name: "Case Edit",
+                meta: {
+                  breadcrumbFunc: (route: any) =>
+                    `${store.getters["CasesModule/getById"](route.params.caseId)
+                      ?.name
+                    }`,
+                },
+              },
+              {
+                path: "create",
+                component: CaseEdit,
+                name: "Create Case",
+                meta: {
+                  breadcrumb: "New Case",
                 },
               },
             ],

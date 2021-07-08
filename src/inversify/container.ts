@@ -26,6 +26,7 @@ import {
   ShareFormatService,
   ShareFormatServiceImpl,
 } from "@/services/share-format";
+import { ThemeService, ThemeServiceImpl } from "@/services/theme-service";
 import {
   WebsocketConnectionService,
   WebsocketConnectionServiceImpl,
@@ -60,4 +61,7 @@ export default function buildDependencyContainer(): void {
   container
     .bind<DateFormatService>(INJECTION_TYPES.DATE_FORMAT)
     .to(DateFormatServiceImpl);
+  container
+    .bind<ThemeService>(INJECTION_TYPES.THEME_SERVICE)
+    .to(ThemeServiceImpl);
 }
