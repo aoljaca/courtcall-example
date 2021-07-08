@@ -22,19 +22,21 @@
           depressed
           class="mr-6"
         >
-          <router-link 
-            v-if="isCreate" class="remove-decoration" 
+          <router-link
+            v-if="isCreate"
+            class="remove-decoration"
             :to="{
-                name: 'Dashboard',
+              name: 'Dashboard',
             }"
           >
             {{ $t("admin.roomDetails.cancel") }}
           </router-link>
-          <router-link 
-            v-else class="remove-decoration" 
+          <router-link
+            v-else
+            class="remove-decoration"
             :to="{
-                name: 'View Room',
-                params: { roomId },
+              name: 'View Room',
+              params: { roomId },
             }"
           >
             {{ $t("admin.roomDetails.cancel") }}
@@ -125,7 +127,7 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 import { Organization } from "@/model/admin/organization/organization";
 import { RoomTemplate } from "@/model/admin/room/room-template";
-import systemUser from "@/plugins/i18n/en-us/admin/system-user/system-user";
+import { Room } from "@/model/admin/room/room";
 @Component
 export default class RoomDetailsEdit extends Vue {
   roomId = this.$route.params.roomId;
@@ -134,34 +136,14 @@ export default class RoomDetailsEdit extends Vue {
 
   isCreate = false;
 
-  items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
+  items = [
+    this.$t("admin.roomDetails.draft"),
+    this.$t("admin.roomDetails.available"),
+  ];
 
-  template = {};
+  template = {} as RoomTemplate;
 
-  templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
-  
-  organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
-
-  organization: Organization = this.$store.getters[
-    "OrganizationsModule/getById"
-  ](this.systemUserMe.organizationIds[0]);
-
-  mounted(): void {
-    if(this.$route.fullPath === "/admin/rooms/create") {
-      this.isCreate = true;
-      this.template = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0])[0];
-    } else {
-      this.template = (this.$store.getters["RoomModule/getById"](this.$route.params.roomId).template);
-    }
-  }
-
-  setTemplate() {
-    this.roomDetails.template = this.template.uuid;
-  }
-
-  setOrganization() {
-    this.roomDetails.organization = this.organization.id;
-  }
+  organization = {} as Organization;
 
   get systemUserMe() {
     return this.$store.state.SystemUsersModule.me;
@@ -172,8 +154,46 @@ export default class RoomDetailsEdit extends Vue {
       return NULL_ROOM_DETAILS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.roomId]
-      .roomDetails;
+    return this.$store.state.RoomModule.rooms[this.roomId].roomDetails;
+  }
+
+  get templates(): RoomTemplate[] {
+    return this.$store.getters["RoomTemplateModule/getAsList"];
+  }
+
+  get organizations(): Organization[] {
+    return this.$store.getters["OrganizationsModule/getAsList"];
+  }
+
+  get room(): Room {
+    const roomId = this.$route.params.roomId;
+    return this.$store.getters["RoomModule/getById"](roomId);
+  }
+
+  mounted(): void {
+    this.organization = this.$store.getters["OrganizationsModule/getById"](
+      this.systemUserMe.organizationIds[0]
+    );
+
+    const roomId = this.$route.params.roomId;
+    if (!roomId) {
+      this.isCreate = true;
+      this.template = this.$store.getters["RoomTemplateModule/getByOrgId"](
+        this.systemUserMe.organizationIds[0]
+      )[0];
+    } else {
+      this.template = this.templates.find(
+        (t) => t.uuid === this.room.templateId
+      )!;
+    }
+  }
+
+  setTemplate() {
+    this.roomDetails.template = this.template.uuid;
+  }
+
+  setOrganization() {
+    this.roomDetails.organization = this.organization.id;
   }
 }
 </script>

@@ -126,7 +126,7 @@ const routes: Array<RouteConfig> = [
           breadcrumb: i18n.t("admin.navigation.myAccount"),
         },
       },
-      
+
       {
         path: "rooms",
         name: "Rooms",
@@ -140,7 +140,7 @@ const routes: Array<RouteConfig> = [
         },
         children: [
           {
-            path: ":roomId",
+            path: "view/:roomId",
             name: "View Room",
             component: RoomViewManage,
             meta: {
