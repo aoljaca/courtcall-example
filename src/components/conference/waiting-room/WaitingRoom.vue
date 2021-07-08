@@ -1,7 +1,7 @@
 <template>
-  <div id="waiting-room-container">
+  <div class="conference-body-height" id="waiting-room-container">
     <v-row id="notification">
-      <v-col cols="4" class="warning-background d-flex">
+      <v-col cols="4" class="warning-background d-flex m-l-25">
         <v-icon>
           mdi-alert-circle-outline
         </v-icon>
@@ -12,7 +12,7 @@
       </v-col>
     </v-row>
     <v-row id="top-level-row">
-      <v-col id="message-host">
+      <v-col id="message-host" class="m-l-25">
         <v-row id="please-wait">
           <v-col>
             <h1>
@@ -34,6 +34,7 @@
           <v-col cols="3">
             <v-btn
               color="black--text"
+              class="mx-4"
               depressed
               data-test-id="message-host-button"
             >
@@ -51,7 +52,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col id="waiting-room-content">
+      <v-col id="waiting-room-content" class="m-r-25">
         <v-row id="watch">
           <v-col>
             <div class="d-flex">
@@ -154,5 +155,17 @@ export default class WaitingRoom extends Vue {
 }
 a {
   text-decoration: underline;
+}
+.m-l-25 {
+  margin-left: 25%;
+}
+.m-r-25 {
+  margin-right: 25%;
+}
+.m-t-25 {
+  margin-top: 25%;
+}
+.m-b-25 {
+  margin-bottom: 25%;
 }
 </style>
