@@ -1,20 +1,15 @@
 <template>
-  <div class="conference-body-height" id="waiting-room-container">
-    <v-row id="notification">
-      <v-col cols="4" class="warning-background d-flex m-l-25">
-        <v-icon>
-          mdi-alert-circle-outline
-        </v-icon>
-        <div class="d-inline-block mx-2">
-          Cases are running 10-15 minutes behind schedule today. 
-          Please be prepared to wait until your case is called.
-        </div>
-      </v-col>
-    </v-row>
+  <div class="conference-body-height d-flex" id="waiting-room-container">
     <v-row id="top-level-row">
       <v-col id="message-host" class="m-l-25">
-        <div>
-
+        <div cols="4" class="warning-background d-flex">
+          <v-icon>
+            mdi-alert-circle-outline
+          </v-icon>
+          <div class="d-inline-block mx-2">
+            Cases are running 10-15 minutes behind schedule today. 
+            Please be prepared to wait until your case is called.
+          </div>
         </div>
         <v-row id="please-wait">
           <v-col>
@@ -94,7 +89,6 @@
         </v-row>
       </v-col>
     </v-row>
-
   </div>
 </template>
 <script lang="ts">
