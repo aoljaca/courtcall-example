@@ -13,6 +13,9 @@
     </v-row>
     <v-row id="top-level-row">
       <v-col id="message-host" class="m-l-25">
+        <div>
+
+        </div>
         <v-row id="please-wait">
           <v-col>
             <h1>
@@ -31,17 +34,16 @@
           </v-col>
         </v-row>
         <v-row id="message-or-exit">
-          <v-col cols="3">
+          <v-col>
             <v-btn
               color="black--text"
-              class="mx-4"
               depressed
               data-test-id="message-host-button"
             >
               Message the host
             </v-btn>
           </v-col>
-          <v-col cols="2">
+          <v-col>
             <v-btn
               color="white black--text"
               depressed
