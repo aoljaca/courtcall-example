@@ -1,43 +1,39 @@
 <template>
-  <div id="roomPasscode">
-    <v-container>
-      <v-row>
-        <v-col>
-          <h3>{{ $t("entry.passcode.generalDescription") }}</h3>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-text-field
-            :title="$t('entry.passcode.inputDescription')"
-            :label="$t('entry.passcode.inputDescription')"
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <v-btn
-            :title="$t('general.submit')"
-            @click="submitPasscode()"
-            color="primary"
-            >{{ $t("general.submit") }}</v-btn
-          >
-        </v-col>
-      </v-row>
-    </v-container>
+  <div class="text-center">
+    <h2>{{ $t("entry.passcode.title") }}</h2>
+    <v-text-field
+      v-model="passcode"
+      :title="$t('entry.passcode.placeholder')"
+      :placeholder="$t('entry.passcode.placeholder')"
+    />
+    <v-btn :title="$t('general.submit')" @click="onSubmit" color="accent">{{
+      $t("general.submit")
+    }}</v-btn>
+    <v-btn
+      :title="$t('general.exit')"
+      @click="onExit"
+      color="secondary"
+      class="ml-4 c-primary"
+      >{{ $t("general.exit") }}
+    </v-btn>
   </div>
 </template>
 <script lang="ts">
+import { EntryMode } from "@/store/entry/entry-module";
 import { Component, Vue } from "vue-property-decorator";
-import { mapActions } from "vuex";
-@Component({
-  computed: {},
-})
+
+@Component({})
 export default class RoomPasscode extends Vue {
   passcode = "";
 
-  submitPasscode() {
-    this.$store.dispatch("EntryModule/alterEntryPhase", { phase: "name" });
+  onSubmit() {
+    this.$store.dispatch("EntryModule/alterEntryPhase", EntryMode.NAME);
+  }
+
+  onExit() {
+    this.$router.push({
+      name: "Login",
+    });
   }
 }
 </script>

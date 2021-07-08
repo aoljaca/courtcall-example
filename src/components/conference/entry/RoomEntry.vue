@@ -1,85 +1,67 @@
 <template>
-  <div class="room-entry">
-    <v-container fluid class="fill d-flex align-content-center">
-      <v-row class="justify-center">
-        <v-col align-self="center" cols="12" md="6">
-          <v-card elevation="3">
-            <v-container>
-              <v-row class="justify-center">
-                <v-col cols="6" class="d-flex justify-center">
-                  <h2>CourtCall</h2>
-                </v-col>
-              </v-row>
-              <v-row class="justify-center">
-                <v-col cols="6" class="d-flex justify-center">
-                  <v-progress-circular
-                    v-if="phase === 'loading'"
-                    :size="100"
-                    :color="primary"
-                    indeterminate
-                    :title="$t('general.loading')"
-                  ></v-progress-circular>
-                  <room-passcode v-if="phase === 'passcode'"></room-passcode>
-                  <room-user-name v-if="phase === 'name'"></room-user-name>
-                  <room-confirm-user-name
-                    v-if="phase === 'confirmName'"
-                  ></room-confirm-user-name>
-                </v-col>
-              </v-row>
-              <v-row class="justify-center">
-                <v-col cols="8" class="d-flex justify-center">
-                  <span class="text-align-center">
-                    {{ $t("entry.support.begin") }}
-                    <span class="font-weight-bold">{{
-                      $t("entry.support.phone")
-                    }}</span>
-                    {{ $t("entry.support.middle") }}
-                    <span class="font-weight-bold">{{
-                      $t("entry.support.email")
-                    }}</span>
-                  </span>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+  <div class="d-flex flex-column justify-space-between bc-secondary">
+    <v-row justify="center">
+      <v-col sm="6" md="5" lg="4" class="text-right" align-self="center">
+        <div v-if="showLoading" class="text-center">
+          <v-progress-circular
+            size="150"
+            width="4"
+            color="primary"
+            class="c-primary"
+            indeterminate
+          >
+            {{ $t("general.loading") }}
+          </v-progress-circular>
+        </div>
+        <v-card
+          v-if="showPasscodePrompt || showNamePrompt"
+          class="pa-16 text-center"
+        >
+          <room-passcode v-if="showPasscodePrompt" />
+          <room-user-name v-if="showNamePrompt" />
+        </v-card>
+      </v-col>
+    </v-row>
   </div>
 </template>
 <script lang="ts">
+import { EntryMode } from "@/store/entry/entry-module";
 import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
-import { mapState } from "vuex";
 import RoomPasscode from "./RoomPasscode.vue";
 import RoomUserName from "./RoomUserName.vue";
-import RoomConfirmUserName from "./RoomConfirmUserName.vue";
-import { inject } from "inversify-props";
-import { ToastService } from "@/services/toast";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-type EntryMode = "loading" | "passcode" | "name";
+
 @Component({
-  computed: {
-    ...mapState("EntryModule", ["phase"]),
-  },
   components: {
     RoomPasscode,
     RoomUserName,
-    RoomConfirmUserName,
   },
 })
 export default class RoomEntry extends Vue {
-  @inject(INJECTION_TYPES.TOAST)
-  toastService: ToastService | undefined;
+  get showLoading(): boolean {
+    return this.entryPhase === EntryMode.LOADING;
+  }
 
-  mounted() {
-    this.toastService?.standardToast();
+  get showPasscodePrompt(): boolean {
+    return this.entryPhase === EntryMode.PASSCODE;
+  }
+
+  get showNamePrompt(): boolean {
+    return this.entryPhase === EntryMode.NAME;
+  }
+
+  get entryPhase(): EntryMode {
+    return this.$store.state.EntryModule.phase;
+  }
+
+  mounted(): void {
+    const defaultPhase = EntryMode.PASSCODE;
+
+    //if (room.hasPasscode) {
+    // defaultPhase = EntryMode.PASSCODE;
+    //}
+
+    this.$store.dispatch("EntryModule/alterEntryPhase", defaultPhase);
   }
 }
 </script>
-<style lang="scss" scoped>
-.fill {
-  height: 100vh;
-  background: lightgray;
-}
-</style>
