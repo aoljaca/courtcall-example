@@ -1,7 +1,7 @@
 <template>
-  <div class="conference-body-height d-flex" id="waiting-room-container">
-    <v-row id="top-level-row">
-      <v-col id="message-host" class="m-l-25">
+  <div class="conference-body-height d-flex justify-space-around flex-column" id="waiting-room-container">
+    <v-row id="top-level-row" class="flex-grow-0">
+      <v-col id="message-host" class="m-l-25 pb-4">
         <div cols="4" class="warning-background d-flex">
           <v-icon>
             mdi-alert-circle-outline
@@ -11,14 +11,14 @@
             Please be prepared to wait until your case is called.
           </div>
         </div>
-        <v-row id="please-wait">
+        <v-row>
           <v-col>
             <h1>
               Please wait here.
             </h1>
           </v-col>
         </v-row>
-        <v-row id="pressure-cooker">
+        <v-row dense class="pb-8" id="pressure-cooker">
           <v-col class="d-flex">
             <h4>
               The pressure cooker
@@ -49,7 +49,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col id="waiting-room-content" class="m-r-25">
+      <v-col id="waiting-room-content" class="m-r-25" align-self="end">
         <v-row id="watch">
           <v-col>
             <div class="d-flex">
