@@ -2,15 +2,10 @@
   <div class="conference-body-height d-flex justify-space-around flex-column" id="waiting-room-container">
     <v-row id="top-level-row" class="flex-grow-0">
       <v-col id="message-host" class="m-l-25 pb-4">
-        <div cols="4" class="warning-background d-flex">
-          <v-icon>
-            mdi-alert-circle-outline
-          </v-icon>
-          <div class="d-inline-block mx-2">
-            Cases are running 10-15 minutes behind schedule today. 
-            Please be prepared to wait until your case is called.
-          </div>
-        </div>
+        <v-alert type="warning" icon="mdi-alert-circle-outline">
+          Cases are running 10-15 minutes behind schedule today. 
+          Please be prepared to wait until your case is called.
+        </v-alert>
         <v-row>
           <v-col>
             <h1>
