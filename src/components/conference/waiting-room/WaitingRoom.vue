@@ -1,7 +1,7 @@
 <template>
   <div id="waiting-room-container">
     <v-row id="notification">
-      <v-col cols="6" class="warning-background">
+      <v-col cols="4" class="warning-background d-flex">
         <v-icon>
           mdi-alert-circle-outline
         </v-icon>
@@ -12,7 +12,7 @@
       </v-col>
     </v-row>
     <v-row id="top-level-row">
-      <v-col id="message-and-notify">
+      <v-col id="message-host">
         <v-row id="please-wait">
           <v-col>
             <h1>
