@@ -1,18 +1,18 @@
 <template>
   <div id="waiting-room-container">
+    <v-row id="notification">
+      <v-col cols="6" class="warning-background">
+        <v-icon>
+          mdi-alert-circle-outline
+        </v-icon>
+        <div class="d-inline-block mx-2">
+          Cases are running 10-15 minutes behind schedule today. 
+          Please be prepared to wait until your case is called.
+        </div>
+      </v-col>
+    </v-row>
     <v-row id="top-level-row">
       <v-col id="message-and-notify">
-        <v-row id="notification">
-          <v-col class="warning-background">
-            <v-icon>
-              mdi-alert-circle-outline
-            </v-icon>
-            <div class="d-inline-block mx-2">
-              Cases are running 10-15 minutes behind schedule today. 
-              Please be prepared to wait until your case is called.
-            </div>
-          </v-col>
-        </v-row>
         <v-row id="please-wait">
           <v-col>
             <h1>
