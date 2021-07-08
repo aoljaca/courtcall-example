@@ -136,9 +136,9 @@ export default class RoomDetailsEdit extends Vue {
 
   items = [this.$t("admin.roomDetails.draft"), this.$t("admin.roomDetails.available")];
 
+  template = {};
+
   templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
-  
-  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0])[0];
   
   organizations: Organization[] = this.$store.getters["OrganizationsModule/getAsList"];
 
@@ -149,6 +149,9 @@ export default class RoomDetailsEdit extends Vue {
   mounted(): void {
     if(this.$route.fullPath === "/admin/rooms/create") {
       this.isCreate = true;
+      this.template = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0])[0];
+    } else {
+      this.template = (this.$store.getters["RoomModule/getById"](this.$route.params.roomId).template);
     }
   }
 

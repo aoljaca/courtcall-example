@@ -403,7 +403,10 @@ export default class SettingsEdit extends Vue {
 
   templates: RoomTemplate[] = this.$store.getters["RoomTemplateModule/getAsList"];
   
-  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0])[0];
+  template: RoomTemplate = this.$route.params.roomId 
+    ?  this.$store.getters["TemplateModule/getById"]
+    (this.$store.getters["RoomModule/getById"](this.$route.params.roomId).template) 
+    : this.$store.getters["RoomTemplateModule/getByOrgId"](this.systemUserMe.organizationIds[0])[0];
 
   setTemplate() {
     this.roomDetails.template = this.template.uuid;
