@@ -83,10 +83,10 @@
 <script lang="ts">
 import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
-import ContaactHost from "@/components/conference/waiting-room/ContaactHost.vue";
+import ContactHost from "@/components/conference/waiting-room/ContactHost.vue";
 @Component({
   components: {
-    ContaactHost,
+    ContactHost,
   }, 
 })
 export default class WaitingRoom extends Vue {
