@@ -24,13 +24,55 @@
         </v-row>
         <v-row id="message-or-exit">
           <v-col>
-            <v-btn
-              color="black--text"
-              depressed
-              data-test-id="message-host-button"
+            <v-dialog
+              v-model="dialog"
+              width="500"
             >
-              {{ $t("waitingRoom.contactHost")}}
-            </v-btn>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  v-bind="attrs"
+                  v-on="on"
+                  color="black--text"
+                  depressed
+                  data-test-id="message-host-button"
+                >
+                  {{ $t("waitingRoom.contactHost")}}
+                </v-btn>
+              </template>
+
+              <v-card class="pa-4">
+                <v-card-title class="text-h5 d-flex justify-center">
+                  <div>
+                    Message the host
+                  </div>
+                </v-card-title>
+
+                <v-text-field
+                  data-test-id="message-host-text"
+                >
+                </v-text-field>
+
+                <v-card-actions class="d-flex justify-center">
+                  <v-btn
+                    depressed
+                    data-test-id="message-host-submit"
+                    color="primary black--text"
+                    text
+                    @click="dialog = false"
+                  >
+                    Submit
+                  </v-btn>
+                  <v-btn
+                    depressed
+                    data-test-id="message-host-cancel"
+                    text
+                    @click="dialog = false"
+                  >
+                    Cancel
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
           </v-col>
           <v-col>
             <v-btn
@@ -89,7 +131,9 @@
 import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
 @Component
-export default class WaitingRoom extends Vue {}
+export default class WaitingRoom extends Vue {
+  dialog = false;
+}
 </script>
 <style lang="scss" scoped>
 .big-space {
