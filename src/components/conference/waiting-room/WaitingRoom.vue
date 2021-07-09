@@ -49,6 +49,7 @@
 
                 <v-text-field
                   data-test-id="message-host-text"
+                  clearable
                 >
                 </v-text-field>
 
@@ -56,8 +57,7 @@
                   <v-btn
                     depressed
                     data-test-id="message-host-submit"
-                    color="primary black--text"
-                    text
+                    color="primary white--text"
                     @click="dialog = false"
                   >
                     Submit
@@ -65,7 +65,7 @@
                   <v-btn
                     depressed
                     data-test-id="message-host-cancel"
-                    text
+                    color="info black--text"
                     @click="dialog = false"
                   >
                     Cancel
