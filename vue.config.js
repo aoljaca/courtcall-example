@@ -33,11 +33,12 @@ module.exports = {
         // If not generated, filter as webpack-vue
         return `webpack-vue:///${info.resourcePath}`;
       };
+    } else {
+      console.log("No Source Maps");
+      config.devtool = "nosources-source-map";
     }
-    if (
-      process.env.NODE_ENV !== "production" &&
-      process.env.NODE_ENV !== "development"
-    ) {
+    const SW_ENVS = ["production", "development"];
+    if (!SW_ENVS.includes(process.env.NODE_ENV)) {
       const swPlugin = new GenerateSW({
         cacheId: "courtcall-ui-v3",
         cleanupOutdatedCaches: true,
@@ -45,7 +46,7 @@ module.exports = {
       config.plugins.unshift(swPlugin);
     }
     config.output.filename = "[name].[hash].js";
-    console.log("Webpack Config");
+    console.log("Environment Config");
     const getEnvName = () => {
       if (process.env.NODE_ENV === "production") {
         return "environment.prod.ts";
