@@ -12,7 +12,8 @@
     "lint:dev": "eslint 'src/**/*.{ts,vue}' --fix --max-warnings 0",
     "lint:cicd": "eslint 'src/**/*.{ts,vue}' --max-warnings 0",
     "build:dev": "vue-cli-service build --mode remote-dev",
-    "build:prod": "vue-cli-service build --mode production"
+    "build:prod": "vue-cli-service build --mode production",
+    "build:stage": "vue-cli-service build --mode stage"
   },
   "dependencies": {
     "@mdi/font": "~5.9.55",

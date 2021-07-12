@@ -392,6 +392,7 @@ import { NULL_ROOM_SETTINGS } from "@/model/admin/room/room-settings";
 import "reflect-metadata";
 import { RoomTemplate } from "@/model/admin/room/room-template";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
+import { Room } from "@/model/admin/room/room";
 @Component({
   components: {
     RoomTemplates,
@@ -401,22 +402,11 @@ export default class SettingsEdit extends Vue {
   value = "null";
   rules = [(v: string | any[]) => v.length <= 35 || "Max 35 characters"];
 
-  templateIdFromRoomId: string = this.$store.state.RoomModule.rooms[
-    this.$route.params.roomId
-  ].templateId;
+  template: RoomTemplate = {} as RoomTemplate;
 
-  templates: RoomTemplate[] = this.$store.getters[
-    "RoomTemplateModule/getAsList"
-  ];
-
-  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](
-    this.templateIdFromRoomId
-  );
-
-  setTemplate() {
-    this.roomDetails.template = this.$store.getters[
-      "RoomTemplateModule/getById"
-    ](this.templateIdFromRoomId);
+  
+  get systemUserMe() {
+    return this.$store.state.SystemUsersModule.me;
   }
 
   get roomSettings() {
@@ -435,6 +425,33 @@ export default class SettingsEdit extends Vue {
 
     return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
       .roomDetails;
+  }
+
+  get templates(): RoomTemplates[] {
+    return this.$store.getters["RoomTemplateModule/getAsList"] || [];
+  }
+
+  get room(): Room {
+    const roomId = this.$route.params.roomId;
+    return this.$store.getters["RoomModule/getById"](roomId);
+  }
+
+  mounted() {
+    this.template = this.room
+      ? this.getTemplateById(this.room.templateId!)
+      : this.getTemplatesByOrgId(this.systemUserMe.organizationIds[0])[0];
+  }
+
+  setTemplate() {
+    this.roomDetails.template = this.template.uuid;
+  }
+
+  getTemplateById(templateId: string): RoomTemplate {
+    return this.$store.getters["RoomTemplateModule/getById"](templateId);
+  }
+
+  getTemplatesByOrgId(organizationId: string): RoomTemplate[] {
+    return this.$store.getters["RoomTemplateModule/getByOrgId"](organizationId);
   }
 }
 </script>

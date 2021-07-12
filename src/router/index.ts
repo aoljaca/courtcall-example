@@ -126,14 +126,12 @@ const routes: Array<RouteConfig> = [
           breadcrumb: i18n.t("admin.navigation.myAccount"),
         },
       },
+
       {
-        path: "rooms/:roomId",
+        path: "rooms",
         name: "Rooms",
         meta: {
-          breadcrumbFunc: (route: any) =>
-            `${store.getters["RoomModule/getRoomNameById"](
-              route.params.roomId
-            )}`,
+          hideBreadcrumb: true,
         },
         component: {
           render(c) {
@@ -142,19 +140,33 @@ const routes: Array<RouteConfig> = [
         },
         children: [
           {
-            path: "",
-            name: "Room View Manage",
+            path: "view/:roomId",
+            name: "View Room",
             component: RoomViewManage,
             meta: {
-              hideBreadcrumb: true,
+              breadcrumbFunc: (route: any) =>
+                `${store.getters["RoomModule/getRoomNameById"](
+                  route.params.roomId
+                )}`,
             },
           },
           {
-            path: "edit",
-            name: "Room Add Edit",
+            path: "edit/:roomId",
+            name: "Edit Room",
             component: RoomAddEdit,
             meta: {
-              hideBreadcrumb: true,
+              breadcrumbFunc: (route: any) =>
+                `${store.getters["RoomModule/getRoomNameById"](
+                  route.params.roomId
+                )}`,
+            },
+          },
+          {
+            path: "create",
+            name: "Create Room",
+            component: RoomAddEdit,
+            meta: {
+              breadcrumb: i18n.t("admin.roomDetails.create"),
             },
           },
           {

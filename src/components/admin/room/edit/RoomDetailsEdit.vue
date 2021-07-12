@@ -22,7 +22,23 @@
           depressed
           class="mr-6"
         >
-          <router-link class="remove-decoration" :to="settingsViewPath">
+          <router-link
+            v-if="isCreate"
+            class="remove-decoration"
+            :to="{
+              name: 'Dashboard',
+            }"
+          >
+            {{ $t("admin.roomDetails.cancel") }}
+          </router-link>
+          <router-link
+            v-else
+            class="remove-decoration"
+            :to="{
+              name: 'View Room',
+              params: { roomId },
+            }"
+          >
             {{ $t("admin.roomDetails.cancel") }}
           </router-link>
         </v-btn>
@@ -111,54 +127,73 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 import { Organization } from "@/model/admin/organization/organization";
 import { RoomTemplate } from "@/model/admin/room/room-template";
+import { Room } from "@/model/admin/room/room";
 @Component
 export default class RoomDetailsEdit extends Vue {
+  roomId = this.$route.params.roomId;
+
   rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
+
+  isCreate = false;
 
   items = [
     this.$t("admin.roomDetails.draft"),
     this.$t("admin.roomDetails.available"),
   ];
 
-  settingsViewPath = "/admin/rooms/" + this.$route.params.roomId;
+  template = {} as RoomTemplate;
 
-  templateIdFromRoomId: string = this.$store.state.RoomModule.rooms[
-    this.$route.params.roomId
-  ].templateId;
+  organization = {} as Organization;
 
-  templates: RoomTemplate[] = this.$store.getters[
-    "RoomTemplateModule/getAsList"
-  ];
-
-  template: RoomTemplate = this.$store.getters["RoomTemplateModule/getById"](
-    this.templateIdFromRoomId
-  );
-
-  setTemplate() {
-    this.roomDetails.template = this.$store.getters[
-      "RoomTemplateModule/getById"
-    ](this.templateIdFromRoomId);
-  }
-
-  organizations: Organization[] = this.$store.getters[
-    "OrganizationsModule/getAsList"
-  ];
-
-  organization: Organization = this.$store.getters[
-    "OrganizationsModule/getById"
-  ](this.roomDetails.organization);
-
-  setOrganization() {
-    this.roomDetails.organization = this.organization.id;
+  get systemUserMe() {
+    return this.$store.state.SystemUsersModule.me;
   }
 
   get roomDetails() {
-    if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
+    if (!this.$store.state.RoomModule.rooms[this.roomId]) {
       return NULL_ROOM_DETAILS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.$route.params.roomId]
-      .roomDetails;
+    return this.$store.state.RoomModule.rooms[this.roomId].roomDetails;
+  }
+
+  get templates(): RoomTemplate[] {
+    return this.$store.getters["RoomTemplateModule/getAsList"];
+  }
+
+  get organizations(): Organization[] {
+    return this.$store.getters["OrganizationsModule/getAsList"];
+  }
+
+  get room(): Room {
+    const roomId = this.$route.params.roomId;
+    return this.$store.getters["RoomModule/getById"](roomId);
+  }
+
+  mounted(): void {
+    this.organization = this.$store.getters["OrganizationsModule/getById"](
+      this.systemUserMe.organizationIds[0]
+    );
+
+    const roomId = this.$route.params.roomId;
+    if (!roomId) {
+      this.isCreate = true;
+      this.template = this.$store.getters["RoomTemplateModule/getByOrgId"](
+        this.systemUserMe.organizationIds[0]
+      )[0];
+    } else {
+      this.template = this.templates.find(
+        (t) => t.uuid === this.room.templateId
+      )!;
+    }
+  }
+
+  setTemplate() {
+    this.roomDetails.template = this.template.uuid;
+  }
+
+  setOrganization() {
+    this.roomDetails.organization = this.organization.id;
   }
 }
 </script>

@@ -42,7 +42,7 @@ const templates: {
       hostAccessCode: 5555,
       participantAccessCode: 5555,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T2: {
     uuid: "T2",
@@ -82,7 +82,7 @@ const templates: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T3: {
     uuid: "T3",
@@ -122,7 +122,7 @@ const templates: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T4: {
     uuid: "T4",
@@ -162,7 +162,7 @@ const templates: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T5: {
     uuid: "T5",
@@ -202,7 +202,7 @@ const templates: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T6: {
     uuid: "T6",
@@ -242,7 +242,7 @@ const templates: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T7: {
     uuid: "T7",
@@ -282,7 +282,7 @@ const templates: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T8: {
     uuid: "T8",
@@ -322,7 +322,7 @@ const templates: {
       hostAccessCode: 3123,
       participantAccessCode: 3241,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T9: {
     uuid: "T9",
@@ -362,7 +362,7 @@ const templates: {
       hostAccessCode: 5656,
       participantAccessCode: 5656,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T10: {
     uuid: "T10",
@@ -402,7 +402,7 @@ const templates: {
       hostAccessCode: 1202,
       participantAccessCode: 2939,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T11: {
     uuid: "T11",
@@ -442,7 +442,7 @@ const templates: {
       hostAccessCode: 4939,
       participantAccessCode: 2341,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T12: {
     uuid: "T12",
@@ -482,7 +482,7 @@ const templates: {
       hostAccessCode: 3674,
       participantAccessCode: 3674,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T13: {
     uuid: "T13",
@@ -522,7 +522,7 @@ const templates: {
       hostAccessCode: 7249,
       participantAccessCode: 7249,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T14: {
     uuid: "T14",
@@ -562,7 +562,7 @@ const templates: {
       hostAccessCode: 5379,
       participantAccessCode: 5379,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T15: {
     uuid: "T15",
@@ -602,7 +602,7 @@ const templates: {
       hostAccessCode: 3579,
       participantAccessCode: 3579,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T16: {
     uuid: "T16",
@@ -642,7 +642,7 @@ const templates: {
       hostAccessCode: 7359,
       participantAccessCode: 7359,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T17: {
     uuid: "T17",
@@ -682,7 +682,7 @@ const templates: {
       hostAccessCode: 7240,
       participantAccessCode: 7240,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T18: {
     uuid: "T18",
@@ -722,7 +722,7 @@ const templates: {
       hostAccessCode: 7435,
       participantAccessCode: 7435,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T19: {
     uuid: "T19",
@@ -762,7 +762,7 @@ const templates: {
       hostAccessCode: 3759,
       participantAccessCode: 3759,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
   T20: {
     uuid: "T20",
@@ -802,7 +802,7 @@ const templates: {
       hostAccessCode: 4523,
       participantAccessCode: 5356,
     },
-    organizationId: "O1",
+    organizationId: "o1",
   },
 };
 
@@ -817,6 +817,10 @@ const roomTemplateModule: Module<any, any> = {
     getAsList: (state) => Object.values(state.templates) as RoomTemplate[],
     getById: (state) => (id: string) => {
       return state.templates[id];
+    },
+    getByOrgId: (state) => (id: string) => {
+      const templates = Object.values(state.templates) as RoomTemplate[];
+      return templates.filter((t: RoomTemplate) => t.organizationId === id);
     },
     getTemplateNamesList: (state) => {
       const templates = Object.values(state.templates) as RoomTemplate[];
