@@ -1,50 +1,40 @@
 <template>
-  <div id="audioSetup">
-    <v-container fluid class="main-container">
-      <v-row>
-        <v-col>
-          <h3>{{ $t("avOptions.audioSetup.title") }}</h3>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <v-btn-toggle mandatory v-model="audioSetupMode">
-            <v-btn value="computerSetup">
-              <v-icon>mdi-laptop</v-icon>
-              <span>{{ $t("avOptions.audioSetup.computerSetup.title") }}</span>
-            </v-btn>
-            <v-btn value="callInSetup">
-              <v-icon>mdi-phone</v-icon>
-              <span>{{ $t("avOptions.audioSetup.callInSetup.title") }}</span>
-            </v-btn>
-            <v-btn value="callMeSetup">
-              <v-icon>mdi-phone-incoming</v-icon>
-              <span>{{ $t("avOptions.audioSetup.callMeSetup") }}</span>
-            </v-btn>
-          </v-btn-toggle>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="setup-height">
-          <call-me-audio-setup
-            v-if="audioSetupMode === 'callMeSetup'"
-          ></call-me-audio-setup>
-          <call-in-audio-setup
-            v-if="audioSetupMode === 'callInSetup'"
-          ></call-in-audio-setup>
-          <computer-audio-setup
-            v-if="audioSetupMode === 'computerSetup'"
-          ></computer-audio-setup>
-        </v-col>
-      </v-row>
-    </v-container>
+  <div>
+    <div class="d-flex flex-row justify-space-between">
+      <v-btn
+        v-for="mode in audioSetupModes"
+        :key="mode.setupMode"
+        large
+        depressed
+        :outlined="isSelected(mode.setupMode)"
+        :color="isSelected(mode.setupMode) ? 'accent' : 'secondary'"
+        :class="isSelected(mode.setupMode) ? 'c-accent' : 'c-primary'"
+        @click="audioSetupMode = mode.setupMode"
+      >
+        <v-icon class="mr-2">{{ mode.icon }}</v-icon>
+        <span>{{ mode.title }}</span>
+      </v-btn>
+    </div>
+    
+    <br />
+
+    <computer-audio-setup v-if="audioSetupMode === AudioSetupMode.COMPUTER" />
+    <call-in-audio-setup v-if="audioSetupMode === AudioSetupMode.CALL_IN" />
+    <call-me-audio-setup v-if="audioSetupMode === AudioSetupMode.CALL_ME" />
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 import CallMeAudioSetup from "../setup/setup-modes/CallMeAudioSetup.vue";
 import CallInAudioSetup from "../setup/setup-modes/CallInAudioSetup.vue";
 import ComputerAudioSetup from "../setup/setup-modes/ComputerAudioSetup.vue";
+
+enum AudioSetupMode {
+  COMPUTER = "Computer",
+  CALL_IN = "Call In",
+  CALL_ME = "Call Me"
+}
+
 @Component({
   components: {
     CallMeAudioSetup,
@@ -53,11 +43,29 @@ import ComputerAudioSetup from "../setup/setup-modes/ComputerAudioSetup.vue";
   },
 })
 export default class AudioSetup extends Vue {
-  audioSetupMode = "computerSetup";
+  AudioSetupMode = AudioSetupMode;
+  audioSetupModes = [
+    {
+      setupMode: AudioSetupMode.COMPUTER,
+      icon: "mdi-laptop",
+      title: this.$t("avOptions.audioSetup.computer.title")
+    },
+    {
+      setupMode: AudioSetupMode.CALL_IN,
+      icon: "mdi-phone",
+      title: this.$t("avOptions.audioSetup.callIn.title")
+    },
+    {
+      setupMode: AudioSetupMode.CALL_ME,
+      icon: "mdi-phone-incoming",
+      title: this.$t("avOptions.audioSetup.callMe.title")
+    },
+  ]
 
-  @Watch("audioSetupMode")
-  watchAudioSetupMode(newVal: string): void {
-    console.log("Setup Mode Changed");
+  audioSetupMode = AudioSetupMode.COMPUTER;
+
+  isSelected(mode: AudioSetupMode): boolean {
+    return this.audioSetupMode === mode;
   }
 }
 </script>

@@ -1,8 +1,20 @@
-import callInSetup from "./audio-setup-modes/call-in-setup";
-import computerSetup from "./audio-setup-modes/computer-setup";
 export default {
   title: "Audio Setup",
-  callMeSetup: "Call Me",
-  callInSetup,
-  computerSetup,
+  callMe: {
+    title: "Call me",
+  },
+  callIn: {
+    title: "Dial in",
+    phoneNumber: "Phone Number",
+    accessCode: "Access Code",
+    pin: "PIN",
+  },
+  computer: {
+    title: "Computer",
+    microphone: "Microphone",
+    speakers: "Speakers",
+    echoCancelation: "Echo Cancelation",
+    test: "Test",
+    noDevicesDetected: "No Devices Detected",
+  }
 };
