@@ -7,11 +7,11 @@ interface BackgroundOption {
 }
 
 const NO_BACKGROUND_BLUR_OPTION: BackgroundOption = {
-  title: i18n.t("avOptions.videoPreview.none"),
+  title: i18n.t("avOptions.videoPreview.none") as string,
   type: "none",
 };
 const BLUR_OPTION: BackgroundOption = {
-  title: i18n.t("avOptions.videoPreview.blur"),
+  title: i18n.t("avOptions.videoPreview.blur") as string,
   type: "blur",
 };
 const BACKGROUND_OPTIONS: BackgroundOption[] = [
