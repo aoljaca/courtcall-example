@@ -9,4 +9,14 @@ deploy_dev:
   tags:
     - v3
   only:
-    - master
+    - env/dev
+
+deploy_stage:
+  stage: deploy
+  script:
+    - echo "Deploying to Stage"
+    - bash ./cicd/deploy-stage.sh
+  tags:
+    - v3
+  only:
+    - env/stage

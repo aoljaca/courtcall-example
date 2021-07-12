@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require("webpack");
 const { GenerateSW } = require("workbox-webpack-plugin");
 module.exports = {
   configureWebpack: (config) => {
     console.log(`Environment : ${process.env.NODE_ENV}`);
-    if (process.env.NODE_ENV !== "production") {
+    const PROD_ENVIRONMENTS = ["production", "stage"];
+    if (!PROD_ENVIRONMENTS.includes(process.env.NODE_ENV)) {
       config.devtool = "eval-source-map";
       config.output.devtoolFallbackModuleFilenameTemplate =
         "webpack:///[resource-path]?[hash]";
@@ -48,6 +50,8 @@ module.exports = {
         return "environment.prod.ts";
       } else if (process.env.NODE_ENV === "remote-dev") {
         return "environment.dev.ts";
+      } else if (process.env.NODE_ENV === "stage") {
+        return "environment.stage.ts";
       } else {
         return "environment.ts";
       }
@@ -61,8 +65,15 @@ module.exports = {
   },
   chainWebpack: (config) => {
     config.plugin("html").tap((args) => {
-      args[0].title =
-        process.env.NODE_ENV === "production" ? "CourtCall" : "CourtCall Dev";
+      let title = "CourtCall";
+      if (process.env.NODE_ENV === "development") {
+        title = "CourtCall Local";
+      } else if (process.env.NODE_ENV === "remote-dev") {
+        title = "Remote Dev";
+      } else if (process.env.NODE_ENV === "stage") {
+        title = "CourtCall Stage";
+      }
+      args[0].title = title;
       return args;
     });
     config.module
