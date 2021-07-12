@@ -2,10 +2,11 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require("webpack");
 const { GenerateSW } = require("workbox-webpack-plugin");
+const PROD_ENVIRONMENTS = ["production", "stage"];
 module.exports = {
   configureWebpack: (config) => {
     console.log(`Environment : ${process.env.NODE_ENV}`);
-    const PROD_ENVIRONMENTS = ["production", "stage"];
+
     if (!PROD_ENVIRONMENTS.includes(process.env.NODE_ENV)) {
       config.devtool = "eval-source-map";
       config.output.devtoolFallbackModuleFilenameTemplate =
@@ -84,10 +85,10 @@ module.exports = {
   },
 
   css: {
-    sourceMap: process.env.NODE_ENV === "development",
+    sourceMap: !PROD_ENVIRONMENTS.includes(process.env.NODE_ENV),
   },
 
-  productionSourceMap: process.env.NODE_ENV === "development",
+  productionSourceMap: !PROD_ENVIRONMENTS.includes(process.env.NODE_ENV),
 
   devServer: {
     port: 4200,
