@@ -1,11 +1,15 @@
 $conference-header-height: 80px;
 $conference-footer-height: 68px;
 
-.conference-body-height {
+.conf-body-height-both {
   height: calc(
     100% - #{$conference-header-height} - #{$conference-footer-height}
   ) !important;
 }
+.conf-body-height-header {
+  height: calc(100% - #{$conference-header-height}) !important;
+}
+
 .d-block {
   display: block;
 }
@@ -24,9 +28,18 @@ $conference-footer-height: 68px;
 .w-50 {
   width: 50%;
 }
+.w-100 {
+  width: 100%;
+}
 .h-100 {
   height: 100%;
 }
 .fill {
   height: 100vh;
+}
+.p-absolute {
+  position: absolute !important;
+}
+.opacity-70 {
+  opacity: 70%;
 }
