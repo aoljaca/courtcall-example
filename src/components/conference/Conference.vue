@@ -40,7 +40,7 @@ export default class Conference extends Vue {
   }
 
   get showFooter(): boolean {
-    const routesWithFooter = ["Login", "Entry"];
+    const routesWithFooter = ["Login", "Room Entry"];
     return routesWithFooter.includes(this.$route.name as string);
   }
 

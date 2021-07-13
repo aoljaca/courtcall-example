@@ -13,8 +13,8 @@
             </v-col>
           </v-row>
           <v-row class="buttons">
-            <v-btn class="button1" @click="onReJoin">{{ $t("logout.rejoin") }}</v-btn>
-            <v-btn @click="onSupport">{{ $t("logout.support") }}</v-btn> 
+            <v-btn class="button1" @click="onRejoinMeeting">{{ $t("logout.rejoin") }}</v-btn>
+            <v-btn class="button2" @click="onSupport">{{ $t("logout.support") }}</v-btn> 
           </v-row>
       </v-col>
     </v-row>
@@ -25,10 +25,12 @@ import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 @Component
 export default class EndMeeting extends Vue {
-  onReJoin(): void {
+  onRejoinMeeting(): void {
+    // TODO: Rejoin meeting
     return;
   }
   onSupport(): void {
+    // TODO: Request support
     return;
   }
 }
@@ -38,7 +40,7 @@ export default class EndMeeting extends Vue {
   height: 100vh;
 }
 h1 {
-  font-weight: 600;
+  font-weight: 650;
 }
 .subHeader {
   margin-top: -15px;
@@ -56,5 +58,11 @@ h1 {
 }
 .button1 {
   margin-right: 20px; 
+  text-transform: none !important; 
+  font-weight: 700;
+}
+.button2 {
+  text-transform: none !important;
+  font-weight: 700;
 }
 </style>
