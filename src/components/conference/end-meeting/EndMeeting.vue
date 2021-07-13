@@ -3,41 +3,30 @@
     <v-container class="fill d-flex align-content-center">
       <v-row class="justify-center">
         <v-col align-self="center" cols="12" md="6">
-          <v-card class="background-gray">
+          <v-card class="border-white">
             <v-container fluid>
               <v-row>
                 <v-col>
-                  <h2 class="text-center">CourtCall</h2>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col>
-                  <h3 class="text-center">{{ $t("logout.heading") }}</h3>
+                  <h1 class="text-center">{{ $t("logout.heading") }}</h1>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col class="d-flex justify-center">
-                  <span>{{ $t("logout.subHeader") }}</span>
+                  <span class="subHeader">{{ $t("logout.subHeader") }}</span>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col class="d-flex justify-center">
-                  <span>
-                    <span class="font-weight-bold">{{
-                      $t("general.clickHere")
-                    }}</span>
-                    {{ $t("logout.rejoin") }}
-                  </span>
+                  <button>Add 1</button>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col class="d-flex justify-center">
-                  <span>
-                    {{ $t("logout.support") }}
-                    <span class="font-weight-bold">{{
-                      $t("general.clickHere")
-                    }}</span>
-                  </span>
+                  <button>Add 1</button>
                 </v-col>
               </v-row>
             </v-container>
@@ -57,7 +46,13 @@ export default class EndMeeting extends Vue {}
 .fill {
   height: 100vh;
 }
-.background-gray {
-  background-color: lightgray !important;
+h1 {
+  font-weight: 600;
+}
+.subHeader {
+  margin-top: -15px;
+}
+.v-sheet.v-card:not(.v-sheet--outlined) {
+  box-shadow: 0 0 0 0 !important;
 }
 </style>
