@@ -12,13 +12,15 @@
             <div class="subHeader">{{ $t("logout.subHeader") }}</div>
           </v-col>
         </v-row>
-        <v-row class="buttons">
-          <v-btn class="button1" @click="onRejoinMeeting">{{
-            $t("logout.rejoin")
-          }}</v-btn>
-          <v-btn class="button2" @click="onSupport">{{
-            $t("logout.support")
-          }}</v-btn>
+        <v-row>
+          <v-col>
+            <v-btn class="mr-5 text-capitalize px-5" depressed @click="onRejoinMeeting">{{
+              $t("logout.rejoin")
+            }}</v-btn>
+            <v-btn class="text-capitalize px-5" depressed @click="onSupport">{{
+              $t("logout.support")
+            }}</v-btn>
+          </v-col>
         </v-row>
       </v-col>
     </v-row>
@@ -48,26 +50,5 @@ h1 {
 }
 .subHeader {
   margin-top: -15px;
-}
-.buttons {
-  margin-top: 30px !important;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-  font-size: 10px;
-}
-.v-btn--is-elevated {
-  box-shadow: 0 0 0 0;
-  background-color: #f5f5f5;
-}
-.button1 {
-  margin-right: 20px;
-  text-transform: none !important;
-  font-weight: 700;
-  padding: 13px 9px !important;
-}
-.button2 {
-  text-transform: none !important;
-  font-weight: 700;
-  padding: 13px 9px !important;
 }
 </style>
