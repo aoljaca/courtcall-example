@@ -20,7 +20,8 @@
             color="white--text grey darken-4 rounded-0"
             depressed
           >
-           <router-link class="remove-decoration" 
+            <router-link
+              class="remove-decoration"
               :to="{
                 name: 'Edit Room',
                 params: { roomId },
@@ -126,8 +127,7 @@ export default class RoomDetails extends Vue {
       return NULL_ROOM_DETAILS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.roomId]
-      .roomDetails;
+    return this.$store.state.RoomModule.rooms[this.roomId].roomDetails;
   }
 }
 </script>

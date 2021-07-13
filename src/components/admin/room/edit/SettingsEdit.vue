@@ -404,7 +404,6 @@ export default class SettingsEdit extends Vue {
 
   template: RoomTemplate = {} as RoomTemplate;
 
-  
   get systemUserMe() {
     return this.$store.state.SystemUsersModule.me;
   }

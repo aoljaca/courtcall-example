@@ -12,7 +12,7 @@ import support from "./support";
 import navigation from "./navigation";
 import participants from "./participants/participants";
 import cases from "./cases/case";
-import myAccount from "./my-account/myAccount"
+import myAccount from "./my-account/myAccount";
 
 export default {
   cases,
@@ -29,5 +29,5 @@ export default {
   organizations,
   navigation,
   participants,
-  myAccount
+  myAccount,
 };

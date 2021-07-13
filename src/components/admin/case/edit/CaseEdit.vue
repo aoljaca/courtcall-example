@@ -225,7 +225,9 @@ export default class CaseEdit extends Vue {
 
   caseViewPath = this.roomPath + "/cases/view/" + this.caseId;
 
-  caseParticipantIds: string[] = (this.getCaseById(this.caseId) ? this.getCaseById(this.caseId)?.participants : []);
+  caseParticipantIds: string[] = this.getCaseById(this.caseId)
+    ? this.getCaseById(this.caseId)?.participants
+    : [];
 
   get participants() {
     return this.$store.getters["ParticipantsModule/getAsList"];
@@ -267,7 +269,7 @@ export default class CaseEdit extends Vue {
       },
       query: {
         caseId: this.caseId,
-        scheduledParticipant: "true", 
+        scheduledParticipant: "true",
       },
     });
   }

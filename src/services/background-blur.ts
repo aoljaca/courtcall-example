@@ -67,14 +67,21 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
       timestamp: dateTime,
     });
 
-    const currentBackground = Store.state.ConferenceSetupModule.activeBackground;
+    const currentBackground =
+      Store.state.ConferenceSetupModule.activeBackground;
     if (backgroundOptions !== currentBackground) {
-      Store.dispatch("ConferenceSetupModule/alterActiveBackground", backgroundOptions);
+      Store.dispatch(
+        "ConferenceSetupModule/alterActiveBackground",
+        backgroundOptions
+      );
     }
 
     if (backgroundOptions.type == "none") {
       canvasElement.style.background = "";
-      Store.dispatch("ConferenceSetupModule/alterVideoState", VideoState.Enabled);
+      Store.dispatch(
+        "ConferenceSetupModule/alterVideoState",
+        VideoState.Enabled
+      );
     } else if (backgroundOptions.type === "blur") {
       await this.startBlur({
         videoElement,

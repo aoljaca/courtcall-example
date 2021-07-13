@@ -16,7 +16,7 @@ Vue.config.productionTip = false;
 buildDependencyContainer();
 Vue.use(Toast, {});
 Vue.use(VueClipboard);
-Vue.use(AudioVisual)
+Vue.use(AudioVisual);
 new Vue({
   router,
   store,

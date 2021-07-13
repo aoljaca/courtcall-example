@@ -39,6 +39,6 @@ export default new Vuex.Store({
     SystemUserRolesModule,
     RoomSessionModule,
     SearchModule,
-    ConferenceSetupModule
+    ConferenceSetupModule,
   },
 });
