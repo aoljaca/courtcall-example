@@ -1,4 +1,6 @@
 import { BackgroundOption, NO_BACKGROUND_BLUR_OPTION } from "@/model/meeting/av-options/background-option";
+import { ToastServiceImpl } from "@/services/toast";
+import { TYPE } from "vue-toastification";
 import { Module } from "vuex";
 
 export enum VideoState {
@@ -63,11 +65,7 @@ const conferenceSetupModule: Module<any, any> = {
         async toggleVideoState({ commit, state }) {
             const newState = state.videoState === !VideoState.Enabled ? VideoState.Enabled : VideoState.Disabled;
 
-            if (newState === VideoState.Disabled) {
-                const videoElement = document.getElementById(
-                    "video-preview"
-                ) as HTMLVideoElement;
-
+            if (newState === VideoState.Disabled && state.selectedVideoDevice) {
                 const stream = await navigator.mediaDevices.getUserMedia({
                     audio: false,
                     video: {
@@ -77,9 +75,12 @@ const conferenceSetupModule: Module<any, any> = {
                 stream.getVideoTracks().map(function (val) {
                     val.stop();
                 });
+                commit("setVideoState", newState);
+            } else {
+                if (!state.videoDevices.length) {
+                    ToastServiceImpl.sendMessage("No video devices found.", { type: TYPE.INFO })
+                }
             }
-
-            commit("setVideoState", newState);
         },
         toggleEchoCancellation({ commit, state }) {
             commit("setEchoCancellation", !state.echoCancellation);
@@ -160,13 +161,13 @@ const conferenceSetupModule: Module<any, any> = {
         },
         async stopAllStreams() {
             navigator.mediaDevices
-            .getUserMedia({
-                video: true,
-                audio: true,
-            })
-            .then((stream) => {
-                stream.getTracks().forEach((t) => t.stop());
-            });
+                .getUserMedia({
+                    video: true,
+                    audio: true,
+                })
+                .then((stream) => {
+                    stream.getTracks().forEach((t) => t.stop());
+                });
         }
     },
 };
