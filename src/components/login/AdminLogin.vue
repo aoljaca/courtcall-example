@@ -43,7 +43,9 @@
     </v-row>
     <v-row>
       <v-col class="text-center">
-        <v-btn color="accent" @click="onLogin" large>{{
+        <!-- Use @click event once authentication is implemented -->
+        <!-- <v-btn color="accent" @click="onLogin" large>{{ -->
+        <v-btn color="accent" :to="{ name: 'Admin' }" large>{{
           $t("login.admin.login")
         }}</v-btn>
       </v-col>
