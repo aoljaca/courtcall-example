@@ -13,7 +13,7 @@
             </v-col>
           </v-row>
           <v-row class="buttons">
-            <v-btn @click="onReJoin">{{ $t("logout.rejoin") }}</v-btn>
+            <v-btn class="button1" @click="onReJoin">{{ $t("logout.rejoin") }}</v-btn>
             <v-btn @click="onSupport">{{ $t("logout.support") }}</v-btn> 
           </v-row>
       </v-col>
@@ -26,10 +26,10 @@ import "reflect-metadata";
 @Component
 export default class EndMeeting extends Vue {
   onReJoin(): void {
-    
+    return;
   }
   onSupport(): void {
-    
+    return;
   }
 }
 </script>
@@ -47,10 +47,14 @@ h1 {
   margin-top: 30px !important;
   margin-left: 0px !important;
   margin-right: 0px !important; 
+  font-size: 10px;
 }
 .v-btn--is-elevated {
   box-shadow: 0 0 0 0;
   background-color: #F5F5F5;
   padding: 10px 20px;
+}
+.button1 {
+  margin-right: 20px; 
 }
 </style>
