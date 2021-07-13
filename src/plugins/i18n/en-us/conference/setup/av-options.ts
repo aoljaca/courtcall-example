@@ -11,4 +11,12 @@ export default {
   audioSetup,
   videoPreview,
   default: "Default",
+  okay: "Okay",
+  assistance: {
+    text1: "If you need assistance from CourtCall call ",
+    text2: "or email",
+    text3: ".",
+    phone: "888-555-1212",
+    email: "customercare@courtcall.com"
+  }
 };
