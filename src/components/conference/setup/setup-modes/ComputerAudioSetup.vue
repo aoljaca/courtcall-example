@@ -92,13 +92,12 @@ import { Component, Vue } from "vue-property-decorator";
 export default class ComputerAudioSetup extends Vue {
   isTestingMic = false;
   isTestingSpeakers = false;
-  micMedia: MediaStream | null = null;
-  speakerMedia: MediaStream | null = null;
+  micMedia: MediaStream = {} as MediaStream;
+  speakerMedia: MediaStream = {} as MediaStream;
   speakerTestSoundPath = "../../../../assets/sounds/bicycle-bell-sound.mp3";
 
   get hasSpeakerControl(): boolean {
-    const element = document.createElement("video");
-    return (element as any).setSinkId;
+    return !!this.audioOutputDevices.length;
   }
 
   get echoCancellation(): boolean {

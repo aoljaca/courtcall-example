@@ -133,6 +133,11 @@ export default class VideoPreview extends Vue {
         "ConferenceSetupModule/alterVideoState",
         VideoState.Enabled
       );
+    } else {
+      this.$store.dispatch(
+        "ConferenceSetupModule/alterVideoState",
+        VideoState.Unavailable
+      );
     }
 
     setTimeout(() => {

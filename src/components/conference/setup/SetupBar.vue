@@ -100,11 +100,8 @@ export default class SetupBar extends Vue {
     };
   }
 
-  onToggleVideo(): void {
-    const newState = this.isVideoEnabled
-      ? VideoState.Disabled
-      : VideoState.Enabled;
-    this.$store.dispatch("ConferenceSetupModule/alterVideoState", newState);
+  async onToggleVideo(): Promise<void> {
+    this.$store.dispatch("ConferenceSetupModule/toggleVideoState");
   }
 
   onToggleAudio(): void {

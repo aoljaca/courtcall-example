@@ -16,7 +16,6 @@
           :class="`${
             active ? 'accent-border' : ''
           } mx-2 text-center justify-center d-flex flex-column`"
-          :img="background.backgroundUrl"
           @click="
             toggle();
             setUpBackgroundBlur();
@@ -30,10 +29,6 @@
             class="h-100 w-100"
             :alt="background.backgroundUrl"
             :src="buildBackgroundURL(background)"
-            @click="
-              toggle();
-              setUpBackgroundBlur();
-            "
           />
           <div v-if="active" class="p-absolute text-end h-100 w-100">
             <v-icon
