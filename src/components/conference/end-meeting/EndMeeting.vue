@@ -20,8 +20,8 @@
                     <div class="subHeader">{{ $t("logout.subHeader") }}</div>
                   </v-col>
                 </v-row>
-                <v-row class="d-flex button-flex-wrap">
-                      <button>Add 1</button>
+                <v-row class="d-flex buttons">
+                      <button class="button-1">Add 1</button>
                       <button>Add 1</button>
                 </v-row>
               </v-container>                  
@@ -59,9 +59,6 @@ button {
   background-color: #F5F5F5;
   padding: 10px 20px;
 }
-.button-flex-wrap {
-  margin: 0 !important;
-}
 .container-css {
   width: 30vw;
 }
@@ -69,7 +66,30 @@ button {
   text-align: left;
 }
 .set-width {
-  width: 300px;
+  width: 500px;
   flex-direction: column;
+  margin-right: -40px;
+}
+.button-1 {
+  margin-right: 25px; 
+}
+.buttons {
+  margin-top: 30px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important; 
+}
+@media only screen and (max-width: 600px) {
+  .set-width {
+    width: 300px;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .set-width {
+    width: 300px;
+    flex-direction: column;
+    margin-right: 0;
+  }
 }
 </style>
