@@ -2,7 +2,7 @@
   <v-dialog
     v-model="dialog"
     width="700"
-    :close-delay="closeDelay(isLastScreen)"
+    close-delay="5000"
   >
     <template v-slot:activator="{ on, attrs }">
       <v-btn
@@ -88,9 +88,9 @@ export default class ContactHost extends Vue {
     this.isLastScreen = true;
   }
 
-  closeDelay(flag : boolean) {
-    return flag ? 10000 : undefined;
-  }
+  // closeDelay(flag : boolean) {
+  //   return flag ? 10000 : undefined;
+  // }
 }
 </script>
 <style lang="scss" scoped>
