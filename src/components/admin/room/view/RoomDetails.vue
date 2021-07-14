@@ -115,7 +115,7 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
-  roomId = "";
+  roomId = this.$route.params.roomId;
 
   mounted() {
     this.roomId = this.$route.params.roomId;

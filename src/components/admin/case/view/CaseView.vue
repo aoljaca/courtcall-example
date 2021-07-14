@@ -15,7 +15,10 @@
               color="grey darken-4 rounded-0 white--text"
               depressed
               link
-              :to="caseEditPath"
+              :to="{
+                name: 'Edit Case',
+                params: { caseId },
+              }"
             >
               {{ $t("admin.cases.edit") }}
             </v-btn>
@@ -58,11 +61,22 @@ import { Case } from "@/model/meeting/meeting-ui/case";
   },
 })
 export default class CaseView extends Vue {
-  caseName: string = this.getCaseById(this.$route.params.caseId)?.name;
+  roomId = this.$route.params.roomId;
+  caseId = this.$route.params.caseId;
 
-  roomName: string = this.getRoomNameById(this.$route.params.roomId);
+  caseName = this.caseById(this.caseId)?.name;
+  roomName = this.getRoomNameById(this.roomId);
 
-  getCaseById(id: string): Case {
+
+
+  mounted() {
+    this.roomId = this.$route.params.roomId;
+    this.caseId = this.$route.params.caseId;
+    this.caseName = this.caseById(this.caseId)?.name;
+    this.roomName = this.getRoomNameById(this.roomId);
+  }
+
+  caseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
   }
 

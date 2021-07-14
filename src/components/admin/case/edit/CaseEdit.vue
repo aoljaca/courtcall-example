@@ -204,8 +204,8 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Room } from "@/model/admin/room/room";
 @Component
 export default class CaseEdit extends Vue {
-  caseId = "";
-  roomId = "";
+  caseId = this.$route.params.roomId;
+  roomId = this.$route.params.caseId;
 
   mounted() {
     this.roomId = this.$route.params.roomId;

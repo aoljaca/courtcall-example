@@ -62,7 +62,7 @@
                   <v-list-item
                     link
                     :to="{
-                      name: 'Case View',
+                      name: 'View Case',
                       params: { caseId: item.id },
                     }"
                   >
@@ -71,7 +71,7 @@
                   <v-list-item
                     link
                     :to="{
-                      name: 'Case Edit',
+                      name: 'Edit Case',
                       params: { caseId: item.id },
                     }"
                   >

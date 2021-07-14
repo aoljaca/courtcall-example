@@ -190,9 +190,9 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "view/:caseId",
+                path: "view/:roomId/:caseId",
                 component: CaseView,
-                name: "Case View",
+                name: "View Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
                     `${store.getters["CasesModule/getById"](route.params.caseId)
@@ -201,9 +201,9 @@ const routes: Array<RouteConfig> = [
                 },
               },
               {
-                path: "edit/:caseId",
+                path: "edit/:roomId/:caseId",
                 component: CaseEdit,
-                name: "Case Edit",
+                name: "Edit Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
                     `${store.getters["CasesModule/getById"](route.params.caseId)
@@ -212,7 +212,7 @@ const routes: Array<RouteConfig> = [
                 },
               },
               {
-                path: "create",
+                path: "create/:roomId",
                 component: CaseEdit,
                 name: "Create Case",
                 meta: {
