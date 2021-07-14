@@ -205,8 +205,8 @@ import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component
 export default class CaseEdit extends Vue {
-  caseId = this.$route.params.roomId;
-  roomId = this.$route.params.caseId;
+  caseId = this.$route.params.caseId;
+  roomId = this.$route.params.roomId;
   participantId = "";
   caseName = this.caseById.name;
   caseNumber = this.caseById.number;
