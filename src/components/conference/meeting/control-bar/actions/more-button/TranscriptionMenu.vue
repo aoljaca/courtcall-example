@@ -4,7 +4,7 @@
       <v-container>
         <v-row>
           <v-col class="d-flex justify-center">
-            <h4>{{ $t("meetingUI.controlBar.more.transcription.title") }}</h4>
+            <h4>{{ $t("conference.meeting.controlBar.more.transcription.title") }}</h4>
           </v-col>
         </v-row>
         <v-row class="justify-center">

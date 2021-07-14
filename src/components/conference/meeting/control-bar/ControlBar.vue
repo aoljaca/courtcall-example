@@ -1,85 +1,76 @@
 <template>
-  <div id="controlBar" class="control-bar-background">
-    <v-container fluid class="px-0 py-0">
-      <v-row>
-        <v-col class="d-flex align-center" cols="4" md="2">
-          <span class="pr-1">
-            <v-btn icon elevation="0">
-              <v-icon>mdi-microphone</v-icon>
-            </v-btn>
-          </span>
-          <span>
-            <v-btn icon elevation="0">
-              <v-icon>mdi-video</v-icon>
-            </v-btn>
-          </span>
-        </v-col>
-        <v-col cols="4" md="1">
-          <get-support-icon></get-support-icon>
-        </v-col>
-        <v-col cols="4" md="1">
-          <raise-hand-icon></raise-hand-icon>
-        </v-col>
-        <v-col cols="4" md="1">
-          <chat-icon></chat-icon>
-        </v-col>
-        <v-col cols="4" md="1">
-          <participants-icon></participants-icon>
-        </v-col>
-        <v-col cols="4" md="1">
-          <files-icon></files-icon>
-        </v-col>
-        <v-col cols="4" md="1">
-          <move-icon></move-icon>
-        </v-col>
-        <v-col cols="4" md="1">
-          <share-screen-icon></share-screen-icon>
-        </v-col>
-        <v-col cols="4" md="1">
-          <more-icon></more-icon>
-        </v-col>
+  <v-card
+    tile
+    flat
+    color="primary"
+    class="pa-5 w-100 d-flex flex-row justify-space-between"
+  >
+    <audio-video-controls />
 
-        <v-col cols="4" md="1" class="d-flex align-center">
-          <v-btn icon elevation="0">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+    <div class="d-flex flex-row dynamic-buttons">
+      <!-- Condensed Version -->
+      <template v-if="showCondensedVersion">
+        <v-divider dark vertical />
+        <participants-button />
+        <more-button />
+        <v-divider dark vertical class="mr-0" />
+      </template>
+
+      <!-- All Buttons -->
+      <template v-else>
+        <move-button />
+        <screen-share-button />
+        <v-divider dark vertical class="mx-8" />
+        <chat-button />
+        <participants-button />
+        <files-button />
+        <v-divider dark vertical class="mx-8" />
+        <more-button />
+      </template>
+    </div>
+
+    <exit-button />
+  </v-card>
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ChatIcon from "./control-icons/ChatIcon.vue";
-import FilesIcon from "./control-icons/FilesIcon.vue";
-import GetSupportIcon from "./control-icons/GetSupportIcon.vue";
-import MoreIcon from "./control-icons/MoreIcon.vue";
-import MoveIcon from "./control-icons/MoveIcon.vue";
-import ParticipantsIcon from "./control-icons/ParticipantsIcon.vue";
-import RaiseHandIcon from "./control-icons/RaiseHandIcon.vue";
-import ShareScreenIcon from "./control-icons/ShareScreenIcon.vue";
+import ChatButton from "./actions/ChatButton.vue";
+import FilesButton from "./actions/FilesButton.vue";
+import GetSupportIcon from "./actions/GetSupportIcon.vue";
+import MoreButton from "./actions/more-button/MoreButton.vue";
+import MoveButton from "./actions/MoveButton.vue";
+import ParticipantsButton from "./actions/ParticipantsButton.vue";
+import RaiseHandIcon from "./actions/RaiseHandIcon.vue";
+import ScreenShareButton from "./actions/ScreenShareButton.vue";
+import AudioVideoControls from "./actions/audio-video-controls/AudioVideoControls.vue";
+import ExitButton from "./actions/exit/ExitButton.vue";
+
 @Component({
   components: {
-    ChatIcon,
-    FilesIcon,
+    AudioVideoControls,
+    MoveButton,
+    ScreenShareButton,
+    ChatButton,
+    FilesButton,
     GetSupportIcon,
-    MoreIcon,
-    MoveIcon,
-    ParticipantsIcon,
+    MoreButton,
+    ParticipantsButton,
     RaiseHandIcon,
-    ShareScreenIcon,
+    ExitButton,
   },
 })
-export default class ControlBar extends Vue {}
-</script>
-<style lang="scss" scoped>
-.control-bar-background {
-  background-color: lightgray;
-  min-height: max(75px, calc(10vh + 12px));
+export default class ControlBar extends Vue {
+  get showCondensedVersion(): boolean {
+    return this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm;
+  }
 }
-</style>
-<style lang="scss">
-.control-bar-icon-font {
-  font-size: 0.75rem;
+</script>
+
+<style lang="scss" scoped>
+.dynamic-buttons {
+  * + * {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
 </style>

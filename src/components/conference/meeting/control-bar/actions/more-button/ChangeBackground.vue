@@ -5,7 +5,7 @@
         <v-row>
           <v-col class="d-flex justify-center">
             <span class="font-weight-bold">{{
-              $t("meetingUI.controlBar.more.changeBackground.selectBackground")
+              $t("conference.meeting.controlBar.more.changeBackground.selectBackground")
             }}</span>
           </v-col>
         </v-row>

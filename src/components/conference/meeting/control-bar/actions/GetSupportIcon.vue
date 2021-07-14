@@ -8,7 +8,7 @@
               <v-btn
                 icon
                 elevation="0"
-                :title="$t('meetingUI.controlBar.getSupport.title')"
+                :title="$t('conference.meeting.controlBar.getSupport.title')"
                 v-bind="attrs"
                 v-on="on"
               >
@@ -19,7 +19,7 @@
           <v-row class="py-0 px-0">
             <v-col
               class="py-0 px-0 control-bar-icon-font d-flex justify-center"
-              >{{ $t("meetingUI.controlBar.getSupport.title") }}</v-col
+              >{{ $t("conference.meeting.controlBar.getSupport.title") }}</v-col
             >
           </v-row>
         </v-container>
@@ -28,7 +28,7 @@
         <v-card-text>
           <v-textarea
             counter="300"
-            :label="$t('meetingUI.controlBar.getSupport.description')"
+            :label="$t('conference.meeting.controlBar.getSupport.description')"
           ></v-textarea>
         </v-card-text>
         <v-card-actions>
@@ -41,11 +41,11 @@
               </v-col>
               <v-col class="px-0 py-0 d-flex justify-end">
                 <v-btn
-                  :title="$t('meetingUI.controlBar.getSupport.cancelRequest')"
+                  :title="$t('conference.meeting.controlBar.getSupport.cancelRequest')"
                   color="primary"
                   elevation="0"
                   >{{
-                    $t("meetingUI.controlBar.getSupport.sendRequest")
+                    $t("conference.meeting.controlBar.getSupport.sendRequest")
                   }}</v-btn
                 >
               </v-col>

@@ -6,7 +6,7 @@
           <v-col>
             <v-textarea
               :label="
-                $t('meetingUI.controlBar.more.sendNotification.enterText')
+                $t('conference.meeting.controlBar.more.sendNotification.enterText')
               "
               counter="300"
             >
@@ -20,7 +20,7 @@
               :items="notificationGroupTypes"
               :item-text="createNotificationGroupTypeLabel"
               :label="
-                $t('meetingUI.controlBar.more.sendNotification.enterText')
+                $t('conference.meeting.controlBar.more.sendNotification.enterText')
               "
               return-object
             ></v-select>

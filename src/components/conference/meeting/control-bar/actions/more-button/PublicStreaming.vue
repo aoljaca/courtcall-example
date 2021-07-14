@@ -4,7 +4,7 @@
       <v-container>
         <v-row>
           <v-col class="d-flex justify-center">
-            <h4>{{ $t("meetingUI.controlBar.more.publicStreaming.title") }}</h4>
+            <h4>{{ $t("conference.meeting.controlBar.more.publicStreaming.title") }}</h4>
           </v-col>
         </v-row>
         <v-row>
@@ -20,23 +20,23 @@
             <v-btn
               v-if="isStreaming"
               :title="
-                $t('meetingUI.controlBar.more.publicStreaming.stopStreaming')
+                $t('conference.meeting.controlBar.more.publicStreaming.stopStreaming')
               "
               @click="toggleStreaming()"
             >
               {{
-                $t("meetingUI.controlBar.more.publicStreaming.stopStreaming")
+                $t("conference.meeting.controlBar.more.publicStreaming.stopStreaming")
               }}
             </v-btn>
             <v-btn
               v-if="!isStreaming"
               :title="
-                $t('meetingUI.controlBar.more.publicStreaming.startStreaming')
+                $t('conference.meeting.controlBar.more.publicStreaming.startStreaming')
               "
               @click="toggleStreaming()"
             >
               {{
-                $t("meetingUI.controlBar.more.publicStreaming.startStreaming")
+                $t("conference.meeting.controlBar.more.publicStreaming.startStreaming")
               }}
             </v-btn>
           </v-col>
