@@ -202,20 +202,23 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
-import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { Room } from "@/model/admin/room/room";
 @Component
 export default class CaseEdit extends Vue {
   caseId = this.$route.params.roomId;
   roomId = this.$route.params.caseId;
-  room: Room = this.$store.getters["RoomModule/getById"](this.roomId);
-  rooms: Room[] = this.$store.getters["RoomModule/getAsList"];
   participantId = "";
-  caseName = this.getCaseById(this.caseId).name;
-  caseNumber = this.getCaseById(this.caseId).number;
+  caseName = this.caseById.name;
+  caseNumber = this.caseById.number;
+  caseParticipantIds: string[] = (this.caseById ? this.caseById?.participants : []);
 
-  caseParticipantIds: string[] = (this.getCaseById(this.caseId) ? this.getCaseById(this.caseId)?.participants : []);
+  get room() {
+    return this.$store.getters["RoomModule/getById"](this.roomId);
+  }
+
+  get rooms() {
+    return this.$store.getters["RoomModule/getAsList"];
+  }
 
   get participants() {
     return this.$store.getters["ParticipantsModule/getAsList"];
@@ -227,14 +230,17 @@ export default class CaseEdit extends Vue {
     );
   }
 
-   mounted() {
+  get caseById() {
+    return this.$store.getters["CasesModule/getById"](this.caseId);
+  }
+
+  created() {
     this.roomId = this.$route.params.roomId;
     this.caseId = this.$route.params.caseId;
-    this.room = this.$store.getters["RoomModule/getById"](this.roomId);
-    this.rooms = this.$store.getters["RoomModule/getAsList"];
     this.participantId = "";
-    this.caseName = this.getCaseById(this.caseId).name;
-    this.caseNumber = this.getCaseById(this.caseId).number;
+    this.caseName = this.caseById.name;
+    this.caseNumber = this.caseById.number;
+    this.caseParticipantIds = (this.caseById ? this.caseById?.participants : []);
   }
 
   addParticipantToCase() {
@@ -249,14 +255,6 @@ export default class CaseEdit extends Vue {
 
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
-  }
-
-  getCaseById(id: string): Case {
-    return this.$store.getters["CasesModule/getById"](id);
-  }
-
-  getRoomById(id: string): Room {
-    return this.$store.getters["RoomModule/getById"](id);
   }
 
   addScheduledParticipant(): void {
