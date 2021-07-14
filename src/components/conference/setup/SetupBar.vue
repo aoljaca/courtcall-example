@@ -100,11 +100,8 @@ export default class SetupBar extends Vue {
     };
   }
 
-  onToggleVideo(): void {
-    const newState = this.isVideoEnabled
-      ? VideoState.Disabled
-      : VideoState.Enabled;
-    this.$store.dispatch("ConferenceSetupModule/alterVideoState", newState);
+  async onToggleVideo(): Promise<void> {
+    await this.$store.dispatch("ConferenceSetupModule/toggleVideoState");
   }
 
   onToggleAudio(): void {
@@ -112,6 +109,12 @@ export default class SetupBar extends Vue {
       ? AudioState.Muted
       : AudioState.Unmuted;
     this.$store.dispatch("ConferenceSetupModule/alterAudioState", newState);
+  }
+
+  async destroyed(): Promise<void> {
+    if (this.videoState === VideoState.Enabled) {
+      this.$store.dispatch("ConferenceSetupModule/toggleVideoState");
+    }
   }
 }
 </script>

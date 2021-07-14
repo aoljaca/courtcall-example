@@ -74,7 +74,6 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
 
     if (backgroundOptions.type == "none") {
       canvasElement.style.background = "";
-      Store.dispatch("ConferenceSetupModule/alterVideoState", VideoState.Enabled);
     } else if (backgroundOptions.type === "blur") {
       await this.startBlur({
         videoElement,
@@ -89,13 +88,13 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
         backgroundUrl: `url('${backgroundOptions.backgroundUrl}')`,
       });
     }
+    Store.dispatch("ConferenceSetupModule/toggleVideoState");
   }
 
   private async startBlur(options: BindPageParams) {
     tfjs.getBackend();
     const net = await this.getNet();
     this.segmentBlurInRealTime(net, options);
-    Store.dispatch("ConferenceSetupModule/alterVideoState", VideoState.Enabled);
   }
 
   private async startBackground(options: BindPageParams) {
@@ -103,7 +102,6 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
     const net = await this.getNet();
     options.canvasElement.style.background = options.backgroundUrl!;
     this.segmentBackgroundInRealTime(net, options);
-    Store.dispatch("ConferenceSetupModule/alterVideoState", VideoState.Enabled);
   }
 
   private async segmentBackgroundInRealTime(

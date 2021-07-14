@@ -121,7 +121,19 @@ export default class Setup extends Vue {
     );
   }
 
-  mounted(): void {
+  get videoDevices(): MediaDeviceInfo[] {
+    return this.$store.state.ConferenceSetupModule.videoDevices;
+  }
+
+  get audioInputDevices(): MediaDeviceInfo[] {
+    return this.$store.state.ConferenceSetupModule.audioInputDevices;
+  }
+
+  get audioOutputDevices(): MediaDeviceInfo[] {
+    return this.$store.state.ConferenceSetupModule.audioOutputDevices;
+  }
+
+  async mounted(): Promise<void> {
     navigator.mediaDevices
       .getUserMedia({
         video: true,

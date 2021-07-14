@@ -9,7 +9,6 @@
           @change="switchMediaDevice"
           :items="videoDevices"
           item-text="label"
-          item-value="device-id"
           :title="$t('avOptions.videoPreview.videoSelectTitle')"
           return-object
           hide-details

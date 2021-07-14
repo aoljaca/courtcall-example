@@ -1,4 +1,7 @@
 import { BackgroundOption, NO_BACKGROUND_BLUR_OPTION } from "@/model/meeting/av-options/background-option";
+import { BackgroundBlurServiceImpl as BackgroundBlurService } from "@/services/background-blur";
+import { ToastServiceImpl } from "@/services/toast";
+import { TYPE } from "vue-toastification";
 import { Module } from "vuex";
 
 export enum VideoState {
@@ -60,14 +63,10 @@ const conferenceSetupModule: Module<any, any> = {
         },
     },
     actions: {
-        async toggleVideoState({ commit, state }) {
-            const newState = state.videoState === !VideoState.Enabled ? VideoState.Enabled : VideoState.Disabled;
+        async toggleVideoState({ dispatch, commit, state }) {
+            const newState = state.videoState !== VideoState.Enabled ? VideoState.Enabled : VideoState.Disabled;
 
-            if (newState === VideoState.Disabled) {
-                const videoElement = document.getElementById(
-                    "video-preview"
-                ) as HTMLVideoElement;
-
+            if (newState === VideoState.Disabled && state.selectedVideoDevice) {
                 const stream = await navigator.mediaDevices.getUserMedia({
                     audio: false,
                     video: {
@@ -77,8 +76,13 @@ const conferenceSetupModule: Module<any, any> = {
                 stream.getVideoTracks().map(function (val) {
                     val.stop();
                 });
+            } else {
+                if (!state.videoDevices.length) {
+                    ToastServiceImpl.sendMessage("No video devices found.", { type: TYPE.INFO })
+                    return;
+                }
+                dispatch("alterSelectedVideoDevice", state.selectedVideoDevice);
             }
-
             commit("setVideoState", newState);
         },
         toggleEchoCancellation({ commit, state }) {
@@ -160,14 +164,17 @@ const conferenceSetupModule: Module<any, any> = {
         },
         async stopAllStreams() {
             navigator.mediaDevices
-            .getUserMedia({
-                video: true,
-                audio: true,
-            })
-            .then((stream) => {
-                stream.getTracks().forEach((t) => t.stop());
-            });
+                .getUserMedia({
+                    video: true,
+                    audio: true,
+                })
+                .then((stream) => {
+                    stream.getTracks().forEach((t) => t.stop());
+                });
         }
+    },
+    getters: {
+        hasActiveBackground: (state) => state.activeBackground !== NO_BACKGROUND_BLUR_OPTION,
     },
 };
 

@@ -88,10 +88,7 @@ export default class VideoPreview extends Vue {
   }
 
   get hasActiveBackground(): boolean {
-    return (
-      this.$store.state.ConferenceSetupModule.activeBackground !==
-      NO_BACKGROUND_BLUR_OPTION
-    );
+    return this.$store.getters["ConferenceSetupModule/hasActiveBackground"];
   }
 
   get audioState(): AudioState {
@@ -133,15 +130,16 @@ export default class VideoPreview extends Vue {
         "ConferenceSetupModule/alterVideoState",
         VideoState.Enabled
       );
+    } else {
+      this.$store.dispatch(
+        "ConferenceSetupModule/alterVideoState",
+        VideoState.Unavailable
+      );
     }
 
     setTimeout(() => {
       this.backgroundBlurService.bootstrap();
     }, 500);
-  }
-
-  async destroyed(): Promise<void> {
-    this.$store.dispatch("ConferenceSetupModule/toggleVideoState");
   }
 
   onToggleShowBackgrounds() {
