@@ -1,6 +1,6 @@
 <template>
   <v-card color="secondary" flat class="mt-2 py-4 w-100">
-    <v-slide-group v-model="selectedBackround" show-arrows mandatory>
+    <v-slide-group :value="selectedBackground" show-arrows mandatory>
       <v-slide-item
         v-for="(background, i) in backgrounds"
         :key="i"
@@ -18,7 +18,7 @@
           } mx-2 text-center justify-center d-flex flex-column`"
           @click="
             toggle();
-            setUpBackgroundBlur();
+            setUpBackgroundBlur(background);
           "
         >
           <span>
@@ -47,7 +47,6 @@
 import { Component, Vue } from "vue-property-decorator";
 import {
   BackgroundOption,
-  NO_BACKGROUND_BLUR_OPTION,
   BACKGROUND_OPTIONS,
 } from "@/model/meeting/av-options/background-option";
 import { inject } from "inversify-props";
@@ -65,18 +64,21 @@ export default class BackgroundSelector extends Vue {
 
   readonly backgrounds = BACKGROUND_OPTIONS;
   openBackground = false;
-  selectedBackround: BackgroundOption = NO_BACKGROUND_BLUR_OPTION;
+
+  get selectedBackground(): BackgroundOption {
+    return this.$store.state.ConferenceSetupModule.activeBackground;
+  }
 
   buildBackgroundURL(option: BackgroundOption) {
     return `${document.location.origin}/${option.backgroundUrl}`;
   }
 
-  setUpBackgroundBlur() {
-    if (this.selectedBackround) {
+  setUpBackgroundBlur(selectedBackground: BackgroundOption) {
+    if (selectedBackground) {
       this.backgroundBlurService.alterVideo(
         "video-preview",
         "canvas-preview",
-        this.selectedBackround
+        selectedBackground
       );
     }
   }

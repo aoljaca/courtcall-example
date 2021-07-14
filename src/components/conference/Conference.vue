@@ -1,10 +1,10 @@
 <template>
   <div class="h-100">
-    <conference-header />
+    <conference-header v-if="!hideAll" />
 
     <router-view :class="classes" :key="$route.fullPath" />
 
-    <conference-footer v-if="showFooter" />
+    <conference-footer v-if="showFooter && !hideAll" />
   </div>
 </template>
 
@@ -36,11 +36,20 @@ export default class Conference extends Vue {
       classes = "conf-body-height-both";
     }
 
+    if (this.hideAll) {
+      classes = "";
+    }
+
     return classes;
   }
 
+  get hideAll(): boolean {
+    const routesWithFooter = ["Conference Call"];
+    return routesWithFooter.includes(this.$route.name as string);
+  }
+
   get showFooter(): boolean {
-    const routesWithFooter = ["Login", "Entry"];
+    const routesWithFooter = ["Login", "Room Entry"];
     return routesWithFooter.includes(this.$route.name as string);
   }
 
