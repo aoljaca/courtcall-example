@@ -65,7 +65,10 @@
               color="grey lighten-2 rounded-0 white--text"
               depressed
               link
-              :to="caseViewPath"
+              :to="{
+                name: 'View Case',
+                params: { caseId },
+              }"
             >
               {{ $t("admin.cases.cancel") }}
             </v-btn>
@@ -206,24 +209,11 @@ import { Room } from "@/model/admin/room/room";
 export default class CaseEdit extends Vue {
   caseId = this.$route.params.roomId;
   roomId = this.$route.params.caseId;
-
-  mounted() {
-    this.roomId = this.$route.params.roomId;
-    this.caseId = this.$route.params.caseId;
-  }
-
   room: Room = this.$store.getters["RoomModule/getById"](this.roomId);
   rooms: Room[] = this.$store.getters["RoomModule/getAsList"];
   participantId = "";
   caseName = this.getCaseById(this.caseId).name;
   caseNumber = this.getCaseById(this.caseId).number;
-
-  createParticipantPath =
-    "/admin/rooms/" + this.roomId + "/participants/create";
-
-  roomPath = "/admin/rooms/" + this.roomId;
-
-  caseViewPath = this.roomPath + "/cases/view/" + this.caseId;
 
   caseParticipantIds: string[] = (this.getCaseById(this.caseId) ? this.getCaseById(this.caseId)?.participants : []);
 
@@ -235,6 +225,16 @@ export default class CaseEdit extends Vue {
     return this.participants.filter(
       (p: { roomId: string }) => p.roomId === this.roomId
     );
+  }
+
+   mounted() {
+    this.roomId = this.$route.params.roomId;
+    this.caseId = this.$route.params.caseId;
+    this.room = this.$store.getters["RoomModule/getById"](this.roomId);
+    this.rooms = this.$store.getters["RoomModule/getAsList"];
+    this.participantId = "";
+    this.caseName = this.getCaseById(this.caseId).name;
+    this.caseNumber = this.getCaseById(this.caseId).number;
   }
 
   addParticipantToCase() {
