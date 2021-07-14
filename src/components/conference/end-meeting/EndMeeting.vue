@@ -9,7 +9,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <div class="subHeader">{{ $t("logout.subHeader") }}</div>
+            <div class="mt-n4">{{ $t("logout.subHeader") }}</div>
           </v-col>
         </v-row>
         <v-row>
@@ -42,13 +42,5 @@ export default class EndMeeting extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-.fill {
-  height: 100vh;
-}
-h1 {
-  font-weight: 650;
-}
-.subHeader {
-  margin-top: -15px;
-}
+
 </style>
