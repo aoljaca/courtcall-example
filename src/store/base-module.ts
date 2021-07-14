@@ -9,7 +9,7 @@ const baseModule: Module<any, any> = {
     state: {},
     mutations: {},
     actions: {
-        sendMessage({ }, config: { content: ToastContent, options: ToastOptions) {
+        sendMessage({ }, config: { content: ToastContent, options: ToastOptions }) {
             Vue.$toast(config.content, config.options);
         },
     },
