@@ -18,5 +18,5 @@ export default {
   templateName: "Enter Template Name",
   draft: "Daft",
   available: "Available",
-  create: "NEW ROOM"
+  create: "NEW ROOM",
 };

@@ -3,7 +3,7 @@ import { Module } from "vuex";
 export enum EntryMode {
   LOADING = "Loading",
   PASSCODE = "Passcode",
-  NAME = "Name"
+  NAME = "Name",
 }
 
 const entryModule: Module<any, any> = {

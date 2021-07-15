@@ -17,6 +17,6 @@ export default {
     text2: "or email",
     text3: ".",
     phone: "888-555-1212",
-    email: "customercare@courtcall.com"
-  }
+    email: "customercare@courtcall.com",
+  },
 };

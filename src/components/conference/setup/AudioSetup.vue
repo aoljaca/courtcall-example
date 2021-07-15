@@ -15,7 +15,7 @@
         <span>{{ mode.title }}</span>
       </v-btn>
     </div>
-    
+
     <br />
 
     <computer-audio-setup v-if="audioSetupMode === AudioSetupMode.COMPUTER" />
@@ -32,7 +32,7 @@ import ComputerAudioSetup from "../setup/setup-modes/ComputerAudioSetup.vue";
 enum AudioSetupMode {
   COMPUTER = "Computer",
   CALL_IN = "Call In",
-  CALL_ME = "Call Me"
+  CALL_ME = "Call Me",
 }
 
 @Component({
@@ -48,19 +48,19 @@ export default class AudioSetup extends Vue {
     {
       setupMode: AudioSetupMode.COMPUTER,
       icon: "mdi-laptop",
-      title: this.$t("avOptions.audioSetup.computer.title")
+      title: this.$t("avOptions.audioSetup.computer.title"),
     },
     {
       setupMode: AudioSetupMode.CALL_IN,
       icon: "mdi-phone",
-      title: this.$t("avOptions.audioSetup.callIn.title")
+      title: this.$t("avOptions.audioSetup.callIn.title"),
     },
     {
       setupMode: AudioSetupMode.CALL_ME,
       icon: "mdi-phone-incoming",
-      title: this.$t("avOptions.audioSetup.callMe.title")
+      title: this.$t("avOptions.audioSetup.callMe.title"),
     },
-  ]
+  ];
 
   audioSetupMode = AudioSetupMode.COMPUTER;
 

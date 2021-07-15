@@ -15,4 +15,5 @@ export default {
   more,
   moveParticipants,
   shareScreen,
+  exit: "Exit",
 };

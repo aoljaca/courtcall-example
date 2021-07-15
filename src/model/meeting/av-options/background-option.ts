@@ -1,7 +1,7 @@
-import i18n from '../../../plugins/i18n';
+import i18n from "../../../plugins/i18n";
 
 interface BackgroundOption {
-  title?: string,
+  title?: string;
   type: "none" | "blur" | "background";
   backgroundUrl?: string;
 }

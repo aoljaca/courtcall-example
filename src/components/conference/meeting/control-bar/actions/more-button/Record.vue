@@ -5,7 +5,9 @@
         <v-row>
           <v-col>
             <v-select
-              :label="$t('meetingUI.controlBar.more.record.description')"
+              :label="
+                $t('conference.meeting.controlBar.more.record.description')
+              "
               :items="possibleSubconferences"
               v-model="selectedSubconference"
               return-object
@@ -19,7 +21,7 @@
           </v-col>
           <v-col class="d-flex justify-end">
             <v-btn elevation="0">{{
-              $t("meetingUI.controlBar.more.record.startRecording")
+              $t("conference.meeting.controlBar.more.record.startRecording")
             }}</v-btn>
           </v-col>
         </v-row>

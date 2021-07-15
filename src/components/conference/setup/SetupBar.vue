@@ -51,7 +51,9 @@
         </v-btn>
 
         <!-- Join Meeting -->
-        <v-btn x-large color="accent" :to="{ name: 'Waiting Room' }">{{ $t("avOptions.joinMeeting") }}</v-btn>
+        <v-btn x-large color="accent" :to="{ name: 'Waiting Room' }">{{
+          $t("avOptions.joinMeeting")
+        }}</v-btn>
       </v-col>
     </v-row>
   </v-card>
