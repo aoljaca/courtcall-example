@@ -106,8 +106,9 @@ export default class SupportArchive extends Vue {
   }
 
   getParticipantName(id: string) {
-    const participant: Participant =
-      this.$store.getters["ParticipantsModule/getById"](id);
+    const participant: Participant = this.$store.getters[
+      "ParticipantsModule/getById"
+    ](id);
     if (participant) {
       return participant.name;
     } else {

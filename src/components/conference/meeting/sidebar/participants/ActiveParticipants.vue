@@ -43,8 +43,9 @@ import ParticipantControl from "./ParticipantControl.vue";
 export default class ActivePartcipantsView extends Vue {
   searchTerm = "";
   get participantsWithoutCase(): Participant[] {
-    const participants: Participant[] =
-      this.$store.getters["ParticipantsModule/getAsList"];
+    const participants: Participant[] = this.$store.getters[
+      "ParticipantsModule/getAsList"
+    ];
     return participants
       .filter((p) => p.caseId == null)
       .filter((p) =>
@@ -61,8 +62,9 @@ export default class ActivePartcipantsView extends Vue {
   }
 
   participantsForCase(c: Case): Participant[] {
-    const participants: Participant[] =
-      this.$store.getters["ParticipantsModule/getAsList"];
+    const participants: Participant[] = this.$store.getters[
+      "ParticipantsModule/getAsList"
+    ];
     return participants
       .filter((p) => p.caseId === c.id)
       .filter((p) =>

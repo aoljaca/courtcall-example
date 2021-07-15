@@ -67,8 +67,9 @@ import SavedTemplate from "@/components/admin/room/edit/room-templates/SavedTemp
 export default class RoomTemplates extends Vue {
   dialogm1 = "";
   dialog = false;
-  templateNames =
-    this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
+  templateNames = this.$store.getters[
+    "RoomTemplateModule/getTemplateNamesList"
+  ];
   templatesSum = this.templateNames.length;
 }
 </script>

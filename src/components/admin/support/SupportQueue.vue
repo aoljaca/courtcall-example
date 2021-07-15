@@ -107,7 +107,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import  DateFormatService  from "@/services/date-format";
+import DateFormatService from "@/services/date-format";
 @Component({})
 export default class SupportQueue extends Vue {
   readonly HEADERS = [
