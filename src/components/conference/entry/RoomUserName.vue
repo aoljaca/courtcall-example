@@ -30,6 +30,11 @@ export default class RoomUserName extends Vue {
 
   onSubmit() {
     this.$store.dispatch("EntryModule/alterEntryPhase", EntryMode.LOADING);
+
+    // Temporarily push to Waiting Room
+    this.$router.push({
+      name: "Waiting Room",
+    });
   }
 
   onExit() {

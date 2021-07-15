@@ -24,7 +24,9 @@
                           <v-btn
                             fab
                             color="primary"
-                            :title="$t('meetingUI.videoPlatform.fullscreen')"
+                            :title="
+                              $t('conference.meeting.videoPlatform.fullscreen')
+                            "
                           >
                             <v-icon>mdi-fullscreen</v-icon>
                           </v-btn>
@@ -35,7 +37,9 @@
                           <v-btn
                             fab
                             color="primary"
-                            :title="$t('meetingUI.videoPlatform.gridView')"
+                            :title="
+                              $t('conference.meeting.videoPlatform.gridView')
+                            "
                           >
                             <v-icon>mdi-grid</v-icon>
                           </v-btn>
@@ -46,7 +50,9 @@
                           <v-btn
                             fab
                             color="primary"
-                            :title="$t('meetingUI.videoPlatform.speakerView')"
+                            :title="
+                              $t('conference.meeting.videoPlatform.speakerView')
+                            "
                           >
                             <v-icon>mdi-account</v-icon>
                           </v-btn>
@@ -57,7 +63,9 @@
                           <v-btn
                             fab
                             color="primary"
-                            :title="$t('meetingUI.videoPlatform.pinnedView')"
+                            :title="
+                              $t('conference.meeting.videoPlatform.pinnedView')
+                            "
                           >
                             <v-icon>mdi-map-marker</v-icon>
                           </v-btn>

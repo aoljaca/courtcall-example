@@ -271,7 +271,7 @@ export default class CaseEdit extends Vue {
       },
       query: {
         caseId: this.caseId,
-        scheduledParticipant: "true", 
+        scheduledParticipant: "true",
       },
     });
   }

@@ -1,10 +1,17 @@
 <template>
-  <div id="meetingUI">
-    <v-container fluid>
-      <v-row class="body-row">
-        <v-col class="px-0 py-0">
-          <video-platform></video-platform>
-          <control-bar></control-bar>
+  <div class="h-100 d-flex flex-column justify-space-between">
+    <!-- Header -->
+    <v-app-bar color="white" flat>
+      <v-app-bar-nav-icon v-if="isMobile" @click.stop="drawer = !drawer" />
+      <img src="../../../../public/img/icons/CourtCallIconDark.png" />
+    </v-app-bar>
+
+    <!-- Body -->
+    <div>
+      <!-- Temporarily Disabled until Video Portion is revised -->
+      <!-- <v-row>
+        <v-col>
+          <video-platform />
         </v-col>
         <v-col
           class="px-0 py-0 navigation-element"
@@ -12,12 +19,15 @@
           cols="12"
           v-if="sidebarMode"
         >
-          <chat v-if="sidebarMode === 'chat'"></chat>
-          <files v-if="sidebarMode === 'files'"></files>
-          <participants v-if="sidebarMode === 'participants'"></participants>
+          <chat v-if="sidebarMode === 'chat'" />
+          <files v-if="sidebarMode === 'files'" />
+          <participants v-if="sidebarMode === 'participants'" />
         </v-col>
-      </v-row>
-    </v-container>
+      </v-row> -->
+    </div>
+
+    <!-- Control Bar -->
+    <control-bar />
   </div>
 </template>
 <script lang="ts">
@@ -31,6 +41,8 @@ import "reflect-metadata";
 import { inject } from "inversify-props";
 import { WebsocketConnectionService } from "@/services/websocket-connection";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
+import { isEmpty } from "lodash";
+
 @Component({
   components: {
     ControlBar,
@@ -39,31 +51,34 @@ import { INJECTION_TYPES } from "@/inversify/injection-types";
     Files,
     Participants,
   },
+  methods: {
+    isEmpty,
+  },
 })
 export default class Call extends Vue {
   @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
-  websocketConnectionService: WebsocketConnectionService | undefined;
+  websocketConnectionService!: WebsocketConnectionService;
   drawer = true;
+
+  get isMobile(): boolean {
+    // TODO: Reference mobile breakpoint vuetify service
+    return false;
+  }
 
   get sidebarMode(): string {
     return this.$store.state.SidebarModule.sidebar;
   }
 
   mounted(): void {
-    this.websocketConnectionService?.connectMeeting();
+    this.websocketConnectionService.connectMeeting();
   }
 }
 </script>
 <style lang="scss" scoped>
-.header-col {
-  height: 4vh;
-  background: lightgray;
-}
-.body-row {
-  height: 96vh;
-}
-.navigation-element {
-  border-left: 1px solid black;
-  overflow-y: auto;
+$header-height: 65px;
+$control-bar-height: 110px;
+
+.calc-height {
+  height: calc(100% - #{$header-height} - #{$control-bar-height}) !important;
 }
 </style>

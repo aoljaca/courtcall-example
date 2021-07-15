@@ -1,10 +1,10 @@
 <template>
   <div class="h-100">
-    <conference-header />
+    <conference-header v-if="!hideAll" />
 
-    <router-view class="conference-body-height" :key="$route.fullPath" />
+    <router-view :class="classes" :key="$route.fullPath" />
 
-    <conference-footer />
+    <conference-footer v-if="showFooter && !hideAll" />
   </div>
 </template>
 
@@ -28,7 +28,31 @@ export default class Conference extends Vue {
   websocketConnectionService!: WebsocketConnectionService;
   @inject(INJECTION_TYPES.THEME_SERVICE)
   themeService!: ThemeService;
-  
+
+  get classes(): string {
+    let classes = "conf-body-height-header";
+
+    if (this.showFooter) {
+      classes = "conf-body-height-both";
+    }
+
+    if (this.hideAll) {
+      classes = "";
+    }
+
+    return classes;
+  }
+
+  get hideAll(): boolean {
+    const routesWithFooter = ["Conference Call"];
+    return routesWithFooter.includes(this.$route.name as string);
+  }
+
+  get showFooter(): boolean {
+    const routesWithFooter = ["Login", "Room Entry"];
+    return routesWithFooter.includes(this.$route.name as string);
+  }
+
   mounted(): void {
     this.websocketConnectionService.connectMeeting();
     this.themeService.switchTheme(CustomTheme.CONFERENCE, this.$vuetify);
@@ -36,5 +60,4 @@ export default class Conference extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

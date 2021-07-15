@@ -1,121 +1,92 @@
 <template>
-  <div id="waitingRoom">
-    <v-container fluid class="fill">
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <h1>{{ $t("waitingRoom.mainHeading") }}</h1>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <hs>{{ $t("waitingRoom.subHeading") }}</hs>
-        </v-col>
-      </v-row>
-      <v-row class="d-flex justify-center">
-        <v-col
-          v-if="contactState === 'uncontacted'"
-          class="d-flex justify-center"
-        >
-          <v-btn @click="contactHost()" outlined
-            ><i class="mdi mdi-hand-left"></i
-            >{{ $t("waitingRoom.contactHost") }}</v-btn
-          >
-        </v-col>
-        <v-col v-if="contactState === 'contacting'" cols="8">
-          <v-container fluid>
-            <v-row>
-              <v-col cols="8">
-                <v-textarea
-                  v-model="hostMessage"
-                  counter="300"
-                  auto-grow
-                ></v-textarea>
-              </v-col>
-              <v-col cols="4" class="d-flex align-center">
-                <v-btn
-                  @click="sendMessage()"
-                  :disabled="!validMessage"
-                  outlined
-                  >{{ $t("general.sendMessage") }}</v-btn
-                >
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-col>
-        <v-col
-          v-if="contactState === 'contacted'"
-          class="d-flex justify-center"
-        >
-          <span class="contact-text">{{
-            $t("waitingRoom.hostContacted")
-          }}</span>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="d-flex justify-center">
-          <h1>{{ $t("waitingRoom.notices") }}</h1>
-        </v-col>
-      </v-row>
-      <v-row
-        v-for="notification in waitingRoomNotifications"
-        :key="notification.description"
-        class="justify-center"
-      >
-        <v-col cols="6">
-          <waiting-room-notification
-            :details="notification"
-          ></waiting-room-notification>
-        </v-col>
-      </v-row>
-    </v-container>
+  <div
+    class="conference-body-height d-flex justify-space-around flex-column"
+    id="waitingRoom-container"
+  >
+    <v-row id="top-level-row" class="flex-grow-0">
+      <v-col id="message-host" class="m-l-25 pb-4">
+        <v-alert color="warning" type="warning" icon="mdi-alert-circle-outline">
+          {{ $t("waitingRoom.alert") }}
+        </v-alert>
+        <v-row>
+          <v-col>
+            <h1>
+              {{ $t("waitingRoom.mainHeading") }}
+            </h1>
+          </v-col>
+        </v-row>
+        <v-row dense class="pb-8" id="pressure-cooker">
+          <v-col class="d-flex">
+            <h4>The pressure cooker</h4>
+            <div class="mx-4">
+              {{ $t("waitingRoom.subHeading") }}
+            </div>
+          </v-col>
+        </v-row>
+        <v-row id="message-or-exit">
+          <v-col>
+            <v-btn
+              color="black--text"
+              depressed
+              data-test-id="message-host-button"
+            >
+              {{ $t("waitingRoom.contactHost") }}
+            </v-btn>
+          </v-col>
+          <v-col>
+            <v-btn
+              color="white black--text"
+              depressed
+              data-test-id="exit-button"
+            >
+              {{ $t("waitingRoom.exit") }}
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col id="waitingRoom-content" class="m-r-25" align-self="end">
+        <v-row id="watch">
+          <v-col>
+            <div class="d-flex">
+              <v-icon> mdi-play-circle-outline </v-icon>
+              <h4 class="mx-2">
+                {{ $t("waitingRoom.watch") }}
+              </h4>
+            </div>
+            <div id="brief-video">
+              {{ $t("waitingRoom.watchMsg1") }}
+              <a>
+                {{ $t("waitingRoom.watchLink") }}
+              </a>
+            </div>
+            {{ $t("waitingRoom.watchMsg2") }}
+          </v-col>
+        </v-row>
+        <v-row id="read">
+          <v-col>
+            <div class="d-flex">
+              <h4>
+                {{ $t("waitingRoom.read") }}
+              </h4>
+              <v-icon class="mx-2"> mdi-book </v-icon>
+            </div>
+            <div id="click-here">
+              <a>
+                {{ $t("waitingRoom.readLink") }}
+              </a>
+              {{ $t("waitingRoom.readMsg") }}
+            </div>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
   </div>
 </template>
 <script lang="ts">
 import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
-import WaitingRoomNotification from "./WaitingRoomNotification.vue";
-import { IWaitingRoomNotification } from "@/model/meeting/waiting-room/waiting-room-notification";
-type ContactState = "uncontacted" | "contacting" | "contacted";
-@Component({
-  components: {
-    WaitingRoomNotification,
-  },
-})
-export default class WaitingRoom extends Vue {
-  hostMessage = "";
-  contactState: ContactState = "uncontacted";
-  waitingRoomNotifications: IWaitingRoomNotification[] = [
-    {
-      iconClass: "mdi-book",
-      linkDescription: "Read",
-      link: "http://wikipedia.org",
-      description: "This is an example of a read link",
-      color: "lightblue",
-    },
-    {
-      iconClass: "mdi-youtube",
-      linkDescription: "Watch",
-      link: "http://youtube.com",
-      description: "This is an example of a watch link",
-      color: "#fc979e",
-    },
-    {
-      iconClass: "mdi-information",
-      description: "This is an example of a general link",
-      color: "#ffd359",
-    },
-  ];
-
-  get validMessage() {
-    return this.hostMessage.length <= 300 && this.hostMessage.length > 0;
-  }
-  contactHost() {
-    this.contactState = "contacting";
-  }
-  sendMessage() {
-    this.contactState = "contacted";
-  }
-}
+@Component
+export default class WaitingRoom extends Vue {}
 </script>
 <style lang="scss" scoped>
 .big-space {
@@ -124,5 +95,17 @@ export default class WaitingRoom extends Vue {
 .contact-text {
   color: gray;
   font-size: 1.5rem;
+}
+.warning-background {
+  background-color: yellow;
+}
+a {
+  text-decoration: underline;
+}
+.m-l-25 {
+  margin-left: 25%;
+}
+.m-r-25 {
+  margin-right: 25%;
 }
 </style>
