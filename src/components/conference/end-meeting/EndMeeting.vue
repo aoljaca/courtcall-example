@@ -14,9 +14,12 @@
         </v-row>
         <v-row>
           <v-col>
-            <v-btn class="mr-5 text-capitalize px-5" depressed @click="onRejoinMeeting">{{
-              $t("logout.rejoin")
-            }}</v-btn>
+            <v-btn
+              class="mr-5 text-capitalize px-5"
+              depressed
+              @click="onRejoinMeeting"
+              >{{ $t("logout.rejoin") }}</v-btn
+            >
             <v-btn class="text-capitalize px-5" depressed @click="onSupport">{{
               $t("logout.support")
             }}</v-btn>
@@ -41,6 +44,4 @@ export default class EndMeeting extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

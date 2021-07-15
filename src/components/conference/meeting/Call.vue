@@ -17,9 +17,9 @@
         cols="12"
         v-if="sidebarMode"
       >
-        <chat v-if="sidebarMode === 'chat'"/>
-        <files v-if="sidebarMode === 'files'"/>
-        <participants v-if="sidebarMode === 'participants'"/>
+        <chat v-if="sidebarMode === 'chat'" />
+        <files v-if="sidebarMode === 'files'" />
+        <participants v-if="sidebarMode === 'participants'" />
       </v-col>
     </v-row>
 
@@ -50,7 +50,7 @@ import { isEmpty } from "lodash";
   },
   methods: {
     isEmpty,
-  }
+  },
 })
 export default class Call extends Vue {
   @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)

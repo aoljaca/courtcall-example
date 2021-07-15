@@ -7,14 +7,14 @@ import { Module } from "vuex";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const baseModule: Module<any, any> = {
-    namespaced: true,
-    state: {},
-    mutations: {},
-    actions: {
-        sendMessage({ }, config: { content: ToastContent, options: ToastOptions }) {
-            Vue.$toast(config.content, config.options);
-        },
+  namespaced: true,
+  state: {},
+  mutations: {},
+  actions: {
+    sendMessage({}, config: { content: ToastContent; options: ToastOptions }) {
+      Vue.$toast(config.content, config.options);
     },
+  },
   getters: {},
 };
 
