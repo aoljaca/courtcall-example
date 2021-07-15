@@ -103,7 +103,7 @@ export default class SetupBar extends Vue {
   }
 
   async onToggleVideo(): Promise<void> {
-    this.$store.dispatch("ConferenceSetupModule/toggleVideoState");
+    await this.$store.dispatch("ConferenceSetupModule/toggleVideoState");
   }
 
   onToggleAudio(): void {
@@ -111,6 +111,12 @@ export default class SetupBar extends Vue {
       ? AudioState.Muted
       : AudioState.Unmuted;
     this.$store.dispatch("ConferenceSetupModule/alterAudioState", newState);
+  }
+
+  async destroyed(): Promise<void> {
+    if (this.videoState === VideoState.Enabled) {
+      this.$store.dispatch("ConferenceSetupModule/toggleVideoState");
+    }
   }
 }
 </script>
