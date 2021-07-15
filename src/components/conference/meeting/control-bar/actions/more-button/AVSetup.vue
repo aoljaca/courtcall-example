@@ -20,7 +20,11 @@
               <v-row>
                 <v-col
                   ><h4>
-                    {{ $t("conference.meeting.controlBar.more.avSetup.videoSetup") }}
+                    {{
+                      $t(
+                        "conference.meeting.controlBar.more.avSetup.videoSetup"
+                      )
+                    }}
                   </h4></v-col
                 >
               </v-row>
@@ -37,7 +41,9 @@
                     @change="changeVideoDevice()"
                     item-text="label"
                     :title="
-                      $t('conference.meeting.controlBar.more.avSetup.selectVideoDevice')
+                      $t(
+                        'conference.meeting.controlBar.more.avSetup.selectVideoDevice'
+                      )
                     "
                     return-object
                   ></v-select>
@@ -50,7 +56,11 @@
               <v-row>
                 <v-col
                   ><h4>
-                    {{ $t("conference.meeting.controlBar.more.avSetup.audioSetup") }}
+                    {{
+                      $t(
+                        "conference.meeting.controlBar.more.avSetup.audioSetup"
+                      )
+                    }}
                   </h4></v-col
                 >
               </v-row>

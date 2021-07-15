@@ -5,7 +5,9 @@
         <v-row>
           <v-col>
             <v-select
-              :label="$t('conference.meeting.controlBar.more.record.description')"
+              :label="
+                $t('conference.meeting.controlBar.more.record.description')
+              "
               :items="possibleSubconferences"
               v-model="selectedSubconference"
               return-object

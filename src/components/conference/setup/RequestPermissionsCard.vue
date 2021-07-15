@@ -12,7 +12,7 @@
     <v-btn color="accent" @click="onConfirm" class="mb-15">{{
       $t("avOptions.okay")
     }}</v-btn>
-    
+
     <br />
 
     <span>

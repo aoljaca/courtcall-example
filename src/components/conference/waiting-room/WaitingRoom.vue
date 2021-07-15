@@ -1,24 +1,25 @@
 <template>
-  <div class="conference-body-height d-flex justify-space-around flex-column" id="waitingRoom-container">
+  <div
+    class="conference-body-height d-flex justify-space-around flex-column"
+    id="waitingRoom-container"
+  >
     <v-row id="top-level-row" class="flex-grow-0">
       <v-col id="message-host" class="m-l-25 pb-4">
         <v-alert color="warning" type="warning" icon="mdi-alert-circle-outline">
-          {{ $t("waitingRoom.alert")}}
+          {{ $t("waitingRoom.alert") }}
         </v-alert>
         <v-row>
           <v-col>
             <h1>
-              {{ $t("waitingRoom.mainHeading")}}
+              {{ $t("waitingRoom.mainHeading") }}
             </h1>
           </v-col>
         </v-row>
         <v-row dense class="pb-8" id="pressure-cooker">
           <v-col class="d-flex">
-            <h4>
-              The pressure cooker
-            </h4>
+            <h4>The pressure cooker</h4>
             <div class="mx-4">
-              {{ $t("waitingRoom.subHeading")}}
+              {{ $t("waitingRoom.subHeading") }}
             </div>
           </v-col>
         </v-row>
@@ -29,7 +30,7 @@
               depressed
               data-test-id="message-host-button"
             >
-              {{ $t("waitingRoom.contactHost")}}
+              {{ $t("waitingRoom.contactHost") }}
             </v-btn>
           </v-col>
           <v-col>
@@ -47,35 +48,31 @@
         <v-row id="watch">
           <v-col>
             <div class="d-flex">
-              <v-icon>
-                mdi-play-circle-outline
-              </v-icon>
+              <v-icon> mdi-play-circle-outline </v-icon>
               <h4 class="mx-2">
-                {{ $t("waitingRoom.watch")}}
+                {{ $t("waitingRoom.watch") }}
               </h4>
             </div>
             <div id="brief-video">
-              {{ $t("waitingRoom.watchMsg1")}} 
+              {{ $t("waitingRoom.watchMsg1") }}
               <a>
-              {{ $t("waitingRoom.watchLink")}}
+                {{ $t("waitingRoom.watchLink") }}
               </a>
             </div>
-            {{ $t("waitingRoom.watchMsg2")}}
+            {{ $t("waitingRoom.watchMsg2") }}
           </v-col>
         </v-row>
         <v-row id="read">
           <v-col>
             <div class="d-flex">
               <h4>
-                {{ $t("waitingRoom.read")}}
+                {{ $t("waitingRoom.read") }}
               </h4>
-              <v-icon class="mx-2">
-                mdi-book
-              </v-icon>
+              <v-icon class="mx-2"> mdi-book </v-icon>
             </div>
             <div id="click-here">
               <a>
-              {{ $t("waitingRoom.readLink") }}
+                {{ $t("waitingRoom.readLink") }}
               </a>
               {{ $t("waitingRoom.readMsg") }}
             </div>

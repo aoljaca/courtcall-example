@@ -16,7 +16,7 @@
         <p class="white--text body-2 mt-2 mb-0">
           {{ $t("conference.meeting.controlBar.chat") }}
         </p>
-        </v-col>
+      </v-col>
     </v-row>
   </div>
 </template>

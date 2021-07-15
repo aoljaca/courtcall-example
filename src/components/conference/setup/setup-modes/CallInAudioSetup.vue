@@ -19,17 +19,17 @@ export default class CallInAudioSetup extends Vue {
   fields = [
     {
       title: this.$t("avOptions.audioSetup.callIn.phoneNumber"),
-      value: "1-800-555-1212"
+      value: "1-800-555-1212",
     },
     {
       title: this.$t("avOptions.audioSetup.callIn.accessCode"),
-      value: "12345"
+      value: "12345",
     },
     {
       title: this.$t("avOptions.audioSetup.callIn.pin"),
-      value: "1234"
+      value: "1234",
     },
-  ]
+  ];
 }
 </script>
 

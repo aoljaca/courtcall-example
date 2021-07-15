@@ -67,9 +67,13 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
       timestamp: dateTime,
     });
 
-    const currentBackground = Store.state.ConferenceSetupModule.activeBackground;
+    const currentBackground =
+      Store.state.ConferenceSetupModule.activeBackground;
     if (backgroundOptions !== currentBackground) {
-      Store.dispatch("ConferenceSetupModule/alterActiveBackground", backgroundOptions);
+      Store.dispatch(
+        "ConferenceSetupModule/alterActiveBackground",
+        backgroundOptions
+      );
     }
 
     if (backgroundOptions.type == "none") {

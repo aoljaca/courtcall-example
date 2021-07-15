@@ -24,8 +24,8 @@
         <v-row class="py-4">
           <v-col>
             <v-list>
-              <v-list-item 
-                link 
+              <v-list-item
+                link
                 :to="{
                   name: 'View Room',
                   params: { roomId },

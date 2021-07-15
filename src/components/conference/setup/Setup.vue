@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-overlay v-model="showPermissionsPrompt">
-      <request-permissions-card @permissionsConfirmed="showPermissionsPrompt = false"/>
+      <request-permissions-card
+        @permissionsConfirmed="showPermissionsPrompt = false"
+      />
     </v-overlay>
 
     <!-- Connection Status -->
@@ -109,7 +111,7 @@ export default class Setup extends Vue {
       color: connected ? "success" : "error",
     };
   }
-  
+
   get videoState(): VideoState {
     return this.$store.state.ConferenceSetupModule.videoState;
   }

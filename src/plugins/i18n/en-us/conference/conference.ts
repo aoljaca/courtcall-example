@@ -4,8 +4,8 @@ import setup from "./setup/setup";
 import waitingRoom from "./waiting-room/waiting-room";
 
 export default {
-    entry,
-    setup,
-    meeting,
-    waitingRoom
-}
+  entry,
+  setup,
+  meeting,
+  waitingRoom,
+};

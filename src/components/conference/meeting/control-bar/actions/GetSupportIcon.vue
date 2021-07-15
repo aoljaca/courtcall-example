@@ -41,7 +41,9 @@
               </v-col>
               <v-col class="px-0 py-0 d-flex justify-end">
                 <v-btn
-                  :title="$t('conference.meeting.controlBar.getSupport.cancelRequest')"
+                  :title="
+                    $t('conference.meeting.controlBar.getSupport.cancelRequest')
+                  "
                   color="primary"
                   elevation="0"
                   >{{
