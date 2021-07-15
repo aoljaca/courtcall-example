@@ -203,14 +203,16 @@
 import { Component, Vue } from "vue-property-decorator";
 import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
+import { Case } from "@/model/meeting/meeting-ui/case";
 @Component
 export default class CaseEdit extends Vue {
+  caseEdits: Case = {} as Case;
   caseId = this.$route.params.caseId;
   roomId = this.$route.params.roomId;
   participantId = "";
-  caseName = this.caseById.name;
-  caseNumber = this.caseById.number;
-  caseParticipantIds: string[] = (this.caseById ? this.caseById?.participants : []);
+  caseParticipantIds: string[] = (this.caseEdits ? this.caseEdits?.participants : []);
+  caseNumber = this.caseEdits.number;
+  caseName = this.caseEdits.name;
 
   get room() {
     return this.$store.getters["RoomModule/getById"](this.roomId);
@@ -234,21 +236,17 @@ export default class CaseEdit extends Vue {
     return this.$store.getters["CasesModule/getById"](this.caseId);
   }
 
-  // get roomId() {
-  //   return this.$route.params.roomId;
-  // }
-
-  // get caseId() {
-  //   return this.$route.params.caseId;
-  // }
-
   mounted() {
     this.roomId = this.$route.params.roomId;
     this.caseId = this.$route.params.caseId;
+
+    if (this.caseId) {
+      this.caseEdits = this.caseById;
+    }
     this.participantId = "";
-    this.caseName = this.caseById.name;
-    this.caseNumber = this.caseById.number;
-    this.caseParticipantIds = (this.caseById ? this.caseById?.participants : []);
+    this.caseName = this.caseEdits.name;
+    this.caseNumber = this.caseEdits.number;
+    this.caseParticipantIds = (this.caseEdits ? this.caseEdits?.participants : []);
   }
 
   addParticipantToCase() {
