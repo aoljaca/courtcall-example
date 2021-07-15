@@ -13,7 +13,7 @@
         <v-divider dark vertical />
         <participants-button />
         <more-button />
-        <v-divider dark vertical class="mr-0" />
+        <v-divider dark vertical class="mx-0" />
       </template>
 
       <!-- All Buttons -->
