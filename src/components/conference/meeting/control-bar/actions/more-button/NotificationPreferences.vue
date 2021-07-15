@@ -26,7 +26,11 @@
         <v-row>
           <v-col>
             <span class="text-align-center d-flex pt-0">
-              {{ $t("meetingUI.controlBar.more.notificationPreferences.note") }}
+              {{
+                $t(
+                  "conference.meeting.controlBar.more.notificationPreferences.note"
+                )
+              }}
             </span>
           </v-col>
         </v-row>

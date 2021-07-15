@@ -46,6 +46,24 @@ const conferenceSetupModule: Module<any, any> = {
     setSelectedAudioOutputDevice(state, newDevice: MediaDeviceInfo) {
       state.selectedAudioOutputDevice = newDevice;
     },
+    setVideoDevices(state, devices: MediaDeviceInfo[]) {
+      state.videoDevices = devices;
+    },
+    setAudioInputDevices(state, devices: MediaDeviceInfo[]) {
+      state.audioInputDevices = devices;
+    },
+    setAudioOutputDevices(state, devices: MediaDeviceInfo[]) {
+      state.audioOutputDevices = devices;
+    },
+    setVideoState(state, newState: VideoState) {
+      state.videoState = newState;
+    },
+    setAudioState(state, newState: VideoState) {
+      state.audioState = newState;
+    },
+    setActiveBackground(state, background: BackgroundOption) {
+      state.activeBackground = background;
+    },
   },
   actions: {
     async toggleVideoState({ dispatch, commit, state }) {

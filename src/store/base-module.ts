@@ -11,7 +11,10 @@ const baseModule: Module<any, any> = {
   state: {},
   mutations: {},
   actions: {
-    sendMessage({}, config: { content: ToastContent; options: ToastOptions }) {
+    sendMessage(
+      { commit },
+      config: { content: ToastContent; options: ToastOptions }
+    ) {
       Vue.$toast(config.content, config.options);
     },
   },

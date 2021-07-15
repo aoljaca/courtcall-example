@@ -1,28 +1,28 @@
 <template>
-  <span id="moveIcon">
+  <div>
     <v-menu :close-on-content-click="false" offset-y :nudge-top="400">
       <template v-slot:activator="{ on, attrs }">
-        <v-container fluid>
-          <v-row class="px-0 py-0">
-            <v-col class="px-0 py-0 d-flex justify-center">
-              <v-btn
-                v-bind="attrs"
-                v-on="on"
-                icon
-                elevation="0"
-                :title="$t('meetingUI.controlBar.moveParticipants.title')"
-              >
-                <v-icon>mdi-exit-to-app</v-icon>
-              </v-btn></v-col
+        <v-row dense>
+          <v-col class="text-center">
+            <v-btn
+              v-bind="attrs"
+              v-on="on"
+              fab
+              dark
+              outlined
+              depressed
+              class="pa-5"
+              :title="
+                $t('conference.meeting.controlBar.moveParticipants.title')
+              "
             >
-          </v-row>
-          <v-row class="py-0 px-0">
-            <v-col
-              class="py-0 px-0 control-bar-icon-font d-flex justify-center"
-              >{{ $t("meetingUI.controlBar.moveParticipants.title") }}</v-col
-            >
-          </v-row>
-        </v-container>
+              <v-icon>mdi-exit-to-app</v-icon>
+            </v-btn>
+            <p class="white--text body-2 mt-2 mb-0">
+              {{ $t("conference.meeting.controlBar.moveParticipants.title") }}
+            </p>
+          </v-col>
+        </v-row>
       </template>
       <v-card height="280" width="600">
         <v-card-text class="move-box">
@@ -34,7 +34,9 @@
                   :items="possibleSubconferences"
                   item-text="displayName"
                   :label="
-                    $t('meetingUI.controlBar.moveParticipants.description')
+                    $t(
+                      'conference.meeting.controlBar.moveParticipants.description'
+                    )
                   "
                 ></v-select>
               </v-col>
@@ -59,13 +61,13 @@
         </v-card-actions>
       </v-card>
     </v-menu>
-  </span>
+  </div>
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 @Component({})
-export default class MoveIcon extends Vue {
+export default class MoveButton extends Vue {
   selectedSubconference: SubConference | null = null;
 
   get possibleSubconferences(): SubConference[] {

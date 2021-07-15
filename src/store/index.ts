@@ -18,6 +18,7 @@ import SystemUserRolesModule from "./system-users/system-user-roles-module";
 import RoomSessionModule from "./room-session/room-session-module";
 import SearchModule from "./admin/dashboard/search-module";
 import ConferenceSetupModule from "./conference/conference-setup-module";
+import ConferenceModule from "./conference/conference-module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -40,5 +41,6 @@ export default new Vuex.Store({
     RoomSessionModule,
     SearchModule,
     ConferenceSetupModule,
+    ConferenceModule,
   },
 });

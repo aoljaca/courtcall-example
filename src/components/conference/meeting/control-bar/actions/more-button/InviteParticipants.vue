@@ -10,7 +10,9 @@
               :item-text="invitationTypeLabel"
               return-object
               :label="
-                $t('meetingUI.controlBar.more.inviteParticipants.selectType')
+                $t(
+                  'conference.meeting.controlBar.more.inviteParticipants.selectType'
+                )
               "
             >
             </v-select>
@@ -20,7 +22,9 @@
           <v-col>
             <v-text-field
               :label="
-                $t('meetingUI.controlBar.more.inviteParticipants.enterName')
+                $t(
+                  'conference.meeting.controlBar.more.inviteParticipants.enterName'
+                )
               "
             ></v-text-field>
           </v-col>
@@ -33,7 +37,9 @@
               :item-text="formatCaseLabel"
               return-object
               :label="
-                $t('meetingUI.controlBar.more.inviteParticipants.selectCase')
+                $t(
+                  'conference.meeting.controlBar.more.inviteParticipants.selectCase'
+                )
               "
             ></v-select>
           </v-col>
@@ -56,7 +62,9 @@
           </v-col>
           <v-col class="d-flex justify-end">
             <v-btn @click="generateLink()" elevation="0">{{
-              $t("meetingUI.controlBar.more.inviteParticipants.generateLink")
+              $t(
+                "conference.meeting.controlBar.more.inviteParticipants.generateLink"
+              )
             }}</v-btn>
           </v-col>
         </v-row>

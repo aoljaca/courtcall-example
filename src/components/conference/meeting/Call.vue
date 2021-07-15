@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-100 d-flex flex-column justify-space-between">
     <!-- Header -->
     <v-app-bar color="white" flat>
       <v-app-bar-nav-icon v-if="isMobile" @click.stop="drawer = !drawer" />
@@ -7,21 +7,24 @@
     </v-app-bar>
 
     <!-- Body -->
-    <v-row>
-      <v-col>
-        <video-platform />
-      </v-col>
-      <v-col
-        class="px-0 py-0 navigation-element"
-        md="3"
-        cols="12"
-        v-if="sidebarMode"
-      >
-        <chat v-if="sidebarMode === 'chat'" />
-        <files v-if="sidebarMode === 'files'" />
-        <participants v-if="sidebarMode === 'participants'" />
-      </v-col>
-    </v-row>
+    <div>
+      <!-- Temporarily Disabled until Video Portion is revised -->
+      <!-- <v-row>
+        <v-col>
+          <video-platform />
+        </v-col>
+        <v-col
+          class="px-0 py-0 navigation-element"
+          md="3"
+          cols="12"
+          v-if="sidebarMode"
+        >
+          <chat v-if="sidebarMode === 'chat'" />
+          <files v-if="sidebarMode === 'files'" />
+          <participants v-if="sidebarMode === 'participants'" />
+        </v-col>
+      </v-row> -->
+    </div>
 
     <!-- Control Bar -->
     <control-bar />
@@ -71,4 +74,11 @@ export default class Call extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+$header-height: 65px;
+$control-bar-height: 110px;
+
+.calc-height {
+  height: calc(100% - #{$header-height} - #{$control-bar-height}) !important;
+}
+</style>
