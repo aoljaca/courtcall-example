@@ -1,13 +1,10 @@
 <template>
   <div class="h-100 d-flex flex-column justify-space-between">
     <!-- Header -->
-    <v-app-bar color="white" flat>
-      <v-app-bar-nav-icon v-if="isMobile" @click.stop="drawer = !drawer" />
-      <img src="../../../../public/img/icons/CourtCallIconDark.png" />
-    </v-app-bar>
+    <call-header />
 
     <!-- Body -->
-    <div>
+    <div class="bc-secondary">
       <!-- Temporarily Disabled until Video Portion is revised -->
       <!-- <v-row>
         <v-col>
@@ -42,6 +39,7 @@ import { inject } from "inversify-props";
 import { WebsocketConnectionService } from "@/services/websocket-connection";
 import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { isEmpty } from "lodash";
+import CallHeader from "./navigation/CallHeader.vue";
 
 @Component({
   components: {
@@ -50,6 +48,7 @@ import { isEmpty } from "lodash";
     Chat,
     Files,
     Participants,
+    CallHeader,
   },
   methods: {
     isEmpty,
@@ -58,12 +57,6 @@ import { isEmpty } from "lodash";
 export default class Call extends Vue {
   @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
   websocketConnectionService!: WebsocketConnectionService;
-  drawer = true;
-
-  get isMobile(): boolean {
-    // TODO: Reference mobile breakpoint vuetify service
-    return false;
-  }
 
   get sidebarMode(): string {
     return this.$store.state.SidebarModule.sidebar;
