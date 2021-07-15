@@ -27,7 +27,7 @@
                   data-test-id="case-name"
                   :label="$t('admin.cases.enterCaseName')"
                   dense
-                  v-model="caseName"
+                  v-model="caseEdits.name"
                   clearable
                 />
               </v-col>
@@ -38,7 +38,7 @@
                   data-test-id="case-number"
                   :label="$t('admin.cases.enterCaseNumber')"
                   dense
-                  v-model="caseNumber"
+                  v-model="caseEdits.number"
                   clearable
                 />
               </v-col>
@@ -100,7 +100,7 @@
         <v-col>
           <v-divider />
           <v-row
-            v-for="id in caseParticipantIds"
+            v-for="id in caseEdits.participants"
             :key="`participant-${id}`"
             class="my-2"
           >
@@ -210,9 +210,6 @@ export default class CaseEdit extends Vue {
   caseId = this.$route.params.caseId;
   roomId = this.$route.params.roomId;
   participantId = "";
-  caseParticipantIds: string[] = (this.caseEdits ? this.caseEdits?.participants : []);
-  caseNumber = this.caseEdits.number;
-  caseName = this.caseEdits.name;
 
   get room() {
     return this.$store.getters["RoomModule/getById"](this.roomId);
@@ -236,6 +233,10 @@ export default class CaseEdit extends Vue {
     return this.$store.getters["CasesModule/getById"](this.caseId);
   }
 
+  get caseParticipantIds () {
+    return this.caseEdits.participants ?? [];
+  }
+
   mounted() {
     this.roomId = this.$route.params.roomId;
     this.caseId = this.$route.params.caseId;
@@ -244,17 +245,20 @@ export default class CaseEdit extends Vue {
       this.caseEdits = this.caseById;
     }
     this.participantId = "";
-    this.caseName = this.caseEdits.name;
-    this.caseNumber = this.caseEdits.number;
-    this.caseParticipantIds = (this.caseEdits ? this.caseEdits?.participants : []);
+  }
+
+  saveChanges() {
+    //TODO save changes once the backend is in
+    return;
   }
 
   addParticipantToCase() {
     if (this.participantId && !this.caseParticipantIds.includes(this.participantId)) {
-      this.$store.dispatch("CasesModule/addParticipantToCase", {
-        id: this.caseId,
-        participantId: this.participantId,
-      });
+      if(!this.caseEdits.participants) {
+
+        this.caseEdits.participants = [];
+      }
+      this.caseEdits.participants.push(this.participantId);
       this.participantId = "";
     }
   }
