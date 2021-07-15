@@ -92,15 +92,10 @@ import {
   FileShareWithSelectType,
   SELECT_TYPES,
 } from "@/model/meeting/meeting-ui/side-bar/files/participant-select-type";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { CaseFormatService } from "@/services/case-format";
+import CaseFormatService from "@/services/case-format";
 import { Share } from "@/model/meeting/meeting-ui/side-bar/files/file-share";
 @Component({})
 export default class FileUpload extends Vue {
-  @inject(INJECTION_TYPES.CASE_FORMAT)
-  caseFormatService: CaseFormatService | undefined;
-
   selectedFileType: FileShareType | null = this.determineIntialFileType();
 
   possibleFileShareTypes = FILE_SHARE_TYPES;
@@ -122,8 +117,8 @@ export default class FileUpload extends Vue {
   }
 
   determineIntialFileType() {
-    const selectedShare: Share = this.$store.state.FileShareModule
-      .selectedShare;
+    const selectedShare: Share =
+      this.$store.state.FileShareModule.selectedShare;
     if (selectedShare) {
       const type = selectedShare.type;
       return FILE_SHARE_TYPES.find((t) => t.type === type)!;
@@ -137,8 +132,8 @@ export default class FileUpload extends Vue {
     if (!selectedShare) {
       return [];
     } else {
-      const participants: { [key: string]: Participant } = this.$store.state
-        .ParticipantsModule.participants;
+      const participants: { [key: string]: Participant } =
+        this.$store.state.ParticipantsModule.participants;
       const self: Participant = this.$store.state.ParticipantsModule.me;
       return selectedShare.participants
         .filter((id) => id !== self.id)
@@ -188,7 +183,7 @@ export default class FileUpload extends Vue {
   }
 
   formatCase(c: Case) {
-    return this.caseFormatService?.formatCase(c);
+    return CaseFormatService.formatCase(c);
   }
 }
 </script>

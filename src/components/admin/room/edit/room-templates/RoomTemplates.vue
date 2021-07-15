@@ -59,7 +59,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SavedTemplate from "@/components/admin/room/edit/room-templates/SavedTemplate.vue";
-import "reflect-metadata";
 @Component({
   components: {
     SavedTemplate,
@@ -68,9 +67,8 @@ import "reflect-metadata";
 export default class RoomTemplates extends Vue {
   dialogm1 = "";
   dialog = false;
-  templateNames = this.$store.getters[
-    "RoomTemplateModule/getTemplateNamesList"
-  ];
+  templateNames =
+    this.$store.getters["RoomTemplateModule/getTemplateNamesList"];
   templatesSum = this.templateNames.length;
 }
 </script>

@@ -117,11 +117,9 @@
   </div>
 </template>
 <script lang="ts">
-import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
-import { ParticipantSearchService } from "@/services/participant-search";
-import { inject } from "inversify-props";
+import ParticipantSearchService from "@/services/participant-search";
 import { Component, Vue } from "vue-property-decorator";
 import ParticipantControl from "./ParticipantControl.vue";
 @Component({
@@ -130,17 +128,13 @@ import ParticipantControl from "./ParticipantControl.vue";
   },
 })
 export default class RoomOverview extends Vue {
-  @inject(INJECTION_TYPES.PARTICIPANT_SEARCH)
-  participantSearchService: ParticipantSearchService | undefined;
-
   moving: "none" | "moving" | "confirm" = "none";
   searchTerm = "";
 
   subConferencesToMove: SubConference[] = [];
 
-  possibleSubconferences: SubConference[] = this.$store.getters[
-    "SubconferenceModule/getAsList"
-  ];
+  possibleSubconferences: SubConference[] =
+    this.$store.getters["SubconferenceModule/getAsList"];
   subconferenceDestination: SubConference | null = null;
 
   get subconferences(): SubConference[] {
@@ -148,13 +142,12 @@ export default class RoomOverview extends Vue {
   }
 
   participantsInSubconference(s: SubConference): Participant[] {
-    const participants: Participant[] = this.$store.getters[
-      "ParticipantsModule/getAsList"
-    ];
+    const participants: Participant[] =
+      this.$store.getters["ParticipantsModule/getAsList"];
     return participants
       .filter((p) => p.subconferenceId === s.id)
       .filter((p) =>
-        this.participantSearchService?.search({
+        ParticipantSearchService.search({
           term: this.searchTerm,
           participant: p,
           case: null,
@@ -207,9 +200,8 @@ export default class RoomOverview extends Vue {
   }
 
   get participantsToMove() {
-    const participants: Participant[] = this.$store.getters[
-      "ParticipantsModule/getAsList"
-    ];
+    const participants: Participant[] =
+      this.$store.getters["ParticipantsModule/getAsList"];
     const subconferenceIds = this.subConferencesToMove.map((s) => s.id);
     const subconferenceIdSet = new Set(subconferenceIds);
     return participants.filter(

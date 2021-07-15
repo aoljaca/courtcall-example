@@ -40,19 +40,14 @@
   </div>
 </template>
 <script lang="ts">
-import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { CollaborationShare } from "@/model/meeting/meeting-ui/side-bar/files/file-share";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { ShareFormatService } from "@/services/share-format";
-import { inject } from "inversify-props";
+import ShareFormatService from "@/services/share-format";
 import { Vue, Component, Prop } from "vue-property-decorator";
 @Component({})
 export default class CollaborationShareComponent extends Vue {
   @Prop()
   collaborationShare: CollaborationShare | undefined;
-
-  @inject(INJECTION_TYPES.SHARE_FORMAT)
-  shareFormatService: ShareFormatService | undefined;
 
   get participants(): { [key: string]: Participant } {
     return this.$store.state.ParticipantsModule.participants;
@@ -72,9 +67,8 @@ export default class CollaborationShareComponent extends Vue {
   }
 
   get owner(): string {
-    const owner: Participant = this.participants[
-      this.collaborationShare!.ownerId
-    ];
+    const owner: Participant =
+      this.participants[this.collaborationShare!.ownerId];
     if (owner) {
       return owner.name;
     } else {
@@ -83,7 +77,7 @@ export default class CollaborationShareComponent extends Vue {
   }
 
   get participantList(): string {
-    return this.shareFormatService?.formatParticipants({
+    return ShareFormatService.formatParticipants({
       participantIds: this.collaborationShare!.participants,
       ownerId: this.collaborationShare!.ownerId,
       participants: this.participants!,

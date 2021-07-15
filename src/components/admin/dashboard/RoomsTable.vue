@@ -252,7 +252,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { SupportItem } from "@/model/admin/support/support-item";
 import { DateTime } from "luxon";

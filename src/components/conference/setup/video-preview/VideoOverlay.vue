@@ -31,15 +31,10 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { IBackgroundBlurService } from "@/services/background-blur";
 import { BackgroundOption } from "@/model/meeting/av-options/background-option";
+import BackgroundBlurService from "@/services/background-blur";
 @Component({})
 export default class VideoOverlay extends Vue {
-  @inject(INJECTION_TYPES.BACKGROUND_BLUR)
-  backgroundBlurService!: IBackgroundBlurService;
-
   @Prop()
   hover!: boolean;
 
@@ -71,7 +66,7 @@ export default class VideoOverlay extends Vue {
 
     setTimeout(
       () =>
-        this.backgroundBlurService.alterVideo(
+        BackgroundBlurService.alterVideo(
           "video-preview",
           "canvas-preview",
           this.activeBackground

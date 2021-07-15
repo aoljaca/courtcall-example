@@ -43,7 +43,6 @@ import {
   AudioState,
   VideoState,
 } from "@/store/conference/conference-setup-module";
-import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({})

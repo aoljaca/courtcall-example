@@ -92,7 +92,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import "reflect-metadata";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component
 export default class CasesTable extends Vue {

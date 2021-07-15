@@ -113,7 +113,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
-import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
   roomId = "";

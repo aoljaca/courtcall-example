@@ -29,12 +29,10 @@
   </div>
 </template>
 <script lang="ts">
-import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { CaseFormatService } from "@/services/case-format";
-import { ParticipantSearchService } from "@/services/participant-search";
-import { inject } from "inversify-props";
+import CaseFormatService from "@/services/case-format";
+import ParticipantSearchService from "@/services/participant-search";
 import { Component, Vue } from "vue-property-decorator";
 import ParticipantControl from "./ParticipantControl.vue";
 @Component({
@@ -43,20 +41,14 @@ import ParticipantControl from "./ParticipantControl.vue";
   },
 })
 export default class ActivePartcipantsView extends Vue {
-  @inject(INJECTION_TYPES.CASE_FORMAT)
-  caseFormatService: CaseFormatService | undefined;
-  @inject(INJECTION_TYPES.PARTICIPANT_SEARCH)
-  participantSearchService: ParticipantSearchService | undefined;
-
   searchTerm = "";
   get participantsWithoutCase(): Participant[] {
-    const participants: Participant[] = this.$store.getters[
-      "ParticipantsModule/getAsList"
-    ];
+    const participants: Participant[] =
+      this.$store.getters["ParticipantsModule/getAsList"];
     return participants
       .filter((p) => p.caseId == null)
       .filter((p) =>
-        this.participantSearchService?.search({
+        ParticipantSearchService.search({
           term: this.searchTerm,
           case: null,
           participant: p,
@@ -69,13 +61,12 @@ export default class ActivePartcipantsView extends Vue {
   }
 
   participantsForCase(c: Case): Participant[] {
-    const participants: Participant[] = this.$store.getters[
-      "ParticipantsModule/getAsList"
-    ];
+    const participants: Participant[] =
+      this.$store.getters["ParticipantsModule/getAsList"];
     return participants
       .filter((p) => p.caseId === c.id)
       .filter((p) =>
-        this.participantSearchService?.search({
+        ParticipantSearchService.search({
           term: this.searchTerm,
           participant: p,
           case: c,
@@ -87,7 +78,7 @@ export default class ActivePartcipantsView extends Vue {
   }
 
   formatCase(c: Case): string | undefined {
-    return this.caseFormatService?.formatCase(c);
+    return CaseFormatService.formatCase(c);
   }
 }
 </script>
