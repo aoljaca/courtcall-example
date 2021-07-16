@@ -53,7 +53,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import ScheduledParticipantsTable from "@/components/admin/case/view/ScheduledParticipantsTable.vue";
-import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
 @Component({
   components: {

@@ -10,13 +10,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { WebsocketConnectionService } from "@/services/websocket-connection";
+import WebsocketConnectionService from "@/services/websocket-connection";
 import ConferenceHeader from "./navigation/ConferenceHeader.vue";
 import ConferenceFooter from "./navigation/ConferenceFooter.vue";
-import { CustomTheme, ThemeService } from "@/services/theme-service";
-
+import { CustomTheme } from "@/services/theme-service";
+import ThemeService from "@/services/theme-service";
 @Component({
   components: {
     ConferenceHeader,
@@ -24,11 +22,6 @@ import { CustomTheme, ThemeService } from "@/services/theme-service";
   },
 })
 export default class Conference extends Vue {
-  @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
-  websocketConnectionService!: WebsocketConnectionService;
-  @inject(INJECTION_TYPES.THEME_SERVICE)
-  themeService!: ThemeService;
-
   get classes(): string {
     let classes = "conf-body-height-header";
 
@@ -54,8 +47,8 @@ export default class Conference extends Vue {
   }
 
   mounted(): void {
-    this.websocketConnectionService.connectMeeting();
-    this.themeService.switchTheme(CustomTheme.CONFERENCE, this.$vuetify);
+    WebsocketConnectionService.connectMeeting();
+    ThemeService.switchTheme(CustomTheme.CONFERENCE, this.$vuetify);
   }
 }
 </script>

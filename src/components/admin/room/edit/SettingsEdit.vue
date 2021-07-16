@@ -389,7 +389,6 @@
 import { Component, Vue } from "vue-property-decorator";
 import RoomTemplates from "@/components/admin/room/edit/room-templates/RoomTemplates.vue";
 import { NULL_ROOM_SETTINGS } from "@/model/admin/room/room-settings";
-import "reflect-metadata";
 import { RoomTemplate } from "@/model/admin/room/room-template";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 import { Room } from "@/model/admin/room/room";

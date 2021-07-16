@@ -26,7 +26,6 @@
 </template>
 <script lang="ts">
 import { EntryMode } from "@/store/entry/entry-module";
-import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
 import RoomPasscode from "./RoomPasscode.vue";
 import RoomUserName from "./RoomUserName.vue";

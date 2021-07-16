@@ -3,19 +3,12 @@ import {
   conferenceTheme,
   ThemeSet,
 } from "@/plugins/themes/customThemes";
-import { injectable } from "inversify-props";
 
 export enum CustomTheme {
   ADMIN = "Admin Theme",
   CONFERENCE = "Conference Theme",
 }
-
-export interface ThemeService {
-  switchTheme: (themeType: CustomTheme, vuetifyInstance: any) => void;
-}
-
-@injectable()
-export class ThemeServiceImpl implements ThemeService {
+class ThemeService {
   switchTheme(themeType: CustomTheme, vuetifyInstance: any): void {
     let newTheme: ThemeSet = {} as ThemeSet;
 
@@ -33,3 +26,5 @@ export class ThemeServiceImpl implements ThemeService {
     vuetifyInstance.theme.themes.light = newTheme.light;
   }
 }
+
+export default new ThemeService();

@@ -41,10 +41,8 @@
   </div>
 </template>
 <script lang="ts">
-import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { Chat } from "@/model/meeting/meeting-ui/side-bar/chat/chat";
-import { ChatFormatService } from "@/services/chat-format";
-import { inject } from "inversify-props";
+import ChatFormatService from "@/services/chat-format";
 import { Component, Prop, Vue } from "vue-property-decorator";
 import ChatMessageCard from "./ChatMessageCard.vue";
 @Component({
@@ -56,9 +54,6 @@ export default class ChatRoom extends Vue {
   @Prop()
   chat: Chat | undefined;
 
-  @inject(INJECTION_TYPES.CHAT_FORMAT)
-  chatFormatService: ChatFormatService | undefined;
-
   clearChat() {
     this.$store.dispatch("ChatModule/alterSelectedChatId", { id: null });
   }
@@ -68,7 +63,7 @@ export default class ChatRoom extends Vue {
   }
 
   get title() {
-    return this.chatFormatService?.formatTitle({
+    return ChatFormatService.formatTitle({
       this: this,
       participantIds: this.chat!.participants,
       participants: this.$store.state.ParticipantsModule.participants,

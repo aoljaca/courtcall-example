@@ -311,7 +311,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_SETTINGS } from "@/model/admin/room/room-settings";
-import "reflect-metadata";
 @Component
 export default class Settings extends Vue {
   get roomSettings() {

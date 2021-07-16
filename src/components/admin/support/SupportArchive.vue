@@ -66,13 +66,9 @@
 import { Component, Vue } from "vue-property-decorator";
 import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { DateFormatService } from "@/services/date-format";
+import DateFormatService from "@/services/date-format";
 @Component({})
 export default class SupportArchive extends Vue {
-  @inject(INJECTION_TYPES.DATE_FORMAT)
-  dateFormatService?: DateFormatService;
   readonly HEADERS = [
     {
       text: "Date",
@@ -126,7 +122,7 @@ export default class SupportArchive extends Vue {
 
   formatDate(iso: string): string | undefined {
     if (iso) {
-      return this.dateFormatService?.formatFullDateTime(iso);
+      return DateFormatService.formatFullDateTime(iso);
     } else {
       return "unknown";
     }

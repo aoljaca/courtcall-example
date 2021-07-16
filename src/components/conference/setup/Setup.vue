@@ -77,7 +77,6 @@
   </div>
 </template>
 <script lang="ts">
-import "reflect-metadata";
 import { Component, Vue } from "vue-property-decorator";
 import AudioSetup from "./AudioSetup.vue";
 import VideoPreview from "./video-preview/VideoPreview.vue";

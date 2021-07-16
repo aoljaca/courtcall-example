@@ -124,7 +124,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
-import "reflect-metadata";
 import { Organization } from "@/model/admin/organization/organization";
 import { RoomTemplate } from "@/model/admin/room/room-template";
 import { Room } from "@/model/admin/room/room";

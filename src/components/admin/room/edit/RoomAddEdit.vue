@@ -44,7 +44,6 @@ import RoomDetailsEdit from "@/components/admin/room/edit/RoomDetailsEdit.vue";
 import SettingsEdit from "@/components/admin/room/edit/SettingsEdit.vue";
 import RoomNav from "@/components/admin/room/view/RoomNav.vue";
 
-import "reflect-metadata";
 @Component({
   components: {
     RoomDetailsEdit,

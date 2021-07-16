@@ -1,13 +1,10 @@
 <template>
   <div class="h-100 d-flex flex-column justify-space-between">
     <!-- Header -->
-    <v-app-bar color="white" flat>
-      <v-app-bar-nav-icon v-if="isMobile" @click.stop="drawer = !drawer" />
-      <img src="../../../../public/img/icons/CourtCallIconDark.png" />
-    </v-app-bar>
+    <call-header />
 
     <!-- Body -->
-    <div>
+    <div class="bc-secondary">
       <!-- Temporarily Disabled until Video Portion is revised -->
       <!-- <v-row>
         <v-col>
@@ -37,11 +34,9 @@ import VideoPlatform from "./VideoPlatform.vue";
 import Chat from "./sidebar/chat/Chat.vue";
 import Files from "./sidebar/files/Files.vue";
 import Participants from "./sidebar/participants/ParticipantsMainView.vue";
-import "reflect-metadata";
-import { inject } from "inversify-props";
-import { WebsocketConnectionService } from "@/services/websocket-connection";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
+import WebsocketConnectionService from "@/services/websocket-connection";
 import { isEmpty } from "lodash";
+import CallHeader from "./navigation/CallHeader.vue";
 
 @Component({
   components: {
@@ -50,14 +45,13 @@ import { isEmpty } from "lodash";
     Chat,
     Files,
     Participants,
+    CallHeader,
   },
   methods: {
     isEmpty,
   },
 })
 export default class Call extends Vue {
-  @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
-  websocketConnectionService!: WebsocketConnectionService;
   drawer = true;
 
   get isMobile(): boolean {
@@ -70,7 +64,7 @@ export default class Call extends Vue {
   }
 
   mounted(): void {
-    this.websocketConnectionService.connectMeeting();
+    WebsocketConnectionService.connectMeeting();
   }
 }
 </script>

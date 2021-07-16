@@ -1,12 +1,6 @@
 import { FileShareFormatParms } from "@/model/meeting/meeting-ui/side-bar/files/file-share-format-parms";
-import { injectable } from "inversify-props";
 
-export interface ShareFormatService {
-  formatParticipants: (params: FileShareFormatParms) => string;
-}
-
-@injectable()
-export class ShareFormatServiceImpl implements ShareFormatService {
+class ShareFormatService {
   formatParticipants(params: FileShareFormatParms): string {
     const nonOwnerParticipants = params.participantIds.filter(
       (id) => id !== params.ownerId
@@ -42,3 +36,5 @@ export class ShareFormatServiceImpl implements ShareFormatService {
     }
   }
 }
+
+export default new ShareFormatService();
