@@ -451,7 +451,7 @@ export default class SettingsEdit extends Vue {
   }
 
   setTemplate(): void {
-    this.roomDetails.template = this.template.uuid;
+    this.room.templateId = this.template.uuid;
   }
 
   getTemplateById(templateId: string): RoomTemplate {
