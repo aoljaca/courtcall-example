@@ -35,7 +35,7 @@ export function NavigateToEntity(idOfEntity: string, type?: SearchType): void {
       break;
     case SearchType.CASE:
       routeLocation = {
-        name: "Case View",
+        name: "View Case",
         params: {
           roomId: Store.getters["CasesModule/getById"](idOfEntity).roomId,
           caseId: idOfEntity,

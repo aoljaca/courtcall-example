@@ -27,7 +27,7 @@
                   data-test-id="case-name"
                   :label="$t('admin.cases.enterCaseName')"
                   dense
-                  v-model="caseName"
+                  v-model="caseEdits.name"
                   clearable
                 />
               </v-col>
@@ -38,7 +38,7 @@
                   data-test-id="case-number"
                   :label="$t('admin.cases.enterCaseNumber')"
                   dense
-                  v-model="caseNumber"
+                  v-model="caseEdits.number"
                   clearable
                 />
               </v-col>
@@ -65,7 +65,7 @@
               color="grey lighten-2 rounded-0 white--text"
               depressed
               link
-              :to="caseViewPath"
+              :to="onCancel()"
             >
               {{ $t("admin.cases.cancel") }}
             </v-btn>
@@ -97,7 +97,7 @@
         <v-col>
           <v-divider />
           <v-row
-            v-for="id in caseParticipantIds"
+            v-for="id in caseEdits.participants"
             :key="`participant-${id}`"
             class="my-2"
           >
@@ -198,35 +198,22 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { Room } from "@/model/admin/room/room";
+import { Case } from "@/model/meeting/meeting-ui/case";
 @Component
 export default class CaseEdit extends Vue {
-  caseId = "";
-  roomId = "";
+  caseEdits: Case = {} as Case;
+  caseId = this.$route.params.caseId;
+  roomId = this.$route.params.roomId;
+  participantId = "";
 
-  mounted(): void {
-    this.roomId = this.$route.params.roomId;
-    this.caseId = this.$route.params.caseId;
+  get room() {
+    return this.$store.getters["RoomModule/getById"](this.roomId);
   }
 
-  room: Room = this.$store.getters["RoomModule/getById"](this.roomId);
-  rooms: Room[] = this.$store.getters["RoomModule/getAsList"];
-  participantId = "";
-  caseName = this.getCaseById(this.caseId).name;
-  caseNumber = this.getCaseById(this.caseId).number;
-
-  createParticipantPath =
-    "/admin/rooms/" + this.roomId + "/participants/create";
-
-  roomPath = "/admin/rooms/" + this.roomId;
-
-  caseViewPath = this.roomPath + "/cases/view/" + this.caseId;
-
-  caseParticipantIds: string[] = this.getCaseById(this.caseId)
-    ? this.getCaseById(this.caseId)?.participants
-    : [];
+  get rooms() {
+    return this.$store.getters["RoomModule/getAsList"];
+  }
 
   get participants(): Participant[] {
     return this.$store.getters["ParticipantsModule/getAsList"];
@@ -238,26 +225,44 @@ export default class CaseEdit extends Vue {
     );
   }
 
-  addParticipantToCase(): void {
-    if (this.participantId) {
-      this.$store.dispatch("CasesModule/addParticipantToCase", {
-        id: this.caseId,
-        participantId: this.participantId,
-      });
+  get caseById() {
+    return this.$store.getters["CasesModule/getById"](this.caseId);
+  }
+
+  get caseParticipantIds() {
+    return this.caseEdits.participants ?? [];
+  }
+
+  mounted() {
+    this.roomId = this.$route.params.roomId;
+    this.caseId = this.$route.params.caseId;
+
+    if (this.caseId) {
+      this.caseEdits = this.caseById;
+    }
+    this.participantId = "";
+  }
+
+  saveChanges() {
+    //TODO save changes once the backend is in
+    return;
+  }
+
+  addParticipantToCase() {
+    if (
+      this.participantId &&
+      !this.caseParticipantIds.includes(this.participantId)
+    ) {
+      if (!this.caseEdits.participants) {
+        this.caseEdits.participants = [];
+      }
+      this.caseEdits.participants.push(this.participantId);
       this.participantId = "";
     }
   }
 
   getParticipantById(id: string): Participant {
     return this.$store.getters["ParticipantsModule/getById"](id);
-  }
-
-  getCaseById(id: string): Case {
-    return this.$store.getters["CasesModule/getById"](id);
-  }
-
-  getRoomById(id: string): Room {
-    return this.$store.getters["RoomModule/getById"](id);
   }
 
   addScheduledParticipant(): void {
@@ -271,6 +276,20 @@ export default class CaseEdit extends Vue {
         scheduledParticipant: "true",
       },
     });
+  }
+
+  onCancel(caseId = this.caseId, roomId = this.roomId) {
+    if (this.caseId) {
+      return {
+        name: "View Case",
+        params: { caseId },
+      };
+    } else {
+      return {
+        name: "View Room",
+        params: { roomId },
+      };
+    }
   }
 }
 </script>

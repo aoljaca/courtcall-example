@@ -115,7 +115,7 @@ import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 @Component
 export default class RoomDetails extends Vue {
-  roomId = "";
+  roomId = this.$route.params.roomId;
 
   mounted(): void {
     this.roomId = this.$route.params.roomId;

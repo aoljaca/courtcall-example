@@ -7,9 +7,13 @@
         </v-col>
         <v-col class="text-right">
           <v-btn
+            data-test-id="add-case-button"
             :title="$t('admin.roomCases.add')"
             color="grey darken-4 rounded-0 white--text"
             depressed
+            :to="{
+              name: 'Create Case'
+            }"
           >
             {{ $t("admin.roomCases.add") }}
           </v-btn>
@@ -62,7 +66,7 @@
                   <v-list-item
                     link
                     :to="{
-                      name: 'Case View',
+                      name: 'View Case',
                       params: { caseId: item.id },
                     }"
                   >
@@ -71,7 +75,7 @@
                   <v-list-item
                     link
                     :to="{
-                      name: 'Case Edit',
+                      name: 'Edit Case',
                       params: { caseId: item.id },
                     }"
                   >
