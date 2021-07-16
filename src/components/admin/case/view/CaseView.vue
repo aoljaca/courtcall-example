@@ -60,23 +60,21 @@ import { Case } from "@/model/meeting/meeting-ui/case";
   },
 })
 export default class CaseView extends Vue {
-
-
   roomId = this.$route.params.roomId;
   caseId = this.$route.params.caseId;
 
   caseName = this.caseById?.name;
   roomName = this.roomNameById;
- 
-  get caseById() {
+
+  get caseById(): Case {
     return this.$store.getters["CasesModule/getById"](this.caseId);
   }
 
-  get roomNameById() {
+  get roomNameById(): string {
     return this.$store.getters["RoomModule/getRoomNameById"](this.roomId);
   }
 
-  mounted() {
+  mounted(): void {
     this.roomId = this.$route.params.roomId;
     this.caseId = this.$route.params.caseId;
     this.caseName = this.caseById?.name;

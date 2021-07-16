@@ -12,7 +12,7 @@
             color="grey darken-4 rounded-0 white--text"
             depressed
             :to="{
-              name: 'Create Case'
+              name: 'Create Case',
             }"
           >
             {{ $t("admin.roomCases.add") }}

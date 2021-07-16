@@ -200,6 +200,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Case } from "@/model/meeting/meeting-ui/case";
+import { Room } from "@/model/admin/room/room";
 @Component
 export default class CaseEdit extends Vue {
   caseEdits: Case = {} as Case;
@@ -207,11 +208,11 @@ export default class CaseEdit extends Vue {
   roomId = this.$route.params.roomId;
   participantId = "";
 
-  get room() {
+  get room(): Room {
     return this.$store.getters["RoomModule/getById"](this.roomId);
   }
 
-  get rooms() {
+  get rooms(): Room[] {
     return this.$store.getters["RoomModule/getAsList"];
   }
 
@@ -225,15 +226,15 @@ export default class CaseEdit extends Vue {
     );
   }
 
-  get caseById() {
+  get caseById(): Case {
     return this.$store.getters["CasesModule/getById"](this.caseId);
   }
 
-  get caseParticipantIds() {
+  get caseParticipantIds(): string[] {
     return this.caseEdits.participants ?? [];
   }
 
-  mounted() {
+  mounted(): void {
     this.roomId = this.$route.params.roomId;
     this.caseId = this.$route.params.caseId;
 
@@ -243,12 +244,12 @@ export default class CaseEdit extends Vue {
     this.participantId = "";
   }
 
-  saveChanges() {
+  saveChanges(): void {
     //TODO save changes once the backend is in
     return;
   }
 
-  addParticipantToCase() {
+  addParticipantToCase(): void {
     if (
       this.participantId &&
       !this.caseParticipantIds.includes(this.participantId)
@@ -278,7 +279,10 @@ export default class CaseEdit extends Vue {
     });
   }
 
-  onCancel(caseId = this.caseId, roomId = this.roomId) {
+  onCancel(
+    caseId = this.caseId,
+    roomId = this.roomId
+  ): { name: string; params: any } {
     if (this.caseId) {
       return {
         name: "View Case",
