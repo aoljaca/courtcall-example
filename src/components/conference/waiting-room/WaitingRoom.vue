@@ -5,7 +5,7 @@
   >
     <v-row id="top-level-row" class="flex-grow-0" justify="center">
       <v-col id="message-host" class="pb-4" :cols="hasDetails ? '5' : '6'">
-        <v-alert color="warning" type="warning" icon="mdi-alert-circle-outline">
+        <v-alert color="warning black--text" type="warning" icon="mdi-alert-circle-outline">
           {{ $t("waitingRoom.alert") }}
         </v-alert>
         <v-row>
@@ -57,7 +57,7 @@
           <v-row id="watch">
             <v-col>
               <div class="d-flex">
-                <v-icon> mdi-play-circle-outline </v-icon>
+                <v-icon color="accent"> mdi-play-circle-outline </v-icon>
                 <h4 class="mx-2">
                   {{ $t("waitingRoom.watch") }}
                 </h4>
@@ -74,7 +74,7 @@
           <v-row id="read">
             <v-col>
               <div class="d-flex">
-                <v-icon class="mr-2"> mdi-book </v-icon>
+                <v-icon color="accent" class="mr-2"> mdi-book </v-icon>
                 <h4>
                   {{ $t("waitingRoom.read") }}
                 </h4>
