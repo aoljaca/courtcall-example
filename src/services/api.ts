@@ -8,9 +8,9 @@ export default class API {
     return environment.baseURL;
   }
 
-  static get headers() {
+  static get headers(): { [key: string]: any } {
     // TODO: Not yet implemented
-    return null;
+    return {};
   }
 
   static get requestOptions(): AxiosRequestConfig {
@@ -29,11 +29,13 @@ export default class API {
     return await axios.get(this.formatURL(url), this.requestOptions);
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   static async Post<T>(url: string, body: any): Promise<T> {
     // TODO: Not yet implemented
     return await axios.post(this.formatURL(url), body, this.requestOptions);
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   static async Put<T>(url: string, body: any): Promise<T> {
     // TODO: Not yet implemented
     return await axios.put(this.formatURL(url), body, this.requestOptions);

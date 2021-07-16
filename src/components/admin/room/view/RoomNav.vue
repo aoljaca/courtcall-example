@@ -47,7 +47,7 @@ export default class RoomNav extends Vue {
   @Prop()
   parentContext: string | undefined;
 
-  scrollTo(ref: string) {
+  scrollTo(ref: string): void {
     this.$emit("navClicked", ref);
   }
 

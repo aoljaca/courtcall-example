@@ -117,10 +117,11 @@ import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
 export default class RoomDetails extends Vue {
   roomId = "";
 
-  mounted() {
+  mounted(): void {
     this.roomId = this.$route.params.roomId;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   get roomDetails() {
     if (!this.$store.state.RoomModule.rooms[this.roomId]) {
       return NULL_ROOM_DETAILS;

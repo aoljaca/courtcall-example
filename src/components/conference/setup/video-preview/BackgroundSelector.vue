@@ -64,11 +64,11 @@ export default class BackgroundSelector extends Vue {
     return this.$store.state.ConferenceSetupModule.activeBackground;
   }
 
-  buildBackgroundURL(option: BackgroundOption) {
+  buildBackgroundURL(option: BackgroundOption): string {
     return `${document.location.origin}/${option.backgroundUrl}`;
   }
 
-  setUpBackgroundBlur(selectedBackground: BackgroundOption) {
+  setUpBackgroundBlur(selectedBackground: BackgroundOption): void {
     if (selectedBackground) {
       BackgroundBlurService.alterVideo(
         "video-preview",
@@ -78,7 +78,7 @@ export default class BackgroundSelector extends Vue {
     }
   }
 
-  onToggleShowBackgrounds() {
+  onToggleShowBackgrounds(): void {
     this.openBackground = !this.openBackground;
   }
 }

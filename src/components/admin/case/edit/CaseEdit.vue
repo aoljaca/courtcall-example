@@ -206,7 +206,7 @@ export default class CaseEdit extends Vue {
   caseId = "";
   roomId = "";
 
-  mounted() {
+  mounted(): void {
     this.roomId = this.$route.params.roomId;
     this.caseId = this.$route.params.caseId;
   }
@@ -228,7 +228,7 @@ export default class CaseEdit extends Vue {
     ? this.getCaseById(this.caseId)?.participants
     : [];
 
-  get participants() {
+  get participants(): Participant[] {
     return this.$store.getters["ParticipantsModule/getAsList"];
   }
 
@@ -238,7 +238,7 @@ export default class CaseEdit extends Vue {
     );
   }
 
-  addParticipantToCase() {
+  addParticipantToCase(): void {
     if (this.participantId) {
       this.$store.dispatch("CasesModule/addParticipantToCase", {
         id: this.caseId,

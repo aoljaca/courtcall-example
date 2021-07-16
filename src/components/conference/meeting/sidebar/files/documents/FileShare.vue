@@ -71,7 +71,7 @@ export default class FileShareComponent extends Vue {
     }) as string;
   }
 
-  get isOwner() {
+  get isOwner(): boolean {
     const me: Participant = this.$store.state.ParticipantsModule.me;
     return me.id === this.fileShare?.ownerId;
   }

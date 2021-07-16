@@ -34,11 +34,11 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: "*",
-    redirect: (to) => "/not-found",
+    redirect: () => "/not-found",
   },
   {
     path: "/",
-    redirect: (to) => "/login",
+    redirect: () => "/login",
   },
   {
     path: "/login",
@@ -90,7 +90,7 @@ const routes: Array<RouteConfig> = [
     path: "/admin",
     name: "Admin",
     component: Admin,
-    redirect: (to) => "/admin/dashboard",
+    redirect: () => "/admin/dashboard",
     children: [
       {
         path: "dashboard",
@@ -375,7 +375,7 @@ const routes: Array<RouteConfig> = [
           {
             path: "",
             name: "Support",
-            redirect: (to) => "active",
+            redirect: () => "active",
             component: SupportQueue,
           },
           {

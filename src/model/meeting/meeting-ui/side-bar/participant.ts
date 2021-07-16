@@ -3,7 +3,6 @@ import {
   EntryAudioBehavor,
   EntryConference,
   EntryVideoBehavor,
-  ParticipantType,
 } from "@/model/admin/participants/enums";
 
 export type AVStatus = "unmuted" | "muted" | "hard_muted";

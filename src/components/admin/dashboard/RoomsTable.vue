@@ -256,7 +256,6 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { SupportItem } from "@/model/admin/support/support-item";
 import { DateTime } from "luxon";
 import { Room } from "@/model/admin/room/room";
-import { data } from "@tensorflow/tfjs";
 @Component
 export default class RoomsTable extends Vue {
   @Prop()
@@ -322,7 +321,7 @@ export default class RoomsTable extends Vue {
     return filteredParticipants.filter((p) => p.systemUser === true);
   }
 
-  getSystemUserNames(item: any): string[] {
+  getSystemUserNames(item: { uuid: string }): string[] {
     return this.getSystemUsers(item.uuid).map((su) => su.name);
   }
 

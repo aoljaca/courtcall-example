@@ -53,12 +53,12 @@ export default class VideoOverlay extends Vue {
     return this.$store.state.ConferenceSetupModule.activeBackground;
   }
 
-  onToggleShowBackgrounds() {
+  onToggleShowBackgrounds(): void {
     this.openBackground = !this.openBackground;
     this.$emit("toggledBackgrounds");
   }
 
-  async switchMediaDevice(newDevice: MediaDeviceInfo) {
+  async switchMediaDevice(newDevice: MediaDeviceInfo): void {
     await this.$store.dispatch(
       "ConferenceSetupModule/alterSelectedVideoDevice",
       newDevice

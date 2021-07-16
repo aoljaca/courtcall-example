@@ -44,7 +44,6 @@ import {
 import ActivePartcipantsView from "./ActiveParticipants.vue";
 import CasesView from "./Cases.vue";
 import RoomOverview from "./RoomOverview.vue";
-import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 @Component({
   components: {
     ActivePartcipantsView,
@@ -54,9 +53,8 @@ import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 })
 export default class ParticipantMainView extends Vue {
   get participantSize(): number {
-    const participants: Participant[] = this.$store.getters[
-      "ParticipantsModule/getAsList"
-    ];
+    const participants: Participant[] =
+      this.$store.getters["ParticipantsModule/getAsList"];
     return participants.length;
   }
 
@@ -64,7 +62,7 @@ export default class ParticipantMainView extends Vue {
 
   selectedParticipantView: ParticipantView = PARTICIPANT_VIEW_TYPES[0];
 
-  get selectedParticipantViewType() {
+  get selectedParticipantViewType(): string {
     return this.selectedParticipantView?.type;
   }
 

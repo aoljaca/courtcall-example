@@ -85,7 +85,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Organization } from "@/model/admin/organization/organization";
-import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 @Component({})
 export default class Organizations extends Vue {
   readonly HEADERS = [

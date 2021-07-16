@@ -9,6 +9,8 @@
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "lint:fix": "vue-cli-service lint --fix",
+    "lint:format": "prettier --write 'src/**/*.@(vue|ts)'",
+    "lint:check": "prettier --check 'src/**/*.@(vue|ts)'",
     "lint:dev": "eslint 'src/**/*.{ts,vue}' --fix --max-warnings 0",
     "lint:cicd": "eslint 'src/**/*.{ts,vue}' --max-warnings 0",
     "build:dev": "vue-cli-service build --mode remote-dev",

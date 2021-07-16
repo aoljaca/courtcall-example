@@ -55,9 +55,11 @@ const conferenceModule: Module<any, any> = {
       return result;
     },
     // TODO: Check for video devices && check participant settings
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     canEnableVideo: (state) => true,
 
     // TODO: Check for audio devices && check participant settings
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     canEnableAudio: (state) => true,
   },
 };

@@ -1,6 +1,4 @@
 import { ChatFormatParams } from "@/model/meeting/meeting-ui/side-bar/chat/chat-format-params";
-import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import Vue from "vue";
 
 class ChatFormatService {
   formatTitle(params: ChatFormatParams): string {

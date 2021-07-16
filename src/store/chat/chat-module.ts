@@ -1,4 +1,3 @@
-import { Chat } from "@/model/meeting/meeting-ui/side-bar/chat/chat";
 import { Module } from "vuex";
 import { DateTime } from "luxon";
 import { ChatMessage } from "@/model/meeting/meeting-ui/side-bar/chat/chat-message";
