@@ -65,10 +65,7 @@
               color="grey lighten-2 rounded-0 white--text"
               depressed
               link
-              :to="{
-                name: 'View Case',
-                params: { caseId },
-              }"
+              :to="onCancel()"
             >
               {{ $t("admin.cases.cancel") }}
             </v-btn>
@@ -278,6 +275,20 @@ export default class CaseEdit extends Vue {
         scheduledParticipant: "true",
       },
     });
+  }
+
+  onCancel(caseId = this.caseId, roomId = this.roomId) {
+    if(this.caseId) {
+      return {
+        name: 'View Case',
+        params: { caseId },
+      }
+    } else {
+      return {
+        name: 'View Room',
+        params: { roomId },
+      }
+    }
   }
 }
 </script>
