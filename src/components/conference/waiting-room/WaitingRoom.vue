@@ -17,7 +17,7 @@
         </v-row>
         <v-row dense class="pb-8" id="pressure-cooker">
           <v-col class="d-flex">
-            <h4>The pressure cooker</h4>
+            <h4>{{ conference.displayName }}</h4>
             <div class="mx-4">
               {{ $t("waitingRoom.subHeading") }}
             </div>
@@ -83,9 +83,32 @@
   </div>
 </template>
 <script lang="ts">
+import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 import { Component, Vue } from "vue-property-decorator";
 @Component
-export default class WaitingRoom extends Vue {}
+export default class WaitingRoom extends Vue {
+  timer = 0;
+
+  get conferenceId(): string {
+    return this.$route.params.conferenceId;
+  }
+
+  get conference(): SubConference {
+    return this.$store.getters["ConferenceModule/getSubConferenceByid"](
+      this.conferenceId
+    );
+  }
+
+  async mounted(): Promise<void> {
+    // Temporary timer to push user to conference call after 5 seconds
+    this.timer = setInterval(async () => {
+      await this.$store.dispatch(
+        "ConferenceModule/joinConference",
+        this.conferenceId
+      );
+    }, 5000);
+  }
+}
 </script>
 <style lang="scss" scoped>
 .big-space {
