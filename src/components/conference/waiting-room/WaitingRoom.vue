@@ -14,7 +14,7 @@
         </v-row>
         <v-row dense class="pb-8">
           <v-col class="d-flex">
-            <h4>pressure cooker</h4>
+            <h4>{{ conference ? conference.displayName : "No name" }}</h4>
             <div class="mx-4">
               {{ $t("waitingRoom.subHeading") }}
             </div>
