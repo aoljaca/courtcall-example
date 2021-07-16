@@ -1,7 +1,7 @@
 <template>
-  <div class="conference-body-height d-flex justify-space-around flex-column" id="waitingRoom-container">
-    <v-row id="top-level-row" class="flex-grow-0">
-      <v-col id="message-host" class="m-l-25 pb-4">
+  <div class="conference-body-height d-flex justify-space-around flex-column">
+    <v-row class="flex-grow-0">
+      <v-col class="m-l-25 pb-4">
         <v-alert color="warning" type="warning" icon="mdi-alert-circle-outline">
           {{ $t("waitingRoom.alert")}}
         </v-alert>
@@ -12,7 +12,7 @@
             </h1>
           </v-col>
         </v-row>
-        <v-row dense class="pb-8" id="pressure-cooker">
+        <v-row dense class="pb-8">
           <v-col class="d-flex">
             <h4>
               The pressure cooker
@@ -22,10 +22,9 @@
             </div>
           </v-col>
         </v-row>
-        <v-row id="contact-or-exit">
+        <v-row>
           <v-col>
-            <contact-host>
-            </contact-host>
+            <contact-host />
           </v-col>
           <v-col>
             <v-btn
@@ -38,8 +37,8 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col id="waitingRoom-content" class="m-r-25" align-self="end">
-        <v-row id="watch">
+      <v-col class="m-r-25" align-self="end">
+        <v-row>
           <v-col>
             <div class="d-flex">
               <v-icon>
@@ -49,7 +48,7 @@
                 {{ $t("waitingRoom.watch")}}
               </h4>
             </div>
-            <div id="brief-video">
+            <div>
               {{ $t("waitingRoom.watchMsg1")}} 
               <a>
               {{ $t("waitingRoom.watchLink")}}
@@ -58,7 +57,7 @@
             {{ $t("waitingRoom.watchMsg2")}}
           </v-col>
         </v-row>
-        <v-row id="read">
+        <v-row>
           <v-col>
             <div class="d-flex">
               <h4>
@@ -68,7 +67,7 @@
                 mdi-book
               </v-icon>
             </div>
-            <div id="click-here">
+            <div>
               <a>
               {{ $t("waitingRoom.readLink") }}
               </a>

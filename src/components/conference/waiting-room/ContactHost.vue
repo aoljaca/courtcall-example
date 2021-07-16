@@ -2,7 +2,6 @@
   <v-dialog
     v-model="dialog"
     width="700"
-    close-delay="5000"
   >
     <template v-slot:activator="{ on, attrs }">
       <v-btn
@@ -19,7 +18,7 @@
     <v-card v-if="!messagedHost" class="pa-14">
       <v-card-title class="text-h5 d-flex justify-center">
         <h3>
-          Message the host
+          {{ $t("waitingRoom.messageHost") }}
         </h3>
       </v-card-title>
 
@@ -38,7 +37,7 @@
           color="accent white--text"
           @click="transition()"
         >
-          Submit
+          {{ $t("waitingRoom.submit") }}
         </v-btn>
         <v-btn
           class="mx-8 pa-6"
@@ -47,14 +46,14 @@
           color="info black--text"
           @click="dialog = false"
         >
-          Cancel
+          {{ $t("waitingRoom.cancel") }}
         </v-btn>
       </v-card-actions>
     </v-card>
     <v-card v-if="messagedHost" class="pa-14">
       <v-card-title class="text-h5 d-flex justify-center">
         <h3>
-          The host has been contacted. Please stand by.
+          {{ $t("waitingRoom.standby") }}
         </h3>
       </v-card-title>
 
@@ -66,7 +65,8 @@
           @click="dialog = false"
 
         >
-          Dismiss(
+          {{ $t("waitingRoom.dismiss") }}
+          (
             <span>{{ timeToDismiss }}</span>
           )
         </v-btn>
