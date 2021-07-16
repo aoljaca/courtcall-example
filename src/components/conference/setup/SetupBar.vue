@@ -2,7 +2,7 @@
   <v-card color="secondary" flat class="pa-10">
     <v-row>
       <v-col cols="auto" align-self="center">
-        <h1 class="c-primary">Room Name Here</h1>
+        <h1 class="c-primary">{{ conference.displayName }}</h1>
       </v-col>
 
       <v-spacer />
@@ -59,6 +59,7 @@
   </v-card>
 </template>
 <script lang="ts">
+import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 import {
   AudioState,
   VideoState,
@@ -99,6 +100,16 @@ export default class SetupBar extends Vue {
       iconColor: this.isAudioEnabled ? "accent" : "#b5b5b5",
       btnColor: this.isAudioEnabled ? "accent" : "#b5b5b5",
     };
+  }
+
+  get conferenceId(): string {
+    return this.$route.params.conferenceId;
+  }
+
+  get conference(): SubConference {
+    return this.$store.getters["ConferenceModule/getSubConferenceByid"](
+      this.conferenceId
+    );
   }
 
   async onToggleVideo(): Promise<void> {
