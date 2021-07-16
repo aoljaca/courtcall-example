@@ -26,8 +26,9 @@ export default class CallHeader extends Vue {
   }
 
   get mainConference(): SubConference {
-    const conference =
-      this.$store.getters["ConferenceModule/getActiveConference"];
+    const conference = this.$store.getters[
+      "ConferenceModule/getActiveConference"
+    ];
     const noConference = {
       displayName: "No Conference",
     } as SubConference;
@@ -35,8 +36,9 @@ export default class CallHeader extends Vue {
   }
 
   get subConference(): SubConference {
-    const conference =
-      this.$store.getters["ConferenceModule/getActiveSubConference"];
+    const conference = this.$store.getters[
+      "ConferenceModule/getActiveSubConference"
+    ];
     const noSubConference = {
       displayName: "No Sub-conference",
     } as SubConference;
