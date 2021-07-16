@@ -67,7 +67,7 @@
 
         >
           Dismiss(
-            <span>15</span>
+            <span>{{ timeToDismiss }}</span>
           )
         </v-btn>
       </v-card-actions>
@@ -82,15 +82,25 @@ export default class ContactHost extends Vue {
   dialog = false;
   messagedHost = false;
   isLastScreen = false;
+  timeToDismiss = 15;
 
   transition() {
     this.messagedHost = true;
     this.isLastScreen = true;
+    this.startTimer();
   }
 
-  // closeDelay(flag : boolean) {
-  //   return flag ? 10000 : undefined;
-  // }
+  startTimer(): void {
+    setInterval(this.setTimeToDismiss, 1000);
+  }
+
+  setTimeToDismiss(): void {
+    if(this.timeToDismiss === 0) {
+      this.dialog = false;
+    } else {
+      this.timeToDismiss--;
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
