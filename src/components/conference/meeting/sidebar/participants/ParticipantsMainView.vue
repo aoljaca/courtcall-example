@@ -53,8 +53,9 @@ import RoomOverview from "./RoomOverview.vue";
 })
 export default class ParticipantMainView extends Vue {
   get participantSize(): number {
-    const participants: Participant[] =
-      this.$store.getters["ParticipantsModule/getAsList"];
+    const participants: Participant[] = this.$store.getters[
+      "ParticipantsModule/getAsList"
+    ];
     return participants.length;
   }
 

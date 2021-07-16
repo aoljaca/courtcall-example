@@ -118,8 +118,8 @@ export default class FileUpload extends Vue {
   }
 
   determineIntialFileType(): FileShareType | null {
-    const selectedShare: Share =
-      this.$store.state.FileShareModule.selectedShare;
+    const selectedShare: Share = this.$store.state.FileShareModule
+      .selectedShare;
     if (selectedShare) {
       const type = selectedShare.type;
       return FILE_SHARE_TYPES.find((t) => t.type === type)!;
@@ -133,8 +133,8 @@ export default class FileUpload extends Vue {
     if (!selectedShare) {
       return [];
     } else {
-      const participants: { [key: string]: Participant } =
-        this.$store.state.ParticipantsModule.participants;
+      const participants: { [key: string]: Participant } = this.$store.state
+        .ParticipantsModule.participants;
       const self: Participant = this.$store.state.ParticipantsModule.me;
       return selectedShare.participants
         .filter((id) => id !== self.id)
