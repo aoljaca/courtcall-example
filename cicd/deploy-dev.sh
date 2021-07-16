@@ -1,7 +1,7 @@
 set -e 
 source ~/.bashrc
 export AWS_DEFAULT_REGION=us-east-1
-
+npm ci
 echo 'Build'
 npm run build:dev
 
