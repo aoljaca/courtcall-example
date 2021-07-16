@@ -44,7 +44,7 @@ export default class ChatCard extends Vue {
     }) as string;
   }
 
-  selectChat() {
+  selectChat(): void {
     this.$store.dispatch("ChatModule/alterSelectedChatId", {
       id: this.chat?.uuid,
     });

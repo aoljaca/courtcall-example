@@ -75,6 +75,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import {
+  InviteParticipantMode,
   InviteParticipantType,
   INVITE_PARTICIPANT_TYPES,
 } from "@/model/meeting/meeting-ui/control-bar/more/invite-participants/invite-participant-type";
@@ -85,38 +86,38 @@ export default class InviteParticipants extends Vue {
   selectedInvitationType: InviteParticipantType | null = null;
   selectedCase: Case | null = null;
   possibleInvitationTypes = INVITE_PARTICIPANT_TYPES;
-  invitationTypeLabel(type: InviteParticipantType) {
-    return this.$t(type.translationText);
+  invitationTypeLabel(type: InviteParticipantType): string {
+    return this.$t(type.translationText) as string;
   }
 
-  formatCaseLabel(c: Case) {
+  formatCaseLabel(c: Case): string {
     return `${c.name} ${c.number}`;
   }
 
-  get linkType() {
+  get linkType(): InviteParticipantMode | undefined {
     return this.selectedInvitationType?.type;
   }
 
-  get possibleCases() {
+  get possibleCases(): Case[] {
     return this.$store.getters["CasesModule/getAsList"];
   }
 
-  generateLink() {
+  generateLink(): void {
     this.link = "https://courtcall.com";
   }
 
-  copyLink() {
+  copyLink(): void {
     navigator.clipboard.writeText(this.link!);
   }
 
-  shouldShowNameEntry() {
+  shouldShowNameEntry(): boolean {
     return [
       this.linkType === "singleLink",
       this.linkType === "scheduledLink",
     ].some((b) => b === true);
   }
 
-  shouldShowCaseSelection() {
+  shouldShowCaseSelection(): boolean {
     return this.linkType === "scheduledLink";
   }
 }

@@ -73,7 +73,7 @@ export default class SystemUserAccessDetails extends Vue {
       label: this.$t("admin.systemUsers.systemUser.buttons.password.label"),
       inputType: "button",
       onClick: this.onSendResetPasswordLink,
-      condition: () => this.isEditing,
+      condition: (): boolean => this.isEditing,
     },
     {
       title: this.$t("admin.systemUsers.systemUser.formFields.pstnPIN.title"),
@@ -81,10 +81,12 @@ export default class SystemUserAccessDetails extends Vue {
     },
   ];
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   hasCondition(item: any): boolean {
     return !!item.condition;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   isConditionMet(item: any): boolean {
     let conditionMet = true;
 

@@ -38,7 +38,7 @@ import { Component, Vue } from "vue-property-decorator";
 export default class TranscriptionMenu extends Vue {
   transcriptionStarted = false;
 
-  toggleTranscription() {
+  toggleTranscription(): void {
     this.transcriptionStarted = !this.transcriptionStarted;
   }
 }
