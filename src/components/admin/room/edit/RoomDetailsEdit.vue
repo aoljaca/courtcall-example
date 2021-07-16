@@ -194,7 +194,7 @@ export default class RoomDetailsEdit extends Vue {
     }
   }
 
-  setTemplate() {
+  setTemplate(): void {
     this.room.templateId = this.template.uuid;
   }
 

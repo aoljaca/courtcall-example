@@ -1,5 +1,29 @@
 stages:
+  - install
+  - format
+  - lint
   - deploy
+
+npm_install:
+  stage: install
+  script:
+    - bash ./cicd/npm-instal.sh
+  tags:
+    - v3
+
+check_format:
+  stage: format
+  script:
+    - bash ./cicd/check-format.sh
+  tags:
+    - v3
+
+check_lint:
+  stage: lint
+  script:
+    - bash ./cicd/check-lint.sh
+  tags:
+    - v3
 
 deploy_dev:
   stage: deploy
