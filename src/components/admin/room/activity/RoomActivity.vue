@@ -88,13 +88,6 @@
 <script lang="ts">
 import { Room } from "@/model/admin/room/room";
 import { Component, Vue } from "vue-property-decorator";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import {
-  DataTableFooterOptions,
-  DataTableOptionsService,
-} from "@/services/data-table-options";
-import { DateFormatService } from "@/services/date-format";
 import {
   ActivityLogType,
   RoomActivityLog,
@@ -103,13 +96,11 @@ import {
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 import { DateTime } from "luxon";
+import DateFormatService from "@/services/date-format";
+import DataTableOptionsService from "@/services/data-table-options";
+import { DataTableFooterOptions } from "@/services/data-table-options";
 @Component({})
 export default class RoomActivity extends Vue {
-  @inject(INJECTION_TYPES.DATA_TABLE)
-  dataTableOptionsService?: DataTableOptionsService;
-  @inject(INJECTION_TYPES.DATE_FORMAT)
-  dateFormatService?: DateFormatService;
-
   selectedSession: RoomSession | null = null;
   readonly SESSION_HEADERS = [
     {
@@ -179,22 +170,22 @@ export default class RoomActivity extends Vue {
   }
 
   get footerOptions(): DataTableFooterOptions | undefined {
-    return this.dataTableOptionsService?.getFooterOptions();
+    return DataTableOptionsService.getFooterOptions();
   }
 
   formatDate(iso: string): string | undefined {
     if (iso) {
-      return this.dateFormatService?.formatFullDateTime(iso);
+      return DateFormatService.formatFullDateTime(iso);
     } else {
       return "N/A";
     }
   }
 
-  setSelectedSession(session: RoomSession) {
+  setSelectedSession(session: RoomSession): void {
     this.selectedSession = session;
   }
 
-  formatRoomDescription(session: RoomSession) {
+  formatRoomDescription(session: RoomSession): string {
     const room: Room = this.$store.getters["RoomModule/getById"](session.room);
     const roomName = room ? room.roomDetails.name : "Unknown";
     const date = DateTime.fromISO(session.startTime)

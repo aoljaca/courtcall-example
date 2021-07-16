@@ -20,7 +20,8 @@
             color="white--text grey darken-4 rounded-0"
             depressed
           >
-           <router-link class="remove-decoration" 
+            <router-link
+              class="remove-decoration"
               :to="{
                 name: 'Edit Room',
                 params: { roomId },
@@ -112,22 +113,21 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
-import "reflect-metadata";
 @Component
 export default class RoomDetails extends Vue {
-  roomId = "";
+  roomId = this.$route.params.roomId;
 
-  mounted() {
+  mounted(): void {
     this.roomId = this.$route.params.roomId;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   get roomDetails() {
     if (!this.$store.state.RoomModule.rooms[this.roomId]) {
       return NULL_ROOM_DETAILS;
     }
 
-    return this.$store.state.RoomModule.rooms[this.roomId]
-      .roomDetails;
+    return this.$store.state.RoomModule.rooms[this.roomId].roomDetails;
   }
 }
 </script>

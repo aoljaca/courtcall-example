@@ -53,10 +53,10 @@ export default class CreateParticipantDetails extends Vue {
   participant!: Participant;
 
   created(): void {
-    if(this.$route.query.scheduledParticipant) {
+    if (this.$route.query.scheduledParticipant) {
       this.participant.role = ParticipantRole.PARTICIPANT_SCHEDULED;
     }
-    if(this.$route.query.caseId) {
+    if (this.$route.query.caseId) {
       this.participant.caseId = this.$route.query.caseId as string;
     }
   }
@@ -112,10 +112,12 @@ export default class CreateParticipantDetails extends Vue {
     return this.$store.getters["RoomModule/getById"](roomId);
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   hasCondition(item: any): boolean {
     return !!item.condition;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   isConditionMet(item: any): boolean {
     let conditionMet = true;
 
@@ -139,7 +141,7 @@ export default class CreateParticipantDetails extends Vue {
     return this.participant.role === ParticipantRole.PARTICIPANT_SCHEDULED;
   }
 
-  getItems(items: any): any[] {
+  getItems(items: any[] | (() => any[])): any[] {
     if (typeof items === "function") {
       return items();
     } else {
@@ -160,9 +162,7 @@ export default class CreateParticipantDetails extends Vue {
   getEligibleCases(): Case[] {
     const roomId = this.$route.params.roomId;
     const allCases: Case[] = this.$store.getters["CasesModule/getAsList"] || [];
-    const filteredCases = allCases.filter(
-      (c) => c.roomId === roomId
-    );
+    const filteredCases = allCases.filter((c) => c.roomId === roomId);
 
     return filteredCases;
   }

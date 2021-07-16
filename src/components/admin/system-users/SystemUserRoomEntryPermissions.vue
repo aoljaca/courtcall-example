@@ -185,7 +185,7 @@ export default class SystemUserRoomEntryPermissions extends Vue {
       ?.name;
   }
 
-  onSelectedEntryItem(selected: any): void {
+  onSelectedEntryItem(selected: { isRoom: boolean; id: string }): void {
     const selectedRooms = this.systemUserEdits.roomPermissions.roomIds;
     const selectedOrgs = this.systemUserEdits.roomPermissions.organizationIds;
 

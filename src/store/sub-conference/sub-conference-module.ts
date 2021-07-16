@@ -1,4 +1,3 @@
-import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 import { Module } from "vuex";
 
 const subconferenceModule: Module<any, any> = {

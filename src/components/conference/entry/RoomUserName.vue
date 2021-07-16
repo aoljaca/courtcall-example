@@ -28,11 +28,16 @@ import { Component, Vue } from "vue-property-decorator";
 export default class RoomUserName extends Vue {
   name = "";
 
-  onSubmit() {
+  onSubmit(): void {
     this.$store.dispatch("EntryModule/alterEntryPhase", EntryMode.LOADING);
+
+    // Temporarily push to Waiting Room
+    this.$router.push({
+      name: "Waiting Room",
+    });
   }
 
-  onExit() {
+  onExit(): void {
     this.$router.push({
       name: "Login",
     });

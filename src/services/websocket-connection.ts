@@ -1,19 +1,9 @@
-import { injectable } from "inversify-props";
 import store from "../store/index";
 import { environment } from "@/environments/environment";
 import { WS_TYPES } from "@/model/ws-types";
 import { io, Socket } from "socket.io-client";
 
-export interface WebsocketConnectionService {
-  connectMeeting: () => void;
-  connectAdmin: () => void;
-  disconnectAdmin: () => void;
-  disconnectMeeting: () => void;
-}
-
-@injectable()
-export class WebsocketConnectionServiceImpl
-  implements WebsocketConnectionService {
+class WebsocketConnectionService {
   adminConnected = false;
   meetingConnected = false;
   meetingSocket: Socket | undefined;
@@ -83,3 +73,5 @@ export class WebsocketConnectionServiceImpl
     });
   }
 }
+
+export default new WebsocketConnectionService();

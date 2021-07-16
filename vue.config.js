@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require("webpack");
 const { GenerateSW } = require("workbox-webpack-plugin");
+const PROD_ENVIRONMENTS = ["production", "stage"];
 module.exports = {
   configureWebpack: (config) => {
     console.log(`Environment : ${process.env.NODE_ENV}`);
-    if (process.env.NODE_ENV !== "production") {
+
+    if (!PROD_ENVIRONMENTS.includes(process.env.NODE_ENV)) {
       config.devtool = "eval-source-map";
       config.output.devtoolFallbackModuleFilenameTemplate =
         "webpack:///[resource-path]?[hash]";
@@ -30,11 +33,12 @@ module.exports = {
         // If not generated, filter as webpack-vue
         return `webpack-vue:///${info.resourcePath}`;
       };
+    } else {
+      console.log("No Source Maps");
+      config.devtool = "nosources-source-map";
     }
-    if (
-      process.env.NODE_ENV !== "production" &&
-      process.env.NODE_ENV !== "development"
-    ) {
+    const SW_ENVS = ["production", "development"];
+    if (!SW_ENVS.includes(process.env.NODE_ENV)) {
       const swPlugin = new GenerateSW({
         cacheId: "courtcall-ui-v3",
         cleanupOutdatedCaches: true,
@@ -42,12 +46,14 @@ module.exports = {
       config.plugins.unshift(swPlugin);
     }
     config.output.filename = "[name].[hash].js";
-    console.log("Webpack Config");
+    console.log("Environment Config");
     const getEnvName = () => {
       if (process.env.NODE_ENV === "production") {
         return "environment.prod.ts";
       } else if (process.env.NODE_ENV === "remote-dev") {
         return "environment.dev.ts";
+      } else if (process.env.NODE_ENV === "stage") {
+        return "environment.stage.ts";
       } else {
         return "environment.ts";
       }
@@ -61,8 +67,15 @@ module.exports = {
   },
   chainWebpack: (config) => {
     config.plugin("html").tap((args) => {
-      args[0].title =
-        process.env.NODE_ENV === "production" ? "CourtCall" : "CourtCall Dev";
+      let title = "CourtCall";
+      if (process.env.NODE_ENV === "development") {
+        title = "CourtCall Local";
+      } else if (process.env.NODE_ENV === "remote-dev") {
+        title = "Remote Dev";
+      } else if (process.env.NODE_ENV === "stage") {
+        title = "CourtCall Stage";
+      }
+      args[0].title = title;
       return args;
     });
     config.module
@@ -73,10 +86,10 @@ module.exports = {
   },
 
   css: {
-    sourceMap: process.env.NODE_ENV === "development",
+    sourceMap: !PROD_ENVIRONMENTS.includes(process.env.NODE_ENV),
   },
 
-  productionSourceMap: process.env.NODE_ENV === "development",
+  productionSourceMap: !PROD_ENVIRONMENTS.includes(process.env.NODE_ENV),
 
   devServer: {
     port: 4200,

@@ -310,11 +310,13 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { NULL_ROOM_SETTINGS } from "@/model/admin/room/room-settings";
-import "reflect-metadata";
+import {
+  NULL_ROOM_SETTINGS,
+  RoomSettings,
+} from "@/model/admin/room/room-settings";
 @Component
 export default class Settings extends Vue {
-  get roomSettings() {
+  get roomSettings(): RoomSettings {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
       return NULL_ROOM_SETTINGS;
     }

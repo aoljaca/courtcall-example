@@ -15,7 +15,10 @@
               color="grey darken-4 rounded-0 white--text"
               depressed
               link
-              :to="caseEditPath"
+              :to="{
+                name: 'Edit Case',
+                params: { caseId },
+              }"
             >
               {{ $t("admin.cases.edit") }}
             </v-btn>
@@ -24,8 +27,8 @@
         <v-row class="py-4">
           <v-col>
             <v-list>
-              <v-list-item 
-                link 
+              <v-list-item
+                link
                 :to="{
                   name: 'View Room',
                   params: { roomId },
@@ -50,7 +53,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import ScheduledParticipantsTable from "@/components/admin/case/view/ScheduledParticipantsTable.vue";
-import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
 @Component({
   components: {
@@ -58,16 +60,25 @@ import { Case } from "@/model/meeting/meeting-ui/case";
   },
 })
 export default class CaseView extends Vue {
-  caseName: string = this.getCaseById(this.$route.params.caseId)?.name;
+  roomId = this.$route.params.roomId;
+  caseId = this.$route.params.caseId;
 
-  roomName: string = this.getRoomNameById(this.$route.params.roomId);
+  caseName = this.caseById?.name;
+  roomName = this.roomNameById;
 
-  getCaseById(id: string): Case {
-    return this.$store.getters["CasesModule/getById"](id);
+  get caseById(): Case {
+    return this.$store.getters["CasesModule/getById"](this.caseId);
   }
 
-  getRoomNameById(id: string): string {
-    return this.$store.getters["RoomModule/getRoomNameById"](id);
+  get roomNameById(): string {
+    return this.$store.getters["RoomModule/getRoomNameById"](this.roomId);
+  }
+
+  mounted(): void {
+    this.roomId = this.$route.params.roomId;
+    this.caseId = this.$route.params.caseId;
+    this.caseName = this.caseById?.name;
+    this.roomName = this.roomNameById;
   }
 }
 </script>

@@ -15,7 +15,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import DeleteTemplate from "@/components/admin/room/edit/room-templates/DeleteTemplate.vue";
-import "reflect-metadata";
 @Component({
   components: {
     DeleteTemplate,

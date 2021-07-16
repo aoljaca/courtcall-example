@@ -1,5 +1,21 @@
 stages:
+  - format
+  - lint
   - deploy
+
+check_format:
+  stage: format
+  script:
+    - bash ./cicd/check-format.sh
+  tags:
+    - v3
+
+check_lint:
+  stage: lint
+  script:
+    - bash ./cicd/check-lint.sh
+  tags:
+    - v3
 
 deploy_dev:
   stage: deploy
@@ -9,4 +25,14 @@ deploy_dev:
   tags:
     - v3
   only:
-    - master
+    - env/dev
+
+deploy_stage:
+  stage: deploy
+  script:
+    - echo "Deploying to Stage"
+    - bash ./cicd/deploy-stage.sh
+  tags:
+    - v3
+  only:
+    - env/stage

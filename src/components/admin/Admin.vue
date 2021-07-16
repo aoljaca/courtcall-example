@@ -38,10 +38,9 @@ import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import UserActions from "@/components/admin/dashboard/UserActions.vue";
 import Breadcrumbs from "@/components/admin/navigation/Breadcrumbs.vue";
 import Search from "@/components/admin/dashboard/search/Search.vue";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { WebsocketConnectionService } from "@/services/websocket-connection";
-import { CustomTheme, ThemeService } from "@/services/theme-service";
+import WebsocketConnectionService from "@/services/websocket-connection";
+import { CustomTheme } from "@/services/theme-service";
+import ThemeService from "@/services/theme-service";
 @Component({
   components: {
     Navigation,
@@ -51,11 +50,6 @@ import { CustomTheme, ThemeService } from "@/services/theme-service";
   },
 })
 export default class Admin extends Vue {
-  @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
-  websocketConnectionService!: WebsocketConnectionService;
-  @inject(INJECTION_TYPES.THEME_SERVICE)
-  themeService!: ThemeService;
-
   get showBreadcrumbs(): boolean {
     return !this.isSearchOrDashboard;
   }
@@ -70,8 +64,8 @@ export default class Admin extends Vue {
   }
 
   mounted(): void {
-    this.websocketConnectionService.connectMeeting();
-    this.themeService.switchTheme(CustomTheme.ADMIN, this.$vuetify);
+    WebsocketConnectionService.connectMeeting();
+    ThemeService.switchTheme(CustomTheme.ADMIN, this.$vuetify);
   }
 }
 </script>

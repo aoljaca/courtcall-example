@@ -4,7 +4,7 @@ import RoomEntry from "../components/conference/entry/RoomEntry.vue";
 import Login from "../components/login/Login.vue";
 import WaitingRoom from "../components/conference/waiting-room/WaitingRoom.vue";
 import EndMeeting from "../components/conference/end-meeting/EndMeeting.vue";
-import AvOptions from "../components/conference/av-options/AvOptions.vue";
+import Setup from "../components/conference/setup/Setup.vue";
 import Call from "../components/conference/meeting/Call.vue";
 import Dashboard from "../components/admin/dashboard/Dashboard.vue";
 import Admin from "@/components/admin/Admin.vue";
@@ -34,11 +34,11 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: "*",
-    redirect: (to) => "/not-found",
+    redirect: () => "/not-found",
   },
   {
     path: "/",
-    redirect: (to) => "/login",
+    redirect: () => "/login",
   },
   {
     path: "/login",
@@ -69,8 +69,8 @@ const routes: Array<RouteConfig> = [
           },
           {
             path: "setup",
-            name: "A/V Options",
-            component: AvOptions,
+            name: "Conference Setup",
+            component: Setup,
           },
           {
             path: "waiting-room",
@@ -90,7 +90,7 @@ const routes: Array<RouteConfig> = [
     path: "/admin",
     name: "Admin",
     component: Admin,
-    redirect: (to) => "/admin/dashboard",
+    redirect: () => "/admin/dashboard",
     children: [
       {
         path: "dashboard",
@@ -190,29 +190,31 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "view/:caseId",
+                path: "view/:roomId/:caseId",
                 component: CaseView,
-                name: "Case View",
+                name: "View Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${store.getters["CasesModule/getById"](route.params.caseId)
-                      ?.name
+                    `${
+                      store.getters["CasesModule/getById"](route.params.caseId)
+                        ?.name
                     }`,
                 },
               },
               {
-                path: "edit/:caseId",
+                path: "edit/:roomId/:caseId",
                 component: CaseEdit,
-                name: "Case Edit",
+                name: "Edit Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${store.getters["CasesModule/getById"](route.params.caseId)
-                      ?.name
+                    `${
+                      store.getters["CasesModule/getById"](route.params.caseId)
+                        ?.name
                     }`,
                 },
               },
               {
-                path: "create",
+                path: "create/:roomId",
                 component: CaseEdit,
                 name: "Create Case",
                 meta: {
@@ -239,9 +241,10 @@ const routes: Array<RouteConfig> = [
                 name: "Participant",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${store.getters["ParticipantsModule/getById"](
-                      route.params.participantId
-                    )?.name
+                    `${
+                      store.getters["ParticipantsModule/getById"](
+                        route.params.participantId
+                      )?.name
                     }`,
                 },
               },
@@ -283,9 +286,10 @@ const routes: Array<RouteConfig> = [
             props: true,
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["SystemUsersModule/getById"](
-                  route.params.systemUserId
-                ).name
+                `${
+                  store.getters["SystemUsersModule/getById"](
+                    route.params.systemUserId
+                  ).name
                 }`,
             },
           },
@@ -325,9 +329,10 @@ const routes: Array<RouteConfig> = [
             name: "Organization",
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["OrganizationsModule/getById"](
-                  route.params.organizationId
-                ).name
+                `${
+                  store.getters["OrganizationsModule/getById"](
+                    route.params.organizationId
+                  ).name
                 }`,
             },
           },
@@ -337,9 +342,10 @@ const routes: Array<RouteConfig> = [
             name: "Edit Organization",
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["OrganizationsModule/getById"](
-                  route.params.organizationId
-                ).name
+                `${
+                  store.getters["OrganizationsModule/getById"](
+                    route.params.organizationId
+                  ).name
                 }`,
             },
           },
@@ -369,7 +375,7 @@ const routes: Array<RouteConfig> = [
           {
             path: "",
             name: "Support",
-            redirect: (to) => "active",
+            redirect: () => "active",
             component: SupportQueue,
           },
           {

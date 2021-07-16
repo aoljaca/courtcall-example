@@ -21,7 +21,7 @@ export default {
     address: "6383 Arizona Circle, Los Angeles, CA 90045",
     termsOfUse: {
       text: "Terms of Use & Privacy Policy",
-      url: "https://courtcall.com/terms-conditions-privacy-policy/"
-    }
-  }
+      url: "https://courtcall.com/terms-conditions-privacy-policy/",
+    },
+  },
 };

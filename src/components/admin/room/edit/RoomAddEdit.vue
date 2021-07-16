@@ -44,7 +44,6 @@ import RoomDetailsEdit from "@/components/admin/room/edit/RoomDetailsEdit.vue";
 import SettingsEdit from "@/components/admin/room/edit/SettingsEdit.vue";
 import RoomNav from "@/components/admin/room/view/RoomNav.vue";
 
-import "reflect-metadata";
 @Component({
   components: {
     RoomDetailsEdit,
@@ -53,7 +52,7 @@ import "reflect-metadata";
   },
 })
 export default class RoomAddEdit extends Vue {
-  onNavClicked(ref: string) {
+  onNavClicked(ref: string): void {
     // get the refs from this component
     const refs: any = this.$refs;
     // find the ref emmitted from RoomNav and store it as an element

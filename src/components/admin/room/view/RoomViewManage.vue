@@ -44,7 +44,6 @@ import Settings from "@/components/admin/room/view/Settings.vue";
 import CasesTable from "@/components/admin/room/view/CasesTable.vue";
 import ParticipantsTable from "@/components/admin/room/view/ParticipantsTable.vue";
 
-import "reflect-metadata";
 @Component({
   components: {
     RoomNav,
@@ -55,7 +54,7 @@ import "reflect-metadata";
   },
 })
 export default class RoomViewManage extends Vue {
-  onNavClicked(ref: string) {
+  onNavClicked(ref: string): void {
     // get the refs from this component
     const refs: any = this.$refs;
     // find the ref emmitted from RoomNav and store it as an element

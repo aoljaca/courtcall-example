@@ -123,16 +123,22 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
-import "reflect-metadata";
+import {
+  NULL_ROOM_DETAILS,
+  RoomDetails,
+} from "@/model/admin/room/room-details";
 import { Organization } from "@/model/admin/organization/organization";
 import { RoomTemplate } from "@/model/admin/room/room-template";
 import { Room } from "@/model/admin/room/room";
+import { SystemUser } from "@/model/admin/system-users/system-user";
 @Component
 export default class RoomDetailsEdit extends Vue {
   roomId = this.$route.params.roomId;
 
-  rules = [(v: string | any[]) => (v && v.length <= 25) || "Max 25 characters"];
+  rules = [
+    (v: string | any[]): boolean | string =>
+      (v && v.length <= 25) || "Max 25 characters",
+  ];
 
   isCreate = false;
 
@@ -145,11 +151,11 @@ export default class RoomDetailsEdit extends Vue {
 
   organization = {} as Organization;
 
-  get systemUserMe() {
+  get systemUserMe(): SystemUser {
     return this.$store.state.SystemUsersModule.me;
   }
 
-  get roomDetails() {
+  get roomDetails(): RoomDetails {
     if (!this.$store.state.RoomModule.rooms[this.roomId]) {
       return NULL_ROOM_DETAILS;
     }
@@ -188,11 +194,11 @@ export default class RoomDetailsEdit extends Vue {
     }
   }
 
-  setTemplate() {
-    this.roomDetails.template = this.template.uuid;
+  setTemplate(): void {
+    this.room.templateId = this.template.uuid;
   }
 
-  setOrganization() {
+  setOrganization(): void {
     this.roomDetails.organization = this.organization.id;
   }
 }

@@ -64,15 +64,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { DateFormatService } from "@/services/date-format";
+import DateFormatService from "@/services/date-format";
+import { SupportItem } from "@/model/admin/support/support-item";
 @Component({})
 export default class SupportArchive extends Vue {
-  @inject(INJECTION_TYPES.DATE_FORMAT)
-  dateFormatService?: DateFormatService;
   readonly HEADERS = [
     {
       text: "Date",
@@ -105,11 +101,11 @@ export default class SupportArchive extends Vue {
     },
   ];
 
-  get supportItems() {
+  get supportItems(): SupportItem[] {
     return this.$store.getters["SupportModule/getArchived"];
   }
 
-  getParticipantName(id: string) {
+  getParticipantName(id: string): string {
     const participant: Participant = this.$store.getters[
       "ParticipantsModule/getById"
     ](id);
@@ -120,13 +116,13 @@ export default class SupportArchive extends Vue {
     }
   }
 
-  getRoomName(id: string) {
+  getRoomName(id: string): string {
     return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
-  formatDate(iso: string): string | undefined {
+  formatDate(iso: string): string {
     if (iso) {
-      return this.dateFormatService?.formatFullDateTime(iso);
+      return DateFormatService.formatFullDateTime(iso);
     } else {
       return "unknown";
     }

@@ -125,7 +125,7 @@ export default class SystemUserDetails extends Vue {
     },
   ];
 
-  getItems(items: any): any[] {
+  getItems(items: any[] | (() => any[])): any[] {
     if (typeof items === "function") {
       return items();
     } else {

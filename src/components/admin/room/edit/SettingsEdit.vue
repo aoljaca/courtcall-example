@@ -388,11 +388,17 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import RoomTemplates from "@/components/admin/room/edit/room-templates/RoomTemplates.vue";
-import { NULL_ROOM_SETTINGS } from "@/model/admin/room/room-settings";
-import "reflect-metadata";
+import {
+  NULL_ROOM_SETTINGS,
+  RoomSettings,
+} from "@/model/admin/room/room-settings";
 import { RoomTemplate } from "@/model/admin/room/room-template";
-import { NULL_ROOM_DETAILS } from "@/model/admin/room/room-details";
+import {
+  NULL_ROOM_DETAILS,
+  RoomDetails,
+} from "@/model/admin/room/room-details";
 import { Room } from "@/model/admin/room/room";
+import { SystemUser } from "@/model/admin/system-users/system-user";
 @Component({
   components: {
     RoomTemplates,
@@ -400,16 +406,18 @@ import { Room } from "@/model/admin/room/room";
 })
 export default class SettingsEdit extends Vue {
   value = "null";
-  rules = [(v: string | any[]) => v.length <= 35 || "Max 35 characters"];
+  rules = [
+    (v: string | any[]): boolean | string =>
+      v.length <= 35 || "Max 35 characters",
+  ];
 
   template: RoomTemplate = {} as RoomTemplate;
 
-  
-  get systemUserMe() {
+  get systemUserMe(): SystemUser {
     return this.$store.state.SystemUsersModule.me;
   }
 
-  get roomSettings() {
+  get roomSettings(): RoomSettings {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
       return NULL_ROOM_SETTINGS;
     }
@@ -418,7 +426,7 @@ export default class SettingsEdit extends Vue {
       .roomSettings;
   }
 
-  get roomDetails() {
+  get roomDetails(): RoomDetails {
     if (!this.$store.state.RoomModule.rooms[this.$route.params.roomId]) {
       return NULL_ROOM_DETAILS;
     }
@@ -436,14 +444,14 @@ export default class SettingsEdit extends Vue {
     return this.$store.getters["RoomModule/getById"](roomId);
   }
 
-  mounted() {
+  mounted(): void {
     this.template = this.room
       ? this.getTemplateById(this.room.templateId!)
       : this.getTemplatesByOrgId(this.systemUserMe.organizationIds[0])[0];
   }
 
-  setTemplate() {
-    this.roomDetails.template = this.template.uuid;
+  setTemplate(): void {
+    this.room.templateId = this.template.uuid;
   }
 
   getTemplateById(templateId: string): RoomTemplate {

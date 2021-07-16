@@ -1,28 +1,16 @@
 import { BackgroundOption } from "@/model/meeting/av-options/background-option";
-import { injectable } from "inversify-props";
-import Vue from "vue";
-import { Store } from "vuex/types/index";
 import { DateTime } from "luxon";
 import * as tfjs from "@tensorflow/tfjs";
 import * as BodyPix from "@tensorflow-models/body-pix";
-export interface IBackgroundBlurService {
-  alterVideo: (
-    videoElementId: string,
-    canvasElementId: string,
-    backgroundOptions: BackgroundOption,
-    store: Store<any>
-  ) => void;
-  bootstrap: () => void;
-}
+import { VideoState } from "@/store/conference/conference-setup-module";
+import Store from "../store/index";
 interface BindPageParams {
   videoElement: HTMLVideoElement;
   canvasElement: HTMLCanvasElement;
   backgroundUrl?: string;
   timestamp: string;
-  store: Store<any>;
 }
-@injectable()
-export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
+class BackgroundBlurService {
   net: BodyPix.BodyPix | null = null;
 
   async getNet(): Promise<BodyPix.BodyPix> {
@@ -39,64 +27,68 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
       return net;
     }
   }
+
   bootstrap() {
     tfjs.getBackend();
     this.getNet();
   }
-  alterVideo(
+
+  async alterVideo(
     videoElementId: string,
     canvasElementId: string,
-    backgroundOptions: BackgroundOption,
-    store: Store<any>
-  ): void {
+    backgroundOptions: BackgroundOption
+  ): Promise<void> {
+    Store.dispatch("ConferenceSetupModule/alterVideoState", VideoState.Loading);
     const videoElement = document.getElementById(
       videoElementId
     ) as HTMLVideoElement;
     const canvasElement = document.getElementById(
       canvasElementId
     ) as HTMLCanvasElement;
-    store.dispatch("BackgroundBlurModule/changeModeAction", {
-      mode: "loading",
-    });
-    videoElement.height = videoElement.videoHeight;
-    videoElement.width = videoElement.videoWidth;
-    canvasElement.height = videoElement.videoHeight;
-    canvasElement.width = videoElement.videoWidth;
+
+    const videoDimensions = this.videoDimensions(videoElement);
+    videoElement.height = videoDimensions.height;
+    videoElement.width = videoDimensions.width;
+    canvasElement.height = videoDimensions.height;
+    canvasElement.width = videoDimensions.width;
     const dateTime = DateTime.now().toISO();
 
-    store.dispatch("BackgroundBlurModule/updateTimeStampAction", {
+    Store.dispatch("BackgroundBlurModule/updateTimeStampAction", {
       timestamp: dateTime,
     });
+
+    const currentBackground =
+      Store.state.ConferenceSetupModule.activeBackground;
+    if (backgroundOptions !== currentBackground) {
+      Store.dispatch(
+        "ConferenceSetupModule/alterActiveBackground",
+        backgroundOptions
+      );
+    }
+
     if (backgroundOptions.type == "none") {
-      store.dispatch("BackgroundBlurModule/changeModeAction", { mode: "off" });
       canvasElement.style.background = "";
-      videoElement.removeAttribute("height");
-      videoElement.removeAttribute("width");
     } else if (backgroundOptions.type === "blur") {
-      this.startBlur({
+      await this.startBlur({
         videoElement,
         canvasElement,
         timestamp: dateTime,
-        store,
       });
     } else {
-      this.startBackground({
+      await this.startBackground({
         videoElement,
         canvasElement,
         timestamp: dateTime,
-        store,
         backgroundUrl: `url('${backgroundOptions.backgroundUrl}')`,
       });
     }
+    Store.dispatch("ConferenceSetupModule/toggleVideoState");
   }
 
   private async startBlur(options: BindPageParams) {
     tfjs.getBackend();
     const net = await this.getNet();
     this.segmentBlurInRealTime(net, options);
-    options.store.dispatch("BackgroundBlurModule/changeModeAction", {
-      mode: "on",
-    });
   }
 
   private async startBackground(options: BindPageParams) {
@@ -104,9 +96,6 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
     const net = await this.getNet();
     options.canvasElement.style.background = options.backgroundUrl!;
     this.segmentBackgroundInRealTime(net, options);
-    options.store.dispatch("BackgroundBlurModule/changeModeAction", {
-      mode: "on",
-    });
   }
 
   private async segmentBackgroundInRealTime(
@@ -132,7 +121,7 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
     context!.globalCompositeOperation = "source-in";
     context!.drawImage(options.videoElement, 0, 0);
 
-    const dateTime = options.store.state.BackgroundBlurModule.timestamp;
+    const dateTime = Store.state.BackgroundBlurModule.timestamp;
 
     if (options.timestamp === dateTime) {
       this.segmentBackgroundInRealTime(net, options);
@@ -144,6 +133,7 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
     options: BindPageParams
   ) {
     const segmentation = await net.segmentPerson(options.videoElement);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const context = options.canvasElement.getContext("2d")!;
     BodyPix.drawBokehEffect(
       document.getElementById("canvas-preview") as HTMLCanvasElement,
@@ -154,7 +144,7 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
       false
     );
 
-    const dateTime = options.store.state.BackgroundBlurModule.timestamp;
+    const dateTime = Store.state.BackgroundBlurModule.timestamp;
 
     if (options.timestamp === dateTime) {
       this.segmentBlurInRealTime(net, options);
@@ -174,8 +164,10 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
     // It must be tall and thin, or exactly equal to the original ratio
     else height = width / videoRatio;
     return {
-      width: width,
-      height: height,
+      width: width || video.videoWidth,
+      height: height || video.videoHeight,
     };
   }
 }
+
+export default new BackgroundBlurService();

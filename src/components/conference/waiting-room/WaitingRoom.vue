@@ -2,23 +2,21 @@
   <div class="conference-body-height d-flex justify-space-around flex-column">
     <v-row class="flex-grow-0">
       <v-col class="m-l-25 pb-4">
-        <v-alert color="warning" type="warning" icon="mdi-alert-circle-outline">
-          {{ $t("waitingRoom.alert")}}
+        <v-alert color="warning text--black" type="warning" icon="mdi-alert-circle-outline">
+          {{ $t("waitingRoom.alert") }}
         </v-alert>
         <v-row>
           <v-col>
             <h1>
-              {{ $t("waitingRoom.mainHeading")}}
+              {{ $t("waitingRoom.mainHeading") }}
             </h1>
           </v-col>
         </v-row>
         <v-row dense class="pb-8">
           <v-col class="d-flex">
-            <h4>
-              The pressure cooker
-            </h4>
+            <h4>pressure cooker</h4>
             <div class="mx-4">
-              {{ $t("waitingRoom.subHeading")}}
+              {{ $t("waitingRoom.subHeading") }}
             </div>
           </v-col>
         </v-row>
@@ -39,37 +37,33 @@
       </v-col>
       <v-col class="m-r-25" align-self="end">
         <v-row>
-          <v-col>
+          <v-col cols="auto">
             <div class="d-flex">
-              <v-icon>
-                mdi-play-circle-outline
-              </v-icon>
+              <v-icon color="accent"> mdi-play-circle-outline </v-icon>
               <h4 class="mx-2">
-                {{ $t("waitingRoom.watch")}}
+                {{ $t("waitingRoom.watch") }}
               </h4>
             </div>
             <div>
               {{ $t("waitingRoom.watchMsg1")}} 
               <a>
-              {{ $t("waitingRoom.watchLink")}}
+                {{ $t("waitingRoom.watchLink") }}
               </a>
             </div>
-            {{ $t("waitingRoom.watchMsg2")}}
+            {{ $t("waitingRoom.watchMsg2") }}
           </v-col>
         </v-row>
         <v-row>
-          <v-col>
+          <v-col cols="auto">
             <div class="d-flex">
-              <h4>
-                {{ $t("waitingRoom.read")}}
+              <v-icon color="accent">mdi-book</v-icon>
+              <h4 class="mx-2">
+                {{ $t("waitingRoom.read") }}
               </h4>
-              <v-icon class="mx-2">
-                mdi-book
-              </v-icon>
             </div>
             <div>
               <a>
-              {{ $t("waitingRoom.readLink") }}
+                {{ $t("waitingRoom.readLink") }}
               </a>
               {{ $t("waitingRoom.readMsg") }}
             </div>
@@ -80,7 +74,7 @@
   </div>
 </template>
 <script lang="ts">
-import "reflect-metadata";
+import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 import { Component, Vue } from "vue-property-decorator";
 import ContactHost from "@/components/conference/waiting-room/ContactHost.vue";
 @Component({
@@ -90,6 +84,28 @@ import ContactHost from "@/components/conference/waiting-room/ContactHost.vue";
 })
 export default class WaitingRoom extends Vue {
   dialog = false;
+  timer = 0;
+
+  get conferenceId(): string {
+    return this.$route.params.conferenceId;
+  }
+
+  get conference(): SubConference {
+    return this.$store.getters["ConferenceModule/getSubConferenceByid"](
+      this.conferenceId
+    );
+  }
+
+  // async mounted(): Promise<void> {
+  //   // Temporary timer to push user to conference call after 5 seconds
+  //   this.timer = setInterval(async () => {
+  //     await this.$store.dispatch(
+  //       "ConferenceModule/joinConference",
+  //       this.conferenceId
+  //     );
+  //   }, 5000);
+  // }
+
 }
 </script>
 <style lang="scss" scoped>

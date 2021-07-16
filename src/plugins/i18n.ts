@@ -3,14 +3,14 @@ import VueI18n from "vue-i18n";
 import logout_en from "./i18n/en-us/logout";
 import general_en from "./i18n/en-us/general";
 import login_en from "./i18n/en-us/login/login";
-import entry_en from "./i18n/en-us/entry/entry";
-import waiting_room_en from "./i18n/en-us/waiting-room";
-import av_options_en from "./i18n/en-us/av-options/av-options";
-import meeting_ui_en from "./i18n/en-us/meeting-ui/meeting-ui";
-import admin_en from "./i18n/en-us/admin";
-import sidebar_en from "./i18n/en-us/sidebar/sidebar";
+import entry_en from "./i18n/en-us/conference/entry/entry";
+import waiting_room_en from "./i18n/en-us/conference/waiting-room/waiting-room";
+import av_options_en from "./i18n/en-us/conference/setup/setup";
+import admin_en from "./i18n/en-us/admin/admin";
+import sidebar_en from "./i18n/en-us/conference/meeting/sidebar/sidebar";
 import notFound_en from "./i18n/en-us/not-found";
 import navigation_en from "./i18n/en-us/navigation";
+import conference_en from "./i18n/en-us/conference/conference";
 Vue.use(VueI18n);
 const messages = {
   "en-us": {
@@ -21,8 +21,8 @@ const messages = {
     logout: logout_en,
     waitingRoom: waiting_room_en,
     avOptions: av_options_en,
-    meetingUI: meeting_ui_en,
     admin: admin_en,
+    conference: conference_en,
     sidebar: sidebar_en,
     notFound: notFound_en,
   },

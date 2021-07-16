@@ -3,5 +3,5 @@ import conference from "./joinConference";
 
 export default {
   admin,
-  conference
+  conference,
 };

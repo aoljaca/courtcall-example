@@ -22,15 +22,11 @@
   </div>
 </template>
 <script lang="ts">
-import { INJECTION_TYPES } from "@/inversify/injection-types";
 import { Chat } from "@/model/meeting/meeting-ui/side-bar/chat/chat";
-import { ChatFormatService } from "@/services/chat-format";
-import { inject } from "inversify-props";
+import ChatFormatService from "@/services/chat-format";
 import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class ChatCard extends Vue {
-  @inject(INJECTION_TYPES.CHAT_FORMAT)
-  chatFormatService: ChatFormatService | undefined;
   @Prop()
   chat: Chat | undefined;
 
@@ -38,7 +34,7 @@ export default class ChatCard extends Vue {
     if (!this.chat) {
       return "Unknown";
     }
-    return this.chatFormatService?.formatTitle({
+    return ChatFormatService.formatTitle({
       myId: this.$store.state.ParticipantsModule.me.id,
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       participantIds: this.chat!.participants,
@@ -48,7 +44,7 @@ export default class ChatCard extends Vue {
     }) as string;
   }
 
-  selectChat() {
+  selectChat(): void {
     this.$store.dispatch("ChatModule/alterSelectedChatId", {
       id: this.chat?.uuid,
     });

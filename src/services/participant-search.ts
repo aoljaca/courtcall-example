@@ -1,6 +1,5 @@
 import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { injectable } from "inversify-props";
 
 export interface ParticipantSearchParams {
   term: string;
@@ -8,12 +7,7 @@ export interface ParticipantSearchParams {
   case: Case | null;
 }
 
-export interface ParticipantSearchService {
-  search: (params: ParticipantSearchParams) => boolean;
-}
-
-@injectable()
-export class ParticipantSearchServiceImpl implements ParticipantSearchService {
+class ParticipantSearchService {
   search(params: ParticipantSearchParams): boolean {
     if (!params.term) {
       return true;
@@ -34,3 +28,5 @@ export class ParticipantSearchServiceImpl implements ParticipantSearchService {
     return false;
   }
 }
+
+export default new ParticipantSearchService();

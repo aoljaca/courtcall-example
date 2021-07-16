@@ -44,6 +44,7 @@
   </div>
 </template>
 <script lang="ts">
+import { Chat } from "@/model/meeting/meeting-ui/side-bar/chat/chat";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Component, Vue } from "vue-property-decorator";
 import ChatCard from "./ChatCard.vue";
@@ -60,7 +61,7 @@ export default class ChatMainView extends Vue {
     this.creatingChat = true;
   }
 
-  cancelCreation() {
+  cancelCreation(): void {
     this.creatingChat = false;
     this.selectedParticipants = [];
   }
@@ -69,7 +70,7 @@ export default class ChatMainView extends Vue {
     return this.$store.getters["ParticipantsModule/getAsListNoSelf"];
   }
 
-  get chats() {
+  get chats(): Chat[] {
     return this.$store.getters["ChatModule/chatsAsList"];
   }
 }

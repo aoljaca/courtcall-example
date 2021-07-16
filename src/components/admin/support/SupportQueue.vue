@@ -105,15 +105,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { inject } from "inversify-props";
-import { DateFormatService } from "@/services/date-format";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
+import DateFormatService from "@/services/date-format";
+import { SupportItem } from "@/model/admin/support/support-item";
 @Component({})
 export default class SupportQueue extends Vue {
-  @inject(INJECTION_TYPES.DATE_FORMAT)
-  dateFormatService?: DateFormatService;
   readonly HEADERS = [
     {
       text: "Time",
@@ -143,12 +139,12 @@ export default class SupportQueue extends Vue {
     },
   ];
 
-  get supportItems() {
+  get supportItems(): SupportItem[] {
     return this.$store.getters["SupportModule/getActive"];
   }
 
   formatDate(iso: string): string | undefined {
-    return this.dateFormatService?.formatFullDateTime(iso);
+    return DateFormatService.formatFullDateTime(iso);
   }
 
   getParticipantById(id: string): Participant {
@@ -164,7 +160,7 @@ export default class SupportQueue extends Vue {
     }
   }
 
-  getRoomName(id: string) {
+  getRoomName(id: string): string {
     return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
