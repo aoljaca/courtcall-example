@@ -124,3 +124,4 @@ export default class WaitingRoom extends Vue {
 a {
   text-decoration: underline;
 }
+</style>

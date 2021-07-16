@@ -16,10 +16,11 @@ export default {
   contactHostDescription: "Please leave a brief message for the host",
   hostContacted: "The host has been contacted. Please stand by",
   characterLimit: "Max 300 Characters",
-  alert: "Cases are running 10-15 minutes behind schedule today. Please be prepared to wait until your case is called.",
+  alert:
+    "Cases are running 10-15 minutes behind schedule today. Please be prepared to wait until your case is called.",
   messageHost: "Message the host",
   submit: "Submit",
   cancel: "Cancel",
   standby: "The host has been contacted. Please stand by",
-  dismiss: "Dismiss ({dismissTime})"
+  dismiss: "Dismiss ({dismissTime})",
 };

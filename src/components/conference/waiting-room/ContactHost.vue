@@ -1,8 +1,5 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    width="700"
-  >
+  <v-dialog v-model="dialog" width="700">
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         v-bind="attrs"
@@ -11,7 +8,7 @@
         depressed
         data-test-id="contact-host-button"
       >
-        {{ $t("waitingRoom.contactHost")}}
+        {{ $t("waitingRoom.contactHost") }}
       </v-btn>
     </template>
 
@@ -22,11 +19,7 @@
         </h3>
       </v-card-title>
 
-      <v-text-field
-        data-test-id="contact-host-text"
-        clearable
-        class="mb-4"
-      >
+      <v-text-field data-test-id="contact-host-text" clearable class="mb-4">
       </v-text-field>
 
       <v-card-actions class="d-flex justify-center">
@@ -63,10 +56,9 @@
           depressed
           data-test-id="dismiss-button"
           @click="dialog = false"
-
         >
           <span>
-            {{ $t('waitingRoom.dismiss', { dismissTime: timeToDismiss }) }}
+            {{ $t("waitingRoom.dismiss", { dismissTime: timeToDismiss }) }}
           </span>
         </v-btn>
       </v-card-actions>
@@ -83,7 +75,7 @@ export default class ContactHost extends Vue {
   isLastScreen = false;
   timeToDismiss = 15;
 
-  transition() {
+  transition(): void {
     this.messagedHost = true;
     this.isLastScreen = true;
     this.startTimer();
@@ -94,7 +86,7 @@ export default class ContactHost extends Vue {
   }
 
   setTimeToDismiss(): void {
-    if(this.timeToDismiss === 0) {
+    if (this.timeToDismiss === 0) {
       this.dialog = false;
     } else {
       this.timeToDismiss--;
