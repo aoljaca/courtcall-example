@@ -2,8 +2,8 @@ import {
   BackgroundOption,
   NO_BACKGROUND_BLUR_OPTION,
 } from "@/model/meeting/av-options/background-option";
-import { BackgroundBlurServiceImpl as BackgroundBlurService } from "@/services/background-blur";
-import { ToastServiceImpl } from "@/services/toast";
+import BackgroundBlurService from "@/services/background-blur";
+import ToastServiceImpl from "@/services/toast";
 import { TYPE } from "vue-toastification";
 import { Module } from "vuex";
 

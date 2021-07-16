@@ -21,7 +21,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import "reflect-metadata";
 @Component
 export default class Navigation extends Vue {
   routes = [

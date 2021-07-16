@@ -198,7 +198,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import "reflect-metadata";
 import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Room } from "@/model/admin/room/room";

@@ -22,15 +22,13 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import "reflect-metadata";
 import AdminLogin from "@/components/login/AdminLogin.vue";
 import JoinConference from "@/components/login/JoinConference.vue";
 import ConferenceHeader from "@/components/conference/navigation/ConferenceHeader.vue";
 import ConferenceFooter from "@/components/conference/navigation/ConferenceFooter.vue";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { CustomTheme, ThemeService } from "@/services/theme-service";
-import { inject } from "inversify-props";
-import { WebsocketConnectionService } from "@/services/websocket-connection";
+import { CustomTheme } from "@/services/theme-service";
+import ThemeService from "@/services/theme-service";
+import WebsocketConnectionService from "@/services/websocket-connection";
 @Component({
   components: {
     AdminLogin,
@@ -40,14 +38,9 @@ import { WebsocketConnectionService } from "@/services/websocket-connection";
   },
 })
 export default class Login extends Vue {
-  @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
-  websocketConnectionService!: WebsocketConnectionService;
-  @inject(INJECTION_TYPES.THEME_SERVICE)
-  themeService!: ThemeService;
-
   mounted(): void {
-    this.websocketConnectionService.connectMeeting();
-    this.themeService.switchTheme(CustomTheme.CONFERENCE, this.$vuetify);
+    WebsocketConnectionService.connectMeeting();
+    ThemeService.switchTheme(CustomTheme.CONFERENCE, this.$vuetify);
   }
 }
 </script>

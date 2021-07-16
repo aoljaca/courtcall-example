@@ -42,7 +42,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import "reflect-metadata";
 @Component
 export default class RoomNav extends Vue {
   @Prop()

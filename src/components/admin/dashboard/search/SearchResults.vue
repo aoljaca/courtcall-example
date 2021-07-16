@@ -25,7 +25,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import "reflect-metadata";
 import {
   LocalizedSearchType,
   SearchType,

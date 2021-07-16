@@ -1,26 +1,16 @@
 import { BackgroundOption } from "@/model/meeting/av-options/background-option";
-import { injectable } from "inversify-props";
 import { DateTime } from "luxon";
 import * as tfjs from "@tensorflow/tfjs";
 import * as BodyPix from "@tensorflow-models/body-pix";
 import { VideoState } from "@/store/conference/conference-setup-module";
 import Store from "../store/index";
-export interface IBackgroundBlurService {
-  alterVideo: (
-    videoElementId: string,
-    canvasElementId: string,
-    backgroundOptions: BackgroundOption
-  ) => void;
-  bootstrap: () => void;
-}
 interface BindPageParams {
   videoElement: HTMLVideoElement;
   canvasElement: HTMLCanvasElement;
   backgroundUrl?: string;
   timestamp: string;
 }
-@injectable()
-export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
+class BackgroundBlurService {
   net: BodyPix.BodyPix | null = null;
 
   async getNet(): Promise<BodyPix.BodyPix> {
@@ -178,3 +168,5 @@ export class BackgroundBlurServiceImpl implements IBackgroundBlurService {
     };
   }
 }
+
+export default new BackgroundBlurService();

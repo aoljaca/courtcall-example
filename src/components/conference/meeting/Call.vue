@@ -34,10 +34,7 @@ import VideoPlatform from "./VideoPlatform.vue";
 import Chat from "./sidebar/chat/Chat.vue";
 import Files from "./sidebar/files/Files.vue";
 import Participants from "./sidebar/participants/ParticipantsMainView.vue";
-import "reflect-metadata";
-import { inject } from "inversify-props";
-import { WebsocketConnectionService } from "@/services/websocket-connection";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
+import WebsocketConnectionService from "@/services/websocket-connection";
 import { isEmpty } from "lodash";
 import CallHeader from "./navigation/CallHeader.vue";
 
@@ -55,15 +52,19 @@ import CallHeader from "./navigation/CallHeader.vue";
   },
 })
 export default class Call extends Vue {
-  @inject(INJECTION_TYPES.WEBSOCKET_CONNECTION)
-  websocketConnectionService!: WebsocketConnectionService;
+  drawer = true;
+
+  get isMobile(): boolean {
+    // TODO: Reference mobile breakpoint vuetify service
+    return false;
+  }
 
   get sidebarMode(): string {
     return this.$store.state.SidebarModule.sidebar;
   }
 
   mounted(): void {
-    this.websocketConnectionService.connectMeeting();
+    WebsocketConnectionService.connectMeeting();
   }
 }
 </script>

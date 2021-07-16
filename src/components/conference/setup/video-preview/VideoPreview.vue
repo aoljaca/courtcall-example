@@ -61,9 +61,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { NO_BACKGROUND_BLUR_OPTION } from "@/model/meeting/av-options/background-option";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { IBackgroundBlurService } from "@/services/background-blur";
+import BackgroundBlurService from "@/services/background-blur";
 import {
   AudioState,
   VideoState,
@@ -78,9 +76,6 @@ import BackgroundSelector from "./BackgroundSelector.vue";
   },
 })
 export default class VideoPreview extends Vue {
-  @inject(INJECTION_TYPES.BACKGROUND_BLUR)
-  backgroundBlurService!: IBackgroundBlurService;
-
   openBackground = false;
 
   get videoDevices(): MediaDeviceInfo[] {
@@ -138,7 +133,7 @@ export default class VideoPreview extends Vue {
     }
 
     setTimeout(() => {
-      this.backgroundBlurService.bootstrap();
+      BackgroundBlurService.bootstrap();
     }, 500);
   }
 

@@ -44,7 +44,6 @@ import Settings from "@/components/admin/room/view/Settings.vue";
 import CasesTable from "@/components/admin/room/view/CasesTable.vue";
 import ParticipantsTable from "@/components/admin/room/view/ParticipantsTable.vue";
 
-import "reflect-metadata";
 @Component({
   components: {
     RoomNav,

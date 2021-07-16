@@ -49,9 +49,7 @@ import {
   BackgroundOption,
   BACKGROUND_OPTIONS,
 } from "@/model/meeting/av-options/background-option";
-import { inject } from "inversify-props";
-import { INJECTION_TYPES } from "@/inversify/injection-types";
-import { IBackgroundBlurService } from "@/services/background-blur";
+import BackgroundBlurService from "@/services/background-blur";
 import VideoOverlay from "./VideoOverlay.vue";
 @Component({
   components: {
@@ -59,9 +57,6 @@ import VideoOverlay from "./VideoOverlay.vue";
   },
 })
 export default class BackgroundSelector extends Vue {
-  @inject(INJECTION_TYPES.BACKGROUND_BLUR)
-  backgroundBlurService!: IBackgroundBlurService;
-
   readonly backgrounds = BACKGROUND_OPTIONS;
   openBackground = false;
 
@@ -75,7 +70,7 @@ export default class BackgroundSelector extends Vue {
 
   setUpBackgroundBlur(selectedBackground: BackgroundOption) {
     if (selectedBackground) {
-      this.backgroundBlurService.alterVideo(
+      BackgroundBlurService.alterVideo(
         "video-preview",
         "canvas-preview",
         selectedBackground

@@ -8,7 +8,6 @@ This application serves as the UI for v3 of our application.
 - Typescript - Our entire codebase is in Typescript. This allows us to catch more bugs and write cleaner code than we would be able to in JS
 - Vuex - Vuex is the default Redux implementation for Vue. We will be making extensive use of it to store and convey states to different components.
 - Sass/SCSS - We use SCSS styling in our application. Honestly we aren't doing anything crazy with it. We will mostly be using it for variables and nested styling
-- Inversify - Unlike Angular, Vue does not have native dependency injection that can hold state. Mixins, for the record, are stateless. They also don't play well with typescript. As a result we use inversify for dependency injection. It has a lot of boilerplate, but ultimately gets the job done.
 - Vuetify - vuetify is a component library based of Material Design. Despite being for Vue, it's arguably better than Google's official library for Angular. The one knock is that their datatables are fairly basic, but we're not doing anything ridiculous anyway
 - @mdi/font - vuetify takes advantage of the open-source material design icon library
 - vue-i18n - All text in this application goes through a translation matrix. This will allow us to swap out languages easier if we ever decide to expand internationally. vue-i18n is the library that accomplishes this
@@ -40,10 +39,6 @@ By law, we are required to adhere to accessibility standards. However, this is e
 ## Component Size
 
 While some components will become large, you should do your best to keep component size to a minimum. This will allow us to maintain and build on the application in a much more sane way. For examples, look into the control bar component.
-
-## Inversify Services
-
-While Vue has native support via MixIns, they have some issues. Mixins cannot hold state. While some of our shared logic is stateless, others (such as background blur and our wss service) require state. Furetheremore, VueJS mixins don't appear to be type safe. As such, we use inversify to define services and inject them into vue components. Examples can be found in the `inversify` and `services` folder.
 
 ## PR Policy
 

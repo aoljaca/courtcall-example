@@ -1,5 +1,3 @@
-import { injectable } from "inversify-props";
-
 export interface FooterDataOptions {
   page: number;
   itemsPerPage: number;
@@ -34,15 +32,12 @@ export interface DataTableFooterOptions {
   showFirstLastPage?: boolean;
 }
 
-export interface DataTableOptionsService {
-  getFooterOptions: () => DataTableFooterOptions;
-}
-
-@injectable()
-export class DataTableOptionsServiceImpl {
+class DataTableOptionsService {
   getFooterOptions(): DataTableFooterOptions {
     return {
       itemsPerPageOptions: [5, 10, 15, 20, 25],
     };
   }
 }
+
+export default new DataTableOptionsService();

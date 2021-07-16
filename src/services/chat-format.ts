@@ -1,13 +1,8 @@
 import { ChatFormatParams } from "@/model/meeting/meeting-ui/side-bar/chat/chat-format-params";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import { injectable } from "inversify-props";
 import Vue from "vue";
-export interface ChatFormatService {
-  formatTitle: (params: ChatFormatParams) => string;
-}
 
-@injectable()
-export class ChatFormatServiceImpl implements ChatFormatService {
+class ChatFormatService {
   formatTitle(params: ChatFormatParams): string {
     if (params.type === "moderators") {
       return params.this.$t("sidebar.chat.chatCard.hostsAndModerators");
@@ -45,3 +40,5 @@ export class ChatFormatServiceImpl implements ChatFormatService {
     }
   }
 }
+
+export default new ChatFormatService();

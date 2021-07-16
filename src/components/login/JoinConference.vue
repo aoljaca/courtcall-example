@@ -33,7 +33,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import "reflect-metadata";
 
 @Component
 export default class JoinConference extends Vue {
