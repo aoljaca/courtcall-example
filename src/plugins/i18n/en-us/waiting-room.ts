@@ -19,5 +19,5 @@ export default {
   submit: "Submit",
   cancel: "Cancel",
   standby: "The host has been contacted. Please stand by",
-  dismiss: "Dismiss",
+  dismiss: "Dismiss ({dismissTime})"
 };

@@ -65,10 +65,9 @@
           @click="dialog = false"
 
         >
-          {{ $t("waitingRoom.dismiss") }}
-          (
-            <span>{{ timeToDismiss }}</span>
-          )
+          <span>
+            {{ $t('waitingRoom.dismiss', { dismissTime: timeToDismiss }) }}
+          </span>
         </v-btn>
       </v-card-actions>
     </v-card>
