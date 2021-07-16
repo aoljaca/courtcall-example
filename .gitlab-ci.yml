@@ -7,7 +7,7 @@ stages:
 npm_install:
   stage: install
   script:
-    - bash ./cicd/npm-instal.sh
+    - bash ./cicd/npm-install.sh
   tags:
     - v3
 
