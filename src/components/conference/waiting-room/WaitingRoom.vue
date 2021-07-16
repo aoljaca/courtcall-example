@@ -2,7 +2,7 @@
   <div class="conference-body-height d-flex justify-space-around flex-column">
     <v-row class="flex-grow-0">
       <v-col class="m-l-25 pb-4">
-        <v-alert color="warning text--black" type="warning" icon="mdi-alert-circle-outline">
+        <v-alert color="warning black--text" type="warning" icon="mdi-alert-circle-outline">
           {{ $t("waitingRoom.alert") }}
         </v-alert>
         <v-row>
