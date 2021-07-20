@@ -10,7 +10,7 @@
     <v-row>
       <v-col>
         <div class="ml-5">
-          <h2 class="c-primary text-h4 font-weight-bold">
+          <h2 class="c-primary text-h4 font-weight-bold no-wrap">
             {{ mainConference.displayName }}
           </h2>
           <h4 class="c-primary font-weight-regular">
@@ -18,23 +18,23 @@
           </h4>
         </div>
       </v-col>
-      <v-col class="d-flex justify-start">
+      <v-col v-if="!showCondensedVersion" class="d-flex justify-start">
         <!-- Notification Container-->
       </v-col>
       <v-col v-if="showCondensedVersion">
-         <div>
+         <div class="d-flex">
           <v-icon small color="error">
             mdi-circle
           </v-icon>
-          <span>
+          <span class="no-wrap">
             Recording
           </span>
         </div>
-        <div>
+        <div class="d-flex">
           <v-icon small color="success">
             mdi-circle
           </v-icon>
-          <span>
+          <span class="no-wrap">
             En Espaniol
           </span>
         </div>
@@ -118,5 +118,9 @@ export default class CallHeader extends Vue {
 .white-background {
   background: white;
   border-radius: 0.5rem;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 </style>
