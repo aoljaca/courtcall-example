@@ -74,7 +74,7 @@ export default class CasesTable extends Vue {
   readonly HEADERS = [
     {
       text: this.$t("admin.cases.nameHeader"),
-      value: this.$t("admin.cases.nameValue"),
+      value: "name",
       sortable: true,
     },
     {

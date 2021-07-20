@@ -77,6 +77,12 @@ export default class CreateParticipantDetails extends Vue {
       condition: this.isDedicatedRole,
     },
     {
+      title: this.$t("admin.participants.formFields.label.title"),
+      placeholder: this.$t("admin.participants.formFields.label.placeholder"),
+      key: "label",
+      inputType: "textField",
+    },
+    {
       title: this.$t("admin.participants.formFields.entryConference.title"),
       placeholder: this.$t(
         "admin.participants.formFields.entryConference.placeholder"
