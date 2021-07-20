@@ -1,6 +1,11 @@
 <template>
   <v-app-bar class="pt-4" color="secondary" flat>
-    <v-app-bar-nav-icon v-if="showCondensedVersion" @click.stop="drawer = !drawer" />
+    <v-div color="accent" class="white-background pa-0 ma-0">
+      <v-app-bar-nav-icon 
+        v-if="showCondensedVersion" 
+        @click.stop="drawer = !drawer" 
+      />
+    </v-div>
     <img src="../../../../../public/img/icons/CourtCallIconDark.png" />
     <v-row>
       <v-col>
