@@ -22,34 +22,34 @@ html {
     font-family: $font-family, sans-serif !important;
   }
   font-family: $font-family, sans-serif !important;
-  .v-btn:not(.v-btn-round).v-size--default {
-    height: $btn-height;
-    padding: 0 $font-size;
-    min-width: $font-size;
-  }
-  .v-btn--fab.v-size--default {
-    height: $btn-height;
-    width: $btn-height;
-  }
-  .v-chip.v-size--default {
-    height: $btn-height;
-  }
-
-  // Temporarily removed. This is preventing component control of icon size, which should still be scaled
-  // Come back to this when we do theme or responsive work
-  // .v-icon {
-  //   // Seems to be applying size directly to mdi icon. Will need important tag
-  //   font-size: $font-size !important;
+  // .v-btn:not(.v-btn-round).v-size--default {
+  //   height: $btn-height;
+  //   padding: 0 $font-size;
+  //   min-width: $font-size;
+  // }
+  // .v-btn--fab.v-size--default {
+  //   height: $btn-height;
+  //   width: $btn-height;
+  // }
+  // .v-chip.v-size--default {
+  //   height: $btn-height;
   // }
 
-  .v-chip .v-chip__content {
-    font-size: $font-size;
-  }
-  .v-input {
-    font-size: $font-size;
-  }
-  .v-label {
-    font-size: $font-size;
-  }
+  // // Temporarily removed. This is preventing component control of icon size, which should still be scaled
+  // // Come back to this when we do theme or responsive work
+  // // .v-icon {
+  // //   // Seems to be applying size directly to mdi icon. Will need important tag
+  // //   font-size: $font-size !important;
+  // // }
+
+  // .v-chip .v-chip__content {
+  //   font-size: $font-size;
+  // }
+  // .v-input {
+  //   font-size: $font-size;
+  // }
+  // .v-label {
+  //   font-size: $font-size;
+  // }
 }
 </style>
