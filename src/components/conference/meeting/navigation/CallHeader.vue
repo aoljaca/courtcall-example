@@ -33,12 +33,7 @@
             En Espaniol
           </span>
         </div>
-       
       </v-col>
-
-
-
-
       <v-col v-else class="d-flex justify-end">
         <div class="pa-4">
           <v-icon small color="success" class="mr-2">
