@@ -1,15 +1,79 @@
 <template>
-  <v-app-bar color="secondary" flat>
-    <v-app-bar-nav-icon v-if="isMobile" @click.stop="drawer = !drawer" />
+  <v-app-bar class="pt-4" color="secondary" flat>
+    <v-app-bar-nav-icon v-if="showCondensedVersion" @click.stop="drawer = !drawer" />
     <img src="../../../../../public/img/icons/CourtCallIconDark.png" />
-    <div class="ml-5">
-      <h2 class="c-primary font-weight-bold">
-        {{ mainConference.displayName }}
-      </h2>
-      <h4 class="c-primary font-weight-regular">
-        {{ subConference.displayName }}
-      </h4>
-    </div>
+    <v-row>
+      <v-col>
+        <div class="ml-5">
+          <h2 class="c-primary text-h4 font-weight-bold">
+            {{ mainConference.displayName }}
+          </h2>
+          <h4 class="c-primary font-weight-regular">
+            {{ subConference.displayName }}
+          </h4>
+        </div>
+      </v-col>
+      <v-col class="d-flex justify-start">
+        <!-- Notification Container-->
+      </v-col>
+      <v-col v-if="showCondensedVersion">
+         <div>
+          <v-icon small color="error">
+            mdi-circle
+          </v-icon>
+          <span>
+            Recording
+          </span>
+        </div>
+        <div>
+          <v-icon small color="success">
+            mdi-circle
+          </v-icon>
+          <span>
+            En Espaniol
+          </span>
+        </div>
+       
+      </v-col>
+
+
+
+
+      <v-col v-else class="d-flex justify-end">
+        <div class="pa-4">
+          <v-icon small color="success" class="mr-2">
+            mdi-circle
+          </v-icon>
+          <span>
+            En Espaniol
+          </span>
+        </div>
+        <div class="mr-2 pa-4">
+          <v-icon small color="error" class="mr-2">
+            mdi-circle
+          </v-icon>
+          <span>
+            Recording
+          </span>
+        </div>
+        <button 
+          class="d-flex justify-center align-center mx-2 pa-4 white-background"
+          data-test-id="grid-view-button"
+        >
+          <v-icon color="accent">
+            mdi-view-grid-outline
+          </v-icon>
+        </button>
+        <button 
+          class="d-flex justify-center align-center mx-2 pa-4 white-background"
+          data-test-id="full-screen-button"
+        >
+          <v-icon color="accent">
+            mdi-fullscreen
+          </v-icon>
+        </button>
+      </v-col>
+    </v-row>
   </v-app-bar>
 </template>
 <script lang="ts">
@@ -44,6 +108,15 @@ export default class CallHeader extends Vue {
     } as SubConference;
     return conference ?? noSubConference;
   }
+
+  get showCondensedVersion(): boolean {
+    return this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm;
+  }
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.white-background {
+  background: white;
+  border-radius: 0.5rem;
+}
+</style>
