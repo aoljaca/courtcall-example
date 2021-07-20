@@ -15,7 +15,7 @@ $font-size: min(16px, max(8px, 1vw));
 $icon-font-size: min(36px, max(12px, 1.5vw));
 $btn-height: 2rem;
 html {
-  font-size: $font-size !important;
+  // font-size: $font-size !important;
 }
 .v-application {
   [class*="text-"] {
