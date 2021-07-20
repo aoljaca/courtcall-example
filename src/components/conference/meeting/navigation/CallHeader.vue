@@ -1,77 +1,70 @@
 <template>
   <v-app-bar class="pt-4" color="secondary" flat>
-    <v-div color="accent" class="white-background pa-0 ma-0">
-      <v-app-bar-nav-icon 
-        v-if="showCondensedVersion" 
-        @click.stop="drawer = !drawer" 
-      />
-    </v-div>
-    <img src="../../../../../public/img/icons/CourtCallIconDark.png" />
     <v-row>
-      <v-col>
-        <div class="ml-5">
-          <h2 class="c-primary text-h4 font-weight-bold no-wrap">
-            {{ mainConference.displayName }}
-          </h2>
-          <h4 class="c-primary font-weight-regular">
-            {{ subConference.displayName }}
-          </h4>
-        </div>
+      <v-col cols="auto" class="d-flex" align-self="center">
+        <v-btn
+          v-if="showCondensedVersion"
+          depressed
+          color="white"
+          class="py-5 mr-2"
+          @click.stop="drawer = !drawer"
+        >
+          <v-icon color="accent">mdi-menu</v-icon>
+        </v-btn>
+        <img src="../../../../../public/img/icons/CourtCallIconDark.png" />
+      </v-col>
+      <v-col align-self="start">
+        <h2 class="c-primary text-h4 font-weight-bold no-wrap">
+          {{ mainConference.displayName }}
+        </h2>
+        <h4 class="c-primary font-weight-regular">
+          {{ subConference.displayName }}
+        </h4>
       </v-col>
       <v-col v-if="!showCondensedVersion" class="d-flex justify-start">
         <!-- Notification Container-->
       </v-col>
-      <v-col v-if="showCondensedVersion">
-         <div class="d-flex">
-          <v-icon small color="error">
-            mdi-circle
-          </v-icon>
-          <span class="no-wrap">
-            {{ $t("conference.callHeader.recording") }}
-          </span>
+      <v-col cols="auto">
+        <div class="d-flex flex-row">
+          <div
+            :class="
+              showCondensedVersion ? 'd-flex flex-column text-left' : 'd-flex'
+            "
+          >
+            <span
+              :class="{
+                'align-self-center': true,
+                'mr-5': !showCondensedVersion,
+              }"
+            >
+              <v-icon small color="success" class="mr-2"> mdi-circle </v-icon>
+              En Espaniol
+            </span>
+            <span class="align-self-center">
+              <v-icon small color="error" class="mr-2"> mdi-circle </v-icon>
+              {{ $t("conference.callHeader.recording") }}
+            </span>
+          </div>
+
+          <div v-if="!showCondensedVersion" class="ml-2">
+            <v-btn
+              depressed
+              color="white"
+              class="py-5 mr-2"
+              data-test-id="grid-view-button"
+            >
+              <v-icon color="accent"> mdi-view-grid-outline </v-icon>
+            </v-btn>
+            <v-btn
+              depressed
+              color="white"
+              class="py-5"
+              data-test-id="full-screen-button"
+            >
+              <v-icon color="accent"> mdi-fullscreen </v-icon>
+            </v-btn>
+          </div>
         </div>
-        <div class="d-flex">
-          <v-icon small color="success">
-            mdi-circle
-          </v-icon>
-          <span class="no-wrap">
-            En Espaniol
-          </span>
-        </div>
-      </v-col>
-      <v-col v-else class="d-flex justify-end">
-        <div class="pa-4">
-          <v-icon small color="success" class="mr-2">
-            mdi-circle
-          </v-icon>
-          <span>
-            En Espaniol
-          </span>
-        </div>
-        <div class="mr-2 pa-4">
-          <v-icon small color="error" class="mr-2">
-            mdi-circle
-          </v-icon>
-          <span>
-            Recording
-          </span>
-        </div>
-        <button 
-          class="d-flex justify-center align-center mx-2 pa-4 white-background"
-          data-test-id="grid-view-button"
-        >
-          <v-icon color="accent">
-            mdi-view-grid-outline
-          </v-icon>
-        </button>
-        <button 
-          class="d-flex justify-center align-center mx-2 pa-4 white-background"
-          data-test-id="full-screen-button"
-        >
-          <v-icon color="accent">
-            mdi-fullscreen
-          </v-icon>
-        </button>
       </v-col>
     </v-row>
   </v-app-bar>
@@ -105,9 +98,11 @@ export default class CallHeader extends Vue {
   }
 
   get showCondensedVersion(): boolean {
-    return this.$vuetify.breakpoint.xs 
-    || this.$vuetify.breakpoint.sm
-    || this.$vuetify.breakpoint.smAndDown;
+    return (
+      this.$vuetify.breakpoint.xs ||
+      this.$vuetify.breakpoint.sm ||
+      this.$vuetify.breakpoint.smAndDown
+    );
   }
 }
 </script>
