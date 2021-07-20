@@ -74,6 +74,9 @@
               :title="$t('admin.dashboard.add')"
               :to="{
                 name: 'Create Room',
+                params: {
+                  roomId: undefined,
+                },
               }"
             >
               <v-icon color="white" x-large> mdi-plus </v-icon>
@@ -266,44 +269,44 @@ export default class RoomsTable extends Vue {
   readonly HEADERS = [
     {
       text: this.$t("admin.dashboard.activeHeader"),
-      value: this.$t("admin.dashboard.activeValue"),
+      value: "active",
     },
     {
       text: this.$t("admin.dashboard.supportHeader"),
-      value: this.$t("admin.dashboard.supportValue"),
+      value: "support",
       filterable: false,
     },
     {
       text: this.$t("admin.dashboard.nameHeader"),
-      value: this.$t("admin.dashboard.nameValue"),
+      value: "name",
       filterable: false,
     },
     {
       text: this.$t("admin.dashboard.systemUserHeader"),
-      value: this.$t("admin.dashboard.systemUserValue"),
+      value: "systemUsers",
       filterable: false,
     },
     {
       text: this.$t("admin.dashboard.participantsHeader"),
-      value: this.$t("admin.dashboard.participantsValue"),
+      value: "participants",
       filterable: false,
     },
     {
       text: this.$t("admin.dashboard.streamHeader"),
-      value: this.$t("admin.dashboard.streamValue"),
+      value: "streaming",
     },
     {
       text: this.$t("admin.dashboard.recordHeader"),
-      value: this.$t("admin.dashboard.recordValue"),
+      value: "recording",
     },
     {
       text: this.$t("admin.dashboard.detailsHeader"),
-      value: this.$t("admin.dashboard.detailsValue"),
+      value: "details",
       filterable: false,
     },
     {
       text: this.$t("admin.dashboard.moreHeader"),
-      value: this.$t("admin.dashboard.moreValue"),
+      value: "more",
       filterable: false,
     },
   ];

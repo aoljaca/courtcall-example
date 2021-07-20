@@ -18,7 +18,7 @@
             tile
             color="grey lighten-1"
             class="mr-2"
-            :to="{ name: 'Room View Manage' }"
+            :to="{ name: 'View Room', params: { roomId: roomId } }"
           >
             {{ $t("admin.participants.buttons.cancel.title") }}
           </v-btn>
@@ -68,6 +68,10 @@ export default class ViewParticipant extends Vue {
 
   get hasUnsavedChanges(): boolean {
     return !isEqual(this.participant, {});
+  }
+
+  get roomId(): string {
+    return this.$route.params.roomId;
   }
 
   async onFinishCreate(): Promise<void> {
