@@ -75,6 +75,12 @@ export default class ViewParticipantDetails extends Vue {
       items: Object.values(ParticipantRole),
     },
     {
+      title: this.$t("admin.participants.formFields.label.title"),
+      placeholder: this.$t("admin.participants.formFields.label.placeholder"),
+      key: "label",
+      inputType: "textField",
+    },
+    {
       title: this.$t("admin.participants.formFields.type.title"),
       computedValue: this.getParticipantType,
     },
