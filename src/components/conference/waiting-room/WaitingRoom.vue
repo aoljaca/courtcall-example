@@ -5,7 +5,11 @@
   >
     <v-row id="top-level-row" class="flex-grow-0" justify="center">
       <v-col id="message-host" class="pb-4" :cols="hasDetails ? '5' : '6'">
-        <v-alert color="warning black--text" type="warning" icon="mdi-alert-circle-outline">
+        <v-alert
+          color="warning black--text"
+          type="warning"
+          icon="mdi-alert-circle-outline"
+        >
           {{ $t("waitingRoom.alert") }}
         </v-alert>
         <v-row>
@@ -33,13 +37,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <v-btn
-              color="black--text"
-              depressed
-              data-test-id="message-host-button"
-            >
-              {{ $t("waitingRoom.contactHost") }}
-            </v-btn>
+            <contact-host />
             <v-btn
               depressed
               class="ml-4"
@@ -99,7 +97,7 @@ import ContactHost from "@/components/conference/waiting-room/ContactHost.vue";
 @Component({
   components: {
     ContactHost,
-  }, 
+  },
 })
 export default class WaitingRoom extends Vue {
   dialog = false;
