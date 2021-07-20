@@ -6,7 +6,7 @@
           v-if="showCondensedVersion"
           depressed
           color="white"
-          class="py-5 mr-2"
+          class="py-4 mr-2"
           @click.stop="drawer = !drawer"
         >
           <v-icon color="accent">mdi-menu</v-icon>
@@ -31,19 +31,28 @@
               showCondensedVersion ? 'd-flex flex-column text-left' : 'd-flex'
             "
           >
-            <span
+            <v-btn 
+              small
+              depressed
               :class="{
-                'align-self-center': true,
-                'mr-5': !showCondensedVersion,
+                  'align-self-center': true,
               }"
             >
-              <v-icon small color="success" class="mr-2"> mdi-circle </v-icon>
-              En Espaniol
-            </span>
-            <span class="align-self-center">
-              <v-icon small color="error" class="mr-2"> mdi-circle </v-icon>
-              {{ $t("conference.callHeader.recording") }}
-            </span>
+              <span class="mr-4">
+                <v-icon small color="success"> mdi-circle </v-icon>
+                En Espaniol
+              </span>
+            </v-btn>
+            <v-btn 
+              small
+              depressed
+              class="align-self-center mr-4"
+            >
+              <span>
+                <v-icon small color="error"> mdi-circle </v-icon>
+                {{ $t("conference.callHeader.recording") }}
+              </span>
+            </v-btn>
           </div>
 
           <div v-if="!showCondensedVersion" class="ml-2">
