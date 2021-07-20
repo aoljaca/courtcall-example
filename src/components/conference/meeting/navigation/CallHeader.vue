@@ -27,7 +27,7 @@
             mdi-circle
           </v-icon>
           <span class="no-wrap">
-            Recording
+            {{ $t("conference.callHeader.recording") }}
           </span>
         </div>
         <div class="d-flex">
