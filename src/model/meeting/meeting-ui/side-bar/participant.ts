@@ -12,6 +12,7 @@ export type AVStatus = "unmuted" | "muted" | "hard_muted";
 export interface Participant {
   id: string;
   name: string;
+  label?: string;
   entryConference: EntryConference;
   pubnubId: string;
   subconferenceId: null | string;

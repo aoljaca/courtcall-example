@@ -65,7 +65,7 @@
               color="grey lighten-2 rounded-0 white--text"
               depressed
               link
-              :to="onCancel()"
+              :to="onCancelRoute"
             >
               {{ $t("admin.cases.cancel") }}
             </v-btn>
@@ -204,9 +204,15 @@ import { Room } from "@/model/admin/room/room";
 @Component
 export default class CaseEdit extends Vue {
   caseEdits: Case = {} as Case;
-  caseId = this.$route.params.caseId;
-  roomId = this.$route.params.roomId;
   participantId = "";
+
+  get roomId(): string {
+    return this.$route.params.roomId;
+  }
+
+  get caseId(): string {
+    return this.$route.params.caseId;
+  }
 
   get room(): Room {
     return this.$store.getters["RoomModule/getById"](this.roomId);
@@ -234,10 +240,17 @@ export default class CaseEdit extends Vue {
     return this.caseEdits.participants ?? [];
   }
 
-  mounted(): void {
-    this.roomId = this.$route.params.roomId;
-    this.caseId = this.$route.params.caseId;
+  get onCancelRoute(): any {
+    return {
+      name: this.caseId ? "View Case" : "View Room",
+      params: {
+        roomId: this.roomId,
+        caseId: this.caseId,
+      },
+    };
+  }
 
+  mounted(): void {
     if (this.caseId) {
       this.caseEdits = this.caseById;
     }
@@ -277,23 +290,6 @@ export default class CaseEdit extends Vue {
         scheduledParticipant: "true",
       },
     });
-  }
-
-  onCancel(
-    caseId = this.caseId,
-    roomId = this.roomId
-  ): { name: string; params: any } {
-    if (this.caseId) {
-      return {
-        name: "View Case",
-        params: { caseId },
-      };
-    } else {
-      return {
-        name: "View Room",
-        params: { roomId },
-      };
-    }
   }
 }
 </script>

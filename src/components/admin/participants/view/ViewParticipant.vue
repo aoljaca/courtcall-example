@@ -8,9 +8,9 @@
         </h2>
         <br />
         <router-link
-          v-if="room"
-          :to="{ name: 'Room View Manage' }"
-          class="font-weight-regular text-decoration-none"
+          v-if="roomId"
+          :to="{ name: 'View Room', params: { roomId: this.roomId} }"
+        class="font-weight-regular text-decoration-none"
         >
           <v-icon size="18" class="mb-1">mdi-arrow-left</v-icon>
           {{
@@ -153,8 +153,11 @@ export default class ViewParticipant extends Vue {
   isEditing = false;
 
   get room(): Room {
-    const roomId = this.participant.roomId;
-    return this.$store.getters["RoomModule/getById"](roomId);
+    return this.$store.getters["RoomModule/getById"](this.roomId);
+  }
+
+  get roomId(): string {
+    return this.$route.params.roomId;
   }
 
   get hasUnsavedEdits(): boolean {

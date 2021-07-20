@@ -128,10 +128,14 @@ const routes: Array<RouteConfig> = [
       },
 
       {
-        path: "rooms",
+        path: "rooms/:roomId?",
         name: "Rooms",
         meta: {
-          hideBreadcrumb: true,
+          breadcrumbFunc: (route: any) =>
+            `${store.getters["RoomModule/getRoomNameById"](
+              route.params.roomId
+            )}`,
+          hideBreadcrumbFunc: (route: any) => !route.params.roomId
         },
         component: {
           render(c) {
@@ -140,25 +144,19 @@ const routes: Array<RouteConfig> = [
         },
         children: [
           {
-            path: "view/:roomId",
+            path: "",
             name: "View Room",
             component: RoomViewManage,
             meta: {
-              breadcrumbFunc: (route: any) =>
-                `${store.getters["RoomModule/getRoomNameById"](
-                  route.params.roomId
-                )}`,
+              hideBreadcrumb: true,
             },
           },
           {
-            path: "edit/:roomId",
+            path: "edit",
             name: "Edit Room",
             component: RoomAddEdit,
             meta: {
-              breadcrumbFunc: (route: any) =>
-                `${store.getters["RoomModule/getRoomNameById"](
-                  route.params.roomId
-                )}`,
+              breadcrumb: i18n.t("admin.roomDetails.editingRoom"),
             },
           },
           {
@@ -190,31 +188,29 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "view/:roomId/:caseId",
+                path: ":caseId/view",
                 component: CaseView,
                 name: "View Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${
-                      store.getters["CasesModule/getById"](route.params.caseId)
-                        ?.name
+                    `${store.getters["CasesModule/getById"](route.params.caseId)
+                      ?.name
                     }`,
                 },
               },
               {
-                path: "edit/:roomId/:caseId",
+                path: ":caseId/edit",
                 component: CaseEdit,
                 name: "Edit Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${
-                      store.getters["CasesModule/getById"](route.params.caseId)
-                        ?.name
+                    `${store.getters["CasesModule/getById"](route.params.caseId)
+                      ?.name
                     }`,
                 },
               },
               {
-                path: "create/:roomId",
+                path: "create",
                 component: CaseEdit,
                 name: "Create Case",
                 meta: {
@@ -224,7 +220,7 @@ const routes: Array<RouteConfig> = [
             ],
           },
           {
-            path: "participants",
+            path: "participants/:participantId?",
             name: "Participants",
             component: {
               render(c) {
@@ -236,15 +232,14 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "view/:participantId",
+                path: "",
                 component: ViewParticipant,
                 name: "Participant",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${
-                      store.getters["ParticipantsModule/getById"](
-                        route.params.participantId
-                      )?.name
+                    `${store.getters["ParticipantsModule/getById"](
+                      route.params.participantId
+                    )?.name
                     }`,
                 },
               },
@@ -252,6 +247,7 @@ const routes: Array<RouteConfig> = [
                 path: "create",
                 component: CreateParticipant,
                 name: "Create Participant",
+                props: true,
                 meta: {
                   breadcrumb: i18n.t("admin.participants.create"),
                 },
@@ -286,10 +282,9 @@ const routes: Array<RouteConfig> = [
             props: true,
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${
-                  store.getters["SystemUsersModule/getById"](
-                    route.params.systemUserId
-                  ).name
+                `${store.getters["SystemUsersModule/getById"](
+                  route.params.systemUserId
+                ).name
                 }`,
             },
           },
@@ -329,10 +324,9 @@ const routes: Array<RouteConfig> = [
             name: "Organization",
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${
-                  store.getters["OrganizationsModule/getById"](
-                    route.params.organizationId
-                  ).name
+                `${store.getters["OrganizationsModule/getById"](
+                  route.params.organizationId
+                ).name
                 }`,
             },
           },
@@ -342,10 +336,9 @@ const routes: Array<RouteConfig> = [
             name: "Edit Organization",
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${
-                  store.getters["OrganizationsModule/getById"](
-                    route.params.organizationId
-                  ).name
+                `${store.getters["OrganizationsModule/getById"](
+                  route.params.organizationId
+                ).name
                 }`,
             },
           },
