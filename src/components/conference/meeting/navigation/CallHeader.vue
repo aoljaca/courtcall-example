@@ -31,30 +31,34 @@
               showCondensedVersion ? 'd-flex flex-column text-left' : 'd-flex'
             "
           >
-            <v-btn 
+            <button
               small
               depressed
               :class="{
-                  'align-self-center': true,
+                'align-self-start': showCondensedVersion,
+                'align-self-center': !showCondensedVersion,
               }"
             >
               <span class="mr-4">
                 <v-icon small color="success"> mdi-circle </v-icon>
                 En Espaniol
               </span>
-            </v-btn>
-            <v-btn 
+            </button>
+            <button
               small
               depressed
-              class="align-self-center mr-4"
+              :class="{
+                'mr-4': true,
+                'align-self-start': showCondensedVersion,
+                'align-self-center': !showCondensedVersion,
+              }"
             >
               <span>
                 <v-icon small color="error"> mdi-circle </v-icon>
                 {{ $t("conference.callHeader.recording") }}
               </span>
-            </v-btn>
+            </button>
           </div>
-
           <div v-if="!showCondensedVersion" class="ml-2">
             <v-btn
               depressed
