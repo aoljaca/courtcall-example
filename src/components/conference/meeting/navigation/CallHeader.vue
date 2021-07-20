@@ -6,33 +6,39 @@
           v-if="showCondensedVersion"
           depressed
           color="white"
-          class="py-4 mr-2"
+          class="py-4 mr-2 align-self-center"
           @click.stop="drawer = !drawer"
         >
           <v-icon color="accent">mdi-menu</v-icon>
         </v-btn>
-        <img src="../../../../../public/img/icons/CourtCallIconDark.png" />
       </v-col>
-      <v-col align-self="start">
-        <h2 class="c-primary text-h4 font-weight-bold no-wrap">
-          {{ mainConference.displayName }}
-        </h2>
-        <h4 class="c-primary font-weight-regular">
-          {{ subConference.displayName }}
-        </h4>
+      <v-col
+        class="d-flex justify-start align-items-center"
+        align-self="center"
+      >
+        <div class="pr-4 d-flex align-self-center">
+          <img src="../../../../../public/img/icons/CourtCallIconDark.png" />
+        </div>
+        <div>
+          <h2 class="c-primary text-h4 font-weight-bold no-wrap">
+            {{ mainConference.displayName }}
+          </h2>
+          <h4 class="c-primary font-weight-regular">
+            {{ subConference.displayName }}
+          </h4>
+        </div>
       </v-col>
       <v-col v-if="!showCondensedVersion" class="d-flex justify-start">
         <!-- Notification Container-->
       </v-col>
-      <v-col cols="auto">
+      <v-col cols="auto" align-self="center">
         <div class="d-flex flex-row">
           <div
             :class="
               showCondensedVersion ? 'd-flex flex-column text-left' : 'd-flex'
             "
           >
-            <button
-              small
+            <v-btn
               depressed
               :class="{
                 'align-self-start': showCondensedVersion,
@@ -43,9 +49,8 @@
                 <v-icon small color="success"> mdi-circle </v-icon>
                 En Espaniol
               </span>
-            </button>
-            <button
-              small
+            </v-btn>
+            <v-btn
               depressed
               :class="{
                 'mr-4': true,
@@ -57,7 +62,7 @@
                 <v-icon small color="error"> mdi-circle </v-icon>
                 {{ $t("conference.callHeader.recording") }}
               </span>
-            </button>
+            </v-btn>
           </div>
           <div v-if="!showCondensedVersion" class="ml-2">
             <v-btn
