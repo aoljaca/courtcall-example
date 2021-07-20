@@ -84,11 +84,6 @@ import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 export default class CallHeader extends Vue {
   drawer = true;
 
-  get isMobile(): boolean {
-    // TODO: Reference mobile breakpoint vuetify service
-    return false;
-  }
-
   get mainConference(): SubConference {
     const conference = this.$store.getters[
       "ConferenceModule/getActiveConference"
@@ -110,7 +105,9 @@ export default class CallHeader extends Vue {
   }
 
   get showCondensedVersion(): boolean {
-    return this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm;
+    return this.$vuetify.breakpoint.xs 
+    || this.$vuetify.breakpoint.sm
+    || this.$vuetify.breakpoint.smAndDown;
   }
 }
 </script>

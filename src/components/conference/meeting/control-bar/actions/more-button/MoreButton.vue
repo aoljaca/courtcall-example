@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-menu offset-y :nudge-top="500">
+    <v-menu offset-y top nudge-top="10">
       <template v-slot:activator="{ on, attrs }">
         <v-row>
           <v-col class="text-center">
