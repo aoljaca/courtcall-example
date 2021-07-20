@@ -9,8 +9,8 @@
         <br />
         <router-link
           v-if="roomId"
-          :to="{ name: 'View Room', params: { roomId: this.roomId} }"
-        class="font-weight-regular text-decoration-none"
+          :to="{ name: 'View Room', params: { roomId: this.roomId } }"
+          class="font-weight-regular text-decoration-none"
         >
           <v-icon size="18" class="mb-1">mdi-arrow-left</v-icon>
           {{

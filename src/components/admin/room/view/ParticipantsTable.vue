@@ -44,9 +44,9 @@
               <router-link
                 :to="{
                   name: 'Participant',
-                  params: { 
+                  params: {
                     roomId: roomId,
-                    participantId: item.id 
+                    participantId: item.id,
                   },
                 }"
                 class="c-secondary"

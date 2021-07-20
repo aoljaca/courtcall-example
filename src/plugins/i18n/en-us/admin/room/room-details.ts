@@ -19,5 +19,5 @@ export default {
   draft: "Daft",
   available: "Available",
   create: "NEW ROOM",
-  editingRoom: "Editing Room"
+  editingRoom: "Editing Room",
 };

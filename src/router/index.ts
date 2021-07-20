@@ -135,7 +135,7 @@ const routes: Array<RouteConfig> = [
             `${store.getters["RoomModule/getRoomNameById"](
               route.params.roomId
             )}`,
-          hideBreadcrumbFunc: (route: any) => !route.params.roomId
+          hideBreadcrumbFunc: (route: any) => !route.params.roomId,
         },
         component: {
           render(c) {
@@ -193,8 +193,9 @@ const routes: Array<RouteConfig> = [
                 name: "View Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${store.getters["CasesModule/getById"](route.params.caseId)
-                      ?.name
+                    `${
+                      store.getters["CasesModule/getById"](route.params.caseId)
+                        ?.name
                     }`,
                 },
               },
@@ -204,8 +205,9 @@ const routes: Array<RouteConfig> = [
                 name: "Edit Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${store.getters["CasesModule/getById"](route.params.caseId)
-                      ?.name
+                    `${
+                      store.getters["CasesModule/getById"](route.params.caseId)
+                        ?.name
                     }`,
                 },
               },
@@ -237,9 +239,10 @@ const routes: Array<RouteConfig> = [
                 name: "Participant",
                 meta: {
                   breadcrumbFunc: (route: any) =>
-                    `${store.getters["ParticipantsModule/getById"](
-                      route.params.participantId
-                    )?.name
+                    `${
+                      store.getters["ParticipantsModule/getById"](
+                        route.params.participantId
+                      )?.name
                     }`,
                 },
               },
@@ -282,9 +285,10 @@ const routes: Array<RouteConfig> = [
             props: true,
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["SystemUsersModule/getById"](
-                  route.params.systemUserId
-                ).name
+                `${
+                  store.getters["SystemUsersModule/getById"](
+                    route.params.systemUserId
+                  ).name
                 }`,
             },
           },
@@ -324,9 +328,10 @@ const routes: Array<RouteConfig> = [
             name: "Organization",
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["OrganizationsModule/getById"](
-                  route.params.organizationId
-                ).name
+                `${
+                  store.getters["OrganizationsModule/getById"](
+                    route.params.organizationId
+                  ).name
                 }`,
             },
           },
@@ -336,9 +341,10 @@ const routes: Array<RouteConfig> = [
             name: "Edit Organization",
             meta: {
               breadcrumbFunc: (route: any) =>
-                `${store.getters["OrganizationsModule/getById"](
-                  route.params.organizationId
-                ).name
+                `${
+                  store.getters["OrganizationsModule/getById"](
+                    route.params.organizationId
+                  ).name
                 }`,
             },
           },

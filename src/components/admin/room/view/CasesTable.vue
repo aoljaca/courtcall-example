@@ -14,7 +14,7 @@
             name: 'Create Case',
             params: {
               roomId,
-            }
+            },
           }"
         >
           {{ $t("admin.roomCases.add") }}

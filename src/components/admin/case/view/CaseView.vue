@@ -66,7 +66,7 @@ export default class CaseView extends Vue {
   get roomId(): string {
     return this.$route.params.roomId;
   }
-  
+
   get caseId(): string {
     return this.$route.params.caseId;
   }
