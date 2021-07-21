@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-menu offset-y :nudge-top="500">
+    <v-menu offset-y top nudge-top="10" nudge-left="90">
       <template v-slot:activator="{ on, attrs }">
         <v-row>
           <v-col class="text-center">
@@ -22,137 +22,88 @@
           </v-col>
         </v-row>
       </template>
-      <v-list>
-        <v-dialog v-model="dialog.sendNotification" max-width="750px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item
-              v-bind="attrs"
-              v-on="on"
-              :title="
-                $t('conference.meeting.controlBar.more.sendNotification.title')
-              "
-            >
-              <v-icon>mdi-bell-plus</v-icon>
-              {{
-                $t("conference.meeting.controlBar.more.sendNotification.title")
-              }}
-            </v-list-item>
-          </template>
-          <send-notification></send-notification>
-        </v-dialog>
-        <v-dialog v-model="dialog.inviteParticipants" max-width="750px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item
-              v-bind="attrs"
-              v-on="on"
-              :title="
-                $t(
-                  'conference.meeting.controlBar.more.inviteParticipants.title'
-                )
-              "
-            >
-              <v-icon>mdi-account-supervisor</v-icon>
-              {{
-                $t(
-                  "conference.meeting.controlBar.more.inviteParticipants.title"
-                )
-              }}
-            </v-list-item>
-          </template>
-          <invite-participants></invite-participants>
-        </v-dialog>
-        <v-dialog v-model="dialog.record" max-width="500px">
-          <template
-            v-slot:activator="{ on, attrs }"
-            :title="$t('conference.meeting.controlBar.more.record.title')"
+      <v-list class="pa-0 ma-0">
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-help-circle-outline</v-icon>Get
+              supports</span
+            ></v-btn
           >
-            <v-list-item v-bind="attrs" v-on="on">
-              <v-icon>mdi-record</v-icon>
-              {{ $t("conference.meeting.controlBar.more.record.title") }}
-            </v-list-item>
-          </template>
-          <record></record>
-        </v-dialog>
-        <v-dialog v-model="dialog.changeBackground" max-width="750px">
-          <template
-            v-slot:activator="{ on, attrs }"
-            :title="
-              $t('conference.meeting.controlBar.more.changeBackground.title')
-            "
+        </v-list-item>
+        <v-divider />
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-bell-plus-outline</v-icon>Notification
+              Preferences</span
+            ></v-btn
           >
-            <v-list-item v-bind="attrs" v-on="on">
-              <v-icon>mdi-image-multiple</v-icon>
-              {{
-                $t("conference.meeting.controlBar.more.changeBackground.title")
-              }}
-            </v-list-item>
-          </template>
-          <change-background></change-background>
-        </v-dialog>
-        <v-dialog v-model="dialog.avSetup" max-width="750px">
-          <template
-            v-slot:activator="{ on, attrs }"
-            :title="$t('conference.meeting.controlBar.more.avSetup.title')"
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-bell-outline</v-icon>Send
+              notification</span
+            ></v-btn
           >
-            <v-list-item v-bind="attrs" v-on="on">
-              <v-icon>mdi-video</v-icon>
-              {{ $t("conference.meeting.controlBar.more.avSetup.title") }}
-            </v-list-item>
-          </template>
-          <av-setup></av-setup>
-        </v-dialog>
-        <v-dialog v-model="dialog.notificationPreferences" max-width="500px">
-          <template
-            v-slot:activator="{ on, attrs }"
-            :title="
-              $t(
-                'conference.meeting.controlBar.more.notificationPreferences.title'
-              )
-            "
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-account-plus-outline</v-icon>Invite
+              participants</span
+            ></v-btn
           >
-            <v-list-item v-bind="attrs" v-on="on">
-              <v-icon>mdi-bell</v-icon>
-              {{
-                $t(
-                  "conference.meeting.controlBar.more.notificationPreferences.title"
-                )
-              }}
-            </v-list-item>
-          </template>
-          <notification-preferences></notification-preferences>
-        </v-dialog>
-        <v-dialog v-model="dialog.transcription" max-width="250px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item
-              v-on="on"
-              v-bind="attrs"
-              :title="
-                $t('conference.meeting.controlBar.more.transcription.title')
-              "
-            >
-              <v-icon>mdi-closed-caption</v-icon>
-              {{ $t("conference.meeting.controlBar.more.transcription.title") }}
-            </v-list-item>
-          </template>
-          <transcription-menu></transcription-menu>
-        </v-dialog>
-        <v-dialog v-model="dialog.publicStreaming" max-width="500px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item
-              v-on="on"
-              v-bind="attrs"
-              :title="
-                $t('conference.meeting.controlBar.more.publicStreaming.title')
-              "
-            >
-              <v-icon> mdi-wifi </v-icon>
-              {{
-                $t("conference.meeting.controlBar.more.publicStreaming.title")
-              }}
-            </v-list-item>
-          </template>
-          <public-streaming></public-streaming>
-        </v-dialog>
+        </v-list-item>
+        <v-divider />
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-bell-plus</v-icon>Change
+              background</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-cog-outline</v-icon>Audio/Video set
+              up</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-closed-caption-outline</v-icon>Turn On
+              Transcription</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-divider />
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-circle-slice-8</v-icon>Recording</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-cast</v-icon>Enable public
+              streaming</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon class="mr-4">mdi-hand-right</v-icon>Raise Hand</span
+            ></v-btn
+          >
+        </v-list-item>
       </v-list>
     </v-menu>
   </div>
@@ -192,3 +143,13 @@ export default class MoreIcon extends Vue {
   };
 }
 </script>
+
+<style scoped>
+* {
+  box-sizing: border-box;
+}
+
+.white-background {
+  background: white;
+}
+</style>
