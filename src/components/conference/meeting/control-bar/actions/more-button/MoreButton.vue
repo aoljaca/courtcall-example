@@ -104,14 +104,15 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed>
-            <span class="material-icons material-icons-outlined"
-              >back_hand</span
-            >
-            <span color="accent"
-              ><v-icon color="accent" class="mr-4">mdi-hand-right</v-icon>Raise
-              Hand</span
-            ></v-btn
-          >
+            <span color="accent">
+              <v-icon
+                color="accent"
+                class="mr-4 material-icons material-icons-outlined"
+                >back_hand</v-icon
+              >
+              Raise Hand
+            </span>
+          </v-btn>
         </v-list-item>
       </v-list>
     </v-menu>
