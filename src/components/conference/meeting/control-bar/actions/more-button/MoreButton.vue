@@ -62,7 +62,7 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon color="accent" class="mr-4">mdi-bell-plus</v-icon>Change
+              ><v-icon color="accent" class="mr-4">mdi-blur</v-icon>Change
               background</span
             ></v-btn
           >
