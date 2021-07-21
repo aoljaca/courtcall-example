@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-menu offset-y top nudge-top="10" nudge-left="90">
+    <v-menu offset-y top nudge-top="10" nudge-left="90" v-model="menuOpen">
       <template v-slot:activator="{ on, attrs }">
         <v-row>
           <v-col class="text-center">
@@ -22,7 +22,8 @@
           </v-col>
         </v-row>
       </template>
-      <v-list class="pa-0 ma-0">
+      <v-list v-if="showCondensedVersion"> </v-list>
+      <v-list v-else class="pa-0 ma-0">
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
@@ -115,37 +116,13 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import SendNotification from "./SendNotification.vue";
-import InviteParticipants from "./InviteParticipants.vue";
-import Record from "./Record.vue";
-import ChangeBackground from "./ChangeBackground.vue";
-import AvSetup from "./AVSetup.vue";
-import NotificationPreferences from "./NotificationPreferences.vue";
-import TranscriptionMenu from "./TranscriptionMenu.vue";
-import PublicStreaming from "./PublicStreaming.vue";
-@Component({
-  components: {
-    SendNotification,
-    InviteParticipants,
-    Record,
-    ChangeBackground,
-    AvSetup,
-    NotificationPreferences,
-    TranscriptionMenu,
-    PublicStreaming,
-  },
-})
+@Component
 export default class MoreIcon extends Vue {
-  dialog = {
-    sendNotification: false,
-    inviteParticipants: false,
-    record: false,
-    changeBackground: false,
-    avSetup: false,
-    notificationPreferences: false,
-    transcription: false,
-    publicStreaming: false,
-  };
+  menuOpen = false;
+
+  get showCondensedVersion(): boolean {
+    return this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm;
+  }
 }
 </script>
 
