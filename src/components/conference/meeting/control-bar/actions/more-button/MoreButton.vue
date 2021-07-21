@@ -26,8 +26,9 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-help-circle-outline</v-icon>Get
-              supports</span
+              ><v-icon color="accent" class="mr-4"
+                >mdi-help-circle-outline</v-icon
+              >Get supports</span
             ></v-btn
           >
         </v-list-item>
@@ -35,15 +36,15 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-bell-plus-outline</v-icon>Notification
-              Preferences</span
+              ><v-icon color="accent" class="mr-4">mdi-bell-plus-outline</v-icon
+              >Notification Preferences</span
             ></v-btn
           >
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-bell-outline</v-icon>Send
+              ><v-icon color="accent" class="mr-4">mdi-bell-outline</v-icon>Send
               notification</span
             ></v-btn
           >
@@ -51,8 +52,9 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-account-plus-outline</v-icon>Invite
-              participants</span
+              ><v-icon color="accent" class="mr-4"
+                >mdi-account-plus-outline</v-icon
+              >Invite participants</span
             ></v-btn
           >
         </v-list-item>
@@ -60,7 +62,7 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-bell-plus</v-icon>Change
+              ><v-icon color="accent" class="mr-4">mdi-bell-plus</v-icon>Change
               background</span
             ></v-btn
           >
@@ -68,16 +70,17 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-cog-outline</v-icon>Audio/Video set
-              up</span
+              ><v-icon color="accent" class="mr-4">mdi-cog-outline</v-icon
+              >Audio/Video set up</span
             ></v-btn
           >
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-closed-caption-outline</v-icon>Turn On
-              Transcription</span
+              ><v-icon color="accent" class="mr-4"
+                >mdi-closed-caption-outline</v-icon
+              >Turn On Transcription</span
             ></v-btn
           >
         </v-list-item>
@@ -85,22 +88,24 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-circle-slice-8</v-icon>Recording</span
+              ><v-icon color="accent" class="mr-4">mdi-circle-slice-8</v-icon
+              >Recording</span
             ></v-btn
           >
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-cast</v-icon>Enable public
-              streaming</span
+              ><v-icon color="accent" class="mr-4">mdi-cast</v-icon>Enable
+              public streaming</span
             ></v-btn
           >
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon class="mr-4">mdi-hand-right</v-icon>Raise Hand</span
+              ><v-icon color="accent" class="mr-4">mdi-hand-right</v-icon>Raise
+              Hand</span
             ></v-btn
           >
         </v-list-item>
