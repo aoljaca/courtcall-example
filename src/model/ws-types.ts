@@ -8,4 +8,6 @@ export enum WS_TYPES {
   ROLES_UPDATED = "rolesUpdated",
   SUBCONFERENCES_UPDATED = "subconferencesUpdated",
   CURRENT_SUBCONFERENCE_UPDATED = "currentSubconferenceUpdated",
+  NOTIFICATION_SENT = "notificationSent",
+  NOTIFICATION_RESOLVED = "notificationResolved",
 }

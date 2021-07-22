@@ -11,7 +11,7 @@ export class ToastService {
       timeout: 3000,
     });
   }
-  sendMessage(content: ToastContent, options?: ToastOptions): void {
+  public sendMessage(content: ToastContent, options?: ToastOptions): void {
     Vue.$toast(content, options);
   }
 }

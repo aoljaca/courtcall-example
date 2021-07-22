@@ -2,7 +2,7 @@ import {
   BackgroundOption,
   NO_BACKGROUND_BLUR_OPTION,
 } from "@/model/meeting/av-options/background-option";
-import ToastServiceImpl from "@/services/toast";
+import ToastService from "@/services/toast";
 import { TYPE } from "vue-toastification";
 import { Module } from "vuex";
 
@@ -83,7 +83,7 @@ const conferenceSetupModule: Module<any, any> = {
         });
       } else {
         if (!state.videoDevices.length) {
-          ToastServiceImpl.sendMessage("No video devices found.", {
+          ToastService.sendMessage("No video devices found.", {
             type: TYPE.INFO,
           });
           return;
