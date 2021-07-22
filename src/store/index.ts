@@ -19,6 +19,7 @@ import RoomSessionModule from "./room-session/room-session-module";
 import SearchModule from "./admin/dashboard/search-module";
 import ConferenceSetupModule from "./conference/conference-setup-module";
 import ConferenceModule from "./conference/conference-module";
+import ConferenceNotificationModule from "./conference/conference-notification-module";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -42,5 +43,6 @@ export default new Vuex.Store({
     SearchModule,
     ConferenceSetupModule,
     ConferenceModule,
+    ConferenceNotificationModule,
   },
 });

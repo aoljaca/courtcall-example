@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import WebsocketConnectionService from "@/services/websocket-connection";
+import WebsocketConnectionService from "@/services/websocket/websocket-connection";
 import ConferenceHeader from "./navigation/ConferenceHeader.vue";
 import ConferenceFooter from "./navigation/ConferenceFooter.vue";
 import { CustomTheme } from "@/services/theme-service";

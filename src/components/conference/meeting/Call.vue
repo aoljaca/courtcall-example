@@ -1,10 +1,11 @@
 <template>
   <div class="h-100 d-flex flex-column justify-space-between">
     <!-- Header -->
-    <call-header />
+    <call-header class="px-10 pt-5" />
 
     <!-- Body -->
-    <div class="bc-secondary">
+    <div class="bc-secondary pa-10 calc-height">
+      <v-card color="white" flat class="h-100 w-100" />
       <!-- Temporarily Disabled until Video Portion is revised -->
       <!-- <v-row>
         <v-col>
@@ -34,7 +35,7 @@ import VideoPlatform from "./VideoPlatform.vue";
 import Chat from "./sidebar/chat/Chat.vue";
 import Files from "./sidebar/files/Files.vue";
 import Participants from "./sidebar/participants/ParticipantsMainView.vue";
-import WebsocketConnectionService from "@/services/websocket-connection";
+import WebsocketConnectionService from "@/services/websocket/websocket-connection";
 import { isEmpty } from "lodash";
 import CallHeader from "./navigation/CallHeader.vue";
 
