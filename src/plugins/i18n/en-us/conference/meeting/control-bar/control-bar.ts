@@ -1,4 +1,4 @@
-import getSupport from "./get-support";
+import getSupport from "./more/get-support";
 import more from "./more";
 import moveParticipants from "./move-participants";
 import shareScreen from "./share-screen";

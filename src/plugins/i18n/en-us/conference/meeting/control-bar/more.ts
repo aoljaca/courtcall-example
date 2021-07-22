@@ -6,7 +6,7 @@ import record from "./more/record";
 import sendNotification from "./more/send-notification";
 import transcription from "./more/transcription";
 import changeBackground from "./more/change-background";
-import getSupport from "./get-support";
+import getSupport from "./more/get-support";
 export default {
   title: "More",
   avSetup,
