@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-menu offset-y top nudge-top="10" nudge-left="90" v-model="menuOpen">
+    <v-menu
+      offset-y
+      top
+      :nudge-top="showCondensedVersion ? '10' : '10'"
+      :nudge-left="showCondensedVersion ? '140' : '90'"
+      v-model="menuOpen"
+    >
       <template v-slot:activator="{ on, attrs }">
         <v-row>
           <v-col class="text-center">
@@ -22,7 +28,65 @@
           </v-col>
         </v-row>
       </template>
-      <v-list v-if="showCondensedVersion"> </v-list>
+      <v-list v-if="showCondensedVersion">
+        <v-row>
+          <v-col cols="6">
+            <v-list-item class="pa-0 ma-0">
+              <v-btn color="white" class="d-flex justify-start w-100" depressed
+                ><span color="accent"
+                  ><v-icon
+                    color="accent"
+                    class="mr-4 material-icons material-icons-outlined"
+                    >share_screen</v-icon
+                  >Share Screen</span
+                ></v-btn
+              >
+            </v-list-item>
+            <v-list-item class="pa-0 ma-0">
+              <v-btn color="white" class="d-flex justify-start w-100" depressed
+                ><span color="accent"
+                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon
+                  >Files</span
+                ></v-btn
+              >
+            </v-list-item>
+            <v-list-item class="pa-0 ma-0">
+              <v-btn color="white" class="d-flex justify-start w-100" depressed
+                ><span color="accent"
+                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon
+                  >Move</span
+                ></v-btn
+              >
+            </v-list-item>
+          </v-col>
+          <v-col cols="6">
+            <v-list-item class="pa-0 ma-0">
+              <v-btn color="white" class="d-flex justify-start w-100" depressed
+                ><span color="accent"
+                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon
+                  >Chat</span
+                ></v-btn
+              >
+            </v-list-item>
+            <v-list-item class="pa-0 ma-0">
+              <v-btn color="white" class="d-flex justify-start w-100" depressed
+                ><span color="accent"
+                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon>Get
+                  Support</span
+                ></v-btn
+              >
+            </v-list-item>
+            <v-list-item class="pa-0 ma-0">
+              <v-btn color="white" class="d-flex justify-start w-100" depressed
+                ><span color="accent"
+                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon>Raise
+                  Hand</span
+                ></v-btn
+              >
+            </v-list-item>
+          </v-col>
+        </v-row>
+      </v-list>
       <v-list v-else class="pa-0 ma-0">
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
