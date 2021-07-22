@@ -22,4 +22,5 @@ export default {
   chat: "Chat",
   support: "Get Support",
   hand: "Raise Hand",
+  move: "Move",
 };
