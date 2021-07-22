@@ -4,7 +4,7 @@
       offset-y
       top
       :nudge-top="showCondensedVersion ? '10' : '10'"
-      :nudge-left="showCondensedVersion ? '140' : '90'"
+      :nudge-left="showCondensedVersion ? '70' : '90'"
       v-model="menuOpen"
     >
       <template v-slot:activator="{ on, attrs }">
@@ -51,7 +51,11 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon color="accent" class="mr-4">mdi-bell</v-icon>Move</span
+              ><v-icon
+                color="accent"
+                class="mr-4 material-icons material-icons-outlined"
+                >logout</v-icon
+              >Move</span
             ></v-btn
           >
         </v-list-item>
