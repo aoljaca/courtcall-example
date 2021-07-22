@@ -23,6 +23,32 @@
         </v-row>
       </template>
       <v-list>
+        <v-dialog
+          v-model="dialog.getSupport"
+          max-width="750px"
+          @input="onChange"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-list-item
+              v-bind="attrs"
+              v-on="on"
+              :title="
+                $t('conference.meeting.controlBar.more.sendNotification.title')
+              "
+            >
+              <v-icon>mdi-bell-plus</v-icon>
+              {{
+                $t("conference.meeting.controlBar.more.sendNotification.title")
+              }}
+            </v-list-item>
+          </template>
+          <get-support
+            @changeVModel="changeVModel()"
+            @sendRequest="sendRequest()"
+            :input="input"
+            :sentRequest="sentRequest"
+          ></get-support>
+        </v-dialog>
         <v-dialog v-model="dialog.sendNotification" max-width="750px">
           <template v-slot:activator="{ on, attrs }">
             <v-list-item
@@ -167,6 +193,7 @@ import AvSetup from "./AVSetup.vue";
 import NotificationPreferences from "./NotificationPreferences.vue";
 import TranscriptionMenu from "./TranscriptionMenu.vue";
 import PublicStreaming from "./PublicStreaming.vue";
+import GetSupport from "./GetSupport.vue";
 @Component({
   components: {
     SendNotification,
@@ -177,9 +204,13 @@ import PublicStreaming from "./PublicStreaming.vue";
     NotificationPreferences,
     TranscriptionMenu,
     PublicStreaming,
+    GetSupport,
   },
 })
 export default class MoreIcon extends Vue {
+  isOpen = false;
+  input = null;
+  sentRequest = false;
   dialog = {
     sendNotification: false,
     inviteParticipants: false,
@@ -189,6 +220,25 @@ export default class MoreIcon extends Vue {
     notificationPreferences: false,
     transcription: false,
     publicStreaming: false,
+    getSupport: false,
   };
+  changeVModel(): void {
+    this.dialog.getSupport = false;
+    this.input = null;
+    setTimeout(() => {
+      this.sentRequest = false;
+    }, 175);
+  }
+  sendRequest(): void {
+    this.sentRequest = true;
+  }
+  onChange(): void {
+    if (this.dialog.getSupport == false) {
+      this.input = null;
+      setTimeout(() => {
+        this.sentRequest = false;
+      }, 175);
+    }
+  }
 }
 </script>
