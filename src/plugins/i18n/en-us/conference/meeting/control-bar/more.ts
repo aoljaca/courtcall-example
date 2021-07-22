@@ -16,4 +16,10 @@ export default {
   sendNotification,
   transcription,
   changeBackground,
+  shareScreen: "Share screen",
+  files: "Files",
+  logout: "Move",
+  chat: "Chat",
+  support: "Get Support",
+  hand: "Raise Hand",
 };

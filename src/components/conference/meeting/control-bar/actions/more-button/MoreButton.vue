@@ -36,7 +36,7 @@
                 color="accent"
                 class="mr-4 material-icons material-icons-outlined"
                 >mdi-laptop</v-icon
-              >Share Screen</span
+              >{{ $t("conference.meeting.controlBar.more.shareScreen") }}</span
             ></v-btn
           >
         </v-list-item>
@@ -44,7 +44,7 @@
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
               ><v-icon color="accent" class="mr-4">mdi-file-outline</v-icon
-              >Files</span
+              >{{ $t("conference.meeting.controlBar.more.files") }}</span
             ></v-btn
           >
         </v-list-item>
@@ -55,7 +55,7 @@
                 color="accent"
                 class="mr-4 material-icons material-icons-outlined"
                 >logout</v-icon
-              >Move</span
+              >{{ $t("conference.meeting.controlBar.more.move") }}</span
             ></v-btn
           >
         </v-list-item>
@@ -63,7 +63,7 @@
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
               ><v-icon color="accent" class="mr-4">mdi-message-outline</v-icon
-              >Chat</span
+              >{{ $t("conference.meeting.controlBar.more.chat") }}</span
             ></v-btn
           >
         </v-list-item>
@@ -72,7 +72,7 @@
             ><span color="accent"
               ><v-icon color="accent" class="mr-4"
                 >mdi-help-circle-outline</v-icon
-              >Get Support</span
+              >{{ $t("conference.meeting.controlBar.more.support") }}</span
             ></v-btn
           >
         </v-list-item>
@@ -83,7 +83,7 @@
                 color="accent"
                 class="mr-4 material-icons material-icons-outlined"
                 >back_hand</v-icon
-              >Raise Hand</span
+              >{{ $t("conference.meeting.controlBar.more.hand") }}</span
             ></v-btn
           >
         </v-list-item>
@@ -94,7 +94,7 @@
             ><span color="accent"
               ><v-icon color="accent" class="mr-4"
                 >mdi-help-circle-outline</v-icon
-              >Get supports</span
+              >{{ $t("conference.meeting.controlBar.more.support") }}</span
             ></v-btn
           >
         </v-list-item>
@@ -103,15 +103,21 @@
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
               ><v-icon color="accent" class="mr-4">mdi-bell-plus-outline</v-icon
-              >Notification Preferences</span
+              >{{
+                $t(
+                  "conference.meeting.controlBar.more.notificationPreferences.title"
+                )
+              }}</span
             ></v-btn
           >
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon color="accent" class="mr-4">mdi-bell-outline</v-icon>Send
-              notification</span
+              ><v-icon color="accent" class="mr-4">mdi-bell-outline</v-icon
+              >{{
+                $t("conference.meeting.controlBar.more.sendNotification.title")
+              }}</span
             ></v-btn
           >
         </v-list-item>
@@ -120,7 +126,11 @@
             ><span color="accent"
               ><v-icon color="accent" class="mr-4"
                 >mdi-account-plus-outline</v-icon
-              >Invite participants</span
+              >{{
+                $t(
+                  "conference.meeting.controlBar.more.inviteParticipants.title"
+                )
+              }}</span
             ></v-btn
           >
         </v-list-item>
@@ -128,8 +138,10 @@
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon color="accent" class="mr-4">mdi-texture</v-icon>Change
-              background</span
+              ><v-icon color="accent" class="mr-4">mdi-texture</v-icon
+              >{{
+                $t("conference.meeting.controlBar.more.changeBackground.title")
+              }}</span
             ></v-btn
           >
         </v-list-item>
@@ -137,7 +149,9 @@
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
               ><v-icon color="accent" class="mr-4">mdi-cog-outline</v-icon
-              >Audio/Video set up</span
+              >{{
+                $t("conference.meeting.controlBar.more.avSetup.title")
+              }}</span
             ></v-btn
           >
         </v-list-item>
@@ -146,7 +160,9 @@
             ><span color="accent"
               ><v-icon color="accent" class="mr-4"
                 >mdi-closed-caption-outline</v-icon
-              >Turn On Transcription</span
+              >{{
+                $t("conference.meeting.controlBar.more.transcription.titleAlt")
+              }}</span
             ></v-btn
           >
         </v-list-item>
@@ -155,15 +171,21 @@
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
               ><v-icon color="accent" class="mr-4">mdi-circle-slice-8</v-icon
-              >Recording</span
+              >{{
+                $t("conference.meeting.controlBar.more.record.titleAlt")
+              }}</span
             ></v-btn
           >
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span color="accent"
-              ><v-icon color="accent" class="mr-4">mdi-cast</v-icon>Enable
-              public streaming</span
+              ><v-icon color="accent" class="mr-4">mdi-cast</v-icon
+              >{{
+                $t(
+                  "conference.meeting.controlBar.more.publicStreaming.titleAlt"
+                )
+              }}</span
             ></v-btn
           >
         </v-list-item>
@@ -175,7 +197,7 @@
                 class="mr-4 material-icons material-icons-outlined"
                 >back_hand</v-icon
               >
-              Raise Hand
+              {{ $t("conference.meeting.controlBar.more.hand") }}
             </span>
           </v-btn>
         </v-list-item>
@@ -190,7 +212,7 @@ export default class MoreIcon extends Vue {
   menuOpen = false;
 
   get showCondensedVersion(): boolean {
-    return this.$vuetify.breakpoint.xs || this.$vuetify.breakpoint.sm;
+    return this.$vuetify.breakpoint.smAndDown;
   }
 }
 </script>
