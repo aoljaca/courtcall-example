@@ -29,63 +29,60 @@
         </v-row>
       </template>
       <v-list v-if="showCondensedVersion">
-        <v-row>
-          <v-col cols="6">
-            <v-list-item class="pa-0 ma-0">
-              <v-btn color="white" class="d-flex justify-start w-100" depressed
-                ><span color="accent"
-                  ><v-icon
-                    color="accent"
-                    class="mr-4 material-icons material-icons-outlined"
-                    >share_screen</v-icon
-                  >Share Screen</span
-                ></v-btn
-              >
-            </v-list-item>
-            <v-list-item class="pa-0 ma-0">
-              <v-btn color="white" class="d-flex justify-start w-100" depressed
-                ><span color="accent"
-                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon
-                  >Files</span
-                ></v-btn
-              >
-            </v-list-item>
-            <v-list-item class="pa-0 ma-0">
-              <v-btn color="white" class="d-flex justify-start w-100" depressed
-                ><span color="accent"
-                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon
-                  >Move</span
-                ></v-btn
-              >
-            </v-list-item>
-          </v-col>
-          <v-col cols="6">
-            <v-list-item class="pa-0 ma-0">
-              <v-btn color="white" class="d-flex justify-start w-100" depressed
-                ><span color="accent"
-                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon
-                  >Chat</span
-                ></v-btn
-              >
-            </v-list-item>
-            <v-list-item class="pa-0 ma-0">
-              <v-btn color="white" class="d-flex justify-start w-100" depressed
-                ><span color="accent"
-                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon>Get
-                  Support</span
-                ></v-btn
-              >
-            </v-list-item>
-            <v-list-item class="pa-0 ma-0">
-              <v-btn color="white" class="d-flex justify-start w-100" depressed
-                ><span color="accent"
-                  ><v-icon color="accent" class="mr-4">mdi-bell</v-icon>Raise
-                  Hand</span
-                ></v-btn
-              >
-            </v-list-item>
-          </v-col>
-        </v-row>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon
+                color="accent"
+                class="mr-4 material-icons material-icons-outlined"
+                >mdi-laptop</v-icon
+              >Share Screen</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon color="accent" class="mr-4">mdi-file-outline</v-icon
+              >Files</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon color="accent" class="mr-4">mdi-bell</v-icon>Move</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon color="accent" class="mr-4">mdi-message-outline</v-icon
+              >Chat</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon color="accent" class="mr-4"
+                >mdi-help-circle-outline</v-icon
+              >Get Support</span
+            ></v-btn
+          >
+        </v-list-item>
+        <v-list-item class="pa-0 ma-0">
+          <v-btn color="white" class="d-flex justify-start w-100" depressed
+            ><span color="accent"
+              ><v-icon
+                color="accent"
+                class="mr-4 material-icons material-icons-outlined"
+                >back_hand</v-icon
+              >Raise Hand</span
+            ></v-btn
+          >
+        </v-list-item>
       </v-list>
       <v-list v-else class="pa-0 ma-0">
         <v-list-item class="pa-0 ma-0">
