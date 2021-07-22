@@ -17,7 +17,7 @@
               "
               counter="300"
               class="mt-n3"
-              v-model="input"
+              v-model="requestInput"
               v-if="!sentRequest"
               :rules="rules"
               maxlength="300"
@@ -45,7 +45,7 @@
                 depressed
                 @click="onSendRequest()"
                 color="accent"
-                :disabled="!input"
+                :disabled="!requestInput"
                 >{{
                   $t(
                     "conference.meeting.controlBar.more.getSupport.sendSupport"
@@ -85,13 +85,24 @@ export default class GetSupportIcon extends Vue {
   rules = [
     (value: string): any => (value || "").length <= 300 || "Max 300 characters",
   ];
-  @Prop() input!: any;
-  @Prop() sentRequest!: boolean;
+  requestInput = null;
+  sentRequest = false;
+  destroyed(): void {
+    this.requestInput = null;
+    setTimeout(() => {
+      this.sentRequest = false;
+    }, 175);
+  }
+  // @Prop() requestInput!: any;
+  // @Prop() sentRequest!: boolean;
   onSendRequest(): void {
-    this.$emit("sendRequest");
+    this.sentRequest = true;
   }
   onClosedDialog(): void {
-    this.$emit("closedDialog");
+    this.requestInput = null;
+    setTimeout(() => {
+      this.sentRequest = false;
+    }, 175);
   }
 }
 // What is the difference between calling the function @click and not
