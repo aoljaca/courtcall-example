@@ -39,33 +39,35 @@
         </v-row>
         <v-row class="justify-center">
           <v-col cols="auto">
-            <v-btn
-              class="mr-5 text-capitalize pa-6 rounded-lg"
-              depressed
-              @click="sendRequest()"
-              color="accent"
-              :disabled="input == null || input == '' ? true : false"
-              v-if="!sentRequest"
-              >{{
-                $t("conference.meeting.controlBar.more.getSupport.sendSupport")
-              }}
-            </v-btn>
+            <template v-if="!sentRequest">
+              <v-btn
+                class="mr-5 text-capitalize pa-6 rounded-lg"
+                depressed
+                @click="onSendRequest()"
+                color="accent"
+                :disabled="!input"
+                >{{
+                  $t(
+                    "conference.meeting.controlBar.more.getSupport.sendSupport"
+                  )
+                }}
+              </v-btn>
+              <v-btn
+                class="text-capitalize pa-6 rounded-lg"
+                color="info black--text"
+                depressed
+                @click="onClosedDialog()"
+              >
+                {{
+                  $t("conference.meeting.controlBar.more.getSupport.cancel")
+                }}</v-btn
+              >
+            </template>
             <v-btn
               class="text-capitalize pa-6 rounded-lg"
               color="info black--text"
               depressed
-              @click="onDismissOrClear"
-              v-if="!sentRequest"
-            >
-              {{
-                $t("conference.meeting.controlBar.more.getSupport.cancel")
-              }}</v-btn
-            >
-            <v-btn
-              class="text-capitalize pa-6 rounded-lg"
-              color="info black--text"
-              depressed
-              @click="onDismissOrClear"
+              @click="onClosedDialog()"
               v-if="sentRequest"
             >
               {{ $t("conference.meeting.controlBar.more.getSupport.dismiss") }}
@@ -85,11 +87,11 @@ export default class GetSupportIcon extends Vue {
   ];
   @Prop() input!: any;
   @Prop() sentRequest!: boolean;
-  sendRequest(): void {
+  onSendRequest(): void {
     this.$emit("sendRequest");
   }
-  onDismissOrClear(): void {
-    this.$emit("changeVModel");
+  onClosedDialog(): void {
+    this.$emit("closedDialog");
   }
 }
 // What is the difference between calling the function @click and not

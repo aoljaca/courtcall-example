@@ -43,8 +43,8 @@
             </v-list-item>
           </template>
           <get-support
-            @changeVModel="changeVModel()"
-            @sendRequest="sendRequest()"
+            @closedDialog="onClosedDialog()"
+            @sendRequest="onSendRequest()"
             :input="input"
             :sentRequest="sentRequest"
           ></get-support>
@@ -222,14 +222,14 @@ export default class MoreIcon extends Vue {
     publicStreaming: false,
     getSupport: false,
   };
-  changeVModel(): void {
+  onClosedDialog(): void {
     this.dialog.getSupport = false;
     this.input = null;
     setTimeout(() => {
       this.sentRequest = false;
     }, 175);
   }
-  sendRequest(): void {
+  onSendRequest(): void {
     this.sentRequest = true;
   }
   onChange(): void {
