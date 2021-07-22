@@ -92,17 +92,10 @@ export default class GetSupportIcon extends Vue {
     this.$emit("changeVModel");
   }
 }
-// When you create a new branch what code does it create the
-// new branch from? Because I have the latest code from my other
-// branch even though it was not merged into env/dev
-
-// When you click on a get support the more menu should close
-// Does the 0/300 text need to have the text like in the figma
-// Does placeholder need to be aligned left?
-
-// Cancel and dismiss button has to change property in file that is not this one
-
-// Do we want to be able to send multiple requests?
-
 // What is the difference between calling the function @click and not
+
+// Avoid mutating a prop directly since the value will be overwritten
+// whenever the parent component re-renders. Instead, use a data or
+// computed property based on the prop's value. Prop being mutated:
+// "input"
 </script>
