@@ -34,11 +34,11 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: "*",
-    redirect: (to) => "/not-found",
+    redirect: () => "/not-found",
   },
   {
     path: "/",
-    redirect: (to) => "/login",
+    redirect: () => "/login",
   },
   {
     path: "/login",
@@ -90,7 +90,7 @@ const routes: Array<RouteConfig> = [
     path: "/admin",
     name: "Admin",
     component: Admin,
-    redirect: (to) => "/admin/dashboard",
+    redirect: () => "/admin/dashboard",
     children: [
       {
         path: "dashboard",
@@ -128,10 +128,14 @@ const routes: Array<RouteConfig> = [
       },
 
       {
-        path: "rooms",
+        path: "rooms/:roomId?",
         name: "Rooms",
         meta: {
-          hideBreadcrumb: true,
+          breadcrumbFunc: (route: any) =>
+            `${store.getters["RoomModule/getRoomNameById"](
+              route.params.roomId
+            )}`,
+          hideBreadcrumbFunc: (route: any) => !route.params.roomId,
         },
         component: {
           render(c) {
@@ -140,25 +144,19 @@ const routes: Array<RouteConfig> = [
         },
         children: [
           {
-            path: "view/:roomId",
+            path: "",
             name: "View Room",
             component: RoomViewManage,
             meta: {
-              breadcrumbFunc: (route: any) =>
-                `${store.getters["RoomModule/getRoomNameById"](
-                  route.params.roomId
-                )}`,
+              hideBreadcrumb: true,
             },
           },
           {
-            path: "edit/:roomId",
+            path: "edit",
             name: "Edit Room",
             component: RoomAddEdit,
             meta: {
-              breadcrumbFunc: (route: any) =>
-                `${store.getters["RoomModule/getRoomNameById"](
-                  route.params.roomId
-                )}`,
+              breadcrumb: i18n.t("admin.roomDetails.editingRoom"),
             },
           },
           {
@@ -190,9 +188,9 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "view/:caseId",
+                path: ":caseId/view",
                 component: CaseView,
-                name: "Case View",
+                name: "View Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
                     `${
@@ -202,9 +200,9 @@ const routes: Array<RouteConfig> = [
                 },
               },
               {
-                path: "edit/:caseId",
+                path: ":caseId/edit",
                 component: CaseEdit,
-                name: "Case Edit",
+                name: "Edit Case",
                 meta: {
                   breadcrumbFunc: (route: any) =>
                     `${
@@ -224,7 +222,7 @@ const routes: Array<RouteConfig> = [
             ],
           },
           {
-            path: "participants",
+            path: "participants/:participantId?",
             name: "Participants",
             component: {
               render(c) {
@@ -236,7 +234,7 @@ const routes: Array<RouteConfig> = [
             },
             children: [
               {
-                path: "view/:participantId",
+                path: "",
                 component: ViewParticipant,
                 name: "Participant",
                 meta: {
@@ -252,6 +250,7 @@ const routes: Array<RouteConfig> = [
                 path: "create",
                 component: CreateParticipant,
                 name: "Create Participant",
+                props: true,
                 meta: {
                   breadcrumb: i18n.t("admin.participants.create"),
                 },
@@ -375,7 +374,7 @@ const routes: Array<RouteConfig> = [
           {
             path: "",
             name: "Support",
-            redirect: (to) => "active",
+            redirect: () => "active",
             component: SupportQueue,
           },
           {

@@ -2,7 +2,9 @@
   <v-card color="secondary" flat class="pa-10">
     <v-row>
       <v-col cols="auto" align-self="center">
-        <h1 class="c-primary">{{ conference.displayName }}</h1>
+        <h1 class="c-primary">
+          {{ conference ? conference.displayName : "Room Name Here" }}
+        </h1>
       </v-col>
 
       <v-spacer />

@@ -1,4 +1,3 @@
-import { Role } from "@/model/meeting/meeting-ui/side-bar/participants/participant-permission";
 import { Module } from "vuex";
 
 const permissionsModule: Module<any, any> = {

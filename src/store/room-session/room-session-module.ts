@@ -1,4 +1,3 @@
-import { RoomSession } from "@/model/admin/room/room-activity";
 import { Module } from "vuex";
 import SESSIONS from "./fake-room-session-data.json";
 

@@ -64,9 +64,9 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import DateFormatService from "@/services/date-format";
+import { SupportItem } from "@/model/admin/support/support-item";
 @Component({})
 export default class SupportArchive extends Vue {
   readonly HEADERS = [
@@ -101,11 +101,11 @@ export default class SupportArchive extends Vue {
     },
   ];
 
-  get supportItems() {
+  get supportItems(): SupportItem[] {
     return this.$store.getters["SupportModule/getArchived"];
   }
 
-  getParticipantName(id: string) {
+  getParticipantName(id: string): string {
     const participant: Participant = this.$store.getters[
       "ParticipantsModule/getById"
     ](id);
@@ -116,11 +116,11 @@ export default class SupportArchive extends Vue {
     }
   }
 
-  getRoomName(id: string) {
+  getRoomName(id: string): string {
     return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
-  formatDate(iso: string): string | undefined {
+  formatDate(iso: string): string {
     if (iso) {
       return DateFormatService.formatFullDateTime(iso);
     } else {

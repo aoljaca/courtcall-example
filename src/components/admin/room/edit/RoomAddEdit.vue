@@ -52,7 +52,7 @@ import RoomNav from "@/components/admin/room/view/RoomNav.vue";
   },
 })
 export default class RoomAddEdit extends Vue {
-  onNavClicked(ref: string) {
+  onNavClicked(ref: string): void {
     // get the refs from this component
     const refs: any = this.$refs;
     // find the ref emmitted from RoomNav and store it as an element

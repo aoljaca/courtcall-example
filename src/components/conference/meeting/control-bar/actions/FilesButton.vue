@@ -24,7 +24,7 @@
 import { Component, Vue } from "vue-property-decorator";
 @Component({})
 export default class FilesButton extends Vue {
-  toggleFilesSidebar() {
+  toggleFilesSidebar(): void {
     this.$store.dispatch("SidebarModule/alterSidebarMode", {
       sidebarMode: "files",
     });

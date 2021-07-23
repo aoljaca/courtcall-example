@@ -54,7 +54,7 @@ import ParticipantsTable from "@/components/admin/room/view/ParticipantsTable.vu
   },
 })
 export default class RoomViewManage extends Vue {
-  onNavClicked(ref: string) {
+  onNavClicked(ref: string): void {
     // get the refs from this component
     const refs: any = this.$refs;
     // find the ref emmitted from RoomNav and store it as an element

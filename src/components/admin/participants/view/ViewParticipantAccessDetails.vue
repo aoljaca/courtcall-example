@@ -159,6 +159,7 @@ export default class ViewParticipantAccessDetails extends Vue {
     return this.$store.getters["RoomModule/getById"](roomId);
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   hasCondition(item: any): boolean {
     return !!item.condition;
   }
@@ -171,6 +172,7 @@ export default class ViewParticipantAccessDetails extends Vue {
     return this.isEditing;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   isConditionMet(item: any): boolean {
     let conditionMet = true;
 
@@ -192,7 +194,7 @@ export default class ViewParticipantAccessDetails extends Vue {
     return this.room?.roomDetails.participantAccessCode;
   }
 
-  getItems(items: any): any[] {
+  getItems(items: any[] | (() => any[])): any[] {
     if (typeof items === "function") {
       return items();
     } else {

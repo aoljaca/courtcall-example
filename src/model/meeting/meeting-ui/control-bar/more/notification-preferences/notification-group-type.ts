@@ -1,10 +1,10 @@
-type recipientType =
+export type RecipientType =
   | "hostsAndModerators"
   | "selectedConferenceRooms"
   | "selectedCases";
 interface NotificationGroupType {
   translationText: string;
-  type: recipientType;
+  type: RecipientType;
 }
 
 const NOTIFICATION_GROUP_TYPES: NotificationGroupType[] = [

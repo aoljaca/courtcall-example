@@ -60,7 +60,6 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { NO_BACKGROUND_BLUR_OPTION } from "@/model/meeting/av-options/background-option";
 import BackgroundBlurService from "@/services/background-blur";
 import {
   AudioState,
@@ -137,7 +136,7 @@ export default class VideoPreview extends Vue {
     }, 500);
   }
 
-  onToggleShowBackgrounds() {
+  onToggleShowBackgrounds(): void {
     this.openBackground = !this.openBackground;
   }
 }

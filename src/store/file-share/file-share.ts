@@ -1,9 +1,3 @@
-import {
-  CollaborationShare,
-  FileShare,
-  Share,
-  SignatureShare,
-} from "@/model/meeting/meeting-ui/side-bar/files/file-share";
 import { Module } from "vuex";
 
 const fileShareModule: Module<any, any> = {

@@ -1,9 +1,7 @@
 set -e 
 source ~/.bashrc
 export AWS_DEFAULT_REGION=us-east-1
-echo 'NPM Install'
 npm ci
-
 echo 'Build'
 npm run build:stage
 echo 'Upload'

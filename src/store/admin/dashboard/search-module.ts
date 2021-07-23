@@ -4,7 +4,6 @@ import {
 } from "@/model/admin/search/searchType";
 import { Module } from "vuex";
 import i18n from "@/plugins/i18n";
-import API from "@/services/api";
 import { SystemUser } from "@/model/admin/system-users/system-user";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Room } from "@/model/admin/room/room";

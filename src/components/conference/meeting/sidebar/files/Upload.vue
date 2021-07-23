@@ -89,6 +89,7 @@ import {
 import { Case } from "@/model/meeting/meeting-ui/case";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import {
+  FileShareSelectType,
   FileShareWithSelectType,
   SELECT_TYPES,
 } from "@/model/meeting/meeting-ui/side-bar/files/participant-select-type";
@@ -108,7 +109,7 @@ export default class FileUpload extends Vue {
     return this.$t(type.label);
   }
 
-  get editing() {
+  get editing(): boolean {
     return this.$store.state.FileShareModule.editing;
   }
 
@@ -116,7 +117,7 @@ export default class FileUpload extends Vue {
     return this.$store.state.FileShareModule.selectedShare;
   }
 
-  determineIntialFileType() {
+  determineIntialFileType(): FileShareType | null {
     const selectedShare: Share = this.$store.state.FileShareModule
       .selectedShare;
     if (selectedShare) {
@@ -161,10 +162,10 @@ export default class FileUpload extends Vue {
     }
   }
 
-  get fileName() {
+  get fileName(): string {
     return this.selectedShare?.fileName;
   }
-  get selectType() {
+  get selectType(): FileShareSelectType | undefined {
     return this.selectedSelectType?.type;
   }
 
@@ -176,13 +177,13 @@ export default class FileUpload extends Vue {
     return this.$store.getters["ParticipantsModule/getAsListNoSelf"];
   }
 
-  cancelCreation() {
+  cancelCreation(): void {
     this.$store.dispatch("FileShareModule/setCreating", { creating: false });
     this.$store.dispatch("FileShareModule/setEditing", false);
     this.$store.dispatch("FileShareModule/setSelectedShare", null);
   }
 
-  formatCase(c: Case) {
+  formatCase(c: Case): string {
     return CaseFormatService.formatCase(c);
   }
 }

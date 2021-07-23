@@ -21,9 +21,7 @@
             :title="$t('admin.roomParticipants.add')"
             color="grey darken-4 rounded-0 white--text"
             depressed
-            :to="{
-              name: 'Create Participant',
-            }"
+            :to="createParticipantRoute"
           >
             {{ $t("admin.roomParticipants.add") }}
           </v-btn>
@@ -40,6 +38,22 @@
             <template v-slot:[`item.active`]="{ item }">
               <v-icon v-if="item.active" color="green"> mdi-circle </v-icon>
               <v-icon v-else color="gray"> mdi-circle </v-icon>
+            </template>
+
+            <template v-slot:[`item.name`]="{ item }">
+              <router-link
+                :to="{
+                  name: 'Participant',
+                  params: {
+                    roomId: roomId,
+                    participantId: item.id,
+                  },
+                }"
+                class="c-secondary"
+              >
+                <span class="font-weight-bold">{{ item.name }}</span>
+                <template v-if="item.label"> ({{ item.label }}) </template>
+              </router-link>
             </template>
 
             <template v-slot:[`item.caseNumber`]="{ item }">
@@ -91,8 +105,8 @@
                     :to="{
                       name: 'Participant',
                       params: {
-                        participantId: item.id,
                         roomId: roomId,
+                        participantId: item.id,
                       },
                     }"
                     >{{ $t("general.view") }}</v-list-item
@@ -118,36 +132,35 @@ export default class ParticpantsTable extends Vue {
   readonly HEADERS = [
     {
       text: this.$t("admin.roomParticipants.activeHeader"),
-      value: this.$t("admin.roomParticipants.activeValue"),
+      value: "active",
     },
     {
       text: this.$t("admin.roomParticipants.nameHeader"),
-      value: this.$t("admin.roomParticipants.nameValue"),
+      value: "name",
     },
     {
       text: this.$t("admin.roomParticipants.caseNumberHeader"),
-      value: this.$t("admin.roomParticipants.caseNumberValue"),
+      value: "caseNumber",
     },
     {
       text: this.$t("admin.roomParticipants.caseNameHeader"),
-      value: this.$t("admin.roomParticipants.caseNameValue"),
+      value: "caseName",
     },
     {
       text: this.$t("admin.roomParticipants.roleHeader"),
-      value: this.$t("admin.roomParticipants.roleValue"),
+      value: "role",
     },
     {
       text: this.$t("admin.roomParticipants.moreHeader"),
-      value: this.$t("admin.roomParticipants.moreValue"),
+      value: "more",
     },
   ];
 
-  roomId = "";
   participantsData = this.$store.getters["ParticipantsModule/getAsList"];
   filterByCaseIds: string[] = [];
 
-  mounted(): void {
-    this.roomId = this.$route.params.roomId;
+  get roomId(): string {
+    return this.$route.params.roomId;
   }
 
   get participantsByRoom(): Participant[] {
@@ -173,6 +186,16 @@ export default class ParticpantsTable extends Vue {
           this.filterByCaseIds.includes(p.caseId || "")
         )
       : this.participantsByRoom;
+  }
+
+  get createParticipantRoute(): any {
+    return {
+      name: "Create Participant",
+      params: {
+        roomId: this.roomId,
+        participantId: undefined,
+      },
+    };
   }
 
   getCaseById(id: string): Case {

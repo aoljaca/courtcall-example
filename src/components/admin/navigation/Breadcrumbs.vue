@@ -27,7 +27,11 @@ export default class Breadcrumbs extends Vue {
     const breadcrumbs: Breadcrumb[] = [];
 
     this.$route.matched.forEach((matchedRoute) => {
-      if (!matchedRoute.meta.hideBreadcrumb) {
+      let hideBreadcrumbFunc = matchedRoute.meta.hideBreadcrumbFunc;
+      if (
+        !matchedRoute.meta.hideBreadcrumb &&
+        (!hideBreadcrumbFunc || !hideBreadcrumbFunc(this.$route))
+      ) {
         let dynamicBreadcrumb = "";
         let matchedRoutePath = matchedRoute.path;
         let breadcrumbFunc = matchedRoute.meta.breadcrumbFunc;
@@ -75,7 +79,13 @@ export default class Breadcrumbs extends Vue {
     const params = path.matchAll(regex);
 
     for (const param of params) {
-      path = path.replace(`:${param[0]}`, this.$route.params[param[0]]);
+      const paramName = param[0].endsWith("?")
+        ? param[0].slice(0, -1)
+        : param[0];
+      const paramValue = this.$route.params[paramName];
+      const toReplace = paramValue ? `:${param[0]}` : `/:${param[0]}`;
+      const toReplaceWith = paramValue ? this.$route.params[paramName] : "";
+      path = path.replace(toReplace, toReplaceWith);
     }
 
     return path;

@@ -244,7 +244,7 @@ export default class ParticipantControl extends Vue {
     this.opened = !this.opened;
   }
 
-  get subconferences() {
+  get subconferences(): SubConference[] {
     return this.$store.getters["SubconferenceModule/getAsList"];
   }
 
