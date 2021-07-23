@@ -26,7 +26,7 @@
         <v-dialog
           v-model="dialog.getSupport"
           max-width="750px"
-          @input="onChange"
+          @input="onSupportDialogChange"
         >
           <template v-slot:activator="{ on, attrs }">
             <v-list-item
@@ -42,12 +42,12 @@
               }}
             </v-list-item>
           </template>
-          <get-support
-            @closedDialog="onClosedDialog()"
-            @sendRequest="onSendRequest()"
-            :input="input"
-            :sentRequest="sentRequest"
-          ></get-support>
+          <get-support @closedDialog="onClosedSupportDialog()"></get-support>
+          <!-- :requestSupportInput="requestInput"
+          :sentSupportRequest="sentRequest" -->
+          <!-- requestSupportInput.sync="requestSupportInput"
+          :sentSupportRequest.sync="sentSupportRequest" -->
+          <!-- @sendRequest="onSendSupportRequest()" -->
         </v-dialog>
         <v-dialog v-model="dialog.sendNotification" max-width="750px">
           <template v-slot:activator="{ on, attrs }">
@@ -209,8 +209,8 @@ import GetSupport from "./GetSupport.vue";
 })
 export default class MoreIcon extends Vue {
   isOpen = false;
-  input = null;
-  sentRequest = false;
+  requestSupportInput = null;
+  sentSupportRequest = false;
   dialog = {
     sendNotification: false,
     inviteParticipants: false,
@@ -222,21 +222,21 @@ export default class MoreIcon extends Vue {
     publicStreaming: false,
     getSupport: false,
   };
-  onClosedDialog(): void {
+  onClosedSupportDialog(): void {
     this.dialog.getSupport = false;
-    this.input = null;
-    setTimeout(() => {
-      this.sentRequest = false;
-    }, 175);
+    // this.requestSupportInput = null;
+    // setTimeout(() => {
+    //   this.sentSupportRequest = false;
+    // }, 175);
   }
-  onSendRequest(): void {
-    this.sentRequest = true;
+  onSendSupportRequest(): void {
+    this.sentSupportRequest = true;
   }
-  onChange(): void {
+  onSupportDialogChange(): void {
     if (this.dialog.getSupport == false) {
-      this.input = null;
+      this.requestSupportInput = null;
       setTimeout(() => {
-        this.sentRequest = false;
+        this.sentSupportRequest = false;
       }, 175);
     }
   }

@@ -17,8 +17,8 @@
               "
               counter="300"
               class="mt-n3"
-              v-model="requestInput"
-              v-if="!sentRequest"
+              v-model="requestSupportInputCopy"
+              v-if="!sentSupportRequest"
               :rules="rules"
               maxlength="300"
             >
@@ -28,7 +28,7 @@
                 </v-btn>
               </template> -->
             </v-text-field>
-            <h5 v-if="sentRequest">
+            <h5 v-if="sentSupportRequest">
               {{
                 $t(
                   "conference.meeting.controlBar.more.getSupport.requestUpdate"
@@ -39,13 +39,13 @@
         </v-row>
         <v-row class="justify-center">
           <v-col cols="auto">
-            <template v-if="!sentRequest">
+            <template v-if="!sentSupportRequest">
               <v-btn
                 class="mr-5 text-capitalize pa-6 rounded-lg"
                 depressed
                 @click="onSendRequest()"
                 color="accent"
-                :disabled="!requestInput"
+                :disabled="!requestSupportInputCopy"
                 >{{
                   $t(
                     "conference.meeting.controlBar.more.getSupport.sendSupport"
@@ -68,7 +68,7 @@
               color="info black--text"
               depressed
               @click="onClosedDialog()"
-              v-if="sentRequest"
+              v-if="sentSupportRequest"
             >
               {{ $t("conference.meeting.controlBar.more.getSupport.dismiss") }}
             </v-btn>
@@ -85,24 +85,35 @@ export default class GetSupportIcon extends Vue {
   rules = [
     (value: string): any => (value || "").length <= 300 || "Max 300 characters",
   ];
-  requestInput = null;
-  sentRequest = false;
-  destroyed(): void {
-    this.requestInput = null;
-    setTimeout(() => {
-      this.sentRequest = false;
-    }, 175);
-  }
-  // @Prop() requestInput!: any;
-  // @Prop() sentRequest!: boolean;
+  // requestInput = null;
+  // sentRequest = false;
+  // destroyed(): void {
+  //   console.log("hey")
+  //   this.requestSupportInput = null;
+  //   setTimeout(() => {
+  //     this.sentSupportRequest = false;
+  //   }, 175);
+  // }
+  // @Prop() requestSupportInput!: any;
+  // @Prop() sentSupportRequest!: boolean;
+  requestSupportInputCopy = null;
+  sentSupportRequest = false;
   onSendRequest(): void {
-    this.sentRequest = true;
+    // this.$emit("update:sentSupportRequest", true);
+    this.sentSupportRequest = true;
   }
   onClosedDialog(): void {
-    this.requestInput = null;
+    // this.$emit("update:requestSupportInput", null);
+    this.requestSupportInputCopy = null;
     setTimeout(() => {
-      this.sentRequest = false;
+      this.sentSupportRequest = false;
+      // this.$emit("update:sentSupportRequest", false);
     }, 175);
+    this.$emit("closedDialog");
+    // this.requestInput = null;
+    // setTimeout(() => {
+    //   this.sentRequest = false;
+    // }, 175);
   }
 }
 // What is the difference between calling the function @click and not
