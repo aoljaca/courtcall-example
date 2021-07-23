@@ -1,5 +1,5 @@
 <template>
-  <v-card rounded class="pa-16 text-left">
+  <v-card rounded flat class="pa-16 text-left">
     <h1 class="font-weight-bold text-center c-primary mb-4">
       {{ $t("login.admin.title") }}
     </h1>
