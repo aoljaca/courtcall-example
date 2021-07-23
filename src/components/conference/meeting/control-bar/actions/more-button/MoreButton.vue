@@ -104,19 +104,23 @@ export default class MoreIcon extends Vue {
       icon: "mdi-help-circle-outline",
       label: this.$t("conference.meeting.controlBar.more.support"),
       hasDivider: true,
-      onClick: this.onSupportClicked(),
+      onClick: this.onSupportClicked,
     },
     {
       icon: "mdi-bell-plus-outline",
       label: this.$t(
         "conference.meeting.controlBar.more.notificationPreferences.title"
       ),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-bell-outline",
       label: this.$t(
         "conference.meeting.controlBar.more.sendNotification.title"
       ),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-account-plus-outline",
@@ -124,16 +128,22 @@ export default class MoreIcon extends Vue {
         "conference.meeting.controlBar.more.inviteParticipants.title"
       ),
       hasDivider: true,
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-texture",
       label: this.$t(
         "conference.meeting.controlBar.more.changeBackground.title"
       ),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-cog-outline",
       label: this.$t("conference.meeting.controlBar.more.avSetup.title"),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-closed-caption-outline",
@@ -141,28 +151,38 @@ export default class MoreIcon extends Vue {
         "conference.meeting.controlBar.more.transcription.titleAlt"
       ),
       hasDivider: true,
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-circle-slice-8",
       label: this.$t("conference.meeting.controlBar.more.record.titleAlt"),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-cast",
       label: this.$t(
         "conference.meeting.controlBar.more.publicStreaming.titleAlt"
       ),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "back_hand",
       label: this.$t("conference.meeting.controlBar.more.support"),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
   ];
 
   onSupportClicked(): void {
+    console.log("Support Clicked");
     this.isGettingSupport = true;
   }
 
   onClosedSupportDialog(): void {
+    console.log("Support Closed");
     this.isGettingSupport = false;
   }
 
