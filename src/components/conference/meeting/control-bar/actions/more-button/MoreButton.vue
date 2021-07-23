@@ -23,27 +23,13 @@
         </v-row>
       </template>
       <v-list>
-        <template v-slot:activator="{ on, attrs }">
-          <v-list-item
-            v-bind="attrs"
-            v-on="on"
-            :title="
-              $t('conference.meeting.controlBar.more.sendNotification.title')
-            "
-          >
-            <v-icon>mdi-bell-plus</v-icon>
-            {{
-              $t("conference.meeting.controlBar.more.sendNotification.title")
-            }}
-          </v-list-item>
-        </template>
         <template>
           <v-list>
             <v-list-item
               v-for="item in listItems"
               @click="item.onClick"
               :key="item.id"
-              :title="item.label"
+              title="gey"
             >
               <v-icon>{{ item.icon }}</v-icon>
               <!-- item.onClick => isGettingSupport = true -->
@@ -54,6 +40,7 @@
             @closedDialog="isGettingSupport = false"
           />
         </template>
+
         <v-dialog v-model="dialog.sendNotification" max-width="750px">
           <template v-slot:activator="{ on, attrs }">
             <v-list-item
@@ -213,9 +200,6 @@ import GetSupport from "./GetSupport.vue";
   },
 })
 export default class MoreIcon extends Vue {
-  isOpen = false;
-  requestSupportInput = null;
-  sentSupportRequest = false;
   dialog = {
     sendNotification: false,
     inviteParticipants: false,
