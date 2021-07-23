@@ -29,7 +29,7 @@
           >
             <v-row>
               <v-col cols="auto">
-                <v-icon color="primary">{{ option.icon }}</v-icon>
+                <v-icon color="accent">{{ option.icon }}</v-icon>
               </v-col>
               <v-col> {{ option.label }} </v-col>
             </v-row>
