@@ -168,6 +168,7 @@
           <v-row>
             <v-col>
               <v-btn
+                v-if="caseId"
                 data-test-id="add-scheduled-participant"
                 :title="$t('admin.cases.addParticipant')"
                 color="grey darken-4 rounded-0 white--text"
