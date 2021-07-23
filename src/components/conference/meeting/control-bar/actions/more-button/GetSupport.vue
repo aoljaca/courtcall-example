@@ -93,10 +93,6 @@ export default class GetSupport extends Vue {
   }
   onClosedDialog(): void {
     this.$emit("closedDialog");
-    this.requestSupportInput = null;
-    setTimeout(() => {
-      this.sentSupportRequest = false;
-    }, 175);
   }
 }
 </script>
