@@ -84,7 +84,7 @@ export default class MoreIcon extends Vue {
     },
     {
       icon: "back_hand",
-      label: this.$t("conference.meeting.controlBar.more.support"),
+      label: this.$t("conference.meeting.controlBar.more.hand"),
     },
   ];
 
@@ -142,7 +142,7 @@ export default class MoreIcon extends Vue {
     },
     {
       icon: "back_hand",
-      label: this.$t("conference.meeting.controlBar.more.support"),
+      label: this.$t("conference.meeting.controlBar.more.hand"),
     },
   ];
 
