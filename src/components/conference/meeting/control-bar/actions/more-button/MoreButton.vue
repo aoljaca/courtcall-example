@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-menu offset-y top nudge-top="10">
+    <v-menu
+      offset-y
+      top
+      :nudge-top="showCondensedVersion ? '10' : '10'"
+      :nudge-left="showCondensedVersion ? '70' : '90'"
+      v-model="menuOpen"
+    >
       <template v-slot:activator="{ on, attrs }">
         <v-row>
           <v-col class="text-center">
@@ -23,172 +29,134 @@
         </v-row>
       </template>
       <v-list>
-        <v-dialog v-model="dialog.sendNotification" max-width="750px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item
-              v-bind="attrs"
-              v-on="on"
-              :title="
-                $t('conference.meeting.controlBar.more.sendNotification.title')
-              "
-            >
-              <v-icon>mdi-bell-plus</v-icon>
-              {{
-                $t("conference.meeting.controlBar.more.sendNotification.title")
-              }}
-            </v-list-item>
-          </template>
-          <send-notification></send-notification>
-        </v-dialog>
-        <v-dialog v-model="dialog.inviteParticipants" max-width="750px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item
-              v-bind="attrs"
-              v-on="on"
-              :title="
-                $t(
-                  'conference.meeting.controlBar.more.inviteParticipants.title'
-                )
-              "
-            >
-              <v-icon>mdi-account-supervisor</v-icon>
-              {{
-                $t(
-                  "conference.meeting.controlBar.more.inviteParticipants.title"
-                )
-              }}
-            </v-list-item>
-          </template>
-          <invite-participants></invite-participants>
-        </v-dialog>
-        <v-dialog v-model="dialog.record" max-width="500px">
-          <template
-            v-slot:activator="{ on, attrs }"
-            :title="$t('conference.meeting.controlBar.more.record.title')"
-          >
-            <v-list-item v-bind="attrs" v-on="on">
-              <v-icon>mdi-record</v-icon>
-              {{ $t("conference.meeting.controlBar.more.record.title") }}
-            </v-list-item>
-          </template>
-          <record></record>
-        </v-dialog>
-        <v-dialog v-model="dialog.changeBackground" max-width="750px">
-          <template
-            v-slot:activator="{ on, attrs }"
-            :title="
-              $t('conference.meeting.controlBar.more.changeBackground.title')
-            "
-          >
-            <v-list-item v-bind="attrs" v-on="on">
-              <v-icon>mdi-image-multiple</v-icon>
-              {{
-                $t("conference.meeting.controlBar.more.changeBackground.title")
-              }}
-            </v-list-item>
-          </template>
-          <change-background></change-background>
-        </v-dialog>
-        <v-dialog v-model="dialog.avSetup" max-width="750px">
-          <template
-            v-slot:activator="{ on, attrs }"
-            :title="$t('conference.meeting.controlBar.more.avSetup.title')"
-          >
-            <v-list-item v-bind="attrs" v-on="on">
-              <v-icon>mdi-video</v-icon>
-              {{ $t("conference.meeting.controlBar.more.avSetup.title") }}
-            </v-list-item>
-          </template>
-          <av-setup></av-setup>
-        </v-dialog>
-        <v-dialog v-model="dialog.notificationPreferences" max-width="500px">
-          <template
-            v-slot:activator="{ on, attrs }"
-            :title="
-              $t(
-                'conference.meeting.controlBar.more.notificationPreferences.title'
-              )
-            "
-          >
-            <v-list-item v-bind="attrs" v-on="on">
-              <v-icon>mdi-bell</v-icon>
-              {{
-                $t(
-                  "conference.meeting.controlBar.more.notificationPreferences.title"
-                )
-              }}
-            </v-list-item>
-          </template>
-          <notification-preferences></notification-preferences>
-        </v-dialog>
-        <v-dialog v-model="dialog.transcription" max-width="250px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item
-              v-on="on"
-              v-bind="attrs"
-              :title="
-                $t('conference.meeting.controlBar.more.transcription.title')
-              "
-            >
-              <v-icon>mdi-closed-caption</v-icon>
-              {{ $t("conference.meeting.controlBar.more.transcription.title") }}
-            </v-list-item>
-          </template>
-          <transcription-menu></transcription-menu>
-        </v-dialog>
-        <v-dialog v-model="dialog.publicStreaming" max-width="500px">
-          <template v-slot:activator="{ on, attrs }">
-            <v-list-item
-              v-on="on"
-              v-bind="attrs"
-              :title="
-                $t('conference.meeting.controlBar.more.publicStreaming.title')
-              "
-            >
-              <v-icon> mdi-wifi </v-icon>
-              {{
-                $t("conference.meeting.controlBar.more.publicStreaming.title")
-              }}
-            </v-list-item>
-          </template>
-          <public-streaming></public-streaming>
-        </v-dialog>
+        <div
+          v-for="(item, index) in listItems"
+          :key="`more-option-${index}`"
+          class="pa-0 ma-0"
+        >
+          <v-list-item>
+            <v-btn color="white" class="d-flex justify-start w-100" depressed>
+              <span color="accent">
+                <v-icon
+                  color="accent"
+                  class="mr-4 material-icons material-icons-outlined"
+                  >{{ item.icon }}</v-icon
+                >
+                {{ item.label }}
+              </span>
+            </v-btn>
+          </v-list-item>
+          <v-divider v-if="item.hasDivider" />
+        </div>
       </v-list>
     </v-menu>
   </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import SendNotification from "./SendNotification.vue";
-import InviteParticipants from "./InviteParticipants.vue";
-import Record from "./Record.vue";
-import ChangeBackground from "./ChangeBackground.vue";
-import AvSetup from "./AVSetup.vue";
-import NotificationPreferences from "./NotificationPreferences.vue";
-import TranscriptionMenu from "./TranscriptionMenu.vue";
-import PublicStreaming from "./PublicStreaming.vue";
-@Component({
-  components: {
-    SendNotification,
-    InviteParticipants,
-    Record,
-    ChangeBackground,
-    AvSetup,
-    NotificationPreferences,
-    TranscriptionMenu,
-    PublicStreaming,
-  },
-})
+@Component
 export default class MoreIcon extends Vue {
-  dialog = {
-    sendNotification: false,
-    inviteParticipants: false,
-    record: false,
-    changeBackground: false,
-    avSetup: false,
-    notificationPreferences: false,
-    transcription: false,
-    publicStreaming: false,
-  };
+  menuOpen = false;
+
+  listItemsMobile = [
+    {
+      icon: "mdi-laptop",
+      label: this.$t("conference.meeting.controlBar.more.shareScreen"),
+    },
+    {
+      icon: "mdi-file-outline",
+      label: this.$t("conference.meeting.controlBar.more.files"),
+    },
+    {
+      icon: "logout",
+      label: this.$t("conference.meeting.controlBar.more.files"),
+    },
+    {
+      icon: "mdi-message-outline",
+      label: this.$t("conference.meeting.controlBar.more.chat"),
+    },
+    {
+      icon: "mdi-help-circle-outline",
+      label: this.$t("conference.meeting.controlBar.more.support"),
+    },
+    {
+      icon: "back_hand",
+      label: this.$t("conference.meeting.controlBar.more.support"),
+    },
+  ];
+
+  listItemsDesktop = [
+    {
+      icon: "mdi-help-circle-outline",
+      label: this.$t("conference.meeting.controlBar.more.support"),
+      hasDivider: true,
+    },
+    {
+      icon: "mdi-bell-plus-outline",
+      label: this.$t(
+        "conference.meeting.controlBar.more.notificationPreferences.title"
+      ),
+    },
+    {
+      icon: "mdi-bell-outline",
+      label: this.$t(
+        "conference.meeting.controlBar.more.sendNotification.title"
+      ),
+    },
+    {
+      icon: "mdi-account-plus-outline",
+      label: this.$t(
+        "conference.meeting.controlBar.more.inviteParticipants.title"
+      ),
+      hasDivider: true,
+    },
+    {
+      icon: "mdi-texture",
+      label: this.$t(
+        "conference.meeting.controlBar.more.changeBackground.title"
+      ),
+    },
+    {
+      icon: "mdi-cog-outline",
+      label: this.$t("conference.meeting.controlBar.more.avSetup.title"),
+    },
+    {
+      icon: "mdi-closed-caption-outline",
+      label: this.$t(
+        "conference.meeting.controlBar.more.transcription.titleAlt"
+      ),
+      hasDivider: true,
+    },
+    {
+      icon: "mdi-circle-slice-8",
+      label: this.$t("conference.meeting.controlBar.more.record.titleAlt"),
+    },
+    {
+      icon: "mdi-cast",
+      label: this.$t(
+        "conference.meeting.controlBar.more.publicStreaming.titleAlt"
+      ),
+    },
+    {
+      icon: "back_hand",
+      label: this.$t("conference.meeting.controlBar.more.support"),
+    },
+  ];
+
+  get listItems(): any[] {
+    return this.showCondensedVersion
+      ? this.listItemsMobile
+      : this.listItemsDesktop;
+  }
+
+  get showCondensedVersion(): boolean {
+    return this.$vuetify.breakpoint.smAndDown;
+  }
 }
 </script>
+
+<style scoped>
+* {
+  box-sizing: border-box;
+}
+</style>
