@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column space-between h-100 bc-secondary">
+  <div class="d-flex flex-column space-between h-100">
     <conference-header id="header" />
 
     <v-row justify="center">

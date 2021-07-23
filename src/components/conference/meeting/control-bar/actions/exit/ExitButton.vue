@@ -3,12 +3,13 @@
     <v-row dense>
       <v-col class="text-center">
         <v-btn
-          color="error"
-          fab
-          depressed
+          color="white"
+          icon
           dark
+          x-large
+          depressed
           @click="onExitCall"
-          class="pa-5"
+          class="pa-5 bc-error"
         >
           <v-icon> mdi-close </v-icon>
         </v-btn>

@@ -16,9 +16,10 @@
             <v-btn
               v-bind="attrs"
               v-on="on"
-              fab
+              icon
+              x-large
               depressed
-              class="pa-5"
+              :class="{ 'pa-5': true, 'bc-white': menuOpen }"
               :dark="!menuOpen"
               :outlined="!menuOpen"
               :color="buttonProperties.color"
@@ -92,7 +93,6 @@ export default class MoveButton extends Vue {
   get buttonProperties(): any {
     return {
       text: this.$t("conference.meeting.controlBar.moveParticipants.title"),
-      color: this.menuOpen ? "white" : undefined,
       icon: "mdi-exit-to-app",
       iconColor: this.menuOpen ? "primary" : "white",
     };

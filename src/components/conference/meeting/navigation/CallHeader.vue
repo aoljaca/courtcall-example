@@ -12,7 +12,10 @@
         >
           <v-icon color="accent">mdi-menu</v-icon>
         </v-btn> -->
-        <img src="../../../../../public/img/icons/CourtCallIconDark.png" />
+        <img
+          src="../../../../../public/img/icons/CourtCallBugDark.png"
+          height="60"
+        />
       </v-col>
       <v-col cols="auto" align-self="center">
         <h2 class="c-primary font-weight-bold">
