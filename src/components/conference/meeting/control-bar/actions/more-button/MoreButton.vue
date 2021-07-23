@@ -54,11 +54,11 @@
           <v-divider v-if="item.hasDivider" />
         </div>
       </v-list>
-      <get-support
-        v-if="isGettingSupport"
-        @closedDialog="onClosedSupportDialog"
-      />
     </v-menu>
+    <get-support
+      v-if="isGettingSupport"
+      @closedDialog="onClosedSupportDialog"
+    />
   </div>
 </template>
 <script lang="ts">
