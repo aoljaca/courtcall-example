@@ -28,7 +28,7 @@
           </v-col>
         </v-row>
       </template>
-      <v-list v-if="showCondensedVersion">
+      <!-- <v-list v-if="showCondensedVersion">
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
             ><span class="c-accent"
@@ -201,6 +201,24 @@
             </span>
           </v-btn>
         </v-list-item>
+      </v-list> -->
+      <v-list v-if="showCondensedVersion">
+        <v-list-item
+          v-for="(index, item) in listItemsMobile"
+          :key="`more-option-${index}`"
+          class="pa-0 ma-0"
+        >
+          <v-btn color="white" class="d-flex justify-start w-100" depressed>
+            <span color="accent">
+              <v-icon
+                color="accent"
+                class="mr-4 material-icons material-icons-outlined"
+                >{{ item.icon }}</v-icon
+              >
+              {{ item.label }}
+            </span>
+          </v-btn>
+        </v-list-item>
       </v-list>
     </v-menu>
   </div>
@@ -210,6 +228,88 @@ import { Vue, Component } from "vue-property-decorator";
 @Component
 export default class MoreIcon extends Vue {
   menuOpen = false;
+
+  listItemsMobile = [
+    {
+      icon: "mdi-laptop",
+      label: this.$t("conference.meeting.controlBar.more.shareScreen"),
+    },
+    {
+      icon: "mdi-file-outline",
+      label: this.$t("conference.meeting.controlBar.more.files"),
+    },
+    {
+      icon: "logout",
+      label: this.$t("conference.meeting.controlBar.more.files"),
+    },
+    {
+      icon: "mdi-message-outline",
+      label: this.$t("conference.meeting.controlBar.more.chat"),
+    },
+    {
+      icon: "mdi-help-circle-outline",
+      label: this.$t("conference.meeting.controlBar.more.support"),
+    },
+    {
+      icon: "back_hand",
+      label: this.$t("conference.meeting.controlBar.more.support"),
+    },
+  ];
+
+  listItemsDesktop = [
+    {
+      icon: "mdi-help-circle-outline",
+      label: this.$t("conference.meeting.controlBar.more.support"),
+    },
+    {
+      icon: "mdi-bell-plus-outline",
+      label: this.$t(
+        "conference.meeting.controlBar.more.notificationPreferences.title"
+      ),
+    },
+    {
+      icon: "mdi-bell-outline",
+      label: this.$t(
+        "conference.meeting.controlBar.more.sendNotification.title"
+      ),
+    },
+    {
+      icon: "mdi-account-plus-outline",
+      label: this.$t(
+        "conference.meeting.controlBar.more.inviteParticipants.title"
+      ),
+    },
+    {
+      icon: "mdi-texture",
+      label: this.$t(
+        "conference.meeting.controlBar.more.changeBackground.title"
+      ),
+    },
+    {
+      icon: "mdi-cog-outline",
+      label: this.$t("conference.meeting.controlBar.more.avSetup.title"),
+    },
+    {
+      icon: "mdi-closed-caption-outline",
+      label: this.$t(
+        "conference.meeting.controlBar.more.transcription.titleAlt"
+      ),
+    },
+    {
+      icon: "mdi-circle-slice-8",
+      label: this.$t("conference.meeting.controlBar.more.record.titleAlt"),
+    },
+    {
+      icon: "mdi-cast",
+      label: this.$t(
+        "conference.meeting.controlBar.more.publicStreaming.titleAlt"
+      ),
+    },
+    {
+      icon: "back_hand",
+      label: this.$t("conference.meeting.controlBar.more.support"),
+    },
+  ];
 
   get showCondensedVersion(): boolean {
     return this.$vuetify.breakpoint.smAndDown;
