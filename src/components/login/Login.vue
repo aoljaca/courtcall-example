@@ -28,7 +28,7 @@ import ConferenceHeader from "@/components/conference/navigation/ConferenceHeade
 import ConferenceFooter from "@/components/conference/navigation/ConferenceFooter.vue";
 import { CustomTheme } from "@/services/theme-service";
 import ThemeService from "@/services/theme-service";
-import WebsocketConnectionService from "@/services/websocket-connection";
+import WebsocketConnectionService from "@/services/websocket/websocket-connection";
 @Component({
   components: {
     AdminLogin,

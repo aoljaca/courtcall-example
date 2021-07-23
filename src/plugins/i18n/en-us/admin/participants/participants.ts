@@ -14,6 +14,10 @@ export default {
       title: "Name",
       placeholder: "Enter Name",
     },
+    label: {
+      title: "Label",
+      placeholder: "Enter a Label (optional)",
+    },
     type: {
       title: "Participant Type",
     },

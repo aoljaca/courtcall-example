@@ -63,7 +63,7 @@ import { Component, Vue } from "vue-property-decorator";
 export default class PublicStreaming extends Vue {
   isStreaming = false;
 
-  toggleStreaming() {
+  toggleStreaming(): void {
     this.isStreaming = !this.isStreaming;
   }
 }

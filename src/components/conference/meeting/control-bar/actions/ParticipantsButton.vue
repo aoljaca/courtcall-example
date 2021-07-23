@@ -24,7 +24,7 @@
 import { Component, Vue } from "vue-property-decorator";
 @Component({})
 export default class ParticipantsButton extends Vue {
-  toggleParticipantsSidebar() {
+  toggleParticipantsSidebar(): void {
     this.$store.dispatch("SidebarModule/alterSidebarMode", {
       sidebarMode: "participants",
     });

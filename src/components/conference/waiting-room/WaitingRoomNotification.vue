@@ -25,7 +25,7 @@ export default class WaitingRoomNotification extends Vue {
   @Prop()
   details!: IWaitingRoomNotification;
 
-  get styleObject() {
+  get styleObject(): { [key: string]: string } {
     return {
       "background-color": this.details.color,
     };

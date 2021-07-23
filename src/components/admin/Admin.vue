@@ -38,7 +38,7 @@ import Navigation from "@/components/admin/dashboard/Navigation.vue";
 import UserActions from "@/components/admin/dashboard/UserActions.vue";
 import Breadcrumbs from "@/components/admin/navigation/Breadcrumbs.vue";
 import Search from "@/components/admin/dashboard/search/Search.vue";
-import WebsocketConnectionService from "@/services/websocket-connection";
+import WebsocketConnectionService from "@/services/websocket/websocket-connection";
 import { CustomTheme } from "@/services/theme-service";
 import ThemeService from "@/services/theme-service";
 @Component({

@@ -34,7 +34,7 @@ const mockConferences: { [key: string]: SubConference } = {
     systemName: "systemName5",
     displayName: "Sub-conference 5",
   },
-}
+};
 
 const conferenceModule: Module<any, any> = {
   namespaced: true,
@@ -63,31 +63,35 @@ const conferenceModule: Module<any, any> = {
       router.push({
         name: "Conference Call",
         params: {
-          conferenceId: conferenceId
-        }
+          conferenceId: conferenceId,
+        },
       });
     },
     leaveConference({ commit }) {
       // Call API then set probably null to state
       commit("setActiveConferenceId", null);
       router.push({
-        name: "Leave Call"
+        name: "Leave Call",
       });
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     moveToConference({ commit }, newConferenceId) {
       // Call API then set response to state
       router.push({
         name: "Waiting Room",
         params: {
-          conferenceId: newConferenceId
-        }
+          conferenceId: newConferenceId,
+        },
       });
     },
   },
   getters: {
-    getActiveConference: (state) => state.subConferences[state.activeConferenceId],
-    getActiveSubConference: (state) => state.subConferences[state.activeSubConferenceId],
-    getSubConferenceByid: (state) => (subConferenceId: string) => state.subConferences[subConferenceId],
+    getActiveConference: (state) =>
+      state.subConferences[state.activeConferenceId],
+    getActiveSubConference: (state) =>
+      state.subConferences[state.activeSubConferenceId],
+    getSubConferenceByid: (state) => (subConferenceId: string) =>
+      state.subConferences[subConferenceId],
     getSubConferencesAsList: (state) => Object.values(state.subConferences),
     videoState: (state, getters, rootState) => {
       let result = VideoState.Disabled;
@@ -108,11 +112,14 @@ const conferenceModule: Module<any, any> = {
       return result;
     },
     // TODO: Check for video devices && check participant settings
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     canEnableVideo: (state) => true,
 
     // TODO: Check for audio devices && check participant settings
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     canEnableAudio: (state) => true,
     // TODO: Check if participant is host or system user that has privileges
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     canMoveConferences: (state) => true,
   },
 };

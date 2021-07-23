@@ -181,11 +181,11 @@ export default class RoomActivity extends Vue {
     }
   }
 
-  setSelectedSession(session: RoomSession) {
+  setSelectedSession(session: RoomSession): void {
     this.selectedSession = session;
   }
 
-  formatRoomDescription(session: RoomSession) {
+  formatRoomDescription(session: RoomSession): string {
     const room: Room = this.$store.getters["RoomModule/getById"](session.room);
     const roomName = room ? room.roomDetails.name : "Unknown";
     const date = DateTime.fromISO(session.startTime)

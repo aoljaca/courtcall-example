@@ -26,11 +26,11 @@ import { Component, Vue } from "vue-property-decorator";
 export default class RoomPasscode extends Vue {
   passcode = "";
 
-  onSubmit() {
+  onSubmit(): void {
     this.$store.dispatch("EntryModule/alterEntryPhase", EntryMode.NAME);
   }
 
-  onExit() {
+  onExit(): void {
     this.$router.push({
       name: "Login",
     });

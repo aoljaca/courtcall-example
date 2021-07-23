@@ -161,11 +161,11 @@ export default class RoomOverview extends Vue {
     return this.participantsInSubconference(s).length;
   }
 
-  startMove() {
+  startMove(): void {
     this.moving = "moving";
   }
 
-  toggleSelectAll() {
+  toggleSelectAll(): void {
     this.$nextTick(() => {
       const subconferences = this.subconferences;
 
@@ -177,17 +177,17 @@ export default class RoomOverview extends Vue {
     });
   }
 
-  cancelMove() {
+  cancelMove(): void {
     this.subconferenceDestination = null;
     this.subConferencesToMove = [];
     this.moving = "none";
   }
 
-  proceedWithMove() {
+  proceedWithMove(): void {
     this.moving = "confirm";
   }
 
-  actuallyMove() {
+  actuallyMove(): void {
     this.subconferenceDestination = null;
     this.subConferencesToMove = [];
     this.moving = "none";
@@ -201,7 +201,7 @@ export default class RoomOverview extends Vue {
     return "mdi-checkbox-blank-outline";
   }
 
-  get participantsToMove() {
+  get participantsToMove(): Participant[] {
     const participants: Participant[] = this.$store.getters[
       "ParticipantsModule/getAsList"
     ];

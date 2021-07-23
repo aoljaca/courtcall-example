@@ -132,8 +132,8 @@ export default class FileMainView extends Vue {
     ...FILE_SHARE_TYPES,
   ];
 
-  formatFileShareLabel(type: FileShareType) {
-    return this.$t(type.label);
+  formatFileShareLabel(type: FileShareType): string {
+    return this.$t(type.label) as string;
   }
   uploadFile(): void {
     this.$store.dispatch("FileShareModule/setCreating", { creating: true });

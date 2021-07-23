@@ -69,11 +69,11 @@ export default class ChangeBackground extends Vue {
   blurBackgroundOption = BLUR_OPTION;
   backgroundOptions = BACKGROUND_OPTIONS;
   selectedBackgroundOption: BackgroundOption = NO_BACKGROUND_BLUR_OPTION;
-  get origin() {
+  get origin(): string {
     return document.location.origin;
   }
 
-  calculateBackgroundUrl(option: BackgroundOption) {
+  calculateBackgroundUrl(option: BackgroundOption): string {
     return `${this.origin}/${option.backgroundUrl}`;
   }
 }

@@ -111,11 +111,11 @@ export default class CreateParticipantAccessDetails extends Vue {
     },
   ];
 
-  hasCondition(item: any): boolean {
+  hasCondition(item: { [key: string]: any }): boolean {
     return !!item.condition;
   }
 
-  isConditionMet(item: any): boolean {
+  isConditionMet(item: { [key: string]: any }): boolean {
     let conditionMet = true;
 
     if (this.hasCondition(item)) {
@@ -129,7 +129,7 @@ export default class CreateParticipantAccessDetails extends Vue {
     return this.participant.role === ParticipantRole.PARTICIPANT_DEDICATED;
   }
 
-  getItems(items: any): any[] {
+  getItems(items: any[] | (() => any[])): any[] {
     if (typeof items === "function") {
       return items();
     } else {

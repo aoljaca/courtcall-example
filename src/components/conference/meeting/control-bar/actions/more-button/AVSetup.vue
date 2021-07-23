@@ -126,7 +126,7 @@ export default class AvSetup extends Vue {
   possibleAudioDevices: MediaDeviceInfo[] = [];
   possibleSpeakerDevices: MediaDeviceInfo[] = [];
   possibleVideoDevices: MediaDeviceInfo[] = [];
-  async mounted() {
+  async mounted(): Promise<void> {
     const mediaDevices = await navigator.mediaDevices.enumerateDevices();
     mediaDevices.forEach((device) => {
       if (device.kind === "videoinput") {
@@ -158,7 +158,7 @@ export default class AvSetup extends Vue {
     videoElement.srcObject = stream;
   }
 
-  async changeVideoDevice() {
+  async changeVideoDevice(): Promise<void> {
     const videoElement = document.getElementById(
       "av-setup-video"
     ) as HTMLVideoElement;

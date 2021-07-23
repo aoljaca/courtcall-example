@@ -98,7 +98,7 @@ export default class SearchResults extends Vue {
     await this.submitSearchQuery();
   }
 
-  onNavigateToEntity(item: any): void {
+  onNavigateToEntity(item: { id: string; uuid: string }): void {
     NavigateToEntity(item.id || item.uuid, this.searchTypeQuery.type);
   }
 

@@ -38,7 +38,7 @@ export default class Files extends Vue {
     return this.creating || this.editing;
   }
 
-  shouldShowMainView() {
+  shouldShowMainView(): boolean {
     return !this.creating && !this.editing;
   }
 }

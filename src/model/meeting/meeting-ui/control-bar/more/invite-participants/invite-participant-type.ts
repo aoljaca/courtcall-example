@@ -1,4 +1,7 @@
-type InviteParticipantMode = "sharedLink" | "singleLink" | "scheduledLink";
+export type InviteParticipantMode =
+  | "sharedLink"
+  | "singleLink"
+  | "scheduledLink";
 
 interface InviteParticipantType {
   type: InviteParticipantMode;

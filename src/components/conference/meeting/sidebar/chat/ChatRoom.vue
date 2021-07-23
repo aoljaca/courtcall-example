@@ -42,6 +42,7 @@
 </template>
 <script lang="ts">
 import { Chat } from "@/model/meeting/meeting-ui/side-bar/chat/chat";
+import { ChatMessage } from "@/model/meeting/meeting-ui/side-bar/chat/chat-message";
 import ChatFormatService from "@/services/chat-format";
 import { Component, Prop, Vue } from "vue-property-decorator";
 import ChatMessageCard from "./ChatMessageCard.vue";
@@ -54,15 +55,15 @@ export default class ChatRoom extends Vue {
   @Prop()
   chat: Chat | undefined;
 
-  clearChat() {
+  clearChat(): void {
     this.$store.dispatch("ChatModule/alterSelectedChatId", { id: null });
   }
 
-  get messages() {
+  get messages(): ChatMessage[] {
     return this.$store.getters["ChatModule/messagesForChat"](this.chat?.uuid);
   }
 
-  get title() {
+  get title(): string {
     return ChatFormatService.formatTitle({
       this: this,
       participantIds: this.chat!.participants,

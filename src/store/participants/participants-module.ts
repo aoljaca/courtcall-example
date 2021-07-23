@@ -4,7 +4,6 @@ import {
   EntryVideoBehavor,
 } from "@/model/admin/participants/enums";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-import roomParticipants from "@/plugins/i18n/en-us/admin/room/room-participants";
 import { Module } from "vuex";
 
 const participants: {

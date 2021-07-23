@@ -24,7 +24,7 @@
 import { Component, Vue } from "vue-property-decorator";
 @Component({})
 export default class ChatButton extends Vue {
-  toggleChatSidebar() {
+  toggleChatSidebar(): void {
     this.$store.dispatch("SidebarModule/alterSidebarMode", {
       sidebarMode: "chat",
     });

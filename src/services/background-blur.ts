@@ -133,6 +133,7 @@ class BackgroundBlurService {
     options: BindPageParams
   ) {
     const segmentation = await net.segmentPerson(options.videoElement);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const context = options.canvasElement.getContext("2d")!;
     BodyPix.drawBokehEffect(
       document.getElementById("canvas-preview") as HTMLCanvasElement,

@@ -75,6 +75,12 @@ export default class ViewParticipantDetails extends Vue {
       items: Object.values(ParticipantRole),
     },
     {
+      title: this.$t("admin.participants.formFields.label.title"),
+      placeholder: this.$t("admin.participants.formFields.label.placeholder"),
+      key: "label",
+      inputType: "textField",
+    },
+    {
       title: this.$t("admin.participants.formFields.type.title"),
       computedValue: this.getParticipantType,
     },
@@ -127,10 +133,12 @@ export default class ViewParticipantDetails extends Vue {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   hasCondition(item: any): boolean {
     return !!item.condition;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   isConditionMet(item: any): boolean {
     let conditionMet = true;
 
@@ -164,7 +172,7 @@ export default class ViewParticipantDetails extends Vue {
     return participantToCheck.role === ParticipantRole.PARTICIPANT_SCHEDULED;
   }
 
-  getItems(items: any): any[] {
+  getItems(items: any[] | (() => any[])): any[] {
     if (typeof items === "function") {
       return items();
     } else {

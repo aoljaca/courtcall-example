@@ -18,7 +18,7 @@
             tile
             color="grey lighten-1"
             class="mr-2"
-            :to="{ name: 'Room View Manage' }"
+            :to="{ name: 'View Room', params: { roomId: roomId } }"
           >
             {{ $t("admin.participants.buttons.cancel.title") }}
           </v-btn>
@@ -52,7 +52,6 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { isEqual } from "lodash";
-import { Room } from "@/model/admin/room/room";
 import CreateParticipantDetails from "./CreateParticipantDetails.vue";
 import CreateParticipantEntryBehavior from "./CreateParticipantEntryBehavior.vue";
 import CreateParticipantAccessDetails from "./CreateParticipantAccessDetails.vue";
@@ -71,13 +70,8 @@ export default class ViewParticipant extends Vue {
     return !isEqual(this.participant, {});
   }
 
-  mounted(): void {
-    this.loadParticipantDefaults();
-  }
-
-  loadParticipantDefaults(): void {
-    const roomId = this.$route.params.roomId;
-    const room: Room = this.$store.getters["RoomModule/getById"](roomId);
+  get roomId(): string {
+    return this.$route.params.roomId;
   }
 
   async onFinishCreate(): Promise<void> {

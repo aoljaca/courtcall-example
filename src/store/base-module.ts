@@ -12,6 +12,7 @@ const baseModule: Module<any, any> = {
   mutations: {},
   actions: {
     sendMessage(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       { commit },
       config: { content: ToastContent; options: ToastOptions }
     ) {

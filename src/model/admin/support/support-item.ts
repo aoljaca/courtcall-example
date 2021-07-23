@@ -1,5 +1,3 @@
-import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
-
 export type SupportType = "user" | "duplicateJoin";
 
 export interface SupportItem {

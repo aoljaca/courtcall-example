@@ -78,13 +78,12 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import VueDefault from "vue";
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 import { Case } from "@/model/meeting/meeting-ui/case";
-import { DateTime } from "luxon";
 import {
   NotificationGroupType,
   NOTIFICATION_GROUP_TYPES,
+  RecipientType,
 } from "@/model/meeting/meeting-ui/control-bar/more/notification-preferences/notification-group-type";
 @Component({})
 export default class SendNotification extends Vue {
@@ -97,15 +96,15 @@ export default class SendNotification extends Vue {
   ];
   possibleCases: Case[] = this.$store.getters["CasesModule/getAsList"];
 
-  createNotificationGroupTypeLabel(type: NotificationGroupType) {
-    return this.$t(type.translationText);
+  createNotificationGroupTypeLabel(type: NotificationGroupType): string {
+    return this.$t(type.translationText) as string;
   }
 
-  formatCaseLabel(c: Case) {
+  formatCaseLabel(c: Case): string {
     return `${c.name} ${c.number}`;
   }
 
-  get selectedType() {
+  get selectedType(): RecipientType | undefined {
     return this.selectedNotificationGroupType?.type;
   }
 }

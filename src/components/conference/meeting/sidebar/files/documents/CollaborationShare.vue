@@ -53,7 +53,7 @@ export default class CollaborationShareComponent extends Vue {
     return this.$store.state.ParticipantsModule.participants;
   }
 
-  get isOwner() {
+  get isOwner(): boolean {
     const me: Participant = this.$store.state.ParticipantsModule.me;
     return me.id === this.collaborationShare?.ownerId;
   }

@@ -23,7 +23,7 @@ export default class ChatMessageCard extends Vue {
   @Prop()
   message: ChatMessage | undefined;
 
-  get userName() {
+  get userName(): string {
     const participant: Participant = this.$store.getters[
       "ParticipantsModule/getByPubNubId"
     ](this.message?.uuid);
@@ -34,7 +34,7 @@ export default class ChatMessageCard extends Vue {
     }
   }
 
-  get formatTimestamp() {
+  get formatTimestamp(): string {
     if (!this.message?.timetoken) {
       return "unknown";
     }

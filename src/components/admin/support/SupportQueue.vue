@@ -105,9 +105,9 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { DateTime } from "luxon";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import DateFormatService from "@/services/date-format";
+import { SupportItem } from "@/model/admin/support/support-item";
 @Component({})
 export default class SupportQueue extends Vue {
   readonly HEADERS = [
@@ -139,7 +139,7 @@ export default class SupportQueue extends Vue {
     },
   ];
 
-  get supportItems() {
+  get supportItems(): SupportItem[] {
     return this.$store.getters["SupportModule/getActive"];
   }
 
@@ -160,7 +160,7 @@ export default class SupportQueue extends Vue {
     }
   }
 
-  getRoomName(id: string) {
+  getRoomName(id: string): string {
     return this.$store.getters["RoomModule/getRoomNameById"](id);
   }
 
