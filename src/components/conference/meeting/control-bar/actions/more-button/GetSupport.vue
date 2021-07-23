@@ -94,7 +94,7 @@ export default class GetSupportIcon extends Vue {
     }
   }
   onSendRequest(): void {
-    this.$emit("sentSupportRequest");
+    this.sentSupportRequest = true;
   }
   onClosedDialog(): void {
     this.$emit("closedDialog");

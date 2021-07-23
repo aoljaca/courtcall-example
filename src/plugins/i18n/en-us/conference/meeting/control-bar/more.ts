@@ -18,4 +18,11 @@ export default {
   transcription,
   changeBackground,
   getSupport,
+  shareScreen: "Share screen",
+  files: "Files",
+  logout: "Move",
+  chat: "Chat",
+  support: "Get Support",
+  hand: "Raise Hand",
+  move: "Move",
 };

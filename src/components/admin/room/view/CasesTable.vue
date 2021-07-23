@@ -91,7 +91,7 @@
                   link
                   :to="{
                     name: 'View Case',
-                    params: { caseId: item.id },
+                    params: { caseId: item.id, roomId },
                   }"
                 >
                   {{ $t("general.view") }}
@@ -100,7 +100,7 @@
                   link
                   :to="{
                     name: 'Edit Case',
-                    params: { caseId: item.id },
+                    params: { caseId: item.id, roomId },
                   }"
                 >
                   {{ $t("general.edit") }}
