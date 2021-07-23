@@ -1,9 +1,10 @@
 <template>
   <div>
     <v-menu
+      class="rounded-b-0"
       offset-y
       top
-      :nudge-top="showCondensedVersion ? '10' : '10'"
+      :nudge-top="showCondensedVersion ? '10' : '8'"
       :nudge-left="showCondensedVersion ? '70' : '90'"
       v-model="menuOpen"
     >
