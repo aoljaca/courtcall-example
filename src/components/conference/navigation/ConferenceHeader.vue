@@ -1,7 +1,9 @@
 <template>
   <v-system-bar dark color="primary" class="px-15 py-10 white--text">
-    <img src="../../../../public/img/icons/CourtCallIconLight.png" />
-    <h1 class="ml-1">Court<span class="font-weight-regular">Call</span></h1>
+    <img
+      src="../../../../public/img/icons/CourtCallLogoWhite.png"
+      height="80"
+    />
 
     <v-spacer />
 
@@ -27,7 +29,7 @@
           >
             <v-row>
               <v-col cols="auto">
-                <v-icon color="primary">{{ option.icon }}</v-icon>
+                <v-icon color="accent">{{ option.icon }}</v-icon>
               </v-col>
               <v-col> {{ option.label }} </v-col>
             </v-row>

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column justify-space-between bc-secondary">
+  <div class="d-flex flex-column justify-space-between">
     <v-row justify="center">
       <v-col sm="6" md="5" lg="4" class="text-right" align-self="center">
         <div v-if="showLoading" class="text-center">
@@ -16,6 +16,7 @@
         <v-card
           v-if="showPasscodePrompt || showNamePrompt"
           class="pa-16 text-center"
+          flat
         >
           <room-passcode v-if="showPasscodePrompt" />
           <room-user-name v-if="showNamePrompt" />
