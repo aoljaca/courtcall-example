@@ -79,7 +79,7 @@
   </span>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 @Component({})
 export default class GetSupportIcon extends Vue {
   rules = [
@@ -94,22 +94,29 @@ export default class GetSupportIcon extends Vue {
   //     this.sentSupportRequest = false;
   //   }, 175);
   // }
-  // @Prop() requestSupportInput!: any;
-  // @Prop() sentSupportRequest!: boolean;
-  requestSupportInputCopy = null;
-  sentSupportRequest = false;
+  @Prop() requestSupportInput!: any;
+  @Prop() sentSupportRequest!: boolean;
+  requestSupportInputCopy = this.requestSupportInput;
+  // requestSupportInputCopy = null;
+  // sentSupportRequest = false;
   onSendRequest(): void {
+    this.$emit("sentSupportRequest");
     // this.$emit("update:sentSupportRequest", true);
-    this.sentSupportRequest = true;
+    // this.sentSupportRequest = true;
+  }
+  @Watch("requestSupportInput", { immediate: true })
+  inputChanged(newVal: string): void {
+    console.log("Hey");
+    this.requestSupportInputCopy = newVal;
   }
   onClosedDialog(): void {
     // this.$emit("update:requestSupportInput", null);
-    this.requestSupportInputCopy = null;
-    setTimeout(() => {
-      this.sentSupportRequest = false;
-      // this.$emit("update:sentSupportRequest", false);
-    }, 175);
-    this.$emit("closedDialog");
+    // this.requestSupportInputCopy = null;
+    this.$emit("closedSupportdDialog");
+    // setTimeout(() => {
+    //   this.sentSupportRequest = false;
+    //   this.$emit("update:sentSupportRequest", false);
+    // }, 175);
     // this.requestInput = null;
     // setTimeout(() => {
     //   this.sentRequest = false;

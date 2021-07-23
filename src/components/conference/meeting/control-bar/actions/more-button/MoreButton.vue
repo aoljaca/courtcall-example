@@ -42,12 +42,15 @@
               }}
             </v-list-item>
           </template>
-          <get-support @closedDialog="onClosedSupportDialog()"></get-support>
-          <!-- :requestSupportInput="requestInput"
-          :sentSupportRequest="sentRequest" -->
-          <!-- requestSupportInput.sync="requestSupportInput"
-          :sentSupportRequest.sync="sentSupportRequest" -->
+          <get-support
+            @closedSupportdDialog="onClosedSupportDialog()"
+            @sentSupportRequest="onSendSupportRequest()"
+            :requestSupportInput="requestSupportInput"
+            :sentSupportRequest="sentSupportRequest"
+          ></get-support>
           <!-- @sendRequest="onSendSupportRequest()" -->
+          <!-- :requestSupportInput.sync="requestSupportInput"
+          :sentSupportRequest.sync="sentSupportRequest" -->
         </v-dialog>
         <v-dialog v-model="dialog.sendNotification" max-width="750px">
           <template v-slot:activator="{ on, attrs }">
@@ -224,10 +227,10 @@ export default class MoreIcon extends Vue {
   };
   onClosedSupportDialog(): void {
     this.dialog.getSupport = false;
-    // this.requestSupportInput = null;
-    // setTimeout(() => {
-    //   this.sentSupportRequest = false;
-    // }, 175);
+    this.requestSupportInput = null;
+    setTimeout(() => {
+      this.sentSupportRequest = false;
+    }, 175);
   }
   onSendSupportRequest(): void {
     this.sentSupportRequest = true;
