@@ -9,8 +9,12 @@ import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import VueClipboard from "vue-clipboard2";
 import AudioVisual from "vue-audio-visual";
+import { environment } from "./environments/environment";
 
 Vue.config.productionTip = false;
+if (environment.production) {
+  Vue.config.devtools = false;
+}
 Vue.use(Toast, {});
 Vue.use(VueClipboard);
 Vue.use(AudioVisual);
