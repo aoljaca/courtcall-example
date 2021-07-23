@@ -23,35 +23,37 @@
         </v-row>
       </template>
       <v-list>
-        <v-dialog
-          v-model="dialog.getSupport"
-          max-width="750px"
-          @input="onSupportDialogChange"
-        >
-          <template v-slot:activator="{ on, attrs }">
+        <template v-slot:activator="{ on, attrs }">
+          <v-list-item
+            v-bind="attrs"
+            v-on="on"
+            :title="
+              $t('conference.meeting.controlBar.more.sendNotification.title')
+            "
+          >
+            <v-icon>mdi-bell-plus</v-icon>
+            {{
+              $t("conference.meeting.controlBar.more.sendNotification.title")
+            }}
+          </v-list-item>
+        </template>
+        <template>
+          <v-list>
             <v-list-item
-              v-bind="attrs"
-              v-on="on"
-              :title="
-                $t('conference.meeting.controlBar.more.sendNotification.title')
-              "
+              v-for="item in listItems"
+              @click="item.onClick"
+              :key="item.id"
+              :title="item.label"
             >
-              <v-icon>mdi-bell-plus</v-icon>
-              {{
-                $t("conference.meeting.controlBar.more.sendNotification.title")
-              }}
+              <v-icon>{{ item.icon }}</v-icon>
+              <!-- item.onClick => isGettingSupport = true -->
             </v-list-item>
-          </template>
+          </v-list>
           <get-support
-            @closedSupportdDialog="onClosedSupportDialog()"
-            @sentSupportRequest="onSendSupportRequest()"
-            :requestSupportInput="requestSupportInput"
-            :sentSupportRequest="sentSupportRequest"
-          ></get-support>
-          <!-- @sendRequest="onSendSupportRequest()" -->
-          <!-- :requestSupportInput.sync="requestSupportInput"
-          :sentSupportRequest.sync="sentSupportRequest" -->
-        </v-dialog>
+            v-if="isGettingSupport"
+            @closedDialog="isGettingSupport = false"
+          />
+        </template>
         <v-dialog v-model="dialog.sendNotification" max-width="750px">
           <template v-slot:activator="{ on, attrs }">
             <v-list-item
@@ -225,23 +227,16 @@ export default class MoreIcon extends Vue {
     publicStreaming: false,
     getSupport: false,
   };
-  onClosedSupportDialog(): void {
-    this.dialog.getSupport = false;
-    this.requestSupportInput = null;
-    setTimeout(() => {
-      this.sentSupportRequest = false;
-    }, 175);
-  }
-  onSendSupportRequest(): void {
-    this.sentSupportRequest = true;
-  }
-  onSupportDialogChange(): void {
-    if (this.dialog.getSupport == false) {
-      this.requestSupportInput = null;
-      setTimeout(() => {
-        this.sentSupportRequest = false;
-      }, 175);
-    }
-  }
+  listItems = [
+    {
+      id: 1,
+      label: "Get Support",
+      isGettingSupport: false,
+      icon: "mdi-bell-plus",
+      onClick(): void {
+        this.isGettingSupport = true;
+      },
+    },
+  ];
 }
 </script>
