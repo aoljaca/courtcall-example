@@ -3,15 +3,16 @@
     <v-row>
       <v-col class="text-center">
         <v-btn
-          fab
+          icon
           dark
+          x-large
           outlined
           depressed
           class="pa-5"
           @click="toggleParticipantsSidebar()"
           :title="$t('conference.meeting.controlBar.participants')"
         >
-          <v-icon>mdi-account-supervisor</v-icon>
+          <v-icon color="white">mdi-account-supervisor</v-icon>
         </v-btn>
         <p class="white--text body-2 mt-2 mb-0">
           {{ $t("conference.meeting.controlBar.participants") }}

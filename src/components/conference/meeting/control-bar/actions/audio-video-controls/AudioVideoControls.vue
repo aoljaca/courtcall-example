@@ -4,15 +4,16 @@
       <v-col class="text-center">
         <!-- Toggle Audio ON/OFF -->
         <v-btn
-          fab
+          icon
+          dark
+          x-large
+          outlined
           depressed
-          :outlined="!isAudioEnabled"
-          :dark="!isAudioEnabled"
+          class="pa-5"
           :disabled="!canEnableAudio"
           @click="onToggleAudio"
-          class="pa-5"
         >
-          <v-icon :color="audioStatus.iconColor">
+          <v-icon color="white">
             {{ audioStatus.icon }}
           </v-icon>
         </v-btn>
@@ -21,15 +22,16 @@
       <v-col cols="auto" class="ml-4 text-center">
         <!-- Toggle Video ON/OFF -->
         <v-btn
-          fab
+          icon
+          dark
+          x-large
+          outlined
           depressed
-          :outlined="!isVideoEnabled"
-          :dark="!isVideoEnabled"
+          class="pa-5"
           :disabled="!canEnableVideo"
           @click="onToggleVideo"
-          class="pa-5"
         >
-          <v-icon :color="videoStatus.iconColor">
+          <v-icon color="white">
             {{ videoStatus.icon }}
           </v-icon>
         </v-btn>
@@ -73,12 +75,10 @@ export default class AudioVideoControls extends Vue {
 
   get videoStatus(): {
     icon: string;
-    iconColor: string;
     text: string;
   } {
     return {
       icon: this.isVideoEnabled ? "mdi-video" : "mdi-video-off-outline",
-      iconColor: this.isVideoEnabled ? "primary" : "white",
       text: this.isVideoEnabled
         ? (this.$t("conference.meeting.controlBar.stopVideo") as string)
         : (this.$t("conference.meeting.controlBar.startVideo") as string),
@@ -87,12 +87,10 @@ export default class AudioVideoControls extends Vue {
 
   get audioStatus(): {
     icon: string;
-    iconColor: string;
     text: string;
   } {
     return {
       icon: this.isAudioEnabled ? "mdi-microphone" : "mdi-microphone-off",
-      iconColor: this.isAudioEnabled ? "primary" : "white",
       text: this.isAudioEnabled
         ? (this.$t("conference.meeting.controlBar.mute") as string)
         : (this.$t("conference.meeting.controlBar.unmute") as string),
