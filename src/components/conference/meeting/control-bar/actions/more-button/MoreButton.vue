@@ -31,7 +31,7 @@
       <v-list v-if="showCondensedVersion">
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon
                 color="accent"
                 class="mr-4 material-icons material-icons-outlined"
@@ -42,7 +42,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4">mdi-file-outline</v-icon
               >{{ $t("conference.meeting.controlBar.more.files") }}</span
             ></v-btn
@@ -50,7 +50,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon
                 color="accent"
                 class="mr-4 material-icons material-icons-outlined"
@@ -61,7 +61,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4">mdi-message-outline</v-icon
               >{{ $t("conference.meeting.controlBar.more.chat") }}</span
             ></v-btn
@@ -69,7 +69,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4"
                 >mdi-help-circle-outline</v-icon
               >{{ $t("conference.meeting.controlBar.more.support") }}</span
@@ -78,7 +78,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon
                 color="accent"
                 class="mr-4 material-icons material-icons-outlined"
@@ -91,7 +91,7 @@
       <v-list v-else class="pa-0 ma-0">
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4"
                 >mdi-help-circle-outline</v-icon
               >{{ $t("conference.meeting.controlBar.more.support") }}</span
@@ -101,7 +101,7 @@
         <v-divider />
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4">mdi-bell-plus-outline</v-icon
               >{{
                 $t(
@@ -113,7 +113,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4">mdi-bell-outline</v-icon
               >{{
                 $t("conference.meeting.controlBar.more.sendNotification.title")
@@ -123,7 +123,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4"
                 >mdi-account-plus-outline</v-icon
               >{{
@@ -137,7 +137,7 @@
         <v-divider />
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4">mdi-texture</v-icon
               >{{
                 $t("conference.meeting.controlBar.more.changeBackground.title")
@@ -147,7 +147,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4">mdi-cog-outline</v-icon
               >{{
                 $t("conference.meeting.controlBar.more.avSetup.title")
@@ -157,7 +157,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4"
                 >mdi-closed-caption-outline</v-icon
               >{{
@@ -169,7 +169,7 @@
         <v-divider />
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4">mdi-circle-slice-8</v-icon
               >{{
                 $t("conference.meeting.controlBar.more.record.titleAlt")
@@ -179,7 +179,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed
-            ><span color="accent"
+            ><span class="c-accent"
               ><v-icon color="accent" class="mr-4">mdi-cast</v-icon
               >{{
                 $t(
@@ -191,7 +191,7 @@
         </v-list-item>
         <v-list-item class="pa-0 ma-0">
           <v-btn color="white" class="d-flex justify-start w-100" depressed>
-            <span color="accent">
+            <span class="c-accent">
               <v-icon
                 color="accent"
                 class="mr-4 material-icons material-icons-outlined"
@@ -220,9 +220,5 @@ export default class MoreIcon extends Vue {
 <style scoped>
 * {
   box-sizing: border-box;
-}
-
-.white-background {
-  background: white;
 }
 </style>
