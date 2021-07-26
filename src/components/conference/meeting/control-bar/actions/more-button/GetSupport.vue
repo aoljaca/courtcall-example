@@ -35,7 +35,7 @@
                 )
               }}
             </h5>
-            <h5 v-if="sentRequestCancel">
+            <h5 v-if="sentRequestCancel" class="text-center">
               {{
                 $t(
                   "conference.meeting.controlBar.more.getSupport.cancelRequestHeader"
