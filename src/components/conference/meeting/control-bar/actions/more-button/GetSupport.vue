@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialogOpen" @input="onInputChange">
+  <v-dialog v-model="dialogOpen" @input="onInputChange" max-width="650" class="rounded">
     <v-card>
       <v-container class="d-flex flex-column py-15">
         <v-row class="justify-center">
