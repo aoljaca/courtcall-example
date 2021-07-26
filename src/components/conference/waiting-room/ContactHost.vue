@@ -100,6 +100,7 @@ export default class ContactHost extends Vue {
 
   onDismissal(): void {
     this.timeToDismiss = 15;
+    this.messageContent = "";
     this.dialog = false;
     this.messagedHost = false;
     this.isLastScreen = false;
