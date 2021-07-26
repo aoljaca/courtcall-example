@@ -18,15 +18,22 @@
               counter="300"
               class="mt-n3"
               v-model="requestSupportInput"
-              v-if="!sentSupportRequest"
+              v-if="!sentSupportRequest && !sentRequestCancel"
               :rules="rules"
               maxlength="300"
             >
             </v-text-field>
-            <h5 v-if="sentSupportRequest">
+            <h5 v-if="sentSupportRequest && !sentRequestCancel">
               {{
                 $t(
                   "conference.meeting.controlBar.more.getSupport.requestUpdate"
+                )
+              }}
+            </h5>
+            <h5 v-if="sentRequestCancel">
+              {{
+                $t(
+                  "conference.meeting.controlBar.more.getSupport.cancelRequestHeader"
                 )
               }}
             </h5>
@@ -34,7 +41,7 @@
         </v-row>
         <v-row class="justify-center">
           <v-col cols="auto">
-            <template v-if="!sentSupportRequest">
+            <template v-if="!sentSupportRequest && !sentRequestCancel">
               <v-btn
                 class="mr-5 text-capitalize pa-6 rounded-lg"
                 depressed
@@ -63,10 +70,28 @@
               color="info black--text"
               depressed
               @click="onClosedDialog()"
-              v-if="sentSupportRequest"
+              v-if="sentSupportRequest && !sentRequestCancel"
             >
               {{ $t("conference.meeting.controlBar.more.getSupport.dismiss") }}
             </v-btn>
+            <template v-if="sentRequestCancel">
+              <v-btn
+              class="text-capitalize pa-6 rounded-lg"
+              color="info black--text"
+              depressed
+              @click="onClosedDialog()"
+              >
+                {{ $t("conference.meeting.controlBar.more.getSupport.cancelRequestYes") }}
+              </v-btn>
+              <v-btn
+              class="text-capitalize pa-6 rounded-lg"
+              color="info black--text"
+              depressed
+              @click="onClosedDialog()"
+              >
+                {{ $t("conference.meeting.controlBar.more.getSupport.cancelRequestNo") }}
+              </v-btn>
+            </template>     
           </v-col>
         </v-row>
       </v-container>
@@ -79,6 +104,11 @@ import { Component, Vue } from "vue-property-decorator";
 export default class GetSupport extends Vue {
   requestSupportInput = null;
   sentSupportRequest = false;
+  sentRequestCancel = false;
+  supportObject = {};
+  participant = {
+    number: "6"
+  }
   dialogOpen = true;
   rules = [
     (value: string): any => (value || "").length <= 300 || "Max 300 characters",
@@ -93,6 +123,14 @@ export default class GetSupport extends Vue {
   }
   onClosedDialog(): void {
     this.$emit("closedDialog");
+  }
+  mounted(): void {
+    this.supportObject = this.$store.getters[
+      "SupportModule/getActiveIssueByParticpant"
+    ](this.participant.number)[0];
+    if (this.supportObject) {
+      this.sentRequestCancel = true;
+    }
   }
 }
 </script>
