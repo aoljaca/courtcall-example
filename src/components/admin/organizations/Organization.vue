@@ -50,7 +50,17 @@
           class="font-weight-medium"
         >
           {{ getParticipantById(managerId).name }}
-          <v-btn icon><v-icon>mdi-open-in-new</v-icon></v-btn>
+          <v-btn
+            icon
+            :to="{
+              name: 'Participant',
+              params: {
+                roomId: getParticipantById(managerId).roomId,
+                participantId: managerId,
+              },
+            }"
+            ><v-icon>mdi-open-in-new</v-icon></v-btn
+          >
         </div>
       </v-col>
     </v-row>
@@ -91,9 +101,7 @@
             class="font-weight-medium"
           >
             {{ getRoomById(roomId).roomDetails.name }}
-            <v-btn
-              icon
-              :to="{ name: 'Room View Manage', params: { roomId: roomId } }"
+            <v-btn icon :to="{ name: 'View Room', params: { roomId } }"
               ><v-icon>mdi-open-in-new</v-icon></v-btn
             >
           </div>
