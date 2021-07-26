@@ -18,7 +18,7 @@ export default {
   footer: {
     copyright1: "Copyright © {years} CourtCall, LLC. All Rights Reserved.",
     copyright2: "Court Conference is a division of CourtCall",
-    address: "6383 Arizona Circle, Los Angeles, CA 90045",
+    address: "2158 W, 190th Street, Torrance, CA, 90504",
     termsOfUse: {
       text: "Terms of Use & Privacy Policy",
       url: "https://courtcall.com/terms-conditions-privacy-policy/",

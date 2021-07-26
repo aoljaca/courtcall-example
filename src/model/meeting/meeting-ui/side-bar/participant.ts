@@ -42,4 +42,5 @@ export interface Participant {
   accessCode: string | null;
   sipURL: string | null;
   pstnPIN: number | null;
+  archived?: boolean;
 }

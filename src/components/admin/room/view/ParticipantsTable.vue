@@ -100,18 +100,21 @@
                   </v-container>
                 </template>
                 <v-list>
-                  <v-list-item
-                    link
-                    :to="{
-                      name: 'Participant',
-                      params: {
-                        roomId: roomId,
-                        participantId: item.id,
-                      },
-                    }"
-                    >{{ $t("general.view") }}</v-list-item
+                  <div
+                    v-for="(menuItem, index) in menuItems"
+                    :key="`menu-item-${index}`"
                   >
-                  <v-list-item>{{ $t("general.archive") }}</v-list-item>
+                    <v-list-item
+                      v-if="
+                        !menuItem.displayCondition ||
+                        menuItem.displayCondition(item)
+                      "
+                      :to="menuItem.route ? menuItem.route(item) : undefined"
+                      link
+                      @click="menuItem.click ? menuItem.click(item) : undefined"
+                      >{{ menuItem.label }}</v-list-item
+                    >
+                  </div>
                 </v-list>
               </v-menu>
             </template>
@@ -156,7 +159,39 @@ export default class ParticpantsTable extends Vue {
     },
   ];
 
-  participantsData = this.$store.getters["ParticipantsModule/getAsList"];
+  menuItems = [
+    {
+      label: this.$t("general.view"),
+      route: (p: Participant): any => {
+        return {
+          name: "Participant",
+          params: {
+            roomId: this.roomId,
+            participantId: p.id,
+          },
+        };
+      },
+    },
+    {
+      label: this.$t("general.edit"),
+      route: (p: Participant): any => {
+        return {
+          name: "Edit Participant",
+          params: {
+            roomId: this.roomId,
+            participantId: p.id,
+          },
+        };
+      },
+    },
+    {
+      label: this.$t("general.archive"),
+      click: async (p: Participant): Promise<void> =>
+        await this.onArchiveParticipant(p),
+      displayCondition: (p: Participant): boolean => !p.archived!,
+    },
+  ];
+
   filterByCaseIds: string[] = [];
 
   get roomId(): string {
@@ -164,8 +199,8 @@ export default class ParticpantsTable extends Vue {
   }
 
   get participantsByRoom(): Participant[] {
-    return this.participantsData.filter(
-      (p: { roomId: string }) => p.roomId === this.roomId
+    return this.$store.getters["ParticipantsModule/getParticipantsByRoomId"](
+      this.roomId
     );
   }
 
@@ -174,7 +209,7 @@ export default class ParticpantsTable extends Vue {
       (p) => p.caseId || ""
     );
     const uniqueCaseIds: string[] = uniq(allCaseIds);
-    const uniqueCases: Case[] = this.getCasesAsList().filter((c) =>
+    const uniqueCases: Case[] = this.casesAsList.filter((c) =>
       uniqueCaseIds.includes(c.id)
     );
     return uniqueCases;
@@ -198,14 +233,24 @@ export default class ParticpantsTable extends Vue {
     };
   }
 
+  get casesAsList(): Case[] {
+    return this.$store.getters["CasesModule/getAsList"];
+  }
+
   getCaseById(id: string): Case {
     return this.$store.getters["CasesModule/getById"](id);
   }
-  getCasesAsList(): Case[] {
-    return this.$store.getters["CasesModule/getAsList"];
-  }
+
   roleName(id: string): string {
     return this.$store.getters["PermissionsModule/getRoleById"](id)?.name;
+  }
+
+  async onArchiveParticipant(participant: Participant): Promise<void> {
+    participant.archived = true;
+    return await this.$store.dispatch(
+      "ParticipantsModule/updateParticipant",
+      participant
+    );
   }
 }
 </script>

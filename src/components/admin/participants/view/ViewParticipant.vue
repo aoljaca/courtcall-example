@@ -31,6 +31,7 @@
             <v-btn
               color="secondary"
               @click="onToggleStatus"
+              :disabled="isEditing"
               depressed
               rounded
               text
@@ -170,11 +171,15 @@ export default class ViewParticipant extends Vue {
       : (this.$t("admin.participants.inactive") as string);
   }
 
-  mounted(): void {
-    this.loadParticipant();
+  async mounted(): Promise<void> {
+    await this.loadParticipant();
+
+    if (this.$route.meta?.isEditing) {
+      this.onStartEditing();
+    }
   }
 
-  loadParticipant(): void {
+  async loadParticipant(): Promise<void> {
     const participantId = this.$route.params.participantId;
     this.participant = this.$store.getters["ParticipantsModule/getById"](
       participantId
@@ -207,8 +212,6 @@ export default class ViewParticipant extends Vue {
       this.participantEdits
     );
     await this.loadParticipant();
-
-    this.isEditing = true;
     this.onStopEditing();
   }
 }
