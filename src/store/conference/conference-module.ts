@@ -102,9 +102,25 @@ const conferenceModule: Module<any, any> = {
         },
       });
     },
-    cancelActiveSupportRequest({ commit }) {
+    cancelSupportRequest({ commit }) {
       // TODO: Call API
       commit("setActiveSupportRequest", null);
+    },
+    createSupportRequest({ commit }, requestText) {
+      const activeSupportRequest = {
+        type: "duplicateJoin",
+        participant: "1",
+        note: null,
+        archived: false,
+        room: "R1",
+        requestDetails: requestText,
+        openedAt: DateTime.now().toISO(),
+        inProgress: false,
+        closedAt: null,
+        supportedBy: null,
+      };
+      // Data is temporary until there is an API reference
+      commit("setActiveSupportRequest", activeSupportRequest);
     },
   },
   getters: {

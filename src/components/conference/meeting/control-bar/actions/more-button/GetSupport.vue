@@ -129,13 +129,17 @@ export default class GetSupport extends Vue {
     }
   }
   onSendRequest(): void {
+    this.$store.dispatch(
+      "ConferenceModule/createSupportRequest",
+      this.requestSupportInput
+    );
     this.sentSupportRequest = true;
   }
   onClosedDialog(): void {
     this.$emit("closedDialog");
   }
   onCancelSupportRequest(): void {
-    this.$store.dispatch("ConferenceModule/cancelActiveSupportRequest");
+    this.$store.dispatch("ConferenceModule/cancelSupportRequest");
     this.$emit("closedDialog");
   }
   mounted(): void {
