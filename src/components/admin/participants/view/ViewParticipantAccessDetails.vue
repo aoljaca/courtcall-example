@@ -148,9 +148,10 @@ export default class ViewParticipantAccessDetails extends Vue {
     },
     {
       title: this.$t("admin.participants.formFields.pstnPIN.title"),
+      placeholder: this.$t("admin.participants.formFields.pstnPIN.placeholder"),
       key: "pstnPIN",
       inputType: "textField",
-      condition: this.isDedicatedParticipant,
+      condition: this.isDedicatedParticipantHost,
     },
   ];
 
@@ -183,11 +184,14 @@ export default class ViewParticipantAccessDetails extends Vue {
     return conditionMet;
   }
 
-  isDedicatedParticipant(): boolean {
+  isDedicatedParticipantHost(): boolean {
     const participant: Participant = this.isEditing
-      ? this.participant
-      : this.participantEdits;
-    return participant.role === ParticipantRole.PARTICIPANT_DEDICATED;
+      ? this.participantEdits
+      : this.participant;
+    return (
+      participant.role === ParticipantRole.PARTICIPANT_DEDICATED ||
+      participant.role === ParticipantRole.HOST_DEDICATED
+    );
   }
 
   public getAccessCode(): number | null {
