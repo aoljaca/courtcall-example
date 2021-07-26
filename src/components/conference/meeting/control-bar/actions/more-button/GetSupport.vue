@@ -120,7 +120,7 @@ export default class GetSupport extends Vue {
   sentRequestCancel = false;
   supportObject = {};
   participant = {
-    number: "6",
+    number: "5",
   };
   dialogOpen = true;
   rules = [
@@ -142,7 +142,7 @@ export default class GetSupport extends Vue {
   }
   mounted(): void {
     this.supportObject = this.$store.getters[
-      "SupportModule/getActiveIssueByParticpant"
+      "ConferenceModule/getActiveIssueByParticpant"
     ](this.participant.number)[0];
     if (this.supportObject) {
       this.sentRequestCancel = true;
