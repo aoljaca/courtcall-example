@@ -73,7 +73,7 @@ export default class MoreIcon extends Vue {
     },
     {
       icon: "logout",
-      label: this.$t("conference.meeting.controlBar.more.files"),
+      label: this.$t("conference.meeting.controlBar.more.move"),
     },
     {
       icon: "mdi-message-outline",
