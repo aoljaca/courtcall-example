@@ -14,13 +14,10 @@
         </v-row>
         <v-row>
           <v-col>
-            <v-btn
-              class="mr-5 text-capitalize px-5"
-              depressed
-              @click="onRejoinMeeting"
-              >{{ $t("logout.rejoin") }}</v-btn
-            >
-            <v-btn class="text-capitalize px-5" depressed @click="onSupport">{{
+            <v-btn depressed class="mr-5 px-5" @click="onRejoinMeeting">{{
+              $t("logout.rejoin")
+            }}</v-btn>
+            <v-btn class="px-5" depressed @click="onSupport">{{
               $t("logout.support")
             }}</v-btn>
           </v-col>

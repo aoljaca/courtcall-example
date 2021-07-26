@@ -1,8 +1,5 @@
 <template>
-  <div
-    dense
-    class="bc-secondary flex-row d-flex justify-space-between px-15 pb-5"
-  >
+  <div dense class="flex-row d-flex justify-space-between px-15 pb-5">
     <span class="text-left">
       {{ $t("navigation.footer.copyright1", { years: copyrightYears }) }}
       <br />

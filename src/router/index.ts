@@ -247,6 +247,20 @@ const routes: Array<RouteConfig> = [
                 },
               },
               {
+                path: "edit",
+                component: ViewParticipant,
+                name: "Edit Participant",
+                meta: {
+                  isEditing: true,
+                  breadcrumbFunc: (route: any) =>
+                    `${
+                      store.getters["ParticipantsModule/getById"](
+                        route.params.participantId
+                      )?.name
+                    }`,
+                },
+              },
+              {
                 path: "create",
                 component: CreateParticipant,
                 name: "Create Participant",

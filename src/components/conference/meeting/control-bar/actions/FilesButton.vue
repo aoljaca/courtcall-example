@@ -3,8 +3,9 @@
     <v-row>
       <v-col class="text-center">
         <v-btn
-          fab
+          icon
           dark
+          x-large
           outlined
           depressed
           class="pa-5"

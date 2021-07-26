@@ -92,11 +92,6 @@ export default class CreateParticipantAccessDetails extends Vue {
       items: Object.values(AccessLinkOptions),
     },
     {
-      label: this.$t("admin.participants.buttons.generateNewLinks.title"),
-      inputType: "button",
-      onClick: this.onRefreshLink,
-    },
-    {
       title: this.$t("admin.participants.formFields.sipURL.title"),
       placeholder: this.$t("admin.participants.formFields.sipURL.placeholder"),
       key: "sipURL",

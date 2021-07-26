@@ -6,6 +6,12 @@ import { SupportItem } from "@/model/admin/support/support-item";
 import { VideoState, AudioState } from "./conference-setup-module";
 
 const mockConferences: { [key: string]: SubConference } = {
+  mc: {
+    id: "mc",
+    sessionId: "fakeSessionId`",
+    systemName: "systemName1",
+    displayName: "Main Conference",
+  },
   sc1: {
     id: "sc1",
     sessionId: "fakeSessionId`",
