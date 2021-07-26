@@ -11,19 +11,22 @@
         <v-row>
           <v-col class="text-center">
             <v-btn
-              fab
+              icon
               dark
+              x-large
               outlined
               depressed
-              class="pa-5"
               v-on="on"
               v-bind="attrs"
+              :class="{ 'pa-5': true, 'bc-white': menuOpen }"
               :title="$t('conference.meeting.controlBar.more.title')"
             >
-              <v-icon>mdi-dots-horizontal</v-icon>
+              <v-icon :color="buttonProperties.iconColor">{{
+                buttonProperties.icon
+              }}</v-icon>
             </v-btn>
             <p class="white--text body-2 mt-2 mb-0">
-              {{ $t("conference.meeting.controlBar.more.title") }}
+              {{ buttonProperties.text }}
             </p>
           </v-col>
         </v-row>
@@ -175,6 +178,14 @@ export default class MoreIcon extends Vue {
       onClick: () => null,
     },
   ];
+
+  get buttonProperties(): any {
+    return {
+      text: this.$t("conference.meeting.controlBar.more.title"),
+      icon: "mdi-dots-horizontal",
+      iconColor: this.menuOpen ? "primary" : "white",
+    };
+  }
 
   onSupportClicked(): void {
     console.log("Support Clicked");
