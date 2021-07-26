@@ -188,12 +188,10 @@ export default class MoreIcon extends Vue {
   }
 
   onSupportClicked(): void {
-    console.log("Support Clicked");
     this.isGettingSupport = true;
   }
 
   onClosedSupportDialog(): void {
-    console.log("Support Closed");
     this.isGettingSupport = false;
   }
 
