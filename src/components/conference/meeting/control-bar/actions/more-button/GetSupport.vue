@@ -1,5 +1,10 @@
 <template>
-  <v-dialog v-model="dialogOpen" @input="onInputChange" max-width="650" class="rounded">
+  <v-dialog
+    v-model="dialogOpen"
+    @input="onInputChange"
+    max-width="650"
+    class="rounded"
+  >
     <v-card>
       <v-container class="d-flex flex-column py-15">
         <v-row class="justify-center">
@@ -76,22 +81,30 @@
             </v-btn>
             <template v-if="sentRequestCancel">
               <v-btn
-              class="text-capitalize pa-6 rounded-lg"
-              color="info black--text"
-              depressed
-              @click="onClosedDialog()"
+                class="text-capitalize pa-6 rounded-lg"
+                color="info black--text"
+                depressed
+                @click="onClosedDialog()"
               >
-                {{ $t("conference.meeting.controlBar.more.getSupport.cancelRequestYes") }}
+                {{
+                  $t(
+                    "conference.meeting.controlBar.more.getSupport.cancelRequestYes"
+                  )
+                }}
               </v-btn>
               <v-btn
-              class="text-capitalize pa-6 rounded-lg"
-              color="info black--text"
-              depressed
-              @click="onClosedDialog()"
+                class="text-capitalize pa-6 rounded-lg"
+                color="info black--text"
+                depressed
+                @click="onClosedDialog()"
               >
-                {{ $t("conference.meeting.controlBar.more.getSupport.cancelRequestNo") }}
+                {{
+                  $t(
+                    "conference.meeting.controlBar.more.getSupport.cancelRequestNo"
+                  )
+                }}
               </v-btn>
-            </template>     
+            </template>
           </v-col>
         </v-row>
       </v-container>
@@ -107,8 +120,8 @@ export default class GetSupport extends Vue {
   sentRequestCancel = false;
   supportObject = {};
   participant = {
-    number: "6"
-  }
+    number: "6",
+  };
   dialogOpen = true;
   rules = [
     (value: string): any => (value || "").length <= 300 || "Max 300 characters",
