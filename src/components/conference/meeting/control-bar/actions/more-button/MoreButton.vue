@@ -175,6 +175,8 @@ export default class MoreIcon extends Vue {
     {
       icon: "back_hand",
       label: this.$t("conference.meeting.controlBar.more.hand"),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
   ];
 
