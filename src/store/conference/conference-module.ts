@@ -48,7 +48,7 @@ const activeSupportRequest = {
   inProgress: false,
   closedAt: null,
   supportedBy: null,
-}
+};
 
 const conferenceModule: Module<any, any> = {
   namespaced: true,
@@ -72,7 +72,7 @@ const conferenceModule: Module<any, any> = {
     },
     setActiveSupportRequest(state, request: SupportItem) {
       state.activeSupportRequest = request;
-    }
+    },
   },
   actions: {
     joinConference({ commit }, conferenceId: string) {
@@ -105,7 +105,7 @@ const conferenceModule: Module<any, any> = {
     cancelActiveSupportRequest({ commit }) {
       // TODO: Call API
       commit("setActiveSupportRequest", null);
-    }
+    },
   },
   getters: {
     getActiveConference: (state) =>
@@ -144,7 +144,6 @@ const conferenceModule: Module<any, any> = {
     // TODO: Check if participant is host or system user that has privileges
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     canMoveConferences: (state) => true,
-
   },
 };
 
