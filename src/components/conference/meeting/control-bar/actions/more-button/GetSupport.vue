@@ -81,10 +81,10 @@
             </v-btn>
             <template v-if="sentRequestCancel">
               <v-btn
-                class="text-capitalize pa-6 rounded-lg"
+                class="text-capitalize pa-6 rounded-lg mr-3"
                 color="info black--text"
                 depressed
-                @click="onClosedDialog()"
+                @click="onCancelSupportRequest()"
               >
                 {{
                   $t(
@@ -93,7 +93,7 @@
                 }}
               </v-btn>
               <v-btn
-                class="text-capitalize pa-6 rounded-lg"
+                class="text-capitalize pa-6 rounded-lg ml-3"
                 color="info black--text"
                 depressed
                 @click="onClosedDialog()"
@@ -136,6 +136,9 @@ export default class GetSupport extends Vue {
   }
   onClosedDialog(): void {
     this.$emit("closedDialog");
+  }
+  onCancelSupportRequest(): void {
+    return;
   }
   mounted(): void {
     this.supportObject = this.$store.getters[
