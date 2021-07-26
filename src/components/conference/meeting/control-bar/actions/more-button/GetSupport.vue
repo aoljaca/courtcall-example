@@ -119,9 +119,6 @@ export default class GetSupport extends Vue {
   sentSupportRequest = false;
   sentRequestCancel = false;
   supportObject = {};
-  participant = {
-    number: "5",
-  };
   dialogOpen = true;
   rules = [
     (value: string): any => (value || "").length <= 300 || "Max 300 characters",
@@ -138,12 +135,16 @@ export default class GetSupport extends Vue {
     this.$emit("closedDialog");
   }
   onCancelSupportRequest(): void {
-    return;
+    this.$store.dispatch(
+      "ConferenceModule/cancelActiveSupportRequest"
+    );
+    this.$emit("closedDialog");
   }
   mounted(): void {
     this.supportObject = this.$store.getters[
-      "ConferenceModule/getActiveIssueByParticpant"
-    ](this.participant.number)[0];
+      "ConferenceModule/getActiveIssue"
+    ];
+    console.log(this.supportObject)
     if (this.supportObject) {
       this.sentRequestCancel = true;
     }
