@@ -67,7 +67,7 @@ export default {
     },
     pstnPIN: {
       title: "PSTN PIN",
-      placeholder: "Enter a PIN"
+      placeholder: "Enter a PIN",
     },
   },
   buttons: {
