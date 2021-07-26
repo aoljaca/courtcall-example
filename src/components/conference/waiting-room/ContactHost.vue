@@ -19,7 +19,12 @@
         </h3>
       </v-card-title>
 
-      <v-text-field data-test-id="contact-host-text" clearable class="mb-4">
+      <v-text-field
+        v-model="messageContent"
+        data-test-id="contact-host-text"
+        clearable
+        class="mb-4"
+      >
       </v-text-field>
 
       <v-card-actions class="d-flex justify-center">
@@ -37,7 +42,7 @@
           depressed
           data-test-id="contact-host-cancel"
           color="info black--text"
-          @click="dialog = false"
+          @click="onCancelMessage()"
         >
           {{ $t("waitingRoom.cancel") }}
         </v-btn>
@@ -55,7 +60,7 @@
           color="black--text"
           depressed
           data-test-id="dismiss-button"
-          @click="dialog = false"
+          @click="onDismissal()"
         >
           <span>
             {{ $t("waitingRoom.dismiss", { dismissTime: timeToDismiss }) }}
@@ -71,6 +76,7 @@ import { Component, Vue } from "vue-property-decorator";
 export default class ContactHost extends Vue {
   dialog = false;
   messagedHost = false;
+  messageContent = "";
   isLastScreen = false;
   timeToDismiss = 15;
 
@@ -86,10 +92,22 @@ export default class ContactHost extends Vue {
 
   setTimeToDismiss(): void {
     if (this.timeToDismiss === 0) {
-      this.dialog = false;
+      this.onDismissal();
     } else {
       this.timeToDismiss--;
     }
+  }
+
+  onDismissal(): void {
+    this.timeToDismiss = 15;
+    this.dialog = false;
+    this.messagedHost = false;
+    this.isLastScreen = false;
+  }
+
+  onCancelMessage(): void {
+    this.messageContent = "";
+    this.dialog = false;
   }
 }
 </script>
