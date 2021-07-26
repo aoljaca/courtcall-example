@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-menu
-      class="rounded-b-0"
+      content-class="elevation-2 rounded-b-0"
       offset-y
       top
       :nudge-top="showCondensedVersion ? '10' : '8'"
