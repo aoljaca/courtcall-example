@@ -53,12 +53,12 @@
       <v-col cols="2">
         <v-autocomplete
           v-model="organizationEdits.managerIds"
-          multiple
           dense
+          multiple
+          clearable
+          single-line
           item-text="name"
           item-value="id"
-          chips
-          clearable
           :items="systemUsers"
           :placeholder="
             $t(
