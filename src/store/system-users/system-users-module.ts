@@ -2,6 +2,7 @@ import { SystemUser } from "@/model/admin/system-users/system-user";
 import {
   SystemUserRole,
   SystemUserRoleName,
+  SystemUserRoleType,
 } from "@/model/admin/system-users/system-user-role";
 import { Module } from "vuex";
 
@@ -14,6 +15,7 @@ const systemUsers: {
     role: {
       id: "SUR1",
       name: SystemUserRoleName.ADMIN,
+      type: SystemUserRoleType.ADMIN,
     },
     organizationIds: ["o1"],
     email: "fake@gmail.com",
@@ -31,6 +33,7 @@ const systemUsers: {
     role: {
       id: "SUR2",
       name: SystemUserRoleName.MODERATOR,
+      type: SystemUserRoleType.MODERATOR,
     },
     organizationIds: [],
     email: "fake@gmail.com",
@@ -48,6 +51,7 @@ const systemUsers: {
     role: {
       id: "SUR3",
       name: SystemUserRoleName.MANAGER,
+      type: SystemUserRoleType.MANAGER,
     },
     organizationIds: [],
     email: "fake@gmail.com",
@@ -65,6 +69,7 @@ const systemUsers: {
     role: {
       id: "SUR4",
       name: SystemUserRoleName.SUPPORT,
+      type: SystemUserRoleType.SUPPORT,
     },
     organizationIds: [],
     email: "fake@gmail.com",
