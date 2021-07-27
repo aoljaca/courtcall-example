@@ -194,9 +194,11 @@ export default class MoreIcon extends Vue {
       iconColor: this.menuOpen ? "primary" : "white",
     };
   }
+
   get activeSupportRequest(): boolean {
     return this.$store.state.ConferenceModule.activeSupportRequest != null;
   }
+
   onSupportClicked(): void {
     if (this.activeSupportRequest) {
       this.isCancelingSupport = true;
@@ -204,16 +206,19 @@ export default class MoreIcon extends Vue {
       this.isGettingSupport = true;
     }
   }
+
   onClosedSupportDialog(): void {
     this.isCancelingSupport = false;
     this.isGettingSupport = false;
   }
+
   get supportLabel(): string {
     console.log("hey");
     return this.activeSupportRequest
       ? (this.$t("conference.meeting.controlBar.more.cancelSupport") as string)
       : (this.$t("conference.meeting.controlBar.more.support") as string);
   }
+
   get listItems(): any[] {
     return this.showCondensedVersion
       ? this.listItemsMobile
