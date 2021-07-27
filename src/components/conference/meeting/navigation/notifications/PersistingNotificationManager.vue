@@ -1,17 +1,11 @@
 <template>
-  <v-row dense>
-    <v-col align-self="center" class="justify-content-center">
-      <template v-if="activeNotification">
-        <!-- Custom notification components here -->
-        <screenshare-request-notification
-          v-if="
-            activeNotification.type === NotificationType.SCREENSHARE_REQUEST
-          "
-          @resolvedNotification="onResolveActiveNotification"
-        />
-      </template>
-    </v-col>
-  </v-row>
+  <div v-if="activeNotification">
+    <!-- Custom notification components here -->
+    <screenshare-request-notification
+      v-if="activeNotification.type === NotificationType.SCREENSHARE_REQUEST"
+      @resolvedNotification="onResolveActiveNotification"
+    />
+  </div>
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";

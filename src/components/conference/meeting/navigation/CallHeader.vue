@@ -17,7 +17,7 @@
           height="60"
         />
       </v-col>
-      <v-col cols="auto" align-self="center">
+      <v-col class="ml-4" cols="auto" align-self="center">
         <h2 class="c-primary font-weight-bold">
           {{ mainConference.displayName }}
         </h2>
@@ -26,7 +26,7 @@
         </h4>
       </v-col>
       <v-col v-if="!showCondensedVersion">
-        <persisting-notification-manager />
+        <persisting-notification-manager class="d-flex justify-center" />
         <v-spacer />
       </v-col>
       <v-col

@@ -193,7 +193,11 @@ export default class ViewParticipant extends Vue {
   }
 
   onArchiveParticipant(): void {
-    // Archive participant
+    this.participantEdits.archived = true;
+    this.$store.dispatch(
+      "ParticipantsModule/updateParticipant",
+      this.participantEdits
+    );
   }
 
   onStartEditing(): void {

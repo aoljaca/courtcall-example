@@ -26,7 +26,6 @@
             <v-menu
               v-model="dateMenu"
               :close-on-content-click="false"
-              :transition="scale - transition"
               offset-y
               min-width="auto"
             >
@@ -259,6 +258,7 @@ import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { SupportItem } from "@/model/admin/support/support-item";
 import { DateTime } from "luxon";
 import { Room } from "@/model/admin/room/room";
+import { SystemUserRoleType } from "@/model/admin/system-users/system-user-role";
 @Component
 export default class RoomsTable extends Vue {
   @Prop()
@@ -332,27 +332,43 @@ export default class RoomsTable extends Vue {
     return this.$store.getters["SupportModule/getActiveIssuesByRoomId"](roomId);
   }
 
-  itemsInFilterSelect = [
-    {
-      type: "none",
-      text: this.$t("admin.dashboard.none"),
-    },
-    {
-      type: "supportRequests",
-      text: this.$t("admin.dashboard.supportRequests"),
-    },
-    {
-      type: "dateRange",
-      text: this.$t("admin.dashboard.dateRange"),
-    },
-  ];
+  get itemsInFilterSelect(): any[] {
+    let baseSelect = [
+      {
+        type: "none",
+        text: this.$t("admin.dashboard.none"),
+      },
+      {
+        type: "supportRequests",
+        text: this.$t("admin.dashboard.supportRequests"),
+      },
+      {
+        type: "dateRange",
+        text: this.$t("admin.dashboard.dateRange"),
+      },
+    ];
+    if (
+      this.$store.state.SystemUsersModule?.me?.role?.type ===
+      SystemUserRoleType.ADMIN
+    ) {
+      baseSelect = [
+        ...baseSelect,
+        {
+          type: "active",
+          text: this.$t("admin.dashboard.activeHeader"),
+        },
+      ];
+    }
+    return baseSelect;
+  }
 
+  selectedFilter: any = this.itemsInFilterSelect[0];
   dateRange = [
     DateTime.now().minus({ days: 1 }).toISODate(),
     DateTime.now().toISODate(),
   ];
   maxDate = DateTime.now().toISODate();
-  selectedFilter = this.itemsInFilterSelect[0];
+
   dateMenu = false;
 
   get filteredRooms(): Room[] {
@@ -361,7 +377,11 @@ export default class RoomsTable extends Vue {
     const minDate = DateTime.fromISO(this.dateRange[0]);
     const maxDate = DateTime.fromISO(this.dateRange[1]);
     return rooms.filter((r) => {
-      if (!r.active) {
+      if (
+        !r.active &&
+        this.$store.state.SystemUsersModule?.me?.role?.type !==
+          SystemUserRoleType.ADMIN
+      ) {
         return false;
       }
       if (this.selectedFilter.type === "supportRequests") {
@@ -375,6 +395,8 @@ export default class RoomsTable extends Vue {
         }
         const lastUsed = DateTime.fromISO(r.roomDetails.lastUsed);
         return lastUsed >= minDate && lastUsed <= maxDate;
+      } else if (this.selectedFilter.type === "active") {
+        return r.active;
       } else {
         return true;
       }

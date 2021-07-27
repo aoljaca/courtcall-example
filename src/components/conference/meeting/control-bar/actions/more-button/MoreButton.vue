@@ -4,7 +4,7 @@
       content-class="elevation-2 rounded-b-0"
       offset-y
       top
-      :nudge-top="showCondensedVersion ? '10' : '8'"
+      nudge-top="8"
       :nudge-left="showCondensedVersion ? '70' : '90'"
       v-model="menuOpen"
     >
@@ -94,7 +94,7 @@ export default class MoreIcon extends Vue {
     },
     {
       icon: "logout",
-      label: this.$t("conference.meeting.controlBar.more.files"),
+      label: this.$t("conference.meeting.controlBar.more.move"),
     },
     {
       icon: "mdi-message-outline",

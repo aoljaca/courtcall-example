@@ -100,9 +100,10 @@ export default class CreateParticipantAccessDetails extends Vue {
     },
     {
       title: this.$t("admin.participants.formFields.pstnPIN.title"),
+      placeholder: this.$t("admin.participants.formFields.pstnPIN.placeholder"),
       key: "pstnPIN",
       inputType: "textField",
-      condition: this.isDedicatedParticipant,
+      condition: this.isDedicatedParticipantHost,
     },
   ];
 
@@ -120,8 +121,11 @@ export default class CreateParticipantAccessDetails extends Vue {
     return conditionMet;
   }
 
-  isDedicatedParticipant(): boolean {
-    return this.participant.role === ParticipantRole.PARTICIPANT_DEDICATED;
+  isDedicatedParticipantHost(): boolean {
+    return (
+      this.participant.role === ParticipantRole.PARTICIPANT_DEDICATED ||
+      this.participant.role === ParticipantRole.HOST_DEDICATED
+    );
   }
 
   getItems(items: any[] | (() => any[])): any[] {
