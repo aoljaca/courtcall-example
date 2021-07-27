@@ -130,7 +130,8 @@ export default class CaseEdit extends Vue {
 
   get participantsByRoom(): Participant[] {
     return this.participants.filter(
-      (p: { roomId: string }) => p.roomId === this.roomId
+      (p: Participant) =>
+        p.roomId === this.roomId && !this.caseParticipantIds.includes(p.id)
     );
   }
 
