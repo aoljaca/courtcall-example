@@ -213,7 +213,6 @@ export default class MoreIcon extends Vue {
   }
 
   get supportLabel(): string {
-    console.log("hey");
     return this.activeSupportRequest
       ? (this.$t("conference.meeting.controlBar.more.cancelSupport") as string)
       : (this.$t("conference.meeting.controlBar.more.support") as string);
