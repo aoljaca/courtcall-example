@@ -79,6 +79,7 @@ export default class ContactHost extends Vue {
   messageContent = "";
   isLastScreen = false;
   timeToDismiss = 10;
+  timer = 0;
 
   transition(): void {
     this.messagedHost = true;
@@ -87,10 +88,11 @@ export default class ContactHost extends Vue {
   }
 
   startTimer(): void {
-    setInterval(this.setTimeToDismiss, 1000);
+    this.timer = setInterval(this.setTimeToDismiss, 1000);
   }
 
   setTimeToDismiss(): void {
+    console.log("test");
     if (this.timeToDismiss === 0) {
       this.onDismissal();
     } else {
@@ -104,6 +106,7 @@ export default class ContactHost extends Vue {
     this.dialog = false;
     this.messagedHost = false;
     this.isLastScreen = false;
+    clearInterval(this.timer);
   }
 
   onCancelMessage(): void {
