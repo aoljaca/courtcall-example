@@ -1,6 +1,7 @@
 import {
   SystemUserRole,
   SystemUserRoleName,
+  SystemUserRoleType,
 } from "@/model/admin/system-users/system-user-role";
 import { Module } from "vuex";
 
@@ -10,18 +11,22 @@ const systemUserRoles: {
   SUR1: {
     id: "SUR1",
     name: SystemUserRoleName.ADMIN,
+    type: SystemUserRoleType.ADMIN,
   },
   SUR2: {
     id: "SUR2",
     name: SystemUserRoleName.MODERATOR,
+    type: SystemUserRoleType.MODERATOR,
   },
   SUR3: {
     id: "SUR3",
     name: SystemUserRoleName.MANAGER,
+    type: SystemUserRoleType.MANAGER,
   },
   SUR4: {
     id: "SUR4",
     name: SystemUserRoleName.SUPPORT,
+    type: SystemUserRoleType.SUPPORT,
   },
 };
 
