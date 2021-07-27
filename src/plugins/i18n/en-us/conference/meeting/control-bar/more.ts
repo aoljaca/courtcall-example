@@ -6,6 +6,7 @@ import record from "./more/record";
 import sendNotification from "./more/send-notification";
 import transcription from "./more/transcription";
 import changeBackground from "./more/change-background";
+import getSupport from "./more/get-support";
 export default {
   title: "More",
   avSetup,
@@ -16,11 +17,13 @@ export default {
   sendNotification,
   transcription,
   changeBackground,
+  getSupport,
   shareScreen: "Share screen",
   files: "Files",
   logout: "Move",
   chat: "Chat",
   support: "Get Support",
+  cancelSupport: "Cancel Support Request",
   hand: "Raise Hand",
   move: "Move",
 };

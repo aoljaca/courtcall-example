@@ -39,14 +39,19 @@
           class="pa-0 ma-0"
         >
           <v-list-item>
-            <v-btn color="white" class="d-flex justify-start w-100" depressed>
+            <v-btn
+              color="white"
+              class="d-flex justify-start w-100"
+              depressed
+              @click="item.onClick"
+            >
               <span color="accent">
                 <v-icon
                   color="accent"
                   class="mr-4 material-icons material-icons-outlined"
                   >{{ item.icon }}</v-icon
                 >
-                {{ item.label }}
+                {{ item.label || item.labelFunc() }}
               </span>
             </v-btn>
           </v-list-item>
@@ -54,14 +59,30 @@
         </div>
       </v-list>
     </v-menu>
+    <get-support
+      v-if="isGettingSupport"
+      @closedDialog="onClosedSupportDialog"
+    />
+    <cancel-support-request
+      v-if="isCancelingSupport"
+      @closedDialog="onClosedSupportDialog"
+    />
   </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-@Component
+import GetSupport from "./GetSupport.vue";
+import CancelSupportRequest from "./CancelSupport.vue";
+@Component({
+  components: {
+    GetSupport,
+    CancelSupportRequest,
+  },
+})
 export default class MoreIcon extends Vue {
   menuOpen = false;
-
+  isGettingSupport = false;
+  isCancelingSupport = false;
   listItemsMobile = [
     {
       icon: "mdi-laptop",
@@ -81,7 +102,8 @@ export default class MoreIcon extends Vue {
     },
     {
       icon: "mdi-help-circle-outline",
-      label: this.$t("conference.meeting.controlBar.more.support"),
+      labelFunc: (): string => this.supportLabel,
+      onClick: this.onSupportClicked,
     },
     {
       icon: "back_hand",
@@ -92,20 +114,25 @@ export default class MoreIcon extends Vue {
   listItemsDesktop = [
     {
       icon: "mdi-help-circle-outline",
-      label: this.$t("conference.meeting.controlBar.more.support"),
+      labelFunc: (): string => this.supportLabel,
       hasDivider: true,
+      onClick: this.onSupportClicked,
     },
     {
       icon: "mdi-bell-plus-outline",
       label: this.$t(
         "conference.meeting.controlBar.more.notificationPreferences.title"
       ),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-bell-outline",
       label: this.$t(
         "conference.meeting.controlBar.more.sendNotification.title"
       ),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-account-plus-outline",
@@ -113,16 +140,22 @@ export default class MoreIcon extends Vue {
         "conference.meeting.controlBar.more.inviteParticipants.title"
       ),
       hasDivider: true,
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-texture",
       label: this.$t(
         "conference.meeting.controlBar.more.changeBackground.title"
       ),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-cog-outline",
       label: this.$t("conference.meeting.controlBar.more.avSetup.title"),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-closed-caption-outline",
@@ -130,20 +163,28 @@ export default class MoreIcon extends Vue {
         "conference.meeting.controlBar.more.transcription.titleAlt"
       ),
       hasDivider: true,
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-circle-slice-8",
       label: this.$t("conference.meeting.controlBar.more.record.titleAlt"),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "mdi-cast",
       label: this.$t(
         "conference.meeting.controlBar.more.publicStreaming.titleAlt"
       ),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
     {
       icon: "back_hand",
       label: this.$t("conference.meeting.controlBar.more.hand"),
+      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+      onClick: () => null,
     },
   ];
 
@@ -153,6 +194,29 @@ export default class MoreIcon extends Vue {
       icon: "mdi-dots-horizontal",
       iconColor: this.menuOpen ? "primary" : "white",
     };
+  }
+
+  get supportRequestExists(): boolean {
+    return this.$store.state.ConferenceModule.activeSupportRequest != null;
+  }
+
+  onSupportClicked(): void {
+    if (this.supportRequestExists) {
+      this.isCancelingSupport = true;
+    } else {
+      this.isGettingSupport = true;
+    }
+  }
+
+  onClosedSupportDialog(): void {
+    this.isCancelingSupport = false;
+    this.isGettingSupport = false;
+  }
+
+  get supportLabel(): string {
+    return this.supportRequestExists
+      ? (this.$t("conference.meeting.controlBar.more.cancelSupport") as string)
+      : (this.$t("conference.meeting.controlBar.more.support") as string);
   }
 
   get listItems(): any[] {

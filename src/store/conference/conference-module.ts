@@ -1,6 +1,8 @@
 import { SubConference } from "@/model/meeting/meeting-ui/sub-conference";
 import router from "@/router";
 import { Module } from "vuex";
+import { DateTime } from "luxon";
+import { SupportItem } from "@/model/admin/support/support-item";
 import { VideoState, AudioState } from "./conference-setup-module";
 
 const mockConferences: { [key: string]: SubConference } = {
@@ -50,6 +52,7 @@ const conferenceModule: Module<any, any> = {
     activeSubConferenceId: null,
     activeParticipant: {},
     subConferences: mockConferences,
+    activeSupportRequest: null,
   },
   mutations: {
     setActiveConferenceId(state, newConferenceId: string) {
@@ -60,6 +63,9 @@ const conferenceModule: Module<any, any> = {
       newSubConferences: { [key: string]: SubConference }
     ) {
       state.subConferences = newSubConferences;
+    },
+    setActiveSupportRequest(state, request: SupportItem) {
+      state.activeSupportRequest = request;
     },
   },
   actions: {
@@ -89,6 +95,26 @@ const conferenceModule: Module<any, any> = {
           conferenceId: newConferenceId,
         },
       });
+    },
+    cancelSupportRequest({ commit }) {
+      // TODO: Call API
+      commit("setActiveSupportRequest", null);
+    },
+    createSupportRequest({ commit }, requestText) {
+      const activeSupportRequest = {
+        type: "duplicateJoin",
+        participant: "1",
+        note: null,
+        archived: false,
+        room: "R1",
+        requestDetails: requestText,
+        openedAt: DateTime.now().toISO(),
+        inProgress: false,
+        closedAt: null,
+        supportedBy: null,
+      };
+      // Data is temporary until there is an API reference
+      commit("setActiveSupportRequest", activeSupportRequest);
     },
   },
   getters: {
