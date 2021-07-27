@@ -23,22 +23,15 @@
               counter="300"
               class="mt-n3"
               v-model="requestSupportInput"
-              v-if="!sentSupportRequest && !sentRequestCancel"
+              v-if="!sentSupportRequest"
               :rules="rules"
               maxlength="300"
             >
             </v-text-field>
-            <h5 v-if="sentSupportRequest && !sentRequestCancel">
+            <h5 v-if="sentSupportRequest">
               {{
                 $t(
                   "conference.meeting.controlBar.more.getSupport.requestUpdate"
-                )
-              }}
-            </h5>
-            <h5 v-if="sentRequestCancel" class="text-center">
-              {{
-                $t(
-                  "conference.meeting.controlBar.more.getSupport.cancelRequestHeader"
                 )
               }}
             </h5>
@@ -46,7 +39,7 @@
         </v-row>
         <v-row class="justify-center">
           <v-col cols="auto">
-            <template v-if="!sentSupportRequest && !sentRequestCancel">
+            <template v-if="!sentSupportRequest">
               <v-btn
                 class="mr-5 text-capitalize pa-6 rounded-lg"
                 depressed
@@ -75,36 +68,10 @@
               color="info black--text"
               depressed
               @click="onClosedDialog()"
-              v-if="sentSupportRequest && !sentRequestCancel"
+              v-if="sentSupportRequest"
             >
               {{ $t("conference.meeting.controlBar.more.getSupport.dismiss") }}
             </v-btn>
-            <template v-if="sentRequestCancel">
-              <v-btn
-                class="text-capitalize pa-6 rounded-lg mr-3"
-                color="info black--text"
-                depressed
-                @click="onCancelSupportRequest()"
-              >
-                {{
-                  $t(
-                    "conference.meeting.controlBar.more.getSupport.cancelRequestYes"
-                  )
-                }}
-              </v-btn>
-              <v-btn
-                class="text-capitalize pa-6 rounded-lg ml-3"
-                color="info black--text"
-                depressed
-                @click="onClosedDialog()"
-              >
-                {{
-                  $t(
-                    "conference.meeting.controlBar.more.getSupport.cancelRequestNo"
-                  )
-                }}
-              </v-btn>
-            </template>
           </v-col>
         </v-row>
       </v-container>

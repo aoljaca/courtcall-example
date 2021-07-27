@@ -62,20 +62,28 @@
     <get-support
       v-if="isGettingSupport"
       @closedDialog="onClosedSupportDialog"
+      @sentSupportRequest="onSupportRequestSent"
+    />
+    <cancel-support-request
+      v-if="canCancelSupportRequest"
+      @closedDialog="onClosedSupportDialog"
     />
   </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import GetSupport from "./GetSupport.vue";
+import CancelSupportRequest from "./CancelSupport.vue"
 @Component({
   components: {
     GetSupport,
+    CancelSupportRequest,
   },
 })
 export default class MoreIcon extends Vue {
   menuOpen = false;
   isGettingSupport = false;
+  canCancelSupportRequest = false;
   listItemsMobile = [
     {
       icon: "mdi-laptop",
@@ -187,12 +195,19 @@ export default class MoreIcon extends Vue {
       iconColor: this.menuOpen ? "primary" : "white",
     };
   }
-
-  onSupportClicked(): void {
-    this.isGettingSupport = true;
+  get activeSupportRequest(): boolean {
+    return this.$store.getters["ConferenceModule/getActiveIssue"];
   }
-
+  onSupportClicked(): void {
+    if (this.activeSupportRequest) {
+      this.canCancelSupportRequest = true;
+    } else {
+      this.isGettingSupport = true;
+    }
+  }
   onClosedSupportDialog(): void {
+    console.log(this.activeSupportRequest)
+    this.canCancelSupportRequest = false;
     this.isGettingSupport = false;
   }
 

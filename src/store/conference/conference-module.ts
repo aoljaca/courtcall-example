@@ -43,18 +43,6 @@ const mockConferences: { [key: string]: SubConference } = {
     displayName: "Sub-conference 5",
   },
 };
-const activeSupportRequest = {
-  type: "duplicateJoin",
-  participant: "1",
-  note: null,
-  archived: false,
-  room: "R1",
-  requestDetails: null,
-  openedAt: DateTime.now().toISO(),
-  inProgress: false,
-  closedAt: null,
-  supportedBy: null,
-};
 
 const conferenceModule: Module<any, any> = {
   namespaced: true,
@@ -64,7 +52,7 @@ const conferenceModule: Module<any, any> = {
     activeSubConferenceId: null,
     activeParticipant: {},
     subConferences: mockConferences,
-    activeSupportRequest: activeSupportRequest,
+    activeSupportRequest: {},
   },
   mutations: {
     setActiveConferenceId(state, newConferenceId: string) {
@@ -137,7 +125,7 @@ const conferenceModule: Module<any, any> = {
     getSubConferenceByid: (state) => (subConferenceId: string) =>
       state.subConferences[subConferenceId],
     getSubConferencesAsList: (state) => Object.values(state.subConferences),
-    getActiveIssue: (state) => state.activeSupportRequest,
+    getActiveIssue: (state) => state.activeSupportRequest != null,
     videoState: (state, getters, rootState) => {
       let result = VideoState.Disabled;
 
