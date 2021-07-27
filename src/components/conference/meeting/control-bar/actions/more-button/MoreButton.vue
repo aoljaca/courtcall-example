@@ -51,7 +51,7 @@
                   class="mr-4 material-icons material-icons-outlined"
                   >{{ item.icon }}</v-icon
                 >
-                {{ item.label }}
+                {{ item.label || item.labelFunc() }}
               </span>
             </v-btn>
           </v-list-item>
@@ -62,12 +62,10 @@
     <get-support
       v-if="isGettingSupport"
       @closedDialog="onClosedSupportDialog"
-      @supportRequestSent="changeLabel"
     />
     <cancel-support-request
-      v-if="canCancelSupportRequest"
+      v-if="isCancelingSupport"
       @closedDialog="onClosedSupportDialog"
-      @cancelSupportRequest="changeLabel"
     />
   </div>
 </template>
@@ -84,7 +82,7 @@ import CancelSupportRequest from "./CancelSupport.vue";
 export default class MoreIcon extends Vue {
   menuOpen = false;
   isGettingSupport = false;
-  canCancelSupportRequest = false;
+  isCancelingSupport = false;
   listItemsMobile = [
     {
       icon: "mdi-laptop",
@@ -115,7 +113,7 @@ export default class MoreIcon extends Vue {
   listItemsDesktop = [
     {
       icon: "mdi-help-circle-outline",
-      label: "Get Support",
+      labelFunc: (): string => this.supportLabel,
       hasDivider: true,
       onClick: this.onSupportClicked,
     },
@@ -201,28 +199,21 @@ export default class MoreIcon extends Vue {
   }
   onSupportClicked(): void {
     if (this.activeSupportRequest) {
-      this.canCancelSupportRequest = true;
+      this.isCancelingSupport = true;
     } else {
       this.isGettingSupport = true;
     }
   }
   onClosedSupportDialog(): void {
-    this.canCancelSupportRequest = false;
+    this.isCancelingSupport = false;
     this.isGettingSupport = false;
   }
-
-  changeLabel(): void {
-    if (this.activeSupportRequest) {
-      this.listItemsDesktop[0].label = this.$t(
-        "conference.meeting.controlBar.more.cancelSupport"
-      );
-    } else {
-      this.listItemsDesktop[0].label = this.$t(
-        "conference.meeting.controlBar.more.support"
-      );
-    }
+  get supportLabel(): string {
+    console.log("hey");
+    return this.activeSupportRequest
+      ? (this.$t("conference.meeting.controlBar.more.cancelSupport") as string)
+      : (this.$t("conference.meeting.controlBar.more.support") as string);
   }
-
   get listItems(): any[] {
     return this.showCondensedVersion
       ? this.listItemsMobile
