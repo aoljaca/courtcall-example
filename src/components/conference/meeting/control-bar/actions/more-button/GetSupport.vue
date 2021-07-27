@@ -98,7 +98,6 @@ export default class GetSupport extends Vue {
       "ConferenceModule/createSupportRequest",
       this.requestSupportInput
     );
-    this.$emit("supportRequestSent");
     this.sentSupportRequest = true;
   }
   onClosedDialog(): void {

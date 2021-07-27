@@ -102,7 +102,8 @@ export default class MoreIcon extends Vue {
     },
     {
       icon: "mdi-help-circle-outline",
-      label: this.$t("conference.meeting.controlBar.more.support"),
+      labelFunc: (): string => this.supportLabel,
+      onClick: this.onSupportClicked,
     },
     {
       icon: "back_hand",
@@ -195,12 +196,12 @@ export default class MoreIcon extends Vue {
     };
   }
 
-  get activeSupportRequest(): boolean {
+  get supportRequestExists(): boolean {
     return this.$store.state.ConferenceModule.activeSupportRequest != null;
   }
 
   onSupportClicked(): void {
-    if (this.activeSupportRequest) {
+    if (this.supportRequestExists) {
       this.isCancelingSupport = true;
     } else {
       this.isGettingSupport = true;
@@ -213,7 +214,7 @@ export default class MoreIcon extends Vue {
   }
 
   get supportLabel(): string {
-    return this.activeSupportRequest
+    return this.supportRequestExists
       ? (this.$t("conference.meeting.controlBar.more.cancelSupport") as string)
       : (this.$t("conference.meeting.controlBar.more.support") as string);
   }
