@@ -62,10 +62,12 @@
     <get-support
       v-if="isGettingSupport"
       @closedDialog="onClosedSupportDialog"
+      @supportRequestSent="changeLabel"
     />
     <cancel-support-request
       v-if="canCancelSupportRequest"
       @closedDialog="onClosedSupportDialog"
+      @cancelSupportRequest="changeLabel"
     />
   </div>
 </template>
@@ -113,7 +115,7 @@ export default class MoreIcon extends Vue {
   listItemsDesktop = [
     {
       icon: "mdi-help-circle-outline",
-      label: this.$t("conference.meeting.controlBar.more.support"),
+      label: "Get Support",
       hasDivider: true,
       onClick: this.onSupportClicked,
     },
@@ -205,9 +207,20 @@ export default class MoreIcon extends Vue {
     }
   }
   onClosedSupportDialog(): void {
-    console.log(this.activeSupportRequest);
     this.canCancelSupportRequest = false;
     this.isGettingSupport = false;
+  }
+
+  changeLabel(): void {
+    if (this.activeSupportRequest) {
+      this.listItemsDesktop[0].label = this.$t(
+        "conference.meeting.controlBar.more.cancelSupport"
+      );
+    } else {
+      this.listItemsDesktop[0].label = this.$t(
+        "conference.meeting.controlBar.more.support"
+      );
+    }
   }
 
   get listItems(): any[] {

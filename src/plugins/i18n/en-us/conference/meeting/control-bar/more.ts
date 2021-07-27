@@ -23,6 +23,7 @@ export default {
   logout: "Move",
   chat: "Chat",
   support: "Get Support",
+  cancelSupport: "Cancel Support Request",
   hand: "Raise Hand",
   move: "Move",
 };
