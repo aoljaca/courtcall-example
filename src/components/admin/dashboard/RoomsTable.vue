@@ -343,7 +343,7 @@ export default class RoomsTable extends Vue {
 
   dateMenu = false;
 
-  mounted() {
+  mounted(): void {
     this.itemsInFilterSelect = [
       {
         type: "none",
