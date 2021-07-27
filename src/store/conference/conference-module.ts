@@ -125,7 +125,6 @@ const conferenceModule: Module<any, any> = {
     getSubConferenceByid: (state) => (subConferenceId: string) =>
       state.subConferences[subConferenceId],
     getSubConferencesAsList: (state) => Object.values(state.subConferences),
-    getActiveIssue: (state) => state.activeSupportRequest != null,
     videoState: (state, getters, rootState) => {
       let result = VideoState.Disabled;
 

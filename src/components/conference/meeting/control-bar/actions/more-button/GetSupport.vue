@@ -84,8 +84,6 @@ import { Component, Vue } from "vue-property-decorator";
 export default class GetSupport extends Vue {
   requestSupportInput = null;
   sentSupportRequest = false;
-  sentRequestCancel = false;
-  supportObject = {};
   dialogOpen = true;
   rules = [
     (value: string): any => (value || "").length <= 300 || "Max 300 characters",
@@ -104,10 +102,6 @@ export default class GetSupport extends Vue {
     this.sentSupportRequest = true;
   }
   onClosedDialog(): void {
-    this.$emit("closedDialog");
-  }
-  onCancelSupportRequest(): void {
-    this.$store.dispatch("ConferenceModule/cancelSupportRequest");
     this.$emit("closedDialog");
   }
 }

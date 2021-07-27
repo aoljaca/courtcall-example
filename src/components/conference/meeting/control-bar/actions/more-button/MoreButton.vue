@@ -197,7 +197,7 @@ export default class MoreIcon extends Vue {
     };
   }
   get activeSupportRequest(): boolean {
-    return this.$store.getters["ConferenceModule/getActiveIssue"];
+    return this.$store.state.ConferenceModule.activeSupportRequest != null;
   }
   onSupportClicked(): void {
     if (this.activeSupportRequest) {

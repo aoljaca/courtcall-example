@@ -30,7 +30,6 @@
             <template>
               <v-btn
                 class="text-capitalize pa-6 rounded-lg mr-3"
-                color="info black--text"
                 depressed
                 @click="onCancelSupportRequest()"
               >
@@ -42,7 +41,6 @@
               </v-btn>
               <v-btn
                 class="text-capitalize pa-6 rounded-lg ml-3"
-                color="info black--text"
                 depressed
                 @click="onClosedDialog()"
               >
