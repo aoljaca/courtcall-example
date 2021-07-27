@@ -72,7 +72,7 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import GetSupport from "./GetSupport.vue";
-import CancelSupportRequest from "./CancelSupport.vue"
+import CancelSupportRequest from "./CancelSupport.vue";
 @Component({
   components: {
     GetSupport,
@@ -205,7 +205,7 @@ export default class MoreIcon extends Vue {
     }
   }
   onClosedSupportDialog(): void {
-    console.log(this.activeSupportRequest)
+    console.log(this.activeSupportRequest);
     this.canCancelSupportRequest = false;
     this.isGettingSupport = false;
   }
