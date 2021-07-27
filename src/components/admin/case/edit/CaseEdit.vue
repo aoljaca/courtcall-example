@@ -81,106 +81,7 @@
         </v-row>
       </v-row>
       <v-divider />
-      <v-row class="my-4">
-        <v-col>
-          <h2>{{ $t("admin.cases.participants") }}</h2>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <div>
-            {{ $t("admin.cases.name") }}
-          </div>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-divider />
-          <v-row
-            v-for="id in caseEdits.participants"
-            :key="`participant-${id}`"
-            class="my-2"
-          >
-            <v-col>
-              <div>
-                {{ getParticipantById(id).name }}
-              </div>
-            </v-col>
-            <v-col>
-              <v-menu offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-row>
-                    <v-col>
-                      <v-btn
-                        :title="$t('admin.cases.remove')"
-                        data-test-id="remove-participant"
-                        v-bind="attrs"
-                        v-on="on"
-                        color="grey darken-4 rounded-0 white--text"
-                        depressed
-                      >
-                        {{ $t("admin.cases.remove") }}
-                      </v-btn>
-                    </v-col>
-                  </v-row>
-                </template>
-                <v-list>
-                  <v-list-item data-test-id="remove-from-case">
-                    {{ $t("admin.cases.removeFromCase") }}
-                  </v-list-item>
-                  <v-list-item data-test-id="remove-from-room">
-                    {{ $t("admin.cases.removeFromRoom") }}
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-            </v-col>
-          </v-row>
-          <v-divider />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-row>
-            <v-col>
-              <v-select
-                data-test-id="select-participant"
-                :label="$t('admin.cases.selectRoom')"
-                :items="participantsByRoom"
-                item-text="name"
-                item-value="id"
-                v-model="participantId"
-              >
-              </v-select>
-            </v-col>
-            <v-col>
-              <v-btn
-                data-test-id="add-to-case"
-                :title="$t('admin.cases.addToCase')"
-                color="grey darken-4 rounded-0 white--text"
-                depressed
-                elevation="0"
-                @click="addParticipantToCase()"
-              >
-                {{ $t("admin.cases.addToCase") }}
-              </v-btn>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-btn
-                v-if="caseId"
-                data-test-id="add-scheduled-participant"
-                :title="$t('admin.cases.addParticipant')"
-                color="grey darken-4 rounded-0 white--text"
-                depressed
-                @click="addScheduledParticipant()"
-              >
-                {{ $t("admin.cases.addParticipant") }}
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
+      <scheduled-participants-table :isEdit="true" />
       <v-row>
         <v-col class="d-flex justify-end">
           <v-btn
@@ -202,7 +103,12 @@ import { Component, Vue } from "vue-property-decorator";
 import { Participant } from "@/model/meeting/meeting-ui/side-bar/participant";
 import { Case } from "@/model/meeting/meeting-ui/case";
 import { Room } from "@/model/admin/room/room";
-@Component
+import ScheduledParticipantsTable from "@/components/admin/case/ScheduledParticipantsTable.vue";
+@Component({
+  components: {
+    ScheduledParticipantsTable,
+  },
+})
 export default class CaseEdit extends Vue {
   caseEdits: Case = {} as Case;
   participantId = "";

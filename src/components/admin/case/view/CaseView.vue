@@ -44,7 +44,7 @@
     <v-divider class="py-4"> </v-divider>
     <v-row>
       <v-col>
-        <scheduled-participants-table> </scheduled-participants-table>
+        <scheduled-participants-table :isEdit="false" />
       </v-col>
     </v-row>
   </v-container>
@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ScheduledParticipantsTable from "@/components/admin/case/view/ScheduledParticipantsTable.vue";
+import ScheduledParticipantsTable from "@/components/admin/case/ScheduledParticipantsTable.vue";
 import { Case } from "@/model/meeting/meeting-ui/case";
 @Component({
   components: {
