@@ -26,7 +26,7 @@
         </h4>
       </v-col>
       <v-col v-if="!showCondensedVersion">
-        <persisting-notification-manager class="position-notification" />
+        <persisting-notification-manager class="d-flex justify-center" />
         <v-spacer />
       </v-col>
       <v-col
@@ -129,8 +129,4 @@ export default class CallHeader extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
-.position-notification {
-  margin-left: 15%;
-}
-</style>
+<style lang="scss" scoped></style>
