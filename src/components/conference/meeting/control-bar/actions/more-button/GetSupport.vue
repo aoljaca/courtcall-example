@@ -109,11 +109,5 @@ export default class GetSupport extends Vue {
     this.$store.dispatch("ConferenceModule/cancelSupportRequest");
     this.$emit("closedDialog");
   }
-  mounted(): void {
-    this.supportObject = this.$store.getters["ConferenceModule/getActiveIssue"];
-    if (this.supportObject) {
-      this.sentRequestCancel = true;
-    }
-  }
 }
 </script>

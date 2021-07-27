@@ -62,7 +62,6 @@
     <get-support
       v-if="isGettingSupport"
       @closedDialog="onClosedSupportDialog"
-      @sentSupportRequest="onSupportRequestSent"
     />
     <cancel-support-request
       v-if="canCancelSupportRequest"

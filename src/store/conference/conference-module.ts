@@ -52,7 +52,7 @@ const conferenceModule: Module<any, any> = {
     activeSubConferenceId: null,
     activeParticipant: {},
     subConferences: mockConferences,
-    activeSupportRequest: {},
+    activeSupportRequest: null,
   },
   mutations: {
     setActiveConferenceId(state, newConferenceId: string) {
