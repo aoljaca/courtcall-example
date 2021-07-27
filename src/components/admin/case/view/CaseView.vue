@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-row id="case-view">
+    <v-row>
       <v-col>
         <v-row class="mb-4">
           <v-col>
@@ -42,7 +42,7 @@
       </v-col>
     </v-row>
     <v-divider class="py-4"> </v-divider>
-    <v-row id="scheduled-participants-table">
+    <v-row>
       <v-col>
         <scheduled-participants-table> </scheduled-participants-table>
       </v-col>

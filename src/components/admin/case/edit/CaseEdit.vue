@@ -57,7 +57,7 @@
               </v-col>
             </v-row>
           </v-col>
-          <v-col class="d-flex justify-end" id="cancel-save-btns">
+          <v-col class="d-flex justify-end">
             <v-btn
               data-test-id="case-cancel-button"
               class="mx-4"
@@ -93,7 +93,7 @@
           </div>
         </v-col>
       </v-row>
-      <v-row id="participants-list">
+      <v-row>
         <v-col>
           <v-divider />
           <v-row
@@ -101,13 +101,13 @@
             :key="`participant-${id}`"
             class="my-2"
           >
-            <v-col id="participant-name">
+            <v-col>
               <div>
                 {{ getParticipantById(id).name }}
               </div>
             </v-col>
             <v-col>
-              <v-menu id="recycled-menu" offset-y>
+              <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-row>
                     <v-col>
@@ -138,7 +138,7 @@
           <v-divider />
         </v-col>
       </v-row>
-      <v-row id="participant-add-controls">
+      <v-row>
         <v-col>
           <v-row>
             <v-col>
